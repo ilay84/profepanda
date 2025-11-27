@@ -1,0 +1,46 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/coso/coso.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A person or thing whose name one doesn’t recall or doesn’t want to mention.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Persona o cosa cuyo nombre no se recuerda o no se quiere mencionar.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "thing",
+        "thingy",
+        "whatshisname"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/coso/coso_ex_01.mp3",
+          "en": "And that `thingy` who calls you Mari — is she really your friend? She left me alone with her kid just because I did her nails well. She doesn’t know me! I could have a criminal record!",
+          "es": "¿Y ese `coso` que te dice Mari? ¿Es tu amiga en serio? Me dejó sola con su hijo solo porque le hice bien las manos. ¡No me conoce! ¡Yo podría tener antecedentes!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "coso",
+  "word": "coso"
+}

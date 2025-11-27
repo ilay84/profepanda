@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://profepanda.app/schemas/exercises/dnd.schema.json",
+  "title": "PPX Exercise • Drag & Drop (single slide)",
+  "type": "object",
+  "required": ["type", "slug", "items"],
+  "properties": {
+    "type": { "const": "dnd" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title_es": { "type": ["string", "null"] },
+    "title_en": { "type": ["string", "null"] },
+    "instructions_es": { "type": ["string", "null"] },
+    "instructions_en": { "type": ["string", "null"] },
+    "level": { "type": ["string", "null"] },
+    "taxonomy_paths": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": ["string", "null"] },
+    "media": {
+      "type": "object",
+      "properties": {
+        "image_url": { "type": "string" },
+        "audio_url": { "type": "string" },
+        "video_url": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["order", "columns", "tokens"],
+        "properties": {
+          "id": { "type": ["string", "null"] },
+          "order": { "type": "integer" },
+          "columns": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": ["id"],
+              "properties": {
+                "id": { "type": "string" },
+                "label_es": { "type": ["string", "null"] },
+                "label_en": { "type": ["string", "null"] }
+              }
+            }
+          },
+          "tokens": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id", "correct"],
+              "properties": {
+                "id": { "type": "string" },
+                "text_es": { "type": ["string", "null"] },
+                "text_en": { "type": ["string", "null"] },
+                "correct": { "type": "string" }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,53 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/intendente/intendente.mp3?v=1764180040",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Political office equivalent to a city mayor.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Cargo político equivalente al de alcalde o jefe de gobierno municipal.</span></p>",
+      "domain": [
+        "politica",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "mayor"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/intendente/intendente_ex_01.mp3?v=1764180040",
+          "en": "And now he’s going to run for `mayor`. That son of a bitch! Can you believe it?",
+          "es": "Encima se va a presentar a `intendente`. ¡Ese hijo de puta! ¿Lo podés creer?",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "intendentas",
+        "fem_sg": "intendenta",
+        "masc_pl": "intendentes",
+        "masc_sg": "intendente"
+      }
+    }
+  ],
+  "slug": "intendente",
+  "word": "intendente"
+}

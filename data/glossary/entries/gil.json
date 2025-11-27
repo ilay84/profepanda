@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/gil/gil.mp3?v=1764177502",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A naive or easily taken advantage of person.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Persona ingenua, torpe o fácilmente aprovechable.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "sucker",
+        "chump",
+        "pushover"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/gil/gil_ex_01.mp3?v=1764177502",
+          "en": "This `sucker` is always available. Forget it.",
+          "es": "Este `gil` siempre está disponible. Olvidate.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con hijos",
+            "type": "series",
+            "year": "2006"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "gilas",
+        "fem_sg": "gila",
+        "masc_pl": "giles",
+        "masc_sg": "gil"
+      }
+    }
+  ],
+  "slug": "gil",
+  "word": "gil"
+}

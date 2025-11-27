@@ -1,0 +1,153 @@
+{
+  "type": "mcq",
+  "slug": "ser-vs-estar-usage",
+  "title_es": "Uso de 'ser' y 'estar'",
+  "title_en": "Using 'ser' and 'estar'",
+  "instructions_es": "Elige la opción correcta para completar cada oración usando 'ser' o 'estar'. Piensa en si se trata de una característica permanente o un estado temporal.",
+  "instructions_en": "Choose the correct option to complete each sentence using 'ser' or 'estar'. Think about whether it refers to a permanent characteristic or a temporary state.",
+  "level": "A2",
+  "status": "draft",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "items": [
+    {
+      "id": "q1",
+      "order": 1,
+      "question_es": "Mi abuela ___ muy feliz hoy porque vamos a visitarla.",
+      "question_en": "My grandmother ___ very happy today because we are going to visit her.",
+      "hint_es": "¿Es un estado emocional temporal o una característica permanente?",
+      "hint_en": "Is this a temporary emotional state or a permanent characteristic?",
+      "options_es": [
+        {
+          "text": "es",
+          "correct": false,
+          "feedback": "No es correcto. 'Feliz hoy' indica un estado temporal."
+        },
+        {
+          "text": "está",
+          "correct": true,
+          "feedback": "¡Correcto! Es un estado emocional temporal."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "is (ser)",
+          "correct": false,
+          "feedback": "Not correct. 'Happy today' is a temporary emotional state."
+        },
+        {
+          "text": "is (estar)",
+          "correct": true,
+          "feedback": "Correct! This refers to a temporary emotional state."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q2",
+      "order": 2,
+      "question_es": "Madrid ___ la capital de España.",
+      "question_en": "Madrid ___ the capital of Spain.",
+      "hint_es": "¿Es una identidad permanente o una condición temporal?",
+      "hint_en": "Is this a permanent identity or a temporary condition?",
+      "options_es": [
+        {
+          "text": "es",
+          "correct": true,
+          "feedback": "¡Correcto! 'Capital' es una identidad permanente."
+        },
+        {
+          "text": "está",
+          "correct": false,
+          "feedback": "No es correcto. No es una condición temporal."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "is (ser)",
+          "correct": true,
+          "feedback": "Correct! 'Capital' is a permanent identity."
+        },
+        {
+          "text": "is (estar)",
+          "correct": false,
+          "feedback": "Incorrect. This is not a temporary condition."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q3",
+      "order": 3,
+      "question_es": "Las llaves ___ en la mesa.",
+      "question_en": "The keys ___ on the table.",
+      "hint_es": "¿Es una ubicación temporal o una descripción permanente?",
+      "hint_en": "Is this a temporary location or a permanent description?",
+      "options_es": [
+        {
+          "text": "están",
+          "correct": true,
+          "feedback": "¡Correcto! Ubicaciones físicas usan 'estar'."
+        },
+        {
+          "text": "son",
+          "correct": false,
+          "feedback": "No es correcto. No es una característica permanente."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "are (estar)",
+          "correct": true,
+          "feedback": "Correct! Physical locations use 'estar'."
+        },
+        {
+          "text": "are (ser)",
+          "correct": false,
+          "feedback": "Incorrect. This is not a permanent characteristic."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q4",
+      "order": 4,
+      "question_es": "Mi hermana ___ ingeniera y muy creativa.",
+      "question_en": "My sister ___ an engineer and very creative.",
+      "hint_es": "¿Se habla de profesión (identidad) o estado temporal?",
+      "hint_en": "Is this referring to profession (identity) or a temporary state?",
+      "options_es": [
+        {
+          "text": "es",
+          "correct": true,
+          "feedback": "¡Correcto! Las profesiones se expresan con 'ser'."
+        },
+        {
+          "text": "está",
+          "correct": false,
+          "feedback": "No es correcto. 'Ingeniera' es una profesión, no un estado."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "is (ser)",
+          "correct": true,
+          "feedback": "Correct! Professions are expressed with 'ser'."
+        },
+        {
+          "text": "is (estar)",
+          "correct": false,
+          "feedback": "Incorrect. Being an engineer is a permanent identity, not a state."
+        }
+      ],
+      "media": []
+    }
+  ],
+  "version": 3,
+  "created_at": "2025-11-10T17:29:14Z",
+  "created_by": "admin",
+  "checksum": "sha256:131dc0ea96c1a90b000614304d0b092e340a097a35485c97415947c909dbc818"
+}

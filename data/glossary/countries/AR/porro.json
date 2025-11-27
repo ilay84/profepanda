@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/porro/porro.mp3?v=1764270254",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Marijuana cigarette.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Cigarrillo de marihuana.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "joint",
+        "weed cigarette",
+        "spliff"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/porro/porro_ex_01.mp3?v=1764270270",
+          "en": "These kids don’t even smoke a `joint`. I honestly don’t know what kind of life they’re gonna have.",
+          "es": "Ni `porro` fuman estos chicos. Yo no sé qué vida van a tener, eh.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "porrito",
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "porros",
+        "masc_sg": "porro"
+      }
+    }
+  ],
+  "slug": "porro",
+  "word": "porro"
+}

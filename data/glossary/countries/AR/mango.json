@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/mango/mango.mp3?v=1764261520",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A small or specific amount of money.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Cantidad de dinero, especialmente una suma pequeña o puntual.</span></p>",
+      "domain": [
+        "economia",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "buck",
+        "dollar",
+        "a few bucks",
+        "some cash",
+        "spare change"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/mango/mango_ex_01.mp3?v=1764261422",
+          "en": "Listen to me — are we going to see a single `dime` from any of this?",
+          "es": "Escuchame una cosa, ¿vamos a ver un `mango` de todo esto?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "mangos",
+        "masc_sg": "mango"
+      }
+    }
+  ],
+  "slug": "mango",
+  "word": "mango"
+}

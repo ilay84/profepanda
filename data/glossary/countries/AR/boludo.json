@@ -1,0 +1,70 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/boludo/boludo.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Casual, affectionate way to address someone you know well.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Usado como tratamiento coloquial y afectuoso entre personas con confianza.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "dude",
+        "girl",
+        "man"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/boludo/boludo_ex_01.mp3",
+          "en": "Yeah, I’m messing with you — `girl`, the empanadas are here.",
+          "es": "Sí, te estoy jodiendo, `boluda`, son las empanadas.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/boludo/boludo_ex_02.mp3",
+          "en": "It totally sounds like a swinger bar, `dude`.",
+          "es": "Parece un bar swinger, `boluda`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "afectuoso"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "boludas",
+        "fem_sg": "boluda",
+        "masc_pl": "boludos",
+        "masc_sg": "boludo"
+      }
+    }
+  ],
+  "slug": "boludo",
+  "word": "boludo"
+}

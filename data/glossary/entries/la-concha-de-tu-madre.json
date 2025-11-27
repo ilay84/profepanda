@@ -1,0 +1,61 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/la-concha-de-tu-madre/la_concha_de_tu_madre.mp3?v=1764181378",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Extremely vulgar insult used to express intense anger or deep contempt; not meant literally.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Insulto extremadamente vulgar usado para expresar furia intensa o desprecio profundo, sin intención literal.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "motherfucker",
+        "fuck you",
+        "you son of a bitch"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/la-concha-de-tu-madre/la_concha_de_tu_madre_ex_01.mp3?v=1764181420",
+          "en": "You little shit — `motherfucker`!",
+          "es": "¡Uy, pendeja, `la concha de tu madre`!",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "interjeccion",
+      "register": "vulgar",
+      "related_slugs": [
+        "la-concha-de-dios",
+        "la-concha-de-la-lora",
+        "la-concha-de-tu-hermana"
+      ],
+      "sensitivity": [
+        "lenguaje_explicito",
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "la-concha-de-tu-madre",
+  "word": "la concha de tu madre"
+}

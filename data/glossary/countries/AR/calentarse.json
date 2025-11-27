@@ -1,0 +1,44 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/calentarse/calentarse.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">To get upset or lose one's cool.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Enojarse o alterarse.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "to get upset",
+        "to lose one's cool",
+        "to get worked up"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/calentarse/calentarse_ex_01.mp3",
+          "en": "Don't `lose your cool`. Take it easy.",
+          "es": "No `te calentés`. Take it easy.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "calentarse",
+  "word": "calentarse"
+}

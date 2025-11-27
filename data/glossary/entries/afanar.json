@@ -1,0 +1,47 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/afanar-se/afanar_se.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">To</span>&nbsp;<span style=\"font-weight: normal;\">steal.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Robar.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "to steal",
+        "to swipe"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/afanar-se/afanar_se_ex_01.mp3",
+          "en": "How can you `steal` this?",
+          "es": "¿Cómo podés `afanar` esto?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con hijos",
+            "type": "series",
+            "year": "2006"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "verbo_transitivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "afanar",
+  "word": "afanar"
+}

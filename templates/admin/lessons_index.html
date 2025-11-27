@@ -1,0 +1,48 @@
+{% extends 'admin_index.html' %}
+{% block title %}Lessons · Admin{% endblock %}
+
+{% block content %}
+<section class="ppx-container">
+  <div class="ppx-card ppx-card--pad">
+    <div class="ppx-row" style="justify-content:space-between; align-items:center;">
+      <h1 class="ppx-h1" style="margin:0;">Interactive Lessons</h1>
+      <div class="ppx-inline">
+        <a class="ppx-pill" href="{{ url_for('admin.lessons_examples') }}">Examples</a>
+        <form action="{{ url_for('admin.lessons_seed') }}" method="post" style="display:inline">
+          <button type="submit" class="ppx-pill">Seed Examples</button>
+        </form>
+        <a class="ppx-pill" href="{{ url_for('admin.lessons_new') }}">+ Create Lesson</a>
+      </div>
+    </div>
+    <table style="width:100%; border-collapse:collapse; margin-top:12px;">
+      <thead>
+        <tr style="text-align:left; border-bottom:1px solid #e5e7eb;">
+          <th style="padding:8px;">Title</th>
+          <th style="padding:8px;">Locale</th>
+          <th style="padding:8px;">Status</th>
+          <th style="padding:8px;">Updated</th>
+          <th style="padding:8px;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for l in lessons %}
+        <tr style="border-bottom:1px solid #f1f5f9;">
+          <td style="padding:8px;">{{ l.title }}</td>
+          <td style="padding:8px;">{{ l.locale }}</td>
+          <td style="padding:8px;">{{ l.status }}</td>
+          <td style="padding:8px;">{{ l.updated_at }}</td>
+          <td style="padding:8px;">
+            <a href="{{ url_for('admin.lessons_edit', lesson_id=l.id) }}">Edit</a>
+            {% if l.status != 'published' %}
+            · <form action="{{ url_for('admin.lessons_publish', lesson_id=l.id) }}" method="post" style="display:inline"><button type="submit" class="ppx-pill">Publish</button></form>
+            {% endif %}
+          </td>
+        </tr>
+      {% else %}
+        <tr><td colspan="6" style="padding:12px; color:#64748b;">No lessons yet.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'public_base.html' %}
+{# Hide the public navigation bar for the lesson player #}
+{% block admin_nav %}{% endblock %}
+{% block title %}Lección · {{ lesson_slug }}{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lesson_player.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="lp-shell" data-lesson-slug="{{ lesson_slug }}">
+  <header class="lp-topbar">
+    <div class="lp-header">
+      <div class="lp-headline">
+        <div class="lp-title" data-lp-title>Lección</div>
+        <div class="lp-count" data-lp-count></div>
+      </div>
+      <div class="lp-progress-group">
+        <div class="lp-progress-label" data-lp-progress-label>1/1</div>
+        <div class="lp-progress"><div class="lp-progress__bar" style="width:0%"></div></div>
+      </div>
+    </div>
+    <button class="lp-exit" type="button" aria-label="Cerrar">
+      <img src="{{ url_for('static', filename='assets/lesson-icons/x-close.svg') }}" alt="" width="16" height="16" aria-hidden="true">
+    </button>
+  </header>
+
+  <section class="lp-viewport" aria-live="polite"></section>
+
+  <footer class="lp-bottombar">
+    <button class="lp-btn lp-prev" disabled>
+      <img src="{{ url_for('static', filename='assets/lesson-icons/chevron-left.svg') }}" alt="" width="16" height="16" aria-hidden="true">
+      <span class="ppx-visually-hidden">Anterior</span>
+    </button>
+    <button class="lp-btn lp-primary lp-check">Comprobar</button>
+    <button class="lp-btn lp-next" disabled>
+      <img src="{{ url_for('static', filename='assets/lesson-icons/chevron-right.svg') }}" alt="" width="16" height="16" aria-hidden="true">
+      <span class="ppx-visually-hidden">Siguiente</span>
+    </button>
+  </footer>
+
+  <!-- Help modal kept for later; hidden until wired to a help icon -->
+</main>
+{% endblock %}
+
+{% block scripts %}
+  <script type="module" src="{{ url_for('static', filename='js/lesson_player/index.js') }}"></script>
+{% endblock %}

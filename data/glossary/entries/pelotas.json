@@ -1,0 +1,62 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/pelotas/pelotas.mp3?v=1764268483",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Testicles; used in vulgar phrases to intensify anger or annoyance.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Testículos; usado en expresiones vulgares para intensificar enojo o molestia.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "balls",
+        "testicles"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/pelotas/pelotas_ex_01.mp3?v=1764268524",
+          "en": "Um… can you chill out? You really have me by the `balls`, kid!",
+          "es": "Este... ¿te tranquilizás? ¡Cómo me tenés `las pelotas`, pendejo!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con Hijos",
+            "type": "series",
+            "year": "2005"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "vulgar",
+      "related_slugs": [
+        "las-pelotas"
+      ],
+      "sensitivity": [
+        "lenguaje_explicito",
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "pelotas",
+        "fem_sg": "pelota",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "pelotas",
+  "word": "pelotas"
+}

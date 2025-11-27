@@ -1,0 +1,53 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/living/living.mp3?v=1764250653",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Borrowed term used in Argentina to mean a home’s living room.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Adaptación del inglés usada para referirse al salón o sala de estar de una vivienda.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "living room",
+        "lounge"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/living/living_ex_01.mp3?v=1764250670",
+          "en": "\"Hey, babe… dressed like that? Come on, no way.\"\n\"What’s wrong with it? Is it bad? Do I need to dress up just to be in my own `living room`?\"",
+          "es": "—Che, gordo..., vos así vestido, por favor, no, eh.\n—¿Qué tiene? ¿Está mal? ¿Tengo que vestirme bien para ir a mi `living`?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "livings",
+        "masc_sg": "living"
+      }
+    }
+  ],
+  "slug": "living",
+  "word": "living"
+}

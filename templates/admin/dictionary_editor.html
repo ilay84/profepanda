@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Nuevo' if mode=='new' else 'Editar' }} – {{ t('Diccionario','Dictionary', app_lang) }}{% endblock %}
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+{% block content %}
+  <div class="ppx-container" style="max-width:min(96vw,900px); margin:1rem auto;">
+    <h1 style="margin-top:0;">{{ t('Diccionario', 'Dictionary', app_lang) }} – {{ 'Nuevo' if mode=='new' else 'Editar' }}</h1>
+    {% if errors %}
+      <div style="background:#fee2e2; color:#991b1b; padding:.5rem .75rem; border-radius:8px; margin-bottom:.75rem;">
+        <strong>{{ t('Errores', 'Errors', app_lang) }}:</strong>
+        <ul style="margin:.25rem 0 0 1rem;">
+          {% for e in errors %}<li>{{ e }}</li>{% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    <form method="post" action="">
+      {% set s1 = (entry.senses[0] if entry and entry.senses else {}) %}
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:.75rem;">
+        <label>
+          <div>{{ t('Palabra', 'Word', app_lang) }}</div>
+          <input type="text" name="word" value="{{ entry.word or '' }}" class="ppx-input" style="padding:.5rem; border:1px solid #e5e7eb; border-radius:8px;">
+        </label>
+        <label>
+          <div>POS</div>
+          {% set posopts=['sustantivo','verbo','adjetivo','adverbio','pronombre','determinante','preposición','conjunción','interjección','locución_nominal','locución_verbal','locución_adjetival','locución_adverbial','locución_preposicional','expresión_idiomática','modismo','frase_hecha','marcador_discursivo','muletilla','fórmula_social','intensificador','exclamación'] %}
+          {% set curpos = (s1.pos if s1 and s1.pos else 'sustantivo') %}
+          <select name="pos" class="ppx-select" style="padding:.5rem; border:1px solid #e5e7eb; border-radius:8px;">
+            {% for p in posopts %}<option value="{{ p }}" {% if p==curpos %}selected{% endif %}>{{ p }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>
+          <div>Definition (ES)</div>
+          <input type="text" name="definition_es" value="{{ s1.definition_es or '' }}" class="ppx-input" style="padding:.5rem; border:1px solid #e5e7eb; border-radius:8px;">
+        </label>
+        <label>
+          <div>Definition (EN)</div>
+          <input type="text" name="definition_en" value="{{ s1.definition_en or '' }}" class="ppx-input" style="padding:.5rem; border:1px solid #e5e7eb; border-radius:8px;">
+        </label>
+        <label style="grid-column: 1 / -1;">
+          <div>{{ t('Equivalentes en inglés (coma separada)', 'English equivalents (comma separated)', app_lang) }}</div>
+          <input type="text" name="equivalents_en" value="{{ (s1.equivalents_en|join(', ')) if s1.equivalents_en else '' }}" class="ppx-input" style="padding:.5rem; border:1px solid #e5e7eb; border-radius:8px;">
+        </label>
+      </div>
+      <div style="margin-top:1rem; display:flex; gap:.5rem;">
+        <button type="submit" class="ppx-btn ppx-btn--primary">{{ t('Guardar', 'Save', app_lang) }}</button>
+        <a href="{{ url_for('admin.admin_dictionary_manage') }}" class="ppx-btn">{{ t('Cancelar', 'Cancel', app_lang) }}</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

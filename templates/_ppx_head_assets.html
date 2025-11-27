@@ -1,0 +1,18 @@
+<!-- templates/_ppx_head_assets.html -->
+<!-- PPX shared assets: load once in any base <head> (public + admin). -->
+<link rel="preload" href="{{ url_for('static', filename='css/ppx-exercise-ui.css') }}?v=20251113a" as="style">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ppx-exercise-ui.css') }}?v=20251113a">
+
+<link rel="preload" href="{{ url_for('static', filename='css/ppx-modal.css') }}?v=20251110d" as="style">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ppx-modal.css') }}?v=20251110d">
+
+<script defer src="{{ url_for('static', filename='js/ppx-modal.js') }}"></script>
+<script defer src="{{ url_for('static', filename='js/ppx-core.js') }}?v=20251113b"></script>
+<script defer src="{{ url_for('static', filename='js/ppx-player-utils.js') }}?v=20251111a"></script>
+<script defer src="{{ url_for('static', filename='js/ppx-tf.js') }}"></script>
+<script defer src="{{ url_for('static', filename='js/ppx-mcq.js') }}"></script>
+<script defer src="{{ url_for('static', filename='js/ppx-fitb.js') }}?v=20251113a"></script>
+<script defer src="{{ url_for('static', filename='js/ppx-dictation.js') }}?v=20251110k"></script>
+<script defer src="{{ url_for('static', filename='js/ppx-dnd.js') }}?v=20251113a"></script>
+<script defer src="{{ url_for('static', filename='js/public_ex_card_enhance.js') }}?v=20251115a"></script>
+<script defer src="{{ url_for('static', filename='js/public_ex_progress.js') }}?v=20251115a"></script>

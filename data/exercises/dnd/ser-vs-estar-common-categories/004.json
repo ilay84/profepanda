@@ -1,0 +1,280 @@
+{
+  "id": "dnd/ser-vs-estar-common-categories",
+  "type": "dnd",
+  "slug": "ser-vs-estar-common-categories",
+  "title_es": "SER vs ESTAR: Categorías comunes",
+  "title_en": "SER vs ESTAR: Common Categories",
+  "instructions_es": "Arrastra y suelta cada categoría en la columna correcta. Decide si normalmente se expresa con SER (para esencias o cualidades inherentes) o con ESTAR (para situaciones o estados temporales).",
+  "instructions_en": "Drag and drop each category into the correct column. Decide whether it’s something we usually express with SER (used for essences or inherent qualities) or with ESTAR (used for situations or temporary states).",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "draft",
+  "items": [
+    {
+      "id": "i1",
+      "order": 1,
+      "columns": [
+        {
+          "id": "col_a8jm5a",
+          "label_es": "SER (esencias)",
+          "label_en": "SER (essences)"
+        },
+        {
+          "id": "col_xaad99",
+          "label_es": "ESTAR (situaciones)",
+          "label_en": "ESTAR (situations)"
+        }
+      ],
+      "tokens": [
+        {
+          "id": "tok_dtq3cu",
+          "text_es": "profesión",
+          "text_en": "profession",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Ser médica es un estado o parte de la identidad?",
+          "hint_en": "Is being a doctor a state or part of someone's identity?",
+          "feedback_correct_es": "¡Muy bien! Las profesiones son parte esencial de lo que uno es. Ejemplo: Mi papá es médico.",
+          "feedback_correct_en": "Well done! Professions are part of identity. Example: My dad is a doctor.",
+          "feedback_incorrect_es": "No exactamente. Ser médica no es algo pasajero, así que usamos SER. Ejemplo: Mi papá es médico.",
+          "feedback_incorrect_en": "Not quite. Being a doctor isn’t temporary—we use SER. Example: My dad is a doctor."
+        },
+        {
+          "id": "tok_2dtbe9",
+          "text_es": "nacionalidad",
+          "text_en": "nationality",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿La nacionalidad cambia con el estado de ánimo o es una identidad?",
+          "hint_en": "Does nationality change with mood or is it part of identity?",
+          "feedback_correct_es": "¡Exacto! La nacionalidad describe una esencia. Ejemplo: Ella es mexicana.",
+          "feedback_correct_en": "Exactly! Nationality describes essence. Example: She is Mexican.",
+          "feedback_incorrect_es": "Intenta de nuevo. La nacionalidad no depende de una situación. Ejemplo: Ella es mexicana.",
+          "feedback_incorrect_en": "Try again. Nationality doesn’t depend on a situation. Example: She is Mexican."
+        },
+        {
+          "id": "tok_xwxikl",
+          "text_es": "marca de producto",
+          "text_en": "product brand",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Una marca como Nike es algo que cambia según la situación?",
+          "hint_en": "Does a brand like Nike change depending on the situation?",
+          "feedback_correct_es": "¡Exacto! Las marcas forman parte de la esencia de un producto. Ejemplo: Mis zapatos son Nike.",
+          "feedback_correct_en": "Exactly! Brands are part of a product’s identity. Example: My shoes are Nike.",
+          "feedback_incorrect_es": "No, una marca no varía con la situación. Usamos SER. Ejemplo: Mis zapatos son Nike.",
+          "feedback_incorrect_en": "Nope, a brand doesn’t vary situationally. We use SER. Example: My shoes are Nike."
+        },
+        {
+          "id": "tok_vzfq38",
+          "text_es": "material",
+          "text_en": "material",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿El material de algo cambia o es parte de lo que es?",
+          "hint_en": "Does the material of something change or is it part of what it is?",
+          "feedback_correct_es": "¡Correcto! El material es parte de la esencia. Ejemplo: La mesa es de madera.",
+          "feedback_correct_en": "Correct! Material is part of essence. Example: The table is made of wood.",
+          "feedback_incorrect_es": "Piensa otra vez. El material no cambia fácilmente. Usamos SER. Ejemplo: La mesa es de madera.",
+          "feedback_incorrect_en": "Think again. Material doesn’t change easily. We use SER. Example: The table is made of wood."
+        },
+        {
+          "id": "tok_ufygck",
+          "text_es": "personalidad",
+          "text_en": "personality",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Ser simpático es una emoción del momento o un rasgo estable?",
+          "hint_en": "Is being friendly a temporary feeling or a stable trait?",
+          "feedback_correct_es": "¡Muy bien! La personalidad se considera parte de la esencia. Ejemplo: Ella es muy amable.",
+          "feedback_correct_en": "Nice! Personality is part of essence. Example: She is very kind.",
+          "feedback_incorrect_es": "Casi. La personalidad es estable, no situacional. Ejemplo: Ella es muy amable.",
+          "feedback_incorrect_en": "Almost. Personality is stable, not situational. Example: She is very kind."
+        },
+        {
+          "id": "tok_16lqwy",
+          "text_es": "forma geométrica",
+          "text_en": "geometric shape",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿La forma de algo cambia con el clima?",
+          "hint_en": "Does the shape of something change with the weather?",
+          "feedback_correct_es": "¡Exactamente! La forma es una característica permanente. Ejemplo: La mesa es redonda.",
+          "feedback_correct_en": "Exactly! Shape is a permanent trait. Example: The table is round.",
+          "feedback_incorrect_es": "No del todo. Las formas no son estados. Ejemplo: La mesa es redonda.",
+          "feedback_incorrect_en": "Not really. Shapes aren’t states. Example: The table is round."
+        },
+        {
+          "id": "tok_una43r",
+          "text_es": "relación familiar",
+          "text_en": "family relationship",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Una tía deja de serlo si cambia de país?",
+          "hint_en": "Does an aunt stop being an aunt if she moves countries?",
+          "feedback_correct_es": "¡Bien! Las relaciones familiares son permanentes. Ejemplo: Ella es mi tía.",
+          "feedback_correct_en": "Good! Family relationships are permanent. Example: She is my aunt.",
+          "feedback_incorrect_es": "No olvides: SER describe relaciones estables. Ejemplo: Ella es mi tía.",
+          "feedback_incorrect_en": "Don’t forget: SER describes stable relationships. Example: She is my aunt."
+        },
+        {
+          "id": "tok_rwj2kg",
+          "text_es": "color permanente",
+          "text_en": "permanent color",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿El color natural de algo cambia con su humor?",
+          "hint_en": "Does the natural color of something change with mood?",
+          "feedback_correct_es": "¡Correcto! Usamos SER para el color permanente. Ejemplo: Mi coche es azul.",
+          "feedback_correct_en": "Correct! We use SER for permanent color. Example: My car is blue.",
+          "feedback_incorrect_es": "Recuerda: si es un color permanente, usamos SER. Ejemplo: Mi coche es azul.",
+          "feedback_incorrect_en": "Remember: for permanent color, use SER. Example: My car is blue."
+        },
+        {
+          "id": "tok_nrn49b",
+          "text_es": "hora",
+          "text_en": "time",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Qué hora es? ¿Es eso una situación o una información objetiva?",
+          "hint_en": "What time is it? Is that a situation or an objective fact?",
+          "feedback_correct_es": "¡Muy bien! La hora se expresa con SER. Ejemplo: Es la una.",
+          "feedback_correct_en": "Well done! We express time with SER. Example: It’s one o'clock.",
+          "feedback_incorrect_es": "Casi. La hora no es una situación, es una información. Ejemplo: Es la una.",
+          "feedback_incorrect_en": "Almost. Time isn’t a situation, it’s information. Example: It’s one o'clock."
+        },
+        {
+          "id": "tok_xp8yxw",
+          "text_es": "fecha",
+          "text_en": "date",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿'Hoy es lunes' es una descripción de cómo está algo o de qué día es?",
+          "hint_en": "Does 'Today is Monday' describe how something is or what day it is?",
+          "feedback_correct_es": "¡Exactamente! La fecha es objetiva. Usamos SER. Ejemplo: Hoy es lunes.",
+          "feedback_correct_en": "Exactly! Dates are objective. Use SER. Example: Today is Monday.",
+          "feedback_incorrect_es": "No olvides: para decir la fecha, usamos SER. Ejemplo: Hoy es lunes.",
+          "feedback_incorrect_en": "Don’t forget: we use SER to state the date. Example: Today is Monday."
+        },
+        {
+          "id": "tok_tigrjy",
+          "text_es": "ubicación",
+          "text_en": "location",
+          "correct": "col_xaad99",
+          "hint_es": "¿Dónde está algo o alguien? Eso cambia y no define qué es.",
+          "hint_en": "Where is someone or something? That can change and doesn't define what it is.",
+          "feedback_correct_es": "¡Muy bien! Usamos ESTAR para indicar ubicación. Ejemplo: El libro está en la mesa.",
+          "feedback_correct_en": "Well done! We use ESTAR to indicate location. Example: The book is on the table.",
+          "feedback_incorrect_es": "La ubicación se considera una situación, no una esencia. Ejemplo: El libro está en la mesa.",
+          "feedback_incorrect_en": "Location is a situation, not an essence. Example: The book is on the table."
+        },
+        {
+          "id": "tok_8eglx5",
+          "text_es": "estado de ánimo",
+          "text_en": "mood",
+          "correct": "col_xaad99",
+          "hint_es": "¿Estás feliz o estresado? Eso cambia con el día.",
+          "hint_en": "Are you happy or stressed? That can change day by day.",
+          "feedback_correct_es": "¡Correcto! Los estados emocionales son situaciones temporales. Ejemplo: Estoy feliz.",
+          "feedback_correct_en": "Correct! Emotional states are temporary. Example: I’m happy.",
+          "feedback_incorrect_es": "No olvides: ESTAR se usa para describir cómo alguien se siente. Ejemplo: Estoy feliz.",
+          "feedback_incorrect_en": "Don’t forget: ESTAR describes how someone feels. Example: I’m happy."
+        },
+        {
+          "id": "tok_gpizlb",
+          "text_es": "salud",
+          "text_en": "health",
+          "correct": "col_xaad99",
+          "hint_es": "¿Estar enfermo o sano es algo permanente o temporal?",
+          "hint_en": "Is being sick or healthy permanent or temporary?",
+          "feedback_correct_es": "¡Exacto! La salud cambia, así que usamos ESTAR. Ejemplo: Mi abuela está enferma.",
+          "feedback_correct_en": "Exactly! Health changes, so we use ESTAR. Example: My grandmother is sick.",
+          "feedback_incorrect_es": "Piensa otra vez. La salud es un estado, no una esencia. Ejemplo: Mi abuela está enferma.",
+          "feedback_incorrect_en": "Think again. Health is a state, not an essence. Example: My grandmother is sick."
+        },
+        {
+          "id": "tok_6imh18",
+          "text_es": "condición física",
+          "text_en": "physical condition",
+          "correct": "col_xaad99",
+          "hint_es": "¿Estar cansado o sucio describe lo que eres o cómo estás?",
+          "hint_en": "Does being tired or dirty describe what you are or how you are?",
+          "feedback_correct_es": "¡Muy bien! La condición física es un estado temporal. Ejemplo: Estoy cansado.",
+          "feedback_correct_en": "Great! Physical condition is a temporary state. Example: I’m tired.",
+          "feedback_incorrect_es": "No es una esencia, es un estado. Ejemplo: Estoy cansado.",
+          "feedback_incorrect_en": "It’s not an essence, it’s a state. Example: I’m tired."
+        },
+        {
+          "id": "tok_zeaczn",
+          "text_es": "clima",
+          "text_en": "weather",
+          "correct": "col_xaad99",
+          "hint_es": "¿Está nublado hoy? ¿Eso describe lo que es el clima o cómo está?",
+          "hint_en": "Is it cloudy today? Does that describe what weather is or how it is?",
+          "feedback_correct_es": "¡Correcto! El clima se describe con ESTAR cuando hablamos de su estado. Ejemplo: Está nublado.",
+          "feedback_correct_en": "Correct! Weather is described with ESTAR when we talk about its state. Example: It’s cloudy.",
+          "feedback_incorrect_es": "Recuerda: hablamos del estado del clima, no de su definición. Ejemplo: Está nublado.",
+          "feedback_incorrect_en": "Remember: we're describing the weather's state, not its definition. Example: It’s cloudy."
+        },
+        {
+          "id": "tok_fp3pde",
+          "text_es": "estado civil",
+          "text_en": "marital status",
+          "correct": "col_xaad99",
+          "hint_es": "¿Estás casado o soltero? ¿Eso describe lo que eres o cómo estás en esta etapa?",
+          "hint_en": "Are you married or single? Does that describe what you are or how you are in this stage?",
+          "feedback_correct_es": "¡Bien! El estado civil se usa con ESTAR cuando se enfatiza la situación actual. Ejemplo: Estoy casado.",
+          "feedback_correct_en": "Right! Marital status uses ESTAR when focusing on current situation. Example: I’m married.",
+          "feedback_incorrect_es": "No es esencia, es situación actual. Ejemplo: Estoy casado.",
+          "feedback_incorrect_en": "Not essence, it’s a current situation. Example: I’m married."
+        },
+        {
+          "id": "tok_pa59tg",
+          "text_es": "acción en progreso",
+          "text_en": "ongoing action",
+          "correct": "col_xaad99",
+          "hint_es": "¿Estás haciendo algo en este momento?",
+          "hint_en": "Are you doing something right now?",
+          "feedback_correct_es": "¡Correcto! ESTAR se usa para formar el presente progresivo. Ejemplo: Estoy estudiando.",
+          "feedback_correct_en": "Correct! ESTAR forms the present progressive. Example: I’m studying.",
+          "feedback_incorrect_es": "Recuerda: para acciones en curso, usamos ESTAR. Ejemplo: Estoy estudiando.",
+          "feedback_incorrect_en": "Remember: for actions in progress, we use ESTAR. Example: I’m studying."
+        },
+        {
+          "id": "tok_8xys06",
+          "text_es": "reacción momentánea",
+          "text_en": "momentary reaction",
+          "correct": "col_xaad99",
+          "hint_es": "¿Tu opinión en este momento cambia o es parte de tu identidad?",
+          "hint_en": "Does your opinion in the moment change or is it part of your identity?",
+          "feedback_correct_es": "¡Muy bien! Usamos ESTAR para reacciones del momento. Ejemplo: ¡Esto está delicioso!",
+          "feedback_correct_en": "Well done! We use ESTAR for in-the-moment reactions. Example: This is delicious!",
+          "feedback_incorrect_es": "No es esencia duradera. Ejemplo: ¡Esto está delicioso!",
+          "feedback_incorrect_en": "Not a lasting essence. Example: This is delicious!"
+        },
+        {
+          "id": "tok_mpbzjy",
+          "text_es": "apariencia puntual",
+          "text_en": "punctual appearance",
+          "correct": "col_xaad99",
+          "hint_es": "¿Está guapo hoy o lo es siempre?",
+          "hint_en": "Is he looking handsome today or is he always that way?",
+          "feedback_correct_es": "¡Correcto! Apariencias momentáneas se expresan con ESTAR. Ejemplo: Está muy guapo hoy.",
+          "feedback_correct_en": "Correct! Temporary appearances are expressed with ESTAR. Example: He looks great today.",
+          "feedback_incorrect_es": "Cuidado, es una observación puntual. Ejemplo: Está muy guapo hoy.",
+          "feedback_incorrect_en": "Careful, it’s a punctual observation. Example: He looks great today."
+        },
+        {
+          "id": "tok_gsx97s",
+          "text_es": "presencia o ausencia",
+          "text_en": "presence or absence",
+          "correct": "col_xaad99",
+          "hint_es": "¿Está en casa o no? ¿Eso define quién es o dónde está?",
+          "hint_en": "Is he home or not? Does that define who he is or where he is?",
+          "feedback_correct_es": "¡Exactamente! ESTAR indica presencia o ausencia. Ejemplo: No está en la oficina.",
+          "feedback_correct_en": "Exactly! ESTAR indicates presence or absence. Example: He isn’t in the office.",
+          "feedback_incorrect_es": "Recuerda: no es una esencia, es una condición. Ejemplo: No está en la oficina.",
+          "feedback_incorrect_en": "Remember: it's not an essence, it's a condition. Example: He isn’t in the office."
+        }
+      ]
+    }
+  ],
+  "version": 4,
+  "created_at": "2025-11-17T14:03:33Z",
+  "created_by": "admin",
+  "checksum": "sha256:79b8bd0ee94aeedd4f66437e3ba218f7736c610e7544bcd6fa98fbbda6aab87e"
+}

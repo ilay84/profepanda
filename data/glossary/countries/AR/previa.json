@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/previa/previa.mp3?v=1764270607",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Social gathering before going out to a club, party, or event, usually at someone’s place with drinks, music, and conversation.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Reunión social previa a ir a un boliche, fiesta o evento nocturno, generalmente en una casa, con alcohol, música y charla.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "pregame",
+        "drinks before going out"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/previa/previa_ex_01.mp3?v=1764270607",
+          "en": "Hey, where’s the `pregame` at?",
+          "es": "Che, ¿dónde es la `previa`?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "previas",
+        "fem_sg": "previa",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "previa",
+  "word": "previa"
+}

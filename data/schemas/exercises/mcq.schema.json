@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://profepanda.local/schemas/exercises/mcq.schema.json",
+  "title": "Exercise: MCQ",
+  "type": "object",
+  "required": ["type", "slug", "items"],
+  "properties": {
+    "type": { "const": "mcq" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title_es": { "type": "string" },
+    "title_en": { "type": "string" },
+    "instructions_es": { "type": "string" },
+    "instructions_en": { "type": "string" },
+    "level": { "type": "string" },
+    "taxonomy_paths": { "type": "array", "items": { "type": "string" } },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["order"],
+        "properties": {
+          "order": { "type": "integer", "minimum": 1 },
+          "question_es": { "type": "string" },
+          "question_en": { "type": "string" },
+          "hint_es": { "type": "string" },
+          "hint_en": { "type": "string" },
+          "options_es": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["text", "correct"],
+              "properties": {
+                "text": { "type": "string" },
+                "correct": { "type": "boolean" },
+                "feedback": { "type": "string" }
+              }
+            }
+          },
+          "options_en": { "$ref": "#/$defs/options" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "options": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["text", "correct"],
+        "properties": {
+          "text": { "type": "string" },
+          "correct": { "type": "boolean" },
+          "feedback": { "type": "string" }
+        }
+      }
+    }
+  }
+}

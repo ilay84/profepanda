@@ -1,0 +1,46 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/country/country.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A private gated community with controlled access, green spaces, and shared amenities, typically inhabited by higher-income residents.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Urbanización privada y cerrada con control de acceso, áreas verdes y servicios comunes, habitada mayormente por sectores de ingresos altos.</span></p>",
+      "domain": [
+        "economia",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "gated community",
+        "private neighborhood"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/country/country_ex_01.mp3",
+          "en": "Well, that’s the table for the kids from the `gated community`.",
+          "es": "Bueno, esa es la mesa de los chicos del `country`.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "country",
+  "word": "country"
+}

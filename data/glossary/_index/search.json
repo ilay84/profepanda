@@ -1,0 +1,704 @@
+[
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_adverbial",
+    "slug": "a-caballo",
+    "snippet": "Culinary phrase for a dish served with one or two fried eggs on top.",
+    "word": "a caballo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "verbo_transitivo",
+    "slug": "afanar",
+    "snippet": "To&nbsp;steal.",
+    "word": "afanar"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_adverbial",
+    "slug": "al-toque",
+    "snippet": "Very fast, right away, with almost no delay.",
+    "word": "al toque"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "verbo_transitivo",
+    "slug": "atender-el-telefono",
+    "snippet": "To answer a phone call by picking up or activating the call.",
+    "word": "atender el teléfono"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_nominal",
+    "slug": "barrio-cerrado",
+    "snippet": "A residential area with restricted access, typically fenced and guarded.",
+    "word": "barrio cerrado"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "birra",
+    "snippet": "Beer, especially when mentioned in casual or colloquial speech.",
+    "word": "birra"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "u_tantivo_ma_culino",
+    "slug": "boliche",
+    "snippet": "Nightclub or late-night bar.",
+    "word": "boliche"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "boludo",
+    "snippet": "Casual, affectionate way to address someone you know well.",
+    "word": "boludo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo",
+    "slug": "cachamai",
+    "snippet": "Argentine brand of herbal teas, also used to refer to a tea from that brand.",
+    "word": "Cachamai"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_verbal",
+    "slug": "caerle-la-ficha",
+    "snippet": "To suddenly realize or understand something.",
+    "word": "caerle la ficha"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo",
+    "slug": "cagar",
+    "snippet": "To seriously damage or ruin.",
+    "word": "cagar"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "cagon",
+    "snippet": "A coward; someone who avoids facing a situation.",
+    "word": "cagón"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo",
+    "slug": "calentarse",
+    "snippet": "To get upset or lose one's cool.",
+    "word": "calentarse"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo",
+    "slug": "cargar",
+    "snippet": "To tease, joke, or mess with someone.",
+    "word": "cargar"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "interjeccion",
+    "slug": "che",
+    "snippet": "Colloquial interjection used to get someone's attention or address someone informally.",
+    "word": "che"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "cheto",
+    "snippet": "Showing attitudes or style associated with wealthy or upper-class people.",
+    "word": "cheto"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "chocho",
+    "snippet": "Very happy or excited.",
+    "word": "chocho"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "chorro",
+    "snippet": "A thief or someone who steals.",
+    "word": "chorro"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "ciruja",
+    "snippet": "Someone who picks through trash or lives off what they scavenge on the street.",
+    "word": "ciruja"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "conchudo",
+    "snippet": "Shameless or blatantly inconsiderate in how one behaves.",
+    "word": "conchudo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "cordon",
+    "snippet": "Raised edge separating the sidewalk from the street.",
+    "word": "cordón"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "coso",
+    "snippet": "A person or thing whose name one doesn’t recall or doesn’t want to mention.",
+    "word": "coso"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "country",
+    "snippet": "A private gated community with controlled access, green spaces, and shared amenities, typically inhabited by higher-income residents.",
+    "word": "country"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "crique",
+    "snippet": "Mechanical tool used to lift a vehicle.",
+    "word": "crique"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "embalado",
+    "snippet": "Very excited or worked up, acting on impulse.",
+    "word": "embalado"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_adjetival",
+    "slug": "en-bolas",
+    "snippet": "Naked; without clothes.",
+    "word": "en bolas"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "flaco",
+    "snippet": "Friendly, informal way to address someone, not literally referring to body type.",
+    "word": "flaco"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "forro",
+    "snippet": "A despicable or extremely annoying person.",
+    "word": "forro"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "gaseosa",
+    "snippet": "Carbonated soft drink.",
+    "word": "gaseosa"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "gil",
+    "snippet": "A naive or easily taken advantage of person.",
+    "word": "gil"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "goma",
+    "snippet": "A vehicle tire.",
+    "word": "goma"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "gordo",
+    "snippet": "Affectionate nickname used between partners, family, or friends, not literally about body size.",
+    "word": "gordo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "guita",
+    "snippet": "Informal word to refer to money.",
+    "word": "guita"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_verbal",
+    "slug": "hacer-lo-que-se-te-le-me-cantan-las-pelotas",
+    "snippet": "To do whatever one wants without caring about rules or consequences.",
+    "word": "hacer lo que se (te/le/me) cantan las pelotas"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "intendente",
+    "snippet": "Political office equivalent to a city mayor.",
+    "word": "intendente"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "nombre_propio",
+    "slug": "italpark",
+    "snippet": "Iconic amusement park in Buenos Aires, popular from the 1960s to the 1990s, shut down after a fatal accident that left a strong cultural imprint.",
+    "word": "Italpark"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "jogging",
+    "snippet": "Sweatpants.",
+    "word": "jogging"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "interjeccion",
+    "slug": "la-concha-de-dios",
+    "snippet": "Vulgar exclamation used to express strong anger, surprise, or frustration.",
+    "word": "la concha de Dios"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "interjeccion",
+    "slug": "la-concha-de-la-lora",
+    "snippet": "Vulgar exclamation widely used to express anger, surprise, or frustration; purely figurative and intensifying.",
+    "word": "la concha de la lora"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "interjeccion",
+    "slug": "la-concha-de-tu-hermana",
+    "snippet": "Highly vulgar insult used to express intense anger or deep contempt; not meant literally.",
+    "word": "la concha de tu hermana"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "interjeccion",
+    "slug": "la-concha-de-tu-madre",
+    "snippet": "Extremely vulgar insult used to express intense anger or deep contempt; not meant literally.",
+    "word": "la concha de tu madre"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "verbo_intransitivo",
+    "slug": "laburar",
+    "snippet": "Lunfardo verb borrowed from Italian lavorare, meaning to work.",
+    "word": "laburar"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "las-pelotas",
+    "snippet": "Vulgar expression used to strongly reject something or express emphatic disagreement.",
+    "word": "las pelotas"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "living",
+    "snippet": "Borrowed term used in Argentina to mean a home’s living room.",
+    "word": "living"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "mango",
+    "snippet": "A small or specific amount of money.",
+    "word": "mango"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "mina",
+    "snippet": "In lunfardo, a woman; can sound dismissive or objectifying depending on tone.",
+    "word": "mina"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "monigotadas",
+    "snippet": "Ridiculous gestures or clownish antics meant to get attention or annoy.",
+    "word": "monigotadas"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "mosquita-muerta",
+    "snippet": "A woman who pretends to be innocent or harmless to manipulate or avoid responsibility.",
+    "word": "mosquita muerta"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "mucama",
+    "snippet": "Woman employed to perform household tasks such as cleaning, cooking, or home care.",
+    "word": "mucama"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "negro",
+    "snippet": "Insult aimed at someone perceived as low-class or uncultured; not a literal reference to skin color.",
+    "word": "negro"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "nene",
+    "snippet": "Affectionate, informal way to refer to a young child.",
+    "word": "nene"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_interjectiva",
+    "slug": "no-me-jodas",
+    "snippet": "Expression used to show annoyance or demand that someone stop bothering you.",
+    "word": "no me jodas"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_interjectiva",
+    "slug": "no-rompas",
+    "snippet": "Abbreviated expression&nbsp;(no rompas las pelotas)&nbsp;meaning to stop annoying or insisting.",
+    "word": "no rompas"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "palo",
+    "snippet": "One million units of currency, especially pesos or dollars.",
+    "word": "palo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "papelon",
+    "snippet": "A situation that causes major embarrassment or public ridicule.",
+    "word": "papelón"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "patente",
+    "snippet": "Alphanumeric identification number displayed on a vehicle’s license plate.",
+    "word": "patente"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "pelotas",
+    "snippet": "Testicles; used in vulgar phrases to intensify anger or annoyance.",
+    "word": "pelotas"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "pelotudo",
+    "snippet": "An annoying, foolish, or idiotic person; severity depends on tone and context.",
+    "word": "pelotudo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "pendejo",
+    "snippet": "Term used for someone young or immature; can sound affectionate among close speakers or dismissive depending on tone and context.",
+    "word": "pendejo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "pibe",
+    "snippet": "Young person; informal Argentine term for a boy or girl.",
+    "word": "pibe"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "plata",
+    "snippet": "Money in general; an informal, widely used term regardless of currency.",
+    "word": "plata"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "plomo",
+    "snippet": "A very annoying or tiresome person or situation.",
+    "word": "plomo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "porro",
+    "snippet": "Marijuana cigarette.",
+    "word": "porro"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "previa",
+    "snippet": "Social gathering before going out to a club, party, or event, usually at someone’s place with drinks, music, and conversation.",
+    "word": "previa"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "pucho",
+    "snippet": "Cigarette, either whole or partly smoked.",
+    "word": "pucho"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "verbo_intransitivo",
+    "slug": "rajar",
+    "snippet": "To leave a place quickly or abruptly.",
+    "word": "rajar"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "rebusque",
+    "snippet": "Resourcefulness or hustling to make money or solve problems in difficult economic situations.",
+    "word": "rebusque"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_verbal",
+    "slug": "romperla",
+    "snippet": "To perform exceptionally well or impress greatly.",
+    "word": "romperla"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "nombre_propio",
+    "slug": "same",
+    "snippet": "Acronym for Sistema de Atención Médica de Emergencias, the public ambulance and emergency medical service of Buenos Aires City.",
+    "word": "SAME"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "sorete",
+    "snippet": "Vulgar insult meaning a despicable, selfish, or very annoying person; literally “excrement.”",
+    "word": "sorete"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "tarado",
+    "snippet": "A foolish or annoying person who acts irrationally; can be offensive or playful depending on tone.",
+    "word": "tarado"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "tenencia",
+    "snippet": "Legal right to care for and take responsibility for a child or dependent, including decisions about their upbringing and wellbeing.",
+    "word": "tenencia"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_verbal",
+    "slug": "tomarselas",
+    "snippet": "Colloquial way to tell someone to leave or go away, often in an irritated or angry tone.",
+    "word": "tomárselas"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "un-mate",
+    "snippet": "An individual serving of mate offered or shared with someone.",
+    "word": "un mate"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "viejo",
+    "snippet": "Affectionate, familiar term for one’s father or mother.",
+    "word": "viejo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "viste",
+    "snippet": "Conversational filler used to reinforce a point, seek agreement, or keep the interaction flowing.",
+    "word": "viste"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "verbo_pronominal",
+    "slug": "voltearse",
+    "snippet": "To have sex with someone.",
+    "word": "voltearse"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "interjeccion",
+    "slug": "whisky",
+    "snippet": "Expression used when taking a photo to prompt someone to smile, similar to “cheese”.",
+    "word": "whisky"
+  }
+]

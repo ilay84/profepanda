@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/viejo/viejo.mp3?v=1764273561",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Affectionate, familiar term for one’s father or mother.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Forma familiar y afectuosa para referirse al padre o la madre.</span></p>",
+      "domain": [
+        "familia"
+      ],
+      "equivalents_en": [
+        "dad",
+        "mom"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/viejo/viejo_ex_01.mp3?v=1764273561",
+          "en": "My `mom` called—everything’s fine. Clarita was thrilled.",
+          "es": "Llamó mi `vieja`, todo bien. Clarita estaba chocha.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "afectuoso"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "viejito, viejita",
+        "fem_pl": "viejas",
+        "fem_sg": "vieja",
+        "masc_pl": "viejos",
+        "masc_sg": "viejo"
+      }
+    }
+  ],
+  "slug": "viejo",
+  "word": "viejo"
+}

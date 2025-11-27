@@ -1,0 +1,51 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/italpark/italpark.mp3?v=1764274717",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Iconic amusement park in Buenos Aires, popular from the 1960s to the 1990s, shut down after a fatal accident that left a strong cultural imprint.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Icónico parque de diversiones de Buenos Aires, muy popular entre las décadas de 1960 y 1990, cerrado tras un accidente fatal que marcó a toda una generación.</span></p>",
+      "domain": [
+        "cultura_pop",
+        "sociedad"
+      ],
+      "equivalents_en": [],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/italpark/italpark_ex_01.mp3?v=1764274737",
+          "en": "Did you live through the `Italpark` era or are you younger? You know they shut it down because a ride car flew off?",
+          "es": "¿Vos agarraste la época de `Italpark` o sos más chica? ¿Viste que lo cerraron porque un carrito salió volando?",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "nombre_propio",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "italpark",
+  "word": "Italpark"
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://profepanda.app/schemas/exercises/dictation.schema.json",
+  "title": "PPX Exercise: Dictation",
+  "type": "object",
+  "required": ["type", "slug", "items"],
+  "properties": {
+    "type": { "const": "dictation" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title_es": { "type": ["string", "null"] },
+    "title_en": { "type": ["string", "null"] },
+    "instructions_es": { "type": ["string", "null"] },
+    "instructions_en": { "type": ["string", "null"] },
+    "level": { "type": ["string", "null"], "enum": ["A1","A2","B1","B2","C1","C2", null] },
+    "status": { "type": ["string", "null"], "enum": ["draft","in_review","published","archived", null] },
+    "taxonomy_paths": { "type": "array", "items": { "type": "string" } },
+    "options": {
+      "type": "object",
+      "properties": {
+        "ignoreCase": { "type": ["boolean", "null"] },
+        "ignorePunctuation": { "type": ["boolean", "null"] },
+        "normalizeWhitespace": { "type": ["boolean", "null"] },
+        "ignoreAccents": { "type": ["boolean", "null"] },
+        "minCharsToEnableCheck": { "type": ["integer", "null"], "minimum": 0 },
+        "allowRetry": { "type": ["boolean", "null"] },
+        "attemptsMax": { "type": ["integer", "null"], "minimum": 0 },
+        "autoPlay": { "type": ["boolean", "null"] },
+        "multiline": { "type": ["boolean", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["order", "audio_url"],
+        "properties": {
+          "id": { "type": ["string", "integer", "null"] },
+          "order": { "type": "integer" },
+          "audio_url": { "type": "string", "minLength": 1 },
+          "image_url": { "type": ["string", "null"] },
+          "transcript": { "type": ["string", "null"] },
+          "variants": { "type": "array", "items": { "type": "string" } },
+          "hint_es": { "type": ["string", "null"] },
+          "hint_en": { "type": ["string", "null"] },
+          "feedback_correct_es": { "type": ["string", "null"] },
+          "feedback_correct_en": { "type": ["string", "null"] },
+          "feedback_incorrect_es": { "type": ["string", "null"] },
+          "feedback_incorrect_en": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

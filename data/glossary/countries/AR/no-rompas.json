@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/no-rompas/no_rompas.mp3?v=1764267290",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Abbreviated expression</span>&nbsp;<span style=\"font-weight: normal;\">(no rompas las pelotas)&nbsp;meaning to stop annoying or insisting.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Expresión abreviada de “no rompas las pelotas”, usada para pedir que alguien deje de molestar o insistir.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "stop bugging me",
+        "knock it off",
+        "quit it",
+        "don’t push it"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/no-rompas/no_rompas_ex_01.mp3?v=1764267290",
+          "en": "Go buy it yourself. `Knock it off`.",
+          "es": "Vas y te lo comprás vos. `No rompas`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con Hijos",
+            "type": "series",
+            "year": "2005"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_interjectiva",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "no-rompas",
+  "word": "no rompas"
+}

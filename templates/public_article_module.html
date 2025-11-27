@@ -1,0 +1,78 @@
+{% extends "public_base.html" %}
+
+{% block title %}{{ page_title }} – ProfePanda{% endblock %}
+
+{% block public_content %}
+<style>@import url("{{ url_for('static', filename='css/public_articles.css') }}");</style>
+
+<article class="ppx-article-modules">
+  <header class="ppx-article-header">
+    <h1 class="ppx-h1" style="margin:0 0 .25rem 0;">{{ page_title }}</h1>
+    <div class="ppx-muted">{{ current_index + 1 }} / {{ modules|length }}</div>
+  </header>
+
+  <div class="ppx-article-layout">
+    <!-- Left pane navigator (hidden on narrow) -->
+    <nav class="ppx-article-nav" aria-label="Modules">
+      <div class="ppx-mod-nav-head">
+        <strong class="ppx-mod-heading">{{ t('Módulos','Sections', app_lang) }}</strong>
+      </div>
+      <div class="ppx-mod-search" {% if modules|length <= 10 %}style="display:none"{% endif %}>
+        <label class="ppx-visually-hidden" for="ppx-mod-q">{{ t('Buscar módulo','Search module', app_lang) }}</label>
+        <input id="ppx-mod-q" class="ppx-input" type="search" placeholder="{{ t('Buscar…','Search…', app_lang) }}">
+      </div>
+      <ul id="ppx-mod-list">
+        {% for m in modules %}
+        <li data-index="{{ loop.index0 }}">
+          <a class="ppx-mod-link {% if loop.index0 == current_index %}is-active{% endif %}"
+             href="{{ url_for('public.article_module', slug=slug, module_slug=m.slug) }}"
+             aria-current="{{ 'page' if loop.index0 == current_index else 'false' }}"
+             title="{{ m.title }}">
+            <span class="ppx-mod-num">{{ loop.index }}</span>
+            <span class="ppx-mod-title">{{ m.title }}</span>
+            {% if m.est_read_min %}<span class="ppx-mod-eta">{{ m.est_read_min }} min</span>{% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Main content -->
+    <div class="ppx-article-content">
+      <h2 class="ppx-h2" style="margin:0 0 .5rem 0;">{{ current.title }}</h2>
+      <div class="ppx-article-body">{{ current.html|safe }}</div>
+    </div>
+  </div>
+
+  <!-- Sticky footer navigation -->
+  <footer class="ppx-article-footer-nav" aria-label="Pagination">
+    <div class="ppx-article-footer-inner">
+      {% if prev_mod %}
+      <a class="ppx-nav-btn prev" href="{{ url_for('public.article_module', slug=slug, module_slug=prev_mod.slug) }}">
+        <img src="{{ url_for('static', filename='assets/icons/arrow_left.svg') }}" alt="" aria-hidden="true" />
+        <div class="ppx-nav-meta">
+          <div class="ppx-nav-label">{{ t('Anterior', 'Previous', app_lang) }}</div>
+          <div class="ppx-nav-title">{{ prev_mod.title }}</div>
+        </div>
+      </a>
+      {% else %}
+      <span class="ppx-nav-btn prev is-disabled" aria-disabled="true"></span>
+      {% endif %}
+
+      {% if next_mod %}
+      <a class="ppx-nav-btn next" href="{{ url_for('public.article_module', slug=slug, module_slug=next_mod.slug) }}">
+        <div class="ppx-nav-meta">
+          <div class="ppx-nav-label">{{ t('Siguiente', 'Next', app_lang) }}</div>
+          <div class="ppx-nav-title">{{ next_mod.title }}</div>
+        </div>
+        <img src="{{ url_for('static', filename='assets/icons/arrow_right.svg') }}" alt="" aria-hidden="true" />
+      </a>
+      {% else %}
+      <span class="ppx-nav-btn next is-disabled" aria-disabled="true"></span>
+      {% endif %}
+    </div>
+  </footer>
+</article>
+
+<script src="{{ url_for('static', filename='js/public_modules.js') }}"></script>
+{% endblock %}

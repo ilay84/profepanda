@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}{{ t('Glosarios', 'Glossaries', app_lang) }}{% endblock %}
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+{% block content %}
+  <style>
+    #rg-entries ul {
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap:.75rem;
+    }
+    #rg-entries li {
+      display:flex !important;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:.4rem;
+      border:1px solid #ecedef;
+      border-radius:12px;
+      padding:.75rem 1rem;
+      background:#fff;
+      min-height:120px;
+    }
+    .rg-entry-word {
+      font-weight:700;
+      color:#1d4ed8;
+      font-size:1rem;
+    }
+    .rg-entry-row {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.5rem;
+      flex-wrap:wrap;
+    }
+    .rg-entry-card__preview {
+      margin:0;
+      color:#475569;
+      font-size:.85rem;
+      line-height:1.3;
+    }
+    .rg-entry-meta {
+      display:flex;
+      justify-content:space-between;
+      font-size:.78rem;
+      color:#475569;
+      flex-wrap:wrap;
+      gap:.35rem;
+    }
+    .rg-entry-actions {
+      display:flex;
+      justify-content:flex-end;
+      gap:.35rem;
+    }
+    .rg-entry-actions button,
+    .rg-entry-actions a {
+      width:32px;
+      height:32px;
+      border-radius:8px;
+      border:1px solid #e2e8f0;
+      background:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+    }
+    .rg-entry-actions button:hover,
+    .rg-entry-actions a:hover {
+      border-color:#6366f1;
+    }
+    .rg-entry-actions img {
+      width:18px;
+      height:18px;
+    }
+    .rg-entry-badges {
+      display:flex;
+      gap:.35rem;
+      align-items:center;
+    }
+    .rg-entry-badge {
+      border-radius:999px;
+      padding:.15rem .45rem;
+      font-size:.75rem;
+      background:#eef2ff;
+      color:#1d4ed8;
+      border:1px solid #c7d2fe;
+    }
+    .rg-entry-badge--audio {
+      background:#e0f2fe;
+      color:#075985;
+      border-color:#bae6fd;
+    }
+  </style>
+  <div class="ppx-container" style="display:flex; gap:1rem; margin-top:1rem;">
+    <aside style="width: 320px; border-right:1px solid #e5e7eb; padding-right:1rem;">
+      <h2 style="margin-top:0;">{{ t('Países', 'Countries', app_lang) }}</h2>
+      <p style="margin:.25rem 0 .75rem; font-size:.85rem; color:#64748b;">
+        {{ t('Activa el cuadro para publicar ese glosario en la página pública', "Check to publish that country's glossary on the public page", app_lang) }}
+      </p>
+      <div id="rg-country-list" style="display:flex; flex-direction:column; gap:.25rem;"></div>
+    </aside>
+    <section style="flex:1; min-width:0;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:.5rem;">
+        <h2 id="rg-country-title" style="margin-top:0;">-</h2>
+        <a id="rg-add" href="#" class="btn" style="padding:.5rem .8rem; background:#4f46e5; color:#fff; border-radius:8px; text-decoration:none;">{{ t('Nueva entrada', 'New entry', app_lang) }}</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:.75rem; margin:.35rem 0 1rem 0;">
+        <div style="position:relative; flex:1; max-width:360px;">
+          <input id="rg-search" type="search" placeholder="{{ t('Buscar en este glosario...', 'Search in this glossary...', app_lang) }}" aria-label="{{ t('Buscar en este glosario...', 'Search in this glossary...', app_lang) }}" style="width:100%; padding:.45rem .9rem .45rem 2.2rem; border:1px solid #e5e7eb; border-radius:999px;">
+          <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#94a3b8;">🔍</span>
+          <button type="button" id="rg-search-clear" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); background:transparent; border:0; color:#94a3b8; cursor:pointer;">✕</button>
+        </div>
+        <div id="rg-entry-count" style="font-weight:600; color:#475569;"></div>
+      </div>
+      <div id="rg-entries" style="margin-top:.5rem;"></div>
+    </section>
+  </div>
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ url_for('static', filename='js/admin_glossary.js') }}"></script>
+{% endblock %}

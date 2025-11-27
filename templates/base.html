@@ -1,0 +1,226 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="{{ app_lang or 'es' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>{% block title %}ProfePanda{% endblock %}</title>
+
+  <!-- Montserrat (UI font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Global CSS (tokens first, then app kit, then accordion visuals). Safe if missing. -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/ppx.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/accordion.css') }}">
+  
+  {% include "_ppx_head_assets.html" %}
+
+
+  <!-- Favicon & App Icons -->
+  {% if request.path.startswith('/admin') %}
+    <link rel="icon" href="{{ url_for('static', filename='assets/icons/admin_favicon.svg') }}" type="image/svg+xml">
+  {% else %}
+    <link rel="icon" href="{{ url_for('static', filename='assets/icons/logo.svg') }}" type="image/svg+xml">
+    <link rel="preload" as="image" href="{{ static_ver('assets/logo/header_logo.png') }}">
+  {% endif %}
+  {# Quiet 404s: omit PNG+manifest links until assets exist #}
+  <meta name="theme-color" content="#80ac5f">
+
+  {% block head %}{% endblock %}
+
+  <style>
+    /* Base tokens */
+    
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--ppx-bg, var(--ppx-color-bg, #f8fafc));
+      color: var(--ppx-text, var(--ppx-color-text, #0f172a));
+      font-family: var(--ppx-font, 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Containers + cards */
+    .ppx-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+    /* Wider canvas for public pages that opt-in via #ppx-main */
+    body.ppx-public #ppx-main.ppx-container {
+      max-width: min(98vw, 1760px);
+    }
+    .ppx-card {
+      background: #fff;
+      border: 1px solid var(--ppx-line);
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    }
+    .ppx-hidden { display: none !important; }
+
+    /* Admin canvas wider */
+    body.ppx-admin .ppx-container {
+      max-width: var(--ppx-admin-width);
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    body.ppx-admin .ppx-card { width: 100%; }
+    /* Ensure content starts below fixed admin bar */
+    body.ppx-admin main.ppx-container { padding-top: var(--ppx-admin-height, 56px); }
+
+    /* Normalize brand font across admin headings and summaries to avoid UA serif fallbacks */
+    body.ppx-admin,
+    body.ppx-admin h1, body.ppx-admin h2, body.ppx-admin h3, body.ppx-admin h4, body.ppx-admin h5, body.ppx-admin h6,
+    body.ppx-admin .ppx-h1, body.ppx-admin .ppx-h2, body.ppx-admin .ppx-h3,
+    body.ppx-admin summary, body.ppx-admin details {
+      font-family: var(--ppx-font, 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+    }
+
+    /* Inputs fit their parent */
+    .ppx-input, .ppx-textarea, .ppx-select {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    body.ppx-admin .ppx-field { width: 100%; }
+
+    /* ---- TF Builder alignment (match form width, left-aligned) ---- */
+    /* The form itself defines the column width (template sets max-width:1000px). */
+    body.ppx-admin #ppx-tf-form { margin-left: 0; margin-right: 0; }
+
+    /* Make rows and item cards use the same width as the form (no extra centering or caps). */
+    body.ppx-admin #ppx-tf-form .ppx-row { max-width: none; margin-left: 0; margin-right: 0; }
+    body.ppx-admin #ppx-tf-form #ppx-items > details.ppx-card {
+      width: 100%;
+      max-width: none;   /* don’t shrink; follow form width */
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* Comfortable textarea height */
+    body.ppx-admin textarea.ppx-textarea { min-height: 80px; }
+  </style>  <style>
+    /* Base tokens */
+    
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--ppx-bg, var(--ppx-color-bg, #f8fafc));
+      color: var(--ppx-text, var(--ppx-color-text, #0f172a));
+      font-family: var(--ppx-font, 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Containers + cards */
+    .ppx-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+    .ppx-card {
+      background: #fff;
+      border: 1px solid var(--ppx-line);
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    }
+    .ppx-hidden { display: none !important; }
+
+    /* Admin canvas wider */
+    body.ppx-admin .ppx-container {
+      max-width: var(--ppx-admin-width);
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    body.ppx-admin .ppx-card { width: 100%; }
+
+    /* Inputs fit their parent */
+    .ppx-input, .ppx-textarea, .ppx-select {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    body.ppx-admin .ppx-field { width: 100%; }
+
+    /* =========================================
+       TF Builder alignment (single left column)
+       ========================================= */
+    /* single authority for editor column width */
+    :root { --ppx-form-col: 900px; } /* slimmer to leave more room for preview */
+
+    /* the form itself uses the column width */
+    body.ppx-admin #ppx-tf-form {
+      max-width: var(--ppx-form-col);
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* any immediate rows inside the form should not exceed the column */
+    body.ppx-admin #ppx-tf-form .ppx-row {
+      max-width: var(--ppx-form-col);
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* items header (where the "Agregar ítem" button lives) should match column width */
+    body.ppx-admin #ppx-tf-form #ppx-items > *:not(details) {
+      max-width: var(--ppx-form-col);
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* item cards also match the same width, left-aligned */
+    body.ppx-admin #ppx-tf-form #ppx-items > details.ppx-card {
+      width: 100%;
+      max-width: var(--ppx-form-col);
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* Etiquetas input should not stretch beyond other controls */
+    body.ppx-admin #ppx-tf-form #ex-tags {
+      max-width: 420px; /* same feel as the Nivel control + comfortable text length */
+    }
+
+    /* Comfortable textarea height */
+    body.ppx-admin textarea.ppx-textarea { min-height: 80px; }
+  </style>
+  <script>
+    // Expose a global assets version for cache-busting when constructing asset URLs in JS
+    window.PPX_ASSETS_VERSION = "{{ assets_ver }}";
+    // Helper to build a versioned static asset URL from JS: ppxAsset('assets/icons/play.svg')
+    window.ppxAsset = function(path){
+      var base = "{{ url_for('static', filename='') }}"; // returns '/static/'
+      var clean = (path || '').replace(/^\/+/, '');
+      var v = window.PPX_ASSETS_VERSION ? ('?v=' + window.PPX_ASSETS_VERSION) : '';
+      return base + clean + v;
+    };
+  </script>
+  <script>(function(){function setAdminHeight(){try{var bar=document.getElementById('ppx-admin-bar');var h=bar?bar.getBoundingClientRect().height:0;var px=(h&&h>0)?(h+'px'):'56px';document.documentElement.style.setProperty('--ppx-admin-height',px);}catch(_){} } if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',setAdminHeight);}else{setAdminHeight();} window.addEventListener('resize',setAdminHeight);})();</script>
+</head>
+<body class="{% if request.path.startswith('/admin') %}ppx-admin{% else %}ppx-public{% endif %}">
+  {% block admin_nav %}{% endblock %}
+
+  <main class="ppx-container">
+    {% block content %}
+      <div class="ppx-card" style="padding:1.25rem;">
+        <h1 style="margin:0 0 .5rem 0;">ProfePanda</h1>
+        <p style="margin:0;">Base layout is working. Build pages using this template.</p>
+      </div>
+    {% endblock %}
+  </main>
+
+  {% block scripts %}{% endblock %}
+  {% if not request.path.startswith('/admin') %}
+    <script defer src="{{ url_for('static', filename='js/public_acc.js') }}"></script>
+  {% endif %}
+
+  {# Inline i18n editor (admin-only overlay) #}
+  {% include "_i18n_inline_editor.html" %}
+</body>
+</html>
+
+

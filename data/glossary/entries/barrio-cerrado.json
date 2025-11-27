@@ -1,0 +1,47 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/barrio-cerrado/barrio_cerrado.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A residential area with restricted access, typically fenced and guarded.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Conjunto residencial de acceso restringido, usualmente cercado y con seguridad privada.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "gated community",
+        "private neighborhood"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/barrio-cerrado/barrio_cerrado_ex_01.mp3",
+          "en": "“Ugh, I’m so nervous! I’ve never worked in a `gated community` before. What are the people like?”\n“The worst.”",
+          "es": "—¡Ay, estoy tan nerviosa! Nunca trabajé en un `barrio cerrado`. ¿Cómo es la gente?\n—Lo peor.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "locucion_nominal",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "barrio-cerrado",
+  "word": "barrio cerrado"
+}

@@ -1,0 +1,115 @@
+{
+  "id": "tf/ser-estar-esencia-situacion",
+  "type": "tf",
+  "slug": "ser-estar-esencia-situacion",
+  "version": 2,
+  "title_es": "SER y ESTAR: Esencia vs Situación",
+  "title_en": "SER and ESTAR: Essence vs Situation",
+  "instructions_es": "Leé cada oración y elegí Verdadero o Falso según si el uso de SER o ESTAR es correcto.",
+  "instructions_en": "Read each sentence and choose True or False according to whether the use of SER or ESTAR is correct.",
+  "level": "A2",
+  "tags": [
+    "ser",
+    "estar",
+    "verbos",
+    "esencia",
+    "situación"
+  ],
+  "status": "draft",
+  "created_by": "admin",
+  "created_at": "2025-11-07T18:26:31.827Z",
+  "items": [
+    {
+      "id": "t1",
+      "order": 1,
+      "statement_es": "Hoy es cansado después de tanto trabajo.",
+      "statement_en": "Hoy es cansado después de tanto trabajo.",
+      "answer": "false",
+      "hint_es": "Pensá si describe una característica permanente o un estado del momento.",
+      "hint_en": "Think if it describes a permanent trait or a temporary state.",
+      "feedback_correct_es": "Correcto. Debería ser *está cansado*, porque se trata de una situación momentánea, no una característica esencial.",
+      "feedback_correct_en": "Correct. It should be *está cansado*, because it’s a temporary situation, not an essential trait.",
+      "feedback_incorrect_es": "Recordá: *SER* se usa para lo esencial o permanente, *ESTAR* para estados o condiciones temporales. Acá hablamos de un estado momentáneo.",
+      "feedback_incorrect_en": "Remember: *SER* is for essential traits, *ESTAR* for temporary states or conditions. This is a momentary situation.",
+      "media": [
+        {
+          "id": "img",
+          "kind": "image",
+          "src": "/media/exercises/tf/ser-estar-esencia-situacion/img/logo_20251107182441.svg",
+          "thumb": "/media/exercises/tf/ser-estar-esencia-situacion/img/logo_20251107182441.svg",
+          "alt_es": "logotipo de ProfePanda",
+          "alt_en": "ProfePanda logo",
+          "transcript_es": "",
+          "transcript_en": ""
+        }
+      ]
+    },
+    {
+      "id": "t2",
+      "order": 2,
+      "statement_es": "El mate es caliente, tené cuidado.",
+      "statement_en": "El mate es caliente, tené cuidado.",
+      "answer": "false",
+      "hint_es": "¿La temperatura es parte de su esencia o un estado actual?",
+      "hint_en": "Is the temperature part of its essence or a current condition?",
+      "feedback_correct_es": "Exacto. Debe ser *El mate está caliente*, porque la temperatura es un estado circunstancial.",
+      "feedback_correct_en": "Exactly. It should be *El mate está caliente*, because temperature is a temporary state.",
+      "feedback_incorrect_es": "Pensá en la diferencia entre describir lo que algo *es* por naturaleza y lo que *está* en este momento.",
+      "feedback_incorrect_en": "Think about whether you’re describing what something *is* by nature or how it *is* right now.",
+      "media": [
+        {
+          "id": "img",
+          "kind": "audio",
+          "src": "/media/exercises/tf/ser-estar-esencia-situacion/audio/de_aca_a_la_china_20251107182550.mp3",
+          "alt_es": "de acá a la china",
+          "alt_en": "Spanish audio clip",
+          "transcript_es": "",
+          "transcript_en": ""
+        }
+      ]
+    },
+    {
+      "id": "t3",
+      "order": 3,
+      "statement_es": "Mi abuela es muy simpática.",
+      "statement_en": "Mi abuela es muy simpática.",
+      "answer": "true",
+      "hint_es": "¿Describe su forma de ser o su estado actual?",
+      "hint_en": "Does it describe her personality or a temporary mood?",
+      "feedback_correct_es": "Muy bien. Acá *es simpática* expresa una característica estable de la persona, su forma de ser.",
+      "feedback_correct_en": "Well done. Here *es simpática* expresses a stable personal trait, part of who she is.",
+      "feedback_incorrect_es": "No es un estado, sino una cualidad permanente de su carácter. Por eso usamos *ser*.",
+      "feedback_incorrect_en": "It’s not a state but a permanent quality of her character. That’s why we use *ser*.",
+      "media": []
+    },
+    {
+      "id": "t4",
+      "order": 4,
+      "statement_es": "La clase está en el aula 3.",
+      "statement_en": "La clase está en el aula 3.",
+      "answer": "true",
+      "hint_es": "Pensá si hablamos de la identidad de la clase o de su ubicación.",
+      "hint_en": "Are we talking about the identity of the class or its location?",
+      "feedback_correct_es": "Correcto. *Estar* se usa para ubicación o localización física.",
+      "feedback_correct_en": "Correct. *Estar* is used for physical location.",
+      "feedback_incorrect_es": "Ubicación no es una característica esencial, sino una circunstancia, por eso se usa *estar*.",
+      "feedback_incorrect_en": "Location isn’t an essential quality but a circumstance, so we use *estar*.",
+      "media": []
+    },
+    {
+      "id": "t5",
+      "order": 5,
+      "statement_es": "La comida de Argentina es deliciosa.",
+      "statement_en": "La comida de Argentina es deliciosa.",
+      "answer": "true",
+      "hint_es": "¿Se trata de una opinión general o de cómo está la comida hoy?",
+      "hint_en": "Is it a general opinion or about how the food is today?",
+      "feedback_correct_es": "Muy bien. Es una característica general de la comida, por eso usamos *ser*.",
+      "feedback_correct_en": "Good job. It’s a general trait of Argentine food, so we use *ser*.",
+      "feedback_incorrect_es": "Si hablaras de cómo está la comida en este momento, usarías *estar* (por ejemplo: *La comida está rica*).",
+      "feedback_incorrect_en": "If you were talking about how the food tastes right now, you’d use *estar* (e.g. *La comida está rica*).",
+      "media": []
+    }
+  ],
+  "checksum": "sha256:c537b172429f954db71c12de24c2b4bb77ed652090791a0d42a35a91d2e9c0a7"
+}

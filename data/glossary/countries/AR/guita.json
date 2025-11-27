@@ -1,0 +1,68 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/guita/guita.mp3?v=1764178626",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Informal word to refer to money.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Palabra informal para referirse al dinero.</span></p>",
+      "domain": [
+        "economia",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "money",
+        "cash",
+        "dough",
+        "moolah"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/guita/guita_ex_01.mp3?v=1764178519",
+          "en": "\"And now you too, Micaela? Why’d you do it?\"\n\"He offered me a ton of `dough`.\"",
+          "es": "—Y ahora, vos también, Micaela, ¿por qué se lo hiciste? \n—Me puso muchísima `guita`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/guita/guita_ex_02.mp3?v=1764178520",
+          "en": "The government gave a private company the green light to rake in tons of `money`.",
+          "es": "El Gobierno habilita a una empresa privada para que levante `guita` en pala.",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": "guita",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "guita",
+  "word": "guita"
+}

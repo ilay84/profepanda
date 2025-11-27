@@ -1,0 +1,48 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/hacer-lo-que-se-te-le-me-cantan-las-pelotas/hacer_lo_que_se_te_le_me_cantan_las_pelotas.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">To do whatever one wants without caring about rules or consequences.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Actuar según el propio capricho sin considerar reglas ni consecuencias.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "do whatever the hell one wants",
+        "do whatever the fuck one wants",
+        "do as one damn well pleases"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/hacer-lo-que-se-te-le-me-cantan-las-pelotas/hacer_lo_que_se_te_le_me_cantan_las_pelotas_ex_01.mp3",
+          "en": "I gave you the best education and you always `did whatever the hell you wanted`, so now screw you, man!",
+          "es": "Yo te di la mejor educación y vos siempre `hiciste lo que se te cantaron las pelotas`, así que ahora ¡jodete, hermano!.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "locucion_verbal",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo"
+      ]
+    }
+  ],
+  "slug": "hacer-lo-que-se-te-le-me-cantan-las-pelotas",
+  "word": "hacer lo que se (te/le/me) cantan las pelotas"
+}

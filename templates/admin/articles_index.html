@@ -1,0 +1,97 @@
+<!-- templates/admin/articles_index.html -->
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+
+{% block content %}
+  <div class="ppx-card ppx-card--pad">
+    <div class="ppx-row" style="justify-content:space-between;">
+      <h1 class="ppx-h1" style="margin:0;">{{ t('Artículos', 'Articles', app_lang) }}</h1>
+      <a class="ppx-btn ppx-btn--primary" href="{{ url_for('admin.admin_articles_new') }}">{{ t('Nuevo', 'New', app_lang) }}</a>
+    </div>
+
+    <!-- Filter bar -->
+    {% set cur = request.args.get('status', '') %}
+    <div class="ppx-row" style="margin-top:.75rem;">
+      <a class="ppx-btn {% if not cur %}ppx-btn--primary{% else %}ppx-btn--subtle{% endif %}" href="{{ url_for('admin.admin_articles_index') }}">{{ t('Todos', 'All', app_lang) }}</a>
+      <a class="ppx-btn {% if cur == 'draft' %}ppx-btn--primary{% else %}ppx-btn--subtle{% endif %}" href="{{ url_for('admin.admin_articles_index', status='draft') }}">{{ t('Borrador', 'Draft', app_lang) }}</a>
+      <a class="ppx-btn {% if cur == 'published' %}ppx-btn--primary{% else %}ppx-btn--subtle{% endif %}" href="{{ url_for('admin.admin_articles_index', status='published') }}">{{ t('Publicado', 'Published', app_lang) }}</a>
+      <a class="ppx-btn {% if cur == 'archived' %}ppx-btn--primary{% else %}ppx-btn--subtle{% endif %}" href="{{ url_for('admin.admin_articles_index', status='archived') }}">{{ t('Archivado', 'Archived', app_lang) }}</a>
+    </div>
+
+    {% if rows %}
+      <table class="ppx-table" style="margin-top:1rem;">
+        <thead>
+          <tr>
+            <th style="width:45%;">{{ t('Título', 'Title', app_lang) }}</th>
+            <th style="width:20%;">Slug</th>
+            <th style="width:15%;">{{ t('Estado', 'Status', app_lang) }}</th>
+            <th style="width:20%;">{{ t('Acciones', 'Actions', app_lang) }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in rows %}
+            {% set st = (r.status or 'draft')|lower %}
+            <tr>
+              <td><a class="ppx-link" href="{{ url_for('admin.admin_articles_edit', slug=r.slug) }}">{{ r.title }}</a></td>
+              <td><code>{{ r.slug }}</code></td>
+              <td>
+                <select class="ppx-select" data-action="status-article" data-slug="{{ r.slug }}" style="min-width:140px;">
+                  <option value="draft" {% if st == 'draft' %}selected{% endif %}>{{ t('Borrador', 'Draft', app_lang) }}</option>
+                  <option value="published" {% if st == 'published' %}selected{% endif %}>{{ t('Publicado', 'Published', app_lang) }}</option>
+                  <option value="archived" {% if st == 'archived' %}selected{% endif %}>{{ t('Archivado', 'Archived', app_lang) }}</option>
+                </select>
+              </td>
+              <td>
+                <div class="ppx-row" style="gap:6px; justify-content:flex-start; flex-wrap:wrap;">
+                  <a class="ppx-btn" href="{{ url_for('admin.admin_articles_edit', slug=r.slug) }}" title="{{ t('Editar', 'Edit', app_lang) }}" aria-label="{{ t('Editar', 'Edit', app_lang) }}" style="width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px;">
+                    <img src="{{ static_ver('assets/icons/edit.svg') }}" alt="" width="20" height="20">
+                  </a>
+                  <a class="ppx-btn" href="{{ url_for('admin.admin_articles_preview', slug=r.slug) }}" title="{{ t('Previsualizar', 'Preview', app_lang) }}" aria-label="{{ t('Previsualizar', 'Preview', app_lang) }}" style="width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px;">
+                    <img src="{{ static_ver('assets/icons/preview.svg') }}" alt="" width="20" height="20">
+                  </a>
+                  <form method="post" action="{{ url_for('admin.admin_articles_delete', slug=r.slug) }}" style="display:inline;" onsubmit="return confirm('{{ t('¿Eliminar este artículo? Esto no se puede deshacer.', 'Delete this article? This cannot be undone.', app_lang) }}');">
+                    <button class="ppx-btn ppx-btn--ghost" type="submit" title="{{ t('Eliminar', 'Delete', app_lang) }}" aria-label="{{ t('Eliminar', 'Delete', app_lang) }}" style="width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px;">
+                      <img src="{{ static_ver('assets/icons/delete.svg') }}" alt="" width="20" height="20">
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="ppx-muted" style="margin-top:1rem;">{{ t('No hay artículos aún.', 'No articles yet.', app_lang) }}</p>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    (function(){
+      const D = document;
+      function t(es, en){ const lang = (window.PPX_I18N && window.PPX_I18N.currentLang) || D.documentElement.getAttribute('lang') || 'es'; return lang.startsWith('en') ? (en ?? es) : (es ?? en); }
+      function toast(msg){ const el = D.createElement('div'); el.textContent = msg; el.style.position='fixed'; el.style.bottom='12px'; el.style.left='50%'; el.style.transform='translateX(-50%)'; el.style.background='#0f172a'; el.style.color='#fff'; el.style.padding='8px 12px'; el.style.borderRadius='10px'; el.style.zIndex='2000'; el.style.boxShadow='0 6px 18px rgba(0,0,0,.25)'; D.body.appendChild(el); setTimeout(()=>el.remove(), 1400); }
+      D.addEventListener('change', async (e) => {
+        const sel = e.target.closest('select[data-action="status-article"]');
+        if (!sel) return;
+        const slug = sel.getAttribute('data-slug');
+        const status = sel.value;
+        const prev = sel.getAttribute('data-prev') || 'draft';
+        try {
+          const res = await fetch(`/admin/articles/${encodeURIComponent(slug)}/status`, { method:'PATCH', headers:{'Content-Type':'application/json'}, credentials:'same-origin', body: JSON.stringify({ status }) });
+          if (!res.ok) throw new Error('HTTP '+res.status);
+          toast(t('Estado actualizado.','Status updated.'));
+          sel.setAttribute('data-prev', status);
+        } catch (err) {
+          console.error(err);
+          sel.value = prev;
+          toast(t('No se pudo actualizar el estado.','Failed to update status.'));
+        }
+      });
+    })();
+  </script>
+{% endblock %}
+

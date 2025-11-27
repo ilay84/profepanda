@@ -1,0 +1,64 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/plata/plata.mp3?v=1764269419",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Money in general; an informal, widely used term regardless of currency.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Dinero en general; término informal y de uso extendido sin importar la moneda.</span></p>",
+      "domain": [
+        "economia"
+      ],
+      "equivalents_en": [
+        "money",
+        "cash",
+        "dough"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/plata/plata_ex_01.mp3?v=1764269442",
+          "en": "\"Otherwise, I’ll have to ask you to leave so I can keep working.\"\n\"And what if I don’t have any `money`?\"",
+          "es": "—¿Caso contrario, le pido que se retire y me deje seguir atendiendo?\n—¿Y si no tengo `plata`?",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/plata/plata_ex_02.mp3?v=1764269442",
+          "en": "Oh, everything’s easy for you. I’m sick of them stealing my `cash`!",
+          "es": "Pero qué fácil que es todo para vos. ¡Estoy harto de que me roben la `plata`!",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "platita",
+        "fem_pl": null,
+        "fem_sg": "plata",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "plata",
+  "word": "plata"
+}

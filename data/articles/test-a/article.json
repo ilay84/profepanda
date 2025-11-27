@@ -1,0 +1,22 @@
+{
+  "created_at": "2025-11-01T16:12:33.600359Z",
+  "html": "<h1>title</h1><h2>heading</h2><div>subheading</div><h3>fdsa</h3><div><div class=\"ppx-acc\"><div class=\"ppx-acc-head\"><strong>Accordion test</strong></div><div class=\"ppx-acc-body\"><p>accordion text</p><p></p><div class=\"ppx-example\"><div class=\"ppx-ex\"><button type=\"button\" class=\"ppx-ex-audio\" title=\"Cargar o reproducir audio\" data-url=\"\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5v14l11-7z\" fill=\"currentColor\"></path></svg></button><div class=\"ppx-ex-lines\"><div class=\"ppx-ex-sentence\"><b>Escribí tu ejemplo acá…</b></div><div class=\"ppx-ex-translation\"><i>Write the translation here…</i></div></div></div></div><p>accordion text</p><p></p><div class=\"ppx-example\"><div class=\"ppx-ex\"><button type=\"button\" class=\"ppx-ex-audio\" title=\"Cargar o reproducir audio\" data-url=\"\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5v14l11-7z\" fill=\"currentColor\"></path></svg></button><div class=\"ppx-ex-lines\"><div class=\"ppx-ex-sentence\"><b>Escribí tu ejemplo acá…</b></div><div class=\"ppx-ex-translation\"><i>Write the translation here…</i></div></div></div></div><p>accordion text</p>hi mister mister<p></p></div></div><br></div>",
+  "i18n": {
+    "es": {
+      "html": "",
+      "summary_html": "",
+      "title": "SER, ESTAR y otros equivalentes de TO BE: Una guía completa"
+    }
+  },
+  "image_url": "/media/articles/test-a/img/lead_20251105113234.png",
+  "mother_lang": "en",
+  "slug": "test-a",
+  "status": "archived",
+  "summary_html": "",
+  "tags": [],
+  "taxonomy_paths": [],
+  "title": "SER, ESTAR, and Other Equivalents of TO BE: A complete guide",
+  "title_en": null,
+  "title_es": null,
+  "updated_at": "2025-11-11T13:52:39.256119Z"
+}

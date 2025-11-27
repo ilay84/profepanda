@@ -1,0 +1,619 @@
+<!-- templates/admin/articles_edit.html -->
+{% extends "base.html" %}
+{% block title %}{{ page_title or ('Admin · Edit · ' ~ slug) }}{% endblock %}
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+
+{% block head %}
+  <style>
+    .ppx-form-stack { display:flex; flex-direction:column; gap:4px; align-items:stretch; }
+    .ppx-form-stack > .ppx-card { width:100%; max-width:none; margin-left:0; }
+    .ppx-form-stack form, .ppx-form-stack .ppx-field, .ppx-form-stack .ppx-row { width:100%; max-width:none; }
+
+    /* Keep a comfortable gutter between editor and the right viewport edge */
+    :root { --ppx-article-gutter: 28px; }
+    /* Editor wrapper inherits global admin gutter from ppx.css; no extra margin here */
+    /* Pull the right edge in by reducing the actual width of editor cards */
+    #ppx-article-form .ppx-card,
+    #ppx-article-form details.ppx-card,
+    #ppx-article-form .ppx-editor-wrap {
+      box-sizing: border-box;
+      max-width: calc(100% - var(--ppx-article-gutter)); /* shrink actual width */
+    }
+    /* Keep content aligned to the left while creating a right-side gap */
+    #ppx-article-form .ppx-card,
+    #ppx-article-form .ppx-editor-wrap { margin-right: 0; margin-left: 0; }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="ppx-row" style="justify-content:flex-end;margin-bottom:.5rem;">
+    <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_articles_index') }}">{{ t('Volver a Artículos', 'Back to Articles', app_lang) }}</a>
+  </div>
+  {% set initial_status = (status if status is defined else (article.status if article is defined and article.status is defined else 'draft')) %}
+  {% set existing_i18n = (article.i18n if article is defined and article.i18n else {}) %}
+  <div class="ppx-form-stack">
+  <div class="ppx-card ppx-card--pad" style="max-width:none;">
+    <!-- Top controls: left = Language Version selector ; right = publish/draft -->
+    <div class="ppx-row" style="gap:.5rem;margin-bottom:.75rem;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+      <!-- Language Version selector + Mother language selector -->
+      <div class="ppx-row" style="gap:1rem;align-items:center;flex-wrap:wrap;">
+        <div class="ppx-row" style="gap:.5rem;align-items:center;">
+          <label for="ppx-lang-version" class="ppx-label" style="margin:0;">{{ t('Versión de idioma', 'Language version', app_lang) }}</label>
+
+          {% set _lang_list = [
+            ('es','Español'),
+            ('en','English'),
+            ('pt','Português'),
+            ('fr','Français'),
+            ('it','Italiano'),
+            ('de','Deutsch'),
+            ('zh','中文'),
+            ('ja','日本語'),
+            ('ko','한국어'),
+            ('ar','العربية'),
+            ('ru','Русский'),
+            ('hi','हिन्दी'),
+            ('tr','Türkçe'),
+            ('pl','Polski'),
+            ('nl','Nederlands'),
+            ('sv','Svenska'),
+            ('no','Norsk'),
+            ('da','Dansk'),
+            ('he','עברית'),
+            ('el','Ελληνικά')
+          ] %}
+
+          {% set _i18n = existing_i18n or {} %}
+          {% set _mother = (article.mother_lang if article and article.mother_lang else '') %}
+
+          <select id="ppx-lang-version" class="ppx-input" style="min-width:260px;">
+            <optgroup label="{{ t('Artículo madre', 'Mother article', app_lang) }}">
+              <option value="" selected>
+                {% if _mother %}
+                  {{ (_lang_list | selectattr(0,'equalto',_mother) | map(attribute=1) | list | first) or _mother|upper }}
+                  {{ t('(madre)', '(mother)', app_lang) }}
+                {% else %}
+                  {{ t('Base (sin idioma específico)', 'Base (no specific language)', app_lang) }}
+                {% endif %}
+              </option>
+            </optgroup>
+
+            <optgroup label="{{ t('Versiones existentes', 'Existing versions', app_lang) }}">
+              {% for code, slot in _i18n.items() %}
+                {% set _label = (_lang_list | selectattr(0,'equalto',code) | map(attribute=1) | list | first) or code|upper %}
+                <option value="{{ code }}">{{ _label }}</option>
+              {% endfor %}
+            </optgroup>
+
+            <optgroup label="{{ t('Escribir en otro idioma…', 'Write in another language…', app_lang) }}">
+              {% for code,name in _lang_list if code not in _i18n %}
+                <option value="new:{{ code }}">+ {{ name }}</option>
+              {% endfor %}
+            </optgroup>
+          </select>
+
+          <button id="ppx-clone-from-current" class="ppx-btn ppx-btn--subtle" type="button" style="display:none;">
+            {{ t('Clonar desde la versión actual', 'Clone from current version', app_lang) }}
+          </button>
+        </div>
+
+        <div class="ppx-row" style="gap:.5rem;align-items:center;">
+          <label for="ppx-mother-lang" class="ppx-label" style="margin:0;">{{ t('Idioma del artículo madre', 'Mother article language', app_lang) }}</label>
+          <select id="ppx-mother-lang" name="mother_lang" class="ppx-input" style="min-width:220px;">
+            <option value="">{{ t('— Seleccionar —', '— Select —', app_lang) }}</option>
+            {% for code,name in _lang_list %}
+              <option value="{{ code }}" {% if _mother == code %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <!-- Status / Publish -->
+      <div style="display:inline-flex;gap:.5rem;flex:0 0 auto;white-space:nowrap;isolation:isolate;align-items:center;">
+        <span id="ppx-status-pill"
+              class="ppx-chip {% if initial_status == 'published' %}ppx-chip--success{% else %}ppx-chip--draft{% endif %}"
+              data-status="{{ initial_status|e }}"
+              data-label-published="{{ t('Publicado','Published', app_lang) }}"
+              data-label-draft="{{ t('Borrador','Draft', app_lang) }}"
+              style="position:relative;z-index:auto;min-width:max-content;padding:.4rem .7rem;font-size:.85rem;border-radius:10px;">
+          {% if initial_status == 'published' %}
+            {{ t('Publicado', 'Published', app_lang) }}
+          {% else %}
+            {{ t('Borrador', 'Draft', app_lang) }}
+          {% endif %}
+        </span>
+        <button id="ppx-publish-btn"
+                class="ppx-btn ppx-btn--primary"
+                type="button"
+                data-label-publish="{{ t('Publicar','Publish', app_lang) }}"
+                data-label-unpublish="{{ t('Despublicar','Unpublish', app_lang) }}"
+                style="position:relative;z-index:auto;min-width:max-content;padding:.4rem .7rem;border-radius:10px;font-size:.85rem;">
+          {% if initial_status == 'published' %}{{ t('Despublicar', 'Unpublish', app_lang) }}{% else %}{{ t('Publicar', 'Publish', app_lang) }}{% endif %}
+        </button>
+        <span id="ppx-save-chip" class="ppx-muted" style="font-size:.85rem; margin-left:.25rem;">{{ t('No guardado','Unsaved', app_lang) }}</span>
+        <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_articles_preview', slug=slug) }}" target="_blank" rel="noopener">{{ t('Vista previa','Preview', app_lang) }}</a>
+        <button id="ppx-outline-toggle" type="button" class="ppx-btn ppx-btn--subtle">{{ t('Esquema','Outline', app_lang) }}</button>
+      </div>
+    </div>
+
+    <h1 class="ppx-h1" style="margin:0 0 .75rem 0;">
+      {{ t('Editar artículo', 'Edit Article', app_lang) }} — {{ slug }}
+    </h1>
+
+    <!-- Editor form: post to JSON update; includes edit_lang -->
+    <form method="post" action="/admin/articles/{{ slug }}/update" class="ppx-stack-md" id="ppx-article-form" enctype="multipart/form-data" style="padding-bottom:72px;">
+      <input type="hidden" id="status" name="status" value="{{ initial_status|e }}">
+      <input type="hidden" id="edit_lang" name="edit_lang" value="">
+      <input type="hidden" id="mother_lang_hidden" name="mother_lang" value="{{ (article.mother_lang if article and article.mother_lang else '') }}">
+
+      <div class="ppx-field">
+        <label class="ppx-label" for="title">{{ t('Título / Title', 'Title', app_lang) }}</label>
+        <input class="ppx-input" id="title" name="title" value="{{ title_display }}" placeholder="Hola, mundo / Hello, World">
+      </div>
+
+      {% set _has_modules = (article.modules|length if article is defined and article.modules is defined and article.modules else 0) %}
+      <div class="ppx-field">
+        <details class="ppx-card ppx-card--pad" {% if not _has_modules %}open{% endif %} style="border-color:#e5e7eb;">
+          <summary class="ppx-h3" style="margin:0;cursor:pointer;user-select:none;outline:none;">
+            {{ t('Artículo sencillo', 'Simple Article', app_lang) }}
+          </summary>
+          <div class="ppx-stack-sm" style="margin-top:.75rem;">
+            <label class="ppx-label" for="html">HTML</label>
+            <textarea class="ppx-textarea ppx-rich" id="html" name="html">{{ body_html|safe }}</textarea>
+            <div class="ppx-help">
+              {{ t('Usa el botón "Acc" para insertar un acordeón editable. El contenido se guardará como HTML.',
+                   'Use the "Acc" button to insert an editable accordion. The content will be saved as HTML.',
+                   app_lang) }}
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- Modules -->
+      {% set existing_modules = (article.modules if article and article.modules else []) %}
+      <div class="ppx-card ppx-card--pad" style="border:1px dashed #e5e7eb;background:#fafafa">
+        <h2 class="ppx-h3" style="margin-top:0">{{ t('Módulos', 'Modules', app_lang) }}</h2>
+        <p class="ppx-muted" style="margin-top:0">{{ t('Divide el artículo en secciones. Si hay módulos, la vista pública usa navegación por páginas.', 'Split the article into sections. If modules exist, the public view uses paginated navigation.', app_lang) }}</p>
+        <input type="hidden" id="modules_json" name="modules_json" value="">
+        <div id="ppx-modules-list" class="ppx-stack-sm"></div>
+        <div class="ppx-row" style="gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
+          <button class="ppx-btn" type="button" id="ppx-module-add">+ {{ t('Agregar módulo', 'Add module', app_lang) }}</button>
+          <button class="ppx-btn ppx-btn--subtle" type="button" id="ppx-module-clear">{{ t('Vaciar módulos', 'Clear modules', app_lang) }}</button>
+        </div>
+        <div class="ppx-help">{{ t('Consejo: si defines módulos, el campo HTML completo se ignora en la vista pública.', 'Tip: if modules are defined, the single HTML body is ignored in public view.', app_lang) }}</div>
+      </div>
+
+      {% include "admin/_article_meta.html" %}
+
+      <div class="ppx-row" style="position:sticky; bottom:0; z-index:900; background:rgba(255,255,255,.96); backdrop-filter:saturate(1.2) blur(2px); border-top:1px solid #e5e7eb; box-shadow: 0 -6px 18px rgba(0,0,0,.06); padding:.6rem .75rem; justify-content:flex-start;gap:.5rem;flex-wrap:wrap;">
+        <button class="ppx-btn ppx-btn--primary" type="submit">{{ t('Guardar', 'Save', app_lang) }}</button>
+        <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('public.article_detail', slug=slug) }}" target="_blank" rel="noopener">
+          {{ t('Ver público', 'View public', app_lang) }}
+        </a>
+      </div>
+    </form>
+  </div>
+  </div>
+
+  <!-- Outline drawer -->
+  <div id="ppx-outline" style="position:fixed; top: calc(var(--ppx-admin-height,56px) + 8px); left:8px; width:260px; max-height:calc(100vh - 80px); overflow:auto; background:#fff; border:1px solid #e5e7eb; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.08); padding:.5rem; display:none; z-index:1100;"></div>
+
+  <!-- Quill CSS/JS + admin init -->
+  <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
+  <script src="{{ url_for('static', filename='js/admin_quill.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/admin_acc_fix.js') }}"></script>
+
+  <script>
+    (function () {
+      var form = document.getElementById('ppx-article-form');
+      if (!form) return;
+
+      // i18n payload from server (safe)
+      var I18N = {{ existing_i18n|tojson|safe }};
+      var CURRENT = { lang: "" }; // "" means mother/base
+
+      var sel = document.getElementById('ppx-lang-version');
+      var hiddenLang = document.getElementById('edit_lang');
+      var cloneBtn = document.getElementById('ppx-clone-from-current');
+
+      var $title = document.getElementById('title');
+      var $html  = document.getElementById('html');
+      var $summaryHidden = document.getElementById('summary_html'); // provided by _article_meta.html
+
+      // Helpers to read/set current fields
+      function getFields(){
+        return {
+          title: ($title.value || ''),
+          html: ($html.value || ''),
+          summary_html: ($summaryHidden ? $summaryHidden.value : '')
+        };
+      }
+      function setFields(obj){
+        $title.value = (obj && obj.title) || '';
+        $html.value = (obj && obj.html) || '';
+        if ($summaryHidden){
+          $summaryHidden.value = (obj && obj.summary_html) || '';
+        }
+      }
+
+      function fieldsFor(lang){
+        if (!lang) {
+          return {
+            title: {{ (title_display or '')|tojson|safe }},
+            html: {{ (body_html or '')|tojson|safe }},
+            summary_html: {{ (article.summary_html or '')|tojson|safe }}
+          };
+        }
+        var slot = I18N[lang] || {};
+        return {
+          title: slot.title || '',
+          html: slot.html || '',
+          summary_html: slot.summary_html || ''
+        };
+      }
+
+      function showCloneButton(visible){
+        cloneBtn.style.display = visible ? '' : 'none';
+      }
+
+      // When user selects a language option (existing, base, or new:<code>)
+      sel.addEventListener('change', function(){
+        var val = sel.value || '';
+
+        if (val.startsWith('new:')) {
+          var code = val.slice(4);
+          CURRENT.lang = code;
+          hiddenLang.value = code;
+          setFields({ title: '', html: '', summary_html: '' });
+          showCloneButton(true);
+          return;
+        }
+
+        CURRENT.lang = val;     // may be "" for mother/base
+        hiddenLang.value = val; // may be "" for mother/base
+        setFields(fieldsFor(val));
+        showCloneButton(false);
+      });
+
+      // Persist mother language (server saves it)
+      var motherSel = document.getElementById('ppx-mother-lang');
+      var motherHidden = document.getElementById('mother_lang_hidden');
+      if (motherSel && motherHidden) {
+        // initialize hidden with current select value
+        motherHidden.value = motherSel.value || '';
+        motherSel.addEventListener('change', function(){
+          motherHidden.value = motherSel.value || '';
+        });
+      }
+
+      // Clone from the currently loaded fields into a *new* language selection
+      cloneBtn.addEventListener('click', function(){
+        if (!CURRENT.lang) return; // only for new:code
+        var cur = getFields();
+        setFields(cur);
+        showCloneButton(false);
+      });
+
+      // Initial state (base)
+      hiddenLang.value = "";
+      showCloneButton(false);
+
+      // ---- Core UX: Dirty guard + live save chip ----
+      var DIRTY = false;
+      function markDirty(){
+        DIRTY = true;
+        try { var chip = document.getElementById('ppx-save-chip'); if (chip) { chip.textContent = '{{ t("No guardado","Unsaved", app_lang) }}'; chip.style.color = '#b91c1c'; } } catch(_){}
+      }
+      form.addEventListener('input', markDirty, true);
+      form.addEventListener('change', markDirty, true);
+      form.addEventListener('submit', function(){ DIRTY = false; });
+      window.addEventListener('beforeunload', function(e){ if (!DIRTY) return; e.preventDefault(); e.returnValue = ''; });
+
+      // Status pill & publish handling (unchanged)
+      var pill = document.getElementById('ppx-status-pill');
+      var btn  = document.getElementById('ppx-publish-btn');
+
+      function showToast(publicUrl) {
+        let toast = document.getElementById('ppx-save-toast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'ppx-save-toast';
+          toast.style.position = 'fixed';
+          toast.style.right = '16px';
+          toast.style.top = 'calc(var(--ppx-admin-height, 56px) + 16px)';
+          toast.style.bottom = 'auto';
+          toast.style.padding = '.75rem 1rem';
+          toast.style.border = '1px solid #e5e7eb';
+          toast.style.borderRadius = '12px';
+          toast.style.background = '#fff';
+          toast.style.boxShadow = '0 8px 24px rgba(0,0,0,.12)';
+          toast.style.font = '500 14px/1.2 Montserrat,system-ui';
+          toast.style.transition = 'opacity .2s ease';
+          toast.style.zIndex = '99999';
+          document.body.appendChild(toast);
+          setTimeout(function(){ try { document.body.removeChild(toast); } catch(e){} }, 4000);
+        }
+        // Keep toast above sticky UI
+        if (toast) { toast.style.top = 'calc(var(--ppx-admin-height, 56px) + 16px)'; toast.style.bottom = 'auto'; }
+        const pub = publicUrl
+          ? (' <a href="' + publicUrl + '" class="ppx-link" target="_blank" rel="noopener">{{ t("Ver público","View public", app_lang) }}</a>')
+          : '';
+        toast.innerHTML = '{{ t("Guardado.","Saved.", app_lang) }}' + pub;
+        try {
+          var chip = document.getElementById('ppx-save-chip');
+          if (chip) {
+            var d = new Date();
+            chip.textContent = '{{ t("Guardado","Saved", app_lang) }} • ' + d.toLocaleTimeString();
+            chip.style.color = '#334155';
+          }
+        } catch(_){}
+        toast.style.opacity = '1';
+        setTimeout(function(){ toast.style.opacity = '0'; }, 2500);
+      }
+
+      function setPill(next){
+        var labelPub   = pill.getAttribute('data-label-published') || 'Published';
+        var labelDraft = pill.getAttribute('data-label-draft') || 'Draft';
+        var btnPub     = btn.getAttribute('data-label-publish') || 'Publish';
+        var btnUnpub   = btn.getAttribute('data-label-unpublish') || 'Unpublish';
+
+        pill.dataset.status = next;
+        pill.className = 'ppx-chip' + (next === 'published' ? ' ppx-chip--success' : ' ppx-chip--draft');
+        pill.textContent = (next === 'published') ? labelPub : labelDraft;
+        btn.textContent  = (next === 'published') ? btnUnpub : btnPub;
+
+        var hidden = document.getElementById('status');
+        if (hidden) { hidden.value = next; }
+      }
+
+      // ---- Helpers: sync rich editors -> textareas, then pack modules JSON ----
+      function syncEditorsToTextareas(){
+        try {
+          var areas = document.querySelectorAll('textarea.ppx-rich');
+          areas.forEach(function(ta){
+            var wrap = ta.previousElementSibling;
+            if (!wrap || !wrap.classList || !wrap.classList.contains('ppx-editor-wrap')) return;
+            var ed = wrap.querySelector('#ppx-quill-editor .ql-editor') || wrap.querySelector('.ql-editor') || wrap.querySelector('.ppx-fallback-editor') || wrap.querySelector('#ppx-fallback-editor');
+            if (!ed) return;
+            var tmp = document.createElement('div');
+            tmp.innerHTML = ed.innerHTML || '';
+            // sanitize like admin_quill does
+            tmp.querySelectorAll('.ppx-acc-toggle').forEach(function(n){ n.removeAttribute('checked'); });
+            tmp.querySelectorAll('.ppx-block-tools').forEach(function(n){ n.parentNode && n.parentNode.removeChild(n); });
+            tmp.querySelectorAll('[contenteditable]').forEach(function(n){ n.removeAttribute('contenteditable'); });
+            tmp.querySelectorAll('[data-acc="editor"], [data-ex="example"]').forEach(function(n){ n.removeAttribute('data-acc'); n.removeAttribute('data-ex'); });
+            ta.value = tmp.innerHTML;
+          });
+        } catch (e) { console.warn('[admin] syncEditorsToTextareas failed:', e); }
+      }
+
+      function packModulesJSON(){
+        try {
+          var items = [];
+          var blocks = document.querySelectorAll('.ppx-module-block');
+          blocks.forEach(function(bl){
+            var t = bl.querySelector('input[name="mod_title"]');
+            var s = bl.querySelector('input[name="mod_slug"]');
+            var h = bl.querySelector('textarea[name="mod_html"]');
+            items.push({ title: (t && t.value) || '', slug: (s && s.value) || '', html: (h && h.value) || '' });
+          });
+          var hidden = document.getElementById('modules_json');
+          if (hidden) hidden.value = JSON.stringify(items);
+        } catch (e) { console.warn('[modules] pack failed', e); }
+      }
+
+      btn.addEventListener('click', async function(){
+        var cur = (pill.dataset.status || 'draft').toLowerCase();
+        var next = (cur === 'published') ? 'draft' : 'published';
+        var act  = (next === 'published') ? 'publish' : 'unpublish';
+
+        var hiddenStatus = document.getElementById('status');
+        if (!hiddenStatus) {
+          hiddenStatus = document.createElement('input');
+          hiddenStatus.type = 'hidden';
+          hiddenStatus.name = 'status';
+          hiddenStatus.id = 'status';
+          form.appendChild(hiddenStatus);
+        }
+        hiddenStatus.value = next;
+
+        var hiddenAction = document.getElementById('action');
+        if (!hiddenAction) {
+          hiddenAction = document.createElement('input');
+          hiddenAction.type = 'hidden';
+          hiddenAction.name = 'action';
+          hiddenAction.id = 'action';
+          form.appendChild(hiddenAction);
+        }
+        hiddenAction.value = act;
+
+        try {
+          // First sync editors and pack modules
+          syncEditorsToTextareas();
+          packModulesJSON();
+          var fd = new FormData(form);
+          fd.set('status', next);
+          fd.set('action', act);
+          fd.set('title', document.getElementById('title').value || '');
+          fd.set('html', document.getElementById('html').value || '');
+          fd.set('edit_lang', hiddenLang.value || '');
+
+          const resp = await fetch(form.getAttribute('action'), {
+            method: 'POST',
+            body: fd,
+            headers: { 'X-Requested-With': 'fetch', 'Accept': 'application/json' },
+            credentials: 'same-origin',
+            redirect: 'follow'
+          });
+
+          if (!resp.ok) {
+            const txt = await resp.text().catch(() => '');
+            console.error('[admin][publish] bad status:', resp.status, txt);
+            throw new Error('HTTP ' + resp.status);
+          }
+
+          let data = {};
+          const ctype = (resp.headers.get('content-type') || '');
+          if (ctype.includes('application/json')) {
+            data = await resp.json().catch(function(){ return {}; });
+          }
+          setPill(next);
+          showToast(data && data.public_url);
+        } catch (err) {
+          console.error('[admin][publish] fetch failed, falling back to form.submit():', err);
+          form.submit();
+        }
+      });
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        // Sync editors and pack modules into hidden field before submit
+        syncEditorsToTextareas();
+        packModulesJSON();
+        try {
+          var fd = new FormData(form);
+          fd.set('status', (pill.dataset.status || 'draft').toLowerCase());
+          fd.set('edit_lang', hiddenLang.value || '');
+
+          const resp = await fetch(form.getAttribute('action'), {
+            method: 'POST',
+            body: fd,
+            headers: { 'X-Requested-With': 'fetch', 'Accept': 'application/json' },
+            redirect: 'follow'
+          });
+
+          if (!resp.ok) throw new Error('status ' + resp.status);
+          let data = {};
+          if ((resp.headers.get('content-type') || '').includes('application/json')) {
+            data = await resp.json().catch(function(){ return {}; });
+          }
+          if (data && data.status) setPill(String(data.status).toLowerCase());
+          showToast(data && data.public_url);
+        } catch (err) {
+          console.error('[admin][save] failed:', err);
+          form.submit();
+        }
+      });
+
+      // ------- Modules UI (simple repeater) -------
+      (function(){
+        var list = document.getElementById('ppx-modules-list');
+        var btnAdd = document.getElementById('ppx-module-add');
+        var btnClear = document.getElementById('ppx-module-clear');
+        if (!list || !btnAdd) return;
+
+        function makeId(){ return Math.random().toString(36).slice(2,7); }
+
+        function slugify(str){
+          if (!str) return '';
+          var s = (str+"").toLowerCase();
+          // basic accent removal
+          var from = 'ÁÀÄÂÃáàäâãÉÈËÊéèëêÍÌÏÎíìïîÓÒÖÔÕóòöôõÚÙÜÛúùüûÑñÇç';
+          var to   = 'aaaaaAAAAAeeeeEEEEiiiiIIIIoooooOOOOOuuuuUUUUnncc';
+          for (var i=0; i<from.length; i++) { s = s.replace(new RegExp(from[i],'g'), to[i]); }
+          s = s.replace(/[^a-z0-9]+/g,'-').replace(/-{2,}/g,'-').replace(/^-+|-+$/g,'');
+          return s || '';
+        }
+        function ensureUniqueSlug(base, taken){
+          var s = base || 'm';
+          if (!taken.has(s)) return s;
+          var i = 2;
+          while (taken.has(s + '-' + i)) i++;
+          return s + '-' + i;
+        }
+
+        function createBlock(data){
+          var id = makeId();
+
+          // Wrapper details for collapsible module
+          var det = document.createElement('details');
+          det.className = 'ppx-module-item ppx-card ppx-card--pad';
+          det.style.margin = '.5rem 0';
+          // collapsed by default
+
+          var sum = document.createElement('summary');
+          sum.className = 'ppx-row';
+          sum.style.cssText = 'align-items:center;justify-content:space-between;gap:.5rem;cursor:pointer;user-select:none;';
+          var titleSpan = document.createElement('span');
+          titleSpan.className = 'ppx-module-summary-title';
+          titleSpan.style.cssText = 'font-weight:600;';
+          titleSpan.textContent = (data && data.title) ? data.title : '{{ t("(Módulo sin título)","(Untitled module)", app_lang) }}';
+          sum.appendChild(titleSpan);
+          det.appendChild(sum);
+
+          // Inner editable block
+          var el = document.createElement('div');
+          el.className = 'ppx-module-block';
+          el.style.border = '1px solid #e5e7eb';
+          el.style.borderRadius = '10px';
+          el.style.background = '#fff';
+          el.style.padding = '.75rem';
+          el.style.marginTop = '.5rem';
+          el.innerHTML = `
+            <div class="ppx-row" style="gap:.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+              <div class="ppx-field" style="flex:1;min-width:220px;">
+                <label class="ppx-label" for="t_${id}">{{ t('Título del módulo','Module title', app_lang) }}</label>
+                <input class="ppx-input" id="t_${id}" name="mod_title" value="${(data && (data.title||''))||''}">
+              </div>
+              <input type="hidden" id="s_${id}" name="mod_slug" value="${(data && (data.slug||''))||''}">
+            </div>
+            <div class="ppx-field">
+              <label class="ppx-label" for="h_${id}">HTML</label>
+              <textarea class="ppx-textarea ppx-rich" id="h_${id}" name="mod_html" rows="6">${(data && (data.html||''))||''}</textarea>
+            </div>
+            <div class="ppx-row" style="justify-content:flex-end;gap:.5rem;">
+              <button type="button" class="ppx-btn ppx-btn--subtle ppx-mod-del">{{ t('Eliminar','Remove', app_lang) }}</button>
+            </div>
+          `;
+          det.appendChild(el);
+
+          // Auto-generate slug from title and keep unique across current blocks
+          var inputTitle = el.querySelector('#t_'+id);
+          var inputSlug = el.querySelector('#s_'+id);
+          function currentTaken(){
+            var set = new Set();
+            document.querySelectorAll('.ppx-module-block input[name="mod_slug"]').forEach(function(n){ var v=(n.value||'').trim(); if(v) set.add(v); });
+            return set;
+          }
+          function refreshSlug(){
+            var base = slugify(inputTitle.value||'');
+            var taken = currentTaken();
+            // Remove our own current value to allow stable editing
+            if (inputSlug.value) taken.delete(inputSlug.value);
+            var next = ensureUniqueSlug(base || ('m'+String(Date.now()).slice(-4)), taken);
+            inputSlug.value = next;
+            // Update summary title while typing
+            titleSpan.textContent = (inputTitle.value && inputTitle.value.trim()) ? inputTitle.value.trim() : '{{ t("(Módulo sin título)","(Untitled module)", app_lang) }}';
+          }
+          // Initialize slug if empty
+          if (!inputSlug.value) { refreshSlug(); }
+          inputTitle.addEventListener('input', function(){ refreshSlug(); });
+          el.querySelector('.ppx-mod-del').addEventListener('click', function(){ try { list.removeChild(det); } catch(e){} });
+          return det;
+        }
+
+        // Seed with existing modules from server
+        var EXIST = {{ existing_modules|tojson|safe }};
+        if (Array.isArray(EXIST) && EXIST.length){
+          EXIST.forEach(function(m){ list.appendChild(createBlock(m)); });
+        }
+
+        btnAdd.addEventListener('click', function(){
+          var block = createBlock({});
+          list.appendChild(block);
+          // Initialize rich editor on the new module textarea
+          try {
+            if (window.PPX_INIT_EDITORS) { window.PPX_INIT_EDITORS(block); }
+          } catch (e) { console.warn('PPX_INIT_EDITORS failed', e); }
+        });
+        if (btnClear) btnClear.addEventListener('click', function(){ list.innerHTML = ''; });
+
+        // Initialize editors for any pre-seeded modules
+        try { if (window.PPX_INIT_EDITORS) { window.PPX_INIT_EDITORS(list); } } catch(_){}
+      })();
+    })();
+  </script>
+{% endblock %}
+
+

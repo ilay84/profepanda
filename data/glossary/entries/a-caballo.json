@@ -1,0 +1,45 @@
+{
+  "alt_spellings": [],
+  "audio": "media/audio/entry/a_caballo.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Culinary phrase for a dish served</span> with one or two fried eggs on top<span style=\"font-weight: normal;\">.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Expresión culinaria que indica que un plato se sirve</span> con uno o dos huevos fritos encima<span style=\"font-weight: normal;\">.</span></p>",
+      "domain": [
+        "comida"
+      ],
+      "equivalents_en": [
+        "topped with fried eggs",
+        "with fried eggs on top"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/a-caballo/a_caballo_ex_01.mp3",
+          "en": "Bring me some fries `with fried eggs on top`. If I'm still hungry, I'll order something else.",
+          "es": "Traeme unas papas fritas `a caballo`. Si me quedo con hambre, te pido otra cosa.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_adverbial",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "a-caballo",
+  "word": "a caballo"
+}

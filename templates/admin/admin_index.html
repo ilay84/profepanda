@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block admin_nav %}
+  {% include "_admin_bar.html" %}
+{% endblock %}
+
+{% block content %}
+  <div style="margin-top:1rem; display:flex; flex-direction:column; gap:1rem;">
+    <div class="ppx-card" style="padding:1.25rem;">
+      <h1 data-i18n-key="admin.home.title" style="margin:0 0 .25rem 0;">
+        {{ ui('admin.home.title', app_lang, False) or t('Panel', 'Dashboard', app_lang) }}
+      </h1>
+      <p data-i18n-key="admin.home.subtitle" style="margin:0; color:var(--ppx-color-text-subtle,#334155);">
+        {{ ui('admin.home.subtitle', app_lang, False) or t('Accedé rápidamente a las secciones de administración.', 'Quick access to admin sections.', app_lang) }}
+      </p>
+    </div>
+
+    <!-- Dashboard Grid -->
+    <div class="ppx-dashboard-grid" style="--ppx-dash-card-w: 240px; --ppx-dash-card-h: 140px; --ppx-dash-gap: 2rem;">
+      <!-- Articles -->
+      <a href="/admin/articles/" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
+        <div>
+          <div style="margin-bottom:.35rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/articles.svg') }}" style="width:28px; height:28px; display:block;" loading="lazy">
+            <div class="ppx-h2" data-i18n-key="admin.cards.articles.title" style="margin-top:.35rem;">
+              {{ ui('admin.cards.articles.title', app_lang, False) or t('Artículos', 'Articles', app_lang) }}
+            </div>
+          </div>
+          <div class="ppx-muted" data-i18n-key="admin.cards.articles.body">
+            {{ ui('admin.cards.articles.body', app_lang, False) or t('Crear y editar contenido bilingüe.', 'Create and edit bilingual content.', app_lang) }}
+          </div>
+        </div>
+        <div class="ppx-row">
+          <span class="ppx-pill" data-i18n-key="admin.cards.articles.view">
+            {{ ui('admin.cards.articles.view', app_lang, False) or t('Ver artículos', 'View articles', app_lang) }}
+          </span>
+        </div>
+      </a>
+
+      <!-- Exercises -->
+      <a href="/admin/exercises/" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
+        <div>
+          <div style="margin-bottom:.35rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/exercises.svg') }}" style="width:28px; height:28px; display:block;" loading="lazy">
+            <div class="ppx-h2" data-i18n-key="admin.cards.exercises.title" style="margin-top:.35rem;">
+              {{ ui('admin.cards.exercises.title', app_lang, False) or t('Ejercicios', 'Exercises', app_lang) }}
+            </div>
+          </div>
+          <div class="ppx-muted" data-i18n-key="admin.cards.exercises.body">
+            {{ ui('admin.cards.exercises.body', app_lang, False) or t('Biblioteca central de ejercicios PPX.', 'Central PPX exercise library.', app_lang) }}
+          </div>
+        </div>
+        <div class="ppx-row">
+          <span class="ppx-pill" data-i18n-key="admin.cards.exercises.view">
+            {{ ui('admin.cards.exercises.view', app_lang, False) or t('Ver ejercicios', 'View exercises', app_lang) }}
+          </span>
+        </div>
+      </a>
+
+      <!-- Interactive Lessons -->
+      <a href="{{ url_for('admin.lessons_index') }}" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
+        <div>
+          <div style="margin-bottom:.35rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/lesson.svg') }}" style="width:28px; height:28px; display:block;" loading="lazy">
+            <div class="ppx-h2" style="margin-top:.35rem;">
+              {{ t('Lecciones interactivas', 'Interactive Lessons', app_lang) }}
+            </div>
+          </div>
+          <div class="ppx-muted">
+            {{ t('Crear y publicar mini lecciones.', 'Create and publish mini lessons.', app_lang) }}
+          </div>
+        </div>
+        <div class="ppx-row">
+          <span class="ppx-pill">{{ t('Ver lecciones', 'View lessons', app_lang) }}</span>
+        </div>
+      </a>
+
+      <!-- Glossary -->
+      <a href="/admin/glossary/" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
+        <div>
+          <div style="margin-bottom:.35rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/glossary.svg') }}" style="width:28px; height:28px; display:block;" loading="lazy">
+            <div class="ppx-h2" data-i18n-key="admin.cards.glossary.title" style="margin-top:.35rem;">
+              {{ ui('admin.cards.glossary.title', app_lang, False) or t('Glosario', 'Glossary', app_lang) }}
+            </div>
+          </div>
+          <div class="ppx-muted" data-i18n-key="admin.cards.glossary.body">
+            {{ ui('admin.cards.glossary.body', app_lang, False) or t('Términos con audio y notas culturales.', 'Terms with audio and cultural notes.', app_lang) }}
+          </div>
+        </div>
+        <div class="ppx-row">
+          <span class="ppx-pill" data-i18n-key="admin.cards.glossary.view">
+            {{ ui('admin.cards.glossary.view', app_lang, False) or t('Ver entradas', 'View entries', app_lang) }}
+          </span>
+        </div>
+      </a>
+
+      <!-- Users (manage accounts) -->
+      <a href="/admin/users" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
+        <div>
+          <div style="margin-bottom:.35rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/users.svg') }}" style="width:28px; height:28px; display:block;" loading="lazy">
+            <div class="ppx-h2" style="margin-top:.35rem;">{{ t('Usuarios', 'Users', app_lang) }}</div>
+          </div>
+          <div class="ppx-muted">{{ t('Gestioná cuentas y permisos.', 'Manage accounts and permissions.', app_lang) }}</div>
+        </div>
+        <div class="ppx-row">
+          <span class="ppx-pill">{{ t('Abrir', 'Open', app_lang) }}</span>
+        </div>
+      </a>
+
+      <!-- Language Topics (Taxonomy) browse -->
+      <a href="/taxonomy/grammar" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
+        <div>
+          <div style="margin-bottom:.35rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/language_topics.svg') }}" style="width:28px; height:28px; display:block;" loading="lazy">
+            <div class="ppx-h2" style="margin-top:.35rem;">{{ t('Temas de lengua', 'Language Topics', app_lang) }}</div>
+          </div>
+          <div class="ppx-muted">{{ t('Explorá y organizá temas gramaticales.', 'Browse and organize grammar topics.', app_lang) }}</div>
+        </div>
+        <div class="ppx-row">
+          <span class="ppx-pill">{{ t('Abrir', 'Open', app_lang) }}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}

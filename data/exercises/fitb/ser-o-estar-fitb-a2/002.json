@@ -1,0 +1,173 @@
+{
+  "id": "fitb/ser-o-estar-fitb-a2",
+  "type": "fitb",
+  "slug": "ser-o-estar-fitb-a2",
+  "version": 2,
+  "title_es": "¿Ser o estar?",
+  "title_en": "Ser or estar?",
+  "instructions_es": "Escribe la palabra que falta.",
+  "instructions_en": "Type the missing word.",
+  "level": "A2",
+  "taxonomy_paths": [],
+  "status": "draft",
+  "items": [
+    {
+      "id": "b1",
+      "order": 1,
+      "text": "<p>Yo *soy* profesor y hoy *estoy* cansado.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "soy"
+          ],
+          "hint_es": "¿La profesión expresa una esencia o una situación?",
+          "hint_en": "Does a profession express an essence or a situation?",
+          "feedback_correct_es": "¡Bien! Usamos \"ser\" para hablar de la esencia de algo, como la profesión. \"Yo\" + \"ser\" en presente de indicativo es \"soy\".",
+          "feedback_correct_en": "Nice! We use \"ser\" to express essence — what something fundamentally is, like a profession. \"Yo\" + \"ser\" in the present is \"soy\".",
+          "feedback_incorrect_es": "¡Ups! Recordá que la profesión forma parte de la esencia, no de una situación.",
+          "feedback_incorrect_en": "Oops! Remember that a profession reflects essence, not a situation."
+        },
+        {
+          "index": 2,
+          "options": [
+            "estoy"
+          ],
+          "hint_es": "¿Cómo te sentís hoy? ¿Es una esencia o una situación?",
+          "hint_en": "How do you feel today? Is that an essence or a situation?",
+          "feedback_correct_es": "¡Perfecto! \"Estar\" se usa para describir situaciones o estados actuales. \"Yo\" + \"estar\" en presente es \"estoy\".",
+          "feedback_correct_en": "Perfect! We use \"estar\" to describe situations or current states. \"Yo\" + \"estar\" in the present tense is \"estoy\".",
+          "feedback_incorrect_es": "Casi. \"Cansado\" describe una situación, no una esencia.",
+          "feedback_incorrect_en": "Almost. \"Tired\" describes a situation, not an essence."
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "order": 2,
+      "text": "<p>La fiesta *es* en mi casa y todos *están* muy contentos.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "es"
+          ],
+          "hint_es": "¿Para eventos usamos \"ser\" o \"estar\"?",
+          "hint_en": "Do we use \"ser\" or \"estar\" for events?",
+          "feedback_correct_es": "¡Muy bien! Usamos \"ser\" para hablar de la esencia de un evento, como su lugar o momento. \"La fiesta es en mi casa.\"",
+          "feedback_correct_en": "Very good! We use \"ser\" when describing the essence of an event, such as where or when it happens. \"The party is at my house.\"",
+          "feedback_incorrect_es": "No exactamente. Para eventos (como fiestas o conciertos) usamos \"ser\" porque expresan su esencia, no una situación.",
+          "feedback_incorrect_en": "Not quite. We use \"ser\" for events because it expresses what they are, not a situation."
+        },
+        {
+          "index": 2,
+          "options": [
+            "están"
+          ],
+          "hint_es": "¿Cómo se sienten las personas? ¿Es una esencia o una situación?",
+          "hint_en": "How do people feel? Is that an essence or a situation?",
+          "feedback_correct_es": "¡Correcto! \"Estar\" se usa para expresar situaciones o emociones del momento. \"Ellos están contentos.\"",
+          "feedback_correct_en": "Correct! We use \"estar\" to express momentary situations or emotions. \"They are happy.\"",
+          "feedback_incorrect_es": "No del todo. La emoción es una situación, por eso usamos \"estar\".",
+          "feedback_incorrect_en": "Not quite. Emotions are situations, so we use \"estar\"."
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "order": 3,
+      "text": "<p>¿Dónde *estás* tú? Yo *estoy* en la biblioteca.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "estás"
+          ],
+          "hint_es": "¿Qué verbo usamos para indicar ubicación, una situación en el espacio?",
+          "hint_en": "Which verb do we use to indicate location, a situation in space?",
+          "feedback_correct_es": "¡Exacto! Usamos \"estar\" para indicar ubicación, que es una situación, no una esencia.",
+          "feedback_correct_en": "Exactly! We use \"estar\" to indicate location, which is a situation, not an essence.",
+          "feedback_incorrect_es": "Casi. La ubicación es una situación, por eso usamos \"estar\".",
+          "feedback_incorrect_en": "Almost. Location is a situation, so we use \"estar\"."
+        },
+        {
+          "index": 2,
+          "options": [
+            "estoy"
+          ],
+          "hint_es": "¿Dónde te encontrás? ¿Es una esencia o una situación?",
+          "hint_en": "Where are you located? Is that an essence or a situation?",
+          "feedback_correct_es": "¡Muy bien! \"Estar\" indica ubicación: una situación espacial. \"Yo estoy en la biblioteca.\"",
+          "feedback_correct_en": "Very good! \"Estar\" indicates location — a situational context. \"I am at the library.\"",
+          "feedback_incorrect_es": "Atención: la ubicación es una situación, no una esencia.",
+          "feedback_incorrect_en": "Careful: location is a situation, not an essence."
+        }
+      ]
+    },
+    {
+      "id": "b4",
+      "order": 4,
+      "text": "<p>Madrid *es* la capital de España y *está* en Europa.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "es"
+          ],
+          "hint_es": "¿Definir algo pertenece a su esencia o a una situación?",
+          "hint_en": "Does defining something relate to essence or to a situation?",
+          "feedback_correct_es": "¡Bien hecho! \"Ser\" se usa para definir la esencia o identidad de algo. \"Madrid es la capital de España.\"",
+          "feedback_correct_en": "Well done! We use \"ser\" to define essence or identity. \"Madrid is the capital of Spain.\"",
+          "feedback_incorrect_es": "Revisá: para definiciones usamos \"ser\" porque expresan esencia.",
+          "feedback_incorrect_en": "Check again: for definitions we use \"ser\" because they express essence."
+        },
+        {
+          "index": 2,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Hablar de ubicación expresa una esencia o una situación?",
+          "hint_en": "Does talking about location express essence or situation?",
+          "feedback_correct_es": "Correcto. \"Estar\" se usa para ubicación geográfica, que representa una situación. \"Madrid está en Europa.\"",
+          "feedback_correct_en": "Correct. We use \"estar\" for geographical location, which represents a situation. \"Madrid is in Europe.\"",
+          "feedback_incorrect_es": "No exactamente. La ubicación es una situación, así que usamos \"estar\".",
+          "feedback_incorrect_en": "Not quite. Location is a situation, so we use \"estar.\""
+        }
+      ]
+    },
+    {
+      "id": "b5",
+      "order": 5,
+      "text": "<p>Mis amigos *son* médicos y hoy *están* de guardia.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "son"
+          ],
+          "hint_es": "¿La profesión refleja la esencia o una situación?",
+          "hint_en": "Does a profession reflect essence or a situation?",
+          "feedback_correct_es": "¡Excelente! \"Ser\" se usa para hablar de la esencia, como la profesión. \"Ellos son médicos.\"",
+          "feedback_correct_en": "Excellent! We use \"ser\" to talk about essence, such as profession. \"They are doctors.\"",
+          "feedback_incorrect_es": "Cuidado: la profesión forma parte de la esencia, por eso usamos \"ser\".",
+          "feedback_incorrect_en": "Careful: a profession expresses essence, so we use \"ser\"."
+        },
+        {
+          "index": 2,
+          "options": [
+            "están"
+          ],
+          "hint_es": "¿\"Estar de guardia\" describe una esencia o una situación?",
+          "hint_en": "Does \"being on duty\" describe essence or situation?",
+          "feedback_correct_es": "¡Muy bien! \"Estar\" se usa para describir situaciones o condiciones actuales como \"estar de guardia\".",
+          "feedback_correct_en": "Very good! We use \"estar\" to describe current situations or conditions like \"being on duty.\"",
+          "feedback_incorrect_es": "Recordá: \"estar de guardia\" es una situación, no una esencia.",
+          "feedback_incorrect_en": "Remember: \"being on duty\" is a situation, not an essence."
+        }
+      ]
+    }
+  ],
+  "created_by": "admin",
+  "created_at": "2025-11-12T10:47:50.638Z",
+  "checksum": "sha256:b0b94ca7b94b5b47bf05e8ce1f5bef2494690f6421229ada5a221e3d2f8ad614"
+}

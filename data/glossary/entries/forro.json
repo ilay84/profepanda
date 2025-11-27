@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/forro/forro.mp3?v=1764176752",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A despicable or extremely annoying person.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Persona despreciable o que actúa de manera muy molesta.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "asshole",
+        "jerk",
+        "douchebag"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/forro/forro_ex_01.mp3?v=1764176752",
+          "en": "You know what you are? A bitter lowlife. You `asshole`!",
+          "es": "¿Sabés que sos un negro resentido? ¡`Forro`!",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo",
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "forras",
+        "fem_sg": "forra",
+        "masc_pl": "forros",
+        "masc_sg": "forro"
+      }
+    }
+  ],
+  "slug": "forro",
+  "word": "forro"
+}

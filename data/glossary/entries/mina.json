@@ -1,0 +1,62 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/mina/mina.mp3?v=1764261811",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">In lunfardo, <i>a woman</i>; can sound dismissive or objectifying depending on tone.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">En el lunfardo, <i>mujer</i>; su tono puede resultar despectivo o cosificador según el contexto.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "chick",
+        "broad",
+        "babe",
+        "girl",
+        "woman"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/mina/mina_ex_01.mp3?v=1764261812",
+          "en": "Are you really happy banging a different `chick` every day?",
+          "es": "¿Sos feliz volteándote todos los días a una `mina` distinta?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con Hijos",
+            "type": "series",
+            "year": "2005"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "minita",
+        "fem_pl": "minas",
+        "fem_sg": "mina",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "mina",
+  "word": "mina"
+}

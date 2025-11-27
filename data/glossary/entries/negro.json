@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/negro/negro.mp3?v=1764177067",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Insult aimed at someone perceived as low-class or uncultured; not a literal reference to skin color.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Insulto dirigido a una persona percibida como de clase baja o inculta; no alude literalmente al color de piel.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "lowlife",
+        "trash",
+        "bum"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/negro/negro_ex_01.mp3?v=1764177032",
+          "en": "You know what you are? A bitter `lowlife`! Asshole!",
+          "es": "¿Sabés que sos un `negro` resentido? ¡Forro!",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "negras",
+        "fem_sg": "negra",
+        "masc_pl": "negros",
+        "masc_sg": "negro"
+      }
+    }
+  ],
+  "slug": "negro",
+  "word": "negro"
+}

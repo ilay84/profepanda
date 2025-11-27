@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('Ejercicios · Biblioteca', 'Exercises · Library', app_lang) }} · ProfePanda{% endblock %}
+
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+
+{% block content %}
+  <section class="ppx-container" style="padding-top:0;">
+    <!-- Page header -->
+    <header style="display:flex; flex-direction:column; gap:10px; margin-bottom:12px;">
+      <div class="ppx-row" style="gap:12px; justify-content:flex-start; flex-wrap:wrap;">
+        {% if ex_types %}
+          {% for et in ex_types %}
+            <a class="ppx-btn" href="{{ et.new_url }}" style="display:inline-flex; align-items:center; font-size:2rem; padding:1.2rem 1.6rem;">
+              <img alt="" src="{{ url_for('static', filename=et.icon) }}" style="width:40px;height:40px;margin-right:12px;" loading="lazy">
+              <span>{{ t('Nuevo ' ~ et.label, 'New ' ~ et.label, app_lang) }}</span>
+            </a>
+          {% endfor %}
+        {% else %}
+          <a class="ppx-btn" href="{{ url_for('admin.admin_exercises_new_tf') }}" style="display:inline-flex; align-items:center; font-size:2rem; padding:1.2rem 1.6rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/tf.svg') }}" style="width:40px;height:40px;margin-right:12px;" loading="lazy">
+            <span>{{ t('Nuevo V/F', 'New T/F', app_lang) }}</span>
+          </a>
+          <a class="ppx-btn" href="{{ url_for('admin.admin_exercises_new_mcq') }}" style="display:inline-flex; align-items:center; font-size:2rem; padding:1.2rem 1.6rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/mcq.svg') }}" style="width:40px;height:40px;margin-right:12px;" loading="lazy">
+            <span>{{ t('Nuevo MCQ', 'New MCQ', app_lang) }}</span>
+          </a>
+          <a class="ppx-btn" href="{{ url_for('admin.admin_exercises_new_dictation') }}" style="display:inline-flex; align-items:center; font-size:2rem; padding:1.2rem 1.6rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/dictation.svg') }}" style="width:40px;height:40px;margin-right:12px;" loading="lazy">
+            <span>{{ t('Nuevo Dictado', 'New Dictation', app_lang) }}</span>
+          </a>
+        {% endif %}
+      </div>
+      <h1 style="margin:0;">{{ t('Biblioteca de ejercicios', 'Exercises Library', app_lang) }}</h1>
+    </header>
+
+    <!-- Filters -->
+    <form id="ppx-ex-filters" class="ppx-card" style="padding:12px; margin-bottom:12px;">
+      <div class="ppx-row" style="gap:12px; flex-wrap:wrap;">
+        <div class="ppx-field" style="flex:0 0 180px;">
+          <label for="flt-type">{{ t('Tipo', 'Type', app_lang) }}</label>
+          <select id="flt-type" class="ppx-select">
+            <option value="">{{ t('Todos', 'All', app_lang) }}</option>
+            <option value="tf">True/False</option>
+            <option value="mcq">MCQ</option>
+            <option value="dictation">Dictation</option>
+            <option value="fitb">Fill-in</option>
+            <option value="dnd">Drag & Drop</option>
+          </select>
+        </div>
+        <div class="ppx-field" style="flex:0 0 180px;">
+          <label for="flt-status">{{ t('Estado', 'Status', app_lang) }}</label>
+          <select id="flt-status" class="ppx-select">
+            <option value="">{{ t('Todos', 'All', app_lang) }}</option>
+            <option value="draft">{{ t('Borrador', 'Draft', app_lang) }}</option>
+            <option value="published">{{ t('Publicado', 'Published', app_lang) }}</option>
+            <option value="archived">{{ t('Archivado', 'Archived', app_lang) }}</option>
+          </select>
+        </div>
+        <div class="ppx-field" style="flex:0 0 160px;">
+          <label for="flt-level">{{ t('Nivel', 'Level', app_lang) }}</label>
+          <select id="flt-level" class="ppx-select">
+            <option value="">{{ t('Todos', 'All', app_lang) }}</option>
+            <option value="A1">A1</option><option value="A2">A2</option>
+            <option value="B1">B1</option><option value="B2">B2</option>
+            <option value="C1">C1</option><option value="C2">C2</option>
+          </select>
+        </div>
+        <div class="ppx-field" style="flex:1;">
+          <label for="flt-q">{{ t('Buscar', 'Search', app_lang) }}</label>
+          <input id="flt-q" class="ppx-input" placeholder="{{ t('Título, slug o etiqueta…', 'Title, slug or tag…', app_lang) }}">
+        </div>
+        <div class="ppx-row" style="gap:8px; align-items:flex-end;">
+          <button id="flt-apply" type="button" class="ppx-btn">{{ t('Aplicar', 'Apply', app_lang) }}</button>
+          <button id="flt-clear" type="button" class="ppx-btn ppx-btn--ghost">{{ t('Limpiar', 'Clear', app_lang) }}</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Table -->
+    <div class="ppx-card" style="padding:0; overflow:auto;">
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:#f8fafc;">
+            <th style="text-align:left; padding:10px; border-bottom:1px solid var(--ppx-line); width:34%;">{{ t('Título', 'Title', app_lang) }}</th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid var(--ppx-line); width:10%;">{{ t('Tipo', 'Type', app_lang) }}</th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid var(--ppx-line); width:10%;">{{ t('Nivel', 'Level', app_lang) }}</th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid var(--ppx-line); width:16%;">{{ t('Etiquetas', 'Tags', app_lang) }}</th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid var(--ppx-line); width:10%;">{{ t('Versión', 'Version', app_lang) }}</th>
+            <th style="text-align:left; padding:10px; border-bottom:1px solid var(--ppx-line); width:10%;">{{ t('Estado', 'Status', app_lang) }}</th>
+            <th style="text-align:right; padding:10px; border-bottom:1px solid var(--ppx-line); width:10%;">{{ t('Acciones', 'Actions', app_lang) }}</th>
+          </tr>
+        </thead>
+        <tbody id="ppx-ex-table-body">
+          <tr>
+            <td colspan="7" style="padding:14px; color:#6b7280;">
+              {{ t('Cargando…', 'Loading…', app_lang) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Empty state (hidden by default; shown via JS when no rows) -->
+    <div id="ppx-ex-empty" class="ppx-state--ok" style="display:none; margin-top:12px;">
+      {{ t('No hay ejercicios aún. Creá uno nuevo.', 'No exercises yet. Create a new one.', app_lang) }}
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script defer src="{{ url_for('static', filename='js/admin_exercises_list.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/nene/nene.mp3?v=1764264513",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Affectionate, informal way to refer to a young child.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Forma afectuosa y coloquial de referirse a un niño o niña.</span></p>",
+      "domain": [
+        "familia"
+      ],
+      "equivalents_en": [
+        "kid",
+        "child",
+        "little boy",
+        "little girl"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/nene/nene_ex_01.mp3?v=1764264534",
+          "en": "It’s awful! She won’t even let him drink soda. A total nightmare — that `kid` is living in hell. I almost called the police, I swear.",
+          "es": "¡Terrible! No lo deja tomar gaseosa tampoco. Un desastre, un infierno vive el `nene`. Pensé en llamar a la policía, mirá lo que te digo.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas Negras: P*tas y Chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "afectuoso"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "nenito",
+        "fem_pl": "nenas",
+        "fem_sg": "nena",
+        "masc_pl": "nenes",
+        "masc_sg": "nene"
+      }
+    }
+  ],
+  "slug": "nene",
+  "word": "nene"
+}

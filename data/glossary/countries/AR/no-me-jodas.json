@@ -1,0 +1,62 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/no-me-jodas/no_me_jodas.mp3?v=1764266861",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Expression used to show annoyance or demand that someone stop bothering you.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Expresión usada para mostrar fastidio o para exigir que alguien deje de molestar.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "don’t mess with me",
+        "don’t bother me",
+        "give me a break",
+        "cut the crap",
+        "don’t fuck with me"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/no-me-jodas/no_me_jodas_ex_01.mp3?v=1764266880",
+          "en": "`Don’t mess with me` anymore, I’m begging you.",
+          "es": "`No me jodas` más, te lo pido por favor.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con Hijos",
+            "type": "series",
+            "year": "2005"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_interjectiva",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "no-me-jodas",
+  "word": "no me jodas"
+}

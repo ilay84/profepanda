@@ -1,0 +1,11 @@
+<!-- templates/_i18n_inline_editor.html -->
+<script>
+  window.PPX_I18N = {
+    canEdit: {{ (can_edit_i18n|default(false))|tojson }},
+    getURL: {{ (i18n_get_url|default('/admin/i18n/key'))|tojson }},
+    updateURL: {{ (i18n_update_url|default('/admin/i18n/update'))|tojson }},
+    csrfToken: {{ (csrf_token|default(''))|tojson }},
+    currentLang: {{ (app_lang|default('es'))|tojson }}
+  };
+</script>
+<script defer src="{{ url_for('static', filename='js/i18n_inline.js') }}"></script>

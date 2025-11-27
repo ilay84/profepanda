@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Admin · {{ t('Previsualización', 'Preview', app_lang) }} · {{ article.title or slug }}{% endblock %}
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+
+{% block content %}
+  <div class="ppx-card ppx-card--pad">
+    <div class="ppx-row" style="justify-content:space-between;align-items:center;gap:.75rem;">
+      <div>
+        <h1 class="ppx-h1" style="margin:0;">{{ article.title or slug }}</h1>
+        <div class="ppx-muted" style="margin-top:.25rem;">
+          <span>{{ t('Slug', 'Slug', app_lang) }}:</span>
+          <code>{{ slug }}</code>
+        </div>
+      </div>
+      <div class="ppx-row" style="gap:.5rem;flex-wrap:wrap;">
+        <a class="ppx-btn" href="{{ url_for('admin.admin_articles_edit', slug=slug) }}" title="{{ t('Editar', 'Edit', app_lang) }}" aria-label="{{ t('Editar', 'Edit', app_lang) }}">
+          {{ t('Editar', 'Edit', app_lang) }}
+        </a>
+        <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('articles.article_view', slug=slug, _=(article.updated_at or article.created_at or '1')) }}" target="_blank" rel="noopener" title="{{ t('Ver publicado', 'View published', app_lang) }}" aria-label="{{ t('Ver publicado', 'View published', app_lang) }}">
+          {{ t('Ver publicado', 'View published', app_lang) }}
+        </a>
+        <a class="ppx-btn ppx-btn--ghost" href="{{ url_for('admin.admin_articles_index') }}" title="{{ t('Volver a la lista', 'Back to list', app_lang) }}" aria-label="{{ t('Volver a la lista', 'Back to list', app_lang) }}">
+          {{ t('Volver a la lista', 'Back to list', app_lang) }}
+        </a>
+      </div>
+    </div>
+
+    <hr class="ppx-hr" style="margin:1rem 0;">
+
+    <article class="ppx-content">
+      {{ (article.html or '')|safe }}
+    </article>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <!-- Load the same accordion assets used on public pages -->
+  <script src="{{ url_for('static', filename='js/public_acc.js') }}?v=adminprev1"></script>
+  <script>
+    try { console.info('[admin preview] public_acc loaded for', location.pathname); } catch(_) {}
+  </script>
+{% endblock %}

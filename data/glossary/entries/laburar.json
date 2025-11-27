@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/laburar/laburar.mp3?v=1764208273",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Lunfardo verb borrowed from Italian <em data-start=\"333\" data-end=\"343\">lavorare</em>, meaning to work.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Verbo del lunfardo, tomado del italiano <em data-start=\"249\" data-end=\"259\">lavorare</em>, que significa trabajar.</span></p>",
+      "domain": [
+        "sociedad",
+        "trabajo"
+      ],
+      "equivalents_en": [
+        "to work",
+        "to get to work",
+        "to earn a living"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/laburar/laburar_ex_01.mp3?v=1764181995",
+          "en": "Do what you have to do. `Get to work`, man!",
+          "es": "Hagan lo que tengan que hacer. ¡`Laburen`, viejo!",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "verbo_intransitivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "laburar",
+  "word": "laburar"
+}

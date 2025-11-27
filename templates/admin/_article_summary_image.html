@@ -1,0 +1,121 @@
+{% set _image_url = (article.image_url if article is defined else request.form.get('lead_image_url') if request is defined else '') %}
+{% set _summary_html = (article.summary_html|safe if article is defined else request.form.get('summary_html') if request is defined else '') %}
+
+<section class="ppx-card ppx-card--pad" aria-labelledby="article-meta-heading">
+  <h2 id="article-meta-heading" class="ppx-h2" style="margin-top:0;">{{ t('Resumen e imagen', 'Summary & image', app_lang) }}</h2>
+
+  <!-- Lead Image -->
+  <div class="ppx-field" style="margin-top:.75rem;">
+    <label for="lead_image_file" class="ppx-label">{{ t('Imagen principal (lista pública)', 'Lead image (public list)', app_lang) }}</label>
+    <div class="ppx-muted" style="margin:.25rem 0 .75rem;">
+      {{ t('Ideal: 960x540 px (16:9). JPG o PNG.', 'Ideal: 960x540 px (16:9). JPG or PNG.', app_lang) }}
+    </div>
+
+    <div id="ppx-lead-image-preview"
+         role="img"
+         aria-label="{{ t('Vista previa de la imagen principal', 'Lead image preview', app_lang) }}"
+         style="
+           width:100%;
+           max-width:560px;
+           aspect-ratio:16/9;
+           border:1px solid #e5e7eb;
+           border-radius:12px;
+           background:#f3f4f6 {{ 'url(' ~ _image_url ~ ')' if _image_url else '' }} center/cover no-repeat;
+           margin:.25rem auto .75rem;
+         ">
+    </div>
+
+    <div class="ppx-row" style="gap:.75rem;align-items:center;margin-top:.75rem;flex-wrap:wrap;">
+      <input id="lead_image_file" name="lead_image_file" type="file" accept="image/*" class="ppx-input" />
+      <input type="hidden" id="lead_image_url" name="lead_image_url" value="{{ _image_url }}">
+      {% if _image_url %}
+        <a class="ppx-link" href="{{ _image_url }}" target="_blank" rel="noopener">{{ t('Abrir imagen actual', 'Open current image', app_lang) }}</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Summary Editor -->
+  <div class="ppx-field" style="margin-top:1.25rem;">
+    <label for="ppx-summary-editor" class="ppx-label">{{ t('Resumen (aparece en la lista)', 'Summary (appears in the list)', app_lang) }}</label>
+    <div id="ppx-summary-editor"
+         class="ppx-input"
+         style="min-height:180px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;">
+    </div>
+    <input type="hidden" id="summary_html" name="summary_html" value="{{ _summary_html|tojson|safe }}">
+    <div class="ppx-muted" style="margin-top:.5rem;">
+      {{ t('Formato permitido: negrita, cursiva, enlaces y color de texto.', 'Allowed: bold, italic, links, and text color.', app_lang) }}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ppx-label{font:600 14px/1.4 Montserrat,system-ui}
+  .ppx-input{font:500 14px/1.4 Montserrat,system-ui}
+  .ppx-muted{color:#6b7280;font:500 12px/1.4 Montserrat,system-ui}
+  .ppx-link{font:600 13px/1.4 Montserrat,system-ui;color:#475dd7;text-decoration:underline}
+  .ql-toolbar.ql-snow{border-radius:10px 10px 0 0}
+  .ql-container.ql-snow{border-radius:0 0 10px 10px;min-height:110px}
+</style>
+
+<script>
+(function(){
+  function ready(fn){ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fn);} else { fn(); } }
+  function loadScript(src){ return new Promise(function(res,rej){ var s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=rej; document.head.appendChild(s); }); }
+  function loadCSS(href){ return new Promise(function(res,rej){ var l=document.createElement('link'); l.rel='stylesheet'; l.href=href; l.onload=res; l.onerror=rej; document.head.appendChild(l); }); }
+
+  function initSummaryQuill(){
+    var el = document.getElementById('ppx-summary-editor');
+    if(!el || typeof window.Quill === 'undefined') return;
+
+    var q = new Quill(el, {
+      theme: 'snow',
+      modules: { toolbar: [['bold','italic'], [{ 'color': [] }], ['link']] },
+      formats: ['bold','italic','link','color']
+    });
+
+    // Seed existing HTML
+    try {
+      var raw = document.getElementById('summary_html').value || '';
+      var html = (raw && raw[0] === '"') ? JSON.parse(raw) : raw;
+      if (html) { q.clipboard.dangerouslyPasteHTML(html); }
+    } catch(e){ console.warn('[summary] seed error', e); }
+
+    // Sync to hidden input on submit
+    var form = el.closest('form');
+    if (form) {
+      form.addEventListener('submit', function(){
+        var html = el.querySelector('.ql-editor').innerHTML.trim();
+        document.getElementById('summary_html').value = html;
+      });
+    }
+  }
+
+  function initImagePreview(){
+    var input = document.getElementById('lead_image_file');
+    var preview = document.getElementById('ppx-lead-image-preview');
+    if(!input || !preview) return;
+    input.addEventListener('change', function(ev){
+      var file = ev.target.files && ev.target.files[0];
+      if(!file) return;
+      var reader = new FileReader();
+      reader.onload = function(e){
+        preview.style.backgroundImage = 'url(' + e.target.result + ')';
+        var hiddenUrl = document.getElementById('lead_image_url');
+        if (hiddenUrl) hiddenUrl.value = '';
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  ready(async function(){
+    if (typeof window.Quill === 'undefined') {
+      try {
+        await loadCSS('https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css');
+        await loadScript('https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js');
+      } catch(e) { console.error('[summary] Quill load failed', e); }
+    }
+    initSummaryQuill();
+    initImagePreview();
+  });
+})();
+</script>

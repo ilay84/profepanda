@@ -1,0 +1,138 @@
+<!-- templates/_public_bar.html -->
+<nav id="ppx-public-bar" role="navigation" aria-label="Public" style="
+  position: sticky; top: 0; z-index: 50;
+  background: #edeaff; border-bottom: 1px solid #d8d4f2;
+">
+  <div style="
+    max-width: min(98vw, 1760px); margin: 0 auto; padding: .5rem 1.25rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  ">
+    <!-- Left: Brand -->
+    <a href="{{ url_for('public.index') }}" style="
+      display: inline-flex; align-items: center; gap: .5rem; text-decoration: none;
+      color: var(--ppx-color-text, #0f172a); font-family: var(--ppx-font, 'Montserrat', sans-serif);
+      font-weight: 600; letter-spacing: .2px;
+    " aria-label="ProfePanda Home">
+      <img src="{{ url_for('static', filename='assets/logo/header_logo.png') }}" alt="ProfePanda Logo" style="height:30px; width:auto; display:inline-block;">
+      <span></span>
+    </a>
+
+    <!-- Right: Nav menu + Language dropdown -->
+    <div style="display:flex; align-items:center; gap:.5rem;">
+      <!-- Primary dropdown menu -->
+      <details style="position:relative; font-family:var(--ppx-font,'Montserrat',sans-serif);">
+        <summary style="
+          list-style:none; cursor:pointer;
+          display:inline-flex; align-items:center; gap:.5rem;
+          padding:.45rem .8rem; border:1.5px solid var(--ppx-color-line,#d1d5db);
+          border-radius:10px; background:#fff; transition:all .15s ease-in-out;
+          font-size:var(--ppx-font-size-sm,.875rem);
+        " aria-label="{{ t('Abrir menú', 'Open menu', app_lang) }}"
+           onmouseover="this.style.background='#f3f4ff';this.style.borderColor='#c7ccff';"
+           onmouseout="this.style.background='#fff';this.style.borderColor='#d1d5db';">
+          <span aria-hidden="true">☰</span>
+          <span>{{ t('Menú', 'Menu', app_lang) }}</span>
+        </summary>
+        <div style="
+          position:absolute; right:0; margin-top:.4rem; min-width:220px;
+          background:#fff; border:1px solid var(--ppx-color-line,#e5e7eb);
+          border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.08); padding:.35rem;
+        " role="menu" aria-label="{{ t('Navegación', 'Navigation', app_lang) }}">
+          <style>
+            #ppx-public-bar ul[data-menu="primary"] li a span:first-child { display:inline-block; width:18px; height:18px; background-size:contain; background-repeat:no-repeat; background-position:center; text-indent:-9999px; overflow:hidden; }
+            #ppx-public-bar ul[data-menu="primary"] li:nth-child(1) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/homepage.svg') }}'); }
+            #ppx-public-bar ul[data-menu="primary"] li:nth-child(2) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/articlespage.svg') }}'); }
+            #ppx-public-bar ul[data-menu="primary"] li:nth-child(3) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/exercisespage.svg') }}'); }
+            #ppx-public-bar ul[data-menu="primary"] li:nth-child(4) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/glossariespage.svg') }}'); }
+          </style>
+          <ul data-menu="primary" style="list-style:none; margin:0; padding:.25rem;">
+            <li>
+              <a href="{{ url_for('public.index') }}" role="menuitem" style="
+                display:flex; align-items:center; gap:.5rem;
+                text-decoration:none; color:var(--ppx-color-text,#0f172a);
+                padding:.45rem .6rem; border-radius:8px;
+              " onmouseover="this.style.background='#f3f4ff';"
+                 onmouseout="this.style.background='transparent';">
+                <span>🏠</span><span>{{ t('Inicio', 'Home', app_lang) }}</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url_for('public.articles_index') }}" role="menuitem" style="
+                display:flex; align-items:center; gap:.5rem;
+                text-decoration:none; color:var(--ppx-color-text,#0f172a);
+                padding:.45rem .6rem; border-radius:8px;
+              " onmouseover="this.style.background='#f3f4ff';"
+                 onmouseout="this.style.background='transparent';">
+                <span>📝</span><span>{{ t('Artículos', 'Articles', app_lang) }}</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url_for('public.exercises_index') }}" role="menuitem" style="
+                display:flex; align-items:center; gap:.5rem;
+                text-decoration:none; color:var(--ppx-color-text,#0f172a);
+                padding:.45rem .6rem; border-radius:8px;
+              " onmouseover="this.style.background='#f3f4ff';"
+                 onmouseout="this.style.background='transparent';">
+                <span>🎯</span><span>{{ t('Ejercicios', 'Exercises', app_lang) }}</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ url_for('public.glossary_index') }}" role="menuitem" style="
+                display:flex; align-items:center; gap:.5rem;
+                text-decoration:none; color:var(--ppx-color-text,#0f172a);
+                padding:.45rem .6rem; border-radius:8px;
+              " onmouseover="this.style.background='#f3f4ff';"
+                 onmouseout="this.style.background='transparent';">
+                <span>🗺️</span><span>{{ t('Glosarios regionales', 'Regional Glossaries', app_lang) }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Language dropdown (site chrome: ES / EN only) -->
+      <details style="position:relative; font-family: var(--ppx-font,'Montserrat',sans-serif);">
+        <summary style="
+          list-style:none; cursor:pointer;
+          display:inline-flex; align-items:center; gap:.5rem;
+          padding:.45rem .8rem; border:1.5px solid var(--ppx-color-line,#d1d5db);
+          border-radius:999px; background:#fff;
+          font-size:var(--ppx-font-size-sm,.875rem);
+        " aria-label="{{ t('Cambiar idioma', 'Change language', app_lang) }}">
+          <span aria-hidden="true">🌐</span>
+          <span>{{ 'Español' if app_lang=='es' else 'English' }}</span>
+        </summary>
+        <div style="
+          position:absolute; right:0; margin-top:.4rem; min-width:180px;
+          background:#fff; border:1px solid var(--ppx-color-line,#e5e7eb);
+          border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.08); padding:.35rem;
+        " role="menu" aria-label="{{ t('Idiomas', 'Languages', app_lang) }}">
+          <ul style="list-style:none; margin:0; padding:.25rem;">
+            <li>
+              <a href="?lang=es" role="menuitem" style="
+                display:flex; align-items:center; justify-content:space-between;
+                text-decoration:none; color:var(--ppx-color-text,#0f172a);
+                padding:.45rem .6rem; border-radius:8px;
+              " onmouseover="this.style.background='#f3f4ff';"
+                onmouseout="this.style.background='transparent';"
+                aria-current="{{ 'true' if app_lang=='es' else 'false' }}">
+                <span>Español</span>{% if app_lang=='es' %}<span aria-hidden="true">✓</span>{% endif %}
+              </a>
+            </li>
+            <li>
+              <a href="?lang=en" role="menuitem" style="
+                display:flex; align-items:center; justify-content:space-between;
+                text-decoration:none; color:var(--ppx-color-text,#0f172a);
+                padding:.45rem .6rem; border-radius:8px;
+              " onmouseover="this.style.background='#f3f4ff';"
+                onmouseout="this.style.background='transparent';"
+                aria-current="{{ 'true' if app_lang=='en' else 'false' }}">
+                <span>English</span>{% if app_lang=='en' %}<span aria-hidden="true">✓</span>{% endif %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('Nuevo usuario', 'New user', app_lang) }} · ProfePanda{% endblock %}
+
+{% block admin_nav %}
+  {% include "_admin_bar.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="ppx-card" style="max-width:600px;margin:1.5rem auto;padding:1rem;border:1px solid #e5e7eb;border-radius:14px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);">
+    <h1 class="ppx-h2" style="margin-bottom:.75rem;">{{ t('Nuevo usuario', 'New user', app_lang) }}</h1>
+    <form action="{{ url_for('accounts_manage.users_create') }}" method="post" style="display:flex;flex-direction:column;gap:.75rem;">
+      <label><strong>{{ t('Correo', 'Email', app_lang) }}</strong></label>
+      <input name="email" type="email" required style="padding:.5rem;border:1px solid #e5e7eb;border-radius:8px;">
+
+      <label><strong>{{ t('Nombre', 'Name', app_lang) }}</strong></label>
+      <input name="name" required style="padding:.5rem;border:1px solid #e5e7eb;border-radius:8px;">
+
+      <label><strong>{{ t('Rol', 'Role', app_lang) }}</strong></label>
+      <select name="role" style="padding:.5rem;border:1px solid #e5e7eb;border-radius:8px;">
+        <option value="author">Author</option>
+        <option value="editor">Editor</option>
+        <option value="super">Super</option>
+      </select>
+
+      <label><strong>{{ t('Estado', 'Status', app_lang) }}</strong></label>
+      <select name="status" style="padding:.5rem;border:1px solid #e5e7eb;border-radius:8px;">
+        <option value="active">{{ t('Activo', 'Active', app_lang) }}</option>
+        <option value="disabled">{{ t('Deshabilitado', 'Disabled', app_lang) }}</option>
+      </select>
+
+      <label><strong>{{ t('Contraseña', 'Password', app_lang) }}</strong></label>
+      <input name="password" type="password" required style="padding:.5rem;border:1px solid #e5e7eb;border-radius:8px;">
+
+      <button type="submit" class="ppx-btn" style="margin-top:.5rem;padding:.65rem .9rem;border:0;border-radius:10px;background:#475dd7;color:#fff;font:700 14px/1 Montserrat,system-ui;cursor:pointer;">
+        {{ t('Crear usuario', 'Create user', app_lang) }}
+      </button>
+    </form>
+  </div>
+{% endblock %}

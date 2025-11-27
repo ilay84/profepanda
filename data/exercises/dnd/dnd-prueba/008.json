@@ -1,0 +1,45 @@
+{
+  "type": "dnd",
+  "slug": "dnd-prueba",
+  "title_es": "DND prueba",
+  "title_en": "DND test",
+  "instructions_es": "Arrastra y suelta cada categoría en la columna correcta.\nDecide si normalmente se expresa con SER (para esencias o cualidades inherentes) o con ESTAR (para situaciones o estados temporales).",
+  "instructions_en": "Drag and drop each category into the correct column.\nDecide whether it’s something we usually express with SER (used for essences or inherent qualities) or with ESTAR (used for situations or temporary states).",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "draft",
+  "items": [
+    {
+      "id": "i1",
+      "order": 1,
+      "columns": [
+        {
+          "id": "col_q1vffb",
+          "label_es": "SER (esencias)",
+          "label_en": "SER (essences)"
+        },
+        {
+          "id": "col_l6udtz",
+          "label_es": "ESTAR (situaciones)",
+          "label_en": "ESTAR (situations)"
+        }
+      ],
+      "tokens": [
+        {
+          "id": "tok_i2x078",
+          "text_es": "nacionalidad y origen",
+          "text_en": "nationality and origin",
+          "correct": "col_q1vffb"
+        }
+      ]
+    }
+  ],
+  "version": 8,
+  "created_at": "2025-11-12T15:21:19Z",
+  "created_by": "admin",
+  "checksum": "sha256:8ad18aad8cfe4b92425b22662b92f63ea777353770df543cb1ce3bae7c963510"
+}

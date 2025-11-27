@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('Nuevo ejercicio - Dictado', 'New Exercise - Dictation', app_lang) }} · ProfePanda{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  {% include "_ppx_head_assets.html" %}
+{% endblock %}
+
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+
+{% block content %}
+  <section class="ppx-container" style="padding-top:0; margin:0; max-width:none;">
+    <div class="ppx-row" style="justify-content:flex-end;margin:8px 0 12px 0;">
+      <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_exercises_index') }}">{{ t('Volver a Ejercicios', 'Back to Exercises', app_lang) }}</a>
+    </div>
+    <header class="ppx-row" style="align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;">
+      <h1 style="margin:0;">{{ t('Ejercicio: Dictado', 'Exercise: Dictation', app_lang) }}</h1>
+      <div class="ppx-chip">{{ t('Constructor', 'Builder', app_lang) }}</div>
+    </header>
+
+    <form id="ppx-dictation-form" class="ppx-card" style="margin-bottom:12px; padding:20px; max-width:1180px; width:100%; box-sizing:border-box;"
+          data-builder-mode="{{ builder_mode|default('new') }}"
+          data-builder-slug="{{ builder_slug|default('') }}">
+      <div class="ppx-col" style="gap:16px;">
+        <div class="ppx-field">
+          <label for="ex-slug">{{ t('Slug', 'Slug', app_lang) }}</label>
+          <input id="ex-slug" name="slug" class="ppx-input" placeholder="dictation-ser-estar" autocomplete="off" value="{{ builder_slug or (builder_prefill.slug if builder_prefill else '') }}">
+          <div class="ppx-field__help">{{ t('Usá minúsculas y guiones. No uses espacios.', 'Use lowercase and hyphens. No spaces.', app_lang) }}</div>
+        </div>
+
+        <div class="ppx-field">
+          <label for="ex-title-es">{{ t('Título (ES)', 'Title (ES)', app_lang) }}</label>
+          <input id="ex-title-es" name="title_es" class="ppx-input" placeholder="Dictado: SER o ESTAR" autocomplete="off" value="{{ (builder_prefill.title_es if builder_prefill else '') }}">
+        </div>
+
+        <div class="ppx-field">
+          <label for="ex-title-en">{{ t('Título (EN)', 'Title (EN)', app_lang) }}</label>
+          <input id="ex-title-en" name="title_en" class="ppx-input" placeholder="Dictation: SER or ESTAR" autocomplete="off" value="{{ (builder_prefill.title_en if builder_prefill else '') }}">
+        </div>
+
+        <div class="ppx-field">
+          <label for="ex-inst-es">{{ t('Instrucciones (ES)', 'Instructions (ES)', app_lang) }}</label>
+          <textarea id="ex-inst-es" name="instructions_es" class="ppx-textarea" rows="3" placeholder="{{ t('Escuchá el audio y transcribí el texto.', 'Listen and transcribe the text.', app_lang) }}">{{ (builder_prefill.instructions_es if builder_prefill else '') }}</textarea>
+        </div>
+
+        <div class="ppx-field">
+          <label for="ex-inst-en">{{ t('Instrucciones (EN)', 'Instructions (EN)', app_lang) }}</label>
+          <textarea id="ex-inst-en" name="instructions_en" class="ppx-textarea" rows="3" placeholder="Listen and transcribe the text.">{{ (builder_prefill.instructions_en if builder_prefill else '') }}</textarea>
+        </div>
+
+        <div class="ppx-row" style="gap:12px; flex-wrap:wrap; max-width:1000px;">
+          <div class="ppx-field" style="flex:0 0 200px;">
+            <label for="ex-level">{{ t('Nivel', 'Level', app_lang) }}</label>
+            <select id="ex-level" name="level" class="ppx-select">
+              <option value="A1">A1</option><option value="A2" selected>A2</option>
+              <option value="B1">B1</option><option value="B2">B2</option>
+              <option value="C1">C1</option><option value="C2">C2</option>
+            </select>
+          </div>
+          <div class="ppx-field" style="flex:1; max-width:780px;">
+            <label class="ppx-label">{{ t('Temas gramaticales', 'Grammar topics', app_lang) }}</label>
+            <div class="ppx-taxonomy" data-lang="{{ (app_lang or 'es')|lower }}">
+              <input type='hidden' id='taxonomy_paths' name='taxonomy_paths' value='{{ (builder_prefill.taxonomy_paths if builder_prefill else [])|tojson }}'>
+            </div>
+            <div class="ppx-muted" style="margin-top:.5rem;">
+              {{ t('Seleccione uno o más temas para clasificar este ejercicio.', 'Select one or more topics to categorize this exercise.', app_lang) }}
+            </div>
+          </div>
+        </div>
+
+        <details class="ppx-card" open style="padding:12px; margin:0 12px 0 0; width:calc(100% - 12px); box-sizing:border-box;">
+          <summary style="cursor:pointer; list-style:none; display:flex; align-items:center; gap:8px;">
+            <strong>{{ t('Opciones', 'Options', app_lang) }}</strong>
+          </summary>
+          <div class="ppx-row" style="gap:16px; flex-wrap:wrap; margin-top:10px;">
+            <label class="ppx-chip"><input type="checkbox" id="opt-ignore-case"> {{ t('Ignorar mayúsculas', 'Ignore case', app_lang) }}</label>
+            <label class="ppx-chip"><input type="checkbox" id="opt-ignore-punct" checked> {{ t('Ignorar puntuación', 'Ignore punctuation', app_lang) }}</label>
+            <label class="ppx-chip"><input type="checkbox" id="opt-normalize-ws" checked> {{ t('Normalizar espacios', 'Normalize whitespace', app_lang) }}</label>
+            <label class="ppx-chip"><input type="checkbox" id="opt-ignore-accents" checked> {{ t('Ignorar acentos', 'Ignore accents', app_lang) }}</label>
+            <label class="ppx-chip"><input type="checkbox" id="opt-autoplay"> {{ t('Auto-reproducir', 'Auto-play', app_lang) }}</label>
+            <label class="ppx-chip"><input type="checkbox" id="opt-multiline"> {{ t('Entrada multilínea', 'Multiline input', app_lang) }}</label>
+            <div class="ppx-field" style="min-width:180px;">
+              <label>{{ t('Mín. caracteres para habilitar Verificar', 'Min chars to enable Check', app_lang) }}</label>
+              <input id="opt-min-chars" class="ppx-input" type="number" min="0" value="1">
+            </div>
+            <div class="ppx-field" style="min-width:180px;">
+              <label>{{ t('Intentos máximos', 'Max attempts', app_lang) }}</label>
+              <input id="opt-attempts" class="ppx-input" type="number" min="1" value="1">
+            </div>
+            <label class="ppx-chip"><input type="checkbox" id="opt-allow-retry"> {{ t('Permitir reintento', 'Allow retry', app_lang) }}</label>
+          </div>
+        </details>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--ppx-line);margin:16px 0;">
+
+      <div class="ppx-col" id="ppx-items" style="gap:12px; max-width:100%;">
+        <div class="ppx-row" style="align-items:center; justify-content:space-between; gap:16px;">
+          <h2 style="margin:.25rem 0;">{{ t('Items', 'Items', app_lang) }}</h2>
+          <button id="ppx-add-item" type="button" class="ppx-btn ppx-btn--primary">{{ t('Agregar ítem', 'Add item', app_lang) }}</button>
+        </div>
+
+        {# Server-side hydration of existing items for reliable prefill #}
+        {% if builder_prefill and ('items' in builder_prefill) %}
+          {% for it in builder_prefill['items'] %}
+          <details class="ppx-card" open style="padding:12px; max-width:100%; box-sizing:border-box;">
+            <summary style="cursor:pointer; list-style:none; display:flex; align-items:center; gap:8px;">
+              <span class="ppx-chip" data-item-handle>#{{ loop.index }}</span>
+              <strong class="ppx-item-title" style="flex:1;">{{ t('Ítem', 'Item', app_lang) }} {{ loop.index }}</strong>
+              <button type="button" class="ppx-btn ppx-btn--ghost" data-item-up title="{{ t('Subir', 'Move up', app_lang) }}">
+                <img src="{{ url_for('static', filename='assets/icons/up.svg') }}" alt="" width="16" height="16">
+              </button>
+              <button type="button" class="ppx-btn ppx-btn--ghost" data-item-down title="{{ t('Bajar', 'Move down', app_lang) }}">
+                <img src="{{ url_for('static', filename='assets/icons/down.svg') }}" alt="" width="16" height="16">
+              </button>
+              <button type="button" class="ppx-btn ppx-btn--danger" data-item-del>{{ t('Quitar', 'Remove', app_lang) }}</button>
+            </summary>
+            <div class="ppx-col" style="gap:12px; margin-top:8px;">
+              <div class="ppx-row" style="gap:12px; flex-wrap:wrap; align-items:flex-end;">
+                <div class="ppx-field" style="flex:1; min-width:320px;">
+                  <label>{{ t('Audio (URL)', 'Audio (URL)', app_lang) }}</label>
+                  <input class="ppx-input" data-field="audio_url" value="{{ it.audio_url }}" placeholder="https://.../audio.mp3">
+                  <div class="ppx-row" style="gap:8px; margin-top:8px;">
+                    <input type="file" accept="audio/*" data-audio-file style="display:none;">
+                    <button type="button" class="ppx-btn" data-audio-upload>
+                      <img src="{{ url_for('static', filename='assets/icons/upload.svg') }}" alt="" width="16" height="16" style="vertical-align:middle; margin-right:6px;">
+                      {{ t('Cargar audio', 'Upload audio', app_lang) }}
+                    </button>
+                  </div>
+                </div>
+                <div class="ppx-field" style="flex:0 0 260px;">
+                  <label>{{ t('Previsualización', 'Preview', app_lang) }}</label>
+                  <div class="ppx-row" style="gap:8px; align-items:center;">
+                    <button type="button" class="ppx-btn" data-audio-preview>{{ t('Probar', 'Test', app_lang) }}</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ppx-field">
+                <label>{{ t('Transcripción (neutral)', 'Transcript (neutral)', app_lang) }}</label>
+                <textarea class="ppx-textarea" rows="2" data-field="transcript">{{ it.transcript }}</textarea>
+              </div>
+
+              <div class="ppx-field">
+                <label>{{ t('Variantes aceptadas (una por línea)', 'Accepted variants (one per line)', app_lang) }}</label>
+                <textarea class="ppx-textarea" rows="2" data-field="variants">{{ (it.variants or [])|join('\n') }}</textarea>
+              </div>
+
+              <div class="ppx-row" style="gap:12px; flex-wrap:wrap;">
+                <div class="ppx-field" style="flex:1; min-width:300px;">
+                  <label>{{ t('Pista (ES)', 'Hint (ES)', app_lang) }}</label>
+                  <input class="ppx-input" data-field="hint_es" value="{{ it.hint_es or '' }}">
+                </div>
+                <div class="ppx-field" style="flex:1; min-width:300px;">
+                  <label>{{ t('Pista (EN)', 'Hint (EN)', app_lang) }}</label>
+                  <input class="ppx-input" data-field="hint_en" value="{{ it.hint_en or '' }}">
+                </div>
+              </div>
+            </div>
+          </details>
+          {% endfor %}
+        {% endif %}
+
+        <template id="ppx-item-template">
+          <details class="ppx-card" open style="padding:12px; max-width:100%; box-sizing:border-box;">
+            <summary style="cursor:pointer; list-style:none; display:flex; align-items:center; gap:8px;">
+              <span class="ppx-chip" data-item-handle>#1</span>
+              <strong class="ppx-item-title" style="flex:1;">{{ t('Nuevo ítem', 'New item', app_lang) }}</strong>
+              <button type="button" class="ppx-btn ppx-btn--ghost" data-item-up title="{{ t('Subir', 'Move up', app_lang) }}">
+                <img src="{{ url_for('static', filename='assets/icons/up.svg') }}" alt="" width="16" height="16">
+              </button>
+              <button type="button" class="ppx-btn ppx-btn--ghost" data-item-down title="{{ t('Bajar', 'Move down', app_lang) }}">
+                <img src="{{ url_for('static', filename='assets/icons/down.svg') }}" alt="" width="16" height="16">
+              </button>
+              <button type="button" class="ppx-btn ppx-btn--danger" data-item-del>{{ t('Quitar', 'Remove', app_lang) }}</button>
+            </summary>
+            <div class="ppx-col" style="gap:12px; margin-top:8px;">
+              <div class="ppx-row" style="gap:12px; flex-wrap:wrap; align-items:flex-end;">
+                <div class="ppx-field" style="flex:1; min-width:420px;">
+                  <label>{{ t('Audio (URL)', 'Audio (URL)', app_lang) }}</label>
+                  <div class="ppx-row" style="gap:8px; align-items:center;">
+                    <input class="ppx-input" data-field="audio_url" placeholder="https://.../audio.mp3" style="flex:1;">
+                    <button type="button" class="ppx-btn" data-audio-preview>{{ t('Probar', 'Test', app_lang) }}</button>
+                  </div>
+                  <div class="ppx-row" style="gap:8px; margin-top:8px;">
+                    <input type="file" accept="audio/*" data-audio-file style="display:none;">
+                    <button type="button" class="ppx-btn" data-audio-upload>
+                      <img src="{{ url_for('static', filename='assets/icons/upload.svg') }}" alt="" width="16" height="16" style="vertical-align:middle; margin-right:6px;">
+                      {{ t('Cargar audio', 'Upload audio', app_lang) }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ppx-field">
+                <label>{{ t('Transcripción (neutral)', 'Transcript (neutral)', app_lang) }}</label>
+                <textarea class="ppx-textarea" rows="2" data-field="transcript"></textarea>
+              </div>
+
+              <div class="ppx-field">
+                <label>{{ t('Variantes aceptadas (una por línea)', 'Accepted variants (one per line)', app_lang) }}</label>
+                <textarea class="ppx-textarea" rows="2" data-field="variants"></textarea>
+              </div>
+
+              <div class="ppx-row" style="gap:12px; flex-wrap:wrap;">
+                <div class="ppx-field" style="flex:1; min-width:300px;">
+                  <label>{{ t('Pista (ES)', 'Hint (ES)', app_lang) }}</label>
+                  <input class="ppx-input" data-field="hint_es">
+                </div>
+                <div class="ppx-field" style="flex:1; min-width:300px;">
+                  <label>{{ t('Pista (EN)', 'Hint (EN)', app_lang) }}</label>
+                  <input class="ppx-input" data-field="hint_en">
+                </div>
+              </div>
+            </div>
+          </details>
+        </template>
+      </div>
+
+      <script src="{{ url_for('static', filename='js/admin_taxonomy_picker.js') }}"></script>
+    </form>
+
+    <div class="ppx-card" style="position: sticky; bottom: 0; margin-top:16px; padding:12px; display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:1180px; width:100%; box-sizing:border-box;">
+      <div class="ppx-row" style="gap:8px;">
+        <button id="ppx-save-draft" type="button" class="ppx-btn">{{ t('Guardar borrador', 'Save draft', app_lang) }}</button>
+        <button id="ppx-preview" type="button" class="ppx-btn ppx-btn--primary">{{ t('Vista previa', 'Preview', app_lang) }}</button>
+        <button id="ppx-export-json" type="button" class="ppx-btn">{{ t('Exportar JSON', 'Export JSON', app_lang) }}</button>
+      </div>
+      <div class="ppx-row" style="gap:8px;">
+        <button id="ppx-publish" type="button" class="ppx-btn ppx-btn--ok" disabled>{{ t('Publicar', 'Publish', app_lang) }}</button>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    window.PPX_BUILDER = {
+      mode: "{{ builder_mode|default('new') }}",
+      slug: "{{ builder_slug|default('') }}"
+    };
+    // Embed prefill JSON for edit mode to avoid fetch race/caching
+    window.PPX_PREFILL = {{ (builder_prefill or {})|tojson|safe }};
+  </script>
+  <script defer src="{{ url_for('static', filename='js/ppx-json-editor.js') }}?v=20251122a"></script>
+  <script defer src="{{ url_for('static', filename='js/admin_builder_dictation.js') }}?v=20251117a"></script>
+{% endblock %}

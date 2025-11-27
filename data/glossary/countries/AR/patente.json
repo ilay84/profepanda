@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/patente/patente.mp3?v=1764267847",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Alphanumeric identification number displayed on a vehicle’s license plate.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Número de identificación alfanumérico que figura en la placa de un vehículo.</span></p>",
+      "domain": [
+        "transporte"
+      ],
+      "equivalents_en": [
+        "license plate",
+        "plate number",
+        "registration number",
+        "tag"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/patente/patente_ex_01.mp3?v=1764267834",
+          "en": "The guy’s `license plate` is...",
+          "es": "La `patente` del hombre es...",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "patentes",
+        "fem_sg": "patente",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "patente",
+  "word": "patente"
+}

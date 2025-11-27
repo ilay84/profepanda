@@ -1,0 +1,76 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/flaco/flaco.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Friendly, informal way to address someone, not literally referring to body type.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Forma de dirigirse a alguien de manera cercana o afectuosa, sin referencia literal al físico.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "dude",
+        "man",
+        "buddy",
+        "girl",
+        "sis"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/flaco/flaco_ex_01.mp3?v=1764171440",
+          "en": "Poor `guy`, we really gave him a hard time.",
+          "es": "Pobre `flaco`, cómo le dábamos.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/flaco/flaco_ex_01.mp3?v=1764171586",
+          "en": "Come on, `man` — keep going.",
+          "es": "Dale, `flaco`, seguí.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/flaco/flaco_ex_01.mp3?v=1764171524",
+          "en": "You know what, man? I’ve got plenty of reasons to live.",
+          "es": "¿Y sabés qué, `flaco`? Yo tengo muchas razones para vivir.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "flacas",
+        "fem_sg": "flaca",
+        "masc_pl": "flacos",
+        "masc_sg": "flaco"
+      }
+    }
+  ],
+  "slug": "flaco",
+  "word": "flaco"
+}

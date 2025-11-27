@@ -1,0 +1,47 @@
+{
+  "alt_spellings": [
+    "cachamay"
+  ],
+  "audio": "/media/glossary-audio/entry/cachamai/cachamai.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Argentine brand of herbal teas, also used to refer to a tea from that brand.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Marca argentina de infusiones de hierbas, usada también para referirse al té de esa marca.</span></p>",
+      "domain": [
+        "comida"
+      ],
+      "equivalents_en": [
+        "herbal tea",
+        "tea blend"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/cachamai/cachamai_ex_01.mp3",
+          "en": "Last night I watched a western, had an `herbal tea`, and I was asleep by 11 just like always.",
+          "es": "Yo anoche me vi una película de vaqueros, me tomé un `cachamay` y a las 11 estaba durmiendo como todas las noches.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "cachamai",
+  "word": "Cachamai"
+}

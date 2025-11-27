@@ -1,0 +1,71 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/pendejo/pendejo.mp3?v=1764269202",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Term used for someone young or immature; can sound affectionate among close speakers or dismissive depending on tone and context.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Término usado para referirse a una persona joven o inmadura; puede sonar afectuoso entre cercanos o despectivo según el tono y el contexto.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "kid",
+        "brat",
+        "little shit"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/pendejo/pendejo_ex_01.mp3?v=1764269085",
+          "en": "Um… can you chill out? You’re seriously getting on my nerves, `kid`!",
+          "es": "Este... ¿te tranquilizás? ¡Cómo me tenés las pelotas, `pendejo`!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con Hijos",
+            "type": "series",
+            "year": "2005"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/pendejo/pendejo_ex_02.mp3?v=1764269086",
+          "en": "You little `shit` — motherfucker!",
+          "es": "¡Uy, `pendeja`, la concha de tu madre!",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "afectuoso",
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "pendejito",
+        "fem_pl": "pendejas",
+        "fem_sg": "pendeja",
+        "masc_pl": "pendejos",
+        "masc_sg": "pendejo"
+      }
+    }
+  ],
+  "slug": "pendejo",
+  "word": "pendejo"
+}

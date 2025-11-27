@@ -1,0 +1,48 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/cagar/cagar.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">To seriously damage or ruin.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Perjudicar gravemente, arruinar.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "to screw up",
+        "to mess up",
+        "to ruin"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/cagar/cagar_ex_01.mp3",
+          "en": "I just don’t understand these kids, man. Such a desire to `screw up` their family’s life, you know?",
+          "es": "Ahora yo no los entiendo a estos pibes, viejo. Qué ganas de `cagar`le la vida a la familia, ¿no?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Hermanos y detectives",
+            "type": "series",
+            "year": "2006"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "cagar",
+  "word": "cagar"
+}

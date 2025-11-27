@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/boliche/boliche.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Nightclub or late-night bar.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Discoteca o bar nocturno.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "nightclub",
+        "club"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/boliche/boliche_ex_01.mp3",
+          "en": "\"Who was Marcos Gussi? Why does that name sound so familiar?\"\n\"Girl, he owned all the `nightclubs` along the riverfront.\"",
+          "es": "—¿Quién era Marcos Gussi? ¿Por qué me suena tanto?\n—¡Ay, gorda! El dueño de todos los `boliches` de la costanera.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "u_tantivo_ma_culino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": "bolichón",
+        "diminutive": "bolichito",
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "boliches",
+        "masc_sg": "boliche"
+      }
+    }
+  ],
+  "slug": "boliche",
+  "word": "boliche"
+}

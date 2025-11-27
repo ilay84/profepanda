@@ -1,0 +1,67 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/tenencia/tenencia.mp3?v=1764273181",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Legal right to care for and take responsibility for a child or dependent, including decisions about their upbringing and wellbeing.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Derecho legal de cuidar y hacerse responsable de un hijo u otra persona dependiente, incluyendo decisiones sobre su crianza y bienestar.</span></p>",
+      "domain": [
+        "familia",
+        "politica",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "custody",
+        "guardianship"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/tenencia/tenencia_ex_01.mp3?v=1764273182",
+          "en": "I don’t know if you remember they took `custody` of your own kids away from you.",
+          "es": "No sé si recordás que te sacaron `la tenencia` de tus propios hijos.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas Negras: P*tas y Chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/tenencia/tenencia_ex_02.mp3?v=1764273182",
+          "en": "Therefore, we see no need to grant Mr. Fisher shared `custody`.",
+          "es": "Así que no vemos ninguna necesidad de otorgarle al señor Fisher la `tenencia` compartida.",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": "tenencia",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "tenencia",
+  "word": "tenencia"
+}

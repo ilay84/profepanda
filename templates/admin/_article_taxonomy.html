@@ -1,0 +1,15 @@
+<section class="ppx-card ppx-card--pad" aria-labelledby="article-taxonomy-heading">
+  <h2 id="article-taxonomy-heading" class="ppx-h2" style="margin-top:0;">{{ t('Temas gramaticales', 'Grammar topics', app_lang) }}</h2>
+
+  <div class="ppx-field" style="margin-top:.25rem;">
+    <div class="ppx-taxonomy" data-lang="{{ (app_lang or 'es')|lower }}">
+      {% set _tx_paths = (article.taxonomy_paths if article is defined and article.taxonomy_paths is defined else []) %}
+      <input type='hidden' id='taxonomy_paths' name='taxonomy_paths' value='{{ _tx_paths|tojson }}'>
+    </div>
+    <div class="ppx-muted" style="margin-top:.5rem;">
+      {{ t('Seleccioná uno o más temas para clasificar este artículo.', 'Select one or more topics to categorize this article.', app_lang) }}
+    </div>
+  </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/admin_taxonomy_picker.js') }}?v=20251108a"></script>

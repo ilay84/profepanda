@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/mosquita-muerta/mosquita_muerta.mp3?v=1764262125",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A woman who pretends to be innocent or harmless to manipulate or avoid responsibility.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Mujer que aparenta inocencia o ingenuidad para manipular, evadir responsabilidades o pasar desapercibida.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "fake innocent",
+        "two-faced girl",
+        "pretend saint",
+        "sneaky little thing"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/mosquita-muerta/mosquita_muerta_ex_01.mp3?v=1764262125",
+          "en": "Go ahead, act like a `fake innocent` now — tell me you didn’t notice.",
+          "es": "Hacete la `mosquita muerta` ahora, decime que no te diste cuenta.",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "mosquitas muertas",
+        "fem_sg": "mosquita muerta",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "mosquita-muerta",
+  "word": "mosquita muerta"
+}

@@ -1,0 +1,78 @@
+{% extends "public_base.html" %}
+
+{% block title %}ProfePanda · {{ t('Artículos', 'Articles', app_lang) }}{% endblock %}
+
+{% block public_content %}
+<style>@import url("{{ url_for('static', filename='css/public_articles.css') }}");</style>
+  <!-- Header: title row, then centered search row -->
+  <header>
+    <div class="ppx-row" style="align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.5rem;">
+      <h1 class="ppx-h1" style="margin:0;">{{ t('Artículos', 'Articles', app_lang) }}</h1>
+    </div>
+
+    <div class="ppx-center" style="margin-bottom:1rem;">
+      <form action="" method="get" role="search" aria-label="{{ t('Buscar artículos', 'Search articles', app_lang) }}" style="max-width:720px;margin:0 auto;display:flex;gap:.5rem;align-items:center;justify-content:center;">
+        <label for="q" class="ppx-visually-hidden">{{ t('Buscar', 'Search', app_lang) }}</label>
+        <input id="q" name="q" type="search" value="{{ request.args.get('q','') if request is defined else '' }}" placeholder="{{ t('Buscar…', 'Search…', app_lang) }}"
+               class="ppx-input" style="height:48px;border-radius:9999px;padding:.6rem 1rem;flex:1;min-width:260px;">
+        <button class="ppx-btn ppx-btn--primary" type="submit" style="height:48px;border-radius:9999px;padding:.6rem 1rem;">{{ t('Buscar', 'Search', app_lang) }}</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Topic filter placeholder (taxonomy) -->
+  <nav aria-label="{{ t('Filtros', 'Filters', app_lang) }}" class="ppx-row" style="gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+    <span class="ppx-muted">{{ t('Temas:', 'Topics:', app_lang) }}</span>
+  </nav>
+
+  {% if articles and articles|length %}
+    <section aria-labelledby="list-heading" class="ppx-articles-list">
+      <h2 id="list-heading" class="ppx-visually-hidden">{{ t('Listado de artículos', 'Article list', app_lang) }}</h2>
+
+      {% for a in articles %}
+        <article class="ppx-article-card">
+          {% if a.image_url %}
+            <img src="{{ a.image_url }}" alt="{{ a.title or t('Imagen del artículo', 'Article image', app_lang) }}" class="ppx-article-thumb">
+          {% else %}
+            <div class="ppx-article-thumb ppx-article-thumb--fallback">ProfePanda</div>
+          {% endif %}
+
+          <div class="ppx-article-body">
+            <h3 class="ppx-h3">
+              <a href="{{ url_for('public.article_detail', slug=a.slug) if a.slug else '#' }}" class="ppx-link">
+                {{ a.title or t('Sin título','Untitled', app_lang) }}
+              </a>
+            </h3>
+
+            {% if a.summary %}
+              <p class="ppx-p">{{ a.summary }}</p>
+            {% endif %}
+
+            <div class="ppx-article-footer">
+              <div class="ppx-row" style="gap:.35rem;flex-wrap:wrap;align-items:center;">
+                {% if a.langs %}
+                  {% for code in a.langs %}
+                    <span class="ppx-chip" title="{{ code|upper }}">{{ ppx_lang_label(code) }}</span>
+                  {% endfor %}
+                {% endif %}
+                {% if a.topics %}
+                  {% for topic in a.topics[:4] %}
+                    <span class="ppx-chip">{{ topic }}</span>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              <a class="ppx-btn" href="{{ url_for('public.article_detail', slug=a.slug) if a.slug else '#' }}">
+                {{ t('Leer', 'Read', app_lang) }}
+              </a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </section>
+  {% else %}
+    <section class="ppx-card ppx-card--pad" aria-live="polite">
+      <h2 class="ppx-h3" style="margin-top:0;">{{ t('No hay artículos todavía', 'No articles yet', app_lang) }}</h2>
+      <p class="ppx-muted">{{ t('Vuelve pronto. Estamos preparando nuevas guías.', 'Check back soon — new guides are on the way.', app_lang) }}</p>
+    </section>
+  {% endif %}
+{% endblock %}

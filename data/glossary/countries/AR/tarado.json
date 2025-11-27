@@ -1,0 +1,61 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/tarado/tarado.mp3?v=1764273055",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A foolish or annoying person who acts irrationally; can be offensive or playful depending on tone.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Persona tonta, molesta o que actúa de manera torpe o irracional; puede usarse con tono ofensivo o en broma entre personas cercanas.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "idiot",
+        "moron",
+        "dummy",
+        "jerk"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/tarado/tarado_ex_01.mp3?v=1764273068",
+          "en": "Let go of me, dammit! Let go! Let go, you `idiot`!",
+          "es": "¡Soltame, mierda! ¡Soltame! ¡Soltame, `tarada`!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas Negras: P*tas y Chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "taradito, taradita",
+        "fem_pl": "taradas",
+        "fem_sg": "tarada",
+        "masc_pl": "tarados",
+        "masc_sg": "tarado"
+      }
+    }
+  ],
+  "slug": "tarado",
+  "word": "tarado"
+}

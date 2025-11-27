@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [
+    "S.A.M.E."
+  ],
+  "audio": "/media/glossary-audio/entry/same/same.mp3?v=1764272236",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Acronym for Sistema de Atención Médica de Emergencias, the public ambulance and emergency medical service of Buenos Aires City.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Acrónimo de Sistema de Atención Médica de Emergencias, servicio público de ambulancias de la Ciudad de Buenos Aires.</span></p>",
+      "domain": [
+        "salud"
+      ],
+      "equivalents_en": [
+        "SAME (Buenos Aires Emergency Medical Service)",
+        "paramedics",
+        "ambulance service"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/same/same_ex_01.mp3?v=1764272236",
+          "en": "Well, you’ve gotta look on the bright side, mom. Now we know that the `paramedics` get here in a jiffy.",
+          "es": "Bueno, pero hay que mirarle el lado positivo a las cosas, mamita. Ahora sabemos que `el SAME` viene al toque.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con Hijos",
+            "type": "series",
+            "year": "2005"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "nombre_propio",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "same",
+  "word": "SAME"
+}

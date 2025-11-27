@@ -1,0 +1,47 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/al-toque/al_toque.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Very fast, right away, with almost no delay.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Muy rápido, de inmediato, sin demora.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "right away",
+        "immediately",
+        "real quick",
+        "in a flash"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/al-toque/al_toque_ex_01.mp3",
+          "en": "The emergency service gets here `right away`.",
+          "es": "El SAME viene `al toque`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con hijos",
+            "type": "series",
+            "year": "2006"
+          }
+        }
+      ],
+      "freq": null,
+      "id": "s1",
+      "pos": "locucion_adverbial",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "al-toque",
+  "word": "al toque"
+}

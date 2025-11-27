@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/conchudo/conchudo.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Shameless or blatantly inconsiderate in how one behaves.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Muy descarado o abusivo en su forma de actuar.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "asshole",
+        "jerk",
+        "shameless bastard"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/conchudo/conchudo_ex_01.mp3",
+          "en": "What an `asshole` you are, seriously.",
+          "es": "Pedazo de `conchudo` que sos, eh.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "conchudas",
+        "fem_sg": "conchuda",
+        "masc_pl": "conchudos",
+        "masc_sg": "conchudo"
+      }
+    }
+  ],
+  "slug": "conchudo",
+  "word": "conchudo"
+}

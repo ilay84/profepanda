@@ -1,0 +1,673 @@
+{% extends "public_base.html" %}
+{% block title %}{{ t('Glosarios regionales', 'Regional countries', app_lang) }}{% endblock %}
+{% block public_content %}
+  <div style="max-width:min(96vw, 1300px); margin:1rem auto; padding:0 1rem;">
+    <h1 style="font-family: var(--ppx-font); font-weight:700;">{{ t('Glosarios regionales', 'Regional countries', app_lang) }}</h1>
+
+    <style>
+      .rg-pill{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .55rem;border-radius:999px;border:1px solid #e5e7eb;background:#f8fafc;color:#0f172a;font-size:12px;font-weight:600;line-height:1;}
+      .rg-pill--accent{border-color:#c7d2fe;background:#eef2ff;color:#312e81;}
+      .rg-pill--alert{border-color:#fecdd3;background:#fff1f2;color:#b91c1c;}
+      .rg-pill--audio{border-color:#bae6fd;background:#e0f2fe;color:#075985;}
+      .rg-pill--muted{border-color:#e2e8f0;background:#f8fafc;color:#475569;font-weight:500;}
+      .rg-glossary-grid{display:grid;grid-template-columns:250px 1fr 280px;gap:1rem;align-items:start;}
+      .rg-section-title{margin-top:0;font-size:1.1rem;font-weight:600;}
+      .rg-country-wrapper{display:flex;flex-direction:column;gap:.5rem;}
+      .rg-country-list{display:flex;flex-direction:column;gap:.5rem;}
+      .rg-country-btn{display:flex;align-items:center;gap:.4rem;padding:.4rem .75rem;border:1px solid #e5e7eb;border-radius:12px;background:#fff;cursor:pointer;font-weight:600;font-family:'Montserrat', var(--ppx-font), sans-serif;}
+      .rg-country-btn.active{border-color:#4f46e5;background:#eef2ff;color:#312e81;}
+      .rg-country-btn--globe{border-color:#c7d2fe;background:#eef2ff;color:#312e81;font-weight:700;}
+      .rg-country-btn img{width:20px;height:14px;object-fit:cover;border:1px solid #e5e7eb;border-radius:3px;}
+      .rg-country-btn--globe img{width:18px;height:18px;border-radius:4px;}
+      .rg-country-btn--globe img{width:18px;height:18px;border-radius:4px;}
+      .rg-main-panel{font-family:var(--ppx-font);}
+      .rg-landing{margin-top:.75rem;}
+      .rg-header .rg-row-top{display:flex;align-items:center;justify-content:space-between;gap:.35rem;}
+      .rg-country-title{font-weight:700;}
+      .rg-search-wrap{flex:1;display:flex;align-items:center;gap:.35rem;}
+      .rg-search-wrap input{flex:1;padding:.4rem .75rem;border:1px solid #e5e7eb;border-radius:999px;background:#fff;font:normal 0.95rem 'Montserrat', var(--ppx-font), sans-serif;}
+      .rg-letter-row{display:flex;flex-wrap:wrap;gap:.35rem;padding:.5rem 1rem .6rem;min-height:48px;align-items:center;font-family:'Montserrat',var(--ppx-font),sans-serif;border-bottom:1px solid #e5e7eb;margin-bottom:1rem;}
+      .rg-letter-row button{border:none;border-radius:999px;background:#f8fafc;padding:.3rem .85rem;font-weight:600;color:#475569;cursor:pointer;box-shadow:0 1px 3px rgba(15,23,42,.08);transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;}
+      .rg-letter-row button:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(79,70,229,.18);}
+      .rg-letter-row button.active{background:#4f46e5;color:#fff;box-shadow:0 8px 16px rgba(79,70,229,.24);}
+      .rg-panels{padding:1rem;}
+      .rg-list-area{display:flex;flex-direction:column;gap:0;}
+      .rg-entry-list{display:flex;flex-direction:column;gap:.5rem;}
+      .rg-entry-row{padding:.85rem 0;border-bottom:1px solid #edf0f6;display:flex;flex-direction:column;gap:.25rem;}
+      .rg-entry-row:last-child{border-bottom:none;}
+      .rg-entry-word{font-weight:700;color:#4f46e5;font-family:'Montserrat',var(--ppx-font),sans-serif;font-size:1.1rem;text-decoration:none;}
+      .rg-entry-word:hover{text-decoration:underline;}
+      .rg-definition{margin:0;font-size:0.95rem;color:#52607a;line-height:1.4;font-family:var(--ppx-font);}
+      .rg-flag-pill{display:inline-flex;align-items:center;gap:.35rem;padding:.15rem .6rem;border-radius:999px;border:1px solid #dbeafe;background:#e0f2fe;font-size:.85rem;font-weight:600;color:#1d4ed8;letter-spacing:.05em;max-width:fit-content;}
+      .rg-flag-pill img{width:18px;height:14px;object-fit:cover;border-radius:2px;border:1px solid #c7d2fe;}
+      .rg-sensitive{display:flex;flex-wrap:wrap;gap:.35rem;}
+      .rg-sensitive span{display:inline-flex;align-items:center;padding:.25rem .6rem;border-radius:999px;border:1px solid #fecaca;background:#fff1f2;font-size:.85rem;font-weight:600;color:#b91c1c;text-transform:uppercase;letter-spacing:.05em;gap:.25rem;}
+      .rg-sensitive span img{width:14px;height:14px;object-fit:contain;}
+      .rg-empty-state{padding:.75rem 0;font-style:italic;}
+      .rg-load-controls{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;padding:0 1rem 0;}
+      .rg-country-title{display:inline-flex;align-items:center;gap:.45rem;font-weight:700;}
+      .rg-country-title-flag{display:none;width:24px;height:16px;object-fit:cover;border-radius:3px;border:1px solid #e5e7eb;}
+      .rg-search-icon{width:18px;height:18px;object-fit:contain;}
+      .rg-filter-header{display:flex;align-items:center;justify-content:space-between;gap:.35rem;margin-bottom:.5rem;}
+      .rg-filter-title{display:flex;align-items:center;gap:.35rem;}
+      .rg-filter-section{border:1px solid #e5e7eb;padding:.35rem .5rem;border-radius:12px;background:#fff;display:flex;flex-direction:column;gap:.25rem;}
+      .rg-filter-toggle{border:none;background:none;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0;font-weight:600;font-size:.95rem;cursor:pointer;gap:.35rem;}
+      .rg-filter-toggle span{text-transform:none;}
+      .rg-filter-toggle img{width:18px;height:18px;object-fit:contain;transition:transform .2s ease;}
+      .rg-filter-icon{width:18px;height:18px;object-fit:contain;}
+      .rg-filter-toggle .rg-filter-icon{margin-right:.35rem;}
+      .rg-filter-toggle.open img{transform:rotate(180deg);}
+      .rg-filter-options{display:none;flex-direction:column;gap:.25rem;padding-top:.35rem;}
+      .rg-filter-option{display:flex;align-items:center;gap:.35rem;font-size:.9rem;color:#475569;}
+      .rg-filter-empty{font-size:.85rem;color:#94a3b8;margin:0;}
+      .rg-filter-option input{margin:0;}
+    </style>
+
+    <div class="rg-glossary-grid">
+      <aside class="ppx-card" style="padding:.75rem;">
+        <h2 class="rg-section-title">{{ t('Países', 'Countries', app_lang) }}</h2>
+        <div class="rg-country-wrapper">
+          <button id="rg-all-glossaries" type="button" class="rg-country-btn rg-country-btn--globe" data-country-code="ALL" data-label="{{ t('Todos los glosarios', 'All glossaries', app_lang) }}">
+            <img src="{{ url_for('static', filename='assets/icons/globe.svg') }}" alt="globe">
+            <span>{{ t('Todos los glosarios', 'All glossaries', app_lang) }}</span>
+          </button>
+          <div id="rg-country-list" class="rg-country-list">
+            {% if countries %}
+              {% for country in countries %}
+                <button type="button" class="rg-country-btn" data-country-code="{{ country.code }}" data-label="{{ country.name_es or country.name_en or country.code }}">
+                  {% if country.flag_url %}
+                    <img src="{{ url_for('static', filename=(country.flag_url or '').lstrip('/')) }}" alt="{{ country.code }}">
+                  {% endif %}
+                  <span>{{ country.name_es or country.name_en or country.code }}</span>
+                </button>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </aside>
+
+      <section class="ppx-card rg-main-panel" style="padding:0; overflow:visible; min-height:72vh; position:relative;">
+        <div id="rg-hero" style="padding:0;">
+          <div style="position:relative; width:100%; aspect-ratio:16/9; background:#f5f7fb; overflow:hidden;">
+            <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block;">
+              {% if app_lang == 'es' %}
+                <source src="{{ url_for('static', filename='assets/Web animations/glossary_landing_animation_es.mp4') }}" type="video/mp4">
+              {% else %}
+                <source src="{{ url_for('static', filename='assets/Web animations/glossary_landing_animation_en.mp4') }}" type="video/mp4">
+              {% endif %}
+            </video>
+          </div>
+        </div>
+        <div id="rg-landing-msg" class="ppx-muted rg-landing" style="display:block; padding:1rem 1.25rem 1.25rem; text-align:center;">
+          <div class="ppx-h2" style="margin:0;">{{ t('Elige cualquier país para comenzar', 'Choose any country to begin', app_lang) }}</div>
+          <p style="margin:.5rem 0 0;">{{ t('Explora glosarios regionales auténticos.', 'Browse real regional glossaries.', app_lang) }}</p>
+        </div>
+
+        <header id="rg-header" class="rg-header" style="display:none; padding:.85rem 1rem 1.25rem; border-bottom:1px solid #e5e7eb; margin-bottom:.35rem;">
+          <div class="rg-row-top">
+            <div id="rg-country-title" class="rg-country-title">
+              <img id="rg-country-title-flag" class="rg-country-title-flag" alt="" aria-hidden="true" />
+              <span id="rg-country-title-text">{{ t('Selecciona un país para comenzar', 'Select a country to start', app_lang) }}</span>
+            </div>
+            <div class="rg-search-wrap">
+              <img class="rg-search-icon" src="{{ url_for('static', filename='assets/icons/search.svg') }}" alt="">
+              <input id="rg-q" type="search" placeholder="{{ t('Buscar en este país.', 'Search in this country.', app_lang) }}">
+              <button id="rg-q-clear" class="ppx-btn ppx-btn--subtle">{{ t('Limpiar', 'Clear', app_lang) }}</button>
+            </div>
+          </div>
+        </header>
+
+        <div id="rg-letter-row" class="rg-letter-row" style="display:none;"></div>
+
+        <div id="rg-panels" class="rg-panels">
+          <div id="rg-list-area" class="rg-list-area" style="display:none;">
+            <div id="rg-entry-list" class="rg-entry-list"></div>
+            <div id="rg-empty-state" class="rg-empty-state" style="display:none;">{{ t('No hay entradas para mostrar.', 'No entries to show.', app_lang) }}</div>
+          </div>
+          <div id="rg-load-controls" class="rg-load-controls" style="display:none;">
+            <button id="rg-load-more" class="ppx-btn ppx-btn--subtle">{{ t('Ver más', 'Load more', app_lang) }}</button>
+            <button id="rg-load-all" class="ppx-btn ppx-btn--muted">{{ t('Cargar todo', 'Load all entries', app_lang) }}</button>
+          </div>
+        </div>
+      </section>
+
+      <aside id="rg-filters-pane" class="ppx-card" style="padding:.75rem; display:none; flex-direction:column; gap:.5rem; position:sticky; top:1rem; align-self:start;">
+        <div class="rg-filter-header">
+          <div class="rg-filter-title">
+            <img src="{{ url_for('static', filename='assets/icons/filter.svg') }}" alt="" class="rg-filter-icon">
+            <strong>{{ t('Filtros','Filters', app_lang) }}</strong>
+          </div>
+          <button type="button" id="rg-filters-clear" class="ppx-btn ppx-btn--subtle">
+            <img src="{{ url_for('static', filename='assets/icons/filter_off.svg') }}" alt="" class="rg-filter-icon">
+            <span>{{ t('Limpiar','Clear') }}</span>
+          </button>
+        </div>
+        <div id="rg-filter-pos" class="rg-filter-section" data-filter="pos"></div>
+        <div id="rg-filter-register" class="rg-filter-section" data-filter="register"></div>
+        <div id="rg-filter-freq" class="rg-filter-section" data-filter="freq"></div>
+        <div id="rg-filter-status" class="rg-filter-section" data-filter="status"></div>
+        <div id="rg-filter-sensitivity" class="rg-filter-section" data-filter="sensitivity"></div>
+        <div id="rg-filter-domain" class="rg-filter-section" data-filter="domain"></div>
+        <div id="rg-filter-tone" class="rg-filter-section" data-filter="tone"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+  window.PPX_POS_CATALOG = {{ ppx_pos_catalog | tojson }};
+  window.PPX_POS_ALIASES = {{ ppx_pos_aliases | tojson }};
+  window.RG_COUNTRY_LOOKUP = {{ (country_map or {}) | tojson }};
+  (function(){
+    const staticBase = {{ url_for('static', filename='') | tojson }};
+    const countryList = document.getElementById('rg-country-list');
+    const allButton = document.getElementById('rg-all-glossaries');
+    const landing = document.getElementById('rg-landing-msg');
+    const hero = document.getElementById('rg-hero');
+    const header = document.getElementById('rg-header');
+    const listArea = document.getElementById('rg-list-area');
+    const entryList = document.getElementById('rg-entry-list');
+    const filters = document.getElementById('rg-filters-pane');
+    const countryTitleFlag = document.getElementById('rg-country-title-flag');
+    const countryTitleText = document.getElementById('rg-country-title-text');
+    const searchInput = document.getElementById('rg-q');
+    const searchClear = document.getElementById('rg-q-clear');
+    const letterRow = document.getElementById('rg-letter-row');
+    const emptyState = document.getElementById('rg-empty-state');
+    const loadControls = document.getElementById('rg-load-controls');
+    const loadMoreBtn = document.getElementById('rg-load-more');
+    const loadAllBtn = document.getElementById('rg-load-all');
+    const filtersClearButton = document.getElementById('rg-filters-clear');
+    const translations = {
+      loading: '{{ t('Cargando entradas...','Loading entries...', app_lang) }}',
+      noEntries: '{{ t('No hay entradas para mostrar.', 'No entries to show.', app_lang) }}'
+    };
+    const sensitivityMeta = {
+      lenguaje_explicito: {
+        label: '{{ t('Lenguaje explícito', 'Explicit language', app_lang) }}',
+        tooltip: '{{ t('Etiquetado como lenguaje explícito', 'Marked as explicit language', app_lang) }}'
+      },
+      potencialmente_ofensivo: {
+        label: '{{ t('Potencialmente ofensivo', 'Potentially offensive', app_lang) }}',
+        tooltip: '{{ t('Etiquetado como potencialmente ofensivo', 'Marked as potentially offensive', app_lang) }}'
+      }
+    };
+    const countryLookup = window.RG_COUNTRY_LOOKUP || {};
+    const uiLang = '{{ app_lang }}';
+    const allLabel = '{{ t('Todos los glosarios', 'All glossaries', app_lang) }}';
+    const posCatalog = window.PPX_POS_CATALOG || [];
+    const posAliases = window.PPX_POS_ALIASES || {};
+    const posLabels = posCatalog.reduce((acc, item) => {
+      let label = uiLang === 'es' ? item.es : item.en;
+      if (uiLang !== 'es' && item.value === 'sustantivo_masculino_y_femenino'){
+        label = '{{ t('masculine and feminine noun','masculine and feminine noun', app_lang) }}';
+      }
+      acc[item.value] = label || item.value;
+      return acc;
+    }, {});
+    const state = {
+      scope: null,
+      letter: 'AZ',
+      offset: 0,
+      limit: 25,
+      entries: [],
+      letters: [],
+      hasMore: false,
+      loading: false,
+      filters: {
+        pos: [],
+        register: [],
+        freq: [],
+        status: [],
+        sensitivity: [],
+        domain: [],
+        tone: []
+      },
+      filterOptions: {}
+    };
+    const staticSensitivityTokens = ['lenguaje_explicito', 'potencialmente_ofensivo'];
+    const filterDefinitions = [
+      { id: 'pos', label: '{{ t('Parte del discurso','Part of speech', app_lang) }}' },
+      { id: 'register', label: '{{ t('Registro','Register', app_lang) }}' },
+      { id: 'freq', label: '{{ t('Frecuencia','Frequency', app_lang) }}' },
+      { id: 'status', label: '{{ t('Estado','Status', app_lang) }}' },
+      { id: 'sensitivity', label: '{{ t('Sensibilidad','Sensitivity', app_lang) }}' },
+      { id: 'domain', label: '{{ t('Dominio','Domain', app_lang) }}' },
+      { id: 'tone', label: '{{ t('Tono','Tone', app_lang) }}' }
+    ];
+    const filterContainers = {};
+    const filterEmptyText = '{{ t('Sin opciones','No options', app_lang) }}';
+
+    function fetchJson(url){
+      return fetch(url, { credentials:'same-origin' }).then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      });
+    }
+
+    function initFilterSections(){
+      filterDefinitions.forEach(section => {
+        const container = document.getElementById(`rg-filter-${section.id}`);
+        if (!container) return;
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'rg-filter-toggle';
+        toggle.innerHTML = `<span>${section.label}</span>`;
+        const icon = document.createElement('img');
+        icon.className = 'rg-filter-chevron';
+        icon.src = `${staticBase}assets/icons/chevron_down.svg`;
+        icon.alt = '';
+        toggle.appendChild(icon);
+        const options = document.createElement('div');
+        options.className = 'rg-filter-options';
+        options.style.display = 'none';
+        container.innerHTML = '';
+        container.appendChild(toggle);
+        container.appendChild(options);
+        filterContainers[section.id] = {container, toggle, options, icon};
+        // keep container visible even when no options exist
+        toggle.addEventListener('click', () => {
+          const open = toggle.classList.toggle('open');
+          icon.src = `${staticBase}assets/icons/${open ? 'chevron_collapsed.svg' : 'chevron_down.svg'}`;
+          options.style.display = open ? 'flex' : 'none';
+        });
+      });
+    }
+
+    function canonicalizePos(value){
+      if (!value) return '';
+      const lower = String(value || '').toLowerCase();
+      return posAliases[lower] || lower;
+    }
+
+    function formatFilterLabel(value){
+      if (!value) return '';
+      if (filterDefinitions.some(def => def.id === 'pos')) {
+        const label = posLabels[value];
+        if (label) return label;
+      }
+      return String(value || '').replace(/_/g, ' ');
+    }
+
+    function buildFilterOptions(entries){
+      const map = {};
+      filterDefinitions.forEach(section => {
+        map[section.id] = new Set();
+      });
+      entries.forEach(entry => {
+        const add = (key, value) => {
+          if (!value) return;
+          const list = Array.isArray(value) ? value : [value];
+          list.forEach(v => {
+            if (typeof v === 'string' && v.trim()){
+              map[key].add(v.trim());
+            }
+          });
+        };
+        add('pos', canonicalizePos(entry.pos));
+        add('register', entry.register);
+        add('freq', entry.freq);
+        add('status', entry.status);
+        add('sensitivity', entry.sensitivity);
+        add('domain', entry.domain);
+        add('tone', entry.tone);
+      });
+      staticSensitivityTokens.forEach(tok => map.sensitivity.add(tok));
+      const result = {};
+      Object.keys(map).forEach(key => {
+        result[key] = Array.from(map[key]).sort((a, b) => a.localeCompare(b));
+      });
+      return result;
+    }
+
+    function renderFilterOptions(options){
+      filterDefinitions.forEach(section => {
+        const entry = filterContainers[section.id];
+        if (!entry) return;
+        const {container, options: opts, toggle} = entry;
+        const values = options[section.id] || [];
+        const hasValues = values.length > 0;
+        opts.innerHTML = '';
+        if (!hasValues){
+          opts.innerHTML = `<p class="rg-filter-empty">${filterEmptyText}</p>`;
+        }
+        values.forEach(value => {
+          const wrapper = document.createElement('label');
+          wrapper.className = 'rg-filter-option';
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.value = value;
+          checkbox.checked = state.filters[section.id].includes(value);
+          checkbox.addEventListener('change', () => handleFilterChange(section.id, value, checkbox.checked));
+          const text = document.createElement('span');
+          text.textContent = section.id === 'pos' ? formatFilterLabel(value) : formatFilterLabel(value);
+          wrapper.appendChild(checkbox);
+          wrapper.appendChild(text);
+          opts.appendChild(wrapper);
+        });
+        const open = toggle.classList.contains('open');
+        opts.style.display = open ? 'flex' : 'none';
+      });
+    }
+
+    function handleFilterChange(filterId, value, checked){
+      const list = state.filters[filterId];
+      if (checked){
+        if (!list.includes(value)) list.push(value);
+      } else {
+        const idx = list.indexOf(value);
+        if (idx >= 0) list.splice(idx, 1);
+      }
+      state.offset = 0;
+      state.entries = [];
+      state.hasMore = false;
+      requestEntries();
+    }
+
+    function applyFiltersToParams(params){
+      Object.keys(state.filters).forEach(key => {
+        if (state.filters[key].length){
+          params.append(key, state.filters[key].join(','));
+        }
+      });
+    }
+
+    function clearFilters(){
+      Object.keys(state.filters).forEach(key => {
+        state.filters[key] = [];
+      });
+      document.querySelectorAll('.rg-filter-options input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+      state.offset = 0;
+      state.entries = [];
+      state.hasMore = false;
+      requestEntries();
+    }
+
+    function normalizeFlagPath(path){
+      if (!path) return '';
+      let normalized = path;
+      while (normalized.startsWith('/')) normalized = normalized.slice(1);
+      return normalized;
+    }
+
+    function highlightButton(btn){
+      document.querySelectorAll('.rg-country-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    function handleLetterSelection(button){
+      if (!button) return;
+      state.letter = button.dataset.letter || 'AZ';
+      state.offset = 0;
+      state.entries = [];
+      state.hasMore = false;
+      renderLetters(state.letters);
+      requestEntries();
+    }
+
+    function renderLetters(letters){
+      if (!letterRow) return;
+      if (!letters || !letters.length){
+        letterRow.style.display = 'none';
+        return;
+      }
+      letterRow.innerHTML = '';
+      const azBtn = document.createElement('button');
+      azBtn.type = 'button';
+      azBtn.dataset.letter = 'AZ';
+      azBtn.textContent = '{{ t('A-Z','A-Z', app_lang) }}';
+      letterRow.appendChild(azBtn);
+      letters.forEach(letter => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.letter = letter;
+        button.textContent = letter;
+        letterRow.appendChild(button);
+      });
+      [...letterRow.querySelectorAll('button')].forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.letter === state.letter);
+        btn.addEventListener('click', () => handleLetterSelection(btn));
+      });
+      letterRow.style.display = 'flex';
+    }
+
+    function renderEntries(){
+      if (!entryList) return;
+      const term = (searchInput && searchInput.value || '').trim().toLowerCase();
+      const filtered = term ? state.entries.filter(e => (e.word || e.slug || '').toLowerCase().includes(term)) : state.entries;
+      entryList.innerHTML = '';
+      if (!filtered.length){
+        if (emptyState){ emptyState.style.display = 'block'; emptyState.textContent = term ? translations.noEntries : translations.noEntries; }
+        return;
+      }
+      if (emptyState) emptyState.style.display = 'none';
+      filtered.forEach(entry => {
+        const row = document.createElement('div');
+        row.className = 'rg-entry-row';
+        const heading = document.createElement('a');
+        heading.className = 'rg-entry-word';
+        heading.href = `?entry=${entry.slug}`;
+        heading.dataset.slug = entry.slug;
+        heading.textContent = entry.word || entry.slug;
+        row.appendChild(heading);
+        const codes = (entry.countries || []).slice();
+        const primary = codes.length ? codes[0] : null;
+        if (primary){
+          const country = countryLookup[primary] || {};
+          const pill = document.createElement('div');
+          pill.className = 'rg-flag-pill';
+          const flagPath = normalizeFlagPath(country.flag_url || `assets/flags/${primary.toLowerCase()}.svg`);
+          if (flagPath){
+            const img = document.createElement('img');
+            img.src = `${staticBase}${flagPath}`;
+            img.alt = primary;
+            pill.appendChild(img);
+          }
+          const codeSpan = document.createElement('span');
+          codeSpan.textContent = primary;
+          pill.title = country[uiLang === 'es' ? 'name_es' : 'name_en'] || country.name_es || country.name_en || primary;
+          pill.appendChild(codeSpan);
+          row.appendChild(pill);
+        }
+        const sens = entry.sensitivity || [];
+        const mapped = sens.map(code => {
+          const data = sensitivityMeta[code];
+          return data ? { ...data, code } : null;
+        }).filter(Boolean);
+        if (mapped.length){
+          const sensRow = document.createElement('div');
+          sensRow.className = 'rg-sensitive';
+          mapped.forEach(meta => {
+            const chip = document.createElement('span');
+            chip.title = meta.tooltip;
+        const icon = document.createElement('img');
+        const iconName = { lenguaje_explicito: 'explicit_language.svg',
+                          potencialmente_ofensivo: 'potentially_offensive.svg' }[meta.code] || 'aviso_glossary.svg';
+        icon.src = `${staticBase}assets/icons/${iconName}`;
+            icon.alt = '';
+            chip.appendChild(icon);
+            sensRow.appendChild(chip);
+          });
+          row.appendChild(sensRow);
+        }
+        const snippetText = (entry.definition_es || entry.definition_en || '').replace(/\s+/g, ' ').trim();
+        if (snippetText){
+          const snippet = document.createElement('p');
+          snippet.className = 'rg-definition';
+          snippet.textContent = snippetText;
+          row.appendChild(snippet);
+        }
+        entryList.appendChild(row);
+      });
+    }
+
+    initFilterSections();
+
+    function updateLoadControls(){
+      if (!loadControls) return;
+      if (!state.scope){
+        loadControls.style.display = 'none';
+        return;
+      }
+      loadControls.style.display = state.entries.length ? 'flex' : 'none';
+      if (loadMoreBtn) loadMoreBtn.style.display = state.hasMore ? '' : 'none';
+      if (loadAllBtn) loadAllBtn.style.display = state.entries.length && state.hasMore ? '' : 'none';
+    }
+
+    function showGlossary(){
+      if (landing) landing.style.display = 'none';
+      if (hero) hero.style.display = 'none';
+      if (header) header.style.display = '';
+      if (listArea) listArea.style.display = 'flex';
+      if (filters) filters.style.display = 'flex';
+    }
+
+    function setCountryTitle(label, code){
+      if (countryTitleText) countryTitleText.textContent = label;
+      if (!countryTitleFlag) return;
+      if (code === 'ALL'){
+        countryTitleFlag.src = `${staticBase}assets/icons/globe.svg`;
+        countryTitleFlag.style.display = '';
+        return;
+      }
+      const country = countryLookup[code] || {};
+      const flagPath = normalizeFlagPath(country.flag_url || '');
+      if (flagPath){
+        countryTitleFlag.src = `${staticBase}${flagPath}`;
+        countryTitleFlag.style.display = '';
+      } else {
+        countryTitleFlag.style.display = 'none';
+      }
+    }
+
+    function handleScopeSelection(code, button){
+      state.scope = code;
+      state.offset = 0;
+      state.entries = [];
+      state.hasMore = false;
+      state.letter = 'AZ';
+      const label = button?.dataset?.label || (code === 'ALL' ? allLabel : code);
+      highlightButton(button);
+      setCountryTitle(label, code);
+      showGlossary();
+      requestEntries();
+    }
+
+    async function requestEntries({append=false, forceAll=false} = {}){
+      if (!state.scope || state.loading) return;
+      state.loading = true;
+      const limit = forceAll ? 2000 : state.limit;
+      const offset = append ? state.offset : 0;
+      const params = new URLSearchParams();
+      params.append('limit', limit);
+      params.append('offset', offset);
+      if (state.scope && state.scope !== 'ALL') params.append('country', state.scope);
+      if (state.letter && state.letter !== 'AZ') params.append('letter', state.letter);
+      applyFiltersToParams(params);
+      if (entryList) entryList.innerHTML = `<p class="ppx-muted" style="margin:0;">${translations.loading}</p>`;
+      try{
+        const data = await fetchJson(`/glossary/api/list?${params.toString()}`);
+        const items = data.items || [];
+        state.letters = data.letters || state.letters;
+        state.entries = append ? state.entries.concat(items) : items;
+        state.filterOptions = buildFilterOptions(state.entries);
+        renderFilterOptions(state.filterOptions);
+        state.hasMore = forceAll ? false : !!data.has_more;
+        state.offset = offset + limit;
+        renderLetters(state.letters);
+        renderEntries();
+        updateLoadControls();
+      }catch(err){
+        if (entryList) entryList.innerHTML = `<p class="ppx-muted" style="margin:0;">${err.message}</p>`;
+      }finally{
+        state.loading = false;
+      }
+    }
+
+    if (countryList){
+      countryList.addEventListener('click', function(event){
+        const button = event.target && event.target.closest && event.target.closest('button[data-country-code]');
+        if (!button) return;
+        handleScopeSelection(button.dataset.countryCode, button);
+      });
+    }
+
+    if (allButton){
+      allButton.addEventListener('click', function(){
+        handleScopeSelection('ALL', allButton);
+      });
+    }
+
+    if (loadMoreBtn){
+      loadMoreBtn.addEventListener('click', function(){
+        requestEntries({ append:true });
+      });
+    }
+
+    if (loadAllBtn){
+      loadAllBtn.addEventListener('click', function(){
+        requestEntries({ forceAll:true });
+      });
+    }
+
+    if (searchInput){
+      searchInput.addEventListener('input', function(){
+        renderEntries();
+      });
+    }
+
+    if (searchClear){
+      searchClear.addEventListener('click', function(){
+        if (searchInput){
+          searchInput.value = '';
+          renderEntries();
+        }
+      });
+    }
+    if (filtersClearButton){
+      filtersClearButton.addEventListener('click', clearFilters);
+    }
+    function initCountryList(){
+      if (!countryList) return;
+      const first = countryList.querySelector('button[data-country-code]');
+      if (first){
+        handleScopeSelection(first.dataset.countryCode, first);
+      }
+    }
+    initCountryList();
+  })();
+  </script>
+  {# Cache-bust to ensure latest glossary tabs script (newline rendering) #}
+  <script src="{{ url_for('static', filename='js/public_glossary_tabs.js', v='26') }}"></script>
+  <script>
+    window.openEntry = function(slug){ if (window.Tabs && typeof Tabs.open==='function') { Tabs.open(slug); } };
+    document.addEventListener('click', function(e){
+      const el = e.target && e.target.closest && e.target.closest('a[data-slug]');
+      if (!el) return;
+      const slug = el.getAttribute('data-slug');
+      if (!slug) return;
+      e.preventDefault();
+      e.stopPropagation();
+      if (window.Tabs && typeof Tabs.open==='function') { Tabs.open(slug); }
+    }, true);
+    (function autoOpenFromQuery(){
+      const params = new URLSearchParams(window.location.search);
+      const hasEntry = params.has('entry');
+      if (!hasEntry){
+        try{
+          if (window.localStorage) localStorage.removeItem('ppx_last_glossary_entry');
+          params.delete('entry');
+          const url = new URL(window.location.href); url.searchParams.delete('entry');
+          window.history.replaceState({}, '', url.toString());
+        }catch(_){ }
+      }
+      const resume = ()=>{ if (hasEntry && window.Tabs && typeof Tabs.resume==='function') Tabs.resume(); };
+      if (document.readyState === 'complete' || document.readyState === 'interactive'){
+        resume();
+      } else {
+        document.addEventListener('DOMContentLoaded', resume);
+      }
+    })();
+  </script>
+{% endblock %}

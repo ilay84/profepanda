@@ -1,0 +1,175 @@
+{
+  "id": "dnd/dnd-prueba",
+  "type": "dnd",
+  "slug": "dnd-prueba",
+  "title_es": "DND prueba",
+  "title_en": "DND test",
+  "instructions_es": "Arrastra y suelta cada categoría en la columna correcta.\nDecide si normalmente se expresa con SER (para esencias o cualidades inherentes) o con ESTAR (para situaciones o estados temporales).",
+  "instructions_en": "Drag and drop each category into the correct column.\nDecide whether it’s something we usually express with SER (used for essences or inherent qualities) or with ESTAR (used for situations or temporary states).",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "draft",
+  "items": [
+    {
+      "id": "i1",
+      "order": 1,
+      "columns": [
+        {
+          "id": "col_ig2hx2",
+          "label_es": "SER (esencias)",
+          "label_en": "SER (essences)"
+        },
+        {
+          "id": "col_wcjnv3",
+          "label_es": "ESTAR (situaciones)",
+          "label_en": "ESTAR (situations)"
+        }
+      ],
+      "tokens": [
+        {
+          "id": "tok_pycs54",
+          "text_es": "nacionalidad y origen",
+          "text_en": "nationality and origin",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿La nacionalidad y origen de una persona u objeto es una esencia o una situación?",
+          "hint_en": "Is the nationality and origin of a person or object an essential trait or a situation?",
+          "feedback_correct_es": "¡Bien ahí! Tanto la nacionalidad como el origen describen una esencia, no una situación, así que se expresa con SER. Ejemplo: Ella es mexicana.",
+          "feedback_correct_en": "Nice! Both nationality and origin describe an essence, not a situation. Therefore, we express it with SER. Example: Ella es mexicana. (She is Mexican.)",
+          "feedback_incorrect_es": "Piénsalo bien. Tanto la nacionalidad como el origen describen una esencia, no una situación, así que se expresa con SER. Ejemplo: Ella es mexicana.",
+          "feedback_incorrect_en": "Think it through. Both nationality and origin describe an essence, not a situation. Therefore, we express it with SER. Example: Ella es mexicana. (She is Mexican.)"
+        },
+        {
+          "id": "tok_n678za",
+          "text_es": "ubicación de un objeto",
+          "text_en": "location of an object",
+          "correct": "col_wcjnv3",
+          "hint_es": "¿La ubicación de un objeto es una situación o parte de su esencia?",
+          "hint_en": "Is the location of an object a situation or part of its essence?",
+          "feedback_correct_es": "¡Bien ahí! Donde un objeto o persona se encuentra es una situación, así que usamos ESTAR. Ejemplo: El libro está en la mesa.",
+          "feedback_correct_en": "Nice! Where an object or person is located is a situation, so we use ESTAR. Example: El libro está en la mesa. (The book is on the table.)",
+          "feedback_incorrect_es": "¡Ups! Donde un objeto o persona se encuentra es una situación, así que usamos ESTAR. Ejemplo: El libro está en la mesa.",
+          "feedback_incorrect_en": "Oops! Where an object or person is located is a situation, so we use ESTAR. Example: El libro está en la mesa. (The book is on the table.)"
+        },
+        {
+          "id": "tok_x07hmo",
+          "text_es": "marcas de productos",
+          "text_en": "product brands",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿Una marca como Sony cambia dependiendo del contexto o es parte de la esencia del objeto?",
+          "hint_en": "Is a brand like Sony something that changes with context or part of an object’s essence?",
+          "feedback_correct_es": "¡Exacto! La marca de un objeto no cambia según la situación, así que se expresa con SER. Ejemplo: Mi televisor es Sony.",
+          "feedback_correct_en": "Exactly! A brand is part of an object's identity, not a situation, so we use SER. Example: Mi televisor es Sony. (My TV is Sony.)",
+          "feedback_incorrect_es": "¡Piensa de nuevo! La marca no varía según el contexto: es una cualidad esencial. Por eso usamos SER. Ejemplo: Mi televisor es Sony.",
+          "feedback_incorrect_en": "Think again! Brand doesn’t vary by context—it’s part of what something is. We use SER. Example: Mi televisor es Sony. (My TV is Sony.)"
+        },
+        {
+          "id": "tok_phts0d",
+          "text_es": "rasgos de personalidad",
+          "text_en": "personality traits",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿Ser extrovertido o tímido es algo temporal o más estable?",
+          "hint_en": "Is being extroverted or shy something temporary or more stable?",
+          "feedback_correct_es": "¡Bien hecho! Los rasgos de personalidad son parte de quién eres. Ejemplo: Alex es muy extrovertida.",
+          "feedback_correct_en": "Nice job! Personality traits describe who you are. Example: Alex es muy extrovertida. (Alex is very outgoing.)",
+          "feedback_incorrect_es": "Piensa otra vez: los rasgos como 'extrovertido' no cambian cada día. Se usa SER. Ejemplo: Alex es muy extrovertida.",
+          "feedback_incorrect_en": "Not quite—traits like 'extroverted' don’t change daily. We use SER. Example: Alex es muy extrovertida. (Alex is very outgoing.)"
+        },
+        {
+          "id": "tok_4viu2c",
+          "text_es": "materiales",
+          "text_en": "materials",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿El material de algo cambia dependiendo de la situación?",
+          "hint_en": "Does the material something is made of change based on the situation?",
+          "feedback_correct_es": "¡Correcto! El material es una característica permanente. Ejemplo: ¿La bolsa es de materiales reciclados?",
+          "feedback_correct_en": "Correct! Material is a permanent feature. Example: ¿La bolsa es de materiales reciclados? (Is the bag made of recycled materials?)",
+          "feedback_incorrect_es": "Ups, no. El material no es algo que cambie: se expresa con SER. Ejemplo: ¿La bolsa es de materiales reciclados?",
+          "feedback_incorrect_en": "Oops, no. Material doesn’t change—it uses SER. Example: ¿La bolsa es de materiales reciclados? (Is the bag made of recycled materials?)"
+        },
+        {
+          "id": "tok_fmg3c7",
+          "text_es": "colores",
+          "text_en": "colors",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿El color de algo es parte de su identidad o de su estado temporal?",
+          "hint_en": "Is the color of something part of its identity or a temporary state?",
+          "feedback_correct_es": "¡Eso es! Los colores describen la esencia. Ejemplo: Nuestro auto es verde.",
+          "feedback_correct_en": "That's right! Colors describe inherent traits. Example: Nuestro auto es verde. (Our car is green.)",
+          "feedback_incorrect_es": "Casi... pero no. Los colores son cualidades permanentes, así que usamos SER. Ejemplo: Nuestro auto es verde.",
+          "feedback_incorrect_en": "Almost... but no. Colors are permanent qualities, so we use SER. Example: Nuestro auto es verde. (Our car is green.)"
+        },
+        {
+          "id": "tok_qpr6t9",
+          "text_es": "profesiones",
+          "text_en": "professions",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿Ser médica es un estado o parte de la identidad?",
+          "hint_en": "Is being a doctor a state or part of someone's identity?",
+          "feedback_correct_es": "¡Muy bien! Las profesiones son parte esencial de lo que uno es. Ejemplo: ¿Es médica? Pensaba que era enfermera.",
+          "feedback_correct_en": "Well done! Professions are part of identity. Example: ¿Es médica? Pensaba que era enfermera. (Is she a doctor? I thought she was a nurse.)",
+          "feedback_incorrect_es": "No exactamente. Ser médica no es algo pasajero, así que usamos SER. Ejemplo: ¿Es médica? Pensaba que era enfermera.",
+          "feedback_incorrect_en": "Not quite. Being a doctor isn’t temporary—we use SER. Example: ¿Es médica? Pensaba que era enfermera. (Is she a doctor? I thought she was a nurse.)"
+        },
+        {
+          "id": "tok_8bzqaf",
+          "text_es": "relaciones personales",
+          "text_en": "personal relationships",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿Una relación como 'es mi tío' cambia con la situación?",
+          "hint_en": "Does something like 'he is my uncle' change depending on the situation?",
+          "feedback_correct_es": "¡Exactamente! Las relaciones no son temporales. Ejemplo: Héctor es mi tío.",
+          "feedback_correct_en": "Exactly! Relationships aren’t temporary. Example: Héctor es mi tío. (Héctor is my uncle.)",
+          "feedback_incorrect_es": "Inténtalo otra vez. Las relaciones son permanentes. Ejemplo: Héctor es mi tío.",
+          "feedback_incorrect_en": "Try again. Relationships are permanent. Example: Héctor es mi tío. (Héctor is my uncle.)"
+        },
+        {
+          "id": "tok_kzr2pw",
+          "text_es": "categorías",
+          "text_en": "categories",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿'Los gatos son mamíferos' describe qué son o dónde están?",
+          "hint_en": "Does 'cats are mammals' describe what they are or where they are?",
+          "feedback_correct_es": "¡Perfecto! Las categorías expresan una esencia. Ejemplo: Los gatos son mamíferos.",
+          "feedback_correct_en": "Perfect! Categories express an essence. Example: Los gatos son mamíferos. (Cats are mammals.)",
+          "feedback_incorrect_es": "Intenta de nuevo. Las categorías como 'mamíferos' son una esencia. Ejemplo: Los gatos son mamíferos.",
+          "feedback_incorrect_en": "Try again. Categories like 'mammals' are essence-related. Example: Los gatos son mamíferos. (Cats are mammals.)"
+        },
+        {
+          "id": "tok_9h9gf2",
+          "text_es": "fechas",
+          "text_en": "dates",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿Una fecha como 'hoy es feriado' describe una situación o una característica fija?",
+          "hint_en": "Does 'today is a holiday' describe a situation or a fixed characteristic?",
+          "feedback_correct_es": "¡Sí! Las fechas se consideran información permanente. Ejemplo: Hoy es feriado.",
+          "feedback_correct_en": "Yes! Dates are considered fixed info. Example: Hoy es feriado. (Today is a holiday.)",
+          "feedback_incorrect_es": "Casi, pero no. Las fechas son informaciones fijas. Ejemplo: Hoy es feriado.",
+          "feedback_incorrect_en": "Close, but no. Dates are considered stable info. Example: Hoy es feriado. (Today is a holiday.)"
+        },
+        {
+          "id": "tok_sg2qjk",
+          "text_es": "la hora",
+          "text_en": "telling time",
+          "correct": "col_ig2hx2",
+          "hint_es": "¿'Es la una y media' se refiere a una situación pasajera o a un hecho objetivo?",
+          "hint_en": "Does 'it's 1:30' refer to a passing situation or an objective fact?",
+          "feedback_correct_es": "¡Correcto! Para decir la hora usamos SER. Ejemplo: Es la una y media de la mañana.",
+          "feedback_correct_en": "Correct! We use SER to tell time. Example: Es la una y media de la mañana. (It’s 1:30 in the morning.)",
+          "feedback_incorrect_es": "No del todo. Para decir la hora se usa SER. Ejemplo: Es la una y media de la mañana.",
+          "feedback_incorrect_en": "Not quite. We use SER for telling time. Example: Es la una y media de la mañana. (It’s 1:30 in the morning.)"
+        }
+      ]
+    }
+  ],
+  "media": {
+    "image_url": "/media/exercises/dnd/dnd-prueba/img/interactive_exercises_20251112174437.png"
+  },
+  "version": 36,
+  "created_at": "2025-11-16T13:32:03Z",
+  "created_by": "admin",
+  "checksum": "sha256:932e40c32b7bc7ca39b200b8f9eeb8e4995466b63beed4ee7e40261383b15694"
+}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('Usuarios', 'Users', app_lang) }} · ProfePanda{% endblock %}
+
+{% block admin_nav %}
+  {% include "_admin_bar.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="ppx-card" style="max-width:1100px;margin:1.5rem auto;padding:1rem;border:1px solid #e5e7eb;border-radius:14px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);">
+    <div class="ppx-row" style="justify-content:space-between;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+      <h1 class="ppx-h2" style="margin:0;">{{ t('Usuarios', 'Users', app_lang) }}</h1>
+      <a href="{{ url_for('accounts_manage.users_new') }}" style="
+        text-decoration:none; font-family:var(--ppx-font,'Montserrat',sans-serif);
+        font-size:var(--ppx-font-size-sm,.875rem); font-weight:700;
+        color:#fff; background:#475dd7; padding:.5rem .8rem; border-radius:10px;
+        transition:background .15s ease-in-out;
+      " onmouseover="this.style.background='#3e53c9';"
+        onmouseout="this.style.background='#475dd7';">
+        {{ t('Nuevo usuario', 'New user', app_lang) }}
+      </a>
+    </div>
+
+    {% if users %}
+    <div style="overflow:auto;">
+      <table style="width:100%; border-collapse:collapse; font-family:var(--ppx-font,'Montserrat',sans-serif);">
+        <thead>
+          <tr style="text-align:left; font-weight:700; font-size:.875rem; border-bottom:1px solid #e5e7eb;">
+            <th style="padding:.6rem .5rem;">{{ t('Correo', 'Email', app_lang) }}</th>
+            <th style="padding:.6rem .5rem;">{{ t('Nombre', 'Name', app_lang) }}</th>
+            <th style="padding:.6rem .5rem;">{{ t('Rol', 'Role', app_lang) }}</th>
+            <th style="padding:.6rem .5rem;">{{ t('Estado', 'Status', app_lang) }}</th>
+            <th style="padding:.6rem .5rem; white-space:nowrap;">{{ t('Creado', 'Created', app_lang) }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for u in users %}
+          <tr style="border-bottom:1px solid #f1f5f9;">
+            <td style="padding:.55rem .5rem;"><code>{{ u.email }}</code></td>
+            <td style="padding:.55rem .5rem;">{{ u.name }} <a href="{{ url_for('accounts_manage.users_edit', user_id=u.id) }}" style="margin-left:.5rem;font-weight:600;color:#475dd7;text-decoration:none;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">{{ t('Editar', 'Edit', app_lang) }}</a></td>
+            <td style="padding:.55rem .5rem;">{{ u.role }}</td>
+            <td style="padding:.55rem .5rem;">{{ u.status }}</td>
+            <td style="padding:.55rem .5rem; white-space:nowrap;">{{ (u.created_at or '') }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+      <p class="ppx-muted" style="margin:.5rem 0 0 0;">{{ t('No hay usuarios aún.', 'No users yet.', app_lang) }}</p>
+    {% endif %}
+  </div>
+{% endblock %}

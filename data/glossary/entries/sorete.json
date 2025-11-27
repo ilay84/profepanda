@@ -1,0 +1,62 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/sorete/sorete.mp3?v=1764272575",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Vulgar insult meaning a despicable, selfish, or very annoying person; literally “excrement.”</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Insulto vulgar usado para referirse a una persona despreciable, egoísta o muy molesta; literalmente significa excremento.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "asshole",
+        "jerk",
+        "piece of shit"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/sorete/sorete_ex_01.mp3?v=1764272575",
+          "en": "\"This is the last favor I’ll ever ask you, girl.\"\n\"Girl? Get in the car, you `little bitch`.\"",
+          "es": "—El último favor que te pido en la vida, amiga.\n—¿Amiga? Subite al auto, `soreta`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "lenguaje_explicito",
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo",
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "soretas",
+        "fem_sg": "soreta",
+        "masc_pl": "soretes",
+        "masc_sg": "sorete"
+      }
+    }
+  ],
+  "slug": "sorete",
+  "word": "sorete"
+}

@@ -1,0 +1,61 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/la-concha-de-dios/la_concha_de_dios.mp3?v=1764180360",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Vulgar exclamation used to express strong anger, surprise, or frustration.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Exclamación vulgar usada para expresar enojo, sorpresa o frustración intensa.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "Jesus fucking Christ",
+        "Goddammit",
+        "holy fuck",
+        "what the fuck"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/la-concha-de-dios/la_concha_de_dios_ex_01.mp3?v=1764180360",
+          "en": "`Holy fuck`! Now Mecha’s going to tell the whole neighborhood about this disaster, and how am I supposed to explain I went to school with you?!",
+          "es": "¡`La concha de Dios`! Ahora Mecha que va a contar a todo el barrio este papelón y yo, ¿cómo explico que fui al colegio con vos? ¡¿Cómo?!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas Negras: P*tas y Chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "interjeccion",
+      "register": "vulgar",
+      "related_slugs": [
+        "la-concha-de-la-lora",
+        "la-concha-de-tu-hermana"
+      ],
+      "sensitivity": [
+        "lenguaje_explicito",
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "la-concha-de-dios",
+  "word": "la concha de Dios"
+}

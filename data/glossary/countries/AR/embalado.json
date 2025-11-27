@@ -1,0 +1,54 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/embalado/embalado.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Very excited or worked up, acting on impulse.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Muy entusiasmado o exaltado, actuando con impulso.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "amped up",
+        "fired up",
+        "hyped up",
+        "worked up",
+        "carried away"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/embalado/embalado_ex_01.mp3",
+          "en": "I’d been drinking last night, honestly. And, well, I was all `hyped up` and I left.",
+          "es": "Y anoche había tomado, la verdad. Y, bueno, estaba `embalado` y salí.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "embaladas",
+        "fem_sg": "embalada",
+        "masc_pl": "embalados",
+        "masc_sg": "embalado"
+      }
+    }
+  ],
+  "slug": "embalado",
+  "word": "embalado"
+}

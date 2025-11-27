@@ -1,0 +1,1007 @@
+/* static/css/ppx-exercise-ui.css */
+/* Root container */
+.ppx-ex {
+  --ppx-bg: var(--ppx-color-surface, #ffffff);
+  --ppx-text: var(--ppx-color-text, #0f172a);
+  --ppx-muted: var(--ppx-color-text-subtle, #334155);
+  --ppx-line: var(--ppx-color-line, #e5e7eb);
+  --ppx-primary: var(--ppx-color-primary, #475dd7);
+  --ppx-success: var(--ppx-color-success, #80ac5f);
+  --ppx-danger: var(--ppx-color-danger, #c46374);
+  --ppx-accent: var(--ppx-color-accent, #8f8ec5);
+  --ppx-focus: var(--ppx-color-focus, #475dd7);
+  --ppx-radius: 14px;
+  --ppx-radius-pill: 9999px;
+  --ppx-shadow: 0 8px 24px rgba(0,0,0,.06);
+  --ppx-pad: 24px;
+
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--ppx-bg);
+  color: var(--ppx-text);
+  /* keep frameless look but ensure the visible box is rounded */
+  border-radius: var(--ppx-radius);
+  overflow: visible;
+  padding: var(--ppx-pad);
+  font-family: var(--ppx-font, 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, sans-serif);
+}
+
+/* State accent borders (applied by JS via data-state) */
+.ppx-ex[data-state="correct"] { box-shadow: 0 0 0 2px rgba(128,172,95,.35), var(--ppx-shadow); }
+.ppx-ex[data-state="wrong"] { box-shadow: 0 0 0 2px rgba(196,99,116,.35), var(--ppx-shadow); }
+
+/* Header */
+.ppx-ex__header {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  row-gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Badge with icon slot (hidden for TF) */
+.ppx-ex__badge {
+  display: none;
+}
+
+/* Prompt */
+.ppx-ex__prompt {
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 4px 0 8px 0;
+  /* clamp(28px, 3.2vw, 32px) without clamp() fallback */
+  font-size: 28px;
+}
+@media (min-width: 720px) { .ppx-ex__prompt { font-size: 32px; } }
+
+/* Actions (TF buttons) */
+.ppx-ex__actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  justify-items: center;
+  margin: 8px 0 12px 0;
+}
+
+/* Dictation exercises can use a slightly wider track for summary readability */
+.ppx-ex--dictation {
+  max-width: none; /* allow full modal width */
+  width: 100%;
+}
+/* Make the dictation interaction card occupy ~75% of the modal width */
+.ppx-ex--dictation .ppx-card {
+  width: 80%;
+  max-width: none;
+  box-sizing: border-box;
+}
+@media (max-width: 920px) {
+  .ppx-ex--dictation .ppx-card { width: 90%; }
+}
+@media (max-width: 640px) {
+  .ppx-ex--dictation .ppx-card { width: 100%; }
+}
+/* Ensure media block expands inside the wider card */
+.ppx-ex--dictation .ppx-media-block { width: 100%; }
+
+/* Softer TF button style: white with outline and subtle elevation */
+.ppx-ex--tf .ppx-ex__btn {
+  background: #ffffff;
+  color: var(--ppx-primary, #475dd7);
+  border-color: var(--ppx-line, #e5e7eb);
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+.ppx-ex--tf .ppx-ex__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  background: #f9fafb;
+  border-color: var(--ppx-primary, #475dd7);
+}
+.ppx-ex--tf .ppx-ex__btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+}
+.ppx-ex--tf .ppx-ex__btn[disabled] {
+  opacity: .65;
+}
+
+/* When marked correct/wrong, restore filled pill look */
+.ppx-ex--tf .ppx-ex__btn--correct,
+.ppx-ex--tf .ppx-ex__btn--wrong {
+  color: #fff;
+  border-color: transparent;
+}
+
+.ppx-ex__btn {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 20px;
+  border-radius: var(--ppx-radius-pill);
+  border: 1px solid transparent;
+  background: var(--ppx-primary);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: .2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(71,93,215,.18);
+  transition: transform .08s ease, box-shadow .12s ease, background-color .12s ease, border-color .12s ease, opacity .12s ease;
+}
+
+.ppx-ex__btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(71,93,215,.24); }
+.ppx-ex__btn:active { transform: translateY(0); box-shadow: 0 4px 12px rgba(71,93,215,.18); }
+
+/* Focus ring */
+.ppx-ex__btn:focus-visible,
+.ppx-ex__nav-btn:focus-visible,
+.ppx-ex__hint-toggle:focus-visible,
+.ppx-ex__dot:focus-visible {
+  outline: 3px solid var(--ppx-focus);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+/* Disabled/locked */
+.ppx-ex__btn[disabled] { opacity: .55; cursor: not-allowed; }
+
+/* Answer states (applied by JS) */
+.ppx-ex__btn--correct { background: var(--ppx-success); box-shadow: 0 6px 16px rgba(128,172,95,.25); color: #fff; border-color: transparent; }
+.ppx-ex__btn--wrong { background: var(--ppx-danger); box-shadow: 0 6px 16px rgba(196,99,116,.25); color: #fff; border-color: transparent; }
+
+/* Wrong shake (respect reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .ppx-ex__btn--shake { animation: ppx-shake .28s ease; }
+}
+@keyframes ppx-shake {
+  0% { transform: translateX(0) }
+  20% { transform: translateX(-6px) }
+  40% { transform: translateX(6px) }
+  60% { transform: translateX(-4px) }
+  80% { transform: translateX(4px) }
+  100% { transform: translateX(0) }
+}
+
+/* Hint block */
+.ppx-ex__hint {
+  margin: 10px 0 18px 0;
+  border-radius: 12px;
+  background: #fff8e6;
+  color: #2b2b2b;
+  border: 1px solid #fde9b8;
+  padding: 14px 16px 14px 46px;
+  position: relative;
+}
+
+.ppx-ex__hint::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  background-image: url("/static/assets/icons/hint.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 22px;
+}
+
+/* Collapsible behavior (height set in JS; no jump) */
+.ppx-ex__hint[hidden] { display: none; }
+
+/* Progress */
+.ppx-ex__progress {
+  display: grid;
+  justify-items: center;
+  row-gap: 10px;
+  margin: 6px 0 10px 0;
+}
+
+.ppx-ex__fraction { font-size: 18px; font-weight: 700; }
+
+.ppx-ex__dots {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+.ppx-ex__results { margin-top: 8px; }
+.ppx-ex__dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #e5e7eb; /* upcoming */
+  cursor: pointer;
+  border: 0;           /* no default button border (avoid black outline) */
+  appearance: none;    /* normalize across browsers */
+}
+.ppx-ex__dot[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+
+/* Inline feedback text below the TF pills */
+.ppx-ex__inline-feedback {
+  text-align: center;
+  margin: 4px 0 6px;
+  min-height: 1.25em; /* reserve space to avoid layout shift */
+  font-weight: 700;
+}
+/* FITB: feedback should be left-aligned and normal weight */
+.ppx-ex--fitb .ppx-ex__inline-feedback { text-align: left; font-weight: 400; }
+
+/* FITB: make feedback callout text dark for readability */
+.ppx-ex--fitb .ppx-state--ok,
+.ppx-ex--fitb .ppx-state--bad {
+  color: #0f172a;
+}
+.ppx-ex__inline-feedback.is-ok { color: var(--ppx-success, #80ac5f); }
+.ppx-ex__inline-feedback.is-bad { color: var(--ppx-danger, #c46374); }
+
+/* Media toggle (icon-only) */
+.ppx-ex__media-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 4px auto 0;
+}
+.ppx-ex__media-toggle img { width: 36px; height: 36px; }
+.ppx-ex__media-toggle:hover { background: rgba(0,0,0,.06); }
+.ppx-ex__media-toggle:focus-visible { outline: 3px solid var(--ppx-focus); outline-offset: 2px; }
+
+/* Lightweight tooltip */
+.ppx-tooltip { position: relative; }
+.ppx-tooltip[data-tooltip]:hover::after,
+.ppx-tooltip[data-tooltip]:focus-visible::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: rgba(17,24,39,.95);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px 8px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  pointer-events: none;
+  z-index: 3;
+}
+.ppx-tooltip[data-tooltip]:hover::before,
+.ppx-tooltip[data-tooltip]:focus-visible::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(17,24,39,.95);
+}
+
+/* Keyboard help tip */
+.ppx-ex__kbd-help {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: .9rem;
+  color: var(--ppx-muted, #334155);
+  background: #f8fafc;
+  border: 1px solid var(--ppx-line, #e5e7eb);
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin: 6px auto 0;
+  width: min(720px, 100%);
+}
+.ppx-ex__kbd-help-close {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* Hide keyboard help by default in TF to avoid confusion; can be enabled via JS later */
+.ppx-ex--tf .ppx-ex__kbd-help { display: none !important; }
+
+/* Pre-summary warning bar */
+.ppx-ex__warn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #fff8e6;
+  border: 1px solid #fde9b8;
+  color: #2b2b2b;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 8px auto 0;
+  width: min(720px, 100%);
+}
+.ppx-ex__warn[hidden] { display: none !important; }
+.ppx-wbtn {
+  appearance: none;
+  border-radius: 9999px;
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--ppx-line, #e5e7eb);
+  background: #fff;
+}
+.ppx-wbtn--primary { border-color: var(--ppx-primary, #475dd7); color: #fff; background: var(--ppx-primary, #475dd7); }
+.ppx-wbtn--ghost { color: var(--ppx-text, #0f172a); background: #fff; }
+/* Brand orange variant for restart */
+.ppx-wbtn--orange {
+  --ppx-orange: #f59e0b;
+  border-color: var(--ppx-orange);
+  background: var(--ppx-orange);
+  color: #fff;
+}
+.ppx-wbtn--orange:hover { filter: brightness(0.95); }
+.ppx-wbtn--orange:active { filter: brightness(0.9); }
+.ppx-ex__dot.is-current { background: var(--ppx-primary); }
+.ppx-ex__dot.is-done { background: color-mix(in srgb, var(--ppx-primary) 55%, #ffffff); }
+@supports not (color-mix(in srgb, #000 50%, #fff)) {
+  .ppx-ex__dot.is-done { background: #bfc7ff; }
+}
+
+/* Nav pods */
+.ppx-ex__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.ppx-ex__nav-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--ppx-line);
+  background: #f3f4f6;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .12s ease, opacity .12s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+}
+.ppx-ex__nav-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.08); }
+.ppx-ex__nav-btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* Nav icons via mask so they inherit color */
+.ppx-ex__nav-btn::before {
+  content: "";
+  width: 28px; height: 28px;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  opacity: .85;
+}
+.ppx-ex__nav-btn--prev::before {
+  background-image: url("/static/assets/icons/arrow_left.svg");
+}
+.ppx-ex__nav-btn--next::before {
+  background-image: url("/static/assets/icons/arrow_right.svg");
+}
+
+/* Hint toggle button (if used separately) */
+/* Show bulb icon on the *toggle* (always visible), not just the hidden panel */
+.ppx-ex__hint-toggle::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: -3px;
+  background-image: url("/static/assets/icons/hint.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+}
+
+/* Utility */
+.ppx-visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px,1px,1px,1px);
+  white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+/* --- TF hint toggle & layout polish (scoped, overrides global button styles) --- */
+.ppx-ex .ppx-ex__hint-toggle {
+  appearance: none;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  display: block;                 /* block so margin:auto can center */
+  float: none !important;         /* guard against global button floats */
+  width: max-content;             /* shrink to its contents */
+  margin: 6px auto 0;             /* truly centered */
+  padding: 2px 0;
+  color: var(--ppx-primary);
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Ensure the action column is centered; some global rules may override this */
+.ppx-ex .ppx-ex__actions {
+  justify-items: center;
+}
+
+/* Keep the pills grouped; hint follows beneath them cleanly */
+.ppx-ex .ppx-ex__actions + .ppx-ex__hint-toggle { margin-top: 10px; }
+
+.ppx-ex .ppx-ex__hint-toggle:hover { text-decoration: underline; }
+.ppx-ex .ppx-ex__hint-toggle:focus-visible {
+  outline: 3px solid var(--ppx-focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* keep the bulb icon on the toggle tidy */
+.ppx-ex .ppx-ex__hint-toggle::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 2px;
+  background-image: url("/static/assets/icons/hint.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+}
+
+/* center the revealed hint block and keep it from spanning the full modal width */
+.ppx-ex .ppx-ex__hint {
+  max-width: 720px;
+  margin: 10px auto 18px; /* centered */
+}
+
+/* nudge spacing to match the mock */
+.ppx-ex .ppx-ex__header { margin-bottom: 24px; }
+.ppx-ex .ppx-ex__actions { margin: 8px 0 6px; }
+
+@media (max-width: 480px) {
+  .ppx-ex .ppx-ex__hint { margin-left: 12px; margin-right: 12px; max-width: none; }
+}
+
+/* Force key rows to span full grid and center (works whether .ppx-ex uses grid or not) */
+.ppx-ex .ppx-ex__actions,
+.ppx-ex .ppx-ex__hint-toggle,
+.ppx-ex .ppx-ex__hint,
+.ppx-ex .ppx-ex__progress {
+  grid-column: 1 / -1;     /* if parent is grid with multiple columns, span all */
+  justify-self: center;    /* center within the grid cell */
+}
+
+/* Keep a clean readable line-length for the TF stack */
+.ppx-ex .ppx-ex__actions,
+.ppx-ex .ppx-ex__hint,
+.ppx-ex .ppx-ex__progress {
+  max-width: 720px;
+  width: 100%;
+}
+
+/* Center the hint toggle precisely under the pills */
+.ppx-ex .ppx-ex__hint-toggle {
+  display: block;
+  width: max-content;
+  margin: 10px auto 0;
+}
+
+/* ========== TF modal layout normalization ========== */
+/* Make the whole exercise a single centered column */
+.ppx-ex {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 14px;
+  justify-items: center; /* center all direct children by default */
+}
+
+/* Ensure these blocks always span the single column and center */
+.ppx-ex .ppx-ex__header,
+.ppx-ex .ppx-media-block,
+.ppx-ex .ppx-ex__actions,
+.ppx-ex .ppx-ex__hint-toggle,
+.ppx-ex .ppx-ex__hint {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+/* Center the prompt text and clamp width for nice line length */
+.ppx-ex .ppx-ex__header,
+.ppx-ex .ppx-ex__prompt {
+  text-align: center;
+}
+.ppx-ex .ppx-ex__prompt {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* FITB prompt should look like normal body text and be left-aligned */
+.ppx-ex--fitb .ppx-ex__prompt {
+  text-align: left;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+}
+@media (min-width: 720px) { .ppx-ex--fitb .ppx-ex__prompt { font-size: 20px; } }
+
+/* Stack the True/False pills in a tidy centered column */
+.ppx-ex .ppx-ex__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(560px, 100%);
+  margin: 8px auto 6px;
+}
+
+/* TF: slightly narrower pills, centered */
+.ppx-ex--tf .ppx-ex__actions { align-items: center; }
+.ppx-ex--tf .ppx-ex__btn { width: 75%; }
+.ppx-ex--tf .ppx-ex__btn .ppx-ex-icon { width: 22px; height: 22px; }
+
+/* TF: use thick green/red outlines for feedback instead of filled pills */
+.ppx-ex--tf .ppx-ex__btn--correct,
+.ppx-ex--tf .ppx-ex__btn--wrong {
+  background: #fff !important;
+  border-width: 3px !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+.ppx-ex--tf .ppx-ex__btn--correct { border-color: var(--ppx-success, #80ac5f) !important; color: var(--ppx-success, #80ac5f) !important; }
+.ppx-ex--tf .ppx-ex__btn--wrong { border-color: var(--ppx-danger, #c46374) !important; color: var(--ppx-danger, #c46374) !important; }
+
+/* Hint toggle + panel centered under the pills */
+.ppx-ex .ppx-ex__hint-toggle {
+  display: block;
+  width: max-content;
+  margin: 8px auto 0;
+}
+.ppx-ex .ppx-ex__hint {
+  width: min(720px, 100%);
+  margin: 10px auto 0;
+}
+
+/* ========== Footer = progress centered, arrows on sides ========== */
+.ppx-ex .ppx-ex__footer {
+  grid-column: 1 / -1;
+  width: min(900px, 100%);
+  margin: 8px auto 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* prev | dots | next */
+  align-items: center;
+  column-gap: 12px;
+}
+
+/* Center the fraction + dots as a block */
+.ppx-ex .ppx-ex__progress {
+  grid-column: 2;           /* middle column */
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ppx-ex .ppx-ex__fraction { margin-bottom: 8px; }
+
+/* Place arrows at far left/right */
+.ppx-ex .ppx-ex__nav {
+  grid-column: 1 / -1;      /* let buttons position themselves */
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+.ppx-ex .ppx-ex__nav-btn--prev { grid-column: 1; justify-self: start; }
+.ppx-ex .ppx-ex__nav-btn--next { grid-column: 3; justify-self: end; }
+
+/* Small screens: relax widths */
+@media (max-width: 520px) {
+  .ppx-ex .ppx-ex__actions,
+  .ppx-ex .ppx-ex__hint,
+  .ppx-ex .ppx-ex__footer { width: 100%; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Summary styling: score badge + answer pills + accordion polish
+   ───────────────────────────────────────────────────────────── */
+
+/* Score badge (bucketed by class) */
+.ppx-score {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  margin: 0 6px;
+  /* Prevent wrapping like "100\n%" on narrow rows */
+  white-space: nowrap;
+  /* Small min-width so 100% stays on one line */
+  min-width: 64px;
+}
+
+/* 90–100 = green */
+.ppx-score--green {
+  color: var(--ppx-success, #80ac5f);
+  border-color: var(--ppx-success, #80ac5f);
+  background: color-mix(in srgb, var(--ppx-success, #80ac5f) 12%, #ffffff);
+}
+@supports not (color-mix(in srgb, #000 50%, #fff)) {
+  .ppx-score--green { background: #e9f3e3; }
+}
+
+/* 80–89 = blue (brand primary) */
+.ppx-score--blue {
+  color: var(--ppx-primary, #475dd7);
+  border-color: var(--ppx-primary, #475dd7);
+  background: color-mix(in srgb, var(--ppx-primary, #475dd7) 12%, #ffffff);
+}
+@supports not (color-mix(in srgb, #000 50%, #fff)) {
+  .ppx-score--blue { background: #eef0ff; }
+}
+
+/* 70–79 = orange */
+.ppx-score--orange {
+  --ppx-orange: #f59e0b;
+  color: var(--ppx-orange);
+  border-color: var(--ppx-orange);
+  background: color-mix(in srgb, var(--ppx-orange) 14%, #ffffff);
+}
+@supports not (color-mix(in srgb, #000 50%, #fff)) {
+  .ppx-score--orange { background: #fff3e0; }
+}
+
+/* <70 = red */
+.ppx-score--red {
+  color: var(--ppx-danger, #c46374);
+  border-color: var(--ppx-danger, #c46374);
+  background: color-mix(in srgb, var(--ppx-danger, #c46374) 12%, #ffffff);
+}
+@supports not (color-mix(in srgb, #000 50%, #fff)) {
+  .ppx-score--red { background: #fdecef; }
+}
+
+/* Answer pill (Your answer: [pill]) */
+.ppx-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  line-height: 1.15;
+}
+.ppx-pill--ok {
+  background: var(--ppx-success, #80ac5f);
+  color: #fff;
+  border-color: var(--ppx-success, #80ac5f);
+  box-shadow: 0 6px 16px rgba(128,172,95,.18);
+}
+.ppx-pill--bad {
+  background: var(--ppx-danger, #c46374);
+  color: #fff;
+  border-color: var(--ppx-danger, #c46374);
+  box-shadow: 0 6px 16px rgba(196,99,116,.18);
+}
+
+/* Accordion polish (details/summary used in summary view) */
+.ppx-acc summary {
+  position: relative;
+  padding-right: 92px; /* extra space for pill + fraction + chevron */
+  user-select: none;
+  list-style: none; /* hide default disclosure marker (Firefox/others) */
+}
+/* Hide default marker across engines */
+.ppx-acc summary::-webkit-details-marker { display: none !important; }
+/* Hide default marker in modern browsers */
+.ppx-acc summary::marker { content: '' !important; }
+/* Guard: if any left icon was injected via ::before, remove it */
+.ppx-acc summary::before { content: '' !important; display: none !important; }
+
+/* Chevron indicator */
+.ppx-acc summary::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background: url('/static/assets/icons/chevron_collapsed.svg') no-repeat center / contain; /* standard collapsed chevron */
+  opacity: .85;
+}
+.ppx-acc[open] summary::after {
+  background-image: url('/static/assets/icons/chevron_down.svg');
+  opacity: 1;
+}
+
+/* Keep state pill clear of the chevron on the right */
+/* Ensure right-side badges leave space for chevron */
+.ppx-acc summary .ppx-chip { margin-right: 24px; }
+.ppx-acc summary .ppx-score { margin-right: 28px; }
+.ppx-acc summary .ppx-muted { margin-right: 28px; }
+
+/* MCQ summary: ensure state pill has room and never wraps */
+.ppx-ex--mcq .ppx-acc summary { padding-right: 72px; }
+.ppx-ex--mcq .ppx-acc summary .ppx-chip {
+  min-width: 100px;
+  white-space: nowrap;
+  justify-content: center;
+}
+
+/* Hover/active state for the summary row */
+.ppx-acc summary:hover {
+  background: #f9fafb;
+}
+.ppx-acc[open] {
+  border-color: var(--ppx-primary, #475dd7);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ppx-primary, #475dd7) 10%, transparent);
+}
+@supports not (color-mix(in srgb, #000 50%, #fff)) {
+  .ppx-acc[open] { box-shadow: 0 0 0 3px rgba(71,93,215,.12); }
+}
+
+/* Keep summary content tidy and centered widths */
+.ppx-acc { display: block; width: min(980px, 100%); margin: 0 auto; }
+.ppx-acc > summary,
+.ppx-acc > div {
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+}
+.ppx-acc > summary { display: flex; align-items: center; justify-content: space-between; }
+
+/* Summary list width target ~70-75% of track */
+.ppx-summary-list { width: 75%; max-width: 980px; min-width: 520px; margin-left: auto; margin-right: auto; }
+
+/* Dictation summary: widen accordions to ~78% of modal */
+.ppx-ex--dictation .ppx-summary-list { width: 90%; max-width: none; min-width: 0; }
+.ppx-ex--dictation .ppx-acc { width: 100%; max-width: none; }
+.ppx-ex--dictation .ppx-acc > summary,
+.ppx-ex--dictation .ppx-acc > div { width: 100%; max-width: none; }
+@media (max-width: 920px) {
+  .ppx-ex--dictation .ppx-summary-list,
+  .ppx-ex--dictation .ppx-acc { width: 90%; }
+}
+@media (max-width: 640px) {
+  .ppx-ex--dictation .ppx-summary-list,
+  .ppx-ex--dictation .ppx-acc { width: 100%; }
+}
+
+/* Light success callout used in dictation summary */
+.ppx-callout--ok {
+  background: #e6f7ef;
+  border: 1px solid #65a30d33;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Colored chips for Correcto / Incorrecto in summary headers
+   ───────────────────────────────────────────────────────────── */
+
+/* Reuse existing chip structure but fill instead of outline */
+.ppx-chip--ok {
+  background: var(--ppx-success, #80ac5f);
+  color: #fff;
+  border-color: var(--ppx-success, #80ac5f);
+  box-shadow: 0 4px 12px rgba(128,172,95,.18);
+}
+
+.ppx-chip--bad {
+  background: var(--ppx-danger, #c46374);
+  color: #fff;
+  border-color: var(--ppx-danger, #c46374);
+  box-shadow: 0 4px 12px rgba(196,99,116,.18);
+}
+
+/* Keep spacing tight between chips on summary row */
+.ppx-chip + .ppx-chip {
+  margin-left: 6px;
+}
+
+/* Summary accordion header chips (filled colors, scoped to summary list) */
+.ppx-card > [role="list"] .ppx-chip.ppx-chip--ok {
+  background: var(--ppx-success, #80ac5f);
+  color: #fff;
+  border-color: var(--ppx-success, #80ac5f);
+  box-shadow: 0 4px 12px rgba(128,172,95,.18);
+}
+
+.ppx-card > [role="list"] .ppx-chip.ppx-chip--bad {
+  background: var(--ppx-danger, #c46374);
+  color: #fff;
+  border-color: var(--ppx-danger, #c46374);
+  box-shadow: 0 4px 12px rgba(196,99,116,.18);
+}
+
+/* small spacing when two chips sit side-by-side */
+.ppx-card > [role="list"] .ppx-chip + .ppx-chip { margin-left: 6px; }
+
+/* ─────────────────────────────────────────────────────────────
+   Media block: images (contain), audio/video centering, zoom overlay
+   ───────────────────────────────────────────────────────────── */
+.ppx-media-block {
+  width: min(720px, 100%);
+  margin: 0 auto 6px;
+}
+
+.ppx-media-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: max-content;
+  gap: 10px;
+  justify-items: stretch;
+  align-items: start;
+}
+
+.ppx-media-tile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Clickable image wrapper (button) */
+.ppx-media-imgbtn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Inline image in the exercise: fully visible, not cropped, centered */
+.ppx-media-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  cursor: zoom-in;
+}
+
+/* Optional small caption under media */
+.ppx-media-caption {
+  font-size: .85rem;
+  padding: 6px 8px;
+  color: var(--ppx-muted);
+  text-align: center;
+}
+
+/* Center audio/video controls */
+.ppx-media-audio,
+.ppx-media-video {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ppx-media-video video {
+  max-width: 100%;
+  height: auto;
+  max-height: 280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+}
+
+/* Larger inline image on wider screens (still conservative) */
+@media (min-width: 720px) {
+  .ppx-media-img { max-height: 220px; }
+}
+
+/* ─ Fix: base kit absolutizes buttons inside media tiles; restore normal flow in the TF player ─ */
+.ppx-ex .ppx-media-tile > .ppx-media-imgbtn {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  left: auto !important;
+  bottom: auto !important;
+  display: block !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Zoom overlay (created by JS on first use) */
+.ppx-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483648; /* higher than the modal’s 2147483647 */
+}
+.ppx-zoom__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(1px);
+}
+.ppx-zoom__box {
+  position: absolute;
+  inset: 24px;
+  display: grid;
+  place-items: center;
+}
+.ppx-zoom__img {
+  max-width: min(92vw, 1100px);
+  max-height: min(88vh, 1100px);
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  cursor: zoom-out;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Stronger specificity so exercise images ignore legacy 100px height
+   ───────────────────────────────────────────────────────────── */
+.ppx-ex .ppx-media-block img.ppx-media-img {
+  height: auto !important; /* defeat legacy .ppx-media-img { height:100px } even if loaded later */
+  max-height: 320px;
+  object-fit: contain;
+}
+
+@media (min-width: 720px) {
+  .ppx-ex .ppx-media-block img.ppx-media-img {
+    max-height: 220px;
+  }
+}
+
+/* Dictation diff styles */
+.ppx-diff { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.ppx-diff__line { font-size: .95rem; line-height: 1.65; word-break: break-word; }
+.ppx-diff__ok { background: #e6f7ef; color: #065f46; border-radius: 4px; padding: 0 2px; }
+.ppx-diff__bad { background: #fee2e2; color: #991b1b; border-radius: 4px; padding: 0 2px; }
+.ppx-diff__missing { display: inline-block; width: 1ch; border-bottom: 2px solid #dc2626; height: 1.2em; vertical-align: bottom; }
+.ppx-diff__extra { color: #991b1b; text-decoration: line-through; }
+.ppx-diff__soft { background: #fef3c7; color: #92400e; border-radius: 4px; padding: 0 2px; }
+.ppx-diff__ghost { display:inline-block; width: 1ch; opacity: .35; }
+.ppx-diff__blank { display:inline-block; width: 1ch; height: 1.2em; border: 1px solid #e5e7eb; border-radius: 3px; background: #fff; vertical-align: bottom; }
+.ppx-diff__aster { color: #dc2626; font-weight: 700; text-decoration: underline; text-decoration-color: #dc2626; }
+.ppx-diff__underscore { color: #dc2626; font-weight: 700; }
+.ppx-diff__line > span { margin-right: 1px; }
+.ppx-diff__key { display:inline-flex; align-items:center; gap:6px; color:#6b7280; font-size:.85rem; }
+.ppx-diff__swatch { display:inline-block; width:12px; height:12px; border-radius:3px; }
+.ppx-diff__swatch.ppx-diff__ok { background:#e6f7ef; border:1px solid #065f46; }
+.ppx-diff__swatch.ppx-diff__bad { background:#fee2e2; border:1px solid #991b1b; }
+.ppx-diff__swatch.ppx-diff__missing { background:transparent; border-bottom:2px solid #dc2626; width:14px; height:0; }
+.ppx-diff__swatch.ppx-diff__extra { background:#fee2e2; border:1px dashed #991b1b; }
+
+/* FITB inline number + hint */
+.ppx-fitb-num {
+  display:inline-block;
+  font-weight:400;
+  color: var(--ppx-brand-2, #475dd7);
+  margin-right:4px;
+  white-space: nowrap;      /* keep (n) together */
+  min-width: 3ch;           /* reserve space to avoid wrapping */
+  flex: 0 0 auto;           /* prevent flex wrapping of the marker */
+  text-align: right;        /* align markers nicely in feedback rows */
+}
+
+/* FITB inline inputs should not expand full width */
+.ppx-ex--fitb .ppx-input.ppx-fitb-inp {
+  width: auto;
+  min-width: 10ch;
+  max-width: 28ch;
+  display: inline-block;
+  vertical-align: baseline;
+  padding: .35rem .5rem;
+}
+

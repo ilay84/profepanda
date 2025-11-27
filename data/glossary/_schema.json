@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://profepanda/glossary.schema.json",
+  "type": "object",
+  "required": ["word", "slug", "senses"],
+  "properties": {
+    "word": {"type": "string"},
+    "slug": {"type": "string", "pattern": "^[a-z0-9\\-]+$"},
+    "audio": {"type": ["string", "null"]},
+    "alt_spellings": {"type": "array", "items": {"type": "string"}},
+    "senses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id","countries","pos","definition_es","definition_en"],
+        "properties": {
+          "id": {"type": "string"},
+          "countries": {"type": "array", "minItems": 1,
+            "items": {"type": "string", "enum": ["AR","UY","CL","MX","ES","CO","PE","PY","BO","EC","VE","PR","DO","CU","GT","CR","PA","HN","NI","SV","GQ"]}},
+          "pos": {"type": "string", "enum": ["sustantivo","verbo","adjetivo","adverbio","locución","expresión","interjección","pronombre","conector"]},
+          "register": {"type": ["string","null"], "enum": ["formal","neutral","informal","vulgar",null]},
+          "freq": {"type": ["string","null"], "enum": ["raro","menos_comun","comun","muy_comun",null]},
+          "domain": {"type": "array", "items": {"type": "string", "enum": ["comida","salud","deportes","politica","tecnologia","transporte","trabajo","familia","educacion","economia","cultura_pop"]}},
+          "tone": {"type": "array", "items": {"type": "string", "enum": ["afectuoso","despectivo","ironico","humoristico"]}},
+          "status": {"type": ["string","null"], "enum": ["vigente","en_desuso","arcaico","regionalismo_fuerte",null]},
+          "sensitivity": {"type": ["string","null"], "enum": ["potencialmente_ofensivo",null]},
+
+          "definition_es": {"type": "string"},
+          "definition_en": {"type": "string"},
+          "equivalents_en": {"type": "array", "items": {"type": "string"}},
+          "equivalents_es": {"type": "array", "items": {"type": "string"}},
+          "notes_es": {"type": ["string","null"]},
+          "notes_en": {"type": ["string","null"]},
+
+          "examples": {"type": "array", "items": {
+            "type": "object", "required": ["es"],
+            "properties": {"es": {"type": "string"}, "en": {"type": ["string","null"]}, "audio": {"type": ["string","null"]}, "source": {"type": ["object","null"]}}
+          }},
+
+          "related_slugs": {"type": "array", "items": {"type": "string"}},
+
+          "linked_mentions": {"type": "array", "items": {
+            "type": "object", "required": ["text","target_slug","target_country","source","lang","range"],
+            "properties": {
+              "text": {"type": "string"},
+              "target_slug": {"type": "string"},
+              "target_country": {"type": "string"},
+              "source": {"type": "string", "enum": ["example_auto","example_manual","definition_manual"]},
+              "lang": {"type": "string", "enum": ["es","en"]},
+              "range": {"type": "object", "required": ["start","end"],
+                "properties": {"start": {"type": "integer", "minimum": 0}, "end": {"type": "integer", "minimum": 0}}
+              }
+            }
+          }}
+        }
+      }
+    }
+  }
+}
+
+

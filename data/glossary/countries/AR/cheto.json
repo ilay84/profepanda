@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [
+    "cheta"
+  ],
+  "audio": "/media/glossary-audio/entry/cheto/cheto.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Showing attitudes or style associated with wealthy or upper-class people.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">De estilo o actitud asociado a sectores adinerados o de clase alta.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "bougie",
+        "fancy",
+        "upscale",
+        "ritzy"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/cheto/cheto_ex_01.mp3",
+          "en": "You’re from Flores, Marina? Flores is `bougie`! Do you know how much it costs to rent there? Where you live isn’t just upscale — it’s like another planet!",
+          "es": "De Flores venís, Marina. ¡Es `cheto` Flores! ¿Sabés lo que sale un alquiler ahí? Esto donde vivís no es `cheto`, ¡es extraterrestre!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "chetas",
+        "fem_sg": "cheta",
+        "masc_pl": "chetos",
+        "masc_sg": "cheto"
+      }
+    }
+  ],
+  "slug": "cheto",
+  "word": "cheto"
+}

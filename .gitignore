@@ -1,0 +1,40 @@
+# Python / Flask
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+env/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node / Frontend build output
+node_modules/
+dist/
+build/
+.parcel-cache/
+.next/
+
+# Env / secrets
+.env
+.env.*
+*.pem
+
+# Local data / temp
+tmp/
+temp/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Instance-specific Flask data
+instance/

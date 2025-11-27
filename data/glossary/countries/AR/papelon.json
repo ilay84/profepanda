@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/papelon/papelon.mp3?v=1764267665",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A situation that causes major embarrassment or public ridicule.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Situación que provoca mucha vergüenza o ridículo, especialmente en público.</span></p>",
+      "domain": [
+        "emociones"
+      ],
+      "equivalents_en": [
+        "embarrassment",
+        "disaster",
+        "public disgrace",
+        "shitshow"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/papelon/papelon_ex_01.mp3?v=1764267584",
+          "en": "`Holy fuck`! Now Mecha’s going to tell the whole neighborhood about this `embarrassment`, and how am I supposed to explain I went to school with you?!",
+          "es": "¡La concha de Dios! Ahora Mecha que va a contar a todo el barrio este `papelón` y yo, ¿cómo explico que fui al colegio con vos? ¡¿Cómo?!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas Negras: P*tas y Chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "papelones",
+        "masc_sg": "papelón"
+      }
+    }
+  ],
+  "slug": "papelon",
+  "word": "papelón"
+}

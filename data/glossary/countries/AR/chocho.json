@@ -1,0 +1,72 @@
+{
+  "alt_spellings": [
+    "chocha",
+    "chochos",
+    "chochas"
+  ],
+  "audio": "/media/glossary-audio/entry/chocho/chocho.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Very happy or excited.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Muy contento o entusiasmado.</span></p>",
+      "domain": [
+        "emociones"
+      ],
+      "equivalents_en": [
+        "thrilled",
+        "delighted",
+        "excited"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/chocho/chocho_ex_01.mp3",
+          "en": "My mom called—everything’s fine. Clarita was `thrilled`.",
+          "es": "Llamó mi vieja, todo bien. Clarita estaba `chocha`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/chocho/chocho_ex_02.mp3",
+          "en": "I'm `thrilled`. You know when everything around you is exactly what you want?",
+          "es": "Estoy `chocha`. ¿Viste cuando todo lo que hay es lo que querés?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "chochas",
+        "fem_sg": "chocha",
+        "masc_pl": "chochos",
+        "masc_sg": "chocho"
+      }
+    }
+  ],
+  "slug": "chocho",
+  "word": "chocho"
+}

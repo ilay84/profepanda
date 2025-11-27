@@ -1,0 +1,73 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/gordo/gordo.mp3?v=1764178215",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Affectionate nickname used between partners, family, or friends, not literally about body size.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Apodo afectuoso usado entre parejas, familia o amigos, sin referencia literal al cuerpo.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "babe",
+        "honey",
+        "sweetie",
+        "love",
+        "baby",
+        "girl"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/gordo/gordo_ex_01.mp3?v=1764178215",
+          "en": "\"Hey, `babe`… dressed like that? Come on, no way. \"\n\"What’s wrong with it? Is it bad? Do I need to dress up just to be in my own living room?\"",
+          "es": "—Che, `gordo`..., vos así vestido, por favor, no, eh. \n—¿Qué tiene? ¿Está mal? ¿Tengo que vestirme bien para ir a mi living?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/gordo/gordo_ex_02.mp3?v=1764178216",
+          "en": "If I’m being honest, I wouldn’t get involved, `girl`.",
+          "es": "Yo no me metería, `gorda`, te soy sincera.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "afectuoso"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "gordito, gordita",
+        "fem_pl": "gordas",
+        "fem_sg": "gorda",
+        "masc_pl": "gordos",
+        "masc_sg": "gordo"
+      }
+    }
+  ],
+  "slug": "gordo",
+  "word": "gordo"
+}

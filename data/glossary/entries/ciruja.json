@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/ciruja/ciruja.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Someone who picks through trash or lives off what they scavenge on the street.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Persona que busca objetos en la basura o vive de lo que recupera en la calle.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "scavenger",
+        "trash picker",
+        "hobo"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/ciruja/ciruja_ex_01.mp3",
+          "en": "The whole neighborhood knew you were having sex with `hobos`.",
+          "es": "Todo el barrio sabía que tenías sexo con `cirujas`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "cirujas",
+        "fem_sg": "ciruja",
+        "masc_pl": "cirujas",
+        "masc_sg": "ciruja"
+      }
+    }
+  ],
+  "slug": "ciruja",
+  "word": "ciruja"
+}

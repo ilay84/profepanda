@@ -1,0 +1,52 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/gaseosa/gaseosa.mp3?v=1764177281",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Carbonated soft drink.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Bebida azucarada con gas.</span></p>",
+      "domain": [
+        "comida"
+      ],
+      "equivalents_en": [
+        "soda",
+        "soft drink",
+        "pop"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/gaseosa/gaseosa_ex_01.mp3?v=1764177299",
+          "en": "Terrible! She doesn’t even let him drink `soda`. The kid lives in hell. I even thought about calling the police, I swear.",
+          "es": "¡Terrible! No lo deja tomar `gaseosa` tampoco. Un desastre, un infierno vive el nene. Pensé en llamar a la policía, mirá lo que te digo.",
+          "source": {
+            "type": "movie"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "gaseosas",
+        "fem_sg": "gaseosa",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "gaseosa",
+  "word": "gaseosa"
+}

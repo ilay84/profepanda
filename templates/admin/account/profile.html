@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('Perfil', 'Profile', app_lang) }} · ProfePanda{% endblock %}
+
+{% block admin_nav %}
+  {% include "_admin_bar.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="ppx-card" style="max-width:720px;margin:2rem auto;padding:1.25rem;border:1px solid #e5e7eb;border-radius:14px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);">
+    <h1 class="ppx-h2" style="margin:0 0 .75rem 0;">{{ t('Perfil', 'Profile', app_lang) }}</h1>
+
+    <div class="ppx-row" style="gap:2rem;align-items:flex-start;flex-wrap:wrap;">
+      <section style="flex:1;min-width:260px;">
+        <h2 class="ppx-h3" style="margin:.25rem 0 .5rem 0;">{{ t('Datos de la cuenta', 'Account info', app_lang) }}</h2>
+        <ul style="list-style:none;margin:0;padding:0;line-height:1.7;">
+          <li><strong>{{ t('Correo', 'Email', app_lang) }}:</strong> {{ current_user.email }}</li>
+          <li><strong>{{ t('Rol', 'Role', app_lang) }}:</strong> {{ current_user.role }}</li>
+          <li><strong>{{ t('Estado', 'Status', app_lang) }}:</strong> {{ current_user.status }}</li>
+        </ul>
+      </section>
+
+      <section style="flex:1;min-width:260px;">
+        <h2 class="ppx-h3" style="margin:.25rem 0 .5rem 0;">{{ t('Actualizar perfil', 'Update profile', app_lang) }}</h2>
+        <form action="{{ url_for('accounts.profile_submit') }}" method="post" style="display:flex;flex-direction:column;gap:.75rem;">
+          <label for="name" style="font-weight:600;">{{ t('Nombre para mostrar', 'Display name', app_lang) }}</label>
+          <input id="name" name="name" type="text" required value="{{ current_user.name }}"
+                 style="padding:.6rem .7rem;border:1px solid #e5e7eb;border-radius:10px;font:500 14px/1.4 Montserrat,system-ui;">
+
+          <button type="submit" class="ppx-btn" style="margin-top:.5rem;padding:.65rem .9rem;border:0;border-radius:10px;background:#475dd7;color:#fff;font:700 14px/1 Montserrat,system-ui;cursor:pointer;">
+            {{ t('Guardar cambios', 'Save changes', app_lang) }}
+          </button>
+        </form>
+      </section>
+    </div>
+  </div>
+{% endblock %}

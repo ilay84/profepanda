@@ -1,0 +1,237 @@
+{
+  "name": "grammar",
+  "version": 1,
+  "nodes": [
+    {
+      "path": "nouns",
+      "title": { "es": "Sustantivos", "en": "Nouns" },
+      "children": [
+        { "path": "nouns/gender", "title": { "es": "Género", "en": "Gender" } },
+        { "path": "nouns/number", "title": { "es": "Número", "en": "Number" } },
+        { "path": "nouns/countable-vs-uncountable", "title": { "es": "Contables vs. incontables", "en": "Countable vs. Uncountable" } },
+        { "path": "nouns/concrete-vs-abstract", "title": { "es": "Concretos vs. abstractos", "en": "Concrete vs. Abstract" } },
+        { "path": "nouns/animate-vs-inanimate", "title": { "es": "Animado vs. inanimado", "en": "Animate vs. Inanimate" } },
+        { "path": "nouns/irregular-gender-patterns", "title": { "es": "Patrones irregulares de género", "en": "Irregular Gender Patterns" } }
+      ]
+    },
+    {
+      "path": "adjectives",
+      "title": { "es": "Adjetivos", "en": "Adjectives" },
+      "children": [
+        { "path": "adjectives/gender-agreement", "title": { "es": "Concordancia de género", "en": "Gender Agreement" } },
+        { "path": "adjectives/number-agreement", "title": { "es": "Concordancia de número", "en": "Number Agreement" } },
+        { "path": "adjectives/position-and-meaning-shift", "title": { "es": "Posición del adjetivo y cambio de significado", "en": "Adjective Position and Meaning Shift" } },
+        { "path": "adjectives/comparative-forms", "title": { "es": "Grados comparativos", "en": "Comparative Forms" } },
+        { "path": "adjectives/superlative-forms", "title": { "es": "Grados superlativos", "en": "Superlative Forms" } }
+      ]
+    },
+    {
+      "path": "determiners",
+      "title": { "es": "Determinantes", "en": "Determiners" },
+      "children": [
+        { "path": "determiners/definite-articles", "title": { "es": "Artículos definidos", "en": "Definite Articles" } },
+        { "path": "determiners/indefinite-articles", "title": { "es": "Artículos indefinidos", "en": "Indefinite Articles" } },
+        { "path": "determiners/demonstratives", "title": { "es": "Demostrativos", "en": "Demonstratives" } },
+        { "path": "determiners/possessive-determiners", "title": { "es": "Determinantes posesivos", "en": "Possessive Determiners" } },
+        { "path": "determiners/quantifiers", "title": { "es": "Cuantificadores", "en": "Quantifiers" } },
+        { "path": "determiners/cardinal-numbers", "title": { "es": "Números cardinales", "en": "Cardinal Numbers" } },
+        { "path": "determiners/ordinal-numbers", "title": { "es": "Números ordinales", "en": "Ordinal Numbers" } },
+        { "path": "determiners/negative-determiners", "title": { "es": "Determinantes negativos", "en": "Negative Determiners" } },
+        { "path": "determiners/interrogative-determiners", "title": { "es": "Determinantes interrogativos", "en": "Interrogative Determiners" } }
+      ]
+    },
+    {
+      "path": "pronouns",
+      "title": { "es": "Pronombres", "en": "Pronouns" },
+      "children": [
+        { "path": "pronouns/subject-pronouns", "title": { "es": "Pronombres personales (sujeto)", "en": "Subject Pronouns" } },
+        { "path": "pronouns/reflexive-pronouns", "title": { "es": "Pronombres reflexivos", "en": "Reflexive Pronouns" } },
+        { "path": "pronouns/object-pronouns", "title": { "es": "Pronombres de objeto (directo/indirecto)", "en": "Object Pronouns (Direct / Indirect)" } },
+        { "path": "pronouns/prepositional-pronouns", "title": { "es": "Pronombres preposicionales", "en": "Prepositional Pronouns" } },
+        { "path": "pronouns/indefinite-pronouns", "title": { "es": "Pronombres indefinidos", "en": "Indefinite Pronouns" } },
+        { "path": "pronouns/demonstrative-pronouns", "title": { "es": "Pronombres demostrativos", "en": "Demonstrative Pronouns" } },
+        { "path": "pronouns/relative-pronouns", "title": { "es": "Pronombres relativos", "en": "Relative Pronouns" } },
+        { "path": "pronouns/interrogative-pronouns", "title": { "es": "Pronombres interrogativos", "en": "Interrogative Pronouns" } },
+        { "path": "pronouns/clitic-pronouns", "title": { "es": "Clíticos", "en": "Clitic Pronouns" } },
+        { "path": "pronouns/pronominal-constructions", "title": { "es": "Construcciones pronominales", "en": "Pronominal Constructions" } },
+        { "path": "pronouns/clitic-doubling", "title": { "es": "Duplicación de clíticos", "en": "Clitic Doubling" } }
+      ]
+    },
+    {
+      "path": "verbs",
+      "title": { "es": "Verbos", "en": "Verbs" },
+      "children": [
+        {
+          "path": "verbs/verb-forms",
+          "title": { "es": "Formas verbales", "en": "Verb Forms" },
+          "children": [
+            { "path": "verbs/verb-forms/infinitives", "title": { "es": "Infinitivos", "en": "Infinitives" } },
+            { "path": "verbs/verb-forms/gerunds", "title": { "es": "Gerundios", "en": "Gerunds" } },
+            { "path": "verbs/verb-forms/past-participles", "title": { "es": "Participios (pasados)", "en": "Past Participles" } },
+            { "path": "verbs/verb-forms/verbs-as-adjectives", "title": { "es": "Verbos como adjetivos", "en": "Verbs as Adjectives" } },
+            { "path": "verbs/verb-forms/pronominal-verbs", "title": { "es": "Verbos pronominales", "en": "Pronominal Verbs" } },
+            { "path": "verbs/verb-forms/reflexive-verbs", "title": { "es": "Verbos reflexivos", "en": "Reflexive Verbs" } }
+          ]
+        },
+        {
+          "path": "verbs/verb-types",
+          "title": { "es": "Tipos de verbos", "en": "Verb Types" },
+          "children": [
+            { "path": "verbs/verb-types/regular-verbs", "title": { "es": "Verbos regulares", "en": "Regular Verbs" } },
+            { "path": "verbs/verb-types/irregular-verbs", "title": { "es": "Verbos irregulares", "en": "Irregular Verbs" } },
+            { "path": "verbs/verb-types/modal-verbs", "title": { "es": "Verbos modales", "en": "Modal Verbs" } },
+            { "path": "verbs/verb-types/transitive-vs-intransitive", "title": { "es": "Transitivos vs. intransitivos", "en": "Transitive vs. Intransitive" } },
+            { "path": "verbs/verb-types/auxiliary-verbs", "title": { "es": "Verbos auxiliares", "en": "Auxiliary Verbs" } }
+          ]
+        },
+        {
+          "path": "verbs/indicative-tenses",
+          "title": { "es": "Tiempos del indicativo", "en": "Indicative Tenses" },
+          "children": [
+            { "path": "verbs/indicative-tenses/present", "title": { "es": "Presente", "en": "Present" } },
+            { "path": "verbs/indicative-tenses/preterite", "title": { "es": "Pretérito", "en": "Preterite" } },
+            { "path": "verbs/indicative-tenses/imperfect", "title": { "es": "Imperfecto", "en": "Imperfect" } },
+            { "path": "verbs/indicative-tenses/present-perfect", "title": { "es": "Pretérito perfecto (compuesto)", "en": "Present Perfect" } },
+            { "path": "verbs/indicative-tenses/past-perfect", "title": { "es": "Pluscuamperfecto", "en": "Past Perfect (Pluperfect)" } },
+            { "path": "verbs/indicative-tenses/future", "title": { "es": "Futuro", "en": "Future" } },
+            { "path": "verbs/indicative-tenses/future-perfect", "title": { "es": "Futuro perfecto", "en": "Future Perfect" } },
+            { "path": "verbs/indicative-tenses/conditional", "title": { "es": "Condicional", "en": "Conditional" } },
+            { "path": "verbs/indicative-tenses/conditional-perfect", "title": { "es": "Condicional perfecto", "en": "Conditional Perfect" } }
+          ]
+        },
+        {
+          "path": "verbs/subjunctive-tenses",
+          "title": { "es": "Tiempos del subjuntivo", "en": "Subjunctive Tenses" },
+          "children": [
+            { "path": "verbs/subjunctive-tenses/present", "title": { "es": "Presente", "en": "Present" } },
+            { "path": "verbs/subjunctive-tenses/imperfect", "title": { "es": "Imperfecto", "en": "Imperfect" } },
+            { "path": "verbs/subjunctive-tenses/present-perfect", "title": { "es": "Pretérito perfecto", "en": "Present Perfect" } },
+            { "path": "verbs/subjunctive-tenses/pluperfect", "title": { "es": "Pluscuamperfecto", "en": "Pluperfect" } }
+          ]
+        },
+        {
+          "path": "verbs/other-moods",
+          "title": { "es": "Otros modos", "en": "Other Moods" },
+          "children": [
+            { "path": "verbs/other-moods/imperative", "title": { "es": "Imperativo (mandatos)", "en": "Imperative (Commands)" } },
+            { "path": "verbs/other-moods/infinitive-constructions", "title": { "es": "Construcciones con infinitivo", "en": "Infinitive Constructions" } },
+            { "path": "verbs/other-moods/subjunctive-vs-indicative", "title": { "es": "Subjuntivo vs. indicativo", "en": "Subjunctive vs. Indicative" } }
+          ]
+        },
+        {
+          "path": "verbs/periphrastic-constructions",
+          "title": { "es": "Perífrasis verbales", "en": "Periphrastic Constructions" },
+          "children": [
+            { "path": "verbs/periphrastic-constructions/ir-a-infinitive", "title": { "es": "Ir a + infinitivo", "en": "Ir a + Infinitive" } },
+            { "path": "verbs/periphrastic-constructions/tener-que-infinitive", "title": { "es": "Tener que + infinitivo", "en": "Tener que + Infinitive" } },
+            { "path": "verbs/periphrastic-constructions/haber-que", "title": { "es": "Haber que", "en": "Haber que" } },
+            { "path": "verbs/periphrastic-constructions/haber-de-infinitive", "title": { "es": "Haber de + infinitivo", "en": "Haber de + Infinitive" } },
+            { "path": "verbs/periphrastic-constructions/estar-gerund", "title": { "es": "Estar + gerundio", "en": "Estar + Gerund" } },
+            { "path": "verbs/periphrastic-constructions/acabar-de-infinitive", "title": { "es": "Acabar de + infinitivo", "en": "Acabar de + Infinitive" } },
+            { "path": "verbs/periphrastic-constructions/volver-a-infinitive", "title": { "es": "Volver a + infinitivo", "en": "Volver a + Infinitive" } },
+            { "path": "verbs/periphrastic-constructions/dejar-de-infinitive", "title": { "es": "Dejar de + infinitivo", "en": "Dejar de + Infinitive" } }
+          ]
+        },
+        {
+          "path": "verbs/special-verbs",
+          "title": { "es": "Verbos especiales", "en": "Special Verbs" },
+          "children": [
+            { "path": "verbs/special-verbs/ser-vs-estar", "title": { "es": "Ser vs. estar", "en": "Ser vs. Estar" } },
+            { "path": "verbs/special-verbs/saber-vs-conocer", "title": { "es": "Saber vs. conocer", "en": "Saber vs. Conocer" } },
+            { "path": "verbs/special-verbs/llevar-vs-traer", "title": { "es": "Llevar vs. traer", "en": "Llevar vs. Traer" } },
+            { "path": "verbs/special-verbs/haber-vs-estar", "title": { "es": "Haber vs. estar", "en": "Haber vs. Estar" } }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "prepositions",
+      "title": { "es": "Preposiciones", "en": "Prepositions" },
+      "children": [
+        { "path": "prepositions/simple", "title": { "es": "Preposiciones simples", "en": "Simple Prepositions" } },
+        { "path": "prepositions/compound", "title": { "es": "Preposiciones compuestas", "en": "Compound Prepositions" } },
+        { "path": "prepositions/place", "title": { "es": "Preposiciones de lugar", "en": "Prepositions of Place" } },
+        { "path": "prepositions/time", "title": { "es": "Preposiciones de tiempo", "en": "Prepositions of Time" } },
+        { "path": "prepositions/cause", "title": { "es": "Preposiciones de causa", "en": "Prepositions of Cause" } },
+        { "path": "prepositions/with-infinitive", "title": { "es": "Preposiciones + infinitivo", "en": "Prepositions + Infinitive" } }
+      ]
+    },
+    {
+      "path": "questions",
+      "title": { "es": "Preguntas", "en": "Questions" },
+      "children": [
+        { "path": "questions/yes-no", "title": { "es": "Preguntas de sí/no", "en": "Yes/No Questions" } },
+        { "path": "questions/wh-questions", "title": { "es": "Preguntas con interrogativos", "en": "WH-Questions (Interrogatives)" } },
+        { "path": "questions/word-order", "title": { "es": "Orden de palabras en preguntas", "en": "Question Word Order" } },
+        { "path": "questions/indirect-questions", "title": { "es": "Preguntas indirectas", "en": "Indirect Questions" } }
+      ]
+    },
+    {
+      "path": "exclamations",
+      "title": { "es": "Exclamaciones", "en": "Exclamations" },
+      "children": [
+        { "path": "exclamations/structures", "title": { "es": "Estructuras exclamativas", "en": "Exclamatory Structures" } },
+        { "path": "exclamations/emotional-emphasis", "title": { "es": "Énfasis emocional", "en": "Emotional Emphasis" } },
+        { "path": "exclamations/que-constructions", "title": { "es": "Construcciones con ¡qué...!", "en": "¡Qué...! Constructions" } }
+      ]
+    },
+    {
+      "path": "comparisons",
+      "title": { "es": "Comparaciones", "en": "Comparisons" },
+      "children": [
+        { "path": "comparisons/equality", "title": { "es": "Igualdad", "en": "Equality" } },
+        { "path": "comparisons/inequality", "title": { "es": "Desigualdad", "en": "Inequality" } },
+        { "path": "comparisons/superlatives", "title": { "es": "Superlativos", "en": "Superlatives" } },
+        { "path": "comparisons/with-adj-adv-nouns", "title": { "es": "Comparativos con adjetivos/adverbios/sustantivos", "en": "Comparatives with Adjectives / Adverbs / Nouns" } }
+      ]
+    },
+    {
+      "path": "conjunctions",
+      "title": { "es": "Conjunciones", "en": "Conjunctions" },
+      "children": [
+        { "path": "conjunctions/coordinating", "title": { "es": "Coordinantes", "en": "Coordinating Conjunctions" } },
+        { "path": "conjunctions/subordinating", "title": { "es": "Subordinantes", "en": "Subordinating Conjunctions" } },
+        { "path": "conjunctions/cause-and-effect", "title": { "es": "Causa y consecuencia", "en": "Cause and Effect" } },
+        { "path": "conjunctions/time-and-sequence", "title": { "es": "Tiempo y secuencia", "en": "Time and Sequence" } },
+        { "path": "conjunctions/conditionals", "title": { "es": "Condicionales", "en": "Conditionals" } },
+        { "path": "conjunctions/concessives", "title": { "es": "Concesivas", "en": "Concessives" } },
+        { "path": "conjunctions/purpose-clauses", "title": { "es": "Finales (propósito)", "en": "Purpose Clauses" } }
+      ]
+    },
+    {
+      "path": "sentence-structure",
+      "title": { "es": "Estructura oracional", "en": "Sentence Structure" },
+      "children": [
+        { "path": "sentence-structure/simple-sentences", "title": { "es": "Oraciones simples", "en": "Simple Sentences" } },
+        { "path": "sentence-structure/compound-sentences", "title": { "es": "Oraciones compuestas", "en": "Compound Sentences" } },
+        { "path": "sentence-structure/complex-sentences", "title": { "es": "Oraciones complejas", "en": "Complex Sentences" } },
+        { "path": "sentence-structure/word-order", "title": { "es": "Orden de palabras", "en": "Word Order" } },
+        { "path": "sentence-structure/negative-sentences", "title": { "es": "Oraciones negativas", "en": "Negative Sentences" } },
+        { "path": "sentence-structure/passive-voice", "title": { "es": "Voz pasiva", "en": "Passive Voice" } }
+      ]
+    },
+    {
+      "path": "modality-and-aspect",
+      "title": { "es": "Modalidad y aspecto", "en": "Modality & Aspect" },
+      "children": [
+        { "path": "modality-and-aspect/expressing-necessity", "title": { "es": "Expresar necesidad", "en": "Expressing Necessity" } },
+        { "path": "modality-and-aspect/expressing-possibility", "title": { "es": "Expresar posibilidad", "en": "Expressing Possibility" } },
+        { "path": "modality-and-aspect/expressing-obligation", "title": { "es": "Expresar obligación", "en": "Expressing Obligation" } },
+        { "path": "modality-and-aspect/aspect-perfective-vs-imperfective", "title": { "es": "Aspecto (perfectivo vs. imperfectivo)", "en": "Aspect (Perfective vs. Imperfective)" } },
+        { "path": "modality-and-aspect/modal-periphrases", "title": { "es": "Perífrasis modales", "en": "Modal Periphrases" } }
+      ]
+    },
+    {
+      "path": "orthography",
+      "title": { "es": "Ortografía", "en": "Spelling & Writing Rules" },
+      "children": [
+        { "path": "orthography/accents-and-stress", "title": { "es": "Acentos y acentuación", "en": "Accents and Stress" } },
+        { "path": "orthography/punctuation-rules", "title": { "es": "Signos de puntuación", "en": "Punctuation Rules" } },
+        { "path": "orthography/capitalization", "title": { "es": "Mayúsculas", "en": "Capitalization" } },
+        { "path": "orthography/spelling-patterns", "title": { "es": "Patrones ortográficos", "en": "Spelling Patterns" } },
+        { "path": "orthography/homophones", "title": { "es": "Homófonos", "en": "Homophones" } },
+        { "path": "orthography/diacritic-marks", "title": { "es": "Tildes diacríticas", "en": "Diacritic Marks" } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/plomo/plomo.mp3?v=1764269929",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A very annoying or tiresome person or situation.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Persona o situación muy molesta o difícil de soportar.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "a drag",
+        "a bore",
+        "a pain",
+        "annoying person or thing"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/plomo/plomo_ex_01.mp3?v=1764269949",
+          "en": "They always end the same way. It’s like you never find out anything about anyone—what happened. Such a `drag`.",
+          "es": "Siempre terminan iguales. Es como que nunca se sabe nada de nadie, qué pasó. Un `plomo`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": "plomazo",
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "plomo",
+  "word": "plomo"
+}

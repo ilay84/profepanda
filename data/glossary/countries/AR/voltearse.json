@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/voltearse/voltearse.mp3?v=1764273822",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">To have sex with someone.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Tener relaciones sexuales con alguien.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "to bang",
+        "to screw",
+        "to hook up with"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/voltearse/voltearse_ex_01.mp3?v=1764273865",
+          "en": "Are you really happy `sleeping with` a different woman every day?",
+          "es": "¿Sos feliz `volteándote` todos los días a una mina distinta?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con Hijos",
+            "type": "series",
+            "year": "2005"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "verbo_pronominal",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "lenguaje_explicito",
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "voltearse",
+  "word": "voltearse"
+}

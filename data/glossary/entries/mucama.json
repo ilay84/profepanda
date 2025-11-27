@@ -1,0 +1,69 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/mucama/mucama.mp3?v=1764262238",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Woman employed to perform household tasks such as cleaning, cooking, or home care.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Mujer empleada para realizar tareas domésticas como limpieza, cocina o la atención del hogar.</span></p>",
+      "domain": [
+        "trabajo"
+      ],
+      "equivalents_en": [
+        "maid",
+        "housekeeper",
+        "domestic worker",
+        "cleaning lady"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/mucama/mucama_ex_01.mp3?v=1764262224",
+          "en": "They found him dressed up like a little `maid`, dead in the house...",
+          "es": "Lo encontraron vestido de `mucamita`, muerto en la casa...",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/mucama/mucama_ex_02.mp3?v=1764262224",
+          "en": "Why are you here posing as a `housekeeper` in one of my neighbor’s homes?",
+          "es": "¿Por qué estás acá infiltrándote como `mucama` en la casa de una vecina mía?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "mucamita",
+        "fem_pl": "mucamas",
+        "fem_sg": "mucama",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "mucama",
+  "word": "mucama"
+}

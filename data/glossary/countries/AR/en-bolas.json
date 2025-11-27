@@ -1,0 +1,52 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/en-bolas/en_bolas.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Naked; without clothes.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Desnudo, sin ropa.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "naked",
+        "butt naked",
+        "in the buff"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/en-bolas/en_bolas_ex_01.mp3",
+          "en": "Always `naked`, Bocha!",
+          "es": "¡Siempre `en bolas`, Bocha!",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_adjetival",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "en-bolas",
+  "word": "en bolas"
+}

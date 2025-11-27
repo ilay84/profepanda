@@ -1,0 +1,642 @@
+/* static/css/ppx-modal.css */
+/* Namespace: .ppx-… only — no global element selectors */
+
+/* ─────────────────────────────────────────────────────────────
+   Tokens (fallbacks if ppx.css not yet loaded)
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --ppx-font: var(--ppx-font, 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+  --ppx-color-text: var(--ppx-color-text, #0f172a);
+  --ppx-color-text-subtle: var(--ppx-color-text-subtle, #334155);
+  --ppx-color-bg: var(--ppx-color-bg, #ffffff);
+  --ppx-color-overlay: rgba(2, 6, 23, 0.5);
+
+  --ppx-modal-head-h: var(--ppx-modal-head-h, 64px);
+  --ppx-modal-foot-h: var(--ppx-modal-foot-h, 72px);
+
+  --ppx-gap-1: var(--ppx-gap-1, 4px);
+  --ppx-gap-2: var(--ppx-gap-2, 8px);
+  --ppx-gap-3: var(--ppx-gap-3, 12px);
+  --ppx-gap-4: var(--ppx-gap-4, 16px);
+  --ppx-gap-5: var(--ppx-gap-5, 24px);
+  --ppx-gap-6: var(--ppx-gap-6, 32px);
+
+  --ppx-radius: var(--ppx-radius, 14px);
+  --ppx-focus: var(--ppx-focus, 2px solid #475dd7);
+
+  --ppx-ok: var(--ppx-ok, #80ac5f);
+  --ppx-bad: var(--ppx-bad, #c46374);
+  --ppx-line: var(--ppx-color-line, #e5e7eb);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Overlay
+   ───────────────────────────────────────────────────────────── */
+.ppx-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--ppx-color-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  z-index: 2147483646; /* just below the modal panel */
+}
+
+.ppx-modal.is-open + .ppx-modal__overlay,
+.ppx-modal__overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Modal shell
+   ───────────────────────────────────────────────────────────── */
+.ppx-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;           /* center the inner panel */
+  background: transparent !important;   /* never paint */
+  opacity: 0;                    /* fade container only */
+  pointer-events: none;
+  z-index: 2147483647;           /* absolute top */
+  transition: opacity 160ms ease;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;   /* belt & suspenders */
+}
+
+.ppx-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Subtle entrance animation only on the white panel */
+.ppx-modal__panel {
+  transform: translateY(8px);
+  transition: transform 160ms ease;
+}
+
+.ppx-modal.is-open .ppx-modal__panel {
+  transform: translateY(0);
+}
+
+/* Centered white panel inside the fullscreen modal container */
+.ppx-modal__panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto; /* head, scrollable body, foot */
+  /* Single track controls panel width AND internal content width */
+  --ppx-track: clamp(320px, 92vw, 820px);
+  width: var(--ppx-track);
+  max-height: 92vh;
+  background: transparent;               /* canvas below will paint the surface */
+  color: var(--ppx-color-text);
+  font-family: var(--ppx-font);
+  overflow: hidden;                      /* ensures corners clip everything inside */
+  box-shadow: none;
+  border: 0;
+  border-radius: 0 !important;           /* force square edges; rows provide rounding */
+  /* Rows/content read from the same track */
+  --ppx-ex-track: var(--ppx-track);
+  position: relative;                    /* enable background canvas */
+}
+
+/* Background canvas that unifies header+body+footer visually */
+.ppx-modal__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;                              /* span from header TL to footer BR */
+  background: var(--ppx-color-bg);       /* white surface */
+  border-radius: 0;                      /* square outer edges for main body */
+  z-index: 0;                            /* behind all content */
+}
+
+/* Ensure rows/body sit above the canvas and keep their own backgrounds */
+.ppx-modal__head,
+.ppx-modal__body,
+.ppx-modal__foot { position: relative; z-index: 1; background: #fff; }
+
+/* Reduce Motion */
+@media (prefers-reduced-motion: reduce) {
+  .ppx-modal { transition: none; }
+  .ppx-modal__overlay { transition: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Header / Footer / Body — safe areas
+   ───────────────────────────────────────────────────────────── */
+.ppx-modal__head,
+.ppx-modal__foot {
+  /* visible structural rows; visuals handled by inner content */
+  padding: 0;
+}
+.ppx-modal__head { overflow: hidden; }
+
+.ppx-modal__head {
+  min-height: var(--ppx-modal-head-h);
+}
+
+.ppx-modal__title {
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  color: var(--ppx-color-text);
+  flex: 1 1 auto;
+}
+
+.ppx-modal__meta {
+  color: var(--ppx-color-text-subtle);
+  font-size: 0.9rem;
+}
+
+.ppx-modal__progress {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ppx-gap-2);
+}
+
+.ppx-modal__progressBar {
+  position: relative;
+  width: clamp(140px, 24vw, 260px);
+  height: 8px;
+  background: #eef2f7;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.ppx-modal__progressBar > i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--ppx-ok);
+  border-radius: 999px;
+  transition: width 160ms linear;
+}
+
+.ppx-modal__foot {
+  display: block;                        /* allow a full-width bottom row element */
+  align-items: center;
+  border-top: 0;
+  border-bottom: 0;
+  gap: 0;
+  min-height: 0;
+  overflow: hidden;                      /* clip rounded bottom row cleanly */
+}
+
+/* Footer buttons container */
+.ppx-modal__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ppx-gap-3);
+}
+
+/* Hide empty action buckets so only the bottom row shows */
+.ppx-modal__actions:empty { display: none; }
+
+/* Shared button style (can be overridden by brand buttons) */
+.ppx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ppx-gap-2);
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--ppx-line);
+  background: #fff;
+  color: var(--ppx-color-text);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+}
+
+.ppx-btn[disabled],
+.ppx-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ppx-btn--primary {
+  background: #475dd7;
+  color: #fff;
+  border-color: #475dd7;
+}
+
+.ppx-btn--ok {
+  background: var(--ppx-ok);
+  color: #fff;
+  border-color: var(--ppx-ok);
+}
+
+.ppx-btn--ghost {
+  background: transparent;
+}
+
+/* Focus visible */
+.ppx-btn:focus-visible,
+.ppx-modal [tabindex]:focus-visible,
+.ppx-modal input:focus-visible,
+.ppx-modal button:focus-visible,
+.ppx-modal select:focus-visible,
+.ppx-modal textarea:focus-visible {
+  outline: var(--ppx-focus);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* Body (only scrollable area) */
+.ppx-modal__body {
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;     /* smoother iOS scrolling */
+  min-height: 0;                         /* ensure body can shrink within grid */
+}
+
+/* Prevent first/last child margins from creating visual gaps with rows */
+.ppx-modal__body > :first-child { margin-top: 0; }
+.ppx-modal__body > :last-child  { margin-bottom: 0; }
+
+/* Remove the old floating strip under the header */
+.ppx-modal__progress { display: none; }
+
+/* Ensure internal content never forces horizontal scroll */
+.ppx-modal__body * {
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* PPX scaffold sits flush inside the panel; content gets its own padding */
+.ppx-modal__body > .ppx-ex {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ppx-modal__body > .ppx-ex {
+    margin: 0;
+  }
+}
+
+/* Utility rows/cols inside body */
+.ppx-row {
+  display: flex;
+  gap: var(--ppx-gap-4);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ppx-col {
+  display: grid;
+  gap: var(--ppx-gap-3);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Media: fixed-size image boxes + lightbox hook
+   ───────────────────────────────────────────────────────────── */
+.ppx-imgbox {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 480px; /* L size default */
+  aspect-ratio: 3 / 2; /* fixed */
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f3f4f6;
+  border: 1px solid var(--ppx-line);
+}
+
+.ppx-imgbox > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* never distort */
+  display: block;
+}
+
+.ppx-imgbox__caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 6px 10px;
+  background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0));
+  color: #fff;
+  font-size: 12px;
+}
+
+/* Click-to-zoom cursor hint */
+.ppx-imgbox[data-ppx-lightbox="true"] { cursor: zoom-in; }
+
+/* Lightbox container (hidden by default; JS toggles .is-open) */
+.ppx-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647; /* ensure lightbox can sit on top when opened */
+  background: rgba(0,0,0,.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 3vw, 32px);
+}
+
+.ppx-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ppx-lightbox__imgWrap {
+  max-width: min(96vw, 1200px);
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.ppx-lightbox__imgWrap img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.ppx-lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Feedback states (consistent, high-contrast)
+   ───────────────────────────────────────────────────────────── */
+.ppx-state--ok {
+  background: color-mix(in srgb, var(--ppx-ok) 12%, #ffffff);
+  border: 1px solid var(--ppx-ok);
+  border-radius: 12px;
+  padding: var(--ppx-gap-4);
+}
+
+.ppx-state--bad {
+  background: color-mix(in srgb, var(--ppx-bad) 10%, #ffffff);
+  border: 1px solid var(--ppx-bad);
+  border-radius: 12px;
+  padding: var(--ppx-gap-4);
+}
+
+/* Fallback for browsers without color-mix */
+@supports not (color-mix(in srgb, #000 50%, #fff)) {
+  .ppx-state--ok { background: #eef6e8; }
+  .ppx-state--bad { background: #fbeaec; }
+}
+
+/* Inline badges for answer states */
+.ppx-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid var(--ppx-line);
+  background: #fff;
+}
+.ppx-chip--ok { border-color: var(--ppx-ok); color: var(--ppx-ok); }
+.ppx-chip--bad { border-color: var(--ppx-bad); color: var(--ppx-bad); }
+
+/* ─────────────────────────────────────────────────────────────
+   Forms in modal body — tidy, no overflow
+   ───────────────────────────────────────────────────────────── */
+.ppx-field {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  max-width: 720px;
+}
+
+.ppx-field > label {
+  font-weight: 600;
+  color: var(--ppx-color-text);
+}
+
+.ppx-field__help {
+  color: var(--ppx-color-text-subtle);
+  font-size: 0.92rem;
+}
+
+.ppx-input,
+.ppx-textarea,
+.ppx-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--ppx-line);
+  background: #fff;
+  color: var(--ppx-color-text);
+  font: inherit;
+}
+
+.ppx-textarea {
+  resize: none;            /* autosize via JS; prevent manual breakage */
+  max-height: 14em;        /* cap to avoid giant fields */
+  overflow: auto;
+}
+
+/* Prevent any field from causing horizontal scroll */
+.ppx-input,
+.ppx-textarea,
+.ppx-select {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Error state */
+.ppx-field--error .ppx-input,
+.ppx-field--error .ppx-textarea,
+.ppx-field--error .ppx-select {
+  border-color: var(--ppx-bad);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ppx-bad) 22%, transparent);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Accessibility helpers
+   ───────────────────────────────────────────────────────────── */
+.ppx-visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Focus ring utility for non-form elements */
+.ppx-focusable {
+  outline: none;
+}
+.ppx-focusable:focus-visible {
+  outline: var(--ppx-focus);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Responsive
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .ppx-modal__head,
+  .ppx-modal__foot {
+    gap: var(--ppx-gap-2);
+    padding: 0 12px;
+  }
+  .ppx-modal__progressBar { width: clamp(100px, 38vw, 180px); }
+  .ppx-modal__body { padding: 12px; }
+  .ppx-imgbox { max-width: 100%; }
+}
+
+/* Ensure body never hides behind fixed header/footer if the modal is embedded frameless (admin preview) */
+.ppx-modal[data-ppx-frameless="true"] {
+  grid-template-rows: var(--ppx-modal-head-h) 1fr var(--ppx-modal-foot-h);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Mockup alignment (final): outer-only rounding, unified rows
+   ───────────────────────────────────────────────────────────── */
+
+/* Only header/footer rows provide rounding; panel body remains square */
+.ppx-modal__panel { border-radius: 0; }
+
+/* Define a single centered track width used by BOTH rows and content.
+   This is self-contained (no JS needed) and matches the slide/card width. */
+.ppx-ex {
+  --ppx-ex-track: clamp(320px, 92vw, 820px);
+  display: grid;
+  grid-template-columns: min(100%, var(--ppx-ex-track));
+  justify-content: center;
+  width: 100%;
+  gap: var(--ppx-gap-5);
+}
+
+/* Rows and content explicitly take the same track width */
+.ppx-ex__row,
+.ppx-ex__content {
+  width: min(100%, var(--ppx-ex-track));
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Row layout */
+.ppx-ex__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ppx-gap-4);
+  padding: 10px 16px;
+  border: none;      /* no inner borders */
+  border-radius: 0;  /* no inner rounding */
+}
+
+/* Both rows share same background per mockup */
+.ppx-ex__row--top,
+.ppx-ex__row--bottom { background: #bebed6; }
+
+/* Rows rely on panel rounding; no overflow hacks required */
+
+/* Round the visible top/bottom edges so they follow the panel radius */
+.ppx-ex__row--top {
+  border-top-left-radius: var(--ppx-radius);
+  border-top-right-radius: var(--ppx-radius);
+}
+.ppx-ex__row--bottom {
+  border-bottom-left-radius: var(--ppx-radius);
+  border-bottom-right-radius: var(--ppx-radius);
+}
+
+/* Fullscreen mode: panel fills viewport */
+.ppx-modal--fullscreen .ppx-modal__panel {
+  /* Leave a small gutter from the right scrollbar on desktop */
+  --ppx-track: clamp(320px, 94vw, 1120px);
+  width: var(--ppx-track);
+  max-width: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+  border-radius: 0;
+  /* rows/content inherit from track; no separate var needed */
+}
+
+/* Icon-only buttons in header (close, fullscreen) */
+.ppx-ex__iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.ppx-ex__iconBtn:hover { background: rgba(0,0,0,.06); }
+.ppx-ex__iconBtn:focus-visible { outline: var(--ppx-focus); outline-offset: 2px; }
+.ppx-ex__iconBtn img { display: block; width: 18px; height: 18px; pointer-events: none; }
+
+/* Keep named hooks for potential overrides */
+.ppx-ex__close { }
+.ppx-ex__fullscreen { }
+
+/* Media toggle in exercise body: larger hit-area + icon */
+.ppx-ex__media-toggle {
+  width: 48px;
+  height: 48px;
+}
+.ppx-ex__media-toggle img {
+  width: 36px;
+  height: 36px;
+}
+
+/* Title area */
+.ppx-ex__titleWrap { min-width: 0; flex: 1 1 auto; }
+.ppx-ex__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--ppx-color-text);
+}
+
+/* Content block sits between rows */
+.ppx-ex__content {
+  display: block;
+  padding: clamp(16px, 2.5vw, 24px);
+}
+
+/* Pills */
+.ppx-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--ppx-line);
+  background: #ffffff;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.ppx-pill--type  { border-color: var(--ppx-color-text-subtle); }
+.ppx-pill--level { border-color: var(--ppx-color-text-subtle); }
+
+.ppx-ex__level {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--ppx-color-text);
+}
+.ppx-ex__levelLabel { opacity: 0.9; }
+
+/* Footer logo */
+.ppx-ex__brand { display: inline-flex; align-items: center; justify-content: flex-end; flex: 0 0 auto; }
+.ppx-ex__logo  { width: 88px; max-height: 88px; height: auto; object-fit: contain; }
+
+@media (max-width: 768px) {
+  .ppx-ex__row { padding: 8px 12px; }
+  .ppx-ex__logo { width: 36px; max-height: 36px; }
+}

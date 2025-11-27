@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/che/che.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Colloquial interjection used to get someone's attention or address someone informally.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Interjección coloquial usada para llamar la atención o dirigirse a alguien de manera informal.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "hey",
+        "yo",
+        "hey there"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/che/che_ex_01.mp3",
+          "en": "\"`Hey`, babe… dressed like that? Come on, no way.\"\n\"What’s wrong with it? Is it bad? Do I need to dress up just to be in my own living room?\"",
+          "es": "—`Che`, gordo..., vos así vestido, por favor, no, eh.\n—¿Qué tiene? ¿Está mal? ¿Tengo que vestirme bien para ir a mi living?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/che/che_ex_02.mp3",
+          "en": "`Hey`, where’s the pregame at?",
+          "es": "`Che`, ¿dónde es la previa?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "interjeccion",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "che",
+  "word": "che"
+}

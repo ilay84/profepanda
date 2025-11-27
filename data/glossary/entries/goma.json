@@ -1,0 +1,53 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/goma/goma.mp3?v=1764177898",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A vehicle tire.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Neumático de un vehículo.</span></p>",
+      "domain": [
+        "transporte"
+      ],
+      "equivalents_en": [
+        "tire",
+        "car tire"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/goma/goma_ex_01.mp3?v=1764177899",
+          "en": "I was telling you, I got a flat `tire` around kilometer 60 on the road from Salta to Cafayate.",
+          "es": "Te decía que pinché una `goma` acá a la altura del kilómetro 60 de la ruta que une Salta Capital con Cafayate, digamos.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "gomas",
+        "fem_sg": "goma",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "goma",
+  "word": "goma"
+}

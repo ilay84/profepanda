@@ -1,0 +1,40 @@
+Exercise Type: Dictation (dictation)
+
+Design (inside .ppx-modal body)
+- Container: `.ppx-ex ppx-ex--dictation` using shared exercise CSS.
+- Header: brief instructions; show item-level counter via fraction in progress.
+- Media: prominent audio control above the input; reuse media toggle only when extra visuals are present. Audio control that let's user adjust speed preferred.
+- Work area: single large text input (single line or textarea by option) with word/char count. Accent + Special character insert buttons: á é í ó ú ö ü ¿ ¡
+- Controls: `Check` button below input; inline feedback beneath; hint toggle + panel; footer with dots + prev/next pods.
+
+Flow
+- User plays audio (optionally auto-play on item load) and types transcription.
+- `Check` remains disabled until min characters or at least 1 token typed (configurable).
+- On check: evaluate against reference transcript (normalize by options: case, punctuation, whitespace, accent marks).
+- If `allowRetry` is enabled, show differences and allow another attempt; else lock and proceed.
+- Optional: limit attempts per item; on final attempt, reveal full correct transcript.
+
+Feedback
+- Inline message: overall correct/incorrect; display token-level diff highlighting: (red for all incorrect characters, red underscore _ for missing characters)
+  - Correct tokens: green; wrong/missing: red; extra tokens: dimmed with strikethrough.
+- Optionally show per-rule hints (e.g., “Mind capitalization of proper nouns”).
+- aria-live polite announcement of result summary.
+
+Summary Page
+- Card with score badge and overall stats (correct items / total; hints used).
+- For each item (accordion):
+  - Audio player: audio player to replay audio from that slide (item).
+  - Header: first 6–8 words of transcript + Correcto/Incorrecto chip.
+  - Panel: “Your answer” text block with diff colors; “Correct answer” block; audio replay control.
+- Restart button at bottom.
+
+Admin Builder
+- Item fields: `audio_url` (or upload), `transcript` (neutral, used across site languages), optional accepted variants (one per line).
+- Options: `ignoreCase`, `ignorePunctuation`, `normalizeWhitespace`, `ignoreAccents`, `minCharsToEnableCheck`, `allowRetry`, `attemptsMax`, `autoPlay`.
+- Hint fields: `hint_es/en`; optional per-item feedback blocks.
+- Media: same upload/URL accordion; allow an optional image to provide context.
+- Validation: require audio + at least one transcript; warn if variants conflict with options.
+
+Media Support
+- Required: audio (upload or URL; provider embeds as needed).
+- Optional: image alongside audio for context; video not required for v1.

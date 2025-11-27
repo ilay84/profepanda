@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/un-mate/un_mate.mp3?v=1764273327",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">An individual serving of mate offered or shared with someone.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Porción individual de mate servida para alguien, ya sea para invitar o compartir la bebida.</span></p>",
+      "domain": [
+        "comida",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "a serving of mate",
+        "a cup of mate",
+        "a gourd of mate"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/un-mate/un_mate_ex_01.mp3?v=1764273328",
+          "en": "Want a `serving of mate`?",
+          "es": "¿Querés un `mate`?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas Negras: P*tas y Chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "matecito",
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "mates",
+        "masc_sg": "mate"
+      }
+    }
+  ],
+  "slug": "un-mate",
+  "word": "un mate"
+}

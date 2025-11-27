@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [
+    "chorra",
+    "chorros",
+    "chorras"
+  ],
+  "audio": "/media/glossary-audio/entry/chorro/chorro.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A thief or someone who steals.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Ladrón o persona que roba.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "thief",
+        "robber",
+        "crook"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/chorro/chorro_ex_01.mp3",
+          "en": "What’s it like to be a `thief`? Tell me. Go on, I want to hear.",
+          "es": "¿Qué se siente ser un `chorro`? Decime. Contame.",
+          "source": {
+            "type": "movie"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "chorras",
+        "fem_sg": "chorra",
+        "masc_pl": "chorros",
+        "masc_sg": "chorro"
+      }
+    }
+  ],
+  "slug": "chorro",
+  "word": "chorro"
+}

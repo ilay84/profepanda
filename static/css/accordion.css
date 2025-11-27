@@ -1,0 +1,153 @@
+/* static/css/accordion.css
+   ProfePanda — Accordion visuals for elements produced by static/js/public_acc.js
+   - Chevron at far-left
+   - Clear outlined card look
+   - Smooth open/close, focus-visible, token-driven colors
+*/
+
+/* Base wrapper spacing */
+.ppx-accordion {
+  margin: var(--ppx-space-6, 1.5rem) auto;
+  font-family: var(--ppx-font, 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+}
+
+/* Item: outlined card */
+.ppx-accordion > details.ppx-acc-item {
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  border-radius: var(--ppx-radius-md, 12px);
+  background: #fff;
+  box-shadow: var(--ppx-shadow-sm, 0 1px 2px rgba(0,0,0,.04));
+  overflow: clip;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  margin-bottom: var(--ppx-space-4, 1rem);
+}
+.ppx-accordion > details.ppx-acc-item:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--ppx-shadow-md, 0 4px 8px rgba(0,0,0,.08));
+  border-color: color-mix(in oklab, var(--ppx-color-line, #e5e7eb), var(--ppx-brand-2, #475dd7) 20%);
+}
+
+/* Summary hit area: icon column at far left, then title */
+.ppx-accordion > details.ppx-acc-item > summary.ppx-acc-summary {
+  list-style: none; /* hide default triangle */
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 22px 1fr;   /* <- left icon column, then content */
+  align-items: center;
+  gap: var(--ppx-space-3, .75rem);
+  padding: var(--ppx-space-4, 1rem) var(--ppx-space-5, 1.25rem);
+  color: var(--ppx-color-text, #0f172a);
+  background: #fff;
+  outline: none;
+  user-select: none;
+}
+
+/* Remove default marker (Safari/WebKit) */
+.ppx-accordion > details.ppx-acc-item > summary.ppx-acc-summary::-webkit-details-marker { display: none; }
+
+/* Title weight */
+.ppx-accordion > details.ppx-acc-item > summary.ppx-acc-summary strong {
+  font-weight: var(--ppx-font-weight-semibold, 600);
+}
+
+/* Chevron on the FAR LEFT (grid col 1) */
+.ppx-accordion > details.ppx-acc-item > summary.ppx-acc-summary::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  justify-self: center;
+  background: center/contain no-repeat;
+  background-image: url('/static/assets/icons/chevron_collapsed.svg');
+  opacity: .95;
+}
+
+/* Content (grid col 2) gets the title text naturally */
+.ppx-accordion > details.ppx-acc-item > summary.ppx-acc-summary > *:first-child {
+  grid-column: 2;
+}
+
+/* Open state: accent border + rotate chevron + brand tint */
+.ppx-accordion > details.ppx-acc-item[open] {
+  border-color: color-mix(in oklab, var(--ppx-color-line, #e5e7eb), var(--ppx-brand-2, #475dd7) 35%);
+  box-shadow: var(--ppx-shadow-md, 0 4px 8px rgba(0,0,0,.08));
+}
+.ppx-accordion > details.ppx-acc-item[open] > summary.ppx-acc-summary::before {
+  background-image: url('/static/assets/icons/chevron_down.svg');
+}
+
+/* Focus-visible for keyboard nav */
+.ppx-accordion > details.ppx-acc-item > summary.ppx-acc-summary:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ppx-brand-2, #475dd7), white 70%);
+  border-radius: var(--ppx-radius-sm, 6px);
+}
+
+/* Body: pairs with JS height animation (public_acc.js) */
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body {
+  background: #fff;
+  color: var(--ppx-color-text, #0f172a);
+  border-top: 1px solid var(--ppx-color-line, #e5e7eb);
+  padding: 0 var(--ppx-space-5, 1.25rem);
+  /* height, padding-top/bottom animated inline by JS */
+  overflow: hidden;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ppx-accordion > details.ppx-acc-item,
+  .ppx-accordion > details.ppx-acc-item > summary.ppx-acc-summary::before {
+    transition: none !important;
+  }
+}
+
+/* Typography & content hygiene inside the body */
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body > *:first-child { margin-top: 0; }
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body > *:last-child  { margin-bottom: 0; }
+
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body p {
+  margin: 0 0 var(--ppx-space-4, 1rem);
+  line-height: 1.65;
+  color: var(--ppx-color-text, #0f172a);
+}
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body h4,
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body h5,
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body h6 {
+  margin: var(--ppx-space-5, 1.25rem) 0 var(--ppx-space-3, .75rem);
+  color: var(--ppx-color-text, #0f172a);
+  font-weight: var(--ppx-font-weight-semibold, 600);
+}
+
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body ul,
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body ol {
+  margin: 0 0 var(--ppx-space-4, 1rem);
+  padding-left: 1.1rem;
+}
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body li { margin: .3rem 0; }
+
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body a {
+  color: var(--ppx-brand-2, #475dd7);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body code,
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body pre {
+  background: color-mix(in oklab, var(--ppx-brand-6, #bebed6), white 70%);
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  border-radius: var(--ppx-radius-sm, 6px);
+  padding: .15rem .35rem;
+}
+
+/* Media inside body */
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body img,
+.ppx-accordion > details.ppx-acc-item > .ppx-acc-body iframe {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--ppx-radius-sm, 6px);
+  box-shadow: var(--ppx-shadow-sm, 0 1px 2px rgba(0,0,0,.04));
+  margin: var(--ppx-space-4, 1rem) 0;
+}
+
+/* Compact variant (optional class on wrapper) */
+.ppx-accordion.ppx-acc--compact > details.ppx-acc-item > summary.ppx-acc-summary {
+  padding: var(--ppx-space-3, .75rem) var(--ppx-space-4, 1rem);
+}

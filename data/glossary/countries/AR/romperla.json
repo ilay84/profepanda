@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/romperla/romperla.mp3?v=1764272090",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">To perform exceptionally well or impress greatly.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Destaca</span>r<span style=\"font-weight: normal;\"> o tener un rendimiento excelente.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "to nail it",
+        "to kill it",
+        "to crush it"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/romperla/romperla_ex_01.mp3?v=1764272090",
+          "en": "These are tasty. They make them with liver and they really `crush it`.",
+          "es": "Están buenos estos. Los hacen de hígado y `la rompen`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Casados con Hijos",
+            "type": "series",
+            "year": "2005"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_verbal",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "romperla",
+  "word": "romperla"
+}

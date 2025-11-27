@@ -1,0 +1,36 @@
+{
+  "type": "dictation",
+  "slug": "dictation-prueba",
+  "title_es": "Dictation test",
+  "title_en": "Dictado prueba",
+  "instructions_es": "Escribe lo que se escucha en el audio.",
+  "instructions_en": "Write what you hear in the audio.",
+  "level": "A2",
+  "taxonomy_paths": [],
+  "status": "draft",
+  "options": {
+    "ignoreCase": false,
+    "ignorePunctuation": false,
+    "normalizeWhitespace": true,
+    "ignoreAccents": true,
+    "minCharsToEnableCheck": 1,
+    "allowRetry": true,
+    "attemptsMax": 1,
+    "autoPlay": false,
+    "multiline": false
+  },
+  "items": [
+    {
+      "order": 1,
+      "audio_url": "/media/exercises/dictation/dictation-prueba/audio/ex-de_aca_a_la_China_20251110200518.mp3",
+      "transcript": "Esto es un homicidio de acá a la China.",
+      "variants": [],
+      "hint_es": "Esto es un ****cidio...",
+      "hint_en": "Esto es un ****cidio..."
+    }
+  ],
+  "version": 2,
+  "created_at": "2025-11-10T20:06:12Z",
+  "created_by": "admin",
+  "checksum": "sha256:ae968c41884faabd1d4fe29accba06750fe5b0c4dd744ff31b374517c362f6eb"
+}

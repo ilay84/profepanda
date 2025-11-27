@@ -1,0 +1,37 @@
+{
+  "alt_spellings": [],
+  "audio": null,
+  "senses": [
+    {
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "To answer a question or pick up a call.",
+      "definition_es": "Responder a una pregunta o atender una llamada.",
+      "domain": [],
+      "equivalents_en": [],
+      "examples": [
+        {
+          "audio": null,
+          "en": "Can you `answer` the phone?",
+          "es": "¿Podés `contestar` el teléfono?",
+          "source": null
+        }
+      ],
+      "freq": null,
+      "id": "s1",
+      "pos": "verbo_transitivo",
+      "register": "neutral",
+      "related_slugs": [
+        "responder"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "contestar",
+  "word": "contestar"
+}

@@ -1,0 +1,66 @@
+{
+  "alt_spellings": [
+    "tomársela"
+  ],
+  "audio": "/media/glossary-audio/entry/tomarsela/tomarsela.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Colloquial way to tell someone to leave or go away, often in an irritated or angry tone</span><span style=\"font-weight: normal;\">.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Expresión coloquial para decirle a alguien que se vaya de un lugar, generalmente de forma brusca o enojada</span><span style=\"font-weight: normal;\">.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "get out of here",
+        "get lost",
+        "go away",
+        "beat it",
+        "scram"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/tomarsela/tomarsela_ex_01.mp3",
+          "en": "\"Get out of here!\" `Get lost`! \"Get out of here!\"",
+          "es": "¡Rajá de acá! ¡`Tomátela`! ¡Rajá de acá!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas Negras: P*tas y Chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/tomarsela/tomarsela_ex_02.mp3",
+          "en": "Okay, that's enough, man, that's it. You wrecked my car. `Get out of here`!",
+          "es": "Bueno, basta loco, ya está. Me destrozaste el auto. ¡`Tomátelas`!",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": null,
+      "id": "s1",
+      "pos": "locucion_verbal",
+      "register": "informal",
+      "related_slugs": [
+        "rajar"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo"
+      ]
+    }
+  ],
+  "slug": "tomarselas",
+  "word": "tomárselas"
+}

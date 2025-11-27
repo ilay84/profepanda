@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ t('Diccionario', 'Dictionary', app_lang) }}{% endblock %}
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+{% block content %}
+  <div class="ppx-container">
+    <div class="ppx-row" style="justify-content:space-between; align-items:center;">
+      <h1 style="margin:0;">{{ t('Diccionario', 'Dictionary', app_lang) }}</h1>
+      <a class="ppx-btn ppx-btn--primary" href="{{ url_for('admin.admin_dictionary_new') }}">{{ t('Nueva entrada', 'New entry', app_lang) }}</a>
+    </div>
+
+    {% if items %}
+    <table class="ppx-table" style="margin-top:1rem;">
+      <thead>
+        <tr>
+          <th style="width:50%;">{{ t('Palabra', 'Word', app_lang) }}</th>
+          <th style="width:20%;">POS</th>
+          <th style="width:30%;">{{ t('Acciones', 'Actions', app_lang) }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for it in items %}
+        <tr>
+          <td>{{ it.word }}</td>
+          <td>{{ it.pos }}</td>
+          <td>
+            <a class="ppx-btn" href="{{ url_for('admin.admin_dictionary_edit', slug=it.slug) }}">{{ t('Editar', 'Edit', app_lang) }}</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <p class="ppx-muted" style="margin-top:1rem;">{{ t('No hay entradas aún.', 'No entries yet.', app_lang) }}</p>
+    {% endif %}
+  </div>
+{% endblock %}

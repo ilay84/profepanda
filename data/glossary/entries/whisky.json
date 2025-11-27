@@ -1,0 +1,54 @@
+{
+  "alt_spellings": [
+    "whiskey"
+  ],
+  "audio": "/media/glossary-audio/entry/whisky/whisky.mp3?v=1764273964",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Expression used when taking a photo to prompt someone to smile, similar to “cheese”.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Expresión usada al tomar una foto para que la persona sonría, similar a “cheese”.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "Say cheese!"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/whisky/whisky_ex_01.mp3?v=1764273964",
+          "en": "\"`Say cheese`!\"\n\"`Cheese`!\"",
+          "es": "—¡`Whisky`!\n—¡`Whisky`!",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "interjeccion",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "whisky",
+  "word": "whisky"
+}

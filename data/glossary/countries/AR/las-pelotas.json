@@ -1,0 +1,61 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/las-pelotas/las_pelotas.mp3?v=1764268601",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Vulgar expression used to strongly reject something or express emphatic disagreement.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Expresión vulgar usada para rechazar rotundamente algo, expresar desacuerdo o negar con énfasis.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "bullshit",
+        "hell no",
+        "no fucking way",
+        "my ass",
+        "cut the crap"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/las-pelotas/las_pelotas_ex_01.mp3?v=1764268292",
+          "en": "Are you even listening to me? “Enough evidence” — `my ass`!",
+          "es": "¿Vos me estás escuchando? Prueba suficiente ¡`las pelotas`!",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "lenguaje_explicito",
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "pelotas",
+        "fem_sg": "pelota",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "las-pelotas",
+  "word": "las pelotas"
+}

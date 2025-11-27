@@ -1,0 +1,46 @@
+{
+  "id": "tf/prueba-3",
+  "type": "tf",
+  "slug": "prueba-3",
+  "version": 2,
+  "title_es": "prueba 3",
+  "title_en": "test 3",
+  "instructions_es": "¿Verdadero o falso?",
+  "instructions_en": "True or false?",
+  "level": "A1",
+  "tags": [
+    "test",
+    "prueba"
+  ],
+  "status": "draft",
+  "created_by": "admin",
+  "created_at": "2025-11-06T13:05:13.678Z",
+  "items": [
+    {
+      "id": "t1",
+      "order": 1,
+      "statement_es": "Este comediante es gracioso.",
+      "statement_en": "This comedian is funny.",
+      "answer": "true",
+      "hint_es": "prueba",
+      "hint_en": "test",
+      "feedback_correct_es": "Obvio",
+      "feedback_correct_en": "Obviously",
+      "feedback_incorrect_es": "No seas tarado/a",
+      "feedback_incorrect_en": "Don't be dumb",
+      "media": [
+        {
+          "id": "img_7dc30h_mhneykaf",
+          "kind": "image",
+          "src": "/media/exercises/tf/prueba-3/img/tim-robinson-2022-noms-2-450x600_20251106130508.jpg",
+          "thumb": "/media/exercises/tf/prueba-3/img/tim-robinson-2022-noms-2-450x600_20251106130508.jpg",
+          "alt_es": "Tim Robinson",
+          "alt_en": "Tin Robinson",
+          "transcript_es": "",
+          "transcript_en": ""
+        }
+      ]
+    }
+  ],
+  "checksum": "sha256:55ec5baaa34cb831fddf1e10e52fddd4ac74bab8f23e096ab1eeb753526b2f94"
+}

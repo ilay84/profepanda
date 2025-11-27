@@ -1,0 +1,280 @@
+{
+  "id": "dnd/ser-vs-estar-common-categories",
+  "type": "dnd",
+  "slug": "ser-vs-estar-common-categories",
+  "title_es": "SER vs ESTAR: Categorías comunes",
+  "title_en": "SER vs ESTAR: Common Categories",
+  "instructions_es": "Arrastra y suelta cada categoría en la columna correcta. Decide si normalmente se expresa con SER (para esencias o cualidades inherentes) o con ESTAR (para situaciones o estados temporales).",
+  "instructions_en": "Drag and drop each category into the correct column. Decide whether it’s something we usually express with SER (used for essences or inherent qualities) or with ESTAR (used for situations or temporary states).",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "published",
+  "items": [
+    {
+      "id": "i1",
+      "order": 1,
+      "columns": [
+        {
+          "id": "col_a8jm5a",
+          "label_es": "SER (esencias)",
+          "label_en": "SER (essences)"
+        },
+        {
+          "id": "col_xaad99",
+          "label_es": "ESTAR (situaciones)",
+          "label_en": "ESTAR (situations)"
+        }
+      ],
+      "tokens": [
+        {
+          "id": "tok_lxk0rq",
+          "text_es": "profesión",
+          "text_en": "profession",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Esto nos dice qué es una persona dentro de la sociedad, más allá de lo que esté haciendo ahora?",
+          "hint_en": "Does this tell us what someone is within society, beyond what they’re doing right now?",
+          "feedback_correct_es": "Exacto. Una profesión no describe lo que alguien está haciendo, sino cómo se le reconoce como parte de su identidad social.",
+          "feedback_correct_en": "Exactly. A profession doesn’t describe what someone is doing, but how they are recognized as part of their social identity.",
+          "feedback_incorrect_es": "Recuerda: no hablamos de la actividad del momento, sino de lo que una persona es. Por eso, usamos SER con las profesiones.",
+          "feedback_incorrect_en": "Remember: we’re not talking about the activity of the moment, but about what a person is. That’s why we use SER for professions."
+        },
+        {
+          "id": "tok_m3gjgh",
+          "text_es": "nacionalidad",
+          "text_en": "nationality",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Esto nos ayuda a entender qué es una persona según su origen, no dónde está ni cómo se siente?",
+          "hint_en": "Does this help us understand what someone is based on their origin—not where they are or how they feel?",
+          "feedback_correct_es": "Muy bien. La nacionalidad es una forma de identificar la esencia de una persona a partir de su origen.",
+          "feedback_correct_en": "Well done. Nationality identifies someone’s essence by expressing their origin.",
+          "feedback_incorrect_es": "Piénsalo así: no estamos situando a la persona ni describiendo su estado. La nacionalidad nos dice qué es alguien.",
+          "feedback_incorrect_en": "Think of it this way: we’re not locating the person or describing their state. Nationality tells us what someone is."
+        },
+        {
+          "id": "tok_smg2sk",
+          "text_es": "marca de producto",
+          "text_en": "product brand",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿La marca nos dice *qué es* un producto dentro de una categoría, no *dónde está* ni *cómo funciona*?",
+          "hint_en": "Does the brand tell us *what* a product is within a category, not *where it is* or *how it works*?",
+          "feedback_correct_es": "Correcto. La marca identifica la esencia del producto: lo que es como tipo o categoría.",
+          "feedback_correct_en": "Correct. The brand identifies the product’s essence—what it is as a type or category.",
+          "feedback_incorrect_es": "Recuerda: la marca no describe una situación, sino lo que el producto *es*. Por eso usamos SER.",
+          "feedback_incorrect_en": "Remember: the brand doesn’t describe a situation, it tells us *what* the product is. That’s why we use SER."
+        },
+        {
+          "id": "tok_osw5y4",
+          "text_es": "de qué está hecho",
+          "text_en": "what it is made of",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Esto describe *qué es* un objeto según su composición, no *dónde está* ni *cómo está*?",
+          "hint_en": "Does this describe *what* an object is based on its composition, not *where* or *how* it is?",
+          "feedback_correct_es": "Muy bien. Decir de qué está hecho algo nos ayuda a entender su esencia. Ejemplo: La mesa es de madera.",
+          "feedback_correct_en": "Well done. Saying what something is made of helps us understand its essence. Example: The table is made of wood.",
+          "feedback_incorrect_es": "Recuerda: esto no es una situación sino una característica que define *qué es* el objeto.",
+          "feedback_incorrect_en": "Remember: this is not a situation but a characteristic that defines *what* the object is."
+        },
+        {
+          "id": "tok_tbkbvs",
+          "text_es": "personalidad",
+          "text_en": "personality",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Esto nos dice *qué tipo de persona es* alguien, más allá de cómo se comporta en una situación específica?",
+          "hint_en": "Does this tell us *what kind of person* someone is, beyond how they act in a specific situation?",
+          "feedback_correct_es": "Correcto. La personalidad es una parte central de cómo se percibe a alguien en su esencia. Ejemplo: Ella es muy amable.",
+          "feedback_correct_en": "Correct. Personality is a central part of how someone is perceived in their essence. Example: She is very kind.",
+          "feedback_incorrect_es": "Recuerda: esto no describe cómo alguien está actuando ahora, sino *qué tipo de persona es*.",
+          "feedback_incorrect_en": "Remember: this doesn’t describe how someone is acting now, but *what kind of person* they are."
+        },
+        {
+          "id": "tok_fhp5m6",
+          "text_es": "forma geométrica",
+          "text_en": "geometric shape",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Esto describe *cómo es* físicamente un objeto como parte de su identidad, no su estado actual?",
+          "hint_en": "Does this describe *what* an object is like physically as part of its identity, not its current state?",
+          "feedback_correct_es": "Exacto. La forma geométrica nos dice *cómo es* un objeto en su estructura. Ejemplo: La mesa es redonda.",
+          "feedback_correct_en": "Exactly. Geometric shape tells us *what* an object is like structurally. Example: The table is round.",
+          "feedback_incorrect_es": "Piensa en esto como parte de la identidad del objeto, no de una situación que atraviesa.",
+          "feedback_incorrect_en": "Think of this as part of the object’s identity, not a situation it is going through."
+        },
+        {
+          "id": "tok_oeuxo2",
+          "text_es": "relación familiar",
+          "text_en": "family relationship",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Describe el lugar que una persona ocupa dentro de una red de vínculos?",
+          "hint_en": "Does it describe the place someone occupies within a network of relationships?",
+          "feedback_correct_es": "Correcto. Las relaciones familiares expresan lo que alguien *es* para otra persona. Ejemplo: Ella es mi tía.",
+          "feedback_correct_en": "Correct. Family relationships express *what* someone is to another person. Example: She is my aunt.",
+          "feedback_incorrect_es": "Esto no se trata de una situación, sino de la identidad social entre personas.",
+          "feedback_incorrect_en": "This isn’t about a situation, but about social identity between people."
+        },
+        {
+          "id": "tok_crii7d",
+          "text_es": "color permanente",
+          "text_en": "defining color",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Este color nos ayuda a identificar el objeto como parte de lo que *es*, no cómo *se ve* momentáneamente?",
+          "hint_en": "Does this color help identify the object as part of *what it is*, not just how it *looks* momentarily?",
+          "feedback_correct_es": "Muy bien. Este tipo de color forma parte de cómo se identifica un objeto. Ejemplo: Mi coche es azul.",
+          "feedback_correct_en": "Well done. This kind of color is part of how an object is identified. Example: My car is blue.",
+          "feedback_incorrect_es": "Estamos hablando de una característica que define el objeto, no de su apariencia contextual.",
+          "feedback_incorrect_en": "We’re talking about a trait that defines the object, not its contextual appearance."
+        },
+        {
+          "id": "tok_ygh6uc",
+          "text_es": "hora",
+          "text_en": "time",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Esto identifica el momento del día como una parte estructural del tiempo, no una situación que cambia?",
+          "hint_en": "Does this identify the moment of the day as a structural element of time, not a changing situation?",
+          "feedback_correct_es": "Correcto. La hora se expresa con SER porque describe *qué momento es*, no *cómo está* algo.",
+          "feedback_correct_en": "Correct. Time is expressed with SER because it tells us *what moment it is*, not *how something is*.",
+          "feedback_incorrect_es": "Recuerda: la hora no es un estado, sino una forma de nombrar el momento del día.",
+          "feedback_incorrect_en": "Remember: time is not a state, it's a way of naming a moment in the day."
+        },
+        {
+          "id": "tok_upybht",
+          "text_es": "fecha",
+          "text_en": "date",
+          "correct": "col_a8jm5a",
+          "hint_es": "¿Nos dice *qué día es*, no *cómo está* el día?",
+          "hint_en": "Does this tell us *what day it is*, not *how the day is*?",
+          "feedback_correct_es": "Muy bien. La fecha se considera información categórica del tiempo, por eso usamos SER.",
+          "feedback_correct_en": "Well done. A date is categorical information about time, which is why we use SER.",
+          "feedback_incorrect_es": "La fecha no describe un estado, sino un punto en el tiempo. Ejemplo: Hoy es lunes.",
+          "feedback_incorrect_en": "A date doesn't describe a state, but a point in time. Example: Today is Monday."
+        },
+        {
+          "id": "tok_y3svhi",
+          "text_es": "ubicación de entidades físicas",
+          "text_en": "location of physical entities",
+          "correct": "col_xaad99",
+          "hint_es": "¿Esto indica *dónde se encuentra* algo, no *qué es*?",
+          "hint_en": "Does this indicate *where something is*, not *what it is*?",
+          "feedback_correct_es": "Exactamente. ESTAR se usa para situar personas y objetos en el espacio. Ejemplo: El libro está en la mesa.",
+          "feedback_correct_en": "Exactly. ESTAR is used to locate people and objects in space. Example: The book is on the table.",
+          "feedback_incorrect_es": "Ubicar no define la esencia del objeto, solo su posición. Por eso usamos ESTAR.",
+          "feedback_incorrect_en": "Location doesn’t define the object’s essence, only its position. That’s why we use ESTAR."
+        },
+        {
+          "id": "tok_mf71fz",
+          "text_es": "estado de ánimo",
+          "text_en": "mood",
+          "correct": "col_xaad99",
+          "hint_es": "¿Describe *cómo se siente* alguien en una situación, no *quién es*?",
+          "hint_en": "Does it describe *how someone feels* in a situation, not *who they are*?",
+          "feedback_correct_es": "Correcto. Los estados de ánimo son condiciones emocionales situadas. Ejemplo: Estoy feliz.",
+          "feedback_correct_en": "Correct. Moods are situational emotional conditions. Example: I’m happy.",
+          "feedback_incorrect_es": "Esto no habla de la identidad de la persona, sino de su sentir en un momento concreto.",
+          "feedback_incorrect_en": "This doesn’t speak to someone’s identity, but to how they feel in a specific moment."
+        },
+        {
+          "id": "tok_zo2v36",
+          "text_es": "estado de salud",
+          "text_en": "health",
+          "correct": "col_xaad99",
+          "hint_es": "¿Refleja *cómo se encuentra* alguien físicamente, no *quién es*?",
+          "hint_en": "Does it reflect *how someone is doing* physically, not *who they are*?",
+          "feedback_correct_es": "Exacto. La salud indica una condición en la que se encuentra alguien. Ejemplo: Mi abuela está enferma.",
+          "feedback_correct_en": "Exactly. Health indicates a condition someone is in. Example: My grandmother is sick.",
+          "feedback_incorrect_es": "No hablamos de lo que alguien *es*, sino de su estado físico actual.",
+          "feedback_incorrect_en": "We're not talking about what someone *is*, but their current physical state."
+        },
+        {
+          "id": "tok_hxd1rn",
+          "text_es": "estado físico actual",
+          "text_en": "current physical state",
+          "correct": "col_xaad99",
+          "hint_es": "¿Describe el estado del cuerpo en una situación concreta?",
+          "hint_en": "Does it describe the state of the body in a specific situation?",
+          "feedback_correct_es": "Correcto. ESTAR se usa para describir condiciones físicas situadas. Ejemplo: Estoy cansado.",
+          "feedback_correct_en": "Correct. ESTAR is used to describe situated physical conditions. Example: I’m tired.",
+          "feedback_incorrect_es": "Esto no define al sujeto, sino su estado corporal actual.",
+          "feedback_incorrect_en": "This doesn’t define the subject, just their current bodily state."
+        },
+        {
+          "id": "tok_seg0e8",
+          "text_es": "clima actual",
+          "text_en": "current weather",
+          "correct": "col_xaad99",
+          "hint_es": "¿Esto nos dice *cómo se presenta* el clima en un momento específico?",
+          "hint_en": "Does this tell us *how the weather is presenting* at a specific moment?",
+          "feedback_correct_es": "Así es. ESTAR describe el estado observable del clima. Ejemplo: Está nublado.",
+          "feedback_correct_en": "That’s right. ESTAR describes the observable state of the weather. Example: It’s cloudy.",
+          "feedback_incorrect_es": "No se trata de la definición del clima, sino de su manifestación en un momento.",
+          "feedback_incorrect_en": "This isn’t about defining weather, but describing its manifestation at a moment."
+        },
+        {
+          "id": "tok_p48b55",
+          "text_es": "estado civil",
+          "text_en": "marital status",
+          "correct": "col_xaad99",
+          "hint_es": "¿Expresa la situación relacional en la que alguien *se encuentra*?",
+          "hint_en": "Does it express the relational situation someone *is in*?",
+          "feedback_correct_es": "Correcto. El estado civil describe cómo se sitúa alguien en un vínculo. Ejemplo: Estoy casado.",
+          "feedback_correct_en": "Correct. Marital status describes someone’s position in a relationship. Example: I’m married.",
+          "feedback_incorrect_es": "Esto no describe la esencia, sino una situación de vida concreta.",
+          "feedback_incorrect_en": "This doesn’t describe essence, but a concrete life situation."
+        },
+        {
+          "id": "tok_ew3uuv",
+          "text_es": "acción en progreso",
+          "text_en": "ongoing action",
+          "correct": "col_xaad99",
+          "hint_es": "¿Indica lo que alguien *está haciendo* en este momento?",
+          "hint_en": "Does it indicate what someone *is doing* right now?",
+          "feedback_correct_es": "¡Exactamente! ESTAR se usa como auxiliar para mostrar una acción en curso. Ejemplo: Estoy estudiando.",
+          "feedback_correct_en": "Exactly! ESTAR is used as an auxiliary to show an action in progress. Example: I’m studying.",
+          "feedback_incorrect_es": "No se refiere a la identidad, sino a una actividad contextual.",
+          "feedback_incorrect_en": "It doesn’t refer to identity, but to a contextual activity."
+        },
+        {
+          "id": "tok_0ycxzw",
+          "text_es": "evaluación subjetiva del momento",
+          "text_en": "subjective evaluation of the moment",
+          "correct": "col_xaad99",
+          "hint_es": "¿Esto refleja una impresión inmediata sobre algo, no una característica esencial?",
+          "hint_en": "Does this reflect an immediate impression of something, not an essential characteristic?",
+          "feedback_correct_es": "Correcto. Usamos ESTAR para expresar cómo percibimos algo en el momento. Ejemplo: ¡Esto está delicioso!",
+          "feedback_correct_en": "Correct. We use ESTAR to express how something is perceived in the moment. Example: This is delicious!",
+          "feedback_incorrect_es": "Una reacción no define lo que algo *es*, solo cómo lo experimentamos ahora.",
+          "feedback_incorrect_en": "A reaction doesn’t define what something *is*, only how we experience it right now."
+        },
+        {
+          "id": "tok_1bq08j",
+          "text_es": "aspecto en un momento específico",
+          "text_en": "appearance in a specific moment",
+          "correct": "col_xaad99",
+          "hint_es": "¿Describe cómo alguien se ve en un contexto específico, no cómo es siempre?",
+          "hint_en": "Does it describe how someone looks in a specific context, not how they always are?",
+          "feedback_correct_es": "Exacto. ESTAR se usa para describir cómo alguien se ve *en este momento*. Ejemplo: Está muy guapo hoy.",
+          "feedback_correct_en": "Exactly. ESTAR is used to describe how someone looks *at this moment*. Example: He looks great today.",
+          "feedback_incorrect_es": "Recuerda: esto no es parte de su identidad, sino cómo se percibe ahora.",
+          "feedback_incorrect_en": "Remember: this isn’t part of identity, it’s how someone is perceived now."
+        },
+        {
+          "id": "tok_cjypil",
+          "text_es": "presencia o ausencia",
+          "text_en": "presence or absence",
+          "correct": "col_xaad99",
+          "hint_es": "¿Esto nos informa si alguien *está o no está* en un lugar, sin definir quién es?",
+          "hint_en": "Does this tell us whether someone *is or isn’t* in a place, without defining who they are?",
+          "feedback_correct_es": "Muy bien. ESTAR se usa para indicar si algo o alguien se encuentra presente o ausente. Ejemplo: No está en casa.",
+          "feedback_correct_en": "Well done. ESTAR is used to indicate whether someone or something is present or absent. Example: He isn’t home.",
+          "feedback_incorrect_es": "Esto no define la identidad, solo nos dice si alguien se encuentra o no en un lugar.",
+          "feedback_incorrect_en": "This doesn’t define identity—only whether someone is present or not in a place."
+        }
+      ]
+    }
+  ],
+  "version": 11,
+  "created_at": "2025-11-17T14:26:59Z",
+  "created_by": "admin",
+  "checksum": "sha256:454d63dc3b07ab6c7c1d8a8f625b4b033e3dd58b6d5adc2bd7978b317788d001"
+}

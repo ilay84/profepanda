@@ -1,0 +1,40 @@
+Exercise Type: Drag and Drop (dnd)
+
+Design (inside .ppx-modal body)
+- Container: `.ppx-ex ppx-ex--dnd` centered column using existing exercise CSS.
+- Header: prompt text (bold, centered); optional counter `x/y` integrated into progress row.
+- Media: Global media block above prompt with existing media toggle (preview/close icons).
+- Work area: two patterns supported initially:
+  - Match Pairs: draggable tokens (left) → drop targets (right) in a responsive grid.
+  - Fill Slots: sentence(s) with inline drop zones; token bank below.
+  - Only one slide (item) per exercise, either match pairs, or fill slots, then a summary page once the 1 slide is complete. Multiple items not allowed.
+- Controls: `Check` button below work area; inline feedback text under it; hint toggle + panel; footer row with dots + prev/next pods.
+
+Flow
+- On load: shuffle draggable tokens; disable `Check` until all required targets filled (or at least one selection, per option).
+- Drag interactions: snapping with visual affordances; keyboard support via roving tabindex + Space/Enter to pick/drop.
+- After `Check`: highlight correct placements in green; incorrect in red; optionally return incorrect tokens to bank (if `allowRetry` true).
+- Auto-advance: optional; if all placements correct, enable Next or auto-advance after a short delay.
+
+Feedback
+- Inline message: “Correcto/Incorrecto” with brief per-item message.
+- Per-target feedback (optional per pair) shown in a panel beneath when checked.
+- Accessibility: announce results via aria-live; focus first incorrect target on error.
+
+Summary Page
+- Card with title “Resumen” and score badge; list each item as an accordion:
+  - Header: prompt + chip (Correcto/Incorrecto).
+  - Panel: a two-column view showing “Your mapping” vs “Correct mapping”, with misplacements flagged.
+- Actions: Restart button; progress set to 100%.
+
+Admin Builder
+- Item fields: `prompt` (neutral), `hint_es/en`, optional `feedback_{correct,incorrect}_{es,en}`.
+- Pairs UI: add rows of (Token) → (Target label) as neutral text. Reorder with drag handles.
+- Distractors: optional tokens not mapped to any target.
+- Options: `allowRetry`, `autoAdvance`, `lockNavUntilAnswered`, `caseSensitive`, `returnWrongToBank`.
+- Media section: same accordion as TF/MCQ for image/audio/video uploads/URLs.
+- Validation: require at least 1 pair; enforce unique tokens/targets per item.
+
+Media Support
+- Global (1 item only): image, audio, video (existing upload + URL embed).
+- Later extension: token-level image thumbnails (not required for v1).

@@ -1,0 +1,37 @@
+Exercise Type: Click The Words (ctw)
+
+Design (inside .ppx-modal body)
+- Container: `.ppx-ex ppx-ex--ctw`, centered stack.
+- Header: instructions (e.g., “Click all instances of …”); fraction/dots for progress.
+- Media: optional item-level media above the text (uses existing toggle and lightbox behavior).
+- Text block: tokenized text (words and optionally multi-word expressions) rendered in a readable line length; each token is a button for a11y.
+- Controls: `Check` button under text; inline feedback; hint toggle + panel; footer with dots + prev/next pods.
+
+Flow
+- User clicks tokens to select/deselect; selected tokens highlight.
+- `Check` enabled when at least one token is selected (or always enabled if `requireAllTargets` is false).
+- On check: evaluate selections vs configured targets (by token indices or ranges); lock if `allowRetry` is false; otherwise mark errors and allow corrections.
+- Optional: `maxSelections` to cap clicks; `showTargetCount` to display total targets remaining.
+
+Feedback
+- Inline message with overall correctness; visual marks:
+  - Correct selections: green highlight.
+  - Missed correct tokens: outlined/underlined hint style.
+  - Incorrect selections: red highlight.
+- aria-live summary (e.g., “2 correct, 1 missed, 1 incorrect”).
+
+Summary Page
+- Card with score badge; accordion per item:
+  - Header: truncated text start + Correcto/Incorrecto chip.
+  - Panel: full text rendering with correct tokens highlighted; user selections contrasted (legend provided).
+- Restart button.
+
+Admin Builder
+- Item fields: `text` (neutral) source; UI to mark correct tokens by clicking directly on a preview (stores token indices or character ranges).
+- Supports multi-word targets (store start/end token indices); optional per-target feedback.
+- Options: `allowRetry`, `lockNavUntilAnswered`, `maxSelections`, `showTargetCount`, `caseSensitive`, `ignorePunctuation` (for tokenization display only).
+- Media: same accordion for optional image/audio context.
+- Validation: require at least one target; ensure target indices are within bounds after tokenization.
+
+Media Support
+- Required: image, audio, and video optional adds to provide context.

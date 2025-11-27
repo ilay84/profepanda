@@ -1,0 +1,606 @@
+/* ==========================================================================
+   ProfePanda UI Kit (base)
+   File: static/css/ppx.css
+   Depends on: static/css/tokens.css
+   Scope: .ppx-* classes only
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Reset-ish helpers
+   -------------------------------------------------------------------------- */
+.ppx-visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Smooth focus ring using brand color */
+:where(.ppx-focusable):focus-visible,
+:where(.ppx-btn, .ppx-input, .ppx-select, .ppx-textarea):focus-visible {
+  outline: 2px solid var(--ppx-color-primary, #7c3aed);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* --------------------------------------------------------------------------
+   Layout
+   -------------------------------------------------------------------------- */
+.ppx-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--ppx-space-5, 1.25rem);
+}
+
+/* Public pages can use a wider canvas */
+body.ppx-public .ppx-container {
+  max-width: min(98vw, 1760px);
+}
+
+.ppx-card {
+  background: #fff;
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  border-radius: var(--ppx-radius-md, 12px);
+  box-shadow: var(--ppx-shadow-lg, 0 6px 18px rgba(0,0,0,.10));
+}
+
+.ppx-card--pad {
+  padding: var(--ppx-space-5, 1.25rem);
+}
+
+/* Stacks (flex column gaps) */
+.ppx-stack-xs > * + * { margin-top: var(--ppx-space-2, .5rem); }
+.ppx-stack-sm > * + * { margin-top: var(--ppx-space-3, .75rem); }
+.ppx-stack-md > * + * { margin-top: var(--ppx-space-4, 1rem); }
+.ppx-stack-lg > * + * { margin-top: var(--ppx-space-6, 1.5rem); }
+
+/* Inline spacing */
+.ppx-inline { display: inline-flex; align-items: center; gap: var(--ppx-space-3, .75rem); }
+.ppx-row { display: flex; align-items: center; gap: var(--ppx-space-3, .75rem); flex-wrap: wrap; }
+
+/* Grid helpers */
+.ppx-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ppx-space-4, 1rem); }
+.ppx-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ppx-space-4, 1rem); }
+@media (max-width: 780px) {
+  .ppx-grid-2, .ppx-grid-3 { grid-template-columns: 1fr; }
+}
+
+/* Dashboard grid (fixed-size cards) */
+.ppx-dashboard-grid {
+  /* adjustable card size */
+  --ppx-dash-card-w: 240px;
+  --ppx-dash-card-h: 140px;
+  --ppx-dash-gap: var(--ppx-space-5, 1.25rem);
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--ppx-dash-card-w), var(--ppx-dash-card-w))
+  );
+  gap: var(--ppx-dash-gap);
+  align-items: start;
+}
+
+.ppx-dashboard-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--ppx-space-5, 1.25rem);
+  width: var(--ppx-dash-card-w);
+  height: var(--ppx-dash-card-h);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--ppx-transition-fast, all .15s ease-in-out);
+}
+
+.ppx-dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ppx-shadow-xl, 0 10px 24px rgba(0,0,0,.12));
+}
+
+/* Utilities */
+.ppx-hidden { display: none !important; }
+.ppx-muted { color: var(--ppx-color-text-subtle, #334155); }
+.ppx-center { text-align: center; }
+.ppx-right { text-align: right; }
+.ppx-bold { font-weight: var(--ppx-font-weight-semibold, 600); }
+.ppx-pill {
+  padding: .25rem .6rem;
+  border-radius: 999px;
+  font-size: var(--ppx-font-size-sm, .875rem);
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  color: var(--ppx-color-text-subtle, #334155);
+  background: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Typography tweaks
+   -------------------------------------------------------------------------- */
+.ppx-h1 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 .5rem 0; font-weight: var(--ppx-font-weight-semibold, 600); }
+.ppx-h2 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 .5rem 0; font-weight: var(--ppx-font-weight-semibold, 600); }
+.ppx-lead { font-size: var(--ppx-font-size-lg, 1.125rem); color: var(--ppx-color-text-subtle, #334155); }
+
+/* Links */
+.ppx-link {
+  color: var(--ppx-color-primary, #7c3aed);
+  text-decoration: none;
+  transition: var(--ppx-transition-base, all .25s ease-in-out);
+}
+.ppx-link:hover { opacity: .9; text-decoration: underline; }
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+.ppx-btn {
+  appearance: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .5rem;
+  padding: .55rem .9rem;
+  font-family: var(--ppx-font, 'Montserrat', system-ui);
+  font-size: var(--ppx-font-size-sm, .875rem);
+  font-weight: var(--ppx-font-weight-medium, 500);
+  line-height: 1;
+  border-radius: var(--ppx-radius-md, 12px);
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  background: #fff;
+  color: var(--ppx-color-text, #0f172a);
+  cursor: pointer;
+  transition: var(--ppx-transition-base, all .25s ease-in-out);
+  text-decoration: none;
+}
+.ppx-btn:hover { transform: translateY(-1px); box-shadow: var(--ppx-shadow-md, 0 4px 8px rgba(0,0,0,.08)); }
+.ppx-btn:active { transform: translateY(0); box-shadow: none; }
+
+.ppx-btn[disabled],
+.ppx-btn[aria-disabled="true"] {
+  opacity: .6; cursor: not-allowed;
+}
+
+/* Variants */
+.ppx-btn--primary {
+  background: var(--ppx-color-primary, #7c3aed);
+  border-color: var(--ppx-color-primary, #7c3aed);
+  color: #fff;
+}
+.ppx-btn--primary:hover { filter: brightness(1.02); }
+
+.ppx-btn--subtle {
+  background: #fff;
+  border-style: dashed;
+  color: var(--ppx-color-text-subtle, #334155);
+}
+
+.ppx-btn--danger {
+  background: var(--ppx-color-error, #ef4444);
+  border-color: var(--ppx-color-error, #ef4444);
+  color: #fff;
+}
+
+/* Sizes */
+.ppx-btn--sm { padding: .4rem .7rem; border-radius: 8px; font-size: .85rem; }
+.ppx-btn--lg { padding: .8rem 1.1rem; border-radius: var(--ppx-radius-lg, 16px); font-size: 1rem; }
+
+/* Icon-only */
+.ppx-btn--icon { width: 2.25rem; height: 2.25rem; padding: 0; }
+
+/* --------------------------------------------------------------------------
+   Forms
+   -------------------------------------------------------------------------- */
+.ppx-label {
+  display: inline-block;
+  font-weight: var(--ppx-font-weight-medium, 500);
+  margin-bottom: .35rem;
+}
+
+.ppx-help {
+  margin-top: .35rem;
+  font-size: var(--ppx-font-size-sm, .875rem);
+  color: var(--ppx-color-text-subtle, #334155);
+}
+
+.ppx-input,
+.ppx-select,
+.ppx-textarea {
+  width: 100%;
+  font-family: var(--ppx-font, 'Montserrat', system-ui);
+  font-size: var(--ppx-font-size-md, 1rem);
+  color: var(--ppx-color-text, #0f172a);
+  background: #fff;
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  border-radius: var(--ppx-radius-md, 12px);
+  padding: .6rem .7rem;
+  transition: var(--ppx-transition-fast, all .15s ease-in-out);
+}
+
+.ppx-input::placeholder,
+.ppx-textarea::placeholder {
+  color: var(--ppx-color-muted, #64748b);
+}
+
+.ppx-textarea { min-height: 120px; resize: vertical; }
+
+.ppx-field { margin-bottom: var(--ppx-space-4, 1rem); }
+
+/* Invalid state */
+.ppx-invalid { border-color: var(--ppx-color-error, #ef4444) !important; }
+.ppx-error {
+  color: var(--ppx-color-error, #ef4444);
+  font-size: var(--ppx-font-size-sm, .875rem);
+  margin-top: .35rem;
+}
+
+/* --------------------------------------------------------------------------
+   Chips / Tags
+   -------------------------------------------------------------------------- */
+.ppx-chip {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .2rem .5rem;
+  font-size: var(--ppx-font-size-sm, .875rem);
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  border-radius: 999px;
+  color: var(--ppx-color-text-subtle, #334155);
+  background: #fff;
+}
+.ppx-chip--draft { border-color: #e5e7eb; color: #64748b; background: #ffffff; }
+.ppx-chip--success { border-color: var(--ppx-color-success, #22c55e); color: var(--ppx-color-success, #22c55e); }
+.ppx-chip--warn { border-color: var(--ppx-color-warning, #facc15); color: #854d0e; }
+.ppx-chip--danger { border-color: var(--ppx-color-error, #ef4444); color: var(--ppx-color-error, #ef4444); }
+
+/* --------------------------------------------------------------------------
+   Tables (lightweight)
+   -------------------------------------------------------------------------- */
+.ppx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ppx-font-size-sm, .875rem);
+}
+.ppx-table th, .ppx-table td {
+  border-bottom: 1px solid var(--ppx-color-line, #e5e7eb);
+  padding: .6rem .5rem;
+  text-align: left;
+}
+.ppx-table th {
+  font-weight: var(--ppx-font-weight-semibold, 600);
+  color: var(--ppx-color-text-subtle, #334155);
+}
+
+/* --------------------------------------------------------------------------
+   Alerts
+   -------------------------------------------------------------------------- */
+.ppx-alert {
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  border-radius: var(--ppx-radius-md, 12px);
+  padding: .75rem .9rem;
+  background: #fff;
+}
+.ppx-alert--info { border-color: var(--ppx-color-primary, #7c3aed); }
+.ppx-alert--success { border-color: var(--ppx-color-success, #22c55e); }
+.ppx-alert--danger { border-color: var(--ppx-color-error, #ef4444); }
+
+/* --------------------------------------------------------------------------
+   Example Blocks (used in Quill embeds and public pages)
+   -------------------------------------------------------------------------- */
+.ppx-example {
+  display: block;
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid color-mix(in oklab, var(--ppx-brand-3, #8f8ec5), white 60%);
+  border-radius: var(--ppx-radius-md, 12px);
+  background: #fff; /* crisp white like surrounding cards */
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  text-align: left; /* prevent inherited centering */
+  overflow: hidden; /* clip inner backgrounds to rounded corners */
+}
+
+/* --------------------------------------------------------------------------
+   Admin Article Editor width guards
+   - Prevent tiny horizontal scrolling and edge-overlap in the editor canvas
+   -------------------------------------------------------------------------- */
+:root { --ppx-admin-gutter: 28px; }
+body.ppx-admin {
+  overflow-x: hidden; /* avoid stray 1-2px horizontal scroll bars */
+  /* Reserve space for the OS scrollbar so content doesn't sit beneath it */
+  scrollbar-gutter: stable both-edges;
+}
+
+/* Ensure the editor wrapper and inner editors never exceed their parent width */
+body.ppx-admin .ppx-editor-wrap,
+body.ppx-admin .ppx-fallback-editor,
+body.ppx-admin #ppx-quill-editor,
+body.ppx-admin #ppx-quill-editor .ql-editor {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: anywhere; /* break long words/URLs */
+  word-break: break-word;
+}
+/* Do not constrain overflow on the wrapper to keep position:sticky working */
+
+/* Media scales within the editor area */
+body.ppx-admin .ppx-editor-wrap img,
+body.ppx-admin .ppx-editor-wrap video,
+body.ppx-admin .ppx-editor-wrap iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tables scroll horizontally within the editor if needed, not the page */
+body.ppx-admin .ppx-editor-wrap table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+body.ppx-admin .ppx-editor-wrap th,
+body.ppx-admin .ppx-editor-wrap td {
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  padding: .35rem .5rem;
+}
+
+/* Code blocks wrap instead of forcing page overflow */
+body.ppx-admin .ppx-editor-wrap pre,
+body.ppx-admin .ppx-editor-wrap code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Keep the toolbar from overflowing its container */
+body.ppx-admin #ppx-admin-toolbar {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Comfortable right gutter inside editor content */
+:root { --ppx-editor-gutter: 28px; }
+body.ppx-admin .ppx-fallback-editor,
+body.ppx-admin #ppx-quill-editor .ql-editor {
+  padding-right: calc(.75rem + var(--ppx-editor-gutter));
+}
+
+/* Add a consistent right gutter on the admin page canvas so borders don't sit under the scrollbar */
+body.ppx-admin main.ppx-container {
+  padding-right: calc(16px + var(--ppx-admin-gutter));
+}
+/* Add a matching inset on the editor wrapper itself */
+body.ppx-admin .ppx-editor-wrap { margin-right: var(--ppx-admin-gutter); }
+
+/* Make sure example blocks look clean inside accordions */
+.ppx-accordion .ppx-example {
+  /* Slight inset so the card never kisses the accordion border */
+  margin: .75rem 12px;
+  border-color: color-mix(in oklab, var(--ppx-brand-3, #8f8ec5), white 60%);
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  max-width: calc(100% - 24px);
+  box-sizing: border-box;
+}
+
+.ppx-example .ppx-ex {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: .75rem;
+  align-items: start;
+  margin: 0;
+  padding: 0;           /* override exercise UI padding */
+  max-width: none;      /* override exercise UI max-width */
+  justify-items: start; /* keep inner cells left-aligned */
+  justify-content: start; /* pin grid tracks to the left; no centering */
+  width: 100%;
+  min-width: 0; /* allow text column to shrink instead of overflowing */
+  box-sizing: border-box;
+}
+
+.ppx-example .ppx-ex-audio {
+  grid-column: 1;
+  grid-row: 1 / span 2; /* span both text rows */
+  justify-self: start;
+  align-self: center;
+  /* visual: circular button with brand-colored ring like mockup */
+  border: 2px solid var(--ppx-color-primary, #475dd7);
+  background: #fff;
+  color: var(--ppx-color-primary, #475dd7);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease, box-shadow .15s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+.ppx-example .ppx-ex-audio:hover { background: #f8fafc; }
+.ppx-example .ppx-ex-audio.is-playing { background: color-mix(in oklab, var(--ppx-color-primary, #475dd7), white 88%); }
+
+/* icon inside the circular button */
+.ppx-example .ppx-ex-audio .ppx-ex-icon {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.ppx-example .ppx-ex-lines {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  text-align: left; /* sentence/translation column left-aligned */
+  align-items: flex-start;
+  min-width: 0; /* permit wrapping within grid/flex context */
+  justify-self: start; /* never push the text column to the right */
+}
+
+.ppx-example .ppx-ex-sentence {
+  font-weight: var(--ppx-font-weight-semibold, 600);
+  color: var(--ppx-color-text, #0f172a);
+}
+
+.ppx-example .ppx-ex-translation {
+  font-style: italic;
+  font-weight: normal;
+  color: var(--ppx-color-text-subtle, #334155);
+}
+
+/* On public pages, never show editor block tools if they leaked into saved HTML */
+.ppx-public .ppx-block-tools { display: none !important; }
+
+/* Accordion styles have been migrated to static/css/accordion.css to avoid conflicts. */
+
+/* Admin/Public bars — inject globe + check icons without touching templates */
+/* Language globe on summary */
+#ppx-admin-bar summary[aria-label*="Change language"]::before,
+#ppx-public-bar summary[aria-label*="Change language"]::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: .5rem;
+  background: url('../assets/icons/globe.svg') no-repeat center / contain;
+}
+/* Hide placeholder text icon spans ("??" or similar) */
+#ppx-admin-bar summary[aria-label*="Change language"] > span[aria-hidden="true"],
+#ppx-public-bar summary[aria-label*="Change language"] > span[aria-hidden="true"] {
+  display: none !important;
+}
+
+/* Selected language checkmark in menu */
+#ppx-admin-bar [role="menuitem"][aria-current="true"]::after,
+#ppx-public-bar [role="menuitem"][aria-current="true"]::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-left: .5rem;
+  background: url('../assets/icons/check.svg') no-repeat center / contain;
+}
+/* Hide trailing placeholder span used as a checkmark */
+#ppx-admin-bar [role="menuitem"] > span[aria-hidden="true"],
+#ppx-public-bar [role="menuitem"] > span[aria-hidden="true"] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   PPX — Media tiles + lightbox (admin + public)
+   ========================================================================== */
+
+.ppx-media-block { margin-top: .5rem; }
+
+.ppx-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.ppx-media-tile {
+  position: relative;
+  border: 1px solid var(--ppx-color-line, #e5e7eb);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+}
+
+.ppx-media-tile button {
+  position: absolute;
+  top: 6px; right: 6px;
+  z-index: 2;
+}
+
+/* Images */
+.ppx-media-img {
+  display: block;
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+/* Audio rows */
+.ppx-media-audio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  height: 100px; /* aligns with image tiles */
+  justify-content: center;
+}
+
+/* Lightbox */
+.ppx-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, .75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.ppx-lightbox.ppx-open { display: flex; }
+
+.ppx-lightbox__img {
+  max-width: 92vw;
+  max-height: 92vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  background: #fff;
+}
+
+.ppx-lightbox__close {
+  position: fixed;
+  top: 12px; right: 12px;
+  z-index: 10001;
+}
+
+/* Reset default disclosure markers only for PPX accordions */
+details.ppx-card > summary,
+details.ppx-media-acc > summary {
+  list-style: none;
+}
+details.ppx-card > summary::-webkit-details-marker,
+details.ppx-media-acc > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Custom chevron icons for PPX accordions only
+   -------------------------------------------------------------------------- */
+details.ppx-card > summary,
+details.ppx-media-acc > summary {
+  position: relative;
+  /* tighter left offset + explicit gap to the right of the chevron */
+  --ppx-acc-left: 3px;   /* was 6px */
+  --ppx-acc-gap: 8px;    /* extra space between chevron and text */
+  /* text starts after icon width + left offset + gap */
+  padding-left: calc(18px + var(--ppx-acc-left) + var(--ppx-acc-gap));
+}
+
+/* Closed state: right chevron */
+details.ppx-card > summary::before,
+details.ppx-media-acc > summary::before {
+  content: '';
+  position: absolute;
+  left: var(--ppx-acc-left);
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  background: url('../assets/icons/chevron_collapsed.svg') no-repeat center / contain;
+  transform: translateY(-50%);
+  
+  pointer-events: none; /* never block clicks */
+  z-index: 1;          /* stay visible above background */
+}
+
+/* Open state: down chevron */
+details.ppx-card[open] > summary::before,
+details.ppx-media-acc[open] > summary::before {
+  background-image: url('../assets/icons/chevron_down.svg');
+}
+
+
+
+

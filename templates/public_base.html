@@ -1,0 +1,27 @@
+<!-- templates/public_base.html -->
+{% extends "base.html" %}
+
+{% block title %}{% if app_lang == 'es' %}ProfePanda{% else %}ProfePanda{% endif %}{% endblock %}
+
+{% block admin_nav %}{% include "_public_bar.html" %}{% endblock %}
+
+{% block content %}
+  <main id="ppx-main" class="ppx-container">
+    {% block public_content %}
+      {# Child templates put their page content here #}
+    {% endblock %}
+  </main>
+{% endblock %}
+
+{% if can_edit_i18n %}
+  <script>
+    window.PPX_I18N = {
+      canEdit: true,
+      getURL: "{{ i18n_get_url }}",
+      updateURL: "{{ i18n_update_url }}",
+      csrfToken: "{{ csrf_token }}",
+      currentLang: "{{ app_lang }}"
+    };
+  </script>
+  <script src="{{ url_for('static', filename='js/i18n_inline.js') }}"></script>
+{% endif %}

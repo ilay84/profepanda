@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('Nuevo ejercicio – Arrastrar y Soltar', 'New Exercise – Drag & Drop', app_lang) }} · ProfePanda{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  {% include "_ppx_head_assets.html" %}
+{% endblock %}
+
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+
+{% block content %}
+  <section class="ppx-container" style="padding-top:0;">
+    <div class="ppx-row" style="justify-content:flex-end;margin:8px 0 12px 0;">
+      <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_exercises_index') }}">{{ t('Volver a Ejercicios', 'Back to Exercises', app_lang) }}</a>
+    </div>
+    <header class="ppx-row" style="align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;">
+      <h1 style="margin:0;">{{ t('Ejercicio: Arrastrar y Soltar', 'Exercise: Drag & Drop', app_lang) }}</h1>
+      <div class="ppx-chip">{{ t('Constructor', 'Builder', app_lang) }}</div>
+    </header>
+
+    <form id="ppx-dnd-form" class="ppx-card" style="margin-bottom:12px; padding:20px; max-width:1000px;"
+          data-builder-mode="{{ builder_mode|default('new') }}"
+          data-builder-slug="{{ builder_slug|default('') }}">
+      <!-- Meta -->
+      <div class="ppx-col" style="gap:16px;">
+        <div class="ppx-field">
+          <label for="ex-slug">{{ t('Slug', 'Slug', app_lang) }}</label>
+          <input id="ex-slug" name="slug" class="ppx-input" placeholder="adjetivos-categorizacion" autocomplete="off">
+          <div class="ppx-field__help">{{ t('Usá minúsculas y guiones. No uses espacios.', 'Use lowercase and hyphens. No spaces.', app_lang) }}</div>
+        </div>
+
+        <div class="ppx-field">
+          <label for="ex-title-es">{{ t('Título (ES)', 'Title (ES)', app_lang) }}</label>
+          <input id="ex-title-es" name="title_es" class="ppx-input" placeholder="Clasificar adjetivos" autocomplete="off">
+        </div>
+
+        <div class="ppx-field">
+          <label for="ex-title-en">{{ t('Título (EN)', 'Title (EN)', app_lang) }}</label>
+          <input id="ex-title-en" name="title_en" class="ppx-input" placeholder="Classify adjectives" autocomplete="off">
+        </div>
+
+        <div class="ppx-field">
+          <label for="ex-inst-es">{{ t('Instrucciones (ES)', 'Instructions (ES)', app_lang) }}</label>
+          <textarea id="ex-inst-es" name="instructions_es" class="ppx-textarea" rows="3" placeholder="{{ t('Arrastrá cada ficha a la columna correcta.', 'Drag each token to its correct column.', app_lang) }}"></textarea>
+        </div>
+
+        <div class="ppx-field">
+          <label for="ex-inst-en">{{ t('Instrucciones (EN)', 'Instructions (EN)', app_lang) }}</label>
+          <textarea id="ex-inst-en" name="instructions_en" class="ppx-textarea" rows="3" placeholder="Drag each token to its correct column."></textarea>
+        </div>
+
+        <div class="ppx-row" style="gap:12px; flex-wrap:wrap; max-width:1000px;">
+          <div class="ppx-field" style="flex:0 0 200px;">
+            <label for="ex-level">{{ t('Nivel', 'Level', app_lang) }}</label>
+            <select id="ex-level" name="level" class="ppx-select">
+              <option value="A1">A1</option><option value="A2" selected>A2</option>
+              <option value="B1">B1</option><option value="B2">B2</option>
+              <option value="C1">C1</option><option value="C2">C2</option>
+            </select>
+          </div>
+          <div class="ppx-field" style="flex:1; max-width:780px;">
+            <label class="ppx-label">{{ t('Temas gramaticales', 'Grammar topics', app_lang) }}</label>
+            <div class="ppx-taxonomy" data-lang="{{ (app_lang or 'es')|lower }}">
+              <input type='hidden' id='taxonomy_paths' name='taxonomy_paths' value='{{ []|tojson }}'>
+            </div>
+            <div class="ppx-muted" style="margin-top:.5rem;">
+              {{ t('Seleccione uno o más temas para clasificar este ejercicio.', 'Select one or more topics to categorize this exercise.', app_lang) }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--ppx-line);margin:16px 0;">
+
+      <!-- Exercise media (single, global) -->
+      <section class="ppx-col" style="gap:12px; max-width:1000px;">
+        <div class="ppx-row" style="align-items:center;justify-content:space-between;">
+          <h2 style="margin:.25rem 0;">{{ t('Media del ejercicio', 'Exercise Media', app_lang) }}</h2>
+        </div>
+        <div class="ppx-field" style="flex:1; min-width:260px;">
+          <label for="ex-media-url">{{ t('Imagen (URL opcional)', 'Image (optional URL)', app_lang) }}</label>
+          <div class="ppx-row" style="gap:6px;">
+            <input id="ex-media-url" class="ppx-input" placeholder="/media/articles/mi-articulo/img/portada.png">
+            <button id="ex-media-upload" type="button" class="ppx-btn ppx-btn--subtle">{{ t('Subir', 'Upload', app_lang) }}</button>
+          </div>
+          <div class="ppx-field__help">{{ t('Pegue una URL global o use Subir para guardar en este ejercicio.', 'Paste a global URL or use Upload to store under this exercise.', app_lang) }}</div>
+        </div>
+      </section>
+
+      <!-- Columns editor -->
+      <section class="ppx-col" style="gap:12px; max-width:1000px;">
+        <div class="ppx-row" style="align-items:center;justify-content:space-between;">
+          <h2 style="margin:.25rem 0;">{{ t('Columnas', 'Columns', app_lang) }}</h2>
+          <button id="ppx-add-col" type="button" class="ppx-btn ppx-btn--primary">{{ t('Agregar columna', 'Add column', app_lang) }}</button>
+        </div>
+        <div id="ppx-cols" class="ppx-col" style="gap:10px;"></div>
+      </section>
+
+      <hr style="border:none;border-top:1px solid var(--ppx-line);margin:16px 0;">
+
+      <!-- Tokens editor -->
+      <section class="ppx-col" style="gap:12px; max-width:1000px;">
+        <div class="ppx-row" style="align-items:center;justify-content:space-between;">
+          <h2 style="margin:.25rem 0;">{{ t('Fichas', 'Tokens', app_lang) }}</h2>
+          <button id="ppx-add-token" type="button" class="ppx-btn ppx-btn--primary">{{ t('Agregar ficha', 'Add token', app_lang) }}</button>
+        </div>
+        <div id="ppx-tokens" class="ppx-col" style="gap:10px;"></div>
+      </section>
+
+      <template id="ppx-col-template">
+        <div class="ppx-card" style="padding:12px;">
+          <div class="ppx-row" style="gap:8px; align-items:center;">
+            <div class="ppx-field" style="flex:1;">
+              <label>{{ t('Etiqueta (ES)', 'Label (ES)', app_lang) }}</label>
+              <input class="ppx-input col-label-es" placeholder="{{ t('Categoría A', 'Category A', app_lang) }}">
+            </div>
+            <div class="ppx-field" style="flex:1;">
+              <label>{{ t('Etiqueta (EN)', 'Label (EN)', app_lang) }}</label>
+              <input class="ppx-input col-label-en" placeholder="Category A">
+            </div>
+            <button type="button" class="ppx-btn ppx-btn--subtle btn-del-col" title="{{ t('Eliminar', 'Delete', app_lang) }}">🗑</button>
+          </div>
+        </div>
+      </template>
+
+      <template id="ppx-token-template">
+        <div class="ppx-card" style="padding:12px;">
+          <div class="ppx-row" style="gap:8px; align-items:flex-end; flex-wrap:wrap;">
+            <div class="ppx-field" style="flex:1; min-width:260px;">
+              <label>{{ t('Texto (ES)', 'Text (ES)', app_lang) }}</label>
+              <input class="ppx-input tok-text-es" placeholder="rápido">
+            </div>
+            <div class="ppx-field" style="flex:1; min-width:260px;">
+              <label>{{ t('Texto (EN)', 'Text (EN)', app_lang) }}</label>
+              <input class="ppx-input tok-text-en" placeholder="fast">
+            </div>
+            <div class="ppx-field" style="flex:0 0 220px;">
+              <label>{{ t('Columna correcta', 'Correct column', app_lang) }}</label>
+              <select class="ppx-select tok-correct"></select>
+            </div>
+            <button type="button" class="ppx-btn ppx-btn--subtle btn-del-token" title="{{ t('Eliminar', 'Delete', app_lang) }}">🗑</button>
+          </div>
+          <div class="ppx-row" style="gap:8px; flex-wrap:wrap;">
+            <div class="ppx-field" style="flex:1; min-width:260px;">
+              <label>{{ t('Pista (ES)', 'Hint (ES)', app_lang) }}</label>
+              <input class="ppx-input tok-hint-es" placeholder="{{ t('Pista para la ficha', 'Hint for the token', app_lang) }}">
+            </div>
+            <div class="ppx-field" style="flex:1; min-width:260px;">
+              <label>{{ t('Pista (EN)', 'Hint (EN)', app_lang) }}</label>
+              <input class="ppx-input tok-hint-en" placeholder="Hint for the token">
+            </div>
+          </div>
+          <div class="ppx-row" style="gap:8px; flex-wrap:wrap;">
+            <div class="ppx-field" style="flex:1; min-width:260px;">
+              <label>{{ t('Feedback correcto (ES)', 'Correct feedback (ES)', app_lang) }}</label>
+              <input class="ppx-input tok-fb-ok-es" placeholder="{{ t('¡Bien!', 'Nice!', app_lang) }}">
+            </div>
+            <div class="ppx-field" style="flex:1; min-width:260px;">
+              <label>{{ t('Feedback correcto (EN)', 'Correct feedback (EN)', app_lang) }}</label>
+              <input class="ppx-input tok-fb-ok-en" placeholder="Great!">
+            </div>
+          </div>
+          <div class="ppx-row" style="gap:8px; flex-wrap:wrap;">
+            <div class="ppx-field" style="flex:1; min-width:260px;">
+              <label>{{ t('Feedback incorrecto (ES)', 'Incorrect feedback (ES)', app_lang) }}</label>
+              <input class="ppx-input tok-fb-bad-es" placeholder="{{ t('Revisa la categoría.', 'Check the category.', app_lang) }}">
+            </div>
+            <div class="ppx-field" style="flex:1; min-width:260px;">
+              <label>{{ t('Feedback incorrecto (EN)', 'Incorrect feedback (EN)', app_lang) }}</label>
+              <input class="ppx-input tok-fb-bad-en" placeholder="Check the category.">
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <hr style="border:none;border-top:1px solid var(--ppx-line);margin:16px 0;">
+
+    </form>
+    <!-- Sticky bottom action bar -->
+    <div class="ppx-card" style="position: sticky; bottom: 0; margin-top:16px; padding:12px; display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:1000px;">
+      <div class="ppx-row" style="gap:8px; align-items:center; flex-wrap:wrap;">
+        <button id="ppx-save-draft" type="button" class="ppx-btn">{{ t('Guardar borrador', 'Save draft', app_lang) }}</button>
+        <button id="ppx-preview" type="button" class="ppx-btn ppx-btn--primary">{{ t('Vista previa', 'Preview', app_lang) }}</button>
+        {# JSON button is injected by JS next to Preview (consistent across builders) #}
+      </div>
+      <div class="ppx-row" style="gap:8px; align-items:center;">
+        <button id="ppx-publish" type="button" class="ppx-btn ppx-btn--ok">{{ t('Publicar', 'Publish', app_lang) }}</button>
+      </div>
+    </div>
+  </section>
+
+  <script defer src="{{ url_for('static', filename='js/admin_taxonomy_picker.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/ppx-json-editor.js') }}?v=20251122a"></script>
+  <script defer src="{{ url_for('static', filename='js/admin_builder_dnd.js') }}?v=20251117a"></script>
+{% endblock %}

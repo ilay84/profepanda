@@ -1,0 +1,46 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/caerle-la-ficha/caerle_la_ficha.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">To suddenly realize or understand something.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Darse cuenta de algo de golpe o entenderlo repentinamente.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "to realize",
+        "to get it",
+        "to catch on"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/caerle-la-ficha/caerle_la_ficha_ex_01.mp3",
+          "en": "Seriously? You're telling me a story? You're telling me this, like it suddenly `hit you`?",
+          "es": "¿En serio? Vos me estás contando una historia a mí? ¿Vos me la estás contando a mí, que `te cayó la ficha` de golpe?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_verbal",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "caerle-la-ficha",
+  "word": "caerle la ficha"
+}

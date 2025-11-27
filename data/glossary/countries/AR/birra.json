@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/birra/birra.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Beer, especially when mentioned in casual or colloquial speech.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Cerveza, bebida alcohólica de uso cotidiano mencionada en registro informal.</span></p>",
+      "domain": [
+        "comida",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "beer"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/birra/birra_ex_01.mp3",
+          "en": "\"Nice! Well, go have some `beer` on the corner, do something normal for your age.\"",
+          "es": "¡Qué bueno! Bueno, vayan a tomar `birra` a la esquina, hagan algo normal de su edad.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "birrita",
+        "fem_pl": "birras",
+        "fem_sg": "birra",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "birra",
+  "word": "birra"
+}

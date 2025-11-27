@@ -1,0 +1,132 @@
+<!-- templates/_admin_bar.html -->
+<nav id="ppx-admin-bar" role="navigation" aria-label="Admin" style="
+  position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1200;
+  background: #edeaff; border-bottom: 1px solid #d8d4f2;
+">
+  <div class="ppx-container" style="display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-top:.5rem; padding-bottom:.5rem;">
+    <!-- Left: Brand -->
+    <a href="{{ url_for('admin.admin_home') }}" style="
+      display: inline-flex; align-items: center; gap: .5rem; text-decoration: none;
+      color: var(--ppx-color-text, #0f172a); font-family: var(--ppx-font, 'Montserrat', sans-serif);
+      font-weight: 600; letter-spacing: .2px;
+    " aria-label="Admin Home">
+      <img src="{{ url_for('static', filename='assets/logo/header_logo.png') }}" alt="ProfePanda Logo" style="height:30px; width:auto; display:inline-block;">
+      <span>{{ t('Admin', 'Admin', app_lang) }}</span>
+    </a>
+
+    <!-- Right: Actions -->
+    <div style="display:flex; align-items:center; gap: .5rem;">
+      {% set _raw_next = request.full_path|default(request.path, true) %}
+      {% set _next = _raw_next if _raw_next else request.path %}
+
+      <!-- Dashboard (always first) -->
+      <a href="{{ url_for('admin.admin_home') }}" style="
+        text-decoration:none; font-family:var(--ppx-font,'Montserrat',sans-serif);
+        font-size:var(--ppx-font-size-sm,.875rem);
+        color:var(--ppx-color-text,#0f172a);
+        padding:.45rem .8rem; border-radius:10px;
+        background:#fff; transition:all .15s ease-in-out;
+      " onmouseover="this.style.background='#f3f4ff';"
+        onmouseout="this.style.background='#fff';">
+        <img src="{{ url_for('static', filename='assets/icons/dashboard.svg') }}" alt="" width="16" height="16" aria-hidden="true" style="vertical-align:-3px; margin-right:6px;">{{ t('Panel', 'Dashboard', app_lang) }}
+      </a>
+
+      {% if current_user.is_authenticated and current_user.role == 'super' %}
+      <a href="{{ url_for('accounts_manage.users_index') }}" style="
+        text-decoration:none; font-family:var(--ppx-font,'Montserrat',sans-serif);
+        font-size:var(--ppx-font-size-sm,.875rem);
+        color:#475dd7; font-weight:700;
+        padding:.45rem .8rem; border:1.5px solid #c7ccff;
+        border-radius:10px; background:#fff; transition:all .15s ease-in-out;
+      " onmouseover="this.style.background='#eceeff';this.style.borderColor='#b9c2ff';"
+        onmouseout="this.style.background='#fff';this.style.borderColor='#c7ccff';">
+        <img src="{{ url_for('static', filename='assets/icons/users.svg') }}" alt="" width="16" height="16" aria-hidden="true" style="vertical-align:-3px; margin-right:6px;">{{ t('Usuarios', 'Users', app_lang) }}
+      </a>
+      {% endif %}
+
+      {% if current_user.is_authenticated %}
+      <a href="{{ url_for('accounts.profile_page') }}" style="
+        text-decoration:none; font-family:var(--ppx-font,'Montserrat',sans-serif);
+        font-size:var(--ppx-font-size-sm,.875rem);
+        color:#475dd7; font-weight:600;
+        padding:.45rem .8rem; border-radius:10px;
+      " onmouseover="this.style.background='#eceeff';"
+        onmouseout="this.style.background='transparent';">
+        <img src="{{ url_for('static', filename='assets/icons/user.svg') }}" alt="" width="16" height="16" aria-hidden="true" style="vertical-align:-3px; margin-right:6px;">{{ t('Perfil', 'Profile', app_lang) }}
+      </a>
+      {% else %}
+      <a href="{{ url_for('accounts.login_page', next=_next) }}" style="
+        text-decoration:none; font-family:var(--ppx-font,'Montserrat',sans-serif);
+        font-size:var(--ppx-font-size-sm,.875rem);
+        color:#475dd7; font-weight:600;
+        padding:.45rem .8rem; border-radius:10px;
+      " onmouseover="this.style.background='#eceeff';"
+        onmouseout="this.style.background='transparent';">
+        <img src="{{ url_for('static', filename='assets/icons/login.svg') }}" alt="" width="16" height="16" aria-hidden="true" style="vertical-align:-3px; margin-right:6px;">{{ t('Ingresar', 'Log in', app_lang) }}
+      </a>
+      {% endif %}
+
+      <!-- Language dropdown (admin chrome: ES / EN only) -->
+      <details style="position:relative; font-family: var(--ppx-font,'Montserrat',sans-serif);">
+        <summary style="
+          list-style:none; cursor:pointer;
+          display:inline-flex; align-items:center; gap:.5rem;
+          padding:.45rem .8rem; border:1.5px solid var(--ppx-color-line,#d1d5db);
+          border-radius:999px; background:#fff;
+          font-size:var(--ppx-font-size-sm,.875rem);
+        " aria-label="{{ t('Cambiar idioma', 'Change language', app_lang) }}">
+          <span aria-hidden="true">🌐</span>
+          <span>{{ 'Español' if app_lang=='es' else 'English' }}</span>
+        </summary>
+        <div style="
+          position:absolute; right:0; margin-top:.4rem; min-width:220px;
+          background:#fff; border:1px solid var(--ppx-color-line,#e5e7eb);
+          border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.08); padding:.35rem;
+        " role="menu" aria-label="{{ t('Idiomas', 'Languages', app_lang) }}">
+          <ul style="list-style:none; margin:0; padding:.25rem;">
+            <li>
+              <a href="/admin/lang?set=es&next={{ _next|urlencode }}" role="menuitem" style="
+                display:flex; align-items:center; justify-content:space-between;
+                text-decoration:none; color:var(--ppx-color-text,#0f172a);
+                padding:.45rem .6rem; border-radius:8px;
+              " onmouseover="this.style.background='#f3f4ff';"
+                onmouseout="this.style.background='transparent';"
+                aria-current="{{ 'true' if app_lang=='es' else 'false' }}">
+                <span>Español</span>{% if app_lang=='es' %}<span aria-hidden="true">✓</span>{% endif %}
+              </a>
+            </li>
+            <li>
+              <a href="/admin/lang?set=en&next={{ _next|urlencode }}" role="menuitem" style="
+                display:flex; align-items:center; justify-content:space-between;
+                text-decoration:none; color:var(--ppx-color-text,#0f172a);
+                padding:.45rem .6rem; border-radius:8px;
+              " onmouseover="this.style.background='#f3f4ff';"
+                onmouseout="this.style.background='transparent';"
+                aria-current="{{ 'true' if app_lang=='en' else 'false' }}">
+                <span>English</span>{% if app_lang=='en' %}<span aria-hidden="true">✓</span>{% endif %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      {% if current_user.is_authenticated %}
+      <form action="{{ url_for('accounts.logout_submit') }}" method="post" style="margin:0;">
+        <button type="submit" style="
+          background:transparent; color:#c46374; font-weight:700;
+          border:2.25px solid #c46374; border-radius:12px; padding:.45rem .9rem;
+          cursor:pointer; font-family:var(--ppx-font,'Montserrat',sans-serif);
+          font-size:var(--ppx-font-size-sm,.875rem);
+          box-shadow:0 0 0 1px rgba(196,99,116,0.08);
+        " onmouseover="this.style.background='#f8e7eb';this.style.borderColor='#a54f5d';this.style.color='#a54f5d';"
+          onmouseout="this.style.background='transparent';this.style.borderColor='#c46374';this.style.color='#c46374';">
+          <img src="{{ url_for('static', filename='assets/icons/logout.svg') }}" alt="" width="16" height="16" aria-hidden="true" style="vertical-align:-3px; margin-right:6px;">{{ t('Salir', 'Log out', app_lang) }}
+        </button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+

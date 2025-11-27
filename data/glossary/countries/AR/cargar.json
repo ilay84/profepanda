@@ -1,0 +1,47 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/cargar/cargar.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">To tease, joke, or mess with someone.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Bromear o burlarse de alguien.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "to kid",
+        "to tease",
+        "to joke",
+        "to mess with"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/cargar/cargar_ex_01.mp3",
+          "en": "You ruined your life? Are you `kidding` me? You married that ugly guy and saved yourself!",
+          "es": "¿Te cagaste la vida? ¿Me estás `cargando`? ¡Te casaste con el feo ese y te salvaste!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "cargar",
+  "word": "cargar"
+}

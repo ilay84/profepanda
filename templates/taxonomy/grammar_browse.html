@@ -1,0 +1,39 @@
+{% extends "public_base.html" %}
+{% block title %}{{ title }} · ProfePanda{% endblock %}
+
+{% block content %}
+<section class="ppx-container" style="padding-top:2rem; padding-bottom:3rem;">
+  <header style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;">
+    <nav style="font-size:.9rem;color:#475569;">
+      <a href="{{ url_for('taxonomy.grammar_browse', lang=lang) }}">🏠 {{ t('Gramática','Grammar',lang) }}</a>
+      {% for crumb in breadcrumb %}
+        / <a href="{{ url_for('taxonomy.grammar_browse', lang=lang, topic=crumb.path) }}">{{ crumb.title }}</a>
+      {% endfor %}
+    </nav>
+    <div>
+      <a href="{{ url_for('taxonomy.grammar_browse', lang='en' if lang=='es' else 'es', topic=topic) }}"
+         class="ppx-btn ppx-focusable"
+         style="font-size:.85rem; background:#f1f5f9; border-radius:9999px; padding:.25rem .75rem;">
+         {{ 'EN' if lang=='es' else 'ES' }}
+      </a>
+    </div>
+  </header>
+
+  <h1 style="margin-top:1rem; font-weight:600;">{{ title }}</h1>
+
+  {% if children %}
+    <ul style="list-style:none; padding-left:0; margin-top:1rem;">
+      {% for c in children %}
+        <li style="margin:.4rem 0;">
+          <a href="{{ url_for('taxonomy.grammar_browse', lang=lang, topic=c.path) }}"
+             style="font-size:1.05rem; text-decoration:none; color:#334155;">
+            • {{ c.display_title or c.title[lang] or c.title['es'] }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p style="margin-top:1rem; color:#64748b;"><em>{{ t('No hay subtemas.','No subtopics.',lang) }}</em></p>
+  {% endif %}
+</section>
+{% endblock %}

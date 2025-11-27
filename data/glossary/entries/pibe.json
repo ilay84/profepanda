@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/pibe/pibe.mp3?v=1764269649",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Young person; informal Argentine term for a boy or girl.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Persona joven; término informal y muy usado en Argentina para referirse a un chico o chica.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "kid",
+        "boy",
+        "girl"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/pibe/pibe_ex_01.mp3?v=1764269668",
+          "en": "I just don’t understand these `kids`, man. Such a desire to screw up their family’s life, you know?",
+          "es": "Ahora yo no los entiendo a estos `pibes`, viejo. Qué ganas de cagarle la vida a la familia, ¿no?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Hermanos y detectives",
+            "type": "series",
+            "year": "2006"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "pibito, pibita",
+        "fem_pl": "pibas",
+        "fem_sg": "piba",
+        "masc_pl": "pibes",
+        "masc_sg": "pibe"
+      }
+    }
+  ],
+  "slug": "pibe",
+  "word": "pibe"
+}

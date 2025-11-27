@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tf.schema.json",
+  "title": "True/False Exercise",
+  "type": "object",
+  "required": ["type", "slug", "items"],
+  "properties": {
+    "type": { "const": "tf" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title_es": { "type": "string" },
+    "title_en": { "type": "string" },
+    "instructions_es": { "type": "string" },
+    "instructions_en": { "type": "string" },
+    "level": { "type": ["string", "null"] },
+    "options": { "type": ["object", "null"] },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "order", "answer"],
+        "properties": {
+          "id": { "type": ["string", "number"] },
+          "order": { "type": "integer" },
+          "statement_es": { "type": "string" },
+          "statement_en": { "type": "string" },
+          "answer": { "type": ["boolean", "string"], "enum": [true, false, "true", "false", "TRUE", "FALSE"] },
+          "hint_es": { "type": ["string", "null"] },
+          "hint_en": { "type": ["string", "null"] },
+          "feedback_correct_es": { "type": ["string", "null"] },
+          "feedback_correct_en": { "type": ["string", "null"] },
+          "feedback_incorrect_es": { "type": ["string", "null"] },
+          "feedback_incorrect_en": { "type": ["string", "null"] },
+          "media": {},
+          "image": {},
+          "media_url": { "type": ["string", "null"] },
+          "image_url": { "type": ["string", "null"] }
+        },
+        "allOf": [
+          { "anyOf": [
+            { "required": ["statement_es"] },
+            { "required": ["statement_en"] }
+          ]}
+        ]
+      }
+    }
+  },
+  "allOf": [
+    { "anyOf": [ { "required": ["title_es"] }, { "required": ["title_en"] } ] },
+    { "anyOf": [ { "required": ["instructions_es"] }, { "required": ["instructions_en"] } ] }
+  ]
+}
+

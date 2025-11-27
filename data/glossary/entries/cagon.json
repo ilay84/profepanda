@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/cagon/cagon.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">A coward; someone who avoids facing a situation.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Persona cobarde o que evita enfrentar una situación.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "coward",
+        "chicken",
+        "pussy"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/cagon/cagon_ex_01.mp3",
+          "en": "—It’s bulletproof, you won’t be able to break it!\n—You `coward`!",
+          "es": "—¡Está blindado, no lo vas a poder romper!\n—¡`Cagón`!",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo",
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "cagonas",
+        "fem_sg": "cagona",
+        "masc_pl": "cagones",
+        "masc_sg": "cagón"
+      }
+    }
+  ],
+  "slug": "cagon",
+  "word": "cagón"
+}

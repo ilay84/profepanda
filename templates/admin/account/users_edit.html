@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('Editar usuario', 'Edit user', app_lang) }} · ProfePanda{% endblock %}
+
+{% block admin_nav %}
+  {% include "_admin_bar.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="ppx-card" style="max-width:620px;margin:1.5rem auto;padding:1rem;border:1px solid #e5e7eb;border-radius:14px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06);">
+    <h1 class="ppx-h2" style="margin-bottom:.75rem;">
+      {{ t('Editar usuario', 'Edit user', app_lang) }}
+      <small class="ppx-muted" style="font-weight:500; font-size:.9rem;">· {{ user.email }}</small>
+    </h1>
+
+    <form action="{{ url_for('accounts_manage.users_update', user_id=user.id) }}" method="post" style="display:flex;flex-direction:column;gap:.75rem;">
+      <label><strong>{{ t('Nombre', 'Name', app_lang) }}</strong></label>
+      <input name="name" required value="{{ user.name }}"
+             style="padding:.55rem;border:1px solid #e5e7eb;border-radius:10px;font:500 14px/1.4 Montserrat,system-ui;">
+
+      <label><strong>{{ t('Rol', 'Role', app_lang) }}</strong></label>
+      <select name="role" style="padding:.55rem;border:1px solid #e5e7eb;border-radius:10px;">
+        <option value="author" {{ 'selected' if user.role=='author' else '' }}>Author</option>
+        <option value="editor" {{ 'selected' if user.role=='editor' else '' }}>Editor</option>
+        <option value="super"  {{ 'selected' if user.role=='super'  else '' }}>Super</option>
+      </select>
+
+      <label><strong>{{ t('Estado', 'Status', app_lang) }}</strong></label>
+      <select name="status" style="padding:.55rem;border:1px solid #e5e7eb;border-radius:10px;">
+        <option value="active"   {{ 'selected' if user.status=='active'   else '' }}>{{ t('Activo', 'Active', app_lang) }}</option>
+        <option value="disabled" {{ 'selected' if user.status=='disabled' else '' }}>{{ t('Deshabilitado', 'Disabled', app_lang) }}</option>
+      </select>
+
+      <fieldset style="margin-top:.5rem;padding:.75rem;border:1px dashed #e5e7eb;border-radius:10px;">
+        <legend style="padding:0 .35rem;font-weight:700;font-size:.9rem;">{{ t('Restablecer contraseña (opcional)', 'Reset password (optional)', app_lang) }}</legend>
+        <label style="display:block;margin-bottom:.35rem;"><strong>{{ t('Nueva contraseña', 'New password', app_lang) }}</strong></label>
+        <input name="password" type="password" placeholder="{{ t('Dejar en blanco para no cambiar', 'Leave blank to keep current', app_lang) }}"
+               style="width:100%;padding:.55rem;border:1px solid #e5e7eb;border-radius:10px;">
+      </fieldset>
+
+      <div class="ppx-row" style="gap:.5rem;justify-content:flex-end;margin-top:.25rem;">
+        <a href="{{ url_for('accounts_manage.users_index') }}" style="
+          text-decoration:none;padding:.55rem .8rem;border:1px solid #e5e7eb;border-radius:10px;
+          font:600 14px/1 Montserrat,system-ui;color:#0f172a;background:#fff;
+        ">{{ t('Cancelar', 'Cancel', app_lang) }}</a>
+        <button type="submit" class="ppx-btn" style="
+          padding:.6rem .9rem;border:0;border-radius:10px;background:#475dd7;color:#fff;
+          font:700 14px/1 Montserrat,system-ui;cursor:pointer;
+        ">{{ t('Guardar cambios', 'Save changes', app_lang) }}</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

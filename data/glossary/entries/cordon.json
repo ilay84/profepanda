@@ -1,0 +1,52 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/cordon/cordon.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Raised edge separating the sidewalk from the street.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Borde elevado que separa la vereda de la calle.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "curb"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/cordon/cordon_ex_01.mp3",
+          "en": "The `curb` was completely unpainted — I had no way of knowing you weren’t allowed to park there.",
+          "es": "El `cordón` estaba absolutamente despintado, o sea, no había ninguna forma de que yo me enterara de que ahí no se podía estacionar.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "cordones",
+        "masc_sg": "cordón"
+      }
+    }
+  ],
+  "slug": "cordon",
+  "word": "cordón"
+}

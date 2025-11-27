@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Nuevo' if mode=='new' else 'Editar' }} – {{ t('Glosario','Glossary', app_lang) }}{% endblock %}
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+{% block content %}
+  <div class="ppx-container glossary-editor" style="max-width:min(96vw,1100px); margin:1rem auto;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem;">
+      <h1 style="margin:0;">{{ t('Glosario', 'Glossary', app_lang) }} - {{ 'Nuevo' if mode=='new' else 'Editar' }}</h1>
+      <div style="display:flex; gap:.5rem;">
+        <a href="{{ url_for('admin.admin_glossary_manage') }}" class="ppx-btn" style="text-decoration:none;">{{ t('Volver al gestor', 'Back to Glossary', app_lang) }}</a>
+      </div>
+    </div>
+  <style>
+    details > summary { padding-left: .3rem; }
+    /* add a bit more space after the chevron */
+    details > summary::-webkit-details-marker { margin-right: .6ch; }
+    details > summary::marker { margin-right: .6ch; }
+    /* Glossary editor sizing + layout normalization */
+    .glossary-editor details > summary { font-size: 1rem; }
+    .glossary-editor label > div { font-weight: 600; font-size: .95rem; }
+    .glossary-editor .ppx-input,
+    .glossary-editor .ppx-select,
+    .glossary-editor textarea { font-size: .95rem; font-weight: 500; }
+    /* Simple RTE (bold/italic) */
+    .ppx-rte { border:1px solid #e5e7eb; border-radius:10px; overflow:hidden; background:#fff; }
+    .ppx-rte-bar { display:flex; gap:.25rem; padding:.35rem; border-bottom:1px solid #e5e7eb; background:#f8fafc; }
+    .ppx-rte-bar .ppx-btn { padding:.25rem .45rem; font-size:.85rem; }
+    .ppx-rte-bar .ppx-btn.is-on { background:#eef2ff; border-color:#c7ccff; }
+    .ppx-rte-area { min-height:90px; padding:.6rem .7rem; outline:none; }
+    .ppx-rte-area:focus { box-shadow: inset 0 0 0 2px rgba(79,70,229,.15); }
+    .glossary-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:.75rem; margin-top:.75rem; align-items:start; }
+    .glossary-grid label { min-width: 0; }
+    @media (max-width: 900px) { .glossary-grid { grid-template-columns: 1fr; } }
+    .gl-chip { display:inline-flex; align-items:center; gap:.35rem; border:1px solid #e5e7eb; border-radius:8px; padding:.2rem .5rem; font-size:.9rem; white-space:nowrap; }
+    /* Prevent nested cards from visually overlapping parent rounded corners */
+    .glossary-editor details.ppx-card { overflow: hidden; }
+    /* First-level sense card width (~90% of Sentidos area), centered */
+    .glossary-editor #senses > details.ppx-card {
+      width: 90%;
+      margin: .75rem auto;  /* center within Sentidos */
+      box-sizing: border-box;
+    }
+    /* Indent nested accordions so their outlines are visible within the parent */
+    .glossary-editor details.ppx-card details.ppx-card {
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      border-radius: 10px;
+      width: 90%;             /* nested accordions also ~90% of the sense width */
+      margin: .6rem auto;     /* centered within the sense card */
+      box-sizing: border-box;
+    }
+    .glossary-editor details.ppx-card details.ppx-card > summary { padding-top: .5rem; padding-bottom: .5rem; }
+    .glossary-editor details.ppx-card details.ppx-card > *:not(summary) { padding-left: .25rem; padding-right: .25rem; box-sizing: border-box; }
+  </style>{% if errors %}
+      <div style="background:#fee2e2; color:#991b1b; padding:.5rem .75rem; border-radius:8px; margin-bottom:.75rem;">
+        <strong>{{ t('Errores', 'Errors', app_lang) }}:</strong>
+        <ul style="margin:.25rem 0 0 1rem;">
+          {% for e in errors %}<li>{{ e }}</li>{% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <form id="ppx-glossary-form" method="post" action="" style="padding-bottom:72px;">
+      {% if mode=='new' %}<input type="hidden" name="country" value="{{ country }}">{% endif %}
+      <input type="hidden" name="senses_json" id="senses_json" value="">
+      <input type="hidden" name="alt_spellings_json" id="alt_spellings_json" value="">
+      <input type="hidden" name="entry_audio" id="entry_audio" value="{{ entry.audio or '' }}">
+
+      <details open class="ppx-card" style="padding:1rem;">
+        <summary style="cursor:pointer; font-weight:700;">{{ t('Término', 'Entry', app_lang) }}</summary>
+        <div class="ppx-row" style="gap:.75rem; margin-top:.75rem;">
+          <label class="ppx-field" style="flex:1;">
+            <div>{{ t('Palabra / término', 'Word / term', app_lang) }}</div>
+            <input type="text" name="word" value="{{ entry.word or '' }}" class="ppx-input" style="padding:.5rem; border:1px solid #e5e7eb; border-radius:8px;">
+          </label>
+        </div>
+        <div class="ppx-row" style="gap:.75rem; margin-top:.5rem;">
+          <label class="ppx-field" style="flex:1;">
+            <div>{{ t('Variantes ortograficas', 'Alternative spellings', app_lang) }}</div>
+            <div id="alt-spellings" style="display:flex; flex-direction:column; gap:.35rem;">
+              <div id="alt-spellings-tokens" style="display:flex; flex-wrap:wrap; gap:.35rem;"></div>
+              <input id="alt-spellings-input" type="text" class="ppx-input" placeholder="{{ t('Escribe y presiona Enter', 'Type and press Enter', app_lang) }}" style="max-width:420px; padding:.4rem; border:1px solid #e5e7eb; border-radius:8px;"/>
+            </div>
+          </label>
+        </div>
+      </details>
+
+      <details open class="ppx-card" style="padding:1rem; margin-top:1rem;">
+        <summary style="cursor:pointer; font-weight:700;">{{ t('Sentidos', 'Senses', app_lang) }}</summary>
+        <div id="senses" style="margin-top:.75rem; display:flex; flex-direction:column; gap:.75rem;"></div>
+        <button type="button" id="add-sense" class="ppx-btn ppx-btn--primary" style="margin-top:.5rem;">{{ t('Agregar sentido', 'Add sense', app_lang) }}</button>
+      </details>
+
+      <div style="position:sticky; bottom:0; z-index:1000; background:rgba(255,255,255,.96); backdrop-filter:saturate(1.2) blur(2px); border-top:1px solid #e5e7eb; box-shadow: 0 -6px 18px rgba(0,0,0,.06); padding:.6rem .75rem; margin-top:1rem; display:flex; gap:.5rem; align-items:center; flex-wrap:wrap;">
+        <button type="button" id="btn-json-editor" class="ppx-btn" title="JSON">
+          <img src="{{ url_for('static', filename='assets/icons/json.svg') }}" alt="JSON" style="width:18px;height:18px; margin-right:.35rem;"/>
+          <span>JSON</span>
+        </button>
+        <button type="submit" class="ppx-btn ppx-btn--primary">{{ t('Guardar', 'Save', app_lang) }}</button>
+        <a href="{{ url_for('admin.admin_glossary_manage') }}" class="ppx-btn">{{ t('Cancelar', 'Cancel', app_lang) }}</a>
+      </div>
+    </form>
+  </div>
+  <script>
+    window.PPX_POS_CATALOG = {{ pos_catalog | tojson }};
+    window.PPX_POS_ALIASES = {{ ppx_pos_aliases | tojson }};
+  </script>
+  <script>
+    (function(){
+      const posLang = "{{ app_lang }}";
+      const catalog = Array.isArray(window.PPX_POS_CATALOG) ? window.PPX_POS_CATALOG : [];
+      window.PPX_TAG_OPTS = {
+        pos: catalog.map(entry => ({
+          value: (entry.value || '').toString().toLowerCase(),
+          label: posLang === 'en' ? entry.en : entry.es
+        })),
+        register: [
+          {value:'formal', label:"{{ t('formal','formal', app_lang) }}"},
+          {value:'neutral', label:"{{ t('neutral','neutral', app_lang) }}"},
+          {value:'informal', label:"{{ t('informal','informal', app_lang) }}"},
+          {value:'vulgar', label:"{{ t('vulgar','vulgar', app_lang) }}"}
+        ],
+        freq: [
+          {value:'muy_comun', label:"{{ t('muy com�n','very common', app_lang) }}"},
+          {value:'comun', label:"{{ t('com�n','common', app_lang) }}"},
+          {value:'menos_comun', label:"{{ t('menos com�n','less common', app_lang) }}"},
+          {value:'raro', label:"{{ t('raro','rare', app_lang) }}"}
+        ],
+        status: [
+          {value:'vigente', label:"{{ t('vigente','current', app_lang) }}"},
+          {value:'en_desuso', label:"{{ t('en desuso','obsolete', app_lang) }}"},
+          {value:'arcaico', label:"{{ t('arcaico','archaic', app_lang) }}"},
+          {value:'regionalismo_fuerte', label:"{{ t('regionalismo fuerte','strong regionalism', app_lang) }}"}
+        ],
+        sensitivity: [
+          {value:'', label:'-'},
+          {value:'potencialmente_ofensivo', label:"{{ t('potencialmente ofensivo','potentially offensive', app_lang) }}"},
+          {value:'lenguaje_explicito', label:"{{ t('lenguaje expl�cito','explicit language', app_lang) }}"},
+          {value:'connotacion_sexual', label:"{{ t('connotaci�n sexual','sexual connotation', app_lang) }}"}
+        ],
+        domain: [
+          {value:'comida', label:"{{ t('comida','food', app_lang) }}"},
+          {value:'salud', label:"{{ t('salud','health', app_lang) }}"},
+          {value:'emociones', label:"{{ t('emociones','emotions', app_lang) }}"},
+          {value:'familia', label:"{{ t('familia','family', app_lang) }}"},
+          {value:'trabajo', label:"{{ t('trabajo','work', app_lang) }}"},
+          {value:'educacion', label:"{{ t('educaci�n','education', app_lang) }}"},
+          {value:'tecnologia', label:"{{ t('tecnolog�a','technology', app_lang) }}"},
+          {value:'politica', label:"{{ t('pol�tica','politics', app_lang) }}"},
+          {value:'economia', label:"{{ t('econom�a','economy', app_lang) }}"},
+          {value:'cultura_pop', label:"{{ t('cultura pop','pop culture', app_lang) }}"},
+          {value:'deporte', label:"{{ t('deporte','sports', app_lang) }}"},
+          {value:'naturaleza', label:"{{ t('naturaleza','nature', app_lang) }}"},
+          {value:'sociedad', label:"{{ t('sociedad','society', app_lang) }}"},
+          {value:'transporte', label:"{{ t('transporte','transportation', app_lang) }}"}
+        ],
+        tone: [
+          {value:'afectuoso', label:"{{ t('afectuoso','affectionate', app_lang) }}"},
+          {value:'despectivo', label:"{{ t('despectivo','pejorative', app_lang) }}"},
+          {value:'ironico', label:"{{ t('ir�nico','ironic', app_lang) }}"},
+          {value:'humoristico', label:"{{ t('humor�stico','humorous', app_lang) }}"},
+          {value:'poetico', label:"{{ t('po�tico','poetic', app_lang) }}"}
+        ]
+      };
+    })();
+    window.PPX_LABELS = {
+      pos: "{{ t('Clase de palabra','Part of Speech', app_lang) }}",
+      register: "{{ t('Registro','Register', app_lang) }}",
+      frequency: "{{ t('Frecuencia','Frequency', app_lang) }}",
+      status: "{{ t('Estatus','Status', app_lang) }}",
+      sensitivity: "{{ t('Sensibilidad','Sensitivity', app_lang) }}",
+      domains: "{{ t('Dominios','Domains', app_lang) }}",
+      tone: "{{ t('Tono','Tone', app_lang) }}",
+      sense: "{{ t('Sentido','Sense', app_lang) }}",
+      tags_section: "{{ t('Clase de palabra y etiquetas','Part of Speech and Tags', app_lang) }}",
+      defs_section: "{{ t('Definiciones','Definitions', app_lang) }}",
+      related_section: "{{ t('Términos relacionados','Related entries', app_lang) }}",
+      examples_section: "{{ t('Ejemplos','Examples', app_lang) }}",
+      def_en: "{{ t('Definición (EN)','Definition (EN)', app_lang) }}",
+      def_es: "{{ t('Definición (ES)','Definition (ES)', app_lang) }}"
+    };
+  </script>
+  <script>
+    // Extend tone options with 'agresivo'/'aggressive' if not present
+    try{
+      if (window.PPX_TAG_OPTS && Array.isArray(window.PPX_TAG_OPTS.tone)){
+        var has = window.PPX_TAG_OPTS.tone.some(function(o){ return (o && o.value)==='agresivo'; });
+        if (!has){ window.PPX_TAG_OPTS.tone.push({ value:'agresivo', label:"{{ t('agresivo','aggressive', app_lang) }}" }); }
+      }
+    }catch(_){}
+  </script>
+
+  {% block scripts %}
+    {{ super() }}
+    <script>
+      window.PPX_GLOSSARY_PREFILL = {{ (entry.senses or []) | tojson }};
+      window.PPX_ENTRY_PREFILL = { alt_spellings: {{ (entry.alt_spellings or []) | tojson }} };
+      window.PPX_ALT_OPTS = {
+        alt_type: [
+          { value: 'diminutivo', label: "{{ t('diminutivo','diminutive', app_lang) }}" },
+          { value: 'aumentativo', label: "{{ t('aumentativo','augmentative', app_lang) }}" },
+          { value: 'variante_ortográfica', label: "{{ t('variante ortográfica','spelling variant', app_lang) }}" },
+          { value: 'variante_regional', label: "{{ t('variante regional','regional variant', app_lang) }}" }
+        ]
+      };
+      window.PPX_LABELS = Object.assign({}, window.PPX_LABELS || {}, {
+        alt_section: "{{ t('Formas y variantes','Alternate forms and spellings', app_lang) }}",
+        alt_add: "{{ t('Agregar forma','Add form', app_lang) }}",
+        alt_form_ph: "{{ t('forma','form', app_lang) }}",
+        alt_regions_ph: "{{ t('Regiones (separadas por comas)','Regions (comma-separated)', app_lang) }}",
+        alt_note_es_ph: "{{ t('Nota (ES)','Note (ES)', app_lang) }}",
+        alt_note_en_ph: "{{ t('Nota (EN)','Note (EN)', app_lang) }}",
+        alt_audio_ph: "{{ t('URL de audio (opcional)','audio URL (optional)', app_lang) }}",
+        alt_related_slug_ph: "{{ t('slug relacionado (opcional)','related slug (optional)', app_lang) }}"
+      });
+    </script>
+    {# Cache-bust to ensure latest JS (POS normalization fixes) is loaded #}
+    <script src="{{ url_for('static', filename='js/ppx-json-editor.js', v='20251122a') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin_glossary_builder.js', v='36') }}"></script>
+  {% endblock %}
+
+{% endblock %}

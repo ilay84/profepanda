@@ -1,0 +1,57 @@
+{% extends "public_base.html" %}
+{% block title %}{{ entry.word }} – {{ t('Diccionario', 'Dictionary', app_lang) }}{% endblock %}
+{% block body %}
+  {% include "_public_bar.html" %}
+  <main id="ppx-main" class="ppx-container" style="margin-top:1rem;">
+    <article class="ppx-card" style="padding:1rem;">
+      <header>
+        <h1 style="margin:.25rem 0;">{{ entry.word }}</h1>
+        {% set s1 = (entry.senses[0] if entry.senses else {}) %}
+        {% if s1.pos %}<div style="opacity:.7;">{{ s1.pos }}</div>{% endif %}
+      </header>
+
+      {% for s in entry.senses %}
+        <section style="margin-top:1rem;">
+          <h3 style="margin:.25rem 0;">{{ t('Sentido', 'Sense', app_lang) }} {{ loop.index }}</h3>
+          {% if app_lang == 'en' %}
+            {% if s.definition_en %}<p><em>{{ s.definition_en }}</em></p>{% endif %}
+          {% else %}
+            {% if s.definition_es %}<p>{{ s.definition_es }}</p>{% endif %}
+          {% endif %}
+
+          {% if s.equivalents_en and s.equivalents_en|length %}
+          <div style="margin-top:.5rem;">
+            <strong>🇺🇸 {{ t('Equivalentes en inglés', 'American English Equivalents', app_lang) }}</strong>
+            <ul>
+              {% for e in s.equivalents_en %}<li>{{ e }}</li>{% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if s.related_slugs and s.related_slugs|length %}
+          <div style="margin-top:.5rem;">
+            <strong>{{ t('Entradas relacionadas', 'Related entries', app_lang) }}:</strong>
+            {% for r in s.related_slugs %}
+              <a class="ppx-btn ppx-btn--subtle" href="/dictionary/{{ r }}/" style="margin-right:.25rem;">{{ r }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if s.examples and s.examples|length %}
+          <div style="margin-top:.75rem;">
+            <h4 style="margin:.25rem 0;">{{ t('Ver y oír en contexto', 'See and hear in context with real-world examples', app_lang) }}</h4>
+            {% for ex in s.examples %}
+              <div style="padding:.5rem 0; border-top:1px solid #e5e7eb;">
+                {% if ex.audio %}<audio controls src="{{ ex.audio }}" style="width:100%;"></audio>{% endif %}
+                <div>{{ ex.es|replace('\n','<br>')|safe }}</div>
+                {% if ex.en %}<div style="opacity:.8;">{{ ex.en|replace('\n','<br>')|safe }}</div>{% endif %}
+                {% if ex.source %}<div style="opacity:.7; font-size:.9em;">{{ t('Fuente', 'Source', app_lang) }}: {{ ex.source.title or ex.source.label or '' }}{% if ex.source.year %} ({{ ex.source.year }}){% endif %}</div>{% endif %}
+              </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </section>
+      {% endfor %}
+    </article>
+  </main>
+{% endblock %}

@@ -1,0 +1,162 @@
+INTERACTIVE LESSONS MVP — ASSETS & MOCKUPS CHECKLIST
+
+Order aligns with build phases (W1→W5). Mark [✓] when done.
+
+WEEK 1 — FOUNDATIONS
+[ ] Design tokens update
+    - [ ] Confirm color roles (surface, text, accent, success, danger, warning)
+    - [ ] Shadows/elevations for cards, sticky bars
+    - [ ] Spacing scale (4/8/12/16…)
+    - [ ] Typography scale (Body, H1 only)
+[ ] SVG icon set (core)
+    Nav & UI
+    - [ ] chevron-left (Prev)
+    - [ ] chevron-right (Next)
+    - [ ] check (Submit/Check)
+    - [ ] x-close (Close modal)
+    - [ ] home (Back to hub)
+    - [ ] info-help (Help modal)
+    Progress & Status
+    - [ ] progress-circle (generic)
+    - [ ] badge (achievements)
+    - [ ] flame (streak)
+    - [ ] star (perfect)
+    - [ ] clock (time/duration)
+    Media
+    - [ ] play
+    - [ ] pause
+    - [ ] replay
+    - [ ] replay-5s
+    - [ ] speed-1x (speedometer or 1x)
+    - [ ] volume-on
+    - [ ] volume-off
+    Feedback
+    - [ ] check-circle (correct)
+    - [ ] x-circle (incorrect)
+    - [ ] lightbulb (tip)
+    Builder
+    - [ ] add (plus)
+    - [ ] duplicate (copy)
+    - [ ] delete (trash)
+    - [ ] drag-handle (reorder)
+    - [ ] image
+    - [ ] audio
+    - [ ] text
+    - [ ] puzzle-drag-blank
+    - [ ] tiles-tap-word
+    - [ ] list-mcq-tf
+    Admin & Workflow
+    - [ ] draft
+    - [ ] in-review-eye
+    - [ ] published-star
+    - [ ] publish-send-rocket
+    - [ ] search
+    - [ ] filter
+    Media Sources
+    - [ ] cloud-upload
+    - [ ] link
+    - [ ] google-drive (optional brand-neutral)
+[ ] Sounds (SFX mp3)
+    - [ ] correct.mp3 (≤30KB)
+    - [ ] incorrect.mp3 (≤30KB)
+    - [ ] complete.mp3 (≤50KB)
+[ ] Figma mockups — Player core
+    - [ ] Mobile portrait: base layout, sticky bars
+    - [ ] Desktop: responsive layout (md/lg)
+    - [ ] Slide: content with audio element
+    - [ ] Slide: MCQ (idle, answered-correct, answered-incorrect)
+
+WEEK 2 — EXERCISES + AUDIO
+[ ] Figma mockups — Controls & States
+    - [ ] Bottom bar: Prev/Check/Next states
+    - [ ] Disabled vs enabled states, pressed/hover
+    - [ ] Progress bar (linear)
+    - [ ] Audio mini-player with speed selector (0.5×/0.75×/1.0× plus slider option)
+[ ] SVG icons (extras)
+    - [ ] caret-up/down (dropdowns)
+    - [ ] slider-handle (if needed)
+[ ] Audio UI assets
+    - [ ] Speed labels (text style spec)
+    - [ ] Focus states for a11y
+
+WEEK 3 — ADVANCED EXERCISES
+[ ] Figma mockups — Exercise screens
+    - [ ] True/False (idle, feedback)
+    - [ ] Tap-word (token styles, selected/correct/incorrect)
+    - [ ] Drag-blank (drag states, drop targets, error state)
+    - [ ] Dictation (input field, toolbar, error highlights)
+    - [ ] Punctuation tips callout (explicit panel + inline indicators)
+    - [ ] Flashcards (front/back, flip animation)
+[ ] SVG icons (exercise-specific)
+    - [ ] hand (gesture hint)
+    - [ ] swap/flip (flashcards)
+    - [ ] target (goal/communicative_goal)
+[ ] Micro-animations (CSS/Lottie if needed)
+    - [ ] Correct answer pulse/check pop-in
+    - [ ] Incorrect subtle shake
+    - [ ] Drag enter/leave highlight
+
+WEEK 4 — ADMIN BUILDER
+[ ] Figma mockups — Admin
+    - [ ] Lessons index (list, status chips, filters)
+    - [ ] Lessons edit canvas (WYSIWYG preview)
+    - [ ] Palette (element tiles)
+    - [ ] Inspector (properties for each element type)
+    - [ ] Timeline (slides add/duplicate/reorder)
+    - [ ] Media picker (paste GDrive → normalize)
+    - [ ] Review/Publish flow (status controls)
+[ ] SVG icons (admin extras)
+    - [ ] chip/tag (taxonomy)
+    - [ ] globe (locale)
+    - [ ] user-check (reviewer)
+    - [ ] shield (publisher/admin)
+[ ] Quill toolbar config
+    - [ ] Bold
+    - [ ] Italic
+    - [ ] Brand color (limited palette)
+    - [ ] Header-1
+
+WEEK 5 — BADGES, ANALYTICS, COMPLETION
+[ ] Figma mockups — Completion & Badges
+    - [ ] Completion modal (80% pass, 100% perfect)
+    - [ ] Badge card (small & large variants)
+    - [ ] Streak indicator in header
+[ ] Completion animation
+    - [ ] Lightweight animation (SVG/Lottie/MP4) ≤300KB
+[ ] Badge assets (SVG preferred)
+    - [ ] First Lesson
+    - [ ] Perfect Lesson
+    - [ ] Category Explorer (5 in one grammar tag)
+    - [ ] 7-day Streak
+[ ] Analytics dashboard mockups
+    - [ ] Lesson metrics: completion rate, avg score, drop-off slide
+    - [ ] Trends: daily completions, streak distribution
+
+CROSS-CUTTING
+[ ] Accessibility references
+    - [ ] Focus styles spec
+    - [ ] Contrast checks for all states
+    - [ ] Touch targets ≥44px
+[ ] Copy docs
+    - [ ] Default Help modal copy (ES/EN) with sections: Navigation, Scoring, Streaks, Dictation rules (accents required; punctuation advisory)
+    - [ ] Tooltip style and length guidance
+[ ] Communicative goals enum (initial set)
+    - [ ] ordering_food
+    - [ ] asking_directions
+    - [ ] small_talk
+    - [ ] greetings_intros
+    - [ ] shopping
+    - [ ] travel_airport
+    - [ ] making_plans
+
+TECHNICAL PLACEHOLDERS
+[ ] Lottie/animation JSON placeholders (optional)
+[ ] Audio format guidance (MP3 primary; M4A/OGG fallback)
+[ ] Google Drive link style guide (how to get fileId; public sharing)
+
+DELIVERABLES SUMMARY
+- SVG icon set (outlined, 24px grid, stroke 2px, consistent corners)
+- SFX MP3s (short, normalized volume)
+- Figma pages: Player (mobile+desktop), Exercises, Admin Builder, Completion/Badges, Analytics
+- Help/tooltip copy (EN/ES)
+- Badge SVGs (128/256px)

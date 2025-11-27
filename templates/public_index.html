@@ -1,0 +1,169 @@
+{% extends "public_base.html" %}
+
+{% block title %}ProfePanda · {{ t('Inicio', 'Home', app_lang) }}{% endblock %}
+
+{% block public_content %}
+  <!-- Hero -->
+  <section class="ppx-card ppx-card--pad" aria-labelledby="hero-title" style="margin-bottom:1rem;">
+    <h1 id="hero-title" class="ppx-h1" style="margin-top:0;">
+      <span data-i18n-key="home.hero.title" data-i18n-lang="{{ app_lang }}">
+        {{ ui('home.hero.title', app_lang) or t('Aprendé español con sentido', 'Learn Spanish with meaning', app_lang) }}
+      </span>
+    </h1>
+    <p class="ppx-muted" style="max-width:60ch;margin:.25rem 0 0;">
+      <span data-i18n-key="home.hero.subtitle" data-i18n-lang="{{ app_lang }}">
+        {{ ui('home.hero.subtitle', app_lang) or t('Guías claras, ejercicios interactivos y ejemplos reales — todo en un solo lugar.',
+             'Clear guides, interactive exercises, and real-world examples — all in one place.', app_lang) }}
+      </span>
+    </p>
+  </section>
+
+  <!-- Import row-card styles -->
+  <style>@import url("{{ url_for('static', filename='css/public_articles.css') }}");</style>
+
+  <!-- Row cards (Articles, Exercises, Glossary) -->
+  <section aria-labelledby="home-sections" class="ppx-articles-list">
+    <h2 id="home-sections" class="ppx-visually-hidden">{{ t('Secciones principales', 'Main sections', app_lang) }}</h2>
+
+    <!-- Articles row -->
+    <article class="ppx-article-card">
+      {% set articles_img = ui('home.cards.articles.image', app_lang) %}
+      {% if articles_img %}
+        {% set _svg = (articles_img|lower).endswith('.svg') %}
+        <img
+          src="{{ articles_img }}"
+          alt="{{ t('Imagen de Artículos', 'Articles image', app_lang) }}"
+          class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
+          data-i18n-key="home.cards.articles.image"
+          data-i18n-lang="{{ app_lang }}"
+          loading="lazy" decoding="async" fetchpriority="low"
+        >
+      {% else %}
+        <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img"
+             data-i18n-key="home.cards.articles.image"
+             data-i18n-lang="{{ app_lang }}"
+             role="img" aria-label="{{ t('Imagen de Artículos', 'Articles image', app_lang) }}">ProfePanda</div>
+      {% endif %}
+
+      <div class="ppx-article-body">
+        <h3 class="ppx-h3" id="articles-h" style="margin-top:0;">
+          <a href="{{ url_for('public.articles_index') }}" class="ppx-link">
+            <span data-i18n-key="home.cards.articles.title" data-i18n-lang="{{ app_lang }}">
+              {{ ui('home.cards.articles.title', app_lang) or t('Artículos', 'Articles', app_lang) }}
+            </span>
+          </a>
+        </h3>
+
+        <p class="ppx-p" style="margin:.25rem 0 1rem;">
+          <span data-i18n-key="home.cards.articles.subtitle" data-i18n-lang="{{ app_lang }}">
+            {{ ui('home.cards.articles.subtitle', app_lang) or t('Explorá estructuras del español con explicaciones simples y ejemplos.',
+                 'Explore Spanish structures with simple explanations and examples.', app_lang) }}
+          </span>
+        </p>
+
+        <div class="ppx-article-footer">
+          <div></div>
+          <a class="ppx-btn" href="{{ url_for('public.articles_index') }}" aria-labelledby="articles-h">
+            <span data-i18n-key="home.cards.articles.cta" data-i18n-lang="{{ app_lang }}">
+              {{ ui('home.cards.articles.cta', app_lang) or t('Ver artículos', 'Browse articles', app_lang) }}
+            </span>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Exercises row -->
+    <article class="ppx-article-card">
+      {% set exercises_img = ui('home.cards.exercises.image', app_lang) %}
+      {% if exercises_img %}
+        {% set _svg = (exercises_img|lower).endswith('.svg') %}
+        <img
+          src="{{ exercises_img }}"
+          alt="{{ t('Imagen de Ejercicios', 'Exercises image', app_lang) }}"
+          class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
+          data-i18n-key="home.cards.exercises.image"
+          data-i18n-lang="{{ app_lang }}"
+          loading="lazy" decoding="async" fetchpriority="low"
+        >
+      {% else %}
+        <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img"
+             data-i18n-key="home.cards.exercises.image"
+             data-i18n-lang="{{ app_lang }}"
+             role="img" aria-label="{{ t('Imagen de Ejercicios', 'Exercises image', app_lang) }}">ProfePanda</div>
+      {% endif %}
+
+      <div class="ppx-article-body">
+        <h3 class="ppx-h3" id="exercises-h" style="margin-top:0;">
+          <a href="{{ url_for('public.exercises_index') }}" class="ppx-link">
+            <span data-i18n-key="home.cards.exercises.title" data-i18n-lang="{{ app_lang }}">
+              {{ ui('home.cards.exercises.title', app_lang) or t('Ejercicios', 'Exercises', app_lang) }}
+            </span>
+          </a>
+        </h3>
+
+        <p class="ppx-p" style="margin:.25rem 0 1rem;">
+          <span data-i18n-key="home.cards.exercises.subtitle" data-i18n-lang="{{ app_lang }}">
+            {{ ui('home.cards.exercises.subtitle', app_lang) or t('Practicá con actividades interactivas y recibí retroalimentación al instante.',
+                 'Practice with interactive activities and get instant feedback.', app_lang) }}
+          </span>
+        </p>
+
+        <div class="ppx-article-footer">
+          <div></div>
+          <a class="ppx-btn" href="{{ url_for('public.exercises_index') }}" aria-labelledby="exercises-h">
+            <span data-i18n-key="home.cards.exercises.cta" data-i18n-lang="{{ app_lang }}">
+              {{ ui('home.cards.exercises.cta', app_lang) or t('Ir a ejercicios', 'Go to exercises', app_lang) }}
+            </span>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Glossary row -->
+    <article class="ppx-article-card">
+      {% set glossary_img = ui('home.cards.glossary.image', app_lang) %}
+      {% if glossary_img %}
+        {% set _svg = (glossary_img|lower).endswith('.svg') %}
+        <img
+          src="{{ glossary_img }}"
+          alt="{{ t('Imagen del Glosario', 'Glossary image', app_lang) }}"
+          class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
+          data-i18n-key="home.cards.glossary.image"
+          data-i18n-lang="{{ app_lang }}"
+          loading="lazy" decoding="async" fetchpriority="low"
+        >
+      {% else %}
+        <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img"
+             data-i18n-key="home.cards.glossary.image"
+             data-i18n-lang="{{ app_lang }}"
+             role="img" aria-label="{{ t('Imagen del Glosario', 'Glossary image', app_lang) }}">ProfePanda</div>
+      {% endif %}
+
+      <div class="ppx-article-body">
+        <h3 class="ppx-h3" id="glossary-h" style="margin-top:0;">
+          <a href="{{ url_for('public.glossary_index') }}" class="ppx-link">
+            <span data-i18n-key="home.cards.glossary.title" data-i18n-lang="{{ app_lang }}">
+              {{ ui('home.cards.glossary.title', app_lang) or t('Glosario', 'Glossary', app_lang) }}
+            </span>
+          </a>
+        </h3>
+
+        <p class="ppx-p" style="margin:.25rem 0 1rem;">
+          <span data-i18n-key="home.cards.glossary.subtitle" data-i18n-lang="{{ app_lang }}">
+            {{ ui('home.cards.glossary.subtitle', app_lang) or t('Buscá términos, notas de uso y ejemplos con audio.',
+                 'Look up terms, usage notes, and examples with audio.', app_lang) }}
+          </span>
+        </p>
+
+        <div class="ppx-article-footer">
+          <div></div>
+          <a class="ppx-btn" href="{{ url_for('public.glossary_index') }}" aria-labelledby="glossary-h">
+            <span data-i18n-key="home.cards.glossary.cta" data-i18n-lang="{{ app_lang }}">
+              {{ ui('home.cards.glossary.cta', app_lang) or t('Abrir glosario', 'Open glossary', app_lang) }}
+            </span>
+          </a>
+        </div>
+      </div>
+    </article>
+  </section>
+{% endblock %}

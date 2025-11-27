@@ -1,0 +1,54 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/palo/palo.mp3?v=1764267375",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">One million units of currency, especially pesos or dollars.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Un millón de unidades monetarias, especialmente pesos o dólares.</span></p>",
+      "domain": [
+        "economia"
+      ],
+      "equivalents_en": [
+        "a million",
+        "one mil",
+        "one million bucks"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/palo/palo_ex_01.mp3?v=1764267394",
+          "en": "—Expensive? How much? —`A million`.",
+          "es": "—¿Caro? ¿Cuánto? —Un `palo`.",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "palos",
+        "masc_sg": "palo"
+      }
+    }
+  ],
+  "slug": "palo",
+  "word": "palo"
+}

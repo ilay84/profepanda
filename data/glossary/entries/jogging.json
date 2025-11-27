@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/jogging/jogging.mp3?v=1764180203",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Sweatpants.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Pantalón deportivo.</span></p>",
+      "domain": [
+        "deporte"
+      ],
+      "equivalents_en": [
+        "sweatpants",
+        "track pants",
+        "jogging pants"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/jogging/jogging_ex_01.mp3?v=1764180203",
+          "en": "Besides, everyone coming today—I see them every day in `sweatpants`.",
+          "es": "Además, a todos los que vienen hoy ya los veo todos los días en `jogging`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Viudas negras: P*tas y chorras",
+            "type": "series",
+            "year": "2025"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "joggings",
+        "masc_sg": "jogging"
+      }
+    }
+  ],
+  "slug": "jogging",
+  "word": "jogging"
+}

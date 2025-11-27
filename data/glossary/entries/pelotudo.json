@@ -1,0 +1,72 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/pelotudo/pelotudo.mp3?v=1764268730",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">An annoying, foolish, or idiotic person; severity depends on tone and context.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Una persona tonta, torpe o molesta; su intensidad depende del tono y el contexto.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "idiot",
+        "dumbass",
+        "asshole",
+        "jerk",
+        "dipshit"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/pelotudo/pelotudo_ex_01.mp3?v=1764268786",
+          "en": "What are you, the President of the Republic, you `fucking idiot`?",
+          "es": "¿Qué sos, el Presidente de la República, `pelotudo`?",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/pelotudo/pelotudo_ex_02.mp3?v=1764268786",
+          "en": "What did you do? You ruined all our lives, you `idiot`!",
+          "es": "¿Qué hiciste? ¡Nos arruinaste la vida a todos, `pelotudo`!",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "lenguaje_explicito",
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo",
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "pelotudito",
+        "fem_pl": "pelotudas",
+        "fem_sg": "pelotuda",
+        "masc_pl": "pelotudos",
+        "masc_sg": "pelotudo"
+      }
+    }
+  ],
+  "slug": "pelotudo",
+  "word": "pelotudo"
+}

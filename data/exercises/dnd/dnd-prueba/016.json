@@ -1,0 +1,58 @@
+{
+  "id": "dnd/dnd-prueba",
+  "type": "dnd",
+  "slug": "dnd-prueba",
+  "title_es": "DND prueba",
+  "title_en": "DND test",
+  "instructions_es": "Drag and drop each category into the correct column.\nDecide whether it’s something we usually express with SER (used for essences or inherent qualities) or with ESTAR (used for situations or temporary states).",
+  "instructions_en": "Arrastra y suelta cada categoría en la columna correcta.\nDecide si normalmente se expresa con SER (para esencias o cualidades inherentes) o con ESTAR (para situaciones o estados temporales).",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "draft",
+  "items": [
+    {
+      "id": "i1",
+      "order": 1,
+      "columns": [
+        {
+          "id": "col_ig2hx2",
+          "label_es": "SER (esencias)",
+          "label_en": "SER (eseences)"
+        },
+        {
+          "id": "col_wcjnv3",
+          "label_es": "ESTAR (situaciones)",
+          "label_en": "ESTAR (situations)"
+        }
+      ],
+      "tokens": [
+        {
+          "id": "tok_ef8767",
+          "text_es": "nacionalidad y origen",
+          "text_en": "nationality and origin",
+          "correct": "col_ig2hx2"
+        },
+        {
+          "id": "tok_zlo8js",
+          "text_es": "ubicación de un objeto",
+          "text_en": "location of an object",
+          "correct": "col_wcjnv3",
+          "hint_es": "¿La ubicación de un objeto es una situación o parte de su esencia?",
+          "hint_en": "Is the location of an object a situation or part of its essence?",
+          "feedback_correct_es": "¡Bien ahí! Donde un objeto o persona se encuentra es una situación, así que usamos ESTAR.",
+          "feedback_correct_en": "Nice! Where an object or person is located is a situation, so we use ESTAR.",
+          "feedback_incorrect_es": "¡Ups! Donde un objeto o persona se encuentra es una situación, así que usamos ESTAR.",
+          "feedback_incorrect_en": "Oops! Where an object or person is located is a situation, so we use ESTAR."
+        }
+      ]
+    }
+  ],
+  "version": 16,
+  "created_at": "2025-11-12T16:06:19Z",
+  "created_by": "admin",
+  "checksum": "sha256:25cb3410135943779bc99b749f8ecb0a1f86b5224d20bdd718d3c751823cc94c"
+}

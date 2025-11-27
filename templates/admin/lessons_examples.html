@@ -1,0 +1,27 @@
+{% extends 'admin_index.html' %}
+{% block title %}Lesson Examples{% endblock %}
+
+{% block content %}
+<section class="ppx-container">
+  <div class="ppx-card ppx-card--pad">
+    <div class="ppx-row" style="justify-content:space-between; align-items:center;">
+      <h1 class="ppx-h1" style="margin:0;">Lesson Examples</h1>
+      <a class="ppx-pill" href="{{ url_for('admin.lessons_index') }}">← Back to Lessons</a>
+    </div>
+    <ul style="list-style:none; padding:0; margin:12px 0 0 0;">
+      {% for ex in examples %}
+      <li style="padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div style="font-weight:600;">{{ ex.title }}</div>
+          <div style="font-family:ui-monospace,Consolas,monospace; color:#64748b;">/lessons/{{ ex.slug }}</div>
+        </div>
+        <div>
+          <a class="ppx-pill" href="{{ url_for('lessons_public.lesson_player', slug=ex.slug) }}" target="_blank" rel="noopener">Open</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}
+

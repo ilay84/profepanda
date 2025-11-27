@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [
+    "críquet",
+    "criquet"
+  ],
+  "audio": "/media/glossary-audio/entry/crique/crique.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Mechanical tool used to lift a vehicle.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Herramienta mecánica usada para levantar un vehículo.</span></p>",
+      "domain": [
+        "tecnologia"
+      ],
+      "equivalents_en": [
+        "jack",
+        "car jack"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/crique/crique_ex_01.mp3",
+          "en": "The car’s new, and honestly, I’m not too good with the `jack`.",
+          "es": "Porque el coche es nuevo y la verdad que no me doy mucha maña con el `críquet`.",
+          "source": {
+            "title": "Relatos salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "criques",
+        "masc_sg": "crique"
+      }
+    }
+  ],
+  "slug": "crique",
+  "word": "crique"
+}

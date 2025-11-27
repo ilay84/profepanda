@@ -1,0 +1,93 @@
+{
+  "alt_spellings": [
+    "asao"
+  ],
+  "audio": null,
+  "senses": [
+    {
+      "alt_forms": [
+        {
+          "audio": null,
+          "form": "asadito",
+          "note_en": "Affectionate or small portion",
+          "note_es": "Diminutivo afectivo o para porciones pequeñas",
+          "regions": [
+            "AR"
+          ],
+          "related_slug": null,
+          "type": "diminutivo"
+        },
+        {
+          "audio": null,
+          "form": "asadazo",
+          "note_en": "Augmentative; notably great or abundant asado",
+          "note_es": "Aumentativo; asado notablemente bueno o abundante",
+          "regions": [
+            "AR"
+          ],
+          "related_slug": null,
+          "type": "aumentativo"
+        },
+        {
+          "audio": null,
+          "form": "asao",
+          "note_en": "Colloquial elision of intervocalic 'd'",
+          "note_es": "Elisión coloquial de la 'd' intervocálica",
+          "regions": [
+            "AR"
+          ],
+          "related_slug": null,
+          "type": "variante_ortografica"
+        }
+      ],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p>Argentine barbecue gathering where meat is grilled; also the grilled meat itself.</p>",
+      "definition_es": "<p>Reunión social argentina en la que se cocina carne a la parrilla; también, la carne asada.</p>",
+      "domain": [
+        "comida"
+      ],
+      "equivalents_en": [
+        "barbecue",
+        "cookout",
+        "grill"
+      ],
+      "examples": [
+        {
+          "audio": null,
+          "en": "On Sunday we're having a barbecue at my parents' place.",
+          "es": "El domingo hacemos un asado en lo de mis viejos.",
+          "source": {
+            "label": "WhatsApp audio",
+            "type": "other"
+          }
+        },
+        {
+          "audio": null,
+          "en": "It turned out an awesome barbecue, mate.",
+          "es": "Quedó un asadazo, che.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "Hermanos y detectives",
+            "type": "series",
+            "year": "2006"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "asado-ar",
+  "word": "asado"
+}

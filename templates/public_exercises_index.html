@@ -1,0 +1,159 @@
+{% extends "public_base.html" %}
+
+{% block title %}ProfePanda · {{ t('Ejercicios', 'Exercises', app_lang) }}{% endblock %}
+
+{% block public_content %}
+<style>
+  @import url("{{ url_for('static', filename='css/public_articles.css') }}");
+  /* Grid layout for exercise cards */
+  .ppx-ex-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+  @media(max-width: 720px){.ppx-ex-grid{grid-template-columns:1fr}}
+  .ppx-ex-card{flex-direction:column}
+  /* Internal two-column grid: icon | content */
+  .ppx-ex-card-grid{display:grid;grid-template-columns:112px 1fr;gap:12px;align-items:start;padding:.5rem 1rem 1rem}
+  .ppx-ex-card-grid .ppx-ex-ico{grid-column:1}
+  .ppx-ex-card-grid .ppx-ex-ico img{width:96px;height:96px;display:block}
+  .ppx-ex-card-grid .ppx-ex-content{grid-column:2;min-width:0}
+  .ppx-ex-card-title{font:800 20px/1.2 Montserrat,system-ui;color:#0f172a;border:0;background:none;padding:0;margin:.15rem 0 .35rem;cursor:pointer;text-align:left;display:block}
+  .ppx-ex-card-title:hover{color:#1d4ed8}
+  /* Ensure no chevrons/pseudo-icons or pill styles appear */
+  .ppx-ex-card-grid::before,
+  .ppx-ex-card-grid::after,
+  .ppx-ex-card-title::before,
+  .ppx-ex-card-title::after{content:none !important;background:none !important}
+  .ppx-ex-card-title{background:transparent !important;border:0 !important;box-shadow:none !important;border-radius:0 !important}
+  .ppx-ex-card h3::before,.ppx-ex-card h3::after{content:none !important}
+  .ppx-ex-card h3,.ppx-ex-card h3 *{background:transparent !important;border:0 !important;box-shadow:none !important}
+  .ppx-ex-card-desc{color:#334155;line-height:1.55;margin:0 0 .5rem;max-width:62ch}
+  @media (max-width:640px){ .ppx-ex-card-grid{grid-template-columns:92px 1fr} .ppx-ex-card-grid .ppx-ex-ico img{width:72px;height:72px} }
+</style>
+
+  <header class="ppx-article-header">
+    <h1 class="ppx-h1" style="margin:0;">{{ t('Ejercicios', 'Exercises', app_lang) }}</h1>
+    <div class="ppx-center" style="margin:.75rem 0 0.5rem;">
+      <form action="" method="get" role="search" aria-label="{{ t('Buscar ejercicios', 'Search exercises', app_lang) }}" style="max-width:920px;margin:0 auto;display:flex;gap:.5rem;align-items:center;justify-content:center;flex-wrap:wrap;">
+        <label for="q" class="ppx-visually-hidden">{{ t('Buscar', 'Search', app_lang) }}</label>
+        <input id="q" name="q" type="search" value="{{ request.args.get('q','') if request is defined else '' }}" placeholder="{{ t('Buscar.', 'Search.', app_lang) }}"
+               class="ppx-input" style="height:44px;border-radius:9999px;padding:.5rem 1rem;flex:1;min-width:260px;">
+
+        <select name="type" aria-label="{{ t('Tipo', 'Type', app_lang) }}" class="ppx-input" style="height:44px;border-radius:9999px;padding:.5rem 1rem;min-width:160px;">
+          {% set cur_type = request.args.get('type','') if request is defined else '' %}
+          <option value="" {{ 'selected' if not cur_type else '' }}>{{ t('Todos los tipos', 'All types', app_lang) }}</option>
+          <option value="tf" {{ 'selected' if cur_type=='tf' else '' }}>{{ t('Verdadero/Falso', 'True/False', app_lang) }}</option>
+          <option value="mcq" {{ 'selected' if cur_type=='mcq' else '' }}>{{ t('Opción múltiple', 'Multiple Choice', app_lang) }}</option>
+          <option value="fitb" {{ 'selected' if cur_type=='fitb' else '' }}>{{ t('Completar', 'Fill in the Blanks', app_lang) }}</option>
+          <option value="dnd" {{ 'selected' if cur_type=='dnd' else '' }}>{{ t('Arrastrar y soltar', 'Drag & Drop', app_lang) }}</option>
+          <option value="dictation" {{ 'selected' if cur_type=='dictation' else '' }}>{{ t('Dictado', 'Dictation', app_lang) }}</option>
+        </select>
+
+        <select name="level" aria-label="{{ t('Nivel', 'Level', app_lang) }}" class="ppx-input" style="height:44px;border-radius:9999px;padding:.5rem 1rem;min-width:120px;">
+          {% set cur_level = request.args.get('level','') if request is defined else '' %}
+          <option value="" {{ 'selected' if not cur_level else '' }}>{{ t('Todos los niveles', 'All levels', app_lang) }}</option>
+          {% for lv in ['A1','A2','B1','B2','C1','C2'] %}
+            <option value="{{ lv }}" {{ 'selected' if cur_level==lv else '' }}>{{ lv }}</option>
+          {% endfor %}
+        </select>
+
+        {% if request.args.get('tax') %}
+          <input type="hidden" name="tax" value="{{ request.args.get('tax') }}">
+        {% endif %}
+
+        <button class="ppx-btn ppx-btn--primary" type="submit" style="height:44px;border-radius:9999px;padding:.5rem 1rem;">{{ t('Buscar', 'Search', app_lang) }}</button>
+      </form>
+    </div>
+  </header>
+
+  <div class="ppx-article-modules" style="--ppx-article-content-w: 1040px;">
+    <div class="ppx-article-layout">
+    <!-- Left taxonomy pane -->
+    <nav class="ppx-article-nav" aria-label="{{ t('Taxonomía', 'Taxonomy', app_lang) }}">
+      <div class="ppx-mod-nav-head">
+        <span class="ppx-mod-num">🗂</span>
+        <span class="ppx-mod-heading">{{ t('Temas', 'Topics', app_lang) }}</span>
+      </div>
+      <ul>
+        <li>
+          <a href="{{ url_for('public.exercises_index') }}" class="{{ 'is-active' if not tax_selected else '' }}">
+            <span class="ppx-mod-title">{{ t('Todos', 'All', app_lang) }}</span>
+          </a>
+        </li>
+        {% for node in tax_top_nodes %}
+        {% set href = url_for('public.exercises_index', tax=node.path) %}
+        <li>
+          <a href="{{ href }}" class="{{ 'is-active' if tax_selected and tax_selected.split('/')[0]==node.path else '' }}">
+            <span class="ppx-mod-num">{{ loop.index }}</span>
+            <span class="ppx-mod-title">{{ node.title[app_lang] or node.title['es'] or node.title['en'] }}</span>
+          </a>
+          {% if node.children %}
+            <ul style="list-style:none;margin:.15rem 0 .35rem .5rem;padding:0;">
+              {% for child in node.children %}
+                <li>
+                  <a href="{{ url_for('public.exercises_index', tax=child.path) }}" class="{{ 'is-active' if tax_selected==child.path else '' }}" style="padding:.35rem .6rem;">
+                    <span class="ppx-mod-title">{{ child.title[app_lang] or child.title['es'] or child.title['en'] }}</span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Main grid content -->
+    <main class="ppx-article-content">
+      {% if exercises_groups and exercises_groups|length %}
+        {% for bucket, arr in exercises_groups %}
+          <section aria-labelledby="h-{{ bucket }}" style="margin-bottom:1.5rem;">
+            <h2 id="h-{{ bucket }}" class="ppx-h1" style="margin:.25rem 0 0.75rem;">{{ group_title(bucket) }}</h2>
+            <div class="ppx-ex-grid">
+              {% for ex in arr %}
+                <article class="ppx-article-card ppx-ex-card" data-ppx-exercise data-ppx-type="{{ ex.type }}" data-ppx-slug="{{ ex.slug }}" role="button" tabindex="0" aria-label="{{ (ex.title_es if app_lang=='es' else ex.title_en) or ex.title_es or ex.title_en or ex.slug }}">
+                  <div class="ppx-ex-card-grid">
+                    <div class="ppx-ex-ico">
+                      <img src="{{ url_for('static', filename='assets/icons/pp_exercise.svg') }}" alt="" loading="lazy" decoding="async">
+                      {% if ex.level %}
+                        <div style="margin-top:.5rem"><span class="ppx-chip" style="opacity:.85">{{ t('Nivel','Level', app_lang) }}: {{ ex.level }}</span></div>
+                      {% endif %}
+                    </div>
+                    <div class="ppx-ex-content">
+                      <div class="ppx-ex-card-title">{{ (ex.title_es if app_lang=='es' else ex.title_en) or ex.title_es or ex.title_en or ex.slug }}</div>
+                      {% set _desc = ui('ex.card.desc.' ~ ex.type ~ '.' ~ ex.slug, app_lang, False) %}
+                      <p class="ppx-ex-card-desc">
+                        <span data-i18n-key="ex.card.desc.{{ ex.type }}.{{ ex.slug }}" data-i18n-lang="{{ app_lang }}">
+                          {{ _desc or (can_edit_i18n and (app_lang=='es' and 'Haz clic para agregar una descripción' or 'Click to add a description')) or '' }}
+                        </span>
+                      </p>
+                      <div class="ppx-row" style="gap:.5rem;flex-wrap:wrap;margin:.15rem 0 0;align-items:center;">
+                      {% for st in (ex.sub_topics or []) %}
+                        <span class="ppx-chip">{{ st }}</span>
+                      {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              {% endfor %}
+            </div>
+          </section>
+        {% endfor %}
+      {% else %}
+        <section class="ppx-card ppx-card--pad" aria-live="polite">
+          <h2 class="ppx-h3" style="margin-top:0;">{{ t('No hay ejercicios publicados', 'No published exercises', app_lang) }}</h2>
+          <p class="ppx-muted">{{ t('Vuelve pronto. Estamos preparando nuevas actividades.', 'Check back soon — new practice is coming.', app_lang) }}</p>
+        </section>
+      {% endif %}
+    </main>
+    </div>
+  </div>
+  <script>
+    (function(){
+      document.addEventListener('keydown', function(e){
+        var t = e.target;
+        if (!t) return;
+        var card = t.closest && t.closest('.ppx-ex-card[role="button"]');
+        if (!card) return;
+        if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space'){ e.preventDefault(); card.click(); }
+      });
+    })();
+  </script>
+{% endblock %}

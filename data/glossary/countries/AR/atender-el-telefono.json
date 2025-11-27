@@ -1,0 +1,42 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/atender-el-telefono/atender_el_telefono.mp3",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">To answer a phone call by picking up or activating the call.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Contestar una llamada telefónica al levantar el aparato o activar la función de respuesta.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "answer"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/atender-el-telefono/atender_el_telefono_ex_01.mp3",
+          "en": "A couple of months ago I asked you whose number that was that hung up when I `answered` your phone, and you told me it was your guitar teacher’s.",
+          "es": "Cuando hace un par de meses te pregunté de quién era ese número que cortó cuando yo `atendí` tu teléfono y me dijiste que era de tu profesor de guitarra.",
+          "source": {
+            "title": "Relatos Salvajes",
+            "type": "movie",
+            "year": "2014"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "verbo_transitivo",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": []
+    }
+  ],
+  "slug": "atender-el-telefono",
+  "word": "atender el teléfono"
+}

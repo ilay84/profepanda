@@ -1,0 +1,121 @@
+{
+  "tf/prueba-3": {
+    "title_es": "prueba 3",
+    "title_en": "test 3",
+    "type": "tf",
+    "level": "A1",
+    "taxonomy_paths": [],
+    "tags": [
+      "test",
+      "prueba"
+    ],
+    "version": "006",
+    "status": "published",
+    "updated_at": "2025-11-15T12:09:14Z",
+    "checksum": "sha256:00348853a7e0524565a132033d6b95a0a7dab1de16bb02164c8d1d9f3e3892e0"
+  },
+  "tf/ser-estar-esencia-situacion": {
+    "title_es": "SER y ESTAR: Esencia vs Situación",
+    "title_en": "SER and ESTAR: Essence vs Situation",
+    "type": "tf",
+    "level": "A2",
+    "taxonomy_paths": [
+      "verbs",
+      "verbs/special-verbs",
+      "verbs/special-verbs/ser-vs-estar"
+    ],
+    "tags": [],
+    "version": "005",
+    "status": "published",
+    "updated_at": "2025-11-15T12:09:13Z",
+    "checksum": "sha256:62591ef4d2f05dae7b596788897b0519628658ceae92cfedac122ab1bdc84666"
+  },
+  "mcq/ser-vs-estar-usage": {
+    "title_es": "Uso de 'ser' y 'estar'",
+    "title_en": "Using 'ser' and 'estar'",
+    "type": "mcq",
+    "level": "A2",
+    "taxonomy_paths": [
+      "verbs",
+      "verbs/special-verbs",
+      "verbs/special-verbs/ser-vs-estar"
+    ],
+    "tags": [],
+    "version": "006",
+    "status": "published",
+    "updated_at": "2025-11-15T12:09:15Z",
+    "checksum": "sha256:0c948ebd2c00eb24f6a73ce796c178f8b440d371350928a90e30d7ccc21b96aa"
+  },
+  "dictation/dictation-prueba": {
+    "title_es": "Dictation test",
+    "title_en": "Dictado prueba",
+    "type": "dictation",
+    "level": "A2",
+    "taxonomy_paths": [],
+    "tags": [],
+    "version": "002",
+    "status": "archived",
+    "updated_at": "2025-11-10T20:29:19Z",
+    "checksum": "sha256:ae968c41884faabd1d4fe29accba06750fe5b0c4dd744ff31b374517c362f6eb"
+  },
+  "dictation/dictado-test": {
+    "title_es": "Dictado prueba",
+    "title_en": "Dictation test",
+    "type": "dictation",
+    "level": "A2",
+    "taxonomy_paths": [],
+    "tags": [],
+    "version": "005",
+    "status": "published",
+    "updated_at": "2025-11-15T12:09:19Z",
+    "checksum": "sha256:8a104995f181a483a84d7f57acc4909d7eb428558e05ebc5aabe0069e5395e07"
+  },
+  "fitb/ser-o-estar-fitb-a2": {
+    "title_es": "¿Ser o estar?",
+    "title_en": "Ser or estar?",
+    "type": "fitb",
+    "level": "A2",
+    "taxonomy_paths": [
+      "verbs",
+      "verbs/special-verbs",
+      "verbs/special-verbs/ser-vs-estar"
+    ],
+    "tags": [],
+    "version": "006",
+    "status": "published",
+    "updated_at": "2025-11-15T12:09:17Z",
+    "checksum": "sha256:d5cd1dc63b74cb455be416b9e94a974f7a68d69dbe4bae936133c745e1df328b"
+  },
+  "dnd/dnd-prueba": {
+    "title_es": "DND prueba",
+    "title_en": "DND test",
+    "type": "dnd",
+    "level": "A2",
+    "taxonomy_paths": [
+      "verbs",
+      "verbs/special-verbs",
+      "verbs/special-verbs/ser-vs-estar"
+    ],
+    "tags": [],
+    "version": "038",
+    "status": "published",
+    "updated_at": "2025-11-16T16:11:53Z",
+    "checksum": "sha256:88a84a920029f0f57781eb1c09376c53c05ae0c01cbc86fbaf0c2385e556e408"
+  },
+  "dnd/ser-vs-estar-common-categories": {
+    "title_es": "SER vs ESTAR: Categorías comunes",
+    "title_en": "SER vs ESTAR: Common Categories",
+    "type": "dnd",
+    "level": "A2",
+    "taxonomy_paths": [
+      "verbs",
+      "verbs/special-verbs",
+      "verbs/special-verbs/ser-vs-estar"
+    ],
+    "tags": [],
+    "version": "011",
+    "status": "published",
+    "updated_at": "2025-11-17T14:27:13Z",
+    "checksum": "sha256:454d63dc3b07ab6c7c1d8a8f625b4b033e3dd58b6d5adc2bd7978b317788d001"
+  }
+}

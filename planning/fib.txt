@@ -1,0 +1,41 @@
+Exercise Type: Fill in the Blank (fib)
+
+Design (inside .ppx-modal body)
+- Container: `.ppx-ex ppx-ex--fib`, single centered column.
+- Header: concise instructions; fraction/dots progress.
+- Media: optional item-level media above the sentence/paragraph; standard media toggle and lightbox.
+- Text block: sentence(s) with one or more blanks rendered as input fields (width auto to expected answer length).
+- Controls: `Check` button under text; inline feedback; hint toggle + panel; footer with dots + prev/next pods.
+
+Flow
+- User types answers into each blank; `Check` enabled when at least one blank is filled (or when all are filled, configurable).
+- On `Check`: grade each blank; lock correct blanks; if `allowRetry` is true, keep incorrect blanks editable for another attempt.
+- Optional: show correct answer after N attempts or on final submission.
+
+Feedback
+- Inline message with overall correctness for the item.
+- Per-blank feedback styling:
+  - Correct: green outline/pill state and confirmation label.
+  - Incorrect: red outline/pill state; optional per-blank hint text.
+- aria-live summary of counts and first incorrect blank focused.
+
+Summary Page
+- Card with score badge and stats (correct items / total; hints used).
+- Accordion per item:
+  - Header: truncated statement with blanks + Correcto/Incorrecto chip.
+  - Panel: show each blank with: Your answer, Correct answer, and optional per-blank feedback.
+- Restart button at bottom.
+
+Admin Builder
+- Item fields:
+  - `text` (neutral) with blanks markup OR per-blank editor:
+    - Markup option: use `[[blank:id]]` placeholders in text; blanks are configured below.
+    - Structured option: list of blanks with index and expected answers.
+  - Per-blank: `answers[]` (accepted variants), `caseSensitive`, `ignoreAccents`, `ignorePunctuation`, `normalizeWhitespace`, optional `feedback_es/en`.
+  - Item-level: `hint_es/en`, optional overall feedback.
+- Options: `requireAllFilledToCheck`, `allowRetry`, `maxAttempts`, answer normalization toggles (also overridable per-blank).
+- Media: same accordion (image/audio/video upload or URL).
+- Validation: ensure at least one blank; every blank has ≥1 accepted answer; placeholders and blanks list are consistent.
+
+Media Support
+- Optional item-level media: image, audio, video; audio often used to pair listening + typing.
