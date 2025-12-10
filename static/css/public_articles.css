@@ -130,6 +130,19 @@
 
 /* Subtle rule above sections for rhythm */
 .ppx-article-body h2{padding-top:14px;border-top:1px solid #eef2ff}
+/* Keep embedded decks (Google Slides/Canva) on the page background instead of black bars */
+.ppx-article-body iframe{
+  background: var(--ppx-article-bg, #f8fafc);
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  display: block;
+  width: 100%;
+}
+.ppx-article-body iframe[src*="canva.com"],
+.ppx-article-body iframe[src*="docs.google.com/presentation"],
+.ppx-article-body iframe[src*="docs.google.com/present"]{
+  background: var(--ppx-article-bg, #f8fafc) !important;
+}
 
 /* Wider track on very large screens */
 @media (min-width: 1280px){

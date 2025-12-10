@@ -75,4 +75,29 @@
 </article>
 
 <script src="{{ url_for('static', filename='js/public_modules.js') }}"></script>
+<script>
+// Normalize embed backgrounds for Canva / Google Slides to avoid black gutters.
+(function(){
+  const lightBg = getComputedStyle(document.documentElement).getPropertyValue('--ppx-article-bg') || '#f8fafc';
+  document.querySelectorAll('.ppx-article-body iframe').forEach((el)=>{
+    const src = el.getAttribute('src') || '';
+    if (/canva\.com/.test(src) || /docs\.google\.com\/presentation/.test(src) || /docs\.google\.com\/present/.test(src)) {
+      el.style.background = lightBg.trim() || '#f8fafc';
+      el.setAttribute('allowtransparency', 'true');
+      try {
+        const url = new URL(src, window.location.origin);
+        if (url.hostname.includes('canva.com') && !url.searchParams.has('transparent')) {
+          url.searchParams.set('transparent', '1');
+        }
+        if (url.hostname.includes('docs.google.com')) {
+          if (!url.searchParams.has('bgcolor')) url.searchParams.set('bgcolor', 'ffffff');
+          if (!url.searchParams.has('rm')) url.searchParams.set('rm', 'minimal');
+        }
+        const next = url.toString();
+        if (next !== src) el.setAttribute('src', next);
+      } catch(_) {}
+    }
+  });
+})();
+</script>
 {% endblock %}
