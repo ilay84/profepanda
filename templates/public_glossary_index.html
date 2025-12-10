@@ -16,7 +16,7 @@
       .rg-country-list{display:flex;flex-direction:column;gap:.5rem;}
       .rg-country-btn{display:flex;align-items:center;gap:.4rem;padding:.4rem .75rem;border:1px solid #e5e7eb;border-radius:12px;background:#fff;cursor:pointer;font-weight:600;font-family:'Montserrat', var(--ppx-font), sans-serif;}
       .rg-country-btn.active{border-color:#4f46e5;background:#eef2ff;color:#312e81;}
-      .rg-country-btn--globe{border-color:#c7d2fe;background:#eef2ff;color:#312e81;font-weight:700;}
+      .rg-country-btn--globe{border-color:#e5e7eb;background:#fff;color:#0f172a;font-weight:700;}
       .rg-country-btn img{width:20px;height:14px;object-fit:cover;border:1px solid #e5e7eb;border-radius:3px;}
       .rg-country-btn--globe img{width:18px;height:18px;border-radius:4px;}
       .rg-country-btn--globe img{width:18px;height:18px;border-radius:4px;}
@@ -38,6 +38,11 @@
       .rg-entry-word{font-weight:700;color:#4f46e5;font-family:'Montserrat',var(--ppx-font),sans-serif;font-size:1.1rem;text-decoration:none;}
       .rg-entry-word:hover{text-decoration:underline;}
       .rg-definition{margin:0;font-size:0.95rem;color:#52607a;line-height:1.4;font-family:var(--ppx-font);}
+      .rg-sense-preview{padding:.25rem 0;}
+      .rg-sense-label{display:block;font-size:0.85rem;font-weight:500;color:#475569;margin-bottom:2px;}
+      .rg-open-link{font-size:0.88rem;color:#6366f1;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;}
+      .rg-open-link:hover{text-decoration:underline;}
+      .rg-entry-row--clickable{cursor:pointer;}
       .rg-flag-pill{display:inline-flex;align-items:center;gap:.35rem;padding:.15rem .6rem;border-radius:999px;border:1px solid #dbeafe;background:#e0f2fe;font-size:.85rem;font-weight:600;color:#1d4ed8;letter-spacing:.05em;max-width:fit-content;}
       .rg-flag-pill img{width:18px;height:14px;object-fit:cover;border-radius:2px;border:1px solid #c7d2fe;}
       .rg-sensitive{display:flex;flex-wrap:wrap;gap:.35rem;}
@@ -444,7 +449,8 @@
       if (emptyState) emptyState.style.display = 'none';
       filtered.forEach(entry => {
         const row = document.createElement('div');
-        row.className = 'rg-entry-row';
+        row.className = 'rg-entry-row rg-entry-row--clickable';
+        row.dataset.slug = entry.slug;
         const heading = document.createElement('a');
         heading.className = 'rg-entry-word';
         heading.href = `?entry=${entry.slug}`;
@@ -491,13 +497,44 @@
           });
           row.appendChild(sensRow);
         }
-        const snippetText = (entry.definition_es || entry.definition_en || '').replace(/\s+/g, ' ').trim();
-        if (snippetText){
-          const snippet = document.createElement('p');
-          snippet.className = 'rg-definition';
-          snippet.textContent = snippetText;
-          row.appendChild(snippet);
+        const senses = Array.isArray(entry.senses_preview) ? entry.senses_preview : [];
+        if (senses.length){
+          senses.forEach((s, idx) => {
+            const block = document.createElement('div');
+            block.className = 'rg-sense-preview';
+            const label = document.createElement('span');
+            label.className = 'rg-sense-label';
+            const posLabel = s.pos ? (posLabels[s.pos] || s.pos) : '';
+            const num = s.num || idx + 1;
+            label.textContent = posLabel ? `${num} · ${posLabel}` : `${num}`;
+            const def = document.createElement('p');
+            def.className = 'rg-definition';
+            def.textContent = (s.definition || '').replace(/\s+/g, ' ').trim();
+            block.appendChild(label);
+            block.appendChild(def);
+            row.appendChild(block);
+          });
+        } else {
+          const snippetText = (entry.definition_es || entry.definition_en || '').replace(/\s+/g, ' ').trim();
+          if (snippetText){
+            const snippet = document.createElement('p');
+            snippet.className = 'rg-definition';
+            snippet.textContent = snippetText;
+            row.appendChild(snippet);
+          }
         }
+        const hintLink = document.createElement('a');
+        hintLink.className = 'rg-open-link';
+        hintLink.href = `?entry=${entry.slug}`;
+        hintLink.dataset.slug = entry.slug;
+        hintLink.textContent = '{{ t('Ver la entrada completa', 'See the full entry', app_lang) }}';
+        row.appendChild(hintLink);
+        row.addEventListener('click', (ev) => {
+          if (ev.target && ev.target.closest('a')) return;
+          const slug = row.dataset.slug;
+          if (window.Tabs && typeof Tabs.open === 'function'){ Tabs.open(slug); return; }
+          window.location.href = `?entry=${encodeURIComponent(slug)}`;
+        });
         entryList.appendChild(row);
       });
     }

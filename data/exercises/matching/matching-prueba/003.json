@@ -1,0 +1,30 @@
+{
+  "type": "matching",
+  "slug": "matching-prueba",
+  "title_es": "matching prueba",
+  "title_en": "matching test",
+  "instructions_es": "emparejar las oraciones",
+  "instructions_en": "match the sentences",
+  "level": "A2",
+  "taxonomy_paths": [],
+  "status": "draft",
+  "media": [],
+  "items": [
+    {
+      "id": "pair_beqj0i",
+      "order": 1,
+      "left": "hacer trampa",
+      "right": "engañar en un juego"
+    },
+    {
+      "id": "pair_zdha6u",
+      "order": 2,
+      "left": "hacerse amigo/a de",
+      "right": "conocer y simpatizarse con alguien"
+    }
+  ],
+  "version": 3,
+  "created_at": "2025-12-09T12:33:38Z",
+  "created_by": "admin",
+  "checksum": "sha256:5be1e7a179f7af434edb6cf4a89314953ba54c859ad28f9c1931fecd1580ff8f"
+}

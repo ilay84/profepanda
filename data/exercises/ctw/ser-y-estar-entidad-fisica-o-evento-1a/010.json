@@ -1,0 +1,296 @@
+{
+  "type": "ctw",
+  "slug": "ser-y-estar-entidad-fisica-o-evento-1a",
+  "title_es": "SER y ESTAR: ¿Entidad física o evento? (1a)",
+  "title_en": "SER and ESTAR: Physical entity or event? (1a)",
+  "instructions_es": "Haz clic en la opción correcta. Decide si el elemento es una */entidad material/* (algo físico que puede estar en un lugar) o un *evento* (algo que sucede).",
+  "instructions_en": "Click the correct option. Decide whether the item is a */material entity/* (something physical that can be located) or an *event* (something that happens).",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "draft",
+  "items": [
+    {
+      "id": "ctw_p8b90_miqknng5",
+      "order": 1,
+      "mode": "single",
+      "sentence": "las llaves = */entidad material/* *evento*",
+      "translation": "keys = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": true
+        },
+        {
+          "text": "evento",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Puedes verlas, tocarlas o moverlas? Si sí, es una entidad material.",
+      "hint_en": "Can you see, touch, or move them? If yes, it's a material entity.",
+      "feedback_correct_es": "Correcto. Las llaves son una entidad material; si habláramos de su ubicación, usaríamos ESTAR.",
+      "feedback_correct_en": "Correct. Keys are a material entity; if we were talking about their location, we would use ESTAR.",
+      "feedback_incorrect_es": "Piensa si esto es algo que simplemente existe físicamente. Si habláramos de su ubicación, usaríamos ESTAR.",
+      "feedback_incorrect_en": "Think about whether this is something that exists physically. If we were talking about its location, we would use ESTAR.",
+      "media": []
+    },
+    {
+      "id": "ctw_n7rdq_miql3nax",
+      "order": 2,
+      "mode": "single",
+      "sentence": "un tiroteo = *entidad material* */evento/*",
+      "translation": "a shooting = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": false
+        },
+        {
+          "text": "evento",
+          "correct": true
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Es algo que ocurre o sucede? Si sí, es un evento.",
+      "hint_en": "Is it something that happens? If yes, it's an event.",
+      "feedback_correct_es": "Correcto. Un tiroteo es un evento; si habláramos de dónde fue el tiroteo, usaríamos SER.",
+      "feedback_correct_en": "Correct. A shooting is an event; if we were talking about where the shooting took place, we would use SER.",
+      "feedback_incorrect_es": "Recuerda: un evento no es algo físico que puedas mover. Si quisiéramos decir dónde ocurrió, usaríamos SER.",
+      "feedback_incorrect_en": "Remember: an event is not something physical you can move. If we wanted to say where it happened, we would use SER.",
+      "media": []
+    },
+    {
+      "id": "ctw_restaurant_entity",
+      "order": 3,
+      "mode": "single",
+      "sentence": "the restaurant = */entidad material/* *evento*",
+      "translation": "the restaurant = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": true
+        },
+        {
+          "text": "evento",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Se puede visitar o entrar físicamente al restaurante?",
+      "hint_en": "Can you physically visit or walk into the restaurant?",
+      "feedback_correct_es": "Correcto. Un restaurante es una entidad material. Si habláramos de su ubicación, usaríamos ESTAR.",
+      "feedback_correct_en": "Correct. A restaurant is a material entity. If we talked about its location, we would use ESTAR.",
+      "feedback_incorrect_es": "Piensa si esto es algo que 'sucede' o un lugar físico. Para ubicarlo, usaríamos ESTAR.",
+      "feedback_incorrect_en": "Think about whether this is something that 'happens' or a physical place. We would use ESTAR to locate it.",
+      "media": []
+    },
+    {
+      "id": "ctw_rio_entity",
+      "order": 4,
+      "mode": "single",
+      "sentence": "Rio de Janeiro = */entidad material/* *evento*",
+      "translation": "Rio de Janeiro = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": true
+        },
+        {
+          "text": "evento",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Es una ciudad que existe en el espacio físico?",
+      "hint_en": "Is it a city that exists in physical space?",
+      "feedback_correct_es": "Correcto. Es una entidad geográfica. Para decir dónde está, usaríamos ESTAR.",
+      "feedback_correct_en": "Correct. It's a geographical entity. To say where it is, we would use ESTAR.",
+      "feedback_incorrect_es": "No es algo que suceda, sino un lugar real. Para ubicarlo, usaríamos ESTAR.",
+      "feedback_incorrect_en": "It’s not something that happens, but a real place. We would use ESTAR to locate it.",
+      "media": []
+    },
+    {
+      "id": "ctw_party_event",
+      "order": 5,
+      "mode": "single",
+      "sentence": "the party = *entidad material* */evento/*",
+      "translation": "the party = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": false
+        },
+        {
+          "text": "evento",
+          "correct": true
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Es algo que ocurre, como una celebración?",
+      "hint_en": "Is it something that happens, like a celebration?",
+      "feedback_correct_es": "Correcto. Una fiesta es un evento. Para decir dónde es, usaríamos SER.",
+      "feedback_correct_en": "Correct. A party is an event. We would use SER to say where it is.",
+      "feedback_incorrect_es": "Una fiesta no es un lugar; es algo que sucede. Para ubicarla, usaríamos SER.",
+      "feedback_incorrect_en": "A party isn’t a place; it’s something that happens. We would use SER to locate it.",
+      "media": []
+    },
+    {
+      "id": "ctw_clinic_entity",
+      "order": 6,
+      "mode": "single",
+      "sentence": "the clinic = */entidad material/* *evento*",
+      "translation": "the clinic = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": true
+        },
+        {
+          "text": "evento",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Puedes entrar físicamente en una clínica?",
+      "hint_en": "Can you physically go into a clinic?",
+      "feedback_correct_es": "Correcto. Una clínica es un lugar físico. Para ubicarla, usaríamos ESTAR.",
+      "feedback_correct_en": "Correct. A clinic is a physical place. We would use ESTAR to locate it.",
+      "feedback_incorrect_es": "Esto no es algo que sucede, sino un lugar. Usaríamos ESTAR para hablar de su ubicación.",
+      "feedback_incorrect_en": "This isn’t something that happens but a place. We’d use ESTAR to talk about its location.",
+      "media": []
+    },
+    {
+      "id": "ctw_match_event",
+      "order": 7,
+      "mode": "single",
+      "sentence": "the soccer match = *entidad material* */evento/*",
+      "translation": "the soccer match = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": false
+        },
+        {
+          "text": "evento",
+          "correct": true
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Es algo que sucede en un lugar y tiempo específicos?",
+      "hint_en": "Is it something that takes place at a specific time and place?",
+      "feedback_correct_es": "Correcto. Un partido es un evento. Para decir dónde es, usaríamos SER.",
+      "feedback_correct_en": "Correct. A match is an event. We would use SER to say where it is.",
+      "feedback_incorrect_es": "No es un objeto, es algo que sucede. Para ubicarlo, usaríamos SER.",
+      "feedback_incorrect_en": "It’s not an object, but something that happens. We would use SER to locate it.",
+      "media": []
+    },
+    {
+      "id": "ctw_cat_entity",
+      "order": 8,
+      "mode": "single",
+      "sentence": "the cat = */entidad material/* *evento*",
+      "translation": "the cat = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": true
+        },
+        {
+          "text": "evento",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Puedes ver y tocar al gato?",
+      "hint_en": "Can you see and touch the cat?",
+      "feedback_correct_es": "Correcto. Un gato es una entidad física. Para decir dónde está, usaríamos ESTAR.",
+      "feedback_correct_en": "Correct. A cat is a physical entity. We would use ESTAR to say where it is.",
+      "feedback_incorrect_es": "Un gato no es un evento, sino un ser físico. Para ubicarlo, usaríamos ESTAR.",
+      "feedback_incorrect_en": "A cat is not an event, but a physical being. We would use ESTAR to locate it.",
+      "media": []
+    },
+    {
+      "id": "ctw_mardel_entity",
+      "order": 9,
+      "mode": "single",
+      "sentence": "Mar del Plata = */entidad material/* *evento*",
+      "translation": "Mar del Plata = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": true
+        },
+        {
+          "text": "evento",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Es una ciudad real en el mapa?",
+      "hint_en": "Is it a real city on the map?",
+      "feedback_correct_es": "Correcto. Es una entidad geográfica. Para decir dónde está, usaríamos ESTAR.",
+      "feedback_correct_en": "Correct. It's a geographic entity. To say where it is, we would use ESTAR.",
+      "feedback_incorrect_es": "No es algo que sucede, sino un lugar. Para ubicarlo, usaríamos ESTAR.",
+      "feedback_incorrect_en": "It’s not something that happens, but a place. We’d use ESTAR to locate it.",
+      "media": []
+    },
+    {
+      "id": "ctw_festival_event",
+      "order": 10,
+      "mode": "single",
+      "sentence": "the festival = *entidad material* */evento/*",
+      "translation": "the festival = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": false
+        },
+        {
+          "text": "evento",
+          "correct": true
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Ocurre en un tiempo y lugar específicos?",
+      "hint_en": "Does it happen at a specific time and place?",
+      "feedback_correct_es": "Correcto. Un festival es un evento. Para decir dónde es, usaríamos SER.",
+      "feedback_correct_en": "Correct. A festival is an event. To say where it is, we would use SER.",
+      "feedback_incorrect_es": "No es un objeto físico, sino algo que sucede. Para ubicarlo, usaríamos SER.",
+      "feedback_incorrect_en": "It’s not a physical object, but something that happens. We would use SER to locate it.",
+      "media": []
+    },
+    {
+      "id": "ctw_love_event",
+      "order": 11,
+      "mode": "single",
+      "sentence": "the love = *entidad material* */evento/*",
+      "translation": "the love = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": false
+        },
+        {
+          "text": "evento",
+          "correct": true
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿El amor es algo que sucede o algo que se puede tocar?",
+      "hint_en": "Is love something that happens or something you can touch?",
+      "feedback_correct_es": "Correcto. El amor se conceptualiza como un evento o experiencia. Para ubicarlo, usaríamos SER.",
+      "feedback_correct_en": "Correct. Love is conceptualized as an event or experience. We would use SER to locate it.",
+      "feedback_incorrect_es": "El amor no es algo físico. Para hablar de su presencia, usaríamos SER.",
+      "feedback_incorrect_en": "Love is not something physical. To talk about its presence, we would use SER.",
+      "media": []
+    }
+  ],
+  "version": 10,
+  "created_at": "2025-12-03T23:07:31Z",
+  "created_by": "admin",
+  "checksum": "sha256:fdf3bf838231438c600aba458c17517e1f6549195df353228c092afd98e492bd"
+}

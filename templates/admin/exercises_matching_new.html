@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('Nuevo ejercicio - Matching', 'New Exercise - Matching', app_lang) }} · ProfePanda{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  {% include "_ppx_head_assets.html" %}
+{% endblock %}
+
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+
+{% block content %}
+  <section class="ppx-container" style="padding-top:0;">
+    <div class="ppx-row" style="justify-content:flex-end;margin:8px 0 12px 0;">
+      <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_exercises_index') }}">{{ t('Volver a Ejercicios', 'Back to Exercises', app_lang) }}</a>
+    </div>
+
+    <header class="ppx-row" style="align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;">
+      <h1 style="margin:0;">{{ t('Ejercicio: Matching', 'Exercise: Matching', app_lang) }}</h1>
+      <div class="ppx-chip">{{ t('Constructor', 'Builder', app_lang) }}</div>
+    </header>
+
+    <form id="ppx-matching-form"
+          class="ppx-card"
+          style="padding:20px; box-sizing:border-box; overflow:visible; max-width:1200px;"
+          data-builder-mode="{{ builder_mode }}"
+          data-builder-slug="{{ builder_slug }}">
+
+      <!-- Meta -->
+      <div class="ppx-col" style="gap:16px;">
+        <div class="ppx-field">
+          <label for="ex-slug">{{ t('Slug', 'Slug', app_lang) }}</label>
+          <input id="ex-slug" name="slug" class="ppx-input" placeholder="matching-greetings" autocomplete="off" value="{{ builder_slug }}">
+          <div class="ppx-field__help">{{ t('Usa minúsculas y guiones. No uses espacios.', 'Use lowercase and hyphens. No spaces.', app_lang) }}</div>
+        </div>
+
+        <div class="ppx-row" style="gap:16px; flex-wrap:wrap;">
+          <div class="ppx-field" style="flex:1; min-width:260px;">
+            <label for="ex-title-es">{{ t('Título (ES)', 'Title (ES)', app_lang) }}</label>
+            <input id="ex-title-es" name="title_es" class="ppx-input" placeholder="{{ t('Empareja las columnas', 'Match the columns', app_lang) }}" autocomplete="off">
+          </div>
+          <div class="ppx-field" style="flex:1; min-width:260px;">
+            <label for="ex-title-en">{{ t('Título (EN)', 'Title (EN)', app_lang) }}</label>
+            <input id="ex-title-en" name="title_en" class="ppx-input" placeholder="Match the columns" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="ppx-col" style="gap:12px;">
+          <div class="ppx-field">
+            <label for="ex-inst-es">{{ t('Instrucciones (ES)', 'Instructions (ES)', app_lang) }}</label>
+            <textarea id="ex-inst-es" name="instructions_es" class="ppx-textarea" rows="3" placeholder="{{ t('Arrastra o selecciona la pareja correcta para cada término.', 'Drag or select the correct pair for each term.', app_lang) }}"></textarea>
+          </div>
+          <div class="ppx-field">
+            <label for="ex-inst-en">{{ t('Instrucciones (EN)', 'Instructions (EN)', app_lang) }}</label>
+            <textarea id="ex-inst-en" name="instructions_en" class="ppx-textarea" rows="3" placeholder="Drag or select the correct pair for each term."></textarea>
+          </div>
+        </div>
+
+        <div class="ppx-row" style="gap:12px; flex-wrap:wrap;">
+          <div class="ppx-field" style="flex:0 0 200px;">
+            <label for="ex-level">{{ t('Nivel', 'Level', app_lang) }}</label>
+            <select id="ex-level" name="level" class="ppx-select">
+              <option value="A1">A1</option><option value="A2" selected>A2</option>
+              <option value="B1">B1</option><option value="B2">B2</option>
+              <option value="C1">C1</option><option value="C2">C2</option>
+            </select>
+          </div>
+          <div class="ppx-field" style="flex:0 0 220px;">
+            <label for="ex-status">{{ t('Estado', 'Status', app_lang) }}</label>
+            <select id="ex-status" name="status" class="ppx-select">
+              <option value="draft" selected>{{ t('Borrador', 'Draft', app_lang) }}</option>
+              <option value="published">{{ t('Publicado', 'Published', app_lang) }}</option>
+              <option value="archived">{{ t('Archivado', 'Archived', app_lang) }}</option>
+            </select>
+          </div>
+          <div class="ppx-field" style="flex:1; min-width:300px;">
+            <label class="ppx-label">{{ t('Temas gramaticales', 'Grammar topics', app_lang) }}</label>
+            <div class="ppx-taxonomy" data-lang="{{ (app_lang or 'es')|lower }}">
+              <input type="hidden" id="taxonomy_paths" name="taxonomy_paths" value='{{ []|tojson }}'>
+            </div>
+            <div class="ppx-muted" style="margin-top:.5rem;">
+              {{ t('Seleccione temas para clasificar este ejercicio.', 'Select topics to categorize this exercise.', app_lang) }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--ppx-line);margin:16px 0;">
+
+      <!-- Items -->
+      <div class="ppx-col" style="gap:12px;">
+        <div class="ppx-row" style="align-items:center; justify-content:space-between; gap:16px;">
+          <h2 style="margin:.25rem 0;">{{ t('Pares', 'Pairs', app_lang) }}</h2>
+          <button id="matching-add" type="button" class="ppx-btn ppx-btn--primary">{{ t('Agregar par', 'Add pair', app_lang) }}</button>
+        </div>
+        <div id="matching-items" class="ppx-col" style="gap:10px;"></div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--ppx-line);margin:16px 0;">
+
+      <div class="ppx-row ppx-sticky-actions" style="gap:8px; flex-wrap:wrap; justify-content:flex-end; position:sticky; bottom:0; background:rgba(255,255,255,0.94); padding:10px 0 6px 0; z-index:5;">
+        <button id="matching-preview" type="button" class="ppx-btn ppx-btn--ghost">{{ t('Vista previa', 'Preview', app_lang) }}</button>
+        <button id="matching-export" type="button" class="ppx-btn ppx-btn--ghost">{{ t('Exportar JSON', 'Export JSON', app_lang) }}</button>
+        <button id="ppx-edit-json" type="button" class="ppx-btn ppx-btn--ghost">{{ t('Editar JSON', 'Edit JSON', app_lang) }}</button>
+        <button id="matching-save" type="button" class="ppx-btn ppx-btn--primary">{{ t('Guardar borrador', 'Save draft', app_lang) }}</button>
+        <button id="matching-publish" type="button" class="ppx-btn ppx-btn--ok">{{ t('Publicar', 'Publish', app_lang) }}</button>
+      </div>
+    </form>
+  </section>
+
+  <script>
+    window.PPX_PREFILL = {{ prefill_json|default({}, true)|tojson }};
+    window.PPX_BUILDER = { mode: "{{ builder_mode }}", slug: "{{ builder_slug }}" };
+  </script>
+  <script defer src="{{ url_for('static', filename='js/admin_builder_matching.js') }}?v=20251212d"></script>
+{% endblock %}

@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://profepanda.dev/schemas/resource.schema.json",
+  "title": "Content Resource",
+  "type": "object",
+  "required": ["schema_version", "resource_id", "resource_type", "meta", "modules"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "resource_id": { "type": "string" },
+    "resource_type": { "type": "string" },
+    "meta": {
+      "type": "object",
+      "required": ["title_es", "title_en", "lang_primary", "langs_supported"],
+      "properties": {
+        "title_es": { "type": "string" },
+        "title_en": { "type": "string" },
+        "lang_primary": { "type": "string" },
+        "langs_supported": { "type": "array", "items": { "type": "string" } },
+        "level": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "taxonomy_paths": { "type": "array", "items": { "type": "string" } },
+        "translation_fallback": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "via_llm": { "type": "boolean" },
+            "require_opt_in": { "type": "boolean" },
+            "target_langs": { "type": "array", "items": { "type": "string" } },
+            "guardrails": {
+              "type": "object",
+              "properties": {
+                "cache_ttl_seconds": { "type": "number" },
+                "rate_limit_per_min": { "type": "number" },
+                "log_events": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["module_id", "title_es", "title_en", "blocks"],
+        "properties": {
+          "module_id": { "type": "string" },
+          "title_es": { "type": "string" },
+          "title_en": { "type": "string" },
+          "blocks": {
+            "type": "array",
+            "items": { "$ref": "block.schema.json" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "assets": { "type": "array", "items": { "type": "object" } },
+    "llm_hooks": { "type": "object" }
+  },
+  "additionalProperties": false
+}

@@ -7,12 +7,14 @@ Schema
 - Items: include stable id, order, and any type-specific fields
 - Media: normalize to media[] entries: { id, kind: image|audio|video, src, thumb?, alt_es?, alt_en?, transcript_es?, transcript_en? }
 - For FIB-like exercises with multiple blanks, prefer a dedicated `blanks[]` section on each item with per-blank metadata (options, localized hints/feedback).
+- Bilingual: any user-facing hint/feedback/copy fields must ship `_es` and `_en` variants; keep core prompts/questions neutral unless the type demands dual-language text.
 
 Editor (Builder)
 - Status selector (Draft/Published/Archived); Save respects selection
 - Publish button sets status to published
 - Taxonomy picker integrated; taxonomy_paths persisted as JSON array
 - Media upload routes wired (if applicable)
+- Auto-slug: generate slug automatically from the first title typed (prefer ES, fallback EN); stop auto-updating once the slug input is edited or when loading an existing exercise; force lowercase/kebab-case and prefill slug on edit.
 
 Admin List
 - Row actions: Edit, Preview, Delete (standard icons)
@@ -39,6 +41,9 @@ Player (Runtime)
   - Numbered inputs should be labeled (e.g., Hueco 1 / Blank 1) with hint buttons having appropriate aria-labels.
   - Live regions for inline feedback
   - Keyboard navigation for next/prev and selection
+- Reset consistency:
+  - Provide a `resetExercise` that clears per-type caches/localStorage, keeps the modal open, and reopens slide 1; only fall back to `location.reload()` on hard failure.
+  - Summary restart buttons should reuse the same reset routine as the header reset icon.
 
 QA Matrix
 - Last slide has media vs no media → summary is visible

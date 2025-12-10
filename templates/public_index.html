@@ -1,169 +1,168 @@
 {% extends "public_base.html" %}
 
-{% block title %}ProfePanda · {{ t('Inicio', 'Home', app_lang) }}{% endblock %}
+{% block title %}ProfePanda - {{ t('Inicio', 'Home', app_lang) }}{% endblock %}
 
 {% block public_content %}
   <!-- Hero -->
-  <section class="ppx-card ppx-card--pad" aria-labelledby="hero-title" style="margin-bottom:1rem;">
-    <h1 id="hero-title" class="ppx-h1" style="margin-top:0;">
-      <span data-i18n-key="home.hero.title" data-i18n-lang="{{ app_lang }}">
-        {{ ui('home.hero.title', app_lang) or t('Aprendé español con sentido', 'Learn Spanish with meaning', app_lang) }}
+  <section class="ppx-hero-band" aria-labelledby="hero-title">
+    <div class="ppx-hero-content">
+      <span class="ppx-hero-kicker">
+        {{ t('Bienvenido a ProfePanda', "Welcome to ProfePanda", app_lang) }}
       </span>
-    </h1>
-    <p class="ppx-muted" style="max-width:60ch;margin:.25rem 0 0;">
-      <span data-i18n-key="home.hero.subtitle" data-i18n-lang="{{ app_lang }}">
-        {{ ui('home.hero.subtitle', app_lang) or t('Guías claras, ejercicios interactivos y ejemplos reales — todo en un solo lugar.',
-             'Clear guides, interactive exercises, and real-world examples — all in one place.', app_lang) }}
-      </span>
-    </p>
+
+      <h1 id="hero-title" class="ppx-hero-title">
+        <span data-i18n-key="home.hero.title" data-i18n-lang="{{ app_lang }}">
+          {{ ui('home.hero.title', app_lang) or t('Aprende espanol con sentido', 'Learn Spanish with meaning', app_lang) }}
+        </span>
+      </h1>
+
+      <p class="ppx-hero-body">
+        <span data-i18n-key="home.hero.subtitle" data-i18n-lang="{{ app_lang }}">
+          {{ ui('home.hero.subtitle', app_lang) or t('Guias claras, ejercicios interactivos y ejemplos reales - todo en un solo lugar.',
+               'Clear guides, interactive exercises, and real-world examples - all in one place.', app_lang) }}
+        </span>
+      </p>
+
+      <div class="ppx-hero-chips" aria-label="{{ t('Temas clave', 'Key themes', app_lang) }}">
+        <span class="ppx-hero-chip">{{ t('Uso real', 'Real usage', app_lang) }}</span>
+        <span class="ppx-hero-chip">{{ t('Ejemplos con audio', 'Audio examples', app_lang) }}</span>
+        <span class="ppx-hero-chip">{{ t('Practica interactiva', 'Interactive practice', app_lang) }}</span>
+      </div>
+    </div>
   </section>
 
   <!-- Import row-card styles -->
   <style>@import url("{{ url_for('static', filename='css/public_articles.css') }}");</style>
 
-  <!-- Row cards (Articles, Exercises, Glossary) -->
-  <section aria-labelledby="home-sections" class="ppx-articles-list">
+  <!-- Resource band -->
+  <section aria-labelledby="home-sections" class="ppx-resource-grid ppx-resource-band">
     <h2 id="home-sections" class="ppx-visually-hidden">{{ t('Secciones principales', 'Main sections', app_lang) }}</h2>
 
-    <!-- Articles row -->
-    <article class="ppx-article-card">
-      {% set articles_img = ui('home.cards.articles.image', app_lang) %}
-      {% if articles_img %}
-        {% set _svg = (articles_img|lower).endswith('.svg') %}
-        <img
-          src="{{ articles_img }}"
-          alt="{{ t('Imagen de Artículos', 'Articles image', app_lang) }}"
-          class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
-          data-i18n-key="home.cards.articles.image"
-          data-i18n-lang="{{ app_lang }}"
-          loading="lazy" decoding="async" fetchpriority="low"
-        >
-      {% else %}
-        <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img"
-             data-i18n-key="home.cards.articles.image"
-             data-i18n-lang="{{ app_lang }}"
-             role="img" aria-label="{{ t('Imagen de Artículos', 'Articles image', app_lang) }}">ProfePanda</div>
-      {% endif %}
+    <div class="ppx-home-section">
+      <h2 class="ppx-h1 ppx-home-heading" style="margin:0;">
+        {{ t('Recursos de espanol', 'Spanish Language Resources', app_lang) }}
+      </h2>
 
-      <div class="ppx-article-body">
-        <h3 class="ppx-h3" id="articles-h" style="margin-top:0;">
-          <a href="{{ url_for('public.articles_index') }}" class="ppx-link">
-            <span data-i18n-key="home.cards.articles.title" data-i18n-lang="{{ app_lang }}">
-              {{ ui('home.cards.articles.title', app_lang) or t('Artículos', 'Articles', app_lang) }}
-            </span>
-          </a>
-        </h3>
+      <div class="ppx-resource-grid-inner">
+        <!-- Glossary card -->
+        <a class="ppx-article-card ppx-resource-card" href="{{ url_for('public.glossary_index') }}" aria-labelledby="glossary-h">
+          {% set glossary_img = ui('home.cards.glossary.image', app_lang) %}
+          {% if glossary_img %}
+            {% set _svg = (glossary_img|lower).endswith('.svg') %}
+            <img
+              src="{{ glossary_img }}"
+              alt="{{ t('Imagen del Glosario', 'Glossary image', app_lang) }}"
+              class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
+              data-i18n-key="home.cards.glossary.image"
+              data-i18n-lang="{{ app_lang }}"
+              loading="lazy" decoding="async" fetchpriority="low"
+            >
+          {% else %}
+            <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img"
+                 data-i18n-key="home.cards.glossary.image"
+                 data-i18n-lang="{{ app_lang }}"
+                 role="img" aria-label="{{ t('Imagen del Glosario', 'Glossary image', app_lang) }}">ProfePanda</div>
+          {% endif %}
 
-        <p class="ppx-p" style="margin:.25rem 0 1rem;">
-          <span data-i18n-key="home.cards.articles.subtitle" data-i18n-lang="{{ app_lang }}">
-            {{ ui('home.cards.articles.subtitle', app_lang) or t('Explorá estructuras del español con explicaciones simples y ejemplos.',
-                 'Explore Spanish structures with simple explanations and examples.', app_lang) }}
-          </span>
-        </p>
-
-        <div class="ppx-article-footer">
-          <div></div>
-          <a class="ppx-btn" href="{{ url_for('public.articles_index') }}" aria-labelledby="articles-h">
-            <span data-i18n-key="home.cards.articles.cta" data-i18n-lang="{{ app_lang }}">
-              {{ ui('home.cards.articles.cta', app_lang) or t('Ver artículos', 'Browse articles', app_lang) }}
-            </span>
-          </a>
-        </div>
+          <div class="ppx-resource-body">
+            <h3 class="ppx-resource-title" id="glossary-h">
+              <span data-i18n-key="home.cards.glossary.title" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.glossary.title', app_lang) or t('Glosario regional', 'Regional Glossaries', app_lang) }}
+              </span>
+            </h3>
+            <p class="ppx-resource-text">
+              <span class="ppx-resource-lead" data-i18n-key="home.cards.glossary.lead" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.glossary.lead', app_lang) or t('Explora el espanol cotidiano tal como se habla.', 'Explore everyday Spanish the way it is really spoken.', app_lang) }}
+              </span>
+              <span class="ppx-resource-copy" data-i18n-key="home.cards.glossary.copy" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.glossary.copy', app_lang) or t('Aprende argot y expresiones comunes de distintas regiones con ejemplos de audio.', 'Learn slang and common expressions from across the Spanish-speaking world with authentic audio examples.', app_lang) }}
+              </span>
+            </p>
+          </div>
+        </a>
       </div>
-    </article>
+    </div>
 
-    <!-- Exercises row -->
-    <article class="ppx-article-card">
-      {% set exercises_img = ui('home.cards.exercises.image', app_lang) %}
-      {% if exercises_img %}
-        {% set _svg = (exercises_img|lower).endswith('.svg') %}
-        <img
-          src="{{ exercises_img }}"
-          alt="{{ t('Imagen de Ejercicios', 'Exercises image', app_lang) }}"
-          class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
-          data-i18n-key="home.cards.exercises.image"
-          data-i18n-lang="{{ app_lang }}"
-          loading="lazy" decoding="async" fetchpriority="low"
-        >
-      {% else %}
-        <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img"
-             data-i18n-key="home.cards.exercises.image"
-             data-i18n-lang="{{ app_lang }}"
-             role="img" aria-label="{{ t('Imagen de Ejercicios', 'Exercises image', app_lang) }}">ProfePanda</div>
-      {% endif %}
+    <div class="ppx-home-section ppx-home-section--beta">
+      <h3 class="ppx-h2 ppx-home-subheading" style="margin:0;">
+        {{ t('Recursos experimentales (beta)', 'Experimental Resources (beta)', app_lang) }}
+      </h3>
 
-      <div class="ppx-article-body">
-        <h3 class="ppx-h3" id="exercises-h" style="margin-top:0;">
-          <a href="{{ url_for('public.exercises_index') }}" class="ppx-link">
-            <span data-i18n-key="home.cards.exercises.title" data-i18n-lang="{{ app_lang }}">
-              {{ ui('home.cards.exercises.title', app_lang) or t('Ejercicios', 'Exercises', app_lang) }}
-            </span>
-          </a>
-        </h3>
+      <div class="ppx-resource-grid-inner">
+        <!-- Articles card -->
+        <a class="ppx-article-card ppx-resource-card" href="{{ url_for('public.articles_index') }}" aria-labelledby="articles-h">
+          {% set articles_img = ui('home.cards.articles.image', app_lang) %}
+          {% if articles_img %}
+            {% set _svg = (articles_img|lower).endswith('.svg') %}
+            <img
+              src="{{ articles_img }}"
+              alt="{{ t('Imagen de Articulos', 'Articles image', app_lang) }}"
+              class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
+              data-i18n-key="home.cards.articles.image"
+              data-i18n-lang="{{ app_lang }}"
+              loading="lazy" decoding="async" fetchpriority="low"
+            >
+          {% else %}
+            <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img"
+                 data-i18n-key="home.cards.articles.image"
+                 data-i18n-lang="{{ app_lang }}"
+                 role="img" aria-label="{{ t('Imagen de Articulos', 'Articles image', app_lang) }}">ProfePanda</div>
+          {% endif %}
 
-        <p class="ppx-p" style="margin:.25rem 0 1rem;">
-          <span data-i18n-key="home.cards.exercises.subtitle" data-i18n-lang="{{ app_lang }}">
-            {{ ui('home.cards.exercises.subtitle', app_lang) or t('Practicá con actividades interactivas y recibí retroalimentación al instante.',
-                 'Practice with interactive activities and get instant feedback.', app_lang) }}
-          </span>
-        </p>
+          <div class="ppx-resource-body">
+            <h3 class="ppx-resource-title" id="articles-h">
+              <span data-i18n-key="home.cards.articles.title" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.articles.title', app_lang) or t('Articulos', 'Articles', app_lang) }}
+              </span>
+            </h3>
+            <p class="ppx-resource-text">
+              <span class="ppx-resource-lead" data-i18n-key="home.cards.articles.lead" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.articles.lead', app_lang) or t('Entiende las estructuras esenciales.', 'Understand essential structures.', app_lang) }}
+              </span>
+              <span class="ppx-resource-copy" data-i18n-key="home.cards.articles.copy" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.articles.copy', app_lang) or t('Guias claras con ejemplos reales para avanzar con confianza.', 'Clear guides with real-world examples to build confidence.', app_lang) }}
+              </span>
+            </p>
+          </div>
+        </a>
 
-        <div class="ppx-article-footer">
-          <div></div>
-          <a class="ppx-btn" href="{{ url_for('public.exercises_index') }}" aria-labelledby="exercises-h">
-            <span data-i18n-key="home.cards.exercises.cta" data-i18n-lang="{{ app_lang }}">
-              {{ ui('home.cards.exercises.cta', app_lang) or t('Ir a ejercicios', 'Go to exercises', app_lang) }}
-            </span>
-          </a>
-        </div>
+        <!-- Exercises card -->
+        <a class="ppx-article-card ppx-resource-card" href="{{ url_for('public.exercises_index') }}" aria-labelledby="exercises-h">
+          {% set exercises_img = ui('home.cards.exercises.image', app_lang) %}
+          {% if exercises_img %}
+            {% set _svg = (exercises_img|lower).endswith('.svg') %}
+            <img
+              src="{{ exercises_img }}"
+              alt="{{ t('Imagen de Ejercicios', 'Exercises image', app_lang) }}"
+              class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
+              data-i18n-key="home.cards.exercises.image"
+              data-i18n-lang="{{ app_lang }}"
+              loading="lazy" decoding="async" fetchpriority="low"
+            >
+          {% else %}
+            <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img"
+                 data-i18n-key="home.cards.exercises.image"
+                 data-i18n-lang="{{ app_lang }}"
+                 role="img" aria-label="{{ t('Imagen de Ejercicios', 'Exercises image', app_lang) }}">ProfePanda</div>
+          {% endif %}
+
+          <div class="ppx-resource-body">
+            <h3 class="ppx-resource-title" id="exercises-h">
+              <span data-i18n-key="home.cards.exercises.title" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.exercises.title', app_lang) or t('Ejercicios', 'Exercises', app_lang) }}
+              </span>
+            </h3>
+            <p class="ppx-resource-text">
+              <span class="ppx-resource-lead" data-i18n-key="home.cards.exercises.lead" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.exercises.lead', app_lang) or t('Practica de manera interactiva.', 'Practice interactively.', app_lang) }}
+              </span>
+              <span class="ppx-resource-copy" data-i18n-key="home.cards.exercises.copy" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.exercises.copy', app_lang) or t('Recibe retroalimentacion inmediata con actividades cortas y enfocadas.', 'Get instant feedback with short, focused activities.', app_lang) }}
+              </span>
+            </p>
+          </div>
+        </a>
       </div>
-    </article>
-
-    <!-- Glossary row -->
-    <article class="ppx-article-card">
-      {% set glossary_img = ui('home.cards.glossary.image', app_lang) %}
-      {% if glossary_img %}
-        {% set _svg = (glossary_img|lower).endswith('.svg') %}
-        <img
-          src="{{ glossary_img }}"
-          alt="{{ t('Imagen del Glosario', 'Glossary image', app_lang) }}"
-          class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
-          data-i18n-key="home.cards.glossary.image"
-          data-i18n-lang="{{ app_lang }}"
-          loading="lazy" decoding="async" fetchpriority="low"
-        >
-      {% else %}
-        <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img"
-             data-i18n-key="home.cards.glossary.image"
-             data-i18n-lang="{{ app_lang }}"
-             role="img" aria-label="{{ t('Imagen del Glosario', 'Glossary image', app_lang) }}">ProfePanda</div>
-      {% endif %}
-
-      <div class="ppx-article-body">
-        <h3 class="ppx-h3" id="glossary-h" style="margin-top:0;">
-          <a href="{{ url_for('public.glossary_index') }}" class="ppx-link">
-            <span data-i18n-key="home.cards.glossary.title" data-i18n-lang="{{ app_lang }}">
-              {{ ui('home.cards.glossary.title', app_lang) or t('Glosario', 'Glossary', app_lang) }}
-            </span>
-          </a>
-        </h3>
-
-        <p class="ppx-p" style="margin:.25rem 0 1rem;">
-          <span data-i18n-key="home.cards.glossary.subtitle" data-i18n-lang="{{ app_lang }}">
-            {{ ui('home.cards.glossary.subtitle', app_lang) or t('Buscá términos, notas de uso y ejemplos con audio.',
-                 'Look up terms, usage notes, and examples with audio.', app_lang) }}
-          </span>
-        </p>
-
-        <div class="ppx-article-footer">
-          <div></div>
-          <a class="ppx-btn" href="{{ url_for('public.glossary_index') }}" aria-labelledby="glossary-h">
-            <span data-i18n-key="home.cards.glossary.cta" data-i18n-lang="{{ app_lang }}">
-              {{ ui('home.cards.glossary.cta', app_lang) or t('Abrir glosario', 'Open glossary', app_lang) }}
-            </span>
-          </a>
-        </div>
-      </div>
-    </article>
+    </div>
   </section>
 {% endblock %}

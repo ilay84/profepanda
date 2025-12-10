@@ -36,6 +36,7 @@
             {% if l.status != 'published' %}
             · <form action="{{ url_for('admin.lessons_publish', lesson_id=l.id) }}" method="post" style="display:inline"><button type="submit" class="ppx-pill">Publish</button></form>
             {% endif %}
+            · <form action="{{ url_for('admin.lessons_delete', lesson_id=l.id) }}" method="post" style="display:inline" onsubmit="return confirm('Delete this lesson?');"><button type="submit" class="ppx-pill" style="background:#fee2e2;color:#7a1f2d;border-color:#fca5a5;">Delete</button></form>
           </td>
         </tr>
       {% else %}

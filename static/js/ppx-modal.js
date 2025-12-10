@@ -135,7 +135,7 @@
     qs(D, SEL.lightboxClose).addEventListener('click', closeLightbox);
     // Modal close button (optional — only if present)
     const headerClose = qs(D, SEL.closeBtn);
-    if (headerClose) headerClose.addEventListener('click', () => API.close());
+    if (headerClose) headerClose.addEventListener('click', () => API.close('override'));
 
     state.mounted = true;
   }
@@ -185,11 +185,27 @@
   function freezeBackground(on) {
     const htmlEl = D.documentElement;
     if (on) {
+      const y = W.scrollY || 0;
+      try { D.body.dataset.ppxScrollY = String(y); } catch(_) {}
+      D.body.style.position = 'fixed';
+      D.body.style.top = `-${y}px`;
+      D.body.style.left = '0';
+      D.body.style.right = '0';
+      D.body.style.width = '100%';
       D.body.style.overflow = 'hidden';
       htmlEl.style.overflow = 'hidden';
+      try { W.scrollTo({ top: y, behavior: 'auto' }); } catch(_){ W.scrollTo(0, y||0); }
     } else {
+      const yStored = (()=>{ try { return Number(D.body.dataset.ppxScrollY) || 0; } catch(_){ return 0; } })();
+      D.body.style.position = '';
+      D.body.style.top = '';
+      D.body.style.left = '';
+      D.body.style.right = '';
+      D.body.style.width = '';
       D.body.style.overflow = '';
       htmlEl.style.overflow = '';
+      try { delete D.body.dataset.ppxScrollY; } catch(_){}
+      try { W.scrollTo({ top: yStored, behavior: 'auto' }); } catch(_){ W.scrollTo(0, yStored || 0); }
     }
   }
 
@@ -302,38 +318,60 @@
     // Build header row inside the modal head
     if (head) {
       head.innerHTML = '';
+      const rightItems = [];
+      if (typeLabel) rightItems.push(el('span', { class: 'ppx-pill ppx-pill--type', text: typeLabel }));
+      if (state.opts && state.opts.instructionsHTML) {
+        rightItems.push(el('button', {
+          class: 'ppx-ex__iconBtn ppx-ex__info',
+          type: 'button',
+          'aria-label': (state.opts && state.opts.instructionsTitle) ? state.opts.instructionsTitle : 'Instrucciones',
+          title: (state.opts && state.opts.instructionsTitle) ? state.opts.instructionsTitle : 'Instrucciones'
+        }, [
+          el('img', { src: '/static/assets/icons/info.svg', alt: '', width: '18', height: '18' })
+        ]));
+      }
+      // Fullscreen + close buttons
+      rightItems.push(el('button', {
+        class: 'ppx-ex__iconBtn ppx-ex__fullscreen',
+        type: 'button',
+        'aria-label': 'Pantalla completa',
+        title: 'Pantalla completa'
+      }, [
+        el('img', { src: '/static/assets/icons/fullscreen.svg', alt: '', width: '18', height: '18' })
+      ]));
+      if (state.opts && typeof state.opts.resetExercise === 'function') {
+        const langCode = (state.opts.languageToggle && state.opts.languageToggle.current) || state.opts.lang || 'es';
+        const resetLabel = String(langCode).toLowerCase().startsWith('en') ? 'Reset exercise' : 'Reiniciar ejercicio';
+        const resetBtn = el('button', {
+          class: 'ppx-ex__iconBtn ppx-tooltip',
+          type: 'button',
+          'aria-label': resetLabel,
+          title: resetLabel,
+          'data-tooltip': resetLabel
+        }, [
+          el('img', { src: '/static/assets/icons/refresh.svg', alt: '', width: '18', height: '18' })
+        ]);
+        const onResetClick = (ev) => {
+          try { ev && ev.preventDefault && ev.preventDefault(); ev && ev.stopPropagation && ev.stopPropagation(); } catch(_){}
+          try { state.opts.resetExercise(); } catch(_){}
+        };
+        try { resetBtn.addEventListener('click', onResetClick); } catch(_) {}
+        rightItems.push(resetBtn);
+      }
+      rightItems.push(el('button', {
+        class: 'ppx-ex__iconBtn ppx-ex__close',
+        type: 'button',
+        'aria-label': 'Cerrar',
+        title: 'Cerrar'
+      }, [
+        el('img', { src: '/static/assets/icons/close.svg', alt: '', width: '18', height: '18' })
+      ]));
+
       const topRow = el('div', { class: 'ppx-ex__row ppx-ex__row--top' }, [
         el('div', { class: 'ppx-ex__titleWrap' }, [
           el('h3', { class: 'ppx-ex__title', id: 'ppx-modal-title', text: headerTitle })
         ]),
-        el('div', { class: 'ppx-ex__right', style: 'display:inline-flex;align-items:center;gap:10px;' }, [
-          typeLabel ? el('span', { class: 'ppx-pill ppx-pill--type', text: typeLabel }) : null,
-          (state.opts && state.opts.instructionsHTML) ? el('button', {
-            class: 'ppx-ex__iconBtn ppx-ex__info',
-            type: 'button',
-            'aria-label': (state.opts && state.opts.instructionsTitle) ? state.opts.instructionsTitle : 'Instrucciones',
-            title: (state.opts && state.opts.instructionsTitle) ? state.opts.instructionsTitle : 'Instrucciones'
-          }, [
-            el('img', { src: '/static/assets/icons/info.svg', alt: '', width: '18', height: '18' })
-          ]) : null,
-          // Fullscreen toggle button
-          el('button', {
-            class: 'ppx-ex__iconBtn ppx-ex__fullscreen',
-            type: 'button',
-            'aria-label': 'Pantalla completa',
-            title: 'Pantalla completa'
-          }, [
-            el('img', { src: '/static/assets/icons/fullscreen.svg', alt: '', width: '18', height: '18' })
-          ]),
-          el('button', {
-            class: 'ppx-ex__iconBtn ppx-ex__close',
-            type: 'button',
-            'aria-label': 'Cerrar',
-            title: 'Cerrar'
-          }, [
-            el('img', { src: '/static/assets/icons/close.svg', alt: '', width: '18', height: '18' })
-          ])
-        ])
+        el('div', { class: 'ppx-ex__right', style: 'display:inline-flex;align-items:center;gap:10px;' }, rightItems)
       ]);
       head.appendChild(topRow);
       // Bind info button to show inline popup
@@ -394,18 +432,84 @@
       ]);
       head.appendChild(progress);
       const exClose = qs(head, '.ppx-ex__close');
-      if (exClose) exClose.addEventListener('click', () => API.close());
+      if (exClose) exClose.addEventListener('click', () => API.close('override'));
       const fsBtn = qs(head, '.ppx-ex__fullscreen');
       if (fsBtn) fsBtn.addEventListener('click', toggleFullscreen);
     }
 
-    // Insert content into the body (scrollable area)
+    // Insert content into the body (scrollable area) with optional language switcher (inside body)
     const contentSlot = el('div', { class: 'ppx-ex__content' }, []);
     contentSlot.appendChild(contentNode);
 
-    // Replace modal body with new content slot
+    // Replace modal body with shell that hosts language control + content
     body.innerHTML = '';
-    body.appendChild(contentSlot);
+    const shell = el('div', { class: 'ppx-body-shell', style: 'position:relative;width:100%;' });
+    if (state.opts && state.opts.languageToggle) {
+      const langSpec = state.opts.languageToggle;
+      const langWrap = el('div', { class: 'ppx-lang-switch', style: 'display:flex;justify-content:flex-end;margin-bottom:6px;position:relative;padding-top:4px;padding-right:4px;' });
+      const btn = el('button', {
+        type: 'button',
+        class: 'ppx-lang-btn',
+        'aria-haspopup': 'listbox',
+        'aria-expanded': 'false',
+        style: 'display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #d0d7e2;border-radius:10px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.08);font-family: \"Montserrat\", \"Segoe UI\", system-ui, sans-serif;'
+      });
+      const globe = el('img', { src: '/static/assets/icons/globe.svg', alt: '', width: '18', height: '18' });
+      const labelSpan = el('span', { text: (langSpec.current || 'es').startsWith('en') ? 'English' : 'Español' });
+      const caret = el('img', { src: '/static/assets/icons/chevron_down.svg', alt: '', width: '14', height: '14' });
+      btn.appendChild(globe); btn.appendChild(labelSpan); btn.appendChild(caret);
+      const menu = el('div', {
+        class: 'ppx-lang-menu',
+        style: 'position:absolute;right:0;top:42px;min-width:180px;border:1px solid #d0d7e2;border-radius:10px;background:#fff;box-shadow:0 10px 24px rgba(0,0,0,0.15);z-index:10;display:none;'
+      });
+      const opts = [
+        { value: 'es', label: 'Español' },
+        { value: 'en', label: 'English' }
+      ];
+      let current = (langSpec.current || 'es').startsWith('en') ? 'en' : 'es';
+      const renderMenu = () => {
+        menu.innerHTML = '';
+        opts.forEach(opt => {
+          const row = el('button', {
+            type: 'button',
+            class: 'ppx-lang-option',
+            style: 'display:flex;width:100%;align-items:center;justify-content:space-between;padding:8px 12px;border:none;background:transparent;cursor:pointer;'
+          });
+          row.appendChild(el('span', { text: opt.label }));
+          if (opt.value === current) {
+            row.appendChild(el('img', { src: '/static/assets/icons/check.svg', alt: '', width: '16', height: '16' }));
+          }
+          row.addEventListener('click', () => {
+            current = opt.value;
+            labelSpan.textContent = opt.label;
+            renderMenu();
+            if (typeof langSpec.onChange === 'function') langSpec.onChange(opt.value);
+            menu.style.display = 'none';
+            btn.setAttribute('aria-expanded', 'false');
+          });
+          menu.appendChild(row);
+        });
+      };
+      renderMenu();
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = menu.style.display === 'block';
+        menu.style.display = open ? 'none' : 'block';
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        caret.src = open ? '/static/assets/icons/chevron_down.svg' : '/static/assets/icons/chevron_right.svg';
+      });
+      document.addEventListener('click', (e) => {
+        if (!langWrap.contains(e.target)) {
+          menu.style.display = 'none';
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      langWrap.appendChild(btn);
+      langWrap.appendChild(menu);
+      shell.appendChild(langWrap);
+    }
+    shell.appendChild(contentSlot);
+    body.appendChild(shell);
 
     bindLightboxImages(contentSlot);
     body.setAttribute('tabindex', body.getAttribute('tabindex') || '-1');
@@ -486,7 +590,6 @@
 
     state.opts = opts;
     state.lastActive = D.activeElement;
-
     setTitle(opts.title || '');
     setMeta(opts.meta || '');
     setProgress(opts.progress ?? 0);
@@ -520,25 +623,38 @@
     } catch(_){}
   }
 
-  function close() {
+  function close(force = false) {
     if (!state.mounted) return;
+    // Prevent accidental close when locked unless explicitly overridden
+    const isOverride = (force === true || force === 'override');
+    if (isOverride) {
+      if (state.opts) { state.opts.locked = false; state.opts.hardLock = false; }
+    }
+    if ((state.opts && (state.opts.locked === true || state.opts.hardLock === true)) && !isOverride) {
+      return;
+    }
 
-    // Allow content to veto close (synchronous boolean or Promise<boolean>)
-    try {
-      const guard = state.opts && state.opts.onBeforeClose;
-      if (typeof guard === 'function') {
-        const res = guard();
-        if (res && typeof res.then === 'function') {
-          res.then((ok) => { if (ok === false) return; doClose(); });
-          return; // async path will handle actual close
+    // Allow content to veto close (synchronous boolean or Promise<boolean))
+    if (!isOverride) {
+      try {
+        const guard = state.opts && state.opts.onBeforeClose;
+        if (typeof guard === 'function') {
+          const res = guard();
+          if (res && typeof res.then === 'function') {
+            res.then((ok) => { if (ok === false) return; doClose(); });
+            return; // async path will handle actual close
+          }
+          if (res === false) return; // veto
         }
-        if (res === false) return; // veto
-      }
-    } catch(_) { /* ignore guard errors and proceed to close */ }
+      } catch(_) { /* ignore guard errors and proceed to close */ }
+    }
 
     doClose();
 
     function doClose(){
+      if (state.opts && state.opts.dismiss === 'strict' && !(force === true || force === 'override')) {
+        return;
+      }
       const modal = qs(D, SEL.modal);
       const overlay = qs(D, SEL.overlay);
 

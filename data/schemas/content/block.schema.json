@@ -1,0 +1,248 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://profepanda.dev/schemas/block.schema.json",
+  "title": "Content Block",
+  "type": "object",
+  "required": ["id", "type", "data"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": [
+        "heading",
+        "text",
+        "list",
+        "table",
+        "callout",
+        "media",
+        "embed",
+        "exercise_reference",
+        "example_sentence"
+      ]
+    },
+    "style_variant": { "type": "string" },
+    "data": { "type": "object" }
+  },
+  "allOf": [
+    { "$ref": "#/definitions/heading", "if": { "properties": { "type": { "const": "heading" } } }, "then": { "$ref": "#/definitions/heading" } },
+    { "$ref": "#/definitions/text", "if": { "properties": { "type": { "const": "text" } } }, "then": { "$ref": "#/definitions/text" } },
+    { "$ref": "#/definitions/list", "if": { "properties": { "type": { "const": "list" } } }, "then": { "$ref": "#/definitions/list" } },
+    { "$ref": "#/definitions/table", "if": { "properties": { "type": { "const": "table" } } }, "then": { "$ref": "#/definitions/table" } },
+    { "$ref": "#/definitions/callout", "if": { "properties": { "type": { "const": "callout" } } }, "then": { "$ref": "#/definitions/callout" } },
+    { "$ref": "#/definitions/media", "if": { "properties": { "type": { "const": "media" } } }, "then": { "$ref": "#/definitions/media" } },
+    { "$ref": "#/definitions/embed", "if": { "properties": { "type": { "const": "embed" } } }, "then": { "$ref": "#/definitions/embed" } },
+    { "$ref": "#/definitions/exercise_reference", "if": { "properties": { "type": { "const": "exercise_reference" } } }, "then": { "$ref": "#/definitions/exercise_reference" } },
+    { "$ref": "#/definitions/example_sentence", "if": { "properties": { "type": { "const": "example_sentence" } } }, "then": { "$ref": "#/definitions/example_sentence" } }
+  ],
+  "definitions": {
+    "segment": {
+      "type": "object",
+      "required": ["segment_id", "text"],
+      "properties": {
+        "segment_id": { "type": "string" },
+        "text": { "type": "string" },
+        "marks": { "type": "array", "items": { "type": "string" } },
+        "translations": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "heading": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": ["segments"],
+          "properties": { "segments": { "type": "array", "items": { "$ref": "#/definitions/segment" } } },
+          "additionalProperties": false
+        }
+      }
+    },
+    "text": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": ["segments"],
+          "properties": { "segments": { "type": "array", "items": { "$ref": "#/definitions/segment" } } },
+          "additionalProperties": false
+        }
+      }
+    },
+    "list": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": ["ordered", "items"],
+          "properties": {
+            "ordered": { "type": "boolean" },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["item_id", "segments"],
+                "properties": {
+                  "item_id": { "type": "string" },
+                  "segments": { "type": "array", "items": { "$ref": "#/definitions/segment" } }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "callout": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": ["segments", "icon"],
+          "properties": {
+            "icon": { "type": "string" },
+            "segments": { "type": "array", "items": { "$ref": "#/definitions/segment" } }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "table": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": ["columns", "rows"],
+          "properties": {
+            "columns": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "label"],
+                "properties": {
+                  "id": { "type": "string" },
+                  "label": { "type": "string" }
+                },
+                "additionalProperties": false
+              }
+            },
+            "rows": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["row_id", "cells"],
+                "properties": {
+                  "row_id": { "type": "string" },
+                  "cells": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "array",
+                      "items": { "$ref": "#/definitions/segment" }
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "media": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": ["kind", "src", "alt_es", "alt_en"],
+          "properties": {
+            "media_id": { "type": "string" },
+            "kind": { "type": "string", "enum": ["image", "audio", "video", "document"] },
+            "src": { "type": "string" },
+            "alt_es": { "type": "string" },
+            "alt_en": { "type": "string" },
+            "caption_segments": { "type": "array", "items": { "$ref": "#/definitions/segment" } }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "embed": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": ["provider", "embed_type", "src", "title"],
+          "properties": {
+            "provider": { "type": "string" },
+            "embed_type": { "type": "string" },
+            "src": { "type": "string" },
+            "title": { "type": "string" },
+            "aspect_ratio": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "exercise_reference": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": ["exercise_id"],
+          "properties": {
+            "exercise_id": { "type": "string" },
+            "exercise_type": { "type": "string" },
+            "source": { "type": "string" },
+            "resource_path": { "type": "string" },
+            "display_options": {
+              "type": "object",
+              "additionalProperties": { "type": ["string", "number", "boolean"] }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "example_sentence": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "language_primary",
+            "language_translation",
+            "segments_primary",
+            "segments_translation"
+          ],
+          "properties": {
+            "language_primary": { "type": "string" },
+            "language_translation": { "type": "string" },
+            "segments_primary": { "type": "array", "items": { "$ref": "#/definitions/segment" } },
+            "segments_translation": { "type": "array", "items": { "$ref": "#/definitions/segment" } },
+            "audio": {
+              "oneOf": [
+                { "type": "null" },
+                {
+                  "type": "object",
+                  "required": ["source", "src"],
+                  "properties": {
+                    "source": { "type": "string", "enum": ["uploaded", "url"] },
+                    "src": { "type": "string" },
+                    "mime_type": { "type": "string" },
+                    "duration_seconds": { "type": "number" }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "player_options": {
+              "type": "object",
+              "properties": {
+                "allow_speed_control": { "type": "boolean" },
+                "default_speed": { "type": "number" },
+                "speed_steps": { "type": "array", "items": { "type": "number" } }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "id": "fitb/ser-y-estar-entidad-material-o-evento-2b",
+  "type": "fitb",
+  "slug": "ser-y-estar-entidad-material-o-evento-2b",
+  "version": 2,
+  "title_es": "SER y ESTAR: ¿Entidad material o evento? (2b)",
+  "title_en": "SER and ESTAR: Physical entity or event? (1b)",
+  "instructions_es": "Completa las traducciones al escribir la forma correcta de SER o ESTAR. Usa SER para hablar de la ubicación de entidades materiales o materializadas y ESTAR para hablar del lugar donde ocurren eventos.",
+  "instructions_en": "Complete the translations by writing the correct form of SER or ESTAR. Use SER to talk about the location of material or materialized entities and ESTAR to talk about the location where events happen.",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "published",
+  "items": [
+    {
+      "id": "b1",
+      "order": 1,
+      "text": "<p><i>The keys are on the table.</i></p><p><b>Las llaves *están* en la mesa.</b></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "están"
+          ],
+          "hint_es": "¿Puedes encontrar las llaves en un lugar físico?",
+          "hint_en": "Can you find the keys in a physical location?",
+          "feedback_correct_es": "Correcto. Las llaves son una entidad material. Usamos ESTAR para ubicar cosas físicas.",
+          "feedback_correct_en": "Correct. Keys are a physical entity. We use ESTAR to locate physical things.",
+          "feedback_incorrect_es": "Recuerda: usamos ESTAR para decir dónde están objetos materiales.",
+          "feedback_incorrect_en": "Remember: we use ESTAR to say where physical objects are located."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b2",
+      "order": 2,
+      "text": "<p><i>The shooting was on that corner.</i></p><p><b>El tiroteo *fue* en esa esquina.</b></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "fue"
+          ],
+          "hint_es": "¿El tiroteo es algo que sucede en un lugar específico?",
+          "hint_en": "Is the shooting something that happens in a specific place?",
+          "feedback_correct_es": "Correcto. Un tiroteo es un evento. Usamos SER para ubicar eventos porque su lugar es parte de su esencia.",
+          "feedback_correct_en": "Correct. A shooting is an event. We use SER to locate events because their location is part of their identity.",
+          "feedback_incorrect_es": "Piensa si esto es algo que ocurre (evento) o algo que está ubicado (objeto).",
+          "feedback_incorrect_en": "Think about whether this is something that happens (event) or something that is situated (object)."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b3",
+      "order": 3,
+      "text": "<p><i>The restaurant is close by.</i></p><p><b>El restaurante *está* cerca</b>.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Puedes ir físicamente al restaurante?",
+          "hint_en": "Can you physically go to the restaurant?",
+          "feedback_correct_es": "Correcto. El restaurante es una entidad material. Usamos ESTAR para indicar su ubicación.",
+          "feedback_correct_en": "Correct. The restaurant is a material entity. We use ESTAR to indicate its location.",
+          "feedback_incorrect_es": "Recuerda: SER no se usa para ubicar cosas físicas como lugares.",
+          "feedback_incorrect_en": "Remember: SER is not used to locate physical things like places."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b4",
+      "order": 4,
+      "text": "<p><i style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">Is Rio de Janeiro far away?</i></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>¿*Está/está* lejos Río de Janeiro?</b></span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "Está",
+            "está"
+          ],
+          "hint_es": "¿Estamos hablando de una ciudad como lugar físico?",
+          "hint_en": "Are we talking about a city as a physical place?",
+          "feedback_correct_es": "Correcto. Las ciudades se consideran entidades materiales. Usamos ESTAR para hablar de su ubicación.",
+          "feedback_correct_en": "Correct. Cities are treated as material entities. We use ESTAR to talk about their location.",
+          "feedback_incorrect_es": "Recuerda: incluso si es permanente, la ubicación de una ciudad se trata como situacional — usamos ESTAR.",
+          "feedback_incorrect_en": "Remember: even if it's permanent, a city's location is treated as situational — we use ESTAR."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b5",
+      "order": 5,
+      "text": "<p><i style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">The party is at Lucia’s house.</i></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>La fiesta *es* en la casa de Lucía.</b></span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "es"
+          ],
+          "hint_es": "¿La fiesta es algo que sucede?",
+          "hint_en": "Is the party something that happens?",
+          "feedback_correct_es": "Correcto. Una fiesta es un evento. Su ubicación forma parte de su esencia, así que usamos SER.",
+          "feedback_correct_en": "Correct. A party is an event. Its location is part of its identity, so we use SER.",
+          "feedback_incorrect_es": "No es un objeto que esté en algún lugar, sino un evento que ocurre allí. Por eso usamos SER.",
+          "feedback_incorrect_en": "It’s not an object located somewhere, but an event happening there. That’s why we use SER."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b6",
+      "order": 6,
+      "text": "<p><i style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">The clinic is on 8th St.</i></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>La clínica *está* en la calle 8.</b></span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Es la clínica un lugar que se puede ubicar en el espacio?",
+          "hint_en": "Is the clinic a place that can be located in space?",
+          "feedback_correct_es": "Correcto. La clínica es una entidad física. Usamos ESTAR para hablar de su ubicación.",
+          "feedback_correct_en": "Correct. The clinic is a physical entity. We use ESTAR to talk about its location.",
+          "feedback_incorrect_es": "No es un evento ni una actividad, sino un lugar que está situado. Por eso usamos ESTAR.",
+          "feedback_incorrect_en": "It’s not an event or activity, but a place that is situated. That’s why we use ESTAR."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b7",
+      "order": 7,
+      "text": "<p><i style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">Is the soccer match at home or away?</i></p><p><font color=\"#000000\" face=\"Montserrat, sans-serif\"><b>¿El partido de fútbol *es* en casa o de visitante?</b></font></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "es"
+          ],
+          "hint_es": "¿Es el partido algo que ocurre, no algo que está?",
+          "hint_en": "Is the match something that happens, not something that simply exists?",
+          "feedback_correct_es": "Correcto. El partido es un evento. Su lugar es parte de su definición, así que usamos SER.",
+          "feedback_correct_en": "Correct. The match is an event. Its location is part of its definition, so we use SER.",
+          "feedback_incorrect_es": "No estamos diciendo dónde está algo, sino dónde sucede el partido. Usamos SER.",
+          "feedback_incorrect_en": "We’re not saying where something is, but where the match takes place. We use SER."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b8",
+      "order": 8,
+      "text": "<p><i style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">Where’s the kitty?</i></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>¿Donde *está* el gatito?</b></span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿El gatito es un ser físico que puedes encontrar en un lugar?",
+          "hint_en": "Is the kitty a physical being you can find somewhere?",
+          "feedback_correct_es": "Correcto. El gatito es una entidad material. Para ubicar seres vivos y objetos usamos ESTAR.",
+          "feedback_correct_en": "Correct. The kitty is a material entity. We use ESTAR to locate living beings and objects.",
+          "feedback_incorrect_es": "Recuerda: ESTAR se usa para situar objetos y seres vivos en el espacio.",
+          "feedback_incorrect_en": "Remember: ESTAR is used to place objects and living beings in space."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b9",
+      "order": 9,
+      "text": "<p><i style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">Mar del Plata is 253 miles from Baires.</i></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Mar del Plata *está* a 407 kilómetros de Baires.</b></span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Mar del Plata es un lugar físico que se puede localizar en el mapa?",
+          "hint_en": "Is Mar del Plata a physical place that can be located on a map?",
+          "feedback_correct_es": "Correcto. Las ciudades se tratan como entidades materiales. Para hablar de su ubicación, usamos ESTAR.",
+          "feedback_correct_en": "Correct. Cities are treated as material entities. We use ESTAR to talk about their location.",
+          "feedback_incorrect_es": "Recuerda: aunque sea permanente, la ubicación de una ciudad se expresa con ESTAR.",
+          "feedback_incorrect_en": "Remember: even if permanent, we express a city’s location with ESTAR."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b10",
+      "order": 10,
+      "text": "<p><i style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">The festival will be downtown this Saturday.</i></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>El festival va a *ser* en el centro el sábado.</b></span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "ser"
+          ],
+          "hint_es": "¿El festival es algo que ocurre (un evento) y no un objeto físico?",
+          "hint_en": "Is the festival something that happens (an event) rather than a physical object?",
+          "feedback_correct_es": "Correcto. Un festival es un evento. Su ubicación forma parte de su identidad como evento, por eso usamos SER.",
+          "feedback_correct_en": "Correct. A festival is an event. Its location is part of its identity as an event, so we use SER.",
+          "feedback_incorrect_es": "Recuerda: SER se usa para ubicar eventos porque su lugar es una característica esencial de ellos.",
+          "feedback_incorrect_en": "Remember: SER is used to locate events because their location is an essential characteristic."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b11",
+      "order": 11,
+      "text": "<p><i style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">Where's all the love at?</i></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>¿Dónde *está* todo el amor?</b></span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "En español, ¿tratamos conceptos como el amor como si «estuvieran» en un lugar?",
+          "hint_en": "In Spanish, do we treat concepts like love as if they ‘were’ in a place?",
+          "feedback_correct_es": "Correcto. El amor se materializa como una presencia. Cuando lo ubicamos, usamos ESTAR.",
+          "feedback_correct_en": "Correct. Love is treated as a materialized presence. When we locate it, we use ESTAR.",
+          "feedback_incorrect_es": "Recuerda: aunque sea abstracto, el amor puede conceptualizarse como algo que «está» en algún lugar.",
+          "feedback_incorrect_en": "Remember: even though abstract, love can be conceptualized as something that ‘is’ somewhere."
+        }
+      ],
+      "media": []
+    }
+  ],
+  "created_by": "admin",
+  "created_at": "2025-12-04T16:07:05.354Z",
+  "checksum": "sha256:f2fa97ad0a62405ac3f6c014f72528af5051bbcecdeacfd9460aee297f554564"
+}

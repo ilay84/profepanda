@@ -1,0 +1,400 @@
+{
+  "id": "fitb/ser-o-estar-participios-1",
+  "type": "fitb",
+  "slug": "ser-o-estar-participios-1",
+  "version": 12,
+  "title_es": "¿SER o ESTAR? Participios (1)",
+  "title_en": "SER or ESTAR? Participles (1)",
+  "instructions_es": "<ul><li><span style=\"white-space-collapse: collapse;\">Completa la oración usando la forma correcta de&nbsp;</span><b style=\"max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; white-space-collapse: collapse;\">ESTAR</b><span style=\"white-space-collapse: collapse;\">&nbsp;y el&nbsp;</span><b style=\"max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; white-space-collapse: collapse;\">participio pasado</b><span style=\"white-space-collapse: collapse;\">&nbsp;correcto. Asegúrate de prestar atención a si el sujeto es singular o plural, ya que eso afectará tanto la conjugación de&nbsp;</span><b style=\"max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; white-space-collapse: collapse;\">ESTAR</b><span style=\"white-space-collapse: collapse;\">&nbsp;como la concordancia del&nbsp;</span><b style=\"max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; white-space-collapse: collapse;\">participio pasado</b><span style=\"white-space-collapse: collapse;\">&nbsp;en número y género.</span></li></ul><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">Ejemplos:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;</span></div><div><span style=\"font-family: inherit; white-space-collapse: collapse;\"><br></span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse;\">Acción pasada:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;El árbol fue tirado durante la tormenta.</span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse;\">Estado resultante:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;El árbol&nbsp;</span><b style=\"font-family: inherit; white-space-collapse: collapse;\">está</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;</span><b style=\"font-family: inherit; white-space-collapse: collapse;\">tirado</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">.</span></div><div><span style=\"font-family: inherit; white-space-collapse: collapse;\"><br></span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse;\">Acción pasada:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;Se rompió el vaso.</span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse;\">Estado resultante:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;El vaso&nbsp;</span><b style=\"font-family: inherit; white-space-collapse: collapse;\">está roto</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">.</span></div><div><span style=\"font-family: inherit; white-space-collapse: collapse;\"><br></span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse;\">Acción pasada:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;Las ventanas fueron cerradas por el viento.</span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse;\">Estado resultante:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;Las ventanas&nbsp;</span><b style=\"font-family: inherit; white-space-collapse: collapse;\">están cerradas</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">.</span></div>",
+  "instructions_en": "<ul><li><span style=\"white-space-collapse: collapse;\">Complete the sentence using the correct form of&nbsp;</span><b style=\"max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; white-space-collapse: collapse;\">ESTAR</b><span style=\"white-space-collapse: collapse;\">&nbsp;and the correct&nbsp;</span><b style=\"max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; white-space-collapse: collapse;\">past participle</b><span style=\"white-space-collapse: collapse;\">. Make sure to pay attention to whether the subject is singular or plural, as this will affect both the conjugation of&nbsp;</span><b style=\"max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; white-space-collapse: collapse;\">ESTAR</b><span style=\"white-space-collapse: collapse;\">&nbsp;and the agreement of the&nbsp;</span><b style=\"max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; white-space-collapse: collapse;\">past participle</b><span style=\"white-space-collapse: collapse;\">&nbsp;in number and gender.&nbsp;</span></li></ul><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">Examples:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;</span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\"><br></b></div><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">Past action:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;El árbol fue tirado durante la tormenta.&nbsp;</span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">Resulting state:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;El árbol&nbsp;</span><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">está</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;</span><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">tirado</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">.&nbsp;</span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\"><br></b></div><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">Past action:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;Se rompió el vaso.&nbsp;</span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">Resulting state:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;El vaso&nbsp;</span><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">está roto</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">.&nbsp;</span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\"><br></b></div><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">Past action:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;Las ventanas fueron cerradas por el viento.&nbsp;</span></div><div><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">Resulting state:</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">&nbsp;Las ventanas&nbsp;</span><b style=\"font-family: inherit; white-space-collapse: collapse; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere;\">están cerradas</b><span style=\"font-family: inherit; white-space-collapse: collapse;\">.</span></div>",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "published",
+  "items": [
+    {
+      "id": "b1",
+      "order": 1,
+      "text": "<p><b>Past action: </b>\"El niño organizó los libros en el estante.\"</p><p><b>Resulting state: </b>Los libros *están* *organizados*</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "están"
+          ],
+          "hint_es": "Piensa en la forma del verbo ESTAR para plural (ellos/ellas).",
+          "hint_en": "Think about the form of ESTAR for a plural subject (they).",
+          "feedback_correct_es": "Correcto. 'Están' concuerda con 'los libros' y muestra el estado resultante.",
+          "feedback_correct_en": "Correct. 'Están' matches 'los libros' and expresses their resulting state.",
+          "feedback_incorrect_es": "Recuerda usar la forma plural de ESTAR para 'los libros'.",
+          "feedback_incorrect_en": "Remember to use the plural form of ESTAR with 'los libros'."
+        },
+        {
+          "index": 2,
+          "options": [
+            "organizados"
+          ],
+          "hint_es": "El participio tiene que concordar en género y número con 'los libros'.",
+          "hint_en": "The participle must agree in gender and number with 'los libros'.",
+          "feedback_correct_es": "Correcto. 'Organizados' concuerda con 'los libros' y muestra su estado actual.",
+          "feedback_correct_en": "Correct. 'Organizados' agrees with 'los libros' and shows their current state.",
+          "feedback_incorrect_es": "Fíjate que el participio debe terminar en -os para concordar con 'los libros'.",
+          "feedback_incorrect_en": "Make sure the participle ends in -os to agree with 'los libros'."
+        }
+      ],
+      "media": [
+        {
+          "kind": "image",
+          "src": "/media/exercises/fitb/ser-o-estar-participios-1/img/slide-1.png",
+          "alt_es": "",
+          "alt_en": "",
+          "caption_es": "",
+          "caption_en": ""
+        },
+        {
+          "kind": "image",
+          "src": "/media/exercises/fitb/ser-o-estar-participios-1/img/ChatGPT_Image_Dec_4_2025_12_26_08_PM_20251204203106.png",
+          "alt_es": "",
+          "alt_en": "",
+          "caption_es": "",
+          "caption_en": ""
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "order": 2,
+      "text": "<p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Past action:</b> Los exámenes fueron corregidos por la profesora.</span></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Resulting state</b>: Los exámenes *están* *corregidos*.</span><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"></span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "están"
+          ],
+          "hint_es": "¿Cuál es la forma de ESTAR para un sujeto plural como 'los exámenes'?",
+          "hint_en": "What is the correct form of ESTAR for a plural subject like 'los exámenes'?",
+          "feedback_correct_es": "Correcto. 'Están' concuerda con 'los exámenes' y expresa su estado actual.",
+          "feedback_correct_en": "Correct. 'Están' matches 'los exámenes' and expresses their current state.",
+          "feedback_incorrect_es": "Recuerda usar la forma plural de ESTAR para un sujeto como 'los exámenes'.",
+          "feedback_incorrect_en": "Remember to use the plural form of ESTAR for a subject like 'los exámenes'."
+        },
+        {
+          "index": 2,
+          "options": [
+            "corregidos"
+          ],
+          "hint_es": "Asegúrate de que el participio concuerde en género y número con 'los exámenes'.",
+          "hint_en": "Make sure the participle agrees in gender and number with 'los exámenes'.",
+          "feedback_correct_es": "Correcto. 'Corregidos' está en plural masculino, como 'los exámenes'.",
+          "feedback_correct_en": "Correct. 'Corregidos' is masculine plural, just like 'los exámenes'.",
+          "feedback_incorrect_es": "El participio debe terminar en -os para concordar con 'los exámenes'.",
+          "feedback_incorrect_en": "The participle should end in -os to match 'los exámenes'."
+        }
+      ],
+      "media": [
+        {
+          "kind": "image",
+          "src": "/media/exercises/fitb/ser-o-estar-participios-1/img/slide-2.png",
+          "alt_es": "",
+          "alt_en": "",
+          "caption_es": "",
+          "caption_en": ""
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "order": 3,
+      "text": "<p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Past action:</b> El chef cortó las papas una por una.</span><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><span class=\"translation\" style=\"display: flex; align-items: center; flex-wrap: wrap; color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Resulting state:&nbsp;</b> Las papas *están* *cortadas*.</span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "están"
+          ],
+          "hint_es": "Busca la forma plural de ESTAR para un sujeto plural \"las papas\".",
+          "hint_en": "Look for the plural form of ESTAR for the subject \"las papas\".",
+          "feedback_correct_es": "Correcto. 'Están' concuerda con 'las papas'.",
+          "feedback_correct_en": "Correct. 'Están' agrees with 'las papas'.",
+          "feedback_incorrect_es": "Recuerda: 'las papas' requiere la forma plural de ESTAR: 'están'.",
+          "feedback_incorrect_en": "Remember: 'las papas' needs the plural form of ESTAR: 'están'."
+        },
+        {
+          "index": 2,
+          "options": [
+            "cortadas"
+          ],
+          "hint_es": "¿El participio concuerda en género y número con 'las papas'?",
+          "hint_en": "Does the participle agree in gender and number with 'las papas'?",
+          "feedback_correct_es": "Correcto. 'Cortadas' concuerda en femenino plural con 'las papas'.",
+          "feedback_correct_en": "Correct. 'Cortadas' matches the feminine plural 'las papas'.",
+          "feedback_incorrect_es": "Revisa el final: debe ser '-adas' para concordar con 'las papas'.",
+          "feedback_incorrect_en": "Check the ending: it should be '-adas' to match 'las papas'."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b4",
+      "order": 4,
+      "text": "<p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b style=\"\">Past action:</b> Se hornearon las empanadas.</span><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><span class=\"translation\" style=\"display: flex; align-items: center; flex-wrap: wrap; color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b style=\"\">Resulting state:</b>&nbsp;Las empanadas *están* *horneadas*.</span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "están"
+          ],
+          "hint_es": "¿Qué forma de ESTAR usamos con 'las empanadas' (plural)?",
+          "hint_en": "Which form of ESTAR matches 'las empanadas' (plural)?",
+          "feedback_correct_es": "Correcto. 'Están' es la forma correcta para un sujeto plural.",
+          "feedback_correct_en": "Correct. 'Están' is the right form for a plural subject.",
+          "feedback_incorrect_es": "Recuerda: 'las empanadas' lleva 'están' como forma plural de ESTAR.",
+          "feedback_incorrect_en": "Remember: 'las empanadas' needs 'están' as the plural form of ESTAR."
+        },
+        {
+          "index": 2,
+          "options": [
+            "horneadas"
+          ],
+          "hint_es": "¿Coincide el participio con 'las empanadas' en género y número?",
+          "hint_en": "Does the participle match 'las empanadas' in gender and number?",
+          "feedback_correct_es": "Correcto. 'Horneadas' concuerda con el sujeto femenino plural.",
+          "feedback_correct_en": "Correct. 'Horneadas' agrees with the feminine plural subject.",
+          "feedback_incorrect_es": "El participio debe coincidir con 'empanadas': femenino + plural = -adas.",
+          "feedback_incorrect_en": "The participle must match 'empanadas': feminine + plural = -adas."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b5",
+      "order": 5,
+      "text": "<p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Past action:</b> La ventana fue rota por una piedra.</span><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><span class=\"translation\" style=\"display: flex; align-items: center; flex-wrap: wrap; color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Resulting state:</b>&nbsp;La ventana *está* *rota*.</span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Cuál es la forma de ESTAR para un sujeto singular como 'la ventana'?",
+          "hint_en": "What’s the correct form of ESTAR for a singular subject like 'la ventana'?",
+          "feedback_correct_es": "Correcto. 'Está' concuerda con el sujeto singular femenino.",
+          "feedback_correct_en": "Correct. 'Está' matches the singular feminine subject.",
+          "feedback_incorrect_es": "Recuerda: usamos 'está' para sujetos singulares como 'la ventana'.",
+          "feedback_incorrect_en": "Remember: we use 'está' for singular subjects like 'la ventana'."
+        },
+        {
+          "index": 2,
+          "options": [
+            "rota"
+          ],
+          "hint_es": "El participio tiene que coincidir en género y número con 'la ventana'.",
+          "hint_en": "The participle must match 'la ventana' in gender and number.",
+          "feedback_correct_es": "Correcto. 'Rota' concuerda con 'la ventana' (femenino singular).",
+          "feedback_correct_en": "Correct. 'Rota' agrees with 'la ventana' (feminine singular).",
+          "feedback_incorrect_es": "Recuerda que el participio debe terminar en -a para concordar con 'la ventana'.",
+          "feedback_incorrect_en": "Remember the participle should end in -a to match 'la ventana'."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b6",
+      "order": 6,
+      "text": "<p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Past action: </b>El agua dañó las hojas del libro.</span><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><span class=\"translation\" style=\"display: flex; align-items: center; flex-wrap: wrap; color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Resulting state: </b>&nbsp;Las hojas del libro *están* *dañadas*.</span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "están"
+          ],
+          "hint_es": "¿Qué forma de ESTAR corresponde a 'las hojas'?",
+          "hint_en": "What form of ESTAR corresponds to 'las hojas'?",
+          "feedback_correct_es": "Correcto. 'Están' concuerda con el sujeto plural 'las hojas'.",
+          "feedback_correct_en": "Correct. 'Están' agrees with the plural subject 'las hojas'.",
+          "feedback_incorrect_es": "Cuidado: 'las hojas' requiere la forma plural de ESTAR.",
+          "feedback_incorrect_en": "Watch out: 'las hojas' requires the plural form of ESTAR."
+        },
+        {
+          "index": 2,
+          "options": [
+            "dañadas"
+          ],
+          "hint_es": "Asegúrate de que el participio concuerde con 'las hojas' (femenino plural).",
+          "hint_en": "Make sure the participle agrees with 'las hojas' (feminine plural).",
+          "feedback_correct_es": "Correcto. 'Dañadas' concuerda con 'las hojas' en género y número.",
+          "feedback_correct_en": "Correct. 'Dañadas' agrees with 'las hojas' in gender and number.",
+          "feedback_incorrect_es": "El participio debe terminar en -adas para concordar con 'las hojas'.",
+          "feedback_incorrect_en": "The participle should end in -adas to match 'las hojas'."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b7",
+      "order": 7,
+      "text": "<p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Past action:</b> La basura fue tirada por todo el piso.</span><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><span class=\"translation\" style=\"display: flex; align-items: center; flex-wrap: wrap; color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Resulting state:</b>&nbsp;La basura *está* *tirada* por todo el piso.<span style=\"font-style: italic; font-weight: bold; font-size: 14px;\"><br></span></span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Qué forma de ESTAR va con un sujeto singular como 'la basura'?",
+          "hint_en": "Which form of ESTAR fits a singular subject like 'la basura'?",
+          "feedback_correct_es": "Correcto. 'Está' se usa con sujetos singulares como 'la basura'.",
+          "feedback_correct_en": "Correct. 'Está' is used with singular subjects like 'la basura'.",
+          "feedback_incorrect_es": "Recuerda: 'la basura' es singular, así que usamos 'está'.",
+          "feedback_incorrect_en": "Remember: 'la basura' is singular, so we use 'está'."
+        },
+        {
+          "index": 2,
+          "options": [
+            "tirada"
+          ],
+          "hint_es": "¿Coincide el participio con 'la basura' en género y número?",
+          "hint_en": "Does the participle agree with 'la basura' in gender and number?",
+          "feedback_correct_es": "Correcto. 'Tirada' está en femenino singular, igual que 'la basura'.",
+          "feedback_correct_en": "Correct. 'Tirada' is feminine singular, just like 'la basura'.",
+          "feedback_incorrect_es": "El participio debe terminar en -a para concordar con un sujeto femenino singular.",
+          "feedback_incorrect_en": "The participle should end in -a to match a singular feminine subject."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b8",
+      "order": 8,
+      "text": "<p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Past action:</b> La cena fue preparada por la tía Emilce.</span><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><span class=\"translation\" style=\"display: flex; align-items: center; flex-wrap: wrap; color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Resulting state:</b>&nbsp;La cena *está* *preparada*.</span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Qué forma de ESTAR corresponde a un sujeto singular como 'la cena'?",
+          "hint_en": "Which form of ESTAR matches a singular subject like 'la cena'?",
+          "feedback_correct_es": "Correcto. 'Está' concuerda con un sujeto singular.",
+          "feedback_correct_en": "Correct. 'Está' agrees with a singular subject.",
+          "feedback_incorrect_es": "Recuerda: usamos 'está' con sujetos singulares como 'la cena'.",
+          "feedback_incorrect_en": "Remember: we use 'está' with singular subjects like 'la cena'."
+        },
+        {
+          "index": 2,
+          "options": [
+            "preparada"
+          ],
+          "hint_es": "El participio debe concordar en género y número con 'la cena'.",
+          "hint_en": "The participle must agree in gender and number with 'la cena'.",
+          "feedback_correct_es": "Correcto. 'Preparada' concuerda con el sujeto femenino singular.",
+          "feedback_correct_en": "Correct. 'Preparada' agrees with the feminine singular subject.",
+          "feedback_incorrect_es": "Revisa el final del participio: debe ser '-ada' para concordar con 'la cena'.",
+          "feedback_incorrect_en": "Check the participle ending: it should be '-ada' to match 'la cena'."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b9",
+      "order": 9,
+      "text": "<p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Past action:</b> Ayer grabamos el video en TikTok.</span><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><span class=\"translation\" style=\"display: flex; align-items: center; flex-wrap: wrap; color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Resulting state:</b>&nbsp;El video *está* *grabado*.</span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Qué forma de ESTAR usamos con 'el video'?",
+          "hint_en": "Which form of ESTAR do we use with 'el video'?",
+          "feedback_correct_es": "Correcto. 'Está' es la forma adecuada para un sujeto masculino singular.",
+          "feedback_correct_en": "Correct. 'Está' is the correct form for a singular masculine subject.",
+          "feedback_incorrect_es": "Recuerda usar 'está' con un sujeto singular como 'el video'.",
+          "feedback_incorrect_en": "Remember to use 'está' with a singular subject like 'el video'."
+        },
+        {
+          "index": 2,
+          "options": [
+            "grabado"
+          ],
+          "hint_es": "Asegúrate de que el participio concuerde con 'el video' (masculino singular).",
+          "hint_en": "Make sure the participle matches 'el video' (masculine singular).",
+          "feedback_correct_es": "Correcto. 'Grabado' concuerda en género y número con 'el video'.",
+          "feedback_correct_en": "Correct. 'Grabado' agrees in gender and number with 'el video'.",
+          "feedback_incorrect_es": "El participio debe terminar en '-ado' para concordar con un sujeto masculino singular.",
+          "feedback_incorrect_en": "The participle should end in '-ado' to match a masculine singular subject."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b10",
+      "order": 10,
+      "text": "<p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Past action:</b> Ayer compraron las entradas para el concierto.</span><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><span class=\"translation\" style=\"display: flex; align-items: center; flex-wrap: wrap; color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Resulting state:</b>&nbsp;Las entradas *están* *compradas*.</span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "están"
+          ],
+          "hint_es": "¿Cuál es la forma plural de ESTAR para 'las entradas'?",
+          "hint_en": "What is the plural form of ESTAR for 'las entradas'?",
+          "feedback_correct_es": "Correcto. 'Están' concuerda con 'las entradas' (plural femenino).",
+          "feedback_correct_en": "Correct. 'Están' matches 'las entradas' (feminine plural).",
+          "feedback_incorrect_es": "Recuerda: para sujetos plurales como 'las entradas', usamos 'están'.",
+          "feedback_incorrect_en": "Remember: for plural subjects like 'las entradas', we use 'están'."
+        },
+        {
+          "index": 2,
+          "options": [
+            "compradas"
+          ],
+          "hint_es": "El participio debe coincidir con 'las entradas' en género y número.",
+          "hint_en": "The participle must match 'las entradas' in gender and number.",
+          "feedback_correct_es": "Correcto. 'Compradas' está en femenino plural, como 'las entradas'.",
+          "feedback_correct_en": "Correct. 'Compradas' is feminine plural, just like 'las entradas'.",
+          "feedback_incorrect_es": "Fíjate en el final '-adas': necesario para concordar con 'las entradas'.",
+          "feedback_incorrect_en": "Notice the '-adas' ending: it's needed to agree with 'las entradas'."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b11",
+      "order": 11,
+      "text": "<p><b style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">Past action:&nbsp;</b><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">Acabo de curar mi nuevo mate.</span><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><br style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><span class=\"translation\" style=\"display: flex; align-items: center; flex-wrap: wrap; color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"><b>Resulting state:</b>&nbsp;Mi nuevo mate *está* *curado*.</span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "está"
+          ],
+          "hint_es": "Busca la forma singular de ESTAR para un objeto como 'mi nuevo mate'.",
+          "hint_en": "Look for the singular form of ESTAR for an object like 'mi nuevo mate'.",
+          "feedback_correct_es": "Correcto. 'Está' concuerda con un sujeto singular y expresa un estado resultante.",
+          "feedback_correct_en": "Correct. 'Está' matches a singular subject and expresses a resulting state.",
+          "feedback_incorrect_es": "Recuerda: con 'mi nuevo mate' usamos la forma singular 'está'.",
+          "feedback_incorrect_en": "Remember: with 'mi nuevo mate' we use the singular form 'está'."
+        },
+        {
+          "index": 2,
+          "options": [
+            "curado"
+          ],
+          "hint_es": "El participio debe concordar en género y número con 'mate' (masculino singular).",
+          "hint_en": "The participle must agree in gender and number with 'mate' (masculine singular).",
+          "feedback_correct_es": "Correcto. 'Curado' concuerda con 'mate', que es masculino singular.",
+          "feedback_correct_en": "Correct. 'Curado' agrees with 'mate', which is masculine singular.",
+          "feedback_incorrect_es": "El participio debe estar en masculino singular para coincidir con 'mate'.",
+          "feedback_incorrect_en": "The participle must be masculine singular to match 'mate'."
+        }
+      ],
+      "media": []
+    }
+  ],
+  "created_by": "admin",
+  "created_at": "2025-12-04T20:31:11.091Z",
+  "checksum": "sha256:13bc7db33006ea14310ad68363e5e5bb746049e9dcb4d406cdf5fb6142d15005"
+}

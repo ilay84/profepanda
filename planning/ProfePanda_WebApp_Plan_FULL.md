@@ -1291,3 +1291,10 @@ If you choose **Glossary JSON**, skip those tables; keep `data/glossary/*.json` 
 - Public Articles list can filter by `?topic=` and render a localized breadcrumb.
 - Exercises builder saves `taxonomy_paths`; admin API returns them in JSON.
 - `common/taxonomy.py` functions behave per spec for known sample paths.
+
+## Exercises Runtime & Builder (current implementation snapshot)
+- Runtime shell: `PPXModal` provides header (title/type pill/fullscreen/reset), body (language toggle + scrollable content), and footer (level pill + brand). Header reset calls the player's `resetExercise` and is expected to keep the modal open while the player clears caches and reopens slide 1; only use `location.reload()` on hard failure.
+- Language/i18n: payloads include bilingual meta (title_es/en, instructions_es/en, level labels). Hints/feedback fields also ship `_es`/`_en` variants; core prompts remain neutral except TF dual text.
+- Hints & intros: hint buttons toggle inline boxes and fire `api.hint`; intro cards show once per slug via localStorage (`ppx:intro:dismissed:<type>/<slug>`). Summary slides suppress media toggles.
+- State/caching: progress stored under `ppx:progress:<type>/<slug>` plus type-specific caches (e.g., `ppx_ctc_state:<slug>`). Reset flows must wipe these before reopening.
+- Admin builder: per-type builders auto-slug from the first title and stop updating once the slug input is edited or when editing an existing exercise; enforce lowercase/kebab-case. Builders expose bilingual fields for any user-facing text (titles, instructions, hints, feedback), taxonomy picker, status, JSON editor, media upload, and preview hooks.

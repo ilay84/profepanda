@@ -1,0 +1,818 @@
+{% extends "base.html" %}
+{% block title %}Content Lab . Admin{% endblock %}
+
+{% block admin_nav %}
+  {% include "_admin_bar.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="ppx-container ppx-admin" style="--ppx-admin-width: 1260px;">
+  <div class="ppx-row" style="margin-top:1rem; gap:1rem; align-items:stretch; flex-wrap:wrap;">
+    <div class="ppx-card" style="padding:1rem; flex: 1 1 320px; min-width:320px;">
+      <div class="ppx-row" style="align-items:center; gap:.75rem;">
+        <img alt="" src="{{ url_for('static', filename='assets/icons/preview.svg') }}" style="width:32px; height:32px;" loading="lazy">
+        <div>
+          <div class="ppx-h2" style="margin:0;">Content Lab</div>
+          <div class="ppx-muted" style="margin-top:.15rem;">Sandbox privado para experimentar UI/UX sin afectar prod.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem; display:grid; gap:.75rem;">
+        <label class="ppx-field">
+          <div class="ppx-label">Recurso de ejemplo</div>
+          <select id="lab-resource-select" class="ppx-select"></select>
+        </label>
+        <label class="ppx-field">
+          <div class="ppx-label">Tema</div>
+          <select id="lab-theme-select" class="ppx-select"></select>
+        </label>
+        <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
+          <button id="lab-reload" class="ppx-btn">Recargar JSON</button>
+          <button id="lab-snapshot" class="ppx-btn ppx-btn-secondary">Capturar vista</button>
+        </div>
+        <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
+          <label class="ppx-checkbox">
+            <input id="lab-toggle-density" type="checkbox">
+            <span>Modo compacto</span>
+          </label>
+          <label class="ppx-checkbox">
+            <input id="lab-toggle-mock" type="checkbox" checked>
+            <span>Mocks de servicios (traduccion/progreso)</span>
+          </label>
+        </div>
+        <div class="ppx-muted" style="font-size:13px;">
+          traducciones, progreso y ejercicios usan stubs en este laboratorio. Ajusta tema y variantes para validar visuales.
+        </div>
+      </div>
+    </div>
+
+    <div class="ppx-card" style="padding:1rem; flex: 2 1 640px; min-width:520px;">
+      <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
+        <div>
+          <div class="ppx-h3" id="lab-resource-title" style="margin:0;">Recurso</div>
+          <div class="ppx-muted" id="lab-resource-meta" style="font-size:13px; margin-top:.1rem;"></div>
+        </div>
+        <div class="ppx-row" style="gap:.5rem; align-items:center;">
+          <span class="ppx-pill" id="lab-theme-pill">Tema</span>
+          <span class="ppx-pill ppx-pill-muted" id="lab-density-pill">Comodo</span>
+        </div>
+      </div>
+
+      <div id="lab-module-nav" class="ppx-row" style="margin:1rem 0 .5rem 0; gap:.5rem; flex-wrap:wrap;"></div>
+      <div id="lab-preview" class="lab-preview"></div>
+      <div class="ppx-row" style="margin-top:1rem; gap:1rem; flex-wrap:wrap;">
+        <div class="ppx-card" style="padding:.75rem 1rem; flex:1 1 240px; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8);">
+          <div class="ppx-h4" style="margin:0 0 .35rem 0;">Progreso simulado</div>
+          <div class="lab-progress-bar">
+            <div id="lab-progress-fill" class="lab-progress-fill" style="width:0%;"></div>
+          </div>
+          <div class="ppx-muted" id="lab-progress-text" style="font-size:13px; margin-top:.35rem;">0% completado</div>
+        </div>
+        <div class="ppx-card" style="padding:.75rem 1rem; flex:1 1 240px;">
+          <div class="ppx-h4" style="margin:0 0 .35rem 0;">Recomendaciones</div>
+          <ul id="lab-recs" style="margin:0; padding-left:18px; color:#0f172a;"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ppx-card" style="padding:1rem; margin:1rem 0;">
+    <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
+      <div class="ppx-h3" style="margin:0;">JSON en vivo</div>
+      <div class="ppx-row" style="gap:.5rem;">
+        <button id="lab-fullscreen-json" class="ppx-btn ppx-btn-secondary" type="button">Pantalla completa</button>
+        <button id="lab-toggle-json" class="ppx-btn ppx-btn-secondary" type="button">Ocultar</button>
+      </div>
+    </div>
+    <div class="ppx-row" style="gap:.5rem; margin-top:.5rem; flex-wrap:wrap;">
+      <button id="lab-apply-json" class="ppx-btn">Aplicar cambios</button>
+      <button id="lab-download-json" class="ppx-btn ppx-btn-secondary" type="button">Descargar JSON</button>
+      <label class="ppx-btn ppx-btn-secondary" style="cursor:pointer;">
+        Cargar JSON
+        <input id="lab-upload-json" type="file" accept="application/json" style="display:none;">
+      </label>
+      <span id="lab-json-status" class="ppx-muted"></span>
+    </div>
+    <div class="lab-json-shell" id="lab-json-shell">
+      <button id="lab-exit-fullscreen" class="ppx-btn ppx-btn-secondary lab-exit-fullscreen hidden" type="button">Salir de pantalla completa</button>
+      <div class="lab-json-scroll" id="lab-json-scroll">
+        <pre id="lab-json-lines" class="lab-json lab-json-lines"></pre>
+        <textarea id="lab-json" class="lab-json lab-json-code" spellcheck="false"></textarea>
+      </div>
+    </div>
+    <div id="lab-json-error" class="lab-json-error hidden"></div>
+  </div>
+</main>
+
+<style>
+  .lab-preview {
+    border: 1px dashed var(--ppx-line, #d4d4d8);
+    border-radius: 12px;
+    padding: 16px;
+    background: #fbfcff;
+    min-height: 280px;
+  }
+  .lab-preview.compact { padding: 10px; }
+  .lab-block { margin: 0 0 14px 0; }
+  .lab-block:last-child { margin-bottom: 0; }
+  .lab-callout {
+    border-radius: 12px;
+    padding: 12px 14px;
+    border: 1px solid #dbeafe;
+    background: #f8fbff;
+  }
+  .lab-callout.info { border-color: #dbeafe; background: #f1f5ff; }
+  .lab-callout.warning { border-color: #fbbf24; background: #fff7ed; }
+  .lab-callout.success { border-color: #4ade80; background: #ecfdf3; }
+  .lab-callout .lab-callout-title { font-weight: 600; margin-bottom: 6px; }
+  .lab-table { width: 100%; border-collapse: collapse; }
+  .lab-table th, .lab-table td { border: 1px solid #e2e8f0; padding: 8px; text-align: left; }
+  .lab-example-audio { margin-top: 8px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .lab-pill { display:inline-flex; align-items:center; padding:2px 8px; border-radius:10px; background:#e2e8f0; font-size:12px; }
+  .lab-json-shell { position: relative; border-radius:12px; border:1px solid #0f172a; overflow:hidden; }
+  .lab-json-shell.fullscreen {
+    position: fixed;
+    inset: 16px;
+    z-index: 9999;
+    background: rgba(15,23,42,0.98);
+    border: 1px solid #94a3b8;
+  }
+  .lab-exit-fullscreen {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+  }
+  .lab-json-shell.fullscreen .lab-exit-fullscreen { display: inline-flex !important; }
+  .lab-json-scroll { display:flex; max-height: 360px; overflow:hidden; background:#0f172a; }
+  .lab-json-shell.fullscreen .lab-json-scroll { max-height: none; height: calc(100% - 8px); }
+  .lab-json { flex:1 1 auto; background:#0f172a; color:#e2e8f0; padding:12px; margin:0; font-size:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; line-height: 1.45; }
+  .lab-json-lines { flex: 0 0 56px; text-align: right; color:#94a3b8; border-right:1px solid #1f2937; box-sizing:border-box; padding-left:8px; padding-right:8px; overflow:hidden; }
+  .lab-json-code { flex:1 1 auto; min-width:0; border:none; outline:none; resize:none; overflow:auto; }
+  .lab-json-error { margin-top:.5rem; padding:.5rem .75rem; border-radius:8px; background:#fef2f2; color:#991b1b; border:1px solid #fecdd3; font-size:13px; }
+  .hidden { display:none !important; }
+  .lab-progress-bar { position: relative; width: 100%; height: 10px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+  .lab-progress-fill { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, #475dd7, #80ac5f); }
+  .lab-bubble {
+    position: absolute;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 6px 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    display: none;
+    gap: 8px;
+    align-items: center;
+    z-index: 5000;
+  }
+  .lab-bubble button {
+    border: none;
+    background: #475dd7;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .lab-translation {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    max-width: 320px;
+    padding: 12px;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 5000;
+  }
+  .lab-translation strong { display:block; margin-bottom:6px; }
+  #lab-module-nav button {
+    border: 1px solid var(--ppx-line,#d4d4d8);
+    border-radius: 10px;
+    padding: 6px 10px;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  #lab-module-nav button.active {
+    background: #e0e7ff;
+    border-color: #c7d2fe;
+    color: #312e81;
+  }
+</style>
+
+<script>
+(() => {
+  const api = {
+    listResources: "/admin/api/content-lab/resources",
+    listThemes: "/admin/api/content-lab/themes",
+    resource: (id) => `/admin/api/content-lab/resources/${encodeURIComponent(id)}`,
+    theme: (id) => `/admin/api/content-lab/themes/${encodeURIComponent(id)}`
+  };
+
+  const resources = {{ lab_resources|tojson }};
+  const themes = {{ lab_themes|tojson }};
+  const state = {
+    resourceId: resources[0]?.id || "",
+    themeId: themes[0]?.id || "",
+    resourceData: null,
+    themeData: null,
+    compact: false
+  };
+
+  const els = {
+    resourceSelect: document.getElementById("lab-resource-select"),
+    themeSelect: document.getElementById("lab-theme-select"),
+    reload: document.getElementById("lab-reload"),
+    snapshot: document.getElementById("lab-snapshot"),
+    toggleDensity: document.getElementById("lab-toggle-density"),
+    toggleMock: document.getElementById("lab-toggle-mock"),
+    resourceTitle: document.getElementById("lab-resource-title"),
+    resourceMeta: document.getElementById("lab-resource-meta"),
+    themePill: document.getElementById("lab-theme-pill"),
+    densityPill: document.getElementById("lab-density-pill"),
+    moduleNav: document.getElementById("lab-module-nav"),
+    preview: document.getElementById("lab-preview"),
+    json: document.getElementById("lab-json"),
+    jsonLines: document.getElementById("lab-json-lines"),
+    jsonShell: document.getElementById("lab-json-shell"),
+    toggleJson: document.getElementById("lab-toggle-json"),
+    fullscreenJson: document.getElementById("lab-fullscreen-json"),
+    exitFullscreen: document.getElementById("lab-exit-fullscreen"),
+    applyJson: document.getElementById("lab-apply-json"),
+    jsonStatus: document.getElementById("lab-json-status"),
+    jsonError: document.getElementById("lab-json-error"),
+    downloadJson: document.getElementById("lab-download-json"),
+    uploadJson: document.getElementById("lab-upload-json"),
+    progressFill: document.getElementById("lab-progress-fill"),
+    progressText: document.getElementById("lab-progress-text"),
+    recs: document.getElementById("lab-recs"),
+    bubble: null,
+    translation: null
+  };
+
+  function populateSelect(select, items, labelKey = "title") {
+    select.innerHTML = "";
+    items.forEach((item) => {
+      const opt = document.createElement("option");
+      opt.value = item.id;
+      opt.textContent = item[labelKey] || item.id;
+      select.appendChild(opt);
+    });
+    if (items.length === 0) {
+      const opt = document.createElement("option");
+      opt.textContent = "Sin recursos";
+      opt.value = "";
+      select.appendChild(opt);
+    }
+  }
+
+  populateSelect(els.resourceSelect, resources);
+  populateSelect(els.themeSelect, themes);
+  if (state.resourceId) { els.resourceSelect.value = state.resourceId; }
+  if (state.themeId) { els.themeSelect.value = state.themeId; }
+
+  function applyTheme(theme) {
+    if (!theme || !theme.colors) return;
+    const root = document.documentElement;
+    const c = theme.colors;
+    root.style.setProperty("--ppx-color-primary", c.primary || "#475dd7");
+    root.style.setProperty("--ppx-color-accent", c.accent || "#80ac5f");
+    root.style.setProperty("--ppx-color-bg", c.background || "#f8fafc");
+    root.style.setProperty("--ppx-color-text", c.text_main || "#0f172a");
+    els.themePill.textContent = theme.theme_id || "Tema";
+  }
+
+  function renderSegments(segments) {
+    const span = document.createElement("span");
+    (segments || []).forEach(seg => {
+      const s = document.createElement("span");
+      s.textContent = seg.text || "";
+      s.dataset.segmentId = seg.segment_id || "";
+      if (seg.marks && seg.marks.includes("bold")) s.style.fontWeight = "700";
+      if (seg.marks && seg.marks.includes("italic")) s.style.fontStyle = "italic";
+      span.appendChild(s);
+    });
+    return span;
+  }
+
+  function renderBlock(block) {
+    const wrap = document.createElement("div");
+    wrap.className = "lab-block";
+    const data = block.data || {};
+    switch (block.type) {
+      case "heading": {
+        const h = document.createElement("h3");
+        h.style.margin = "0 0 6px 0";
+        h.appendChild(renderSegments(data.segments || []));
+        wrap.appendChild(h);
+        break;
+      }
+      case "text": {
+        const p = document.createElement("p");
+        p.style.margin = "0 0 8px 0";
+        p.appendChild(renderSegments(data.segments || []));
+        wrap.appendChild(p);
+        break;
+      }
+      case "list": {
+        const list = document.createElement(data.ordered ? "ol" : "ul");
+        list.style.margin = "0 0 8px 16px";
+        (data.items || []).forEach(item => {
+          const li = document.createElement("li");
+          li.appendChild(renderSegments(item.segments || []));
+          list.appendChild(li);
+        });
+        wrap.appendChild(list);
+        break;
+      }
+      case "callout": {
+        const div = document.createElement("div");
+        div.className = `lab-callout ${block.style_variant || "info"}`;
+        div.appendChild(renderSegments(data.segments || []));
+        wrap.appendChild(div);
+        break;
+      }
+      case "table": {
+        const table = document.createElement("table");
+        table.className = "lab-table";
+        const thead = document.createElement("thead");
+        const trh = document.createElement("tr");
+        (data.columns || []).forEach(col => {
+          const th = document.createElement("th");
+          th.textContent = col.label || "";
+          trh.appendChild(th);
+        });
+        thead.appendChild(trh);
+        table.appendChild(thead);
+        const tbody = document.createElement("tbody");
+        (data.rows || []).forEach(row => {
+          const tr = document.createElement("tr");
+          (data.columns || []).forEach(col => {
+            const td = document.createElement("td");
+            const cellSegs = (row.cells || {})[col.id] || [];
+            td.appendChild(renderSegments(cellSegs));
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        wrap.appendChild(table);
+        break;
+      }
+      case "example_sentence": {
+        const div = document.createElement("div");
+        div.className = "lab-callout info";
+        const primary = document.createElement("div");
+        primary.style.fontWeight = "700";
+        primary.appendChild(renderSegments(data.segments_primary || []));
+        const translation = document.createElement("div");
+        translation.style.marginTop = "4px";
+        translation.appendChild(renderSegments(data.segments_translation || []));
+        div.appendChild(primary);
+        div.appendChild(translation);
+        if (data.audio && data.audio.src) {
+          const audioWrap = document.createElement("div");
+          audioWrap.className = "lab-example-audio";
+          const audio = document.createElement("audio");
+          audio.controls = true;
+          audio.src = data.audio.src;
+          audioWrap.appendChild(audio);
+          if (data.player_options?.allow_speed_control) {
+            const select = document.createElement("select");
+            (data.player_options.speed_steps || [0.75,1,1.25]).forEach(step => {
+              const opt = document.createElement("option");
+              opt.value = step;
+              opt.textContent = `${step}x`;
+              if (step === data.player_options.default_speed) opt.selected = true;
+              select.appendChild(opt);
+            });
+            select.addEventListener("change", () => {
+              audio.playbackRate = Number(select.value) || 1;
+            });
+            audioWrap.appendChild(select);
+          }
+          div.appendChild(audioWrap);
+        }
+        wrap.appendChild(div);
+        break;
+      }
+      case "exercise_reference": {
+        const box = document.createElement("div");
+        box.className = "lab-callout info";
+        const title = document.createElement("div");
+        title.className = "lab-callout-title";
+        title.textContent = data.exercise_id || "Ejercicio";
+        const meta = document.createElement("div");
+        meta.className = "ppx-muted";
+        meta.style.fontSize = "13px";
+        meta.textContent = data.exercise_type ? `Tipo: ${data.exercise_type}` : "Usa motor de ejercicios existente";
+        box.appendChild(title);
+        box.appendChild(meta);
+        wrap.appendChild(box);
+        break;
+      }
+      default: {
+        const unknown = document.createElement("div");
+        unknown.className = "lab-callout warning";
+        unknown.textContent = `Sin renderer para tipo: ${block.type}`;
+        wrap.appendChild(unknown);
+      }
+    }
+    return wrap;
+  }
+
+  function renderModule(module) {
+    els.preview.innerHTML = "";
+    if (state.compact) {
+      els.preview.classList.add("compact");
+    } else {
+      els.preview.classList.remove("compact");
+    }
+    if (!module) {
+      els.preview.textContent = "Selecciona un modulo para previsualizar.";
+      return;
+    }
+    (module.blocks || []).forEach(block => {
+      els.preview.appendChild(renderBlock(block));
+    });
+  }
+
+  function renderModuleNav(modules) {
+    els.moduleNav.innerHTML = "";
+    if (!modules || modules.length === 0) {
+      els.moduleNav.textContent = "Este recurso no tiene modulos.";
+      return;
+    }
+    modules.forEach((mod, idx) => {
+      const btn = document.createElement("button");
+      btn.textContent = mod.title_en || mod.title_es || mod.module_id || `Modulo ${idx+1}`;
+      btn.addEventListener("click", () => {
+        Array.from(els.moduleNav.querySelectorAll("button")).forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderModule(mod);
+      });
+      if (idx === 0) btn.classList.add("active");
+      els.moduleNav.appendChild(btn);
+    });
+    renderModule(modules[0]);
+  }
+
+  function updateMeta(resource) {
+    if (!resource) {
+      els.resourceTitle.textContent = "Recurso";
+      els.resourceMeta.textContent = "";
+      return;
+    }
+    const meta = resource.meta || {};
+    els.resourceTitle.textContent = meta.title_en || meta.title_es || resource.resource_id || "Recurso";
+    const parts = [];
+    if (meta.lang_primary) parts.push(`Primario: ${meta.lang_primary}`);
+    if (meta.level) parts.push(`Nivel: ${meta.level}`);
+    if (resource.modules) parts.push(`${resource.modules.length} modulos`);
+    els.resourceMeta.textContent = parts.join(" . ");
+  }
+
+  function renderJson(resource) {
+    const pretty = JSON.stringify(resource, null, 2);
+    const lines = pretty.split("\n");
+    els.json.value = pretty;
+    els.jsonLines.textContent = lines.map((_, idx) => String(idx + 1)).join("\n");
+  }
+
+  function computeMockProgress(resource) {
+    const modules = (resource && resource.modules) || [];
+    if (!modules.length) return { percent: 0, recs: [] };
+    const completed = Math.max(1, Math.floor(modules.length / 2));
+    const percent = Math.round((completed / modules.length) * 100);
+    const recs = modules.slice(completed, completed + 3).map((m) => `Revisar modulo: ${m.title_en || m.title_es || m.module_id}`);
+    return { percent, recs };
+  }
+
+  function renderProgress(resource) {
+    const result = computeMockProgress(resource);
+    const percent = result.percent;
+    const recs = result.recs;
+    els.progressFill.style.width = `${percent}%`;
+    els.progressText.textContent = `${percent}% completado (simulado)`;
+    els.recs.innerHTML = "";
+    if (!recs.length) {
+      const li = document.createElement("li");
+      li.textContent = "Sin recomendaciones";
+      els.recs.appendChild(li);
+    } else {
+      recs.forEach((r) => {
+        const li = document.createElement("li");
+        li.textContent = r;
+        els.recs.appendChild(li);
+      });
+    }
+  }
+
+  // Selection + translation demo
+  function ensureBubble() {
+    if (els.bubble) return;
+    const b = document.createElement("div");
+    b.className = "lab-bubble";
+    const btnTranslate = document.createElement("button");
+    btnTranslate.textContent = "Traducir";
+    btnTranslate.addEventListener("click", () => showTranslation());
+    b.appendChild(btnTranslate);
+    document.body.appendChild(b);
+    els.bubble = b;
+  }
+
+  function ensureTranslationBox() {
+    if (els.translation) return;
+    const box = document.createElement("div");
+    box.className = "lab-translation";
+    const close = document.createElement("button");
+    close.textContent = "×";
+    close.style.float = "right";
+    close.style.background = "transparent";
+    close.style.color = "#e2e8f0";
+    close.style.border = "none";
+    close.style.cursor = "pointer";
+    close.addEventListener("click", () => { box.style.display = "none"; });
+    const title = document.createElement("strong");
+    title.textContent = "traduccionn (demo)";
+    const body = document.createElement("div");
+    body.id = "lab-translation-body";
+    box.appendChild(close);
+    box.appendChild(title);
+    box.appendChild(body);
+    document.body.appendChild(box);
+    els.translation = box;
+  }
+
+  let lastSelection = { text: "", segments: [] };
+
+  function hideBubble() {
+    if (els.bubble) els.bubble.style.display = "none";
+  }
+
+  function showBubble(rect) {
+    ensureBubble();
+    const b = els.bubble;
+    b.style.left = `${rect.left + window.scrollX}px`;
+    b.style.top = `${rect.bottom + 6 + window.scrollY}px`;
+    b.style.display = "inline-flex";
+  }
+
+  function showTranslation() {
+    ensureTranslationBox();
+    const box = els.translation;
+    const body = document.getElementById("lab-translation-body");
+    body.innerHTML = "";
+    const text = lastSelection.text || "(sin seleccion)";
+    const segs = lastSelection.segments.length ? `Segmentos: ${lastSelection.segments.join(", ")}` : "Segmentos: n/d";
+    const main = document.createElement("div");
+    main.textContent = `${text} - (demo) traduccion`;
+    const meta = document.createElement("div");
+    meta.style.fontSize = "12px";
+    meta.style.marginTop = "6px";
+    meta.textContent = segs;
+    body.appendChild(main);
+    body.appendChild(meta);
+    box.style.display = "block";
+  }
+
+  function handleSelection() {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed) {
+      hideBubble();
+      return;
+    }
+    const anchorNode = sel.anchorNode;
+    const focusNode = sel.focusNode;
+    if (!anchorNode || !focusNode) {
+      hideBubble();
+      return;
+    }
+    if (!els.preview.contains(anchorNode) || !els.preview.contains(focusNode)) {
+      hideBubble();
+      return;
+    }
+    const range = sel.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    const frag = range.cloneContents();
+    const spans = frag.querySelectorAll("[data-segment-id]");
+    const ids = Array.from(new Set(Array.from(spans).map(s => s.dataset.segmentId).filter(Boolean)));
+    lastSelection = { text: sel.toString(), segments: ids };
+    showBubble(rect);
+  }
+
+  function computeMockProgress(resource) {
+    const modules = (resource && resource.modules) || [];
+    if (!modules.length) return { percent: 0, recs: [] };
+    const completed = Math.max(1, Math.floor(modules.length / 2));
+    const percent = Math.round((completed / modules.length) * 100);
+    const recs = modules.slice(completed, completed + 3).map((m) => `Revisar modulo: ${m.title_en || m.title_es || m.module_id}`);
+    return { percent, recs };
+  }
+
+  function renderProgress(resource) {
+    const result = computeMockProgress(resource);
+    const percent = result.percent;
+    const recs = result.recs;
+    els.progressFill.style.width = `${percent}%`;
+    els.progressText.textContent = `${percent}% completado (simulado)`;
+    els.recs.innerHTML = "";
+    if (!recs.length) {
+      const li = document.createElement("li");
+      li.textContent = "Sin recomendaciones";
+      els.recs.appendChild(li);
+    } else {
+      recs.forEach((r) => {
+        const li = document.createElement("li");
+        li.textContent = r;
+        els.recs.appendChild(li);
+      });
+    }
+  }
+
+  function validateResourceShape(resource) {
+    const errors = [];
+    if (!resource || typeof resource !== "object") {
+      errors.push("JSON debe ser un objeto.");
+      return errors;
+    }
+    if (!resource.schema_version) errors.push("Falta schema_version.");
+    if (!resource.resource_id) errors.push("Falta resource_id.");
+    if (!Array.isArray(resource.modules)) errors.push("modules debe ser un array.");
+    if (Array.isArray(resource.modules)) {
+      resource.modules.forEach((mod, idx) => {
+        if (!mod.module_id) errors.push(`Modulo ${idx + 1} sin module_id.`);
+        if (!Array.isArray(mod.blocks)) errors.push(`Modulo ${mod.module_id || idx + 1}: blocks debe ser array.`);
+      });
+    }
+    return errors;
+  }
+
+  async function loadResource(id) {
+    if (!id) return;
+    const res = await fetch(api.resource(id));
+    if (!res.ok) throw new Error("No se pudo cargar el recurso");
+    return res.json();
+  }
+
+  async function loadTheme(id) {
+    if (!id) return;
+    const res = await fetch(api.theme(id));
+    if (!res.ok) throw new Error("No se pudo cargar el tema");
+    return res.json();
+  }
+
+  async function refreshResource() {
+    try {
+      const [resource, theme] = await Promise.all([
+        loadResource(state.resourceId),
+        state.themeId ? loadTheme(state.themeId) : null
+      ]);
+      state.resourceData = resource;
+      state.themeData = theme;
+      updateMeta(resource);
+      renderModuleNav(resource.modules || []);
+      renderProgress(resource);
+      renderJson(resource);
+      if (theme) applyTheme(theme);
+    } catch (e) {
+      console.error(e);
+      els.preview.textContent = "Error cargando recurso o tema.";
+    }
+  }
+
+  // Event wiring
+  els.resourceSelect.addEventListener("change", (e) => {
+    state.resourceId = e.target.value;
+    refreshResource();
+  });
+  els.themeSelect.addEventListener("change", (e) => {
+    state.themeId = e.target.value;
+    els.themePill.textContent = state.themeId || "Tema";
+    refreshResource();
+  });
+  els.reload.addEventListener("click", () => refreshResource());
+  els.toggleDensity.addEventListener("change", (e) => {
+    state.compact = e.target.checked;
+    els.densityPill.textContent = state.compact ? "Compacto" : "Comodo";
+    if (state.resourceData) renderModuleNav(state.resourceData.modules || []);
+  });
+  els.toggleJson.addEventListener("click", () => {
+    const hidden = els.jsonShell.classList.toggle("hidden");
+    els.jsonLines.classList.toggle("hidden", hidden);
+    els.json.classList.toggle("hidden", hidden);
+    els.toggleJson.textContent = hidden ? "Mostrar" : "Ocultar";
+  });
+  els.fullscreenJson.addEventListener("click", () => {
+    const active = els.jsonShell.classList.toggle("fullscreen");
+    els.fullscreenJson.textContent = active ? "Cerrar pantalla completa" : "Pantalla completa";
+    els.exitFullscreen.classList.toggle("hidden", !active);
+  });
+  els.exitFullscreen.addEventListener("click", () => {
+    els.jsonShell.classList.remove("fullscreen");
+    els.exitFullscreen.classList.add("hidden");
+    els.fullscreenJson.textContent = "Pantalla completa";
+  });
+  els.json.addEventListener("scroll", () => {
+    els.jsonLines.scrollTop = els.json.scrollTop;
+  });
+  els.json.addEventListener("input", (e) => {
+    const text = e.target.value;
+    const lines = text.split("\n");
+    els.jsonLines.textContent = lines.map((_, idx) => String(idx + 1)).join("\n");
+  });
+  els.applyJson.addEventListener("click", () => {
+    try {
+      const parsed = JSON.parse(els.json.value);
+      const shapeErrors = validateResourceShape(parsed);
+      if (shapeErrors.length) {
+        els.jsonError.textContent = shapeErrors.join(" . ");
+        els.jsonError.classList.remove("hidden");
+        els.jsonStatus.textContent = "";
+        return;
+      }
+      els.jsonError.classList.add("hidden");
+      els.jsonStatus.textContent = "Aplicado localmente (no guardado en disco)";
+      state.resourceData = parsed;
+      updateMeta(parsed);
+      renderModuleNav(parsed.modules || []);
+      renderProgress(parsed);
+      const pretty = JSON.stringify(parsed, null, 2);
+      els.json.value = pretty;
+      const lines = pretty.split("\n");
+      els.jsonLines.textContent = lines.map((_, idx) => String(idx + 1)).join("\n");
+    } catch (err) {
+      els.jsonError.textContent = `Error de JSON: ${err}`;
+      els.jsonError.classList.remove("hidden");
+      els.jsonStatus.textContent = "";
+    }
+  });
+  els.downloadJson.addEventListener("click", () => {
+    try {
+      const blob = new Blob([els.json.value], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${state.resourceId || "resource"}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      els.jsonError.textContent = `No se pudo descargar: ${err}`;
+      els.jsonError.classList.remove("hidden");
+    }
+  });
+  els.uploadJson.addEventListener("change", (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const text = reader.result?.toString() || "";
+        const parsed = JSON.parse(text);
+        const shapeErrors = validateResourceShape(parsed);
+        if (shapeErrors.length) {
+          els.jsonError.textContent = shapeErrors.join(" . ");
+          els.jsonError.classList.remove("hidden");
+          return;
+        }
+        els.json.value = JSON.stringify(parsed, null, 2);
+        const lines = els.json.value.split("\n");
+        els.jsonLines.textContent = lines.map((_, idx) => String(idx + 1)).join("\n");
+        els.jsonError.classList.add("hidden");
+        els.jsonStatus.textContent = `Cargado: ${file.name} (no guardado en disco)`;
+        state.resourceData = parsed;
+        updateMeta(parsed);
+        renderModuleNav(parsed.modules || []);
+        renderProgress(parsed);
+      } catch (err) {
+        els.jsonError.textContent = `Error al cargar: ${err}`;
+        els.jsonError.classList.remove("hidden");
+      }
+    };
+    reader.readAsText(file);
+    // reset input so same file can be selected again
+    e.target.value = "";
+  });
+  els.snapshot.addEventListener("click", () => {
+    alert("Captura de vista: exportar a PNG/PDF esta en backlog.");
+  });
+
+  // Initial load
+  refreshResource();
+})();
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

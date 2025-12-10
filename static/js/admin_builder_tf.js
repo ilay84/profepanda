@@ -35,6 +35,7 @@
     const inputTx = D.querySelector('.ppx-taxonomy input[type=hidden]');
 
     const appLang = (window.PPX_I18N && window.PPX_I18N.currentLang) || (D.documentElement.getAttribute('lang') || 'es');
+    const builderMode = (form.getAttribute('data-builder-mode') || '').toLowerCase();
     const t = (es, en) => (appLang.startsWith('en') ? (en ?? es) : (es ?? en));
 
     // Prefill slug from URL for edit routes
@@ -44,6 +45,38 @@
         if (m && m[1]) inputSlug.value = decodeURIComponent(m[1]);
       }
     })();
+
+    const slugify = (s) => {
+      try {
+        return String(s || '')
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .replace(/-{2,}/g, '-')
+          .slice(0, 80);
+      } catch (_) {
+        return String(s || '').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]+/g,'').slice(0,80);
+      }
+    };
+    let slugManuallyEdited = false;
+    if (inputSlug) {
+      inputSlug.addEventListener('input', () => { slugManuallyEdited = true; });
+      if (builderMode === 'edit' && inputSlug.value) slugManuallyEdited = true;
+    }
+    function autoSlugFromTitle() {
+      if (slugManuallyEdited) return;
+      const src = (inputTitleEs.value || inputTitleEn.value || '').trim();
+      if (!src) return;
+      const next = slugify(src);
+      if (!next) return;
+      inputSlug.value = next;
+    }
+    ['input','blur'].forEach(evt => {
+      inputTitleEs?.addEventListener(evt, autoSlugFromTitle);
+      inputTitleEn?.addEventListener(evt, autoSlugFromTitle);
+    });
+    if (inputSlug && !inputSlug.value) autoSlugFromTitle();
 
     // ─────────────────────────────────────────────────────────────
     // Lightbox (for image/audio/video preview)
@@ -735,22 +768,14 @@
 
     function assembleJSON(defaultStatus = 'draft') {
       const titleSource = (inputTitleEs.value || inputTitleEn.value || '').trim();
-      const autoSlug = titleSource
-        ? titleSource
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/-{2,}/g, '-')
-            .replace(/^-+|-+$/g, '')
-        : '';
+      autoSlugFromTitle();
 
       const slugFromURL = (() => {
         const m = location.pathname.match(/\/admin\/exercises\/tf\/([^\/]+)\/edit/);
         return m && m[1] ? decodeURIComponent(m[1]).toLowerCase() : '';
       })();
 
-      const slug = ((inputSlug.value || '').trim().toLowerCase()) || autoSlug || slugFromURL;
+      const slug = slugify((inputSlug.value || '').trim() || titleSource || slugFromURL);
       if (!inputSlug.value && slug) inputSlug.value = slug;
 
       // Read taxonomy paths from hidden input (JSON array)
@@ -1029,30 +1054,34 @@
         btn.className = 'ppx-btn';
         btn.title = t('Editar JSON', 'Edit JSON');
         btn.setAttribute('aria-label', t('Editar JSON', 'Edit JSON'));
-        btn.style.display = 'inline-flex';
-        btn.style.alignItems = 'center';
-        btn.style.gap = '6px';
-        btn.style.padding = '6px 10px';
-        btn.style.borderRadius = '10px';
-
-        const icon = D.createElement('img');
-        icon.src = '/static/assets/icons/json.svg';
-        icon.alt = '';
-        icon.width = 18;
-        icon.height = 18;
-
-        const label = D.createElement('span');
-        label.textContent = 'JSON';
-
-        btn.appendChild(icon);
-        btn.appendChild(label);
-
         if (btnExport && btnExport.parentNode) {
           btnExport.parentNode.insertBefore(btn, btnExport.nextSibling);
         } else if (form) {
           form.appendChild(btn);
         }
       }
+      // Ensure JSON icon + label even if template provided the button
+      const icon = btn.querySelector('img[src*="json.svg"]') || (() => {
+        const i = D.createElement('img');
+        i.src = '/static/assets/icons/json.svg';
+        i.alt = '';
+        i.width = 18;
+        i.height = 18;
+        return i;
+      })();
+      const label = btn.querySelector('span') || (() => {
+        const l = D.createElement('span');
+        return l;
+      })();
+      label.textContent = 'JSON';
+      btn.textContent = '';
+      btn.appendChild(icon);
+      btn.appendChild(label);
+      btn.style.display = 'inline-flex';
+      btn.style.alignItems = 'center';
+      btn.style.gap = '6px';
+      btn.style.padding = '6px 10px';
+      btn.style.borderRadius = '10px';
       btn.addEventListener('click', () => {
         // Prefer shared PPX JSON editor when available; otherwise fallback to legacy modal
         if (!window.PPXJsonEditor || typeof window.PPXJsonEditor.open !== 'function') {

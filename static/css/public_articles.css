@@ -27,6 +27,234 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
+/* Home resource layout (public index) */
+.ppx-resource-grid {
+  display: block;
+}
+
+.ppx-resource-band {
+  background: #ebe9ff;
+  border: 1px solid #dedbfd;
+  border-radius: 18px;
+  padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.ppx-hero-band {
+  margin-bottom: 1rem;
+  padding: 1.5rem 1.4rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  position: relative;
+}
+
+.ppx-hero-band::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  height: 24px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0));
+  pointer-events: none;
+}
+
+.ppx-hero-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.55rem;
+  text-align: center;
+}
+
+.ppx-hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #4f46e5;
+  font: 700 12px/1 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.12);
+}
+
+.ppx-hero-title {
+  margin: 0;
+  font: 800 36px/1.15 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #0f172a;
+  letter-spacing: -0.05px;
+  text-align: center;
+}
+
+.ppx-hero-body {
+  margin: 0;
+  max-width: 64ch;
+  color: #1f2937;
+  line-height: 1.6;
+  font-size: 17px;
+  justify-self: center;
+}
+
+.ppx-hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  justify-content: center;
+}
+
+.ppx-hero-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32rem 0.65rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #e4e3ff;
+  color: #4338ca;
+  font: 700 11px/1 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  box-shadow: 0 3px 10px rgba(67, 56, 202, 0.08);
+  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.ppx-hero-chip:hover,
+.ppx-hero-chip:focus-visible {
+  background: #f4f3ff;
+  border-color: #dcd9ff;
+  color: #3730a3;
+}
+
+.ppx-resource-grid-inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 1.25rem 1.5rem;
+  align-items: start;
+}
+
+.ppx-home-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ppx-home-heading {
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.ppx-home-subheading {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.ppx-grid-divider {
+  grid-column: 1 / -1;
+  margin: 0.35rem 0 0.1rem;
+  color: #1f2937;
+}
+
+.ppx-home-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ppx-home-section + .ppx-home-section {
+  margin-top: 1rem;
+}
+
+.ppx-home-section--beta .ppx-resource-grid-inner {
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 960px) {
+  .ppx-resource-grid-inner {
+    grid-template-columns: 1fr;
+  }
+  .ppx-hero-band {
+    padding: 1.35rem 1.2rem;
+  }
+  .ppx-hero-title {
+    font-size: 32px;
+  }
+  .ppx-hero-body {
+    font-size: 16px;
+  }
+}
+
+/* Clickable resource card variant */
+.ppx-resource-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.55fr) 1fr;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.ppx-resource-card:hover,
+.ppx-resource-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  background: #f7f9ff;
+}
+
+.ppx-resource-card .ppx-article-thumb,
+.ppx-resource-card .ppx-article-thumb--fallback {
+  width: 100%;
+  height: 100%;
+  max-height: 220px;
+  min-height: 160px;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.ppx-resource-card .ppx-article-thumb--fallback {
+  font-size: 1.1rem;
+}
+
+.ppx-resource-body {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ppx-resource-title {
+  margin: 0;
+  font: 800 22px/1.2 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #5561f5;
+}
+
+.ppx-resource-text {
+  margin: 0;
+  color: #1f2937;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.ppx-resource-lead {
+  display: block;
+  font-weight: 700;
+}
+
+.ppx-resource-copy {
+  display: block;
+  margin-top: 0.25rem;
+  color: #374151;
+}
+
 /* Thumbnail (image or fallback) */
 .ppx-article-thumb {
   width: 180px;
@@ -85,6 +313,9 @@
 @media (max-width: 640px) {
   .ppx-article-card {
     flex-direction: column;
+  }
+  .ppx-resource-card {
+    grid-template-columns: 1fr;
   }
 
   .ppx-article-thumb,

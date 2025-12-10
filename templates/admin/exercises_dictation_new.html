@@ -244,6 +244,7 @@
     // Embed prefill JSON for edit mode to avoid fetch race/caching
     window.PPX_PREFILL = {{ (builder_prefill or {})|tojson|safe }};
   </script>
+  <script defer src="{{ url_for('static', filename='js/admin_rte.js') }}?v=20251205a"></script>
   <script defer src="{{ url_for('static', filename='js/ppx-json-editor.js') }}?v=20251122a"></script>
   <script defer src="{{ url_for('static', filename='js/admin_builder_dictation.js') }}?v=20251117a"></script>
 {% endblock %}

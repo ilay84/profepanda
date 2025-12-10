@@ -103,12 +103,28 @@
     btnCheck.type = 'button';
     btnCheck.className = 'ppx-btn ppx-btn--primary';
     btnCheck.textContent = t('Comprobar','Check');
-    const btnReset = document.createElement('button');
-    btnReset.type = 'button';
-    btnReset.className = 'ppx-btn';
-    btnReset.textContent = t('Reiniciar','Reset');
     controls.appendChild(btnCheck);
-    controls.appendChild(btnReset);
+    const restartRow = document.createElement('div');
+    restartRow.style.display = 'none';
+    restartRow.style.justifyContent = 'center';
+    restartRow.style.marginTop = '10px';
+    const btnRestart = document.createElement('button');
+    btnRestart.type = 'button';
+    btnRestart.className = 'ppx-btn ppx-btn--ghost';
+    btnRestart.textContent = t('Reiniciar','Restart');
+    btnRestart.style.border = '1px solid #f97316';
+    btnRestart.style.color = '#f97316';
+    btnRestart.style.display = 'inline-flex';
+    btnRestart.style.alignItems = 'center';
+    btnRestart.style.gap = '6px';
+    btnRestart.style.width = 'fit-content';
+    btnRestart.style.padding = '8px 14px';
+    const restartIcon = document.createElement('img');
+    restartIcon.src = '/static/assets/icons/refresh.svg';
+    restartIcon.alt = '';
+    restartIcon.width = 16; restartIcon.height = 16;
+    btnRestart.prepend(restartIcon);
+    restartRow.appendChild(btnRestart);
 
     // Optional media block + toggle (exercise-level)
     const mediaToggle = document.createElement('button');
@@ -178,6 +194,10 @@
       n.type = 'button';
       n.className = 'ppx-pill';
       n.style.cursor = 'grab';
+      n.style.display = 'inline-flex';
+      n.style.alignItems = 'center';
+      n.style.gap = '8px';
+      n.style.padding = '10px 14px';
       n.setAttribute('data-tok', tok.id);
       const label = (lang === 'en' ? tok.text_en : tok.text_es) || tok.text_es || tok.text_en || tok.id;
       n.textContent = label;
@@ -199,18 +219,21 @@
       if (hasHint) {
         const hb = document.createElement('button');
         hb.type = 'button';
-        hb.className = 'ppx-ex__iconBtn';
+        hb.className = 'ppx-ex__iconBtn ppx-tooltip';
         hb.title = t('Ver pista', 'Show hint');
         hb.setAttribute('aria-label', hb.title);
-        hb.style.marginLeft = '6px';
+        hb.setAttribute('data-tooltip', hb.title);
+        hb.style.marginLeft = '4px';
         hb.style.display = 'inline-flex';
         hb.style.alignItems = 'center';
         hb.style.justifyContent = 'center';
         hb.style.verticalAlign = 'middle';
+        hb.style.minWidth = '32px';
+        hb.style.minHeight = '32px';
         const img = document.createElement('img');
         img.src = '/static/assets/icons/hint.svg';
         img.alt = '';
-        img.width = 16; img.height = 16;
+        img.width = 24; img.height = 24;
         hb.appendChild(img);
         hb.addEventListener('click', (ev) => {
           ev.stopPropagation();
@@ -353,11 +376,16 @@
       });
       // Remove results/feedback
       root.querySelectorAll('.ppx-dnd__fb, .ppx-dnd__results').forEach(n => n.remove());
+      restartRow.style.display = 'none';
       // Re-enable Check
       btnCheck.disabled = false;
       api.setProgress(0);
       api.retry();
     }
+    btnRestart.addEventListener('click', () => {
+      reset();
+      try { root.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch(_){}
+    });
 
     function check() {
       checked = true; correctCount = 0;
@@ -399,7 +427,7 @@
       setScore(scorePct);
       // Disable Check; Reset becomes orange wide button like others
       btnCheck.disabled = true;
-      btnReset.className = 'ppx-wbtn ppx-wbtn--orange';
+      restartRow.style.display = 'flex';
     }
 
     // Mount initial UI
@@ -412,6 +440,7 @@
     if (hasMedia) { root.appendChild(mediaToggle); root.appendChild(media); }
     root.appendChild(pool);
     root.appendChild(colsWrap);
+    root.appendChild(restartRow);
 
     // First-run instructions screen (consistent with other types)
     (function(){
@@ -458,7 +487,6 @@
 
     // Wire inline controls
     btnCheck.addEventListener('click', () => check());
-    btnReset.addEventListener('click', () => reset());
   }
 
   const plugin = {

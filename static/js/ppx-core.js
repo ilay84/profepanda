@@ -118,17 +118,63 @@
         this._ctx = context || null;
         const activeLang = this.setLang(lang || this._lang);
 
-        // Fetch data
-        const url = version
-          ? `/admin/api/exercises/${encodeURIComponent(type)}/${encodeURIComponent(slug)}?version=${encodeURIComponent(version)}`
+        // Fetch data (pad numeric versions to 3 digits to match storage filenames)
+        let versionParam = version;
+        if (versionParam !== undefined && versionParam !== null) {
+          try {
+            const n = Number(versionParam);
+            if (!Number.isNaN(n)) versionParam = String(n.toFixed(0)).padStart(3, '0');
+          } catch(_) {}
+        }
+        const url = (versionParam !== undefined && versionParam !== null)
+          ? `/admin/api/exercises/${encodeURIComponent(type)}/${encodeURIComponent(slug)}?version=${encodeURIComponent(versionParam)}`
           : `/admin/api/exercises/${encodeURIComponent(type)}/${encodeURIComponent(slug)}`;
 
         // Open modal early with skeleton to guarantee layout stability
+        // Helper to clear persisted state for this exercise (localStorage + in-memory CTC cache)
+        const clearPersistedState = () => {
+          try {
+            const typeKey = String(type || '').toLowerCase();
+            const slugKey = String(slug || '').toLowerCase();
+            if (!slugKey) return;
+            const parts = [slugKey, `${typeKey}/${slugKey}`, `${typeKey}:${slugKey}`];
+            const removeKeys = [];
+            // LocalStorage
+            for (let i = 0; i < localStorage.length; i++) {
+              const k = localStorage.key(i);
+              if (!k) continue;
+              const lk = k.toLowerCase();
+              const matchesSlug = parts.some(p => lk.includes(p));
+              if (!matchesSlug) continue;
+              if (lk.startsWith('ppx:')) removeKeys.push(k);
+              if (lk.startsWith('ppx_ctc_state')) removeKeys.push(k);
+            }
+            removeKeys.forEach((k)=>{ try { localStorage.removeItem(k); } catch(_){ } });
+            // SessionStorage (legacy caches)
+            try {
+              const rmSess = [];
+              for (let i=0;i<sessionStorage.length;i++){
+                const k = sessionStorage.key(i); if (!k) continue;
+                const lk = k.toLowerCase();
+                if (parts.some(p=>lk.includes(p))) rmSess.push(k);
+              }
+              rmSess.forEach(k=>{ try { sessionStorage.removeItem(k); } catch(_){ } });
+            } catch(_){}
+            if (typeKey === 'ctc' && slugKey && W.__PPX_CTC_STATE) {
+              try { delete W.__PPX_CTC_STATE[slugKey]; } catch(_){}
+            }
+          } catch(_){}
+        };
+
         PPXModal.open({
           title: '',
           meta: '',
           progress: 0,
           body: skeletonBody(),
+          locked: true,
+          hardLock: (type === 'ctc'),
+          dismiss: 'strict',
+          onBeforeClose: (type === 'ctc') ? (() => false) : undefined,
           actions: {
             retry: { label: (activeLang === 'en' ? 'Retry' : 'Intentar de nuevo'), variant: 'ghost', disabled: true },
             prev: { label: (activeLang === 'en' ? 'Prev' : 'Anterior'), variant: 'ghost', disabled: true },
@@ -174,6 +220,8 @@
         const instructionsTitle = (activeLang === 'en') ? 'Instructions' : 'Instrucciones';
         const instructionsCloseLabel = (activeLang === 'en') ? 'Close' : 'Cerrar';
 
+        const langLabel = (activeLang === 'en') ? 'Language' : 'Idioma';
+
         PPXModal.open({
           title: '',
           meta: '',
@@ -183,17 +231,53 @@
           typeLabel: (function () {
             if (type === 'tf') return (activeLang === 'en') ? 'True/False' : '¿Verdadero o falso?';
             if (type === 'mcq') return (activeLang === 'en') ? 'Multiple Choice' : 'Respuesta Múltiple';
-            if (type === 'dictation') return (activeLang === 'en') ? 'Dictation' : 'Dictado';
-            if (type === 'fitb') return (activeLang === 'en') ? 'Fill in the blanks' : 'Llenar los huecos';
-            if (type === 'dnd') return (activeLang === 'en') ? 'Drag-and-drop' : 'Arrastrar y soltar';
-            return type.toUpperCase();
-          })(),
+          if (type === 'dictation') return (activeLang === 'en') ? 'Dictation' : 'Dictado';
+          if (type === 'fitb') return (activeLang === 'en') ? 'Fill in the blanks' : 'Llenar los huecos';
+          if (type === 'dnd') return (activeLang === 'en') ? 'Drag-and-drop' : 'Arrastrar y soltar';
+          if (type === 'ctw') return (activeLang === 'en') ? 'Click the word(s)' : 'Haz clic en la palabra';
+          if (type === 'ctc') return (activeLang === 'en') ? 'Choose the Continuation' : 'Elegir la continuación';
+          return type.toUpperCase();
+        })(),
           level: data.level || '',
           levelLabel: (activeLang === 'en') ? 'Level:' : 'Nivel:',
           logoPath: '/static/assets/logo/header_logo.png',
           instructionsHTML: instructionsHTML,
           instructionsTitle: instructionsTitle,
           instructionsCloseLabel: instructionsCloseLabel,
+          languageToggle: {
+            current: activeLang,
+            label: langLabel,
+            onChange: (newLang) => {
+              const targetLang = (newLang || '').toLowerCase().startsWith('en') ? 'en' : 'es';
+              if (targetLang === activeLang) return;
+              // Re-open exercise in the selected language, keeping version/context
+              PPX.openExercise({
+                type,
+                slug,
+                // Use current for language swaps to avoid missing numeric versions
+                version: null,
+                lang: targetLang,
+                context
+              });
+            }
+          },
+          resetExercise: () => {
+            try {
+              const reloadTimer = setTimeout(() => { try { location.reload(); } catch(_){ } }, 700);
+              clearPersistedState();
+              // Keep modal open; show lightweight loader while we reset state
+              try { PPXModal.setProgress(0); PPXModal.setBody(skeletonBody()); } catch(_){}
+              setTimeout(() => {
+                try {
+                  PPX.openExercise({ type, slug, version: null, lang: activeLang, context });
+                  try { clearTimeout(reloadTimer); } catch(_){}
+                } catch(errOpen){
+                  console.error('[PPX] reset open failed', errOpen);
+                  try { location.reload(); } catch(_){}
+                }
+              }, 150);
+            } catch(_){}
+          },
           // Footer nav hidden by default; types render their own controls
           footerNav: false
         });
@@ -265,7 +349,7 @@
         let cleanup = null;
         if (meta.style === 'fn') {
           // Old function-style plugin
-          cleanup = plugin({ container: null, data, lang: activeLang, api });
+          cleanup = plugin({ container: null, data, lang: activeLang, api, context });
         } else {
           // New object-style plugin
           const bus = new EventTarget();
@@ -278,6 +362,7 @@
             theme: (document.documentElement.getAttribute('data-ppx-theme') || 'light'),
             i18n: (key, vars) => String(key || ''),
             opts: data,
+            context: context || null,
             bus,
             api
           };

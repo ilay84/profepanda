@@ -1,0 +1,121 @@
+{
+  "schema_version": "4.1.0",
+  "resource_id": "example-layouts",
+  "resource_type": "demo_resource",
+  "meta": {
+    "title_es": "Demo: Variantes visuales",
+    "title_en": "Demo: Visual Variants",
+    "lang_primary": "es",
+    "langs_supported": ["es", "en"],
+    "level": "B1",
+    "tags": ["demo", "layouts"],
+    "taxonomy_paths": ["demo/layouts"]
+  },
+  "modules": [
+    {
+      "module_id": "mod_callouts",
+      "title_es": "Callouts y texto",
+      "title_en": "Callouts and text",
+      "blocks": [
+        {
+          "id": "heading_a",
+          "type": "heading",
+          "style_variant": "h2",
+          "data": { "segments": [{ "segment_id": "h1", "text": "Cómo usar SER vs ESTAR", "marks": ["bold"] }] }
+        },
+        {
+          "id": "text_a",
+          "type": "text",
+          "style_variant": "lead",
+          "data": { "segments": [{ "segment_id": "t1", "text": "Guarda esta guía corta para recordar la diferencia entre esencia y estado.", "marks": [] }] }
+        },
+        {
+          "id": "callout_info",
+          "type": "callout",
+          "style_variant": "info",
+          "data": {
+            "icon": "lightbulb",
+            "segments": [
+              { "segment_id": "c1", "text": "SER = identidad, profesión, origen.", "marks": [] },
+              { "segment_id": "c2", "text": "ESTAR = estado, ubicación, condición temporal.", "marks": [] }
+            ]
+          }
+        },
+        {
+          "id": "callout_success",
+          "type": "callout",
+          "style_variant": "success",
+          "data": {
+            "icon": "lightbulb",
+            "segments": [
+              { "segment_id": "c3", "text": "Tip: Cambia el adjetivo y pregunta si varía.", "marks": [] }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "mod_media",
+      "title_es": "Medios y tabla",
+      "title_en": "Media and table",
+      "blocks": [
+        {
+          "id": "media_img",
+          "type": "media",
+          "data": {
+            "media_id": "ser_vs_estar_chart",
+            "kind": "image",
+            "src": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=900&q=60",
+            "alt_es": "Pizarra con notas",
+            "alt_en": "Chalkboard notes",
+            "caption_segments": [
+              { "segment_id": "cap1", "text": "Mapa mental SER vs ESTAR", "marks": [] }
+            ]
+          }
+        },
+        {
+          "id": "embed_iframe",
+          "type": "embed",
+          "data": {
+            "provider": "youtube",
+            "embed_type": "iframe",
+            "src": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "title": "Video ejemplo",
+            "aspect_ratio": "16:9"
+          }
+        },
+        {
+          "id": "table_compare",
+          "type": "table",
+          "data": {
+            "columns": [
+              { "id": "col1", "label": "SER" },
+              { "id": "col2", "label": "ESTAR" }
+            ],
+            "rows": [
+              {
+                "row_id": "r1",
+                "cells": {
+                  "col1": [{ "segment_id": "s1", "text": "Es ingeniera.", "marks": [], "translations": { "en": "She is an engineer." } }],
+                  "col2": [{ "segment_id": "s2", "text": "Está en la oficina.", "marks": [], "translations": { "en": "She is at the office." } }]
+                }
+              },
+              {
+                "row_id": "r2",
+                "cells": {
+                  "col1": [{ "segment_id": "s3", "text": "Son pacientes.", "marks": [] }],
+                  "col2": [{ "segment_id": "s4", "text": "Están cansados.", "marks": [] }]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "assets": [],
+  "llm_hooks": {
+    "allow_qna": true,
+    "context_hints": ["ser-estar", "visual-demo"]
+  }
+}

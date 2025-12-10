@@ -29,7 +29,8 @@ def lessons_create():
         "slug": slug,
         "title": title,
         "settings": {"progress_gate": True, "pass_threshold": 0.8},
-        "slides": [],
+        # Start with a blank content slide so authors can edit immediately
+        "slides": [{"id": "content_1", "type": "content", "elements": []}],
     }
     l = Lesson(slug=slug, title=title, locale=locale, status="draft", json=json_payload)
     db.session.add(l)
@@ -51,6 +52,14 @@ def lessons_publish(lesson_id: int):
     db.session.commit()
     flash("Lesson published", "success")
     return redirect(url_for("admin.lessons_edit", lesson_id=lesson.id))
+
+@bp.post("/lessons/<int:lesson_id>/delete")
+def lessons_delete(lesson_id: int):
+    lesson = Lesson.query.get_or_404(lesson_id)
+    db.session.delete(lesson)
+    db.session.commit()
+    flash("Lesson deleted", "success")
+    return redirect(url_for("admin.lessons_index"))
 
 
 @bp.get("/lessons/examples")

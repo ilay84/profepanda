@@ -5,7 +5,7 @@
 (function(){
   function ready(fn){ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fn);} else { fn(); } }
   function L(es, en){ try { var cur=(window.PPX_I18N&&PPX_I18N.currentLang)||document.documentElement.getAttribute('lang')||'es'; return String(cur).toLowerCase().startsWith('en')?(en||es):(es||en); } catch(_){ return es; } }
-  function typeLabel(t, lang){ var en={tf:'True/False',mcq:'Multiple Choice',dictation:'Dictation',fitb:'Fill in the blanks',dnd:'Drag-and-drop'}[t]||t.toUpperCase(); var es={tf:'¿Verdadero o falso?',mcq:'Respuesta Múltiple',dictation:'Dictado',fitb:'Llenar los huecos',dnd:'Arrastrar y soltar'}[t]||t.toUpperCase(); return (lang||'es').startsWith('en')?en:es; }
+  function typeLabel(t, lang){ var en={tf:'True/False',mcq:'Multiple Choice',dictation:'Dictation',fitb:'Fill in the blanks',dnd:'Drag-and-drop',ctc:'Choose the Continuation',matching:'Matching'}[t]||t.toUpperCase(); var es={tf:'¿Verdadero o falso?',mcq:'Respuesta Múltiple',dictation:'Dictado',fitb:'Llenar los huecos',dnd:'Arrastrar y soltar',ctc:'Elegir la continuación',matching:'Emparejar'}[t]||t.toUpperCase(); return (lang||'es').startsWith('en')?en:es; }
 
   function upgrade(card){
     if (!card || card.querySelector('.ppx-exref-grid')) return; // already new

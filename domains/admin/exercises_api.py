@@ -1,11 +1,13 @@
 # domains/admin/exercises_api.py
 from __future__ import annotations
 import os
+import re
 from datetime import datetime
 from flask import request, jsonify
 from werkzeug.utils import secure_filename
 from . import bp  # existing admin blueprint
 from app import exercises_store as store
+from app.storage import get_data_root
 
 
 # ─────────────────────────────────────────────────────────────
@@ -15,6 +17,42 @@ def _json_error(msg: str, code: int = 400):
     resp = jsonify({"ok": False, "error": msg})
     resp.status_code = code
     return resp
+
+# Collect referenced media URLs from payload
+def _collect_media_urls(obj):
+    urls = set()
+    if isinstance(obj, dict):
+        for v in obj.values():
+            urls |= _collect_media_urls(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            urls |= _collect_media_urls(v)
+    elif isinstance(obj, str):
+        if obj.startswith("/media/exercises/"):
+            urls.add(obj)
+    return urls
+
+# Best-effort cleanup: delete media files under the exercise media root that are not referenced in payload
+def _cleanup_media(ex_type: str, slug: str, payload: dict):
+    try:
+        media_root = store.get_media_dir(ex_type, slug)
+        ref_urls = _collect_media_urls(payload or {})
+        prefix = f"/media/exercises/{ex_type}/{slug}/"
+        ref_paths = set()
+        for url in ref_urls:
+            if url.startswith(prefix):
+                rel = url[len(prefix):]
+                ref_paths.add(os.path.normpath(os.path.join(media_root, rel)))
+        for root, _dirs, files in os.walk(media_root):
+            for fn in files:
+                path = os.path.normpath(os.path.join(root, fn))
+                if path not in ref_paths:
+                    try:
+                        os.remove(path)
+                    except Exception:
+                        pass
+    except Exception:
+        pass
 
 
 # ─────────────────────────────────────────────────────────────
@@ -74,6 +112,7 @@ def api_exercises_create():
     ok, errs, saved = store.save_exercise(payload, user="admin")
     if not ok:
         return _json_error("; ".join(errs), 400)
+    _cleanup_media(payload.get("type"), payload.get("slug"), saved or payload)
     return jsonify({"ok": True, "data": saved})
 
 
@@ -94,6 +133,7 @@ def api_exercises_update(ex_type: str, slug: str):
     ok, errs, saved = store.save_exercise(payload, user="admin")
     if not ok:
         return _json_error("; ".join(errs), 400)
+    _cleanup_media(ex_type, slug, saved or payload)
     return jsonify({"ok": True, "data": saved})
 
 
@@ -247,9 +287,9 @@ def api_exercises_upload_media(ex_type: str, slug: str):
     target_dir = os.path.join(media_root, subdir)
     os.makedirs(target_dir, exist_ok=True)
 
-    # Secure filename and add timestamp
-    orig = secure_filename(f.filename)
-    base, ext = os.path.splitext(orig or "")
+    # Always normalize to slide-based naming (ignore original filename)
+    orig = secure_filename(f.filename) or ""
+    _base, ext = os.path.splitext(orig)
     if not ext:
         if kind == "image":
             ext = ".png"
@@ -257,8 +297,25 @@ def api_exercises_upload_media(ex_type: str, slug: str):
             ext = ".mp3"
         else:
             ext = ".mp4"
-    stamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-    filename = f"{base or subdir}_{stamp}{ext.lower()}"
+    ext = ext.lower()
+
+    def next_slide_filename(dir_path: str, prefix: str = "slide") -> str:
+        max_n = 0
+        try:
+            for fn in os.listdir(dir_path):
+                if not os.path.isfile(os.path.join(dir_path, fn)):
+                    continue
+                m = re.match(rf"{re.escape(prefix)}-(\d+)\.[^.]+$", fn)
+                if m:
+                    try:
+                        max_n = max(max_n, int(m.group(1)))
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+        return f"{prefix}-{max_n + 1}{ext}"
+
+    filename = next_slide_filename(target_dir)
 
     # Save file
     target_path = os.path.join(target_dir, filename)
@@ -313,3 +370,52 @@ def api_exercises_debug_routes():
         return jsonify({"ok": True, "rules": rules})
     except Exception as e:
         return _json_error(f"route-map error: {e}", 500)
+
+
+@bp.get("/api/media/debug")
+def api_media_debug():
+    """
+    Debug helper: resolve a /media/... URL to the filesystem path the server will use
+    and report whether it exists. Example:
+      /admin/api/media/debug?url=/media/exercises/fitb/ser-o-estar-participios-1/img/slide-1.png
+    """
+    url = (request.args.get("url") or "").strip()
+    if not url.startswith("/media/"):
+        return _json_error("Expected url starting with /media/", 400)
+    # Strip leading /media/
+    tail = url[len("/media/") :]
+    parts = [p for p in tail.split("/") if p]
+    if not parts:
+        return _json_error("Invalid media URL.", 400)
+    domain = parts[0]
+    try:
+        data_root = get_data_root()
+    except Exception as e:
+        return _json_error(f"Could not resolve data root: {e}", 500)
+
+    fs_path = None
+    if domain == "exercises" and len(parts) >= 4:
+        ex_type, slug = parts[1], parts[2]
+        rel = "/".join(parts[3:])
+        fs_path = data_root / "exercises" / ex_type / slug / "media" / rel
+    elif domain in {"articles", "glossary", "ui"} and len(parts) >= 3:
+        slug = parts[1]
+        rel = "/".join(parts[2:])
+        fs_path = data_root / domain / slug / "media" / rel
+    else:
+        return _json_error("Unsupported or malformed media URL.", 400)
+
+    exists = fs_path.exists() if fs_path else False
+    size = fs_path.stat().st_size if exists else None
+    return jsonify(
+        {
+            "ok": True,
+            "data": {
+                "url": url,
+                "resolved_path": str(fs_path) if fs_path else None,
+                "exists": bool(exists),
+                "size": size,
+                "data_root": str(data_root),
+            },
+        }
+    )

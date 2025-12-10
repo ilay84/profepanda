@@ -2,7 +2,7 @@
 (function(){
   if (!window.PPX) { try { console.warn('[PPX FITB] Core not present yet; will register when available.'); } catch(_){} }
 
-  function plugin({ data, lang, api }){
+  function plugin({ data, lang, api, context }){
     const L = (es, en) => (api.t ? api.t(es, en) : ((lang||'es').startsWith('en') ? (en ?? es) : (es ?? en)));
     // Normalize + de-duplicate items defensively (unique by id|order)
     const rawItems = Array.isArray(data.items) ? data.items : [];
@@ -17,9 +17,38 @@
 
     let idx = 0; // 0..items.length (summary at items.length)
     const answers = new Map(); // id -> { value, correct }
+    const cacheKey = (window.PPXPlayerUtils && typeof window.PPXPlayerUtils.makeCacheKey === 'function')
+      ? window.PPXPlayerUtils.makeCacheKey({ type: 'fitb', slug: data.slug, version: data.version || 'current' })
+      : `ppx:fitb:${data.slug || 'unknown'}:${data.version || 'current'}`;
+    const progressKey = `ppx:progress:fitb/${data.slug || 'unknown'}`;
+
+    function saveCache(){
+      try {
+        const payload = {
+          idx,
+          answers: Array.from(answers.entries()).reduce((acc,[k,v])=>{ acc[k]=v; return acc; }, {})
+        };
+        localStorage.setItem(cacheKey, JSON.stringify(payload));
+      } catch(_){}
+    }
+    (function loadCache(){
+      try {
+        const raw = localStorage.getItem(cacheKey);
+        if (!raw) return;
+        const obj = JSON.parse(raw);
+        if (obj && typeof obj === 'object'){
+          if (typeof obj.idx === 'number') idx = Math.max(0, Math.min(items.length, obj.idx));
+          if (obj.answers && typeof obj.answers === 'object'){
+            Object.entries(obj.answers).forEach(([k,v])=>{
+              if (v && typeof v === 'object') answers.set(k, v);
+            });
+          }
+        }
+      } catch(_){}
+    })();
 
     const root = document.createElement('div'); root.className='ppx-ex ppx-ex--fitb';
-    const prompt = document.createElement('div'); prompt.className='ppx-ex__prompt';
+    const prompt = document.createElement('div'); prompt.className='ppx-ex__prompt'; prompt.style.whiteSpace = 'pre-wrap';
     const mediaToggle = document.createElement('button'); mediaToggle.type='button'; mediaToggle.className='ppx-ex__media-toggle ppx-ex__iconBtn ppx-tooltip'; mediaToggle.hidden = true; mediaToggle.setAttribute('aria-expanded','true');
     const media = document.createElement('div'); media.className='ppx-media-block';
     const inputsWrap = document.createElement('div'); inputsWrap.className='ppx-row'; inputsWrap.style.gap='8px';
@@ -53,8 +82,6 @@
       charBar.appendChild(b);
     });
     const btnCheck = document.createElement('button'); btnCheck.type='button'; btnCheck.className='ppx-btn'; btnCheck.textContent=L('Comprobar','Check');
-    // Dedicated hint block styled as yellow callout
-    const hintBlock = document.createElement('div'); hintBlock.className='ppx-ex__hint'; hintBlock.hidden = true;
     // Separate inline feedback area for correctness messages
     const inlineFB = document.createElement('div'); inlineFB.className='ppx-ex__inline-feedback'; inlineFB.setAttribute('role','status'); inlineFB.setAttribute('aria-live','polite');
 
@@ -77,7 +104,6 @@
     root.appendChild(charBar);
     root.appendChild(inputsWrap);
     root.appendChild(btnCheck);
-    root.appendChild(hintBlock);
     root.appendChild(inlineFB);
     root.appendChild(footer);
     // Show first-run instructions if available and not dismissed
@@ -122,6 +148,51 @@
 
     function isSummary(){ return idx === items.length; }
     function getText(it){ return it.text || it.text_es || it.text_en || ''; }
+    function plainTextFromHtml(html){
+      let s = String(html || '');
+      s = s.replace(/<br\s*\/?>/gi, '\n');
+      s = s.replace(/<\/(p|div|li|tr|h[1-6])>/gi, '\n');
+      s = s.replace(/<(p|div|li|tr|h[1-6])[^>]*>/gi, '');
+      const tmp = document.createElement('div');
+      tmp.innerHTML = s;
+      return tmp.textContent || '';
+    }
+    function parseHtmlWithBlanks(html){
+      const blanks = [];
+      const frag = document.createDocumentFragment();
+      const root = document.createElement('div');
+      root.innerHTML = html || '';
+
+      function walk(node, parent){
+        if (node.nodeType === 3) {
+          const text = node.nodeValue || '';
+          const re = /\*([^*]+)\*/g;
+          let last = 0; let m;
+          while ((m = re.exec(text))){
+            const before = text.slice(last, m.index);
+            if (before) parent.appendChild(document.createTextNode(before));
+            const idx = blanks.length + 1;
+            const opts = String(m[1] || '').split('/').map(s => s.trim()).filter(Boolean);
+            blanks.push({ index: idx, options: opts });
+            const slot = document.createElement('span');
+            slot.setAttribute('data-blank', String(idx));
+            parent.appendChild(slot);
+            last = m.index + m[0].length;
+          }
+          const tail = text.slice(last);
+          if (tail) parent.appendChild(document.createTextNode(tail));
+          return;
+        }
+        if (node.nodeType === 1) {
+          const clone = node.cloneNode(false);
+          parent.appendChild(clone);
+          Array.from(node.childNodes || []).forEach(child => walk(child, clone));
+        }
+      }
+
+      Array.from(root.childNodes || []).forEach(n => walk(n, frag));
+      return { fragment: frag, blanks };
+    }
     function parseBlanksFromText(str){
       const blanks = [];
       let last = 0; const out = [];
@@ -145,6 +216,13 @@
     function getHint(it){
       const h = (lang||'es').startsWith('en') ? (it.hint_en || it.hint_es) : (it.hint_es || it.hint_en);
       return h || '';
+    }
+    function pickFeedback(meta, ok){
+      if (!meta) return '';
+      const keyGood = (lang||'es').startsWith('en') ? 'feedback_correct_en' : 'feedback_correct_es';
+      const keyBad  = (lang||'es').startsWith('en') ? 'feedback_incorrect_en' : 'feedback_incorrect_es';
+      if (ok) return meta[keyGood] || meta.feedback_correct_es || meta.feedback_correct_en || '';
+      return meta[keyBad] || meta.feedback_incorrect_es || meta.feedback_incorrect_en || '';
     }
     function hasRenderedMedia(){ return window.PPXPlayerUtils && PPXPlayerUtils.hasRenderedMedia(media); }
     function updateMediaToggle(){ if (!window.PPXPlayerUtils) return; PPXPlayerUtils.updateMediaToggle(media, mediaToggle, isSummary()); }
@@ -171,6 +249,43 @@
       return false;
     }
 
+    function cacheBustMediaSrc(src){
+      if (!src || typeof src !== 'string') return src;
+      if (!src.startsWith('/media/')) return src;
+      const ver = (data && data.version) || 'cur';
+      return `${src}${src.includes('?') ? '&' : '?'}v=${ver}`;
+    }
+
+    // Preload media so slide-to-slide navigation doesn't feel laggy
+    (function prefetchMedia(){
+      const seen = new Set();
+      items.forEach((it)=>{
+        const arr = (it && (it.media || it.medias || it.image || it.images)) || [];
+        const list = Array.isArray(arr) ? arr : (arr ? [arr] : []);
+        list.forEach((m)=>{
+          if (!m) return;
+          let src = null; let kind = 'image';
+          if (typeof m === 'string') { src = m; }
+          else if (typeof m === 'object') {
+            src = m.src ?? m.url ?? m.href ?? m.path ?? m.file ?? m.image ?? m.image_url;
+            kind = (m.kind === 'audio' || m.kind === 'video') ? m.kind : 'image';
+          }
+          if (!src) return;
+          const bust = cacheBustMediaSrc(src);
+          if (seen.has(bust)) return;
+          seen.add(bust);
+          if (kind === 'image') {
+            const img = new Image();
+            img.loading = 'eager';
+            img.decoding = 'async';
+            img.src = bust;
+          } else {
+            try { fetch(bust, { method: 'HEAD', cache: 'force-cache' }); } catch(_){}
+          }
+        });
+      });
+    })();
+
     function renderMediaBlock(item){
       try { media.innerHTML=''; } catch(_){}
       try {
@@ -184,16 +299,20 @@
           if (typeof m === 'string') { src = m; kind='image'; }
           else if (typeof m === 'object') { src = m.src ?? m.url ?? m.href ?? m.path ?? m.file ?? m.image ?? m.image_url; kind = (m.kind==='audio'||m.kind==='video')? m.kind : 'image'; }
           if (!src) return;
+          // Cache-bust media served from our /media/* to avoid stale 404s
+          const cacheSrc = cacheBustMediaSrc(src);
           const tile = document.createElement('div'); tile.className='ppx-media-tile';
           if (kind==='image'){
             const box = document.createElement('div'); box.className='ppx-imgbox'; box.setAttribute('data-ppx-lightbox','true');
-            const img = document.createElement('img'); img.className='ppx-media-img'; img.src = src; img.alt = (lang==='en') ? (m.alt_en||'') : (m.alt_es||'');
+            const img = document.createElement('img'); img.className='ppx-media-img'; img.src = cacheSrc; img.alt = (lang==='en') ? (m.alt_en||'') : (m.alt_es||'');
+            img.loading = 'lazy';
+            img.decoding = 'async';
             box.appendChild(img); tile.appendChild(box);
             if (m.caption_es || m.caption_en) { const cap=document.createElement('div'); cap.className='ppx-media-caption'; cap.textContent = (lang==='en') ? (m.caption_en||m.caption_es||'') : (m.caption_es||m.caption_en||''); tile.appendChild(cap); }
           } else if (kind==='audio') {
-            const row=document.createElement('div'); row.className='ppx-media-audio'; const a=document.createElement('audio'); a.controls=true; a.preload='metadata'; a.src=src; a.style.width='100%'; row.appendChild(a); tile.appendChild(row);
+            const row=document.createElement('div'); row.className='ppx-media-audio'; const a=document.createElement('audio'); a.controls=true; a.preload='metadata'; a.src=cacheSrc; a.style.width='100%'; row.appendChild(a); tile.appendChild(row);
           } else if (kind==='video') {
-            const row=document.createElement('div'); row.className='ppx-media-video'; const v=document.createElement('video'); v.controls=true; v.preload='metadata'; v.src=src; v.style.maxWidth='100%'; row.appendChild(v); tile.appendChild(row);
+            const row=document.createElement('div'); row.className='ppx-media-video'; const v=document.createElement('video'); v.controls=true; v.preload='metadata'; v.src=cacheSrc; v.style.maxWidth='100%'; row.appendChild(v); tile.appendChild(row);
           }
           grid.appendChild(tile);
         });
@@ -223,23 +342,47 @@
       updateMediaToggleForItem(it);
     });
 
-    function updateProgress(){ try { fraction.textContent = isSummary()? `${items.length}/${items.length}` : `${idx+1}/${items.length}`; dots.innerHTML=''; for(let i=0;i<items.length;i++){ const d=document.createElement('button'); d.type='button'; d.className='ppx-ex__dot'+(i===idx? ' is-current' : (answers.has(items[i].id) ? ' is-done' : '')); d.addEventListener('click', ()=>{ if (!isSummary()){ idx=i; render(); }}); dots.appendChild(d);} btnResults.hidden = !(answers.size === items.length && !isSummary()); } catch(_){} }
+    function updateProgress(){
+      try {
+        fraction.textContent = isSummary()? `${items.length}/${items.length}` : `${idx+1}/${items.length}`;
+        dots.innerHTML='';
+        for(let i=0;i<items.length;i++){
+          const d=document.createElement('button');
+          d.type='button';
+          d.className='ppx-ex__dot'+(i===idx? ' is-current' : (answers.has(items[i].id) ? ' is-done' : ''));
+          d.addEventListener('click', ()=>{ if (!isSummary()){ idx=i; render(); }});
+          dots.appendChild(d);
+        }
+        const onLastSlide = (idx === items.length - 1);
+        const allAnswered = answers.size === items.length;
+        btnResults.hidden = !(onLastSlide && allAnswered && !isSummary());
+      } catch(_){}
+    }
 
     function renderSummary(){
+      // Hide in-summary controls that belong to exercise steps
+      try { charBar.hidden = true; charBar.style.display = 'none'; } catch(_){}
+      try { btnCheck.hidden = true; btnCheck.style.display = 'none'; } catch(_){}
       mediaToggle.hidden = true; mediaToggle.style.display='none'; media.hidden = false; media.innerHTML='';
       prompt.textContent=''; inlineFB.textContent='';
+      const appendTextWithBreaks = (node, text) => {
+        const parts = String(text || '').split(/\r?\n/);
+        parts.forEach((seg, i) => {
+          if (i > 0) node.appendChild(document.createElement('br'));
+          node.appendChild(document.createTextNode(seg));
+        });
+      };
       // Compute overall score with partial credit by blanks when available
       let totalBlanksAll = 0;
       let correctBlanksAll = 0;
       items.forEach((it) => {
-        const tmp = document.createElement('div'); tmp.innerHTML = getText(it)||''; const plainStmt = tmp.textContent||'';
-        const bParsed = parseBlanksFromText(plainStmt);
-        const totalBlanks = bParsed.blanks.length || (Array.isArray(it.blanks) ? it.blanks.length : 0);
+        const bParsed = parseHtmlWithBlanks(getText(it)||'');
+        const totalBlanks = (bParsed.blanks && bParsed.blanks.length) || (Array.isArray(it.blanks) ? it.blanks.length : 0);
         if (totalBlanks > 0) {
           const itemBlanks = Array.isArray(it.blanks) ? it.blanks : null;
           const vals = (answers.get(it.id)||{}).values || [];
           let correctHere = 0;
-          bParsed.blanks.forEach((b, i) => {
+          (bParsed.blanks || []).forEach((b, i) => {
             const opts = itemBlanks?.[i]?.options || b.options || [];
             const got = String(vals[i]||'').trim().toLowerCase();
             if (opts.some(o => String(o).toLowerCase() === got)) correctHere += 1;
@@ -274,18 +417,18 @@
       items.forEach((it, idx1) => {
         const det = document.createElement('details'); det.className='ppx-acc'; det.style.border='1px solid var(--ppx-color-line,#e5e7eb)'; det.style.borderRadius='12px'; det.style.overflow='hidden'; det.style.background='#fff';
         const sum = document.createElement('summary'); sum.style.cursor='pointer'; sum.style.listStyle='none'; sum.style.padding='12px 14px'; sum.style.display='flex'; sum.style.alignItems='center'; sum.style.gap='10px'; sum.style.flexWrap='nowrap';
-        const temp = document.createElement('div'); temp.innerHTML = getText(it)||''; const stmt = (temp.textContent||'').trim();
-        const stmtEl = document.createElement('span'); stmtEl.style.flex='1 1 auto'; stmtEl.style.minWidth='0'; stmtEl.textContent = stmt;
+        const stmt = plainTextFromHtml(getText(it)||'').trim();
+        const stmtEl = document.createElement('span'); stmtEl.style.flex='1 1 auto'; stmtEl.style.minWidth='0'; stmtEl.style.whiteSpace='pre-wrap';
+        appendTextWithBreaks(stmtEl, stmt);
         // Compute per-item score based on blanks
         const ans = answers.get(it.id) || { values: [], correct: false };
-        const tmp2 = document.createElement('div'); tmp2.innerHTML = getText(it)||''; const plainStmt = tmp2.textContent||'';
-        const bParsed = parseBlanksFromText(plainStmt);
-        const totalBlanks = bParsed.blanks.length || (Array.isArray(it.blanks) ? it.blanks.length : 0);
+        const bParsed = parseHtmlWithBlanks(getText(it)||'');
+        const totalBlanks = (bParsed.blanks && bParsed.blanks.length) || (Array.isArray(it.blanks) ? it.blanks.length : 0);
         let correctBlanks = 0;
         if (totalBlanks > 0) {
           const itemBlanks = Array.isArray(it.blanks) ? it.blanks : null;
           const vals = ans.values || [];
-          bParsed.blanks.forEach((b, i) => {
+          (bParsed.blanks || []).forEach((b, i) => {
             const opts = itemBlanks?.[i]?.options || b.options || [];
             const got = String(vals[i]||'').trim().toLowerCase();
             if (opts.some(o => String(o).toLowerCase() === got)) correctBlanks += 1;
@@ -302,25 +445,54 @@
         const panel = document.createElement('div'); panel.style.padding='12px 14px'; panel.style.display='grid'; panel.style.gap='6px';
         // Per-blank feedback lines
         const values = ((answers.get(it.id) || {}).values) || [];
-        const temp2 = document.createElement('div'); temp2.innerHTML = getText(it)||''; const plain = temp2.textContent||'';
-        const itemBlanks = Array.isArray(it.blanks) ? it.blanks : null; const parsed = parseBlanksFromText(plain);
-        parsed.blanks.forEach((b,i)=>{
+        const itemBlanks = Array.isArray(it.blanks) ? it.blanks : null; const parsed = parseHtmlWithBlanks(getText(it)||'');
+        (parsed.blanks || []).forEach((b,i)=>{
           const meta = itemBlanks?.[i] || {}; const opts = (meta.options||b.options||[]);
           const got = String(values[i]||'').trim(); const okB = opts.some(o=> String(o).toLowerCase() === got.toLowerCase());
           const box = document.createElement('div'); box.className = okB ? 'ppx-state--ok' : 'ppx-state--bad'; box.style.display='flex'; box.style.alignItems='baseline'; box.style.gap='6px';
           const num = document.createElement('span'); num.className='ppx-fitb-num'; num.textContent = `(${i+1})`;
           const text = document.createElement('div');
-          const fb = okB ? (meta.feedback_correct_es || meta.feedback_correct_en || '') : (meta.feedback_incorrect_es || meta.feedback_incorrect_en || '');
+          const fb = pickFeedback(meta, okB);
           const user = got ? `<em>${got}</em>` : L('(sin respuesta)','(no answer)');
-          text.innerHTML = `${user}${fb ? ' — ' + fb : ''}`;
+          text.innerHTML = `${user}${fb ? ' - ' + fb : ''}`;
           box.appendChild(num); box.appendChild(text); panel.appendChild(box);
         });
         det.appendChild(sum); det.appendChild(panel); list.appendChild(det);
       });
       wrap.appendChild(list);
+      // Hide progress UI on summary to match other exercises
+      try { fraction.style.display = 'none'; dots.style.display = 'none'; btnResults.hidden = true; } catch(_){}
       media.appendChild(wrap);
       btnNext.disabled = true; btnPrev.disabled = (items.length===0);
       api.setProgress(1); api.complete && api.complete({ score: overallScorePct, correct: correctBlanksAll || Array.from(answers.values()).filter(v=>v && v.correct).length, total: totalBlanksAll || items.length });
+      // Restart button (summary only)
+      const restartRow = document.createElement('div');
+      restartRow.style.display = 'flex';
+      restartRow.style.justifyContent = 'center';
+      restartRow.style.marginTop = '12px';
+      const restartBtn = document.createElement('button');
+      restartBtn.type = 'button';
+      restartBtn.className = 'ppx-btn ppx-btn--ghost';
+      restartBtn.textContent = L('Reiniciar','Restart');
+      restartBtn.style.border = '1px solid #f97316';
+      restartBtn.style.color = '#f97316';
+      restartBtn.style.display = 'inline-flex';
+      restartBtn.style.alignItems = 'center';
+      restartBtn.style.gap = '6px';
+      restartBtn.style.width = 'fit-content';
+      restartBtn.style.padding = '8px 14px';
+      const restartIcon = document.createElement('img'); restartIcon.src='/static/assets/icons/refresh.svg'; restartIcon.alt=''; restartIcon.width=16; restartIcon.height=16; restartBtn.prepend(restartIcon);
+      restartBtn.addEventListener('click', (ev)=>{
+        ev.preventDefault(); ev.stopPropagation();
+        try { localStorage.removeItem(cacheKey); } catch(_){}
+        try { localStorage.removeItem(progressKey); } catch(_){}
+        answers.clear();
+        idx = 0;
+        api.setProgress(0);
+        render();
+      });
+      restartRow.appendChild(restartBtn);
+      media.appendChild(restartRow);
     }
 
     function render(){
@@ -330,41 +502,118 @@
       // Render text with inline blanks as inputs
       const txt = getText(it) || '';
       const itemBlanks = Array.isArray(it.blanks) ? it.blanks : null;
-      // Render from HTML text by inserting inputs + numbered labels
       prompt.innerHTML = '';
       inputsWrap.innerHTML = '';
-      const values = (answers.get(it.id)?.values || []);
-      const temp = document.createElement('div'); temp.innerHTML = txt;
-      const plain = temp.textContent || '';
-      const parsed = parseBlanksFromText(plain);
-      // Build inline sequence using parsed parts; enrich with itemBlanks meta if present
-      parsed.parts.forEach(part => {
-        if (part.type === 'text') {
-          const span = document.createElement('span');
-          span.textContent = part.value;
-          prompt.appendChild(span);
+      const answerState = answers.get(it.id);
+      const values = (answerState?.values || []);
+      const parsed = parseHtmlWithBlanks(txt);
+    prompt.appendChild(parsed.fragment);
+    Array.from(prompt.querySelectorAll('[data-blank]')).forEach((slot) => {
+        const idx1 = Number(slot.getAttribute('data-blank')) || 0;
+        const zero = Math.max(0, idx1 - 1);
+        const meta = itemBlanks ? (itemBlanks[zero] || {}) : {};
+        const hintText = (lang||'es').startsWith('en') ? (meta.hint_en || meta.hint_es || '') : (meta.hint_es || meta.hint_en || '');
+        const group = document.createElement('span');
+        group.style.display='inline-flex';
+        group.style.alignItems='baseline';
+        group.style.gap='4px';
+        group.style.margin='0 4px';
+        group.style.position = 'relative';
+        group.style.paddingBottom = '0';
+        const rowWrap = document.createElement('span');
+        rowWrap.style.display='inline-flex'; rowWrap.style.gap='4px'; rowWrap.style.alignItems='baseline';
+        rowWrap.style.position = 'relative';
+        const num = document.createElement('span'); num.className='ppx-fitb-num'; num.textContent = `(${idx1})`;
+        const inp = document.createElement('input'); inp.type='text'; inp.className='ppx-input ppx-fitb-inp'; inp.dataset.blk = String(zero);
+        inp.setAttribute('aria-label', L('Respuesta del hueco','Blank answer')+` ${idx1}`);
+        const prev = values[zero] || '';
+        if (prev) inp.value = prev;
+        const hintBtn = document.createElement('button'); hintBtn.type='button'; hintBtn.className='ppx-ex__iconBtn ppx-tooltip'; hintBtn.setAttribute('data-tooltip', L('Mostrar pista','Show hint'));
+        hintBtn.style.alignSelf = 'center';
+        hintBtn.style.marginLeft = '6px';
+        hintBtn.style.width = '48px';
+        hintBtn.style.height = '48px';
+        const hbImg = document.createElement('img');
+        hbImg.className = 'ppx-ex-icon';
+        hbImg.src = '/static/assets/icons/hint.svg';
+        hbImg.alt = '';
+        hbImg.width = 42; hbImg.height = 42;
+        hintBtn.appendChild(hbImg);
+        // Floating popover hint (no layout shift)
+        const showHintPopover = (ev) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          // remove any existing popover/closer
+          if (window.__ppxFitbHint && window.__ppxFitbHint.remove) {
+            try { window.__ppxFitbHint.remove(); } catch(_){}
+          }
+          if (window.__ppxFitbCloser) {
+            try {
+              document.removeEventListener('click', window.__ppxFitbCloser, true);
+              document.removeEventListener('keydown', window.__ppxFitbCloser, true);
+            } catch(_){}
+          }
+          const pop = document.createElement('div');
+          pop.className = 'ppx-ex__hint ppx-hint--noicon';
+          pop.textContent = hintText;
+          pop.style.position = 'fixed';
+          pop.style.maxWidth = '320px';
+          pop.style.fontWeight = '400';
+          pop.style.fontSize = '15px';
+          pop.style.lineHeight = '1.35';
+          pop.style.zIndex = '2147483647';
+          pop.style.background = '#eef2ff';
+          pop.style.border = '1px solid #c7d2fe';
+          pop.style.color = '#1d4ed8';
+          pop.style.boxShadow = '0 8px 20px rgba(0,0,0,.12)';
+          pop.style.borderRadius = '12px';
+          pop.style.padding = '12px 14px';
+          pop.style.pointerEvents = 'auto';
+          pop.style.display = 'block';
+          document.body.appendChild(pop);
+          // position below the hint button relative to viewport
+          const r = hintBtn.getBoundingClientRect();
+          const popW = pop.offsetWidth || 0;
+          const viewportW = window.innerWidth || document.documentElement.clientWidth;
+          const left = Math.max(8, Math.min(r.left, viewportW - popW - 8));
+          pop.style.left = `${left}px`;
+          pop.style.top = `${r.bottom + 10}px`;
+          window.__ppxFitbHint = pop;
+          const closer = (ev2) => {
+            if (ev2 && ev2.type === 'keydown' && ev2.key !== 'Escape') return;
+            if (ev2 && ev2.type === 'click' && (pop.contains(ev2.target) || hintBtn.contains(ev2.target))) return;
+            try { pop.remove(); } catch(_){}
+            window.__ppxFitbHint = null;
+            document.removeEventListener('click', closer, true);
+            document.removeEventListener('keydown', closer, true);
+            window.__ppxFitbCloser = null;
+          };
+          window.__ppxFitbCloser = closer;
+          // delay binding closer so the initial click won't immediately close
+          setTimeout(()=> {
+            document.addEventListener('click', closer, true);
+            document.addEventListener('keydown', closer, true);
+          }, 0);
+          api.hint && api.hint({ item: it.id, blank: idx1 });
+        };
+        if (hintText) {
+          hintBtn.addEventListener('click', showHintPopover);
         } else {
-          const idx0 = part.index - 1;
-          const meta = itemBlanks ? (itemBlanks[idx0] || {}) : {};
-          const hintText = (lang||'es').startsWith('en') ? (meta.hint_en || meta.hint_es || '') : (meta.hint_es || meta.hint_en || '');
-          const group = document.createElement('span');
-          group.style.display='inline-flex'; group.style.gap='4px'; group.style.alignItems='baseline'; group.style.margin='0 4px';
-          const num = document.createElement('span'); num.className='ppx-fitb-num'; num.textContent = `(${part.index})`;
-          const inp = document.createElement('input'); inp.type='text'; inp.className='ppx-input ppx-fitb-inp'; inp.dataset.blk = String(idx0);
-          inp.setAttribute('aria-label', L('Respuesta del hueco','Blank answer')+` ${part.index}`);
-          const prev = values[idx0] || '';
-          if (prev) inp.value = prev;
-          const hintBtn = document.createElement('button'); hintBtn.type='button'; hintBtn.className='ppx-ex__iconBtn ppx-tooltip'; hintBtn.setAttribute('data-tooltip', L('Mostrar pista','Show hint'));
-          hintBtn.innerHTML = '<img class="ppx-ex-icon" src="/static/assets/icons/hint.svg" alt="" width="16" height="16">';
-          hintBtn.addEventListener('click', ()=>{ if (hintText) { hintBlock.innerHTML = `<em>${hintText}</em>`; hintBlock.hidden = false; api.hint && api.hint({ item: it.id, blank: part.index }); } });
-          group.appendChild(num); group.appendChild(inp); group.appendChild(hintBtn); prompt.appendChild(group);
+          hintBtn.disabled = true;
+          hintBtn.style.opacity = '0.4';
         }
+        const hintBtnWrapper = document.createElement('span');
+        hintBtnWrapper.style.display = 'inline-flex';
+        hintBtnWrapper.appendChild(hintBtn);
+        rowWrap.appendChild(num); rowWrap.appendChild(inp); rowWrap.appendChild(hintBtnWrapper);
+        group.appendChild(rowWrap);
+        slot.replaceWith(group);
       });
       // If there are no blanks in this item, treat it as a content-only step
-      const blanksCount = parsed.blanks.length || (itemBlanks ? itemBlanks.length : 0);
+      const blanksCount = (parsed.blanks && parsed.blanks.length) || (itemBlanks ? itemBlanks.length : 0);
       if (blanksCount === 0) {
         btnCheck.style.display = 'none';
-        hintBlock.hidden = true; hintBlock.innerHTML = '';
+        // no hints to show on this step
         inlineFB.textContent=''; inlineFB.classList.remove('is-ok','is-bad');
         // Auto-complete this step so navigation works smoothly
         if (!answers.has(it.id)) {
@@ -384,9 +633,23 @@
       // Render media and configure toggle
       renderMediaBlock(it);
       updateMediaToggleForItem(it);
-      // Reset hint and feedback for each render
-      hintBlock.hidden = true; hintBlock.innerHTML = '';
-      inlineFB.textContent=''; inlineFB.classList.remove('is-ok','is-bad');
+      // Reset feedback for each render
+      inlineFB.textContent=''; inlineFB.innerHTML=''; inlineFB.classList.remove('is-ok','is-bad');
+      // If checked before, lock inputs and restore feedback
+      if (answerState && answerState.locked) {
+        try {
+          prompt.querySelectorAll('input.ppx-fitb-inp').forEach(inp => { inp.disabled = true; inp.classList.add('is-locked'); });
+          prompt.querySelectorAll('button.ppx-ex__iconBtn').forEach(btn => { btn.disabled = true; });
+          btnCheck.disabled = true;
+          if (answerState.feedbackHtml) {
+            inlineFB.innerHTML = answerState.feedbackHtml;
+            inlineFB.classList.toggle('is-ok', !!answerState.correct);
+            inlineFB.classList.toggle('is-bad', !answerState.correct);
+          }
+        } catch(_){}
+      } else {
+        btnCheck.disabled = false;
+      }
       btnPrev.disabled = (idx===0);
       btnNext.disabled = !answers.has(it.id);
       api.view && api.view({ item: it.id });
@@ -396,11 +659,9 @@
       if (isSummary()) return;
       const it = items[idx];
       const txt = getText(it) || '';
-      const temp = document.createElement('div'); temp.innerHTML = txt;
-      const plain = temp.textContent || '';
-      // For checking, always parse from text and then enrich with meta/options
+      // For checking, parse from HTML so formatting and blank positions stay aligned with the rendered view
       const itemBlanks = Array.isArray(it.blanks) ? it.blanks : null;
-      const parsedBase = parseBlanksFromText(plain);
+      const parsedBase = parseHtmlWithBlanks(txt);
       const parsed = { blanks: parsedBase.blanks.map((b, i) => ({ index: i+1, options: (itemBlanks?.[i]?.options || b.options || []), meta: (itemBlanks?.[i] || null) })) };
       const typed = parsed.blanks.map((_, i)=>{
         const inline = prompt.querySelector(`input[data-blk="${i}"]`);
@@ -412,19 +673,19 @@
         return opts.some(o => String(o).toLowerCase() === got);
       });
       const allOk = okEach.every(Boolean);
-      answers.set(it.id, { values: typed, correct: allOk });
+      // Save locked state + feedback for this attempt
+      const answerPayload = { values: typed, correct: allOk, locked: true };
       // Show per-blank feedback inline under inputs if supplied
       try {
         const fbWrap = document.createElement('div'); fbWrap.style.marginTop = '6px';
         parsed.blanks.forEach((b, i)=>{
-          const ok = !!okEach[i];
-          const fb = ok ? (b.meta?.feedback_correct_es || b.meta?.feedback_correct_en || '')
-                        : (b.meta?.feedback_incorrect_es || b.meta?.feedback_incorrect_en || '');
-          if (fb){
-            const box = document.createElement('div');
-            box.className = ok ? 'ppx-state--ok' : 'ppx-state--bad';
-            box.style.margin = '4px 0';
-            box.style.display = 'flex';
+        const ok = !!okEach[i];
+        const fb = pickFeedback(b.meta, ok);
+        if (fb){
+          const box = document.createElement('div');
+          box.className = ok ? 'ppx-state--ok' : 'ppx-state--bad';
+          box.style.margin = '4px 0';
+          box.style.display = 'flex';
             box.style.alignItems = 'baseline';
             box.style.gap = '6px';
             const num = document.createElement('span'); num.className='ppx-fitb-num'; num.textContent = `(${i+1})`;
@@ -435,8 +696,17 @@
         });
         inlineFB.innerHTML = '';
         inlineFB.appendChild(fbWrap);
+        answerPayload.feedbackHtml = inlineFB.innerHTML;
       } catch(_) { inlineFB.textContent = allOk ? L('Correcto','Correct') : L('Incorrecto','Incorrect'); }
       inlineFB.classList.toggle('is-ok', allOk); inlineFB.classList.toggle('is-bad', !allOk);
+      answers.set(it.id, answerPayload);
+      saveCache();
+      // Lock inputs after check
+      try {
+        prompt.querySelectorAll('input.ppx-fitb-inp').forEach(inp => { inp.disabled = true; inp.classList.add('is-locked'); });
+        prompt.querySelectorAll('button.ppx-ex__iconBtn').forEach(btn => { btn.disabled = true; });
+        btnCheck.disabled = true;
+      } catch(_){}
       btnNext.disabled = false;
       api.answer && api.answer({ item: it.id, correct: allOk, meta: { values: typed } });
       updateProgress();
@@ -447,6 +717,11 @@
     btnNext.addEventListener('click', ()=> { if (isSummary()) return; if (idx < items.length-1) { idx += 1; render(); } else { idx = items.length; render(); } });
 
     render();
+
+    if (context && context.startAt === 'summary' && answers.size) {
+      idx = items.length;
+      render();
+    }
   }
 
   // Register with PPX core (with late fallback)

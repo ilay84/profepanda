@@ -19,8 +19,31 @@
     const btnSave = D.getElementById('ppx-save-draft');
     const btnPreview = D.getElementById('ppx-preview');
     const btnExport = D.getElementById('ppx-export-json');
-    // If template provides a JSON edit button in footer, wire it
-    try { const btnJson = D.getElementById('ppx-edit-json'); if (btnJson) btnJson.addEventListener('click', openJsonEditor); } catch(_){}
+    function decorateJsonButton(btn){
+      if (!btn) return null;
+      const icon = btn.querySelector('img[src*="json.svg"]') || (() => {
+        const i = D.createElement('img');
+        i.src = '/static/assets/icons/json.svg';
+        i.alt = '';
+        i.width = 18; i.height = 18;
+        return i;
+      })();
+      const label = btn.querySelector('span') || (() => {
+        const l = D.createElement('span');
+        return l;
+      })();
+      label.textContent = 'JSON';
+      btn.textContent = '';
+      btn.appendChild(icon); btn.appendChild(label);
+      btn.style.display = 'inline-flex';
+      btn.style.alignItems = 'center';
+      btn.style.gap = '6px';
+      btn.style.padding = '6px 10px';
+      btn.style.borderRadius = '10px';
+      return btn;
+    }
+    // If template provides a JSON edit button in footer, wire and decorate it
+    try { const btnJson = D.getElementById('ppx-edit-json'); if (btnJson) { decorateJsonButton(btnJson); btnJson.addEventListener('click', openJsonEditor); } } catch(_){}
     const btnPublish = D.getElementById('ppx-publish');
 
     const inputSlug = D.getElementById('ex-slug');
@@ -32,12 +55,96 @@
     const inputTx = D.querySelector('.ppx-taxonomy input[type=hidden]');
 
     const appLang = (window.PPX_I18N && window.PPX_I18N.currentLang) || (D.documentElement.getAttribute('lang') || 'es');
+    const builderMode = (form.getAttribute('data-builder-mode') || '').toLowerCase();
+
+    const slugify = (s) => {
+      try {
+        return String(s || '')
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .replace(/-{2,}/g, '-')
+          .slice(0, 80);
+      } catch (_) {
+        return String(s || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]+/g, '').slice(0,80);
+      }
+    };
+    let slugManuallyEdited = false;
+    if (inputSlug) {
+      inputSlug.addEventListener('input', () => { slugManuallyEdited = true; });
+      if (builderMode === 'edit' && inputSlug.value) slugManuallyEdited = true;
+    }
+    function autoSlugFromTitle() {
+      if (slugManuallyEdited) return;
+      const src = (inputTitleEs.value || inputTitleEn.value || '').trim();
+      if (!src) return;
+      const next = slugify(src);
+      if (!next) return;
+      inputSlug.value = next;
+    }
+    ['input','blur'].forEach(evt => {
+      inputTitleEs?.addEventListener(evt, autoSlugFromTitle);
+      inputTitleEn?.addEventListener(evt, autoSlugFromTitle);
+    });
+    // If arriving with a title already filled (e.g., template), prefill slug once
+    if (inputSlug && !inputSlug.value) {
+      autoSlugFromTitle();
+    }
+
+    // Lightweight RTE for questions (bold/italic)
+    function initQuestionRTE(node){
+      if (!node || node.dataset.rteInit === '1') return;
+      node.dataset.rteInit = '1';
+      const wrap = D.createElement('div');
+      wrap.className = 'ppx-card';
+      wrap.style.padding = '6px';
+      wrap.style.border = '1px solid #e5e7eb';
+      wrap.style.borderRadius = '10px';
+      const toolbar = D.createElement('div');
+      toolbar.style.display = 'inline-flex';
+      toolbar.style.gap = '6px';
+      toolbar.style.marginBottom = '6px';
+      const makeBtn = (txt, cmd, styleFn) => {
+        const b = D.createElement('button');
+        b.type='button';
+        b.className='ppx-btn ppx-btn--ghost';
+        b.textContent=txt;
+        b.style.padding='4px 8px';
+        b.style.minWidth='32px';
+        b.style.borderRadius='8px';
+        if (styleFn) styleFn(b);
+        b.addEventListener('click',(e)=>{ e.preventDefault(); editor.focus(); try{ document.execCommand(cmd,false,null);}catch(_){} sync(); });
+        return b;
+      };
+      const editor = D.createElement('div');
+      editor.contentEditable='true';
+      editor.className='ppx-rte__editor';
+      editor.style.minHeight='64px';
+      editor.style.border='1px solid #e5e7eb';
+      editor.style.borderRadius='8px';
+      editor.style.padding='8px';
+      editor.style.outline='none';
+      editor.style.fontFamily='inherit';
+      const syncFrom = () => { editor.innerHTML = node.value || ''; };
+      editor.innerHTML = node.value || '';
+      const sync = () => { node.value = editor.innerHTML.trim(); node.dispatchEvent(new Event('input',{bubbles:true})); };
+      editor.addEventListener('input', sync);
+      toolbar.appendChild(makeBtn('B','bold',(b)=>b.style.fontWeight='700'));
+      toolbar.appendChild(makeBtn('I','italic',(b)=>b.style.fontStyle='italic'));
+      wrap.appendChild(toolbar);
+      wrap.appendChild(editor);
+      node.style.display='none';
+      node.parentNode.insertBefore(wrap, node);
+      node.addEventListener('ppx:rte:refresh', syncFrom);
+    }
 
     // Prefill slug from URL for edit
     if (inputSlug && !inputSlug.value) {
       const m = location.pathname.match(/\/admin\/exercises\/mcq\/([^\/]+)\/edit/);
       if (m && m[1]) inputSlug.value = decodeURIComponent(m[1]);
     }
+    if (inputSlug && inputSlug.value) slugManuallyEdited = true;
 
     // Media panel builder (per-item) - styled like TF builder
     // Stores media on the item's <details> node as `._media` and persists in JSON.
@@ -245,11 +352,14 @@
     function makeItem() {
       const frag = itemTpl.content.cloneNode(true);
       const det = frag.querySelector('details');
+      const caret = det.querySelector('[data-caret], summary img') || null;
       det.addEventListener('toggle', () => { if (!caret) return; caret.src = det.open ? '/static/assets/icons/chevron_down.svg' : '/static/assets/icons/chevron_right.svg'; });
 
       const sumTitle = det.querySelector('.ppx-item-title');
       const qEs = det.querySelector('[data-field="question_es"]');
       const qEn = det.querySelector('[data-field="question_en"]');
+      initQuestionRTE(qEs);
+      initQuestionRTE(qEn);
       const updateTitle = () => {
         const txt = (appLang.startsWith('en') ? (qEn.value || qEs.value) : (qEs.value || qEn.value)) || t('Nuevo ítem', 'New item');
         sumTitle.textContent = txt.length > 80 ? txt.slice(0, 77) + '…' : txt;
@@ -335,7 +445,12 @@
       });
       return {
         type: 'mcq',
-        slug: (inputSlug.value || '').trim().toLowerCase(),
+        slug: (() => {
+          autoSlugFromTitle();
+          const s = slugify((inputSlug.value || '').trim() || (inputTitleEs.value || inputTitleEn.value || '').trim());
+          if (!inputSlug.value && s) inputSlug.value = s;
+          return s;
+        })(),
         title_es: (inputTitleEs.value || '').trim(),
         title_en: (inputTitleEn.value || '').trim(),
         instructions_es: (taInstEs.value || '').trim(),
@@ -468,6 +583,9 @@
       inputTitleEn.value = data.title_en || '';
       taInstEs.value = data.instructions_es || '';
       taInstEn.value = data.instructions_en || '';
+      // Refresh any RTE wrappers for instructions/questions if present
+      try { taInstEs.dispatchEvent(new Event('ppx:rte:refresh')); } catch(_){}
+      try { taInstEn.dispatchEvent(new Event('ppx:rte:refresh')); } catch(_){}
       selLevel.value = data.level || 'A2';
       try { inputTx && (inputTx.value = JSON.stringify(data.taxonomy_paths || [])); } catch {}
       itemsWrap.innerHTML = '';
@@ -476,6 +594,8 @@
         const det = makeItem();
         det.querySelector('[data-field="question_es"]').value = it.question_es || '';
         det.querySelector('[data-field="question_en"]').value = it.question_en || '';
+        try { det.querySelector('[data-field="question_es"]').dispatchEvent(new Event('ppx:rte:refresh')); } catch(_){}
+        try { det.querySelector('[data-field="question_en"]').dispatchEvent(new Event('ppx:rte:refresh')); } catch(_){}
         det.querySelector('[data-field="hint_es"]').value = it.hint_es || '';
         det.querySelector('[data-field="hint_en"]').value = it.hint_en || '';
         const optsList = det.querySelector('[data-opts-list]'); optsList.innerHTML = '';
@@ -529,26 +649,12 @@
     let __mcq_lastJson = null;
     function mcqCreateJsonEditButton(){
       try {
-        const btn = D.createElement('button');
+        const btn = decorateJsonButton(D.createElement('button'));
         btn.type = 'button';
         btn.id = 'ppx-edit-json';
         btn.className = 'ppx-btn';
         btn.title = t('Editar JSON', 'Edit JSON');
         btn.setAttribute('aria-label', t('Editar JSON', 'Edit JSON'));
-        btn.style.display = 'inline-flex';
-        btn.style.alignItems = 'center';
-        btn.style.gap = '6px';
-        btn.style.padding = '6px 10px';
-        btn.style.borderRadius = '10px';
-
-        const icon = D.createElement('img');
-        icon.src = '/static/assets/icons/json.svg';
-        icon.alt = '';
-        icon.width = 18; icon.height = 18;
-        const label = D.createElement('span');
-        label.textContent = 'JSON';
-        btn.appendChild(icon); btn.appendChild(label);
-
         if (btnExport && btnExport.parentNode) {
           btnExport.parentNode.insertBefore(btn, btnExport.nextSibling);
         } else if (form) {

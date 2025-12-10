@@ -75,6 +75,26 @@
         </div>
       </a>
 
+      {% if content_lab_enabled %}
+      <!-- Content Lab -->
+      <a href="{{ url_for('admin.content_lab') }}" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
+        <div>
+          <div style="margin-bottom:.35rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/preview.svg') }}" style="width:28px; height:28px; display:block;" loading="lazy">
+            <div class="ppx-h2" style="margin-top:.35rem;">
+              {{ t('Content Lab (preview)', 'Content Lab (preview)', app_lang) }}
+            </div>
+          </div>
+          <div class="ppx-muted">
+            {{ t('Sandbox privado para prototipos UI/UX.', 'Private sandbox for UI/UX prototypes.', app_lang) }}
+          </div>
+        </div>
+        <div class="ppx-row">
+          <span class="ppx-pill">{{ t('Abrir', 'Open', app_lang) }}</span>
+        </div>
+      </a>
+      {% endif %}
+
       <!-- Glossary -->
       <a href="/admin/glossary/" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
         <div>

@@ -1,0 +1,542 @@
+{
+  "id": "ctc/ser-o-estar-adjetivos-2",
+  "type": "ctc",
+  "slug": "ser-o-estar-adjetivos-2",
+  "version": 1,
+  "title_es": "¿SER o ESTAR? Adjetivos (2)",
+  "title_en": "SER or ESTAR? Adjectives (2)",
+  "instructions_es": "Arrastra la continuación más lógica debajo de cada oración.",
+  "instructions_en": "Drag the most logical continuation under each sentence.",
+  "level": "B1",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "published",
+  "items": [
+    {
+      "id": "item_v002fo",
+      "order": 1,
+      "prompts": [
+        {
+          "id": "p_smtwyr",
+          "prompt_es": "El libro <b>es </b>muy largo...",
+          "prompt_en": "",
+          "hint_es": "Piensa en un hecho objetivo sobre el libro.",
+          "hint_en": "Think about an objective fact about the book.",
+          "feedback_correct_es": "Correcto: Decimos “es muy largo” si nos referimos a una característica objetiva, como el número de páginas.",
+          "feedback_correct_en": "Correct: We say 'es muy largo' when referring to an objective feature, such as the number of pages.",
+          "feedback_incorrect_es": "Si decimos “está muy largo”, hacemos una valoración subjetiva, como que se nos hace eterno. Aquí hablamos de una característica objetiva.",
+          "feedback_incorrect_en": "If we say 'está muy largo', we're making a subjective comment, like it feels endless. Here we're talking about an objective feature.",
+          "expects": "c_pwi3hw",
+          "order": 1
+        },
+        {
+          "id": "p_pe0ge6",
+          "prompt_es": "El libro <b>está </b>muy largo...",
+          "prompt_en": "",
+          "hint_es": "Piensa en cómo se siente el libro al leerlo, no en su longitud real.",
+          "hint_en": "Think about how the book feels to read, not its actual length.",
+          "feedback_correct_es": "Correcto: Usamos 'está muy largo' para expresar una percepción subjetiva, como que no lo terminamos nunca.",
+          "feedback_correct_en": "Correct: We use 'está muy largo' to express a subjective perception, like never finishing it.",
+          "feedback_incorrect_es": "‘Es muy largo’ describe una característica objetiva (como 800 páginas), pero aquí la idea es que no se termina nunca, es decir, una percepción.",
+          "feedback_incorrect_en": "'Es muy largo' describes an objective trait (like 800 pages), but here the idea is that it feels endless — that's a perception.",
+          "expects": "c_nswpjh",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_nswpjh",
+          "text_es": "No lo termino nunca.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_pwi3hw",
+          "text_es": "Tiene 800 páginas.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    },
+    {
+      "id": "item_o4pu1v",
+      "order": 2,
+      "prompts": [
+        {
+          "id": "p_dcle16",
+          "prompt_es": "El auto de Leo <b>es </b>nuevo.",
+          "prompt_en": "",
+          "hint_es": "Piensa en si el auto realmente acaba de salir de fábrica.",
+          "hint_en": "Think about whether the car is actually brand new from the factory.",
+          "feedback_correct_es": "Correcto: 'Es nuevo' se refiere a que el auto es nuevo en sí, probablemente recién salido del concesionario.",
+          "feedback_correct_en": "Correct: 'Es nuevo' refers to the car being new in itself, likely just bought or unused.",
+          "feedback_incorrect_es": "Recuerda que 'es nuevo' indica una característica esencial y objetiva del auto, no una percepción.",
+          "feedback_incorrect_en": "Remember that 'es nuevo' indicates an essential, objective feature of the car — not a subjective impression.",
+          "expects": "c_uldozl",
+          "order": 1
+        },
+        {
+          "id": "p_403ir3",
+          "prompt_es": "El auto de Leo <b>está </b>nuevo.",
+          "prompt_en": "",
+          "hint_es": "¿El auto parece nuevo aunque no lo sea?",
+          "hint_en": "Does the car seem new even if it's not actually new?",
+          "feedback_correct_es": "Correcto: 'Está nuevo' se refiere a que el auto parece nuevo por su estado, aunque haya tenido otro dueño.",
+          "feedback_correct_en": "Correct: 'Está nuevo' means the car looks or feels new because of its condition, even if it had a previous owner.",
+          "feedback_incorrect_es": "Aquí usamos 'estar' porque hablamos del estado del auto, no de su origen.",
+          "feedback_incorrect_en": "We use 'estar' here because we are describing the car’s condition, not its origin.",
+          "expects": "c_63fwlu",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_63fwlu",
+          "text_es": "El dueño anterior lo cuidó mucho.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_uldozl",
+          "text_es": "Leo es el primer dueño.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    },
+    {
+      "id": "item_80d6ep",
+      "order": 3,
+      "prompts": [
+        {
+          "id": "p_uobenr",
+          "prompt_es": "Ese programa <b>es</b> entretenido.",
+          "prompt_en": "",
+          "hint_es": "Piensa en si estamos describiendo una cualidad general del programa.",
+          "hint_en": "Think about whether we’re describing a general quality of the show.",
+          "feedback_correct_es": "Correcto: 'Es entretenido' indica que el programa tiene esa cualidad de forma estable y reconocida.",
+          "feedback_correct_en": "Correct: 'Es entretenido' suggests the show is entertaining as an essential or widely accepted quality.",
+          "feedback_incorrect_es": "Recuerda que 'es' se usa para características permanentes, no percepciones momentáneas.",
+          "feedback_incorrect_en": "Remember that 'es' is used for permanent traits, not temporary perceptions.",
+          "expects": "c_60uqe4",
+          "order": 1
+        },
+        {
+          "id": "p_xba8tm",
+          "prompt_es": "Ese programa <b>está</b> entretenido.",
+          "prompt_en": "",
+          "hint_es": "¿Es una impresión del momento, como algo que viste anoche?",
+          "hint_en": "Is it a momentary impression, like something you watched last night?",
+          "feedback_correct_es": "Correcto: 'Está entretenido' comunica que el programa te pareció divertido en un momento específico.",
+          "feedback_correct_en": "Correct: 'Está entretenido' expresses a subjective reaction to how the show felt at a particular moment.",
+          "feedback_incorrect_es": "Aquí 'estar' se usa para valoraciones temporales. 'Es' se usa para una cualidad más estable.",
+          "feedback_incorrect_en": "'Estar' is used here for temporary assessments. 'Es' would suggest a more stable trait.",
+          "expects": "c_szmlgz",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_60uqe4",
+          "text_es": "Todo el mundo lo mira y habla constantemente de ello.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_szmlgz",
+          "text_es": "Anoche lo vi por primera vez y me pareció bastante divertido.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    },
+    {
+      "id": "item_uwj3lp",
+      "order": 4,
+      "prompts": [
+        {
+          "id": "p_db0qob",
+          "prompt_es": "Elisa <b>es</b> muy despierta.",
+          "prompt_en": "",
+          "hint_es": "¿Es una cualidad permanente, como ser inteligente o espabilada?",
+          "hint_en": "Is it a permanent trait, like being clever or quick-witted?",
+          "feedback_correct_es": "Correcto: 'Es muy despierta' describe una característica general de Elisa, como ser inteligente o lista.",
+          "feedback_correct_en": "Correct: 'Es muy despierta' describes a general trait of Elisa, such as being clever or quick-witted.",
+          "feedback_incorrect_es": "Aquí usamos 'ser' porque hablamos de cómo es ella, no solo cómo está en este momento.",
+          "feedback_incorrect_en": "We use 'ser' here because we’re describing what she’s like, not just her temporary condition.",
+          "expects": "c_zpk0w4",
+          "order": 1
+        },
+        {
+          "id": "p_v4oslf",
+          "prompt_es": "Elisa <b>está</b> muy despierta.",
+          "prompt_en": "",
+          "hint_es": "¿Está más alerta de lo normal en este momento?",
+          "hint_en": "Is she unusually alert right now?",
+          "feedback_correct_es": "Correcto: 'Está muy despierta' indica que Elisa tiene un nivel alto de atención o energía en este momento.",
+          "feedback_correct_en": "Correct: 'Está muy despierta' shows that Elisa is particularly alert or energetic right now.",
+          "feedback_incorrect_es": "Recuerda que 'estar' expresa un estado temporal. Aquí no hablamos de cómo es ella normalmente.",
+          "feedback_incorrect_en": "Remember, 'estar' expresses a temporary state. This isn’t about her usual personality.",
+          "expects": "c_r4u5g9",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_zpk0w4",
+          "text_es": "Porque siempre sabe qué hacer en cualquier situación.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_r4u5g9",
+          "text_es": "Porque tomó 3 cafés.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    },
+    {
+      "id": "item_uuyoso",
+      "order": 5,
+      "prompts": [
+        {
+          "id": "p_i44v64",
+          "prompt_es": "Cynthia <b>es</b> muy interesada.",
+          "prompt_en": "",
+          "hint_es": "¿Estamos hablando de su forma de ser habitual, especialmente si se comporta de forma egoísta?",
+          "hint_en": "Are we describing her usual way of being, especially if she behaves selfishly?",
+          "feedback_correct_es": "Correcto: 'Es muy interesada' indica que Cynthia actúa de forma egoísta o calculadora como un rasgo de personalidad.",
+          "feedback_correct_en": "Correct: 'Es muy interesada' means Cynthia acts selfishly or opportunistically as a character trait.",
+          "feedback_incorrect_es": "Recuerda que 'ser' se usa para describir rasgos permanentes o negativos del carácter.",
+          "feedback_incorrect_en": "Remember that 'ser' is used for permanent or negative character traits.",
+          "expects": "c_5m1bqz",
+          "order": 1
+        },
+        {
+          "id": "p_9gshhx",
+          "prompt_es": "Cynthia <b>está</b> muy interesada.",
+          "prompt_en": "",
+          "hint_es": "¿Está mostrando curiosidad en este momento por algo en particular?",
+          "hint_en": "Is she showing interest right now in something specific?",
+          "feedback_correct_es": "Correcto: 'Está muy interesada' indica que Cynthia tiene curiosidad activa o entusiasmo por algo concreto.",
+          "feedback_correct_en": "Correct: 'Está muy interesada' shows that Cynthia is currently curious or enthusiastic about something specific.",
+          "feedback_incorrect_es": "Aquí 'estar' se refiere a un estado temporal, no a una actitud permanente o negativa.",
+          "feedback_incorrect_en": "'Estar' here refers to a temporary state, not a lasting or negative trait.",
+          "expects": "c_13talc",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_5m1bqz",
+          "text_es": "Solo me llama cuando necesita algo.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_13talc",
+          "text_es": "Siempre me pregunta por el proyecto.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    },
+    {
+      "id": "item_v7w3nb",
+      "order": 6,
+      "prompts": [
+        {
+          "id": "p_fcvv94",
+          "prompt_es": "Esa uva <b>es</b> verde.",
+          "prompt_en": "",
+          "hint_es": "¿Estamos hablando del tipo de uva que es, no de si está madura o no?",
+          "hint_en": "Are we referring to the kind of grape it is, not whether it’s ripe or not?",
+          "feedback_correct_es": "Correcto: 'Es verde' indica que la uva es de color verde por naturaleza, como tipo o variedad.",
+          "feedback_correct_en": "Correct: 'Es verde' means the grape is green by nature — it’s that kind of grape.",
+          "feedback_incorrect_es": "Recuerda que 'ser' se usa para identificar características permanentes como el color natural.",
+          "feedback_incorrect_en": "Remember that 'ser' is used to identify permanent traits like natural color.",
+          "expects": "c_si25ae",
+          "order": 1
+        },
+        {
+          "id": "p_31e4fx",
+          "prompt_es": "Esa uva <b>está</b> verde.",
+          "prompt_en": "",
+          "hint_es": "¿Podría estar hablando de su estado de maduración?",
+          "hint_en": "Could this be referring to its ripeness?",
+          "feedback_correct_es": "Correcto: 'Está verde' quiere decir que no está madura aún, por eso no se quiere comer.",
+          "feedback_correct_en": "Correct: 'Está verde' means it’s not ripe yet — that’s why it won’t be eaten.",
+          "feedback_incorrect_es": "Este uso de 'estar' indica un estado temporal. No se refiere al color de tipo.",
+          "feedback_incorrect_en": "'Estar' here refers to a temporary state, not the grape’s natural color.",
+          "expects": "c_sls61c",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_si25ae",
+          "text_es": "Pero yo prefiero las rojas.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_sls61c",
+          "text_es": "Por eso no me lo voy a comer.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    },
+    {
+      "id": "item_ye3h9q",
+      "order": 7,
+      "prompts": [
+        {
+          "id": "p_xnzjkx",
+          "prompt_es": "Ignacio <b>es</b> muy alegre.",
+          "prompt_en": "",
+          "hint_es": "¿Se refiere a su carácter habitual, como alguien optimista o positivo?",
+          "hint_en": "Is this about his usual character, like being optimistic or cheerful?",
+          "feedback_correct_es": "Correcto: 'Es muy alegre' describe una característica estable de Ignacio, su forma de ser.",
+          "feedback_correct_en": "Correct: 'Es muy alegre' refers to a stable characteristic — Ignacio's personality.",
+          "feedback_incorrect_es": "Aquí 'ser' se usa porque hablamos de cómo es Ignacio normalmente, no cómo se siente ahora.",
+          "feedback_incorrect_en": "'Ser' is used here because we’re describing what Ignacio is usually like, not how he feels right now.",
+          "expects": "c_ahp7fg",
+          "order": 1
+        },
+        {
+          "id": "p_2lrdld",
+          "prompt_es": "Ignacio <b>está</b> muy alegre.",
+          "prompt_en": "",
+          "hint_es": "¿Es un estado emocional temporal, como por una bebida o una celebración?",
+          "hint_en": "Is it a temporary emotional state, like after drinking or celebrating?",
+          "feedback_correct_es": "Correcto: 'Está muy alegre' indica que Ignacio está contento en este momento por una causa externa.",
+          "feedback_correct_en": "Correct: 'Está muy alegre' shows Ignacio is feeling happy right now due to some specific cause.",
+          "feedback_incorrect_es": "En este caso 'estar' se usa para describir un estado temporal, no un rasgo de personalidad.",
+          "feedback_incorrect_en": "'Estar' is used here to describe a temporary mood, not a personality trait.",
+          "expects": "c_a8tpwy",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_ahp7fg",
+          "text_es": "Siempre ve el lado positivo de las cosas.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_a8tpwy",
+          "text_es": "Acaba de tomar 4 cervezas.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    },
+    {
+      "id": "item_9y28ja",
+      "order": 8,
+      "prompts": [
+        {
+          "id": "p_dzz4ke",
+          "prompt_es": "Micaela <b>es</b> muy blanca.",
+          "prompt_en": "",
+          "hint_es": "¿Se refiere al tono de piel natural de Micaela?",
+          "hint_en": "Is this referring to Micaela’s natural skin tone?",
+          "feedback_correct_es": "Correcto: 'Es muy blanca' indica una característica física permanente de Micaela.",
+          "feedback_correct_en": "Correct: 'Es muy blanca' refers to a permanent physical trait — her natural skin tone.",
+          "feedback_incorrect_es": "Aquí 'ser' se usa porque se habla de una cualidad estable, no de un cambio momentáneo.",
+          "feedback_incorrect_en": "'Ser' is used here because we’re talking about a stable trait, not a momentary change.",
+          "expects": "c_yac1e5",
+          "order": 1
+        },
+        {
+          "id": "p_0upbzc",
+          "prompt_es": "Micaela <b>está</b> muy blanca.",
+          "prompt_en": "",
+          "hint_es": "¿Se refiere a un cambio temporal, como estar pálida o sin broncear?",
+          "hint_en": "Does it refer to a temporary change, like being pale or lacking a tan?",
+          "feedback_correct_es": "Correcto: 'Está muy blanca' indica que Micaela luce pálida o necesita tomar sol.",
+          "feedback_correct_en": "Correct: 'Está muy blanca' means Micaela looks pale or needs some sun — a temporary condition.",
+          "feedback_incorrect_es": "Este uso de 'estar' se refiere a una apariencia momentánea, no a su color habitual.",
+          "feedback_incorrect_en": "'Estar' here refers to a temporary appearance, not her usual color.",
+          "expects": "c_w2zvjz",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_yac1e5",
+          "text_es": "Debe usar protector solar.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_w2zvjz",
+          "text_es": "Le falta tomar un poco de sol.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    },
+    {
+      "id": "item_n0ocnk",
+      "order": 9,
+      "prompts": [
+        {
+          "id": "p_cozdyl",
+          "prompt_es": "¡Eres muy frío!",
+          "prompt_en": "",
+          "hint_es": "¿Habla sobre una actitud emocional constante o habitual?",
+          "hint_en": "Is this referring to a consistent or habitual emotional attitude?",
+          "feedback_correct_es": "Correcto: 'Eres muy frío' se refiere a una actitud emocional distante o poco afectuosa como parte del carácter.",
+          "feedback_correct_en": "Correct: 'Eres muy frío' refers to an emotionally distant or indifferent attitude as part of personality.",
+          "feedback_incorrect_es": "Aquí no hablamos de temperatura corporal, sino de una forma de ser.",
+          "feedback_incorrect_en": "This is not about body temperature — it’s about how someone is emotionally.",
+          "expects": "c_mw2ndl",
+          "order": 1
+        },
+        {
+          "id": "p_cc1k34",
+          "prompt_es": "¡Estás muy frío!",
+          "prompt_en": "",
+          "hint_es": "¿Es un comentario sobre cómo se siente el cuerpo en este momento?",
+          "hint_en": "Is this a comment about how the body feels right now?",
+          "feedback_correct_es": "Correcto: 'Estás muy frío' hace referencia a la temperatura del cuerpo en un momento puntual.",
+          "feedback_correct_en": "Correct: 'Estás muy frío' refers to someone's body temperature in the moment.",
+          "feedback_incorrect_es": "Este no es un juicio sobre la personalidad, sino una observación física y temporal.",
+          "feedback_incorrect_en": "This isn’t a judgment about personality, but a physical and temporary observation.",
+          "expects": "c_3iuxni",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_mw2ndl",
+          "text_es": "Siempre tienes una actitud indiferente conmigo.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_3iuxni",
+          "text_es": "¿Saliste al frío sin abrigarte?",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    },
+    {
+      "id": "item_3j3fzu",
+      "order": 10,
+      "prompts": [
+        {
+          "id": "p_jqbqis",
+          "prompt_es": "¡Ese actor <b>es</b> buenísimo!",
+          "prompt_en": "",
+          "hint_es": "¿Se refiere a su calidad profesional o a su trayectoria como actor?",
+          "hint_en": "Is this about his professional skill or reputation as an actor?",
+          "feedback_correct_es": "Correcto: 'Es buenísimo' indica que es un actor excelente, por su talento o reconocimientos.",
+          "feedback_correct_en": "Correct: 'Es buenísimo' means he is an excellent actor — due to talent or recognition.",
+          "feedback_incorrect_es": "Aquí 'ser' se usa para hablar de una cualidad profesional, no de su aspecto físico.",
+          "feedback_incorrect_en": "'Ser' is used here to describe professional quality, not physical appearance.",
+          "expects": "c_4upo2f",
+          "order": 1
+        },
+        {
+          "id": "p_xuphko",
+          "prompt_es": "¡Ese actor <b>está</b> buenísimo!",
+          "prompt_en": "",
+          "hint_es": "¿Se refiere a cómo luce físicamente, de forma subjetiva o momentánea?",
+          "hint_en": "Is it about how he looks physically — in a subjective or momentary way?",
+          "feedback_correct_es": "Correcto: 'Está buenísimo' se refiere a que es muy atractivo, una percepción del momento.",
+          "feedback_correct_en": "Correct: 'Está buenísimo' means he looks really attractive — a subjective impression.",
+          "feedback_incorrect_es": "Este uso de 'estar' habla de una apariencia física o impresión puntual, no de su carrera.",
+          "feedback_incorrect_en": "'Estar' is used for physical appearance or a momentary impression — not his career.",
+          "expects": "c_q4c0tb",
+          "order": 2
+        }
+      ],
+      "continuations": [
+        {
+          "id": "c_4upo2f",
+          "text_es": "Ganó dos veces el premio Oscar.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        },
+        {
+          "id": "c_q4c0tb",
+          "text_es": "Creo que es la persona más atractiva que he visto.",
+          "feedback_correct_es": "",
+          "feedback_correct_en": "",
+          "feedback_incorrect_es": "",
+          "feedback_incorrect_en": "",
+          "is_decoy": false
+        }
+      ]
+    }
+  ],
+  "created_by": "admin",
+  "created_at": "2025-12-07T12:49:13.001Z",
+  "checksum": "sha256:524dc2dde400aabe1a12fdd2b462715ef884fff655d86270e68aeea9865ce9d6"
+}

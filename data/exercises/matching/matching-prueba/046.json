@@ -1,0 +1,78 @@
+{
+  "type": "matching",
+  "slug": "matching-prueba",
+  "title_es": "matching (prueba)",
+  "title_en": "matching test",
+  "instructions_es": "Empareja los términos.",
+  "instructions_en": "Select the correct pair for each term.",
+  "level": "A2",
+  "taxonomy_paths": [],
+  "status": "draft",
+  "media": [],
+  "items": [
+    {
+      "id": "pair_14v4yh",
+      "order": 1,
+      "left": "hacerse rico",
+      "right": "Empezar a tener mucho dinero."
+    },
+    {
+      "id": "pair_py0adw",
+      "order": 2,
+      "left": "hacerse famoso",
+      "right": "Empezar a ser conocido por muchas personas."
+    },
+    {
+      "id": "pair_dytfhj",
+      "order": 3,
+      "left": "hacerse amigo de alguien",
+      "right": "Formar una relación cercana con otra persona."
+    },
+    {
+      "id": "pair_40iv8t",
+      "order": 4,
+      "left": "hacerse tarde",
+      "right": "Pasar el tiempo hasta que ya es muy tarde."
+    },
+    {
+      "id": "pair_9c7eae",
+      "order": 5,
+      "left": "hacerse daño",
+      "right": "Lastimarse o sentir dolor físico."
+    },
+    {
+      "id": "pair_knx4kh",
+      "order": 6,
+      "left": "hacerse el tonto",
+      "right": "Fingir que no entiendes o que no sabes algo."
+    },
+    {
+      "id": "pair_xke2sd",
+      "order": 7,
+      "left": "hacerse la vista gorda",
+      "right": "Ignorar algo a propósito."
+    },
+    {
+      "id": "pair_t7bup5",
+      "order": 8,
+      "left": "hacerse de noche",
+      "right": "Cambiar del día a la noche."
+    },
+    {
+      "id": "pair_uodhhp",
+      "order": 9,
+      "left": "hacerse realidad",
+      "right": "Empezar a existir algo que antes solo se podía imaginar o desear."
+    },
+    {
+      "id": "pair_8oicu3",
+      "order": 10,
+      "left": "hacerse a la idea (de algo)",
+      "right": "Aceptar mentalmente una situación nueva o difícil."
+    }
+  ],
+  "version": 46,
+  "created_at": "2025-12-09T17:20:03Z",
+  "created_by": "admin",
+  "checksum": "sha256:88806912e58a88d7d5cefd0b5b996df2b8cf716f291c4d9421d71ddcdf3fd56a"
+}

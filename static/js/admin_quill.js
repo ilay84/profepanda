@@ -655,6 +655,23 @@
     wrapper.appendChild(toolbar);
     wrapper.appendChild(editor);
 
+    // Track selection so toolbar actions (embed, etc.) insert at caret
+    (function installSelectionTracking(){
+      function captureSelectionIfInEditor(){
+        try {
+          var sel = window.getSelection();
+          if (sel && sel.anchorNode && editor.contains(sel.anchorNode)) {
+            saveSelection();
+          }
+        } catch(_){}
+      }
+      ['mouseup','keyup','input','focus'].forEach(function(evt){
+        editor.addEventListener(evt, captureSelectionIfInEditor, true);
+      });
+      document.addEventListener('selectionchange', captureSelectionIfInEditor);
+      toolbar.addEventListener('mousedown', captureSelectionIfInEditor, true);
+    })();
+
     editor.innerHTML = textarea.value || '<p><br></p>';
     textarea.style.display = 'none';
     // Outline (H2/H3) — build and update on demand
@@ -1109,33 +1126,47 @@
     return 'P';
   }
 
+  // Blocks that are safe to convert to headings/paragraphs (exclude special widgets)
   function isBlock(el) {
-    return el && el.nodeType === 1 && /^(P|H1|H2|H3|H4|H5|H6|DIV|BLOCKQUOTE)$/i.test(el.tagName);
+    if (!el || el.nodeType !== 1) return false;
+    var tag = el.tagName;
+    if (!/^(P|H1|H2|H3|H4|H5|H6|DIV|BLOCKQUOTE)$/i.test(tag)) return false;
+    if (el.closest && el.closest('.ppx-example, .ppx-acc, .ppx-exref')) return false;
+    if (el.classList && (el.classList.contains('ppx-example') || el.classList.contains('ppx-acc') || el.classList.contains('ppx-exref'))) return false;
+    return true;
   }
 
-  function topEditableAncestor(node) {
+  function topEditableAncestor(node, editorRoot) {
     var n = node;
     if (!n) return null;
     if (n.nodeType === 3) n = n.parentNode;
-    while (n && n !== editor && !isBlock(n)) n = n.parentNode;
-    return n && n !== editor ? n : null;
+    while (n && n !== editorRoot && !isBlock(n)) n = n.parentNode;
+    return n && n !== editorRoot ? n : null;
   }
 
-  function blocksInRange(range) {
+  function blocksInRange(range, editorRoot) {
     var root = range.commonAncestorContainer;
     while (root && root.nodeType !== 1) root = root.parentNode;
     var list = [];
-    var walker = document.createTreeWalker(root || editor, NodeFilter.SHOW_ELEMENT, null);
+    var walker = document.createTreeWalker(root || editorRoot || document.body, NodeFilter.SHOW_ELEMENT, null);
     while (walker.nextNode()) {
       var el = walker.currentNode;
       if (!isBlock(el)) continue;
-      try { if (range.intersectsNode(el) && editor.contains(el)) list.push(el); } catch(_) {}
+      try { if (range.intersectsNode(el) && (!editorRoot || editorRoot.contains(el))) list.push(el); } catch(_) {}
     }
     if (!list.length) {
-      var a = topEditableAncestor(range.startContainer); if (a) list.push(a);
+      var a = topEditableAncestor(range.startContainer, editorRoot); if (a && isBlock(a)) list.push(a);
     }
-    // Only top-most blocks within editor
-    return list.filter(function(el){ return el.parentNode === editor || el.closest('.ppx-acc-body, .ppx-acc, .ppx-example, .ppx-exref') || true; });
+    // Only top-most eligible blocks within editor (avoid nested duplicates)
+    return list.filter(function(el){
+      if (editorRoot && !editorRoot.contains(el)) return false;
+      var p = el.parentElement;
+      while (p && p !== editorRoot) {
+        if (isBlock(p)) return false;
+        p = p.parentElement;
+      }
+      return true;
+    });
   }
 
   function replaceTag(el, newTag) {
@@ -1157,11 +1188,31 @@
     return repl;
   }
 
-  function applyHeadingToSelection(targetLevel) {
+  function applyHeadingToSelection(targetLevel, editorRoot) {
+    if (!editorRoot) return;
+
+    // Quill-aware path: use Quill API if present on this editor
+    var quill = editorRoot.__ppxQuill;
+    if (quill && quill.getSelection) {
+      var qSel = quill.getSelection();
+      if (!qSel) qSel = quill.getSelection(true);
+      if (!qSel) return;
+      var desiredQ = normalizeHeadingLevel(targetLevel);
+      var current = (quill.getFormat(qSel.index, qSel.length || 1) || {}).header;
+      var desiredHeader = (desiredQ === 'H2') ? 2 : (desiredQ === 'H3' ? 3 : false);
+      var toHeader = desiredHeader;
+      // Toggle back to paragraph if already same heading
+      if (desiredHeader && current === desiredHeader) toHeader = false;
+      if (!desiredHeader && !current) return;
+      quill.formatLine(qSel.index, Math.max(qSel.length || 0, 1), 'header', toHeader || false);
+      quill.setSelection(qSel.index, qSel.length || 0);
+      return;
+    }
+
     var desired = normalizeHeadingLevel(targetLevel);
     var sel = window.getSelection(); if (!sel || !sel.rangeCount) return;
     var range = sel.getRangeAt(0);
-    var blocks = blocksInRange(range);
+    var blocks = blocksInRange(range, editorRoot);
     if (!blocks.length) return;
 
     // Determine toggle behavior: if all blocks already same as desired, toggle to P
@@ -1232,6 +1283,14 @@
       });
     }
 
+    // Keep the text selection alive while interacting with the heading dropdown
+    toolbar.addEventListener('mousedown', function(e){
+      var t = e.target;
+      if (t && t.closest && t.closest('.ppx-head-wrap')) {
+        try { saveSelection(); } catch(_){}
+      }
+    }, true);
+
     toolbar.addEventListener('click', function (e) {
       var t = e.target;
 
@@ -1301,7 +1360,7 @@
         var opt = t.classList.contains('ppx-head-opt') ? t : t.closest('.ppx-head-opt');
         var level = (opt && opt.getAttribute('data-level')) || 'P';
         restoreSelection();
-        try { applyHeadingToSelection(level); } catch(_){}
+        try { applyHeadingToSelection(level, editor); } catch(_){}
         var pop2 = toolbar.querySelector('.ppx-head-pop'); var btn2 = toolbar.querySelector('.ppx-head-dd');
         if (pop2) pop2.setAttribute('aria-hidden','true'); if (btn2) btn2.setAttribute('aria-expanded','false');
         e.preventDefault();
@@ -1806,6 +1865,24 @@
     })();
 
     var quill = new Quill(editor, { theme: 'snow', modules: { toolbar: { container: toolbar } } });
+    // Expose quill instance on the editor element for heading toggles
+    editor.__ppxQuill = quill;
+    // Wire list buttons (our custom classes are not Quill's defaults)
+    (function wireLists(){
+      var btnUl = toolbar.querySelector('.ppx-ul');
+      var btnOl = toolbar.querySelector('.ppx-ol');
+      function formatList(kind){
+        try {
+          quill.focus();
+          var sel = quill.getSelection(true);
+          var len = Math.max(sel && sel.length || 0, 1);
+          quill.formatLine(sel ? sel.index : 0, len, 'list', kind);
+        } catch(_){}
+      }
+      if (btnUl) btnUl.addEventListener('click', function(e){ e.preventDefault(); formatList('bullet'); });
+      if (btnOl) btnOl.addEventListener('click', function(e){ e.preventDefault(); formatList('ordered'); });
+    })();
+
     if (textarea.value && textarea.value.trim()) {
       quill.clipboard.dangerouslyPasteHTML(0, textarea.value);
     }

@@ -1,0 +1,226 @@
+{
+  "id": "fitb/otros-equivalentes-de-to-be",
+  "type": "fitb",
+  "slug": "otros-equivalentes-de-to-be",
+  "version": 4,
+  "title_es": "Otros equivalentes de 'TO BE'",
+  "title_en": "Other Equivalents of 'TO BE' (1)",
+  "instructions_es": "Escribe la palabra que falta.",
+  "instructions_en": "Type the missing word.",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "draft",
+  "items": [
+    {
+      "id": "b1",
+      "order": 1,
+      "text": "<p>*Hay/hay* mucha gente en la fiesta.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "Hay",
+            "hay"
+          ],
+          "hint_es": "Piensa en cómo decimos 'there is/there are' en español.",
+          "hint_en": "Think about how we say 'there is/there are' in Spanish.",
+          "feedback_correct_es": "¡Correcto! 'Hay' se usa para hablar de existencia en el presente.",
+          "feedback_correct_en": "Correct! 'Hay' is used to express existence in the present.",
+          "feedback_incorrect_es": "Revisa cómo expresamos que 'hay' algo en un lugar en el presente.",
+          "feedback_incorrect_en": "Check how we express that something 'is there' in the present."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b2",
+      "order": 2,
+      "text": "<p>Ayer *hubo* una tormenta muy fuerte.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "hubo"
+          ],
+          "hint_es": "¿Cómo dirías 'there was' para un evento completo en el pasado?",
+          "hint_en": "How would you say 'there was' for a completed event in the past?",
+          "feedback_correct_es": "¡Bien hecho! 'Hubo' indica la existencia durante un evento puntual.",
+          "feedback_correct_en": "Well done! 'Hubo' refers to existence during a completed event.",
+          "feedback_incorrect_es": "'Había' describe contexto, pero 'hubo' se usa para eventos terminados.",
+          "feedback_incorrect_en": "'Había' describes context, but 'hubo' is used for completed events."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b3",
+      "order": 3,
+      "text": "<p>Antes no *había* tantas casas por aquí.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "había"
+          ],
+          "hint_es": "¿Qué forma de 'haber' se usa para describir el pasado de manera general?",
+          "hint_en": "Which form of 'haber' do we use for describing the past in a general or descriptive way?",
+          "feedback_correct_es": "¡Exacto! 'Había' se usa para descripciones de fondo o situaciones habituales.",
+          "feedback_correct_en": "Exactly! 'Había' is used for background descriptions or habitual situations.",
+          "feedback_incorrect_es": "Revisa cuándo usamos 'había' versus 'hubo' en el pasado.",
+          "feedback_incorrect_en": "Review when we use 'había' versus 'hubo' in the past."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b4",
+      "order": 4,
+      "text": "<p>En este momento *hace* mucho viento afuera.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "hace"
+          ],
+          "hint_es": "¿Qué verbo usamos para hablar del tiempo atmosférico en español?",
+          "hint_en": "Which verb do we use to talk about the weather in Spanish?",
+          "feedback_correct_es": "¡Correcto! 'Hace' es el verbo adecuado para describir condiciones como viento o calor.",
+          "feedback_correct_en": "Correct! 'Hace' is the right verb for describing conditions like wind or heat.",
+          "feedback_incorrect_es": "'Hacer' es el verbo adecuado para condiciones como 'viento'. Otros verbos como 'haber' o 'estar' no se usan en este contexto.",
+          "feedback_incorrect_en": "'Hacer' is the right verb for conditions like 'wind'. Other verbs like 'haber' or 'estar' are not used in this context."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b5",
+      "order": 5,
+      "text": "<p>En verano *hace* mucho calor aquí.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "hace"
+          ],
+          "hint_es": "¿Qué verbo usamos para expresar el clima habitual?",
+          "hint_en": "Which verb do we use to describe regular weather conditions?",
+          "feedback_correct_es": "¡Correcto! 'Hace' es el verbo común para hablar del tiempo.",
+          "feedback_correct_en": "Correct! 'Hace' is the common verb to talk about the weather.",
+          "feedback_incorrect_es": "Para expresar condiciones como 'calor' o 'frío', se usa 'hacer'. No se usa 'haber' en este tipo de frases.",
+          "feedback_incorrect_en": "To express conditions like 'heat' or 'cold', we use 'hacer'. 'Haber' is not used in this kind of expression."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b6",
+      "order": 6,
+      "text": "<p>Hoy *hace* un día precioso, ¿no?</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "hace"
+          ],
+          "hint_es": "¿Qué verbo usamos con expresiones como 'buen día' o 'mal tiempo'?",
+          "hint_en": "What verb do we use with expressions like 'nice day' or 'bad weather'?",
+          "feedback_correct_es": "¡Exacto! Usamos 'hace' con muchas expresiones sobre el clima.",
+          "feedback_correct_en": "Exactly! We use 'hace' with many expressions about the weather.",
+          "feedback_incorrect_es": "Para hablar del tipo de día (bueno, malo, agradable), el verbo adecuado es 'hacer'.",
+          "feedback_incorrect_en": "To talk about the kind of day (nice, bad, pleasant), the correct verb is 'hacer'."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b7",
+      "order": 7,
+      "text": "<p>Después de correr, *tengo* mucha sed.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "tengo"
+          ],
+          "hint_es": "¿Qué verbo usamos para hablar de sensaciones físicas como sed o hambre?",
+          "hint_en": "Which verb do we use for physical sensations like thirst or hunger?",
+          "feedback_correct_es": "¡Bien! Usamos 'tener' para expresar necesidades físicas.",
+          "feedback_correct_en": "Good job! We use 'tener' to express physical needs.",
+          "feedback_incorrect_es": "No usamos 'estar sediento', sino 'tener sed' en español.",
+          "feedback_incorrect_en": "We don’t say 'to be thirsty' literally in Spanish, we use 'tener sed'."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b8",
+      "order": 8,
+      "text": "<p>Mi hermana *tiene* miedo de las arañas.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "tiene"
+          ],
+          "hint_es": "¿Qué verbo usamos con emociones como miedo?",
+          "hint_en": "What verb do we use with emotions like fear?",
+          "feedback_correct_es": "¡Correcto! En español, 'tener miedo' es una expresión fija.",
+          "feedback_correct_en": "Correct! In Spanish, 'tener miedo' is a fixed expression.",
+          "feedback_incorrect_es": "Aunque en inglés se usa 'to be afraid', en español usamos 'tener'.",
+          "feedback_incorrect_en": "Even though English uses 'to be afraid', Spanish uses 'tener'."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b9",
+      "order": 9,
+      "text": "<p>¿*Tienes/Tenés/Tiene/Tienen* hambre? Podemos comer algo.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "Tienes",
+            "Tenés",
+            "Tiene",
+            "Tienen"
+          ],
+          "hint_es": "¿Qué verbo expresa 'to be hungry' en español?",
+          "hint_en": "Which verb expresses 'to be hungry' in Spanish?",
+          "feedback_correct_es": "¡Muy bien! Decimos 'tener hambre', no 'estar hambriento' normalmente.",
+          "feedback_correct_en": "Great! We say 'tener hambre', not usually 'estar hambriento'.",
+          "feedback_incorrect_es": "'Tener' es el verbo que usamos para expresar hambre.",
+          "feedback_incorrect_en": "'Tener' is the verb we use to express hunger."
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "b10",
+      "order": 10,
+      "text": "<p>Ellos *tienen* prisa porque el tren sale en cinco minutos.</p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "tienen"
+          ],
+          "hint_es": "¿Qué verbo usamos para expresar la idea de 'to be in a hurry'?",
+          "hint_en": "Which verb do we use to express 'to be in a hurry'?",
+          "feedback_correct_es": "¡Exactamente! Decimos 'tener prisa', no 'estar apresurado'.",
+          "feedback_correct_en": "Exactly! We say 'tener prisa', not 'estar apresurado'.",
+          "feedback_incorrect_es": "Revisa cómo se dice 'to be in a hurry' correctamente en español.",
+          "feedback_incorrect_en": "Check how to correctly say 'to be in a hurry' in Spanish."
+        }
+      ],
+      "media": []
+    }
+  ],
+  "created_by": "admin",
+  "created_at": "2025-12-08T18:28:13.861Z",
+  "checksum": "sha256:06150bacd656f43ad9ad8e9c994b525dead1af78a4ca0c21381e2abdd07e39db"
+}

@@ -1,0 +1,121 @@
+{
+  "type": "ctw",
+  "slug": "ser-estar-essence-vs-situation",
+  "title_es": "¿SER o ESTAR? Esencia vs. Situación",
+  "title_en": "SER or ESTAR? Essence vs. Situation",
+  "instructions_es": "Haz clic en la forma correcta de 'ser' o 'estar' en cada oración. Piensa si describes una esencia (algo que define lo que algo o alguien es) o una situación (un estado, condición o ubicación contextual).",
+  "instructions_en": "Click on the correct form of 'ser' or 'estar' in each sentence. Consider whether you're describing an essence (something that defines what something or someone is) or a situation (a state, condition, or contextual location).",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "draft",
+  "items": [
+    {
+      "id": "ctw_001",
+      "order": 1,
+      "mode": "single",
+      "sentence": "La capital de Perú */es/* / *está* Lima.",
+      "translation": "The capital of Peru is Lima.",
+      "tokens": [
+        {
+          "text": "es",
+          "correct": true
+        },
+        {
+          "text": "está",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Definimos qué es Lima o decimos dónde está?",
+      "hint_en": "Are we defining what Lima is or saying where it is?",
+      "feedback_correct_es": "Correcto. Aquí definimos la identidad de Lima como capital, lo cual es una esencia.",
+      "feedback_correct_en": "Correct. We're defining Lima as the capital—an essence, not a situation.",
+      "feedback_incorrect_es": "Incorrecto. Usamos 'ser' para expresar definiciones o identidades esenciales.",
+      "feedback_incorrect_en": "Incorrect. 'Ser' is used for definitions or essential identities.",
+      "media": []
+    },
+    {
+      "id": "ctw_002",
+      "order": 2,
+      "mode": "single",
+      "sentence": "El Sol */está/* / *es* a 150.000.000 km de la Tierra.",
+      "translation": "The Sun is 150 million km from Earth.",
+      "tokens": [
+        {
+          "text": "está",
+          "correct": true
+        },
+        {
+          "text": "es",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Se trata de una ubicación física o de una identidad?",
+      "hint_en": "Is this a physical location or an identity?",
+      "feedback_correct_es": "Correcto. Usamos 'estar' para ubicar físicamente algo en el espacio.",
+      "feedback_correct_en": "Correct. 'Estar' is used to indicate physical location.",
+      "feedback_incorrect_es": "Incorrecto. 'Ser' no se usa para decir dónde está algo.",
+      "feedback_incorrect_en": "Incorrect. 'Ser' isn’t used to indicate where something is.",
+      "media": []
+    },
+    {
+      "id": "ctw_003",
+      "order": 3,
+      "mode": "single",
+      "sentence": "La bandera de Argentina */es/* / *está* azul y blanca.",
+      "translation": "The flag of Argentina is blue and white.",
+      "tokens": [
+        {
+          "text": "es",
+          "correct": true
+        },
+        {
+          "text": "está",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Es una característica definitoria o un estado temporal?",
+      "hint_en": "Is this a defining characteristic or a temporary state?",
+      "feedback_correct_es": "Correcto. El color es una cualidad esencial de la bandera.",
+      "feedback_correct_en": "Correct. Color is an essential quality of the flag.",
+      "feedback_incorrect_es": "Incorrecto. 'Estar' no se usa para describir colores permanentes o definitorios.",
+      "feedback_incorrect_en": "Incorrect. 'Estar' isn’t used for permanent or defining color traits.",
+      "media": []
+    },
+    {
+      "id": "ctw_004",
+      "order": 4,
+      "mode": "single",
+      "sentence": "Rusia */está/* / *es* muy lejos de Argentina.",
+      "translation": "Russia is very far from Argentina.",
+      "tokens": [
+        {
+          "text": "está",
+          "correct": true
+        },
+        {
+          "text": "es",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Describes una ubicación espacial o una cualidad esencial?",
+      "hint_en": "Are you describing spatial location or essential quality?",
+      "feedback_correct_es": "Correcto. 'Estar' se usa para describir ubicaciones y distancias.",
+      "feedback_correct_en": "Correct. 'Estar' is used to describe locations and distances.",
+      "feedback_incorrect_es": "Incorrecto. Aquí no se describe qué es Rusia, sino dónde está situada.",
+      "feedback_incorrect_en": "Incorrect. We're not describing what Russia is, but where it's situated.",
+      "media": []
+    }
+  ],
+  "version": 50,
+  "created_at": "2025-12-03T14:31:57Z",
+  "created_by": "admin",
+  "checksum": "sha256:765130ab082bf015bc01eadb261e704134af7dfca8c5cba2e5e01b7220f3922e"
+}

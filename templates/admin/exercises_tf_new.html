@@ -243,6 +243,7 @@
     window.__TF_PREFILL = {{ (prefill_json or {})|tojson|safe }};
   </script>
   {% endif %}
+  <script defer src="{{ url_for('static', filename='js/admin_rte.js') }}?v=20251205a"></script>
   <script defer src="{{ url_for('static', filename='js/ppx-json-editor.js') }}?v=20251122a"></script>
   <script defer src="{{ url_for('static', filename='js/admin_builder_tf.js') }}?v=20251117c"></script>
 {% endblock %}

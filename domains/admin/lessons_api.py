@@ -1,6 +1,9 @@
 from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any
+import os
+from pathlib import Path
+from werkzeug.utils import secure_filename
 
 from flask import request, jsonify, abort
 
@@ -47,7 +50,7 @@ def api_admin_lessons_create():
         "slug": slug,
         "title": title,
         "settings": {"progress_gate": True, "pass_threshold": 0.8},
-        "slides": data.get("slides") or [],
+        "slides": data.get("slides") or [{"id": "content_1", "type": "content", "elements": []}],
     }
     l = Lesson(slug=slug, title=title, locale=locale, status="draft", json=payload)
     db.session.add(l)
@@ -111,6 +114,13 @@ def api_admin_lessons_publish(lesson_id: int):
     db.session.commit()
     return jsonify({"ok": True})
 
+@bp.delete("/api/lessons/<int:lesson_id>")
+def api_admin_lessons_delete(lesson_id: int):
+    l = Lesson.query.get_or_404(lesson_id)
+    db.session.delete(l)
+    db.session.commit()
+    return jsonify({"ok": True})
+
 
 @bp.post("/api/media/resolve")
 def api_admin_media_resolve():
@@ -141,3 +151,25 @@ def api_admin_media_resolve():
         "src": f"media:gdrive:{file_id}",
     })
 
+@bp.post("/api/media/upload")
+def api_admin_media_upload():
+    """Basic audio upload to static/uploads; returns a src URL."""
+    f = request.files.get("file")
+    if not f:
+        abort(400)
+    filename = secure_filename(f.filename or "audio")
+    if not filename:
+        abort(400)
+    root = Path("static") / "uploads"
+    root.mkdir(parents=True, exist_ok=True)
+    # Avoid collisions
+    stem = Path(filename).stem
+    suffix = Path(filename).suffix or ".mp3"
+    counter = 0
+    final_name = filename
+    while (root / final_name).exists():
+        counter += 1
+        final_name = f"{stem}-{counter}{suffix}"
+    f.save(root / final_name)
+    src = f"/static/uploads/{final_name}"
+    return jsonify({"storage": "local", "src": src, "filename": final_name})

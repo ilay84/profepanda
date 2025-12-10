@@ -195,6 +195,7 @@
       slug: "{{ builder_slug|default('') }}"
     };
   </script>
+  <script defer src="{{ url_for('static', filename='js/admin_rte.js') }}?v=20251205a"></script>
   <script defer src="{{ url_for('static', filename='js/ppx-json-editor.js') }}?v=20251122a"></script>
   <script defer src="{{ url_for('static', filename='js/admin_builder_mcq.js') }}?v=20251117a"></script>
 {% endblock %}

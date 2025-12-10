@@ -39,6 +39,7 @@ class BaseConfig:
 
     # App toggles
     DEBUG_TOOLBAR = os.getenv("DEBUG_TOOLBAR", "false").lower() == "true"
+    ENABLE_CONTENT_LAB = os.getenv("ENABLE_CONTENT_LAB", "false").lower() == "true"
 
 
 # ─────────────────────────────────────────────────────────────
@@ -49,6 +50,7 @@ class DevConfig(BaseConfig):
     TESTING = False
     # In dev, allow insecure cookies by default (override via env if desired)
     SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "false").lower() == "true"
+    ENABLE_CONTENT_LAB = os.getenv("ENABLE_CONTENT_LAB", "true").lower() == "true"
 
 
 class TestConfig(BaseConfig):

@@ -24,19 +24,25 @@
           btnJsonEdit.className = 'ppx-btn';
           btnJsonEdit.title = t('Editar JSON', 'Edit JSON');
           btnJsonEdit.setAttribute('aria-label', t('Editar JSON', 'Edit JSON'));
-          btnJsonEdit.style.display = 'inline-flex';
-          btnJsonEdit.style.alignItems = 'center';
-          btnJsonEdit.style.gap = '6px';
-          btnJsonEdit.style.padding = '6px 10px';
-          btnJsonEdit.style.borderRadius = '10px';
-          const icon = D.createElement('img'); icon.src='/static/assets/icons/json.svg'; icon.alt=''; icon.width=18; icon.height=18;
-          const label = D.createElement('span'); label.textContent = 'JSON';
-          btnJsonEdit.appendChild(icon); btnJsonEdit.appendChild(label);
           // place near Export if available
           if (btnExport && btnExport.parentNode) btnExport.parentNode.insertBefore(btnJsonEdit, btnExport.nextSibling);
           else if (btnPreview && btnPreview.parentNode) btnPreview.parentNode.insertBefore(btnJsonEdit, btnPreview.nextSibling);
           else form.appendChild(btnJsonEdit);
         }
+        const icon = btnJsonEdit.querySelector('img[src*=\"json.svg\"]') || (() => {
+          const i = D.createElement('img'); i.src='/static/assets/icons/json.svg'; i.alt=''; i.width=18; i.height=18; return i;
+        })();
+        const label = btnJsonEdit.querySelector('span') || (() => {
+          const l = D.createElement('span'); return l;
+        })();
+        label.textContent = 'JSON';
+        btnJsonEdit.textContent = '';
+        btnJsonEdit.appendChild(icon); btnJsonEdit.appendChild(label);
+        btnJsonEdit.style.display = 'inline-flex';
+        btnJsonEdit.style.alignItems = 'center';
+        btnJsonEdit.style.gap = '6px';
+        btnJsonEdit.style.padding = '6px 10px';
+        btnJsonEdit.style.borderRadius = '10px';
       } catch(_){}
     })();
 
@@ -51,6 +57,38 @@
     // i18n helper must be defined before any UI creation that uses it
     const appLang = (window.PPX_I18N && window.PPX_I18N.currentLang) || (D.documentElement.getAttribute('lang') || 'es');
     const t = (es, en) => (appLang && appLang.toLowerCase().startsWith('en') ? (en ?? es) : (es ?? en));
+    const builderMode = (form.getAttribute('data-builder-mode') || '').toLowerCase();
+
+    const slugify = (s) => {
+      try {
+        return String(s || '')
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .replace(/-{2,}/g, '-')
+          .slice(0, 80);
+      } catch(_) {
+        return String(s || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]+/g, '').slice(0,80);
+      }
+    };
+    let slugManuallyEdited = false;
+    if (inputSlug) {
+      inputSlug.addEventListener('input', () => { slugManuallyEdited = true; });
+      if (builderMode === 'edit' && inputSlug.value) slugManuallyEdited = true;
+    }
+    function autoSlugFromTitle() {
+      if (slugManuallyEdited) return;
+      const src = (inputTitleEs.value || inputTitleEn.value || '').trim();
+      if (!src) return;
+      const next = slugify(src);
+      if (!next) return;
+      inputSlug.value = next;
+    }
+    ['input','blur'].forEach(evt => {
+      inputTitleEs?.addEventListener(evt, autoSlugFromTitle);
+      inputTitleEn?.addEventListener(evt, autoSlugFromTitle);
+    });
 
     const optIgnoreCase = D.getElementById('opt-ignore-case');
     const optIgnorePunct = D.getElementById('opt-ignore-punct');
@@ -83,6 +121,7 @@
         const m = location.pathname.match(/\/admin\/exercises\/dictation\/([^\/]+)\/edit/);
         if (m && m[1]) inputSlug.value = decodeURIComponent(m[1]);
       }
+      if (inputSlug && inputSlug.value) slugManuallyEdited = true;
     })();
 
     function renumber(){
@@ -111,6 +150,7 @@
       const fileInput = node.querySelector('[data-audio-file]');
       const btnUpload = node.querySelector('[data-audio-upload]');
       btnUpload?.addEventListener('click', () => {
+        autoSlugFromTitle();
         if (!inputSlug.value.trim()) { alert(t('Defina el slug antes de subir.', 'Set the slug before uploading.')); return; }
         fileInput && fileInput.click();
       });
@@ -118,6 +158,7 @@
         try {
           const f = fileInput.files && fileInput.files[0];
           if (!f) return;
+          autoSlugFromTitle();
           const slug = inputSlug.value.trim();
           const fd = new FormData();
           fd.append('file', f);
@@ -172,7 +213,9 @@
     btnAdd?.addEventListener('click', () => addItem());
 
     function assembleJSON(status){
-      const slug = (inputSlug.value || '').trim().toLowerCase();
+      autoSlugFromTitle();
+      const slug = slugify((inputSlug.value || '').trim() || (inputTitleEs.value || inputTitleEn.value || '').trim());
+      if (!inputSlug.value && slug) inputSlug.value = slug;
       const payload = {
         type: 'dictation',
         slug,

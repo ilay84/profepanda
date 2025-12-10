@@ -29,6 +29,10 @@
             <img alt="" src="{{ url_for('static', filename='assets/icons/dictation.svg') }}" style="width:40px;height:40px;margin-right:12px;" loading="lazy">
             <span>{{ t('Nuevo Dictado', 'New Dictation', app_lang) }}</span>
           </a>
+          <a class="ppx-btn" href="{{ url_for('admin.admin_exercises_new_ctw') }}" style="display:inline-flex; align-items:center; font-size:2rem; padding:1.2rem 1.6rem;">
+            <img alt="" src="{{ url_for('static', filename='assets/icons/ctw.svg') }}" style="width:40px;height:40px;margin-right:12px;" loading="lazy">
+            <span>{{ t('Nuevo Click the word(s)', 'New Click the word(s)', app_lang) }}</span>
+          </a>
         {% endif %}
       </div>
       <h1 style="margin:0;">{{ t('Biblioteca de ejercicios', 'Exercises Library', app_lang) }}</h1>
@@ -46,6 +50,7 @@
             <option value="dictation">Dictation</option>
             <option value="fitb">Fill-in</option>
             <option value="dnd">Drag & Drop</option>
+            <option value="ctw">Click the word(s)</option>
           </select>
         </div>
         <div class="ppx-field" style="flex:0 0 180px;">

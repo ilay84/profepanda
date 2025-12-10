@@ -1,78 +1,162 @@
-// Discrete speeds that sound good across devices
-const SPEEDS = [0.30, 0.50, 0.75, 1.00];
+// Custom audio player with compact play button, waveform progress, and icon-based speed control
+const SPEEDS = [0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00, 1.10, 1.20, 1.30, 1.40, 1.50];
+const SPEED_ICONS = {
+  '0.30': 'speed-.30x.svg',
+  '0.40': 'speed-.40x.svg',
+  '0.50': 'speed-.50x.svg',
+  '0.60': 'speed-.60x.svg',
+  '0.70': 'speed-.70x.svg',
+  '0.80': 'speed-.80x.svg',
+  '0.90': 'speed-.90x.svg',
+  '1.00': 'speed-1x.svg',
+  '1.10': 'speed-1.1x.svg',
+  '1.20': 'speed-1.2x.svg',
+  '1.30': 'speed-1.3x.svg',
+  '1.40': 'speed-1.4x.svg',
+  '1.50': 'speed-1.5x.svg'
+};
+const ICON_BASE = '/static/assets/lesson-icons/';
+const ICON_VER = 'v2'; // cache-bust speed icon set
+const SPEED_MIN = SPEEDS[0];
+const SPEED_MAX = SPEEDS[SPEEDS.length - 1];
 
-function formatRate(v) {
-  const n = Math.round(v * 100) / 100;
-  return (n === 1 ? '1' : n.toString()) + 'x';
-}
-
-function nearestSpeed(v) {
+function clampSpeed(v) {
   return SPEEDS.reduce((a, b) => Math.abs(b - v) < Math.abs(a - v) ? b : a, SPEEDS[0]);
 }
 
-function buildSpeedUI() {
-  const wrap = document.createElement('div');
-  wrap.className = 'lp-speed';
-  wrap.innerHTML = `
-    <button type="button" class="lp-speed__trigger" aria-haspopup="dialog" aria-expanded="false">1x</button>
-    <div class="lp-speed__popover" role="dialog" aria-label="Velocidad de reproducción" hidden>
-      <label class="lp-speed__label" for="lp-speed-range">Velocidad: <span class="lp-speed__value" aria-live="polite">1x</span></label>
-      <input id="lp-speed-range" class="lp-speed__range" type="range" min="0.3" max="1.0" step="0.01" list="lp-speed-ticks" value="1.0">
-      <datalist id="lp-speed-ticks">
-        <option value="0.30" label="0.3x"></option>
-        <option value="0.50" label="0.5x"></option>
-        <option value="0.75" label="0.75x"></option>
-        <option value="1.00" label="1x"></option>
-      </datalist>
-      <button type="button" class="lp-speed__close">Cerrar</button>
-    </div>`;
-  return wrap;
+function speedLabel(v) {
+  const rounded = clampSpeed(v);
+  return `${rounded.toFixed(2).replace(/\.00$/, '').replace(/0$/, '')}x`;
 }
 
-function applyRate(audio, trigger, range, valueEl, v) {
-  const rate = nearestSpeed(parseFloat(v));
-  range.value = rate;
-  const label = formatRate(rate);
-  valueEl.textContent = label;
-  trigger.textContent = label;
-  try { audio.playbackRate = rate; } catch {}
-  if ('preservesPitch' in audio) audio.preservesPitch = true;
-  if ('mozPreservesPitch' in audio) audio.mozPreservesPitch = true;
-  if ('webkitPreservesPitch' in audio) audio.webkitPreservesPitch = true;
+function speedIcon(v) {
+  const key = clampSpeed(v).toFixed(2);
+  const file = SPEED_ICONS[key] || SPEED_ICONS['1.00'];
+  return `${ICON_BASE}${file}?${ICON_VER}`;
+}
+
+function formatTime(sec) {
+  if (!Number.isFinite(sec)) return '0:00';
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
 export function mountAudioPlayers(root) {
   const figures = root.querySelectorAll('figure.lp-audio');
   figures.forEach(fig => {
-    if (fig.__lp_speed) return; // idempotent
-    const audio = fig.querySelector('audio');
-    if (!audio) return;
-    const ui = buildSpeedUI();
-    fig.appendChild(ui);
-    const trigger = ui.querySelector('.lp-speed__trigger');
-    const pop = ui.querySelector('.lp-speed__popover');
-    const range = ui.querySelector('.lp-speed__range');
-    const valueEl = ui.querySelector('.lp-speed__value');
-    const closeBtn = ui.querySelector('.lp-speed__close');
+    if (fig.__lp_bound) return; // idempotent
+    const audio = fig.querySelector('[data-lp-audio]');
+    const playBtn = fig.querySelector('[data-lp-audio-play]');
+    const icon = fig.querySelector('[data-lp-audio-icon]');
+    const progress = fig.querySelector('[data-lp-audio-progress]');
+    const timeEl = fig.querySelector('[data-lp-audio-time]');
+    const speedTrigger = fig.querySelector('[data-lp-speed-trigger]');
+    const speedDrawer = fig.querySelector('.lp-speed__drawer');
+    const speedRange = fig.querySelector('[data-lp-speed-range]');
+    const speedLabelEl = fig.querySelector('[data-lp-speed-label]');
+    const speedIconEl = fig.querySelector('[data-lp-speed-icon]');
+    const speedClose = fig.querySelector('[data-lp-speed-close]');
+    const markHost = fig.querySelector('[data-lp-speed-marks]');
+    const marks = fig.querySelectorAll('[data-lp-speed-mark]');
 
-    function open() {
-      pop.hidden = false; trigger.setAttribute('aria-expanded', 'true'); range.focus();
+    if (!audio || !playBtn || !progress || !speedTrigger || !speedDrawer || !speedRange || !speedLabelEl || !speedIconEl) return;
+
+    function setPitchPreservation() {
+      if ('preservesPitch' in audio) audio.preservesPitch = true;
+      if ('mozPreservesPitch' in audio) audio.mozPreservesPitch = true;
+      if ('webkitPreservesPitch' in audio) audio.webkitPreservesPitch = true;
     }
-    function close() {
-      pop.hidden = true; trigger.setAttribute('aria-expanded', 'false'); trigger.focus();
+
+    function applySpeed(v) {
+      const rate = clampSpeed(parseFloat(v) || 1);
+      try { audio.playbackRate = rate; } catch (_) {}
+      setPitchPreservation();
+      const label = speedLabel(rate);
+      speedRange.value = rate.toFixed(2);
+      speedLabelEl.textContent = label;
+      speedTrigger.setAttribute('aria-label', `Velocidad ${label}`);
+      speedIconEl.setAttribute('alt', `Velocidad ${label}`);
+      speedIconEl.src = speedIcon(rate);
     }
 
-    trigger.addEventListener('click', open);
-    closeBtn.addEventListener('click', close);
-    // Close when clicking outside
-    document.addEventListener('click', (e) => { if (!ui.contains(e.target)) { if (!pop.hidden) close(); } });
+    function updateProgress() {
+      const pct = audio.duration ? Math.min(100, Math.max(0, (audio.currentTime / audio.duration) * 100)) : 0;
+      progress.style.setProperty('--lp-progress', `${pct}%`);
+      progress.style.width = `${pct}%`;
+      if (timeEl) timeEl.textContent = formatTime(audio.currentTime || 0);
+    }
 
-    range.addEventListener('input', (e) => applyRate(audio, trigger, range, valueEl, e.target.value));
-    range.addEventListener('change', (e) => applyRate(audio, trigger, range, valueEl, e.target.value));
+    function setPlaying(isPlaying) {
+      fig.classList.toggle('is-playing', !!isPlaying);
+      if (icon) {
+        icon.src = isPlaying ? `${ICON_BASE}pause.svg` : `${ICON_BASE}audio.svg`;
+      }
+      playBtn.setAttribute('aria-label', isPlaying ? 'Pausar audio' : 'Reproducir audio');
+    }
 
-    // Initialize from audio default
-    applyRate(audio, trigger, range, valueEl, audio.playbackRate || 1.0);
-    fig.__lp_speed = true;
+    function togglePlay() {
+      try {
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      } catch (_) {}
+    }
+
+    function openSpeed() {
+      speedDrawer.hidden = false;
+      speedTrigger.setAttribute('aria-expanded', 'true');
+      speedRange.focus();
+    }
+
+    function closeSpeed() {
+      speedDrawer.hidden = true;
+      speedTrigger.setAttribute('aria-expanded', 'false');
+      speedTrigger.focus();
+    }
+
+    function placeMarks() {
+      if (!markHost || !marks.length) return;
+      marks.forEach(mark => {
+        const v = parseFloat(mark.dataset.speed);
+        if (!Number.isFinite(v)) return;
+        const pct = ((v - SPEED_MIN) / (SPEED_MAX - SPEED_MIN)) * 100;
+        mark.style.left = `${pct}%`;
+      });
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+    audio.addEventListener('play', () => setPlaying(true));
+    audio.addEventListener('pause', () => setPlaying(false));
+    audio.addEventListener('ended', () => {
+      setPlaying(false);
+      audio.currentTime = 0;
+      updateProgress();
+    });
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('loadedmetadata', updateProgress);
+
+    speedTrigger.addEventListener('click', () => {
+      if (speedDrawer.hidden) openSpeed(); else closeSpeed();
+    });
+    if (speedClose) speedClose.addEventListener('click', closeSpeed);
+    speedRange.addEventListener('input', (e) => applySpeed(e.target.value));
+    speedRange.addEventListener('change', (e) => applySpeed(e.target.value));
+    document.addEventListener('click', (e) => {
+      if (!fig.contains(e.target) && !speedDrawer.hidden) closeSpeed();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !speedDrawer.hidden) {
+        closeSpeed();
+      }
+    });
+
+    // Initialize defaults
+    placeMarks();
+    applySpeed(audio.playbackRate || 1.0);
+    updateProgress();
+    fig.__lp_bound = true;
   });
 }
-

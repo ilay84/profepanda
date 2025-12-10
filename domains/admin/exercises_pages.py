@@ -60,6 +60,76 @@ def admin_exercises_edit_tf(slug: str):
         prefill_json=prefill
     )
 
+# Click the word(s) builder (new + edit)
+@bp.get("/exercises/new/ctw", endpoint="admin_exercises_new_ctw")
+def admin_exercises_new_ctw():
+    return render_template(
+        "admin/exercises_ctw_new.html",
+        builder_mode="new",
+        builder_slug=""
+    )
+
+@bp.get("/exercises/ctw/<slug>/edit", endpoint="admin_exercises_edit_ctw")
+def admin_exercises_edit_ctw(slug: str):
+    slug = (slug or "").strip().lower()
+    if not slug:
+        abort(404)
+    # Prefill to avoid client fetch race conditions
+    try:
+        prefill = store.load_exercise('ctw', slug, version='current') or {}
+    except Exception:
+        prefill = {}
+    return render_template(
+        "admin/exercises_ctw_new.html",
+        builder_mode="edit",
+        builder_slug=slug,
+        prefill_json=prefill
+    )
+
+# Choose the Continuation (CTC) builder (new + edit)
+@bp.get("/exercises/new/ctc", endpoint="admin_exercises_new_ctc")
+def admin_exercises_new_ctc():
+    return render_template(
+        "admin/exercises_ctc_new.html",
+        builder_mode="new",
+        builder_slug=""
+    )
+
+@bp.get("/exercises/ctc/<slug>/edit", endpoint="admin_exercises_edit_ctc")
+def admin_exercises_edit_ctc(slug: str):
+    slug = (slug or "").strip().lower()
+    if not slug:
+        abort(404)
+    prefill = store.load_exercise("ctc", slug, version="current") or {}
+    return render_template(
+        "admin/exercises_ctc_new.html",
+        builder_mode="edit",
+        builder_slug=slug,
+        prefill_json=prefill
+    )
+
+# Matching builder (new + edit)
+@bp.get("/exercises/new/matching", endpoint="admin_exercises_new_matching")
+def admin_exercises_new_matching():
+    return render_template(
+        "admin/exercises_matching_new.html",
+        builder_mode="new",
+        builder_slug=""
+    )
+
+@bp.get("/exercises/matching/<slug>/edit", endpoint="admin_exercises_edit_matching")
+def admin_exercises_edit_matching(slug: str):
+    slug = (slug or "").strip().lower()
+    if not slug:
+        abort(404)
+    prefill = store.load_exercise("matching", slug, version="current") or {}
+    return render_template(
+        "admin/exercises_matching_new.html",
+        builder_mode="edit",
+        builder_slug=slug,
+        prefill_json=prefill
+    )
+
 # Drag & Drop (DnD) builder (new + edit)
 @bp.get("/exercises/new/dnd", endpoint="admin_exercises_new_dnd")
 def admin_exercises_new_dnd():

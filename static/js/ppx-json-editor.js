@@ -142,7 +142,7 @@
 
     const onCopy = () => { copyToClipboard(getVal()); if (W.PPXModal?.setMeta) W.PPXModal.setMeta(t('Copiado.','Copied.')); };
     const onDownload = () => { download(getVal(), `${exerciseType || 'exercise'}-${slug || 'edit'}.json`); };
-    const close = () => { if (W.PPXModal && typeof W.PPXModal.close === 'function') W.PPXModal.close(); };
+    const close = () => { try { W.__PPX_MODAL_HARDLOCK = false; } catch(_) {} if (W.PPXModal && typeof W.PPXModal.close === 'function') W.PPXModal.close('override'); };
     btnCancel.addEventListener('click', () => close());
     btnApply.addEventListener('click', () => {
       if (onApply()) close();

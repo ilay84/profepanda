@@ -1,0 +1,71 @@
+{
+  "type": "ctw",
+  "slug": "ser-y-estar-entidad-fisica-o-evento-1a",
+  "title_es": "SER y ESTAR: ¿Entidad física o evento? (1a)",
+  "title_en": "SER and ESTAR: Physical entity or event? (1a)",
+  "instructions_es": "Haz clic en la opción correcta. Decide si el elemento es una */entidad material/* (algo físico que puede estar en un lugar) o un *evento* (algo que sucede).",
+  "instructions_en": "Click the correct option. Decide whether the item is a */material entity/* (something physical that can be located) or an *event* (something that happens).",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "draft",
+  "items": [
+    {
+      "id": "ctw_p8b90_miqknng5",
+      "order": 1,
+      "mode": "single",
+      "sentence": "las llaves = */entidad material/* *evento*",
+      "translation": "keys = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": true
+        },
+        {
+          "text": "evento",
+          "correct": false
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Puedes verlas, tocarlas o moverlas? Si sí, es una entidad material.",
+      "hint_en": "Can you see, touch, or move them? If yes, it's a material entity.",
+      "feedback_correct_es": "Correcto. Las llaves son una entidad material; si habláramos de su ubicación, usaríamos ESTAR.",
+      "feedback_correct_en": "Correct. Keys are a material entity; if we were talking about their location, we would use ESTAR.",
+      "feedback_incorrect_es": "Piensa si esto es algo que simplemente existe físicamente. Si habláramos de su ubicación, usaríamos ESTAR.",
+      "feedback_incorrect_en": "Think about whether this is something that exists physically. If we were talking about its location, we would use ESTAR.",
+      "media": []
+    },
+    {
+      "id": "ctw_n7rdq_miql3nax",
+      "order": 2,
+      "mode": "single",
+      "sentence": "un tiroteo = *entidad material* */evento/*",
+      "translation": "a shooting = material entity or event?",
+      "tokens": [
+        {
+          "text": "entidad material",
+          "correct": false
+        },
+        {
+          "text": "evento",
+          "correct": true
+        }
+      ],
+      "correct_count": 1,
+      "hint_es": "¿Es algo que ocurre o sucede? Si sí, es un evento.",
+      "hint_en": "Is it something that happens? If yes, it's an event.",
+      "feedback_correct_es": "Correcto. Un tiroteo es un evento; si habláramos de dónde fue el tiroteo, usaríamos SER.",
+      "feedback_correct_en": "Correct. A shooting is an event; if we were talking about where the shooting took place, we would use SER.",
+      "feedback_incorrect_es": "Recuerda: un evento no es algo físico que puedas mover. Si quisiéramos decir dónde ocurrió, usaríamos SER.",
+      "feedback_incorrect_en": "Remember: an event is not something physical you can move. If we wanted to say where it happened, we would use SER.",
+      "media": []
+    }
+  ],
+  "version": 7,
+  "created_at": "2025-12-03T23:01:41Z",
+  "created_by": "admin",
+  "checksum": "sha256:0d9d9e803632e983af12cca6b00d91685c402616bf788a38243b31b6374fb427"
+}

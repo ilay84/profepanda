@@ -91,7 +91,7 @@ def _read_json(path: str) -> Optional[Dict[str, Any]]:
 # ─────────────────────────────────────────────────────────────
 # Validation
 # ─────────────────────────────────────────────────────────────
-VALID_TYPES = {"tf", "mcq", "fitb", "dnd", "dictation"}
+VALID_TYPES = {"tf", "mcq", "fitb", "dnd", "dictation", "ctw", "ctc", "matching"}
 
 _slug_re = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
@@ -235,6 +235,93 @@ def validate_exercise(payload: Dict[str, Any]) -> Tuple[bool, List[str]]:
             for k in ["attemptsMax"]:
                 if k in opts and not (isinstance(opts.get(k), int) and opts.get(k) >= 0):
                     errs.append(f"Option '{k}' must be an integer >= 0.")
+
+    if ex_type == "ctc" and isinstance(items, list):
+        for i, it in enumerate(items, start=1):
+            if not isinstance(it.get("order"), int):
+                errs.append(f"Item #{i}: integer 'order' is required.")
+            prompts = it.get("prompts")
+            continuations = it.get("continuations")
+            if not isinstance(prompts, list) or len(prompts) < 2:
+                errs.append(f"Item #{i}: at least two prompts are required.")
+            if not isinstance(continuations, list) or len(continuations) < 2:
+                errs.append(f"Item #{i}: at least two continuations are required.")
+            if isinstance(prompts, list) and isinstance(continuations, list):
+                if len(continuations) < len(prompts):
+                    errs.append(f"Item #{i}: continuations must be >= prompts.")
+            cont_ids = set()
+            if isinstance(continuations, list):
+                for ci, c in enumerate(continuations, start=1):
+                    cid = c.get("id")
+                    if not (isinstance(cid, str) and cid.strip()):
+                        errs.append(f"Item #{i}: continuation #{ci} needs string id.")
+                    if cid in cont_ids:
+                        errs.append(f"Item #{i}: duplicate continuation id '{cid}'.")
+                    if cid:
+                        cont_ids.add(cid)
+                    if not c.get("text_es"):
+                        errs.append(f"Item #{i}: continuation #{ci} needs text_es.")
+            if isinstance(prompts, list):
+                for pi, p in enumerate(prompts, start=1):
+                    if not (p.get("prompt_es") or p.get("prompt_en")):
+                        errs.append(f"Item #{i}: prompt #{pi} needs prompt_es or prompt_en.")
+                    exp = p.get("expects")
+                    if not (isinstance(exp, str) and exp.strip()):
+                        errs.append(f"Item #{i}: prompt #{pi} must reference continuation id in 'expects'.")
+                    elif cont_ids and exp not in cont_ids:
+                        errs.append(f"Item #{i}: prompt #{pi} expects unknown continuation id '{exp}'.")
+
+    if ex_type == "matching" and isinstance(items, list):
+        for i, it in enumerate(items, start=1):
+            if not isinstance(it.get("order"), int):
+                errs.append(f"Item #{i}: integer 'order' is required.")
+            left = it.get("left")
+            right = it.get("right")
+            if not (isinstance(left, str) and left.strip()):
+                errs.append(f"Item #{i}: 'left' string is required.")
+            if not (isinstance(right, str) and right.strip()):
+                errs.append(f"Item #{i}: 'right' string is required.")
+            for fld in ["hint_es", "hint_en", "feedback_correct_es", "feedback_correct_en", "feedback_incorrect_es", "feedback_incorrect_en"]:
+                if fld in it and it.get(fld) is not None and not isinstance(it.get(fld), str):
+                    errs.append(f"Item #{i}: {fld} must be a string if provided.")
+
+    if ex_type == "ctw" and isinstance(items, list):
+        def _validate_tokens(tokens, lang_label: str, idx: int, mode: str):
+            local_errs: List[str] = []
+            if tokens is None:
+                return local_errs
+            if not isinstance(tokens, list) or not tokens:
+                local_errs.append(f"Item #{idx}: tokens_{lang_label} must be a non-empty array.")
+                return local_errs
+            correct_count = 0
+            for ti, tok in enumerate(tokens, start=1):
+                if not isinstance(tok, dict):
+                    local_errs.append(f"Item #{idx}: tokens_{lang_label}[{ti}] must be an object.")
+                    continue
+                txt = tok.get("text")
+                if not (isinstance(txt, str) and txt.strip()):
+                    local_errs.append(f"Item #{idx}: tokens_{lang_label}[{ti}] requires non-empty text.")
+                if tok.get("correct"):
+                    correct_count += 1
+            if mode == "single" and correct_count != 1:
+                local_errs.append(f"Item #{idx}: tokens_{lang_label} must mark exactly one correct word for single mode.")
+            if mode == "multi" and correct_count < 1:
+                local_errs.append(f"Item #{idx}: tokens_{lang_label} needs at least one correct word.")
+            return local_errs
+
+        for i, it in enumerate(items, start=1):
+            if not isinstance(it.get("id"), str) or not it.get("id"):
+                errs.append(f"Item #{i}: string 'id' is required.")
+            if not isinstance(it.get("order"), int):
+                errs.append(f"Item #{i}: integer 'order' is required.")
+            if not (it.get("sentence")):
+                errs.append(f"Item #{i}: provide sentence text.")
+            mode = str(it.get("mode") or "single").lower()
+            if mode not in {"single", "multi"}:
+                errs.append(f"Item #{i}: mode must be 'single' or 'multi'.")
+            errs.extend(_validate_tokens(it.get("tokens"), "es", i, mode))
+            if not (it.get("tokens")):
+                errs.append(f"Item #{i}: tokens is required (use *word* and */correct/* markup).")
 
         # Hint: related JSON Schema (if present)
     try:

@@ -6,6 +6,9 @@
 
 {% block content %}
   <section class="ppx-container" style="padding-top:0;">
+    <div class="ppx-row" style="justify-content:flex-end;margin:8px 0 12px 0;">
+      <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_exercises_index') }}">{{ t('Volver a Ejercicios', 'Back to Exercises', app_lang) }}</a>
+    </div>
     <header class="ppx-row" style="align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;">
       <h1 style="margin:0;">{{ t('Ejercicio: Completar', 'Exercise: Fill-in', app_lang) }}</h1>
       <div class="ppx-chip">{{ t('Constructor', 'Builder', app_lang) }}</div>
@@ -30,14 +33,14 @@
           </div>
         </div>
 
-        <div class="ppx-row" style="gap:16px; flex-wrap:wrap;">
-          <div class="ppx-field" style="flex:1; min-width:300px;">
+        <div class="ppx-col" style="gap:12px;">
+          <div class="ppx-field">
             <label for="ex-inst-es">{{ t('Instrucciones (ES)', 'Instructions (ES)', app_lang) }}</label>
-            <textarea id="ex-inst-es" name="instructions_es" class="ppx-textarea" rows="3" placeholder="{{ t('Escribí la palabra que falta.', 'Type the missing word.', app_lang) }}"></textarea>
+            <textarea id="ex-inst-es" name="instructions_es" class="ppx-textarea" rows="3" data-rte="instructions" placeholder="{{ t('Escribí la palabra que falta.', 'Type the missing word.', app_lang) }}"></textarea>
           </div>
-          <div class="ppx-field" style="flex:1; min-width:300px;">
+          <div class="ppx-field">
             <label for="ex-inst-en">{{ t('Instrucciones (EN)', 'Instructions (EN)', app_lang) }}</label>
-            <textarea id="ex-inst-en" name="instructions_en" class="ppx-textarea" rows="3" placeholder="Type the missing word."></textarea>
+            <textarea id="ex-inst-en" name="instructions_en" class="ppx-textarea" rows="3" data-rte="instructions" placeholder="Type the missing word."></textarea>
           </div>
         </div>
 
@@ -64,17 +67,19 @@
 
       <hr style="border:none;border-top:1px solid var(--ppx-line);margin:16px 0;">
 
-      <div class="ppx-col" id="ppx-items" style="gap:12px;">
-        <div class="ppx-row" style="align-items:center; justify-content:space-between; gap:16px;">
-          <h2 style="margin:.25rem 0;">{{ t('Ítems', 'Items', app_lang) }}</h2>
-          <button id="ppx-add-item" type="button" class="ppx-btn ppx-btn--primary">{{ t('Agregar ítem', 'Add item', app_lang) }}</button>
-</div>
+            <div class="ppx-col" id="ppx-items" style="gap:12px;">
+        <div class="ppx-row" style="align-items:center; justify-content:flex-start; gap:16px;">
+          <h2 style="margin:.25rem 0;">{{ t('Items', 'Items', app_lang) }}</h2>
+        </div>
 
         <template id="ppx-item-template">
           <details class="ppx-card" data-item-card open style="padding:12px; width:100%; max-width:100%; box-sizing:border-box; overflow:hidden;">
-            <summary style="cursor:pointer; list-style:none; display:flex; align-items:center; gap:8px;">
-              <strong data-item-handle>#1</strong>
-              <span class="ppx-muted" style="font-weight:400;">{{ t('Completar', 'Fill-in', app_lang) }}</span>
+            <summary style="cursor:pointer; list-style:none; display:flex; align-items:center; gap:8px; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:8px; flex:1 1 auto; min-width:0;">
+                <strong data-item-handle>#1</strong>
+                <span class="ppx-muted" style="font-weight:400;">{{ t('Completar', 'Fill-in', app_lang) }}</span>
+              </div>
+              <button type="button" data-item-delete class="ppx-wbtn" style="padding:4px 10px;">{{ t('Eliminar', 'Delete', app_lang) }}</button>
             </summary>
 
             <div class="ppx-col" style="gap:12px; margin-top:10px;">
@@ -112,6 +117,9 @@
             </div>
           </details>
         </template>
+        <div class="ppx-row" id="ppx-add-row" style="justify-content:flex-end; gap:12px; margin-top:4px;">
+          <button id="ppx-add-item" type="button" class="ppx-btn ppx-btn--primary">{{ t('Agregar ítem', 'Add item', app_lang) }}</button>
+        </div>
       </div>
     </form>
 
@@ -137,6 +145,7 @@
 {% block scripts %}
   {{ super() }}
   <script src="{{ url_for('static', filename='js/admin_taxonomy_picker.js') }}?v=20251108a"></script>
+  <script defer src="{{ url_for('static', filename='js/admin_rte.js') }}?v=20251205a"></script>
   <script defer src="{{ url_for('static', filename='js/ppx-json-editor.js') }}?v=20251122a"></script>
   <script defer src="{{ url_for('static', filename='js/admin_builder_fitb.js') }}?v=20251117a"></script>
 {% endblock %}

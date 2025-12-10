@@ -11,6 +11,7 @@
     const itemsWrap = D.getElementById('ppx-items');
     const tpl = D.getElementById('ppx-item-template');
     const btnAdd = D.getElementById('ppx-add-item');
+    const addRow = D.getElementById('ppx-add-row');
 
     const inputSlug = D.getElementById('ex-slug');
     const inputTitleEs = D.getElementById('ex-title-es');
@@ -20,13 +21,50 @@
     const selLevel = D.getElementById('ex-level');
     const inputTx = D.querySelector('.ppx-taxonomy input[type=hidden]');
     const selStatus = (window.PPXBuilderBase && PPXBuilderBase.initStatusControl(D,'ex-status')) || D.getElementById('ex-status');
+    const builderMode = (form.getAttribute('data-builder-mode') || '').toLowerCase();
+
+    function slugify(str){
+      try {
+        return String(str || '')
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g,'-')
+          .replace(/-{2,}/g,'-')
+          .replace(/^-+|-+$/g,'')
+          .slice(0,80);
+      } catch(_) {
+        return String(str || '').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]+/g,'').slice(0,80);
+      }
+    }
+    let slugManuallyEdited = false;
+    if (inputSlug) {
+      inputSlug.addEventListener('input', () => { slugManuallyEdited = true; });
+      if (builderMode === 'edit' && inputSlug.value) slugManuallyEdited = true;
+    }
+    function autoSlugFromTitle(){
+      if (slugManuallyEdited) return;
+      const src = (inputTitleEs.value || inputTitleEn.value || '').trim();
+      if (!src) return;
+      const next = slugify(src);
+      if (!next) return;
+      inputSlug.value = next;
+    }
+    ['input','blur'].forEach(evt => {
+      inputTitleEs?.addEventListener(evt, autoSlugFromTitle);
+      inputTitleEn?.addEventListener(evt, autoSlugFromTitle);
+    });
+    if (inputSlug && !inputSlug.value) autoSlugFromTitle();
 
     function addItem(){
       if (!tpl || !itemsWrap) return null;
       const frag = tpl.content.cloneNode(true);
       const node = frag.querySelector('details[data-item-card]');
       if (node) wire(node);
-      itemsWrap.appendChild(frag);
+      if (addRow) {
+        itemsWrap.insertBefore(frag, addRow);
+      } else {
+        itemsWrap.appendChild(frag);
+      }
       return node;
     }
     function wire(node){
@@ -34,6 +72,18 @@
       initQuillForNode(node);
       renderBlanksPanel(node);
       initMediaForNode(node);
+      const btnDel = node.querySelector('[data-item-delete]');
+      if (btnDel) {
+        btnDel.addEventListener('click', (e)=>{
+          e.preventDefault();
+          const cards = itemsWrap.querySelectorAll('details[data-item-card]');
+          if (cards.length <= 1) {
+            if (!confirm(t('Eliminar el único ítem?','Delete the only item?'))) return;
+          }
+          node.remove();
+          renumber();
+        });
+      }
     }
 
     function initQuillForNode(node){
@@ -57,11 +107,19 @@
 
         const BTN_BG = '#475dd7';
         const BTN_FG = '#ffffff';
+        const toolbarButtons = [];
+
+        function setActive(btn, active){
+          btn.classList.toggle('is-active', !!active);
+          btn.style.background = active ? '#2f46c1' : BTN_BG;
+          btn.style.boxShadow = active ? 'inset 0 0 0 1px rgba(255,255,255,.65)' : 'none';
+        }
 
         function makeBtn(cmd, renderIcon, aria){
           const b = document.createElement('button');
           b.type = 'button';
           b.className = 'ppx-btn';
+          b.dataset.cmd = cmd;
           b.setAttribute('aria-label', aria);
           b.title = aria;
           b.style.padding = '.25rem .5rem';
@@ -79,7 +137,9 @@
             e.preventDefault();
             editor.focus();
             try { document.execCommand(cmd, false, null); } catch(_) {}
+            setTimeout(updateToolbarState, 0);
           });
+          toolbarButtons.push(b);
           return b;
         }
 
@@ -107,6 +167,24 @@
         row.appendChild(makeBtn('insertUnorderedList', iconUL, t('Lista con viñetas','Bulleted list')));
         row.appendChild(makeBtn('insertOrderedList', iconOL, t('Lista numerada','Numbered list')));
         toolbar.appendChild(row);
+
+        function updateToolbarState(){
+          try {
+            const sel = window.getSelection && window.getSelection();
+            const anchor = sel && sel.anchorNode;
+            if (!anchor || !editor.contains(anchor)) {
+              toolbarButtons.forEach(btn => setActive(btn, false));
+              return;
+            }
+            toolbarButtons.forEach(btn => {
+              let active = false;
+              try { active = document.queryCommandState(btn.dataset.cmd); } catch(_){}
+              setActive(btn, !!active);
+            });
+          } catch(_){}
+        }
+        ['keyup','mouseup'].forEach(evt => editor.addEventListener(evt, updateToolbarState));
+        document.addEventListener('selectionchange', updateToolbarState);
 
         // Debounced blank parsing on change
         let tmr = null;
@@ -214,6 +292,8 @@
         }
 
         function renderList(){
+          // enforce single media per item
+          if (Array.isArray(node._media) && node._media.length > 1) node._media = node._media.slice(0,1);
           list.innerHTML = '';
           node._media.forEach((m, idx) => {
             const row = D.createElement('div'); row.className='ppx-row'; row.style.gap='8px'; row.style.alignItems='center'; row.style.flexWrap='wrap';
@@ -235,7 +315,9 @@
                   const res = await fetch(url, { method:'POST', body: fd, credentials:'same-origin' });
                   let err=''; if (!res.ok){ try{ const jErr = await res.json(); err=(jErr && (jErr.error||jErr.message))||`HTTP ${res.status}`; } catch(_){ const txt=await res.text().catch(()=> ''); err = txt || `HTTP ${res.status}`; } throw new Error(err); }
                   const j = await res.json().catch(()=>null); if (!j || !j.ok || !j.data || !j.data.url) throw new Error((j && (j.error||j.message))||'Upload failed');
-                  m.src = j.data.url; if ((m.kind||'image')==='image') m.thumb = j.data.url; renderList();
+                  m.src = j.data.url; if ((m.kind||'image')==='image') m.thumb = j.data.url;
+                  node._media = [m];
+                  renderList();
                 } catch(e){ console.error(e); alert((e && e.message)? e.message : t('No se pudo subir el archivo.','Failed to upload file.')); }
               };
               fp.click();
@@ -245,16 +327,16 @@
             list.appendChild(row);
           });
         }
-        btnAdd.addEventListener('click', ()=>{ if (picker) picker.click(); else { node._media.push({ kind:'image', src:'', alt_es:'', alt_en:'', caption_es:'', caption_en:'' }); renderList(); } });
+        btnAdd.addEventListener('click', ()=>{ if (picker) picker.click(); else { node._media = [{ kind:'image', src:'', alt_es:'', alt_en:'', caption_es:'', caption_en:'' }]; renderList(); } });
         picker.addEventListener('change', async ()=>{
           const files = Array.from(picker.files||[]); if (!files.length) return; const slug=(inputSlug && inputSlug.value || '').trim().toLowerCase(); if (!slug){ alert(t('Primero completá el slug.','Please fill in the slug first.')); picker.value=''; return; }
-          for (const file of files){ const type=(file.type||'').toLowerCase(); const kind= type.startsWith('video')?'video':(type.startsWith('audio')?'audio':'image');
-            try {
-              const fd=new FormData(); fd.append('file', file); const url=`/admin/api/exercises/fitb/${encodeURIComponent(slug)}/upload?kind=${encodeURIComponent(kind)}`; const res=await fetch(url,{method:'POST',body:fd,credentials:'same-origin'});
-              let err=''; if(!res.ok){ try{const jErr=await res.json(); err=(jErr&&(jErr.error||jErr.message))||`HTTP ${res.status}`;}catch(_){const txt=await res.text().catch(()=> ''); err=txt||`HTTP ${res.status}`;} throw new Error(err);} const j=await res.json().catch(()=>null); if(!j||!j.ok||!j.data||!j.data.url) throw new Error((j&&(j.error||j.message))||'Upload failed');
-              node._media.push({ kind, src:j.data.url, alt_es:'', alt_en:'', caption_es:'', caption_en:'' });
-            }catch(e){ console.error(e); alert((e&&e.message)? e.message : t('No se pudo subir el archivo.','Failed to upload file.')); }
-          }
+          const file = files[0]; // enforce single media per item
+          const type=(file.type||'').toLowerCase(); const kind= type.startsWith('video')?'video':(type.startsWith('audio')?'audio':'image');
+          try {
+            const fd=new FormData(); fd.append('file', file); const url=`/admin/api/exercises/fitb/${encodeURIComponent(slug)}/upload?kind=${encodeURIComponent(kind)}`; const res=await fetch(url,{method:'POST',body:fd,credentials:'same-origin'});
+            let err=''; if(!res.ok){ try{const jErr=await res.json(); err=(jErr&&(jErr.error||jErr.message))||`HTTP ${res.status}`;}catch(_){const txt=await res.text().catch(()=> ''); err=txt||`HTTP ${res.status}`;} throw new Error(err);} const j=await res.json().catch(()=>null); if(!j||!j.ok||!j.data||!j.data.url) throw new Error((j&&(j.error||j.message))||'Upload failed');
+            node._media = [{ kind, src:j.data.url, alt_es:'', alt_en:'', caption_es:'', caption_en:'' }];
+          }catch(e){ console.error(e); alert((e&&e.message)? e.message : t('No se pudo subir el archivo.','Failed to upload file.')); }
           renderList(); picker.value='';
         });
         node._renderMediaList = renderList; renderList();
@@ -287,12 +369,18 @@
             feedback_incorrect_en: meta.feedback_incorrect_en ? meta.feedback_incorrect_en.value.trim() : ''
           };
         });
-        const media = Array.isArray(n._media) ? n._media.map(m=>({
-          kind: (m.kind==='audio'||m.kind==='video')? m.kind : 'image',
-          src: m.src||'',
-          alt_es: m.alt_es||'', alt_en: m.alt_en||'',
-          caption_es: m.caption_es||'', caption_en: m.caption_en||''
-        })) : [];
+        const media = Array.isArray(n._media) ? n._media.map(m=>{
+          const kind = (m.kind==='audio'||m.kind==='video')? m.kind : 'image';
+          const src = m.src||'';
+          return {
+            kind,
+            src,
+            url: src,
+            thumb: kind === 'image' ? (m.thumb || src) : (m.thumb || ''),
+            alt_es: m.alt_es||'', alt_en: m.alt_en||'',
+            caption_es: m.caption_es||'', caption_en: m.caption_en||''
+          };
+        }) : [];
         out.push({ id: `b${order}`, order, text: html, blanks, media });
         order+=1;
       });
@@ -301,10 +389,8 @@
 
     function assemble(){
       const titleSource = (inputTitleEs.value || inputTitleEn.value || '').trim();
-      const autoSlug = titleSource
-        ? titleSource.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/-{2,}/g,'-').replace(/^-+|-+$/g,'')
-        : '';
-      const slug = ((inputSlug.value||'').trim().toLowerCase()) || autoSlug;
+      autoSlugFromTitle();
+      const slug = slugify((inputSlug.value||'').trim() || titleSource);
       if (!inputSlug.value && slug) inputSlug.value = slug;
       let taxonomy_paths = [];
       try { taxonomy_paths = inputTx && inputTx.value ? JSON.parse(inputTx.value) : []; } catch(_){ taxonomy_paths = []; }
@@ -442,6 +528,8 @@
       inputTitleEn.value = data.title_en || '';
       taInstEs.value = data.instructions_es || '';
       taInstEn.value = data.instructions_en || '';
+      try { taInstEs.dispatchEvent(new CustomEvent('ppx:rte:refresh')); } catch(_){}
+      try { taInstEn.dispatchEvent(new CustomEvent('ppx:rte:refresh')); } catch(_){}
       selLevel.value = data.level || 'A2';
       try { if (inputTx) { inputTx.value = JSON.stringify(Array.isArray(data.taxonomy_paths)? data.taxonomy_paths: []); inputTx.dispatchEvent(new CustomEvent('ppx:taxonomy:set', { bubbles:true, detail:{ paths: Array.isArray(data.taxonomy_paths)? data.taxonomy_paths: [] } })); } } catch(_){ }
       if (selStatus) { selStatus.value = (data.status || 'draft'); }
@@ -524,23 +612,30 @@
           btn.className = 'ppx-btn';
           btn.title = t('Editar JSON','Edit JSON');
           btn.setAttribute('aria-label', t('Editar JSON','Edit JSON'));
-          btn.style.display = 'inline-flex';
-          btn.style.alignItems = 'center';
-          btn.style.gap = '6px';
-          btn.style.padding = '6px 10px';
-          btn.style.borderRadius = '10px';
-          const icon = D.createElement('img');
-          icon.src = '/static/assets/icons/json.svg';
-          icon.alt = '';
-          icon.width = 18; icon.height = 18;
-          const label = D.createElement('span');
-          label.textContent = 'JSON';
-          btn.appendChild(icon); btn.appendChild(label);
           // Insert next to Export if available
           const btnExport = D.getElementById('ppx-export-json');
           if (btnExport && btnExport.parentNode) btnExport.parentNode.insertBefore(btn, btnExport.nextSibling);
           else form.appendChild(btn);
         }
+        const icon = btn.querySelector('img[src*="json.svg"]') || (() => {
+          const i = D.createElement('img');
+          i.src = '/static/assets/icons/json.svg';
+          i.alt = '';
+          i.width = 18; i.height = 18;
+          return i;
+        })();
+        const label = btn.querySelector('span') || (() => {
+          const l = D.createElement('span');
+          return l;
+        })();
+        label.textContent = 'JSON';
+        btn.textContent = '';
+        btn.appendChild(icon); btn.appendChild(label);
+        btn.style.display = 'inline-flex';
+        btn.style.alignItems = 'center';
+        btn.style.gap = '6px';
+        btn.style.padding = '6px 10px';
+        btn.style.borderRadius = '10px';
         btn.addEventListener('click', () => {
           try {
             if (window.PPXJsonEditor && typeof window.PPXJsonEditor.open === 'function') {

@@ -1,0 +1,74 @@
+{
+  "type": "mcq",
+  "slug": "ser-o-estar-adjetivos-1",
+  "title_es": "¿SER o ESTAR? Adjetivos (1)",
+  "title_en": "SER or ESTAR? Adjectives (1)",
+  "instructions_es": "Lee cada oración y elige la mejor interpretación según el uso de <strong data-start=\"493\" data-end=\"500\">ser</strong> o <strong data-start=\"503\" data-end=\"512\">estar</strong>.",
+  "instructions_en": "Read each sentence and choose the best interpretation based on the use of <b>ser</b> or <b>estar</b>.",
+  "level": "B1",
+  "status": "draft",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "items": [
+    {
+      "id": "q1",
+      "order": 1,
+      "question_es": "Marcos está aburrido.\n\n¿Qué indica esta oración?",
+      "question_en": "",
+      "hint_es": "Piensa en si se trata de una emoción momentánea o una característica esencial.",
+      "hint_en": "Think about whether this is a temporary emotion or an essential trait.",
+      "options_es": [
+        {
+          "text": "Marcos es una persona aburrida.",
+          "correct": false,
+          "feedback": "Incorrecto. Eso usaría 'ser'. Aquí se describe un estado emocional momentáneo."
+        },
+        {
+          "text": "Marcos está causando aburrimiento en los demás.",
+          "correct": false,
+          "feedback": "No exactamente. Esa interpretación implicaría que 'Marcos es aburrido'."
+        },
+        {
+          "text": "Marcos se siente aburrido en este momento.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Estar aburrido' describe un estado temporal o emocional."
+        },
+        {
+          "text": "Marcos siempre ha sido aburrido.",
+          "correct": false,
+          "feedback": "No. Eso implicaría una cualidad permanente y usaría 'ser'."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    }
+  ],
+  "version": 2,
+  "created_at": "2025-12-07T13:04:46Z",
+  "created_by": "admin",
+  "checksum": "sha256:17b54876a4061311fd6f59f9bc733641c59df567b9c2220751a55a6b66bcdd88"
+}

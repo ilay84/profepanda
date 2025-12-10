@@ -129,7 +129,10 @@
           mcq: 'MCQ',
           fitb: 'Fill-in',
           dnd: 'Drag & Drop',
-          dictation: 'Dictation'
+          dictation: 'Dictation',
+          ctw: 'Click the word(s)',
+          ctc: 'Choose the Continuation',
+          matching: 'Matching'
         }[type]) || type;
 
         const statusChipClass = meta.status === 'published' ? 'ppx-chip--ok'
@@ -145,7 +148,7 @@
             </td>
             <td style="padding:10px; border-bottom:1px solid var(--ppx-line);">${typeLabel}</td>
             <td style="padding:10px; border-bottom:1px solid var(--ppx-line);">${meta.level || '-'}</td>
-            <td style="padding:10px; border-bottom:1px solid var(--ppx-line);">${tags || '—'}</td>
+            <td style="padding:10px; border-bottom:1px solid var(--ppx-line);">${tags || '-'}</td>
             <td style="padding:10px; border-bottom:1px solid var(--ppx-line);">${meta.version || '-'}</td>
             <td style="padding:10px; border-bottom:1px solid var(--ppx-line);">
               <select class="ppx-select" data-action="status" data-type="${type}" data-slug="${slug}" style="min-width:140px;"><option value="draft" ${meta.status==='draft'?'selected':''}>${t('Borrador','Draft')}</option><option value="published" ${meta.status==='published'?'selected':''}>${t('Publicado','Published')}</option><option value="archived" ${meta.status==='archived'?'selected':''}>${t('Archivado','Archived')}</option></select>
@@ -159,6 +162,9 @@
                   <img src="/static/assets/icons/preview.svg" alt="" width="20" height="20">
                 </button>
                 <button class="ppx-btn ppx-btn--ghost" data-action="delete" data-type="${type}" data-slug="${slug}" title="${t('Eliminar ejercicio', 'Delete exercise')}" aria-label="${t('Eliminar', 'Delete')}" style="width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px;">
+                  <img src="/static/assets/icons/delete.svg" alt="" width="20" height="20">
+                </button>
+                <button class="ppx-btn ppx-btn--ghost" data-action="delete-hard" data-type="${type}" data-slug="${slug}" title="${t('Eliminar definitivamente', 'Delete permanently')}" aria-label="${t('Eliminar definitivamente', 'Delete permanently')}" style="width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px;color:#b91c1c;border-color:#fecdd3;background:#fff1f2;">
                   <img src="/static/assets/icons/delete.svg" alt="" width="20" height="20">
                 </button>
               </div>
@@ -226,6 +232,27 @@
         } catch (err) {
           console.error(err);
           toast(t('No se pudo eliminar el ejercicio.', 'Failed to delete exercise.'));
+        }
+      }
+
+      if (action === 'delete-hard') {
+        const confirmMsg = t(
+          '¨Seguro que quer‚s eliminar DEFINITIVAMENTE este ejercicio? Esto borrar  todas las versiones y archivos asociados (no se puede deshacer).',
+          'Are you sure you want to PERMANENTLY delete this exercise? This removes all versions and media (cannot be undone).'
+        );
+        if (!window.confirm(confirmMsg)) return;
+
+        try {
+          const res = await fetch(`/admin/api/exercises/${encodeURIComponent(exType)}/${encodeURIComponent(slug)}?hard=1`, {
+            method: 'DELETE',
+            credentials: 'same-origin'
+          });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          toast(t('Ejercicio eliminado permanentemente.', 'Exercise permanently deleted.'));
+          await loadIndex();
+        } catch (err) {
+          console.error(err);
+          toast(t('No se pudo eliminar definitivamente el ejercicio.', 'Failed to permanently delete exercise.'));
         }
       }
     });

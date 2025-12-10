@@ -7,7 +7,11 @@ export async function loadLesson(slug) {
     const res = await fetch(`/admin/api/lessons/${encodeURIComponent(adminId)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    return data.json || {};
+    const lesson = data.json || {};
+    if (!lesson.slides || !lesson.slides.length) {
+      lesson.slides = [{ id: 'content_1', type: 'content', elements: [] }];
+    }
+    return lesson;
   }
   const res = await fetch(`/api/lessons/${encodeURIComponent(slug)}`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);

@@ -1,0 +1,30 @@
+{
+  "type": "matching",
+  "slug": "matching-prueba",
+  "title_es": "matching (prueba)",
+  "title_en": "matching test",
+  "instructions_es": "Empareja los términos.",
+  "instructions_en": "Select the correct pair for each term.",
+  "level": "A2",
+  "taxonomy_paths": [],
+  "status": "draft",
+  "media": [],
+  "items": [
+    {
+      "id": "pair_14v4yh",
+      "order": 1,
+      "left": "hacerse amigo/a de",
+      "right": "conocer de forma simpática a una persona"
+    },
+    {
+      "id": "pair_py0adw",
+      "order": 2,
+      "left": "hacer trampa",
+      "right": "engañar en una tarea o actividad"
+    }
+  ],
+  "version": 20,
+  "created_at": "2025-12-09T14:41:21Z",
+  "created_by": "admin",
+  "checksum": "sha256:d7f7aa9ccc946634d0c8d552abcc19a8fde30d3c1643abe00656c805254c2218"
+}

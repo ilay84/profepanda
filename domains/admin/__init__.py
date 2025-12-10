@@ -33,6 +33,7 @@ from domains.admin import exercises_pages as _ex_pages  # /admin/exercises (libr
 from domains.admin import glossary_pages    # /admin/glossary (index + validate)
 from domains.admin import lessons_pages     # /admin/lessons (interactive lessons)
 from domains.admin import lessons_api       # /admin/api/lessons (CRUD)
+from domains.admin import content_lab       # /admin/content-lab (UI/UX sandbox)
 
 # Safe-import exercises_api so we can surface any import errors
 _exercises_api_error = None
@@ -89,7 +90,10 @@ def admin_home():
     Minimal Admin landing page.
     Renders templates/admin/admin_index.html via blueprint template_folder.
     """
-    return render_template("admin_index.html")
+    return render_template(
+        "admin_index.html",
+        content_lab_enabled=bool(current_app.config.get("ENABLE_CONTENT_LAB", False)),
+    )
 
 @bp.get("/healthz")
 def admin_healthz():

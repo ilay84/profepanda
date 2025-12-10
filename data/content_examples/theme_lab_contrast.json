@@ -1,0 +1,21 @@
+{
+  "theme_id": "lab_contrast",
+  "title": "Lab Contrast Theme",
+  "colors": {
+    "primary": "#d84315",
+    "accent": "#0ea5e9",
+    "warning": "#f59e0b",
+    "text_main": "#0b1224",
+    "background": "#fdfcf7",
+    "line": "#e5e7eb"
+  },
+  "fonts": {
+    "body": "Montserrat, system-ui, sans-serif",
+    "heading": "Archivo, Montserrat, system-ui, sans-serif"
+  },
+  "icons": {
+    "warning_triangle": "/static/assets/icons/alert.svg",
+    "lightbulb": "/static/assets/icons/info.svg",
+    "exercise": "/static/assets/icons/exercises.svg"
+  }
+}

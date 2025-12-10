@@ -145,11 +145,15 @@ def create_app(config_name: str | None = None) -> Flask:
     def _static_cache_headers(response):
         try:
             p = request.path or ""
-            # Only touch static responses
-            if p.startswith(app.static_url_path) or p.startswith("/media/"):
+            # Only touch successful static/media responses
+            if response.status_code == 200 and (p.startswith(app.static_url_path) or p.startswith("/media/")):
                 # Default strong caching for static files
                 # One year + immutable to allow far-future caching
                 response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+            # Avoid caching error responses (e.g., 404) so newly-added media load immediately
+            elif p.startswith("/media/"):
+                response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+                response.headers["Pragma"] = "no-cache"
         except Exception:
             pass
         return response

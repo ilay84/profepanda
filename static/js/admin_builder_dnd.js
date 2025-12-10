@@ -60,6 +60,8 @@
 
     // Prefill slug for edit routes
     if (mode === 'edit' && !inputSlug.value && editSlug) inputSlug.value = editSlug;
+    // In edit mode, freeze autoslug so title tweaks don't create a new slug/folder
+    if (mode === 'edit' && inputSlug.value) slugManuallyEdited = true;
     // Auto-create slug while typing title until user edits slug manually
     ['input','blur'].forEach(evt => {
       inputTitleEs.addEventListener(evt, autoSlugFromTitle);
@@ -536,68 +538,35 @@
           btnEditJson.className = 'ppx-btn';
           btnEditJson.title = t('Editar JSON', 'Edit JSON');
           btnEditJson.setAttribute('aria-label', t('Editar JSON', 'Edit JSON'));
-          btnEditJson.style.display = 'inline-flex';
-          btnEditJson.style.alignItems = 'center';
-          btnEditJson.style.gap = '6px';
-          btnEditJson.style.padding = '6px 10px';
-          btnEditJson.style.borderRadius = '10px';
-          const icon = D.createElement('img');
-          icon.src = '/static/assets/icons/json.svg'; icon.alt = ''; icon.width = 18; icon.height = 18;
-          const label = D.createElement('span'); label.textContent = 'JSON';
-          btnEditJson.appendChild(icon); btnEditJson.appendChild(label);
-          if (btnPreview && btnPreview.parentNode) btnPreview.parentNode.insertBefore(btnEditJson, btnPreview);
-          else if (btnSave && btnSave.parentNode) btnSave.parentNode.insertBefore(btnEditJson, btnSave);
+          if (btnExport && btnExport.parentNode) btnExport.parentNode.insertBefore(btnEditJson, btnExport.nextSibling);
+          else if (btnPreview && btnPreview.parentNode) btnPreview.parentNode.insertBefore(btnEditJson, btnPreview.nextSibling);
           else form.appendChild(btnEditJson);
-        } else {
-          // If present but plain, decorate with icon
-          if (!btnEditJson.querySelector('img')) {
-            btnEditJson.textContent = '';
-            const icon = D.createElement('img'); icon.src = '/static/assets/icons/json.svg'; icon.alt=''; icon.width=18; icon.height=18;
-            const label = D.createElement('span'); label.textContent = 'JSON';
-            btnEditJson.appendChild(icon); btnEditJson.appendChild(label);
-          }
         }
-        btnEditJson.addEventListener('click', () => {
-          try {
-            if (window.PPXJsonEditor && typeof window.PPXJsonEditor.open === 'function') {
-              const payload = collectPayload();
-              window.PPXJsonEditor.open({
-                exerciseType: 'dnd',
-                slug: payload.slug || '',
-                title: payload.title_es || payload.title_en || payload.slug || '',
-                level: payload.level || (selLevel ? selLevel.value : ''),
-                initialData: payload,
-                validate: (obj) => validatePayload(obj),
-                apply: (obj) => {
-                  // Reapply core fields
-                  inputTitleEs.value = obj.title_es || '';
-                  inputTitleEn.value = obj.title_en || '';
-                  taInstEs.value = obj.instructions_es || '';
-                  taInstEn.value = obj.instructions_en || '';
-                  selLevel.value = obj.level || selLevel.value;
-                  try { inputTx.value = JSON.stringify(obj.taxonomy_paths || []); } catch(_) {}
-                  // Reset columns/tokens
-                  colWrap.innerHTML = '';
-                  tokWrap.innerHTML = '';
-                  const item = (Array.isArray(obj.items) && obj.items[0]) || null;
-                  if (item) {
-                    (Array.isArray(item.columns) ? item.columns : []).forEach(c => addColumn(c));
-                    (Array.isArray(item.tokens) ? item.tokens : []).forEach(tok => addToken(tok));
-                  }
-                }
-              });
-            } else {
-              openJsonEditor();
-            }
-          } catch (e) {
-            console.error(e);
-            try { openJsonEditor(); } catch(_){}
-          }
-        });
-      } catch(_){}
+        const icon = btnEditJson.querySelector('img[src="/static/assets/icons/json.svg"], img[src*="json.svg"]') || (() => {
+          const i = D.createElement('img'); i.src = '/static/assets/icons/json.svg'; i.alt = ''; i.width = 18; i.height = 18; return i;
+        })();
+        const label = btnEditJson.querySelector('span') || (() => { const l = D.createElement('span'); return l; })();
+        label.textContent = 'JSON';
+        btnEditJson.textContent = '';
+        btnEditJson.appendChild(icon); btnEditJson.appendChild(label);
+        btnEditJson.style.display = 'inline-flex';
+        btnEditJson.style.alignItems = 'center';
+        btnEditJson.style.gap = '6px';
+        btnEditJson.style.padding = '6px 10px';
+        btnEditJson.style.borderRadius = '10px';
+      } catch(_){ }
     })();
+    btnEditJson = D.getElementById('ppx-edit-json');
+    if (btnEditJson) {
+      btnEditJson.addEventListener('click', () => {
+        autoSlugFromTitle();
+        const slug = (inputSlug.value || '').trim();
+        if (!slug) { alert(t('Completa el slug para editar el JSON.', 'Fill the slug before editing JSON.')); return; }
+        openJsonEditor();
+      });
+    }
 
-    // Seed a minimal setup for new exercises
+// Seed a minimal setup for new exercises
     if (mode === 'new') {
       addColumn({ label_es: t('Categoría A', 'Category A'), label_en: 'Category A' });
       addColumn({ label_es: t('Categoría B', 'Category B'), label_en: 'Category B' });

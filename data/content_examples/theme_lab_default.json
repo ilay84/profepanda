@@ -1,0 +1,21 @@
+{
+  "theme_id": "lab_default",
+  "title": "Lab Default Theme",
+  "colors": {
+    "primary": "#475dd7",
+    "accent": "#80ac5f",
+    "warning": "#f6a21a",
+    "text_main": "#0f172a",
+    "background": "#f8fafc",
+    "line": "#d4d4d8"
+  },
+  "fonts": {
+    "body": "Montserrat, system-ui, sans-serif",
+    "heading": "Montserrat, system-ui, sans-serif"
+  },
+  "icons": {
+    "warning_triangle": "/static/assets/icons/alert.svg",
+    "lightbulb": "/static/assets/icons/info.svg",
+    "exercise": "/static/assets/icons/exercises.svg"
+  }
+}

@@ -417,6 +417,19 @@ def list_entries_meta() -> List[Dict[str, Any]]:
             txt = re.sub(r"<[^>]+>", "", val or "").strip()
             return txt
 
+        senses_preview: list[dict] = []
+        for idx, s in enumerate(senses, start=1):
+            if not isinstance(s, dict):
+                continue
+            definition = _clean_html(s.get("definition_es") or s.get("definition_en") or "")
+            if not definition:
+                continue
+            senses_preview.append({
+                "num": idx,
+                "pos": s.get("pos"),
+                "definition": definition,
+            })
+
         items.append({
             "slug": slug,
             "word": word,
@@ -431,6 +444,7 @@ def list_entries_meta() -> List[Dict[str, Any]]:
             "has_audio": bool((data.get("audio") or "").strip()),
             "definition_es": _clean_html(first.get("definition_es") or ""),
             "definition_en": _clean_html(first.get("definition_en") or ""),
+            "senses_preview": senses_preview,
             "examples_count": examples_count,
         })
     return items

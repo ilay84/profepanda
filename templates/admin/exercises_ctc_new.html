@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}{{ t('Nuevo ejercicio - Elegir la continuación', 'New Exercise - Choose the Continuation', app_lang) }} Â· ProfePanda{% endblock %}
+
+
+
+{% block head %}
+
+  {{ super() }}
+
+  {% include "_ppx_head_assets.html" %}
+
+{% endblock %}
+
+
+
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+
+
+
+{% block content %}
+
+  <section class="ppx-container" style="padding-top:0;">
+
+    <div class="ppx-row" style="justify-content:flex-end;margin:8px 0 12px 0;">
+
+      <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_exercises_index') }}">{{ t('Volver a Ejercicios', 'Back to Exercises', app_lang) }}</a>
+
+    </div>
+
+    <header class="ppx-row" style="align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;">
+
+      <h1 style="margin:0;">{{ t('Ejercicio: Elegir la continuación', 'Exercise: Choose the Continuation', app_lang) }}</h1>
+
+      <div class="ppx-chip">{{ t('Constructor', 'Builder', app_lang) }}</div>
+
+    </header>
+
+
+
+    <form id="ppx-ctc-form" class="ppx-card" style="margin-bottom:12px; padding:20px; max-width:1100px;"
+
+          data-builder-mode="{{ builder_mode|default('new') }}"
+
+          data-builder-slug="{{ builder_slug|default('') }}">
+
+      <div class="ppx-col" style="gap:16px;">
+
+        <div class="ppx-field">
+
+          <label for="ex-slug">{{ t('Slug', 'Slug', app_lang) }}</label>
+
+          <input id="ex-slug" name="slug" class="ppx-input" placeholder="{{ t('Se genera automáticamente', 'Generated automatically', app_lang) }}" autocomplete="off">
+
+          <div class="ppx-field__help">{{ t('Se autogenera a partir del título; editá si lo necesitás.', 'Auto-generated from the title; edit if needed.', app_lang) }}</div>
+        </div>
+
+
+
+        <div class="ppx-field">
+
+          <label for="ex-title-es">{{ t('Título (ES)', 'Title (ES)', app_lang) }}</label>
+
+          <input id="ex-title-es" name="title_es" class="ppx-input" placeholder="{{ t('Elegir la continuación correcta', 'Choose the right continuation', app_lang) }}" autocomplete="off">
+
+        </div>
+
+
+
+        <div class="ppx-field">
+
+          <label for="ex-title-en">{{ t('Título (EN)', 'Title (EN)', app_lang) }}</label>
+
+          <input id="ex-title-en" name="title_en" class="ppx-input" placeholder="Choose the right continuation" autocomplete="off">
+
+        </div>
+
+
+
+        <div class="ppx-field">
+
+          <label for="ex-inst-es">{{ t('Instrucciones (ES)', 'Instructions (ES)', app_lang) }}</label>
+
+          <textarea id="ex-inst-es" name="instructions_es" class="ppx-textarea" rows="3" placeholder="{{ t('Arrastrá la continuación correcta debajo de cada oración.', 'Drag the correct continuation under each sentence.', app_lang) }}"></textarea>
+        </div>
+
+
+
+        <div class="ppx-field">
+
+          <label for="ex-inst-en">{{ t('Instrucciones (EN)', 'Instructions (EN)', app_lang) }}</label>
+
+          <textarea id="ex-inst-en" name="instructions_en" class="ppx-textarea" rows="3" placeholder="Drag the correct continuation under each sentence."></textarea>
+
+        </div>
+
+
+
+        <div class="ppx-row" style="gap:12px; flex-wrap:wrap; max-width:1000px;">
+
+          <div class="ppx-field" style="flex:0 0 200px;">
+
+            <label for="ex-level">{{ t('Nivel', 'Level', app_lang) }}</label>
+
+            <select id="ex-level" name="level" class="ppx-select">
+
+              <option value="A1">A1</option><option value="A2" selected>A2</option>
+
+              <option value="B1">B1</option><option value="B2">B2</option>
+
+              <option value="C1">C1</option><option value="C2">C2</option>
+
+            </select>
+
+          </div>
+
+          <div class="ppx-field" style="flex:1; min-width:320px;">
+
+            <label class="ppx-label">{{ t('Estado', 'Status', app_lang) }}</label>
+
+            <select id="ex-status" class="ppx-select" style="min-width:160px;">
+
+              <option value="draft" selected>{{ t('Borrador', 'Draft', app_lang) }}</option>
+
+              <option value="published">{{ t('Publicado', 'Published', app_lang) }}</option>
+
+              <option value="archived">{{ t('Archivado', 'Archived', app_lang) }}</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="ppx-field" style="flex:1; max-width:780px;">
+
+          <label class="ppx-label">{{ t('Temas gramaticales', 'Grammar topics', app_lang) }}</label>
+
+          <div class="ppx-taxonomy" data-lang="{{ (app_lang or 'es')|lower }}">
+
+            <input type='hidden' id='taxonomy_paths' name='taxonomy_paths' value='{{ []|tojson }}'>
+
+          </div>
+
+          <div class="ppx-muted" style="margin-top:.5rem;">
+
+            {{ t('Seleccione uno o más temas para clasificar este ejercicio.', 'Select one or more topics to categorize this exercise.', app_lang) }}
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <hr style="border:none;border-top:1px solid var(--ppx-line);margin:16px 0;">
+
+
+
+            <section class="ppx-col" style="gap:12px; max-width:1100px;">
+
+        <h2 style="margin:.25rem 0;">{{ t('Items (diapositivas)', 'Items (slides)', app_lang) }}</h2>
+
+        <div class="ppx-muted">{{ t('Cada item necesita al menos dos enunciados y sus continuaciones. Podés sumar píldoras extra como distractores.', 'Each item needs at least two prompts and their continuations. You can add extra decoy pills.', app_lang) }}</div>
+
+        <div id="ppx-items" class="ppx-col" style="gap:12px;"></div>
+
+        <div class="ppx-row" style="justify-content:flex-start; align-items:center; margin-top:4px;">
+
+          <button id="ppx-add-item" type="button" class="ppx-btn ppx-btn--primary">{{ t('Agregar item', 'Add item', app_lang) }}</button>
+
+        </div>
+
+      </section>
+
+
+
+      <template id="ppx-item-template">
+
+        <details class="ppx-card" open data-item-card>
+
+          <summary class="ppx-row" style="align-items:center;gap:10px;padding:.75rem 1rem;">
+
+            <span data-item-handle class="ppx-chip">#1</span>
+
+            <span class="ppx-item-title">{{ t('Nuevo item', 'New item', app_lang) }}</span>
+
+            <span class="ppx-muted" style="font-size:.9rem;">{{ t('Continuaciones por enunciado', 'Continuations per prompt', app_lang) }}</span>
+
+          </summary>
+
+          <div class="ppx-col" style="gap:12px; padding:12px;">
+
+            <div class="ppx-col" style="gap:8px;">
+
+              <div class="ppx-row" style="justify-content:space-between; align-items:center;">
+
+                <h3 style="margin:0;">{{ t('Enunciados', 'Prompts', app_lang) }}</h3>
+
+              </div>
+
+              <div class="ppx-muted" style="font-size:.9rem;">{{ t('Solo necesitás un idioma por enunciado. Las pistas y feedback pueden ir en ES/EN.', 'Only one language is required per prompt. Hints and feedback can include ES/EN.', app_lang) }}</div>
+
+              <div class="ppx-col" data-prompts style="gap:10px;"></div>
+
+              <div class="ppx-row" style="justify-content:flex-start; align-items:center;">
+
+                <button type="button" class="ppx-btn ppx-btn--subtle" data-add-prompt>{{ t('Agregar enunciado', 'Add prompt', app_lang) }}</button>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="ppx-col" style="gap:8px; margin-top:8px;">
+
+              <div class="ppx-row" style="justify-content:space-between; align-items:center;">
+
+                <h3 style="margin:0;">{{ t('Continuaciones', 'Continuations', app_lang) }}</h3>
+
+              </div>
+
+              <div class="ppx-muted" style="font-size:.9rem;">{{ t('Podés sumar distractores (decoys). El feedback de cada pastilla se mostrará cuando se suelte.', 'You can add decoys. Each pillâs feedback shows on check.', app_lang) }}</div>
+
+              <div class="ppx-col" data-conts style="gap:10px;"></div>
+
+              <div class="ppx-row" style="justify-content:flex-start; align-items:center;">
+
+                <button type="button" class="ppx-btn ppx-btn--subtle" data-add-cont>{{ t('Agregar continuación', 'Add continuation', app_lang) }}</button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </details>
+
+      </template>
+
+
+
+      <hr style="border:none;border-top:1px solid var(--ppx-line);margin:16px 0;">
+
+
+
+      <div class="ppx-row" style="gap:10px; flex-wrap:wrap; align-items:center; margin-top:6px; position:sticky; bottom:0; padding:10px 0; background:#f8fafc; z-index:5; border-top:1px solid var(--ppx-line,#e5e7eb);">
+
+        <div class="ppx-row" style="gap:8px; align-items:center; flex-wrap:wrap;">
+
+          <button id="ppx-save-draft" type="button" class="ppx-btn">{{ t('Guardar borrador', 'Save draft', app_lang) }}</button>
+
+          <button id="ppx-preview" type="button" class="ppx-btn ppx-btn--ghost">{{ t('Vista previa', 'Preview', app_lang) }}</button>
+
+          <button id="ppx-export-json" type="button" class="ppx-btn ppx-btn--ghost">{{ t('Exportar JSON', 'Export JSON', app_lang) }}</button>
+
+          <button id="ppx-publish" type="button" class="ppx-btn ppx-btn--primary">{{ t('Publicar', 'Publish', app_lang) }}</button>
+
+        </div>
+
+      </div>
+
+
+
+    </form>
+
+  </section>
+
+{% endblock %}
+
+
+
+{% block scripts %}
+
+  {{ super() }}
+
+  <script>
+
+    window.PPX_BUILDER = {
+
+      mode: "{{ builder_mode|default('new') }}",
+
+      slug: "{{ builder_slug|default('') }}"
+
+    };
+
+  </script>
+
+  {% if prefill_json %}
+
+  <script>
+
+    window.__CTC_PREFILL = {{ (prefill_json or {})|tojson|safe }};
+
+  </script>
+
+  {% endif %}
+
+  <script defer src="{{ url_for('static', filename='js/admin_taxonomy_picker.js') }}"></script>
+
+  <script defer src="{{ url_for('static', filename='js/ppx-json-editor.js') }}?v=20251209f"></script>
+
+  <script defer src="{{ url_for('static', filename='js/admin_builder_ctc.js') }}?v=20251207a"></script>
+
+{% endblock %}
+

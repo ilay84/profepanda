@@ -65,10 +65,9 @@
     // In-content actions
     const btnRow = document.createElement('div'); btnRow.className='ppx-row'; btnRow.style.justifyContent='flex-end';
     const btnCheck = document.createElement('button'); btnCheck.type='button'; btnCheck.className='ppx-wbtn ppx-wbtn--primary'; btnCheck.textContent=L('Verificar','Check');
-    const btnRetry = document.createElement('button'); btnRetry.type='button'; btnRetry.className='ppx-wbtn'; btnRetry.textContent=L('Reintentar','Retry'); btnRetry.style.display='none';
     const btnNext = document.createElement('button'); btnNext.type='button'; btnNext.className='ppx-wbtn'; btnNext.textContent=L('Siguiente','Next'); btnNext.style.display='none';
     const btnResults = document.createElement('button'); btnResults.type='button'; btnResults.className='ppx-wbtn ppx-wbtn--primary'; btnResults.textContent=L('Ver resultados','See results'); btnResults.style.display='none';
-    btnRow.appendChild(btnCheck); btnRow.appendChild(btnRetry); btnRow.appendChild(btnNext); btnRow.appendChild(btnResults);
+    btnRow.appendChild(btnCheck); btnRow.appendChild(btnNext); btnRow.appendChild(btnResults);
 
     card.appendChild(media); card.appendChild(input); card.appendChild(charBar); card.appendChild(counter); card.appendChild(attemptsLine); card.appendChild(btnRow);
     root.appendChild(card); root.appendChild(fb);
@@ -155,7 +154,6 @@
       btnCheck.disabled = !canCheck;
       const id = items[idx].order||idx; const r = results.get(id);
       const used = attempts.get(id) || 0; const unlimited = isUnlimited(); const maxed = isMaxed(id);
-      btnRetry.style.display = (!r || r.ok || !opts.allowRetry || maxed) ? 'none' : '';
       const isLast = (idx === items.length - 1);
       btnNext.textContent = isLast ? L('Ver resultados','See results') : L('Siguiente','Next');
       btnNext.style.display = (r && (r.ok || maxed || unlimited)) ? '' : 'none';
@@ -343,7 +341,6 @@
       }
       return { line, correct, total, extras, misses, subs, soft: softCnt };
     }
-    function resetCurrent(){ answers.set(items[idx].order||idx, ''); input.value=''; fb.innerHTML=''; refreshActions(); input.focus(); }
     function goto(newIdx){ idx = Math.max(0, Math.min(items.length-1, newIdx)); mount(); }
     function showSummary(){
       summaryWrap.innerHTML='';
@@ -405,8 +402,21 @@
   summaryWrap.appendChild(overallWrap);
 
       const actions = document.createElement('div'); actions.className='ppx-row'; actions.style.justifyContent='center'; actions.style.marginTop='12px';
-  const btnRestart = document.createElement('button'); btnRestart.type='button'; btnRestart.className='ppx-wbtn ppx-wbtn--orange'; btnRestart.textContent=L('Reiniciar','Restart');
-  btnRestart.addEventListener('click', ()=>{ results.clear(); answers.clear(); idx=0; summaryWrap.style.display='none'; card.style.display=''; mount(); });
+  const btnRestart = document.createElement('button');
+  btnRestart.type='button';
+  btnRestart.className='ppx-btn ppx-btn--ghost';
+  btnRestart.textContent=L('Reiniciar','Restart');
+  btnRestart.style.border='1px solid #f97316';
+  btnRestart.style.color='#f97316';
+  btnRestart.style.display='inline-flex';
+  btnRestart.style.alignItems='center';
+  btnRestart.style.gap='6px';
+  btnRestart.style.width='fit-content';
+  btnRestart.style.padding='8px 14px';
+  const restartIcon = document.createElement('img'); restartIcon.src='/static/assets/icons/refresh.svg'; restartIcon.alt=''; restartIcon.width=16; restartIcon.height=16; btnRestart.prepend(restartIcon);
+  btnRestart.addEventListener('click', ()=>{
+    results.clear(); answers.clear(); idx=0; summaryWrap.style.display='none'; card.style.display=''; mount();
+  });
   actions.appendChild(btnRestart);
 
   summaryWrap.appendChild(list); summaryWrap.appendChild(actions);
@@ -415,7 +425,6 @@
 
     input.addEventListener('input', ()=>{ answers.set(items[idx].order||idx, input.value||''); updateCounter(); refreshActions(); });
     btnCheck.addEventListener('click', ()=> doCheck());
-    btnRetry.addEventListener('click', ()=> resetCurrent());
     btnNext.addEventListener('click', ()=> { if (idx < items.length-1) goto(idx+1); else showSummary(); });
     btnResults.addEventListener('click', ()=> showSummary());
 

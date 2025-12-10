@@ -1,0 +1,159 @@
+{
+  "id": "fitb/ser-o-estar-llenar-los-huecos-3",
+  "type": "fitb",
+  "slug": "ser-o-estar-llenar-los-huecos-3",
+  "version": 3,
+  "title_es": "¿SER o ESTAR? Llenar los huecos (3)",
+  "title_en": "SER or ESTAR? Fill in the blanks (3)",
+  "instructions_es": "Completa la oración con la forma correcta de SER o ESTAR.",
+  "instructions_en": "Complete the sentence with the correct form of SER or ESTAR.",
+  "level": "A2",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "status": "published",
+  "items": [
+    {
+      "id": "b1",
+      "order": 1,
+      "text": "<p>1. Marta *es* estudiante de secundaria.</p><p>2. Marta *es*&nbsp;<span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">jovencita.</span></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">3.&nbsp;</span>Marta *está*&nbsp;<span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">absorta en la lectura.</span></p><p>4. Marta *está* leyendo.<span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\"></span></p><p>5. Marta *está*&nbsp;<span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">tumbada en el piso.</span></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">6.&nbsp;</span>Alfredo *está*&nbsp;<span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">aburrido.</span></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">7.&nbsp;</span>Alfredo *es* chiquito.</p><p>8. Alfredo *está*&nbsp;<span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">sentado en el piso.</span></p><p><span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">9.&nbsp;</span>Alfredo *es* Uruguayo.</p><p>Alfredo *es*&nbsp;<span style=\"color: rgb(0, 0, 0); font-family: Montserrat, sans-serif;\">estudiante de primaria.</span></p>",
+      "blanks": [
+        {
+          "index": 1,
+          "options": [
+            "es"
+          ],
+          "hint_es": "¿Estamos hablando de qué es Marta como identidad?",
+          "hint_en": "Are we talking about what Marta is in terms of identity?",
+          "feedback_correct_es": "Correcto. Usamos 'ser' para expresar una identidad o rol esencial, como ser estudiante.",
+          "feedback_correct_en": "Correct. We use 'ser' to express an essential identity or role, like being a student.",
+          "feedback_incorrect_es": "Incorrecto. Esta oración no describe una situación, sino lo que Marta es.",
+          "feedback_incorrect_en": "Incorrect. This sentence is not about a situation but about what Marta is."
+        },
+        {
+          "index": 2,
+          "options": [
+            "es"
+          ],
+          "hint_es": "¿Esto describe cómo es Marta como persona?",
+          "hint_en": "Is this describing what Marta is like as a person?",
+          "feedback_correct_es": "Correcto. 'Ser' se usa para describir cualidades esenciales o la percepción duradera de alguien.",
+          "feedback_correct_en": "Correct. 'Ser' is used to describe essential traits or lasting perceptions of someone.",
+          "feedback_incorrect_es": "Incorrecto. No es una situación pasajera, sino una característica definitoria.",
+          "feedback_incorrect_en": "Incorrect. This isn’t a fleeting situation, but a defining characteristic."
+        },
+        {
+          "index": 3,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Indica esta oración un estado mental en un momento específico?",
+          "hint_en": "Does this sentence indicate a mental state at a specific moment?",
+          "feedback_correct_es": "Correcto. 'Estar' se usa para estados mentales o emocionales situacionales como estar absorta.",
+          "feedback_correct_en": "Correct. 'Estar' is used for situational mental or emotional states like being absorbed.",
+          "feedback_incorrect_es": "Incorrecto. 'Ser' no se usa para indicar un estado momentáneo como este.",
+          "feedback_incorrect_en": "Incorrect. 'Ser' is not used to indicate momentary states like this one."
+        },
+        {
+          "index": 4,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Esta acción está ocurriendo en este momento?",
+          "hint_en": "Is this an action happening right now?",
+          "feedback_correct_es": "Correcto. 'Estar' + gerundio indica una acción en progreso en un contexto situacional.",
+          "feedback_correct_en": "Correct. 'Estar' + gerund expresses an action in progress, a situational context.",
+          "feedback_incorrect_es": "Incorrecto. 'Ser' no se usa con el gerundio para describir acciones en curso.",
+          "feedback_incorrect_en": "Incorrect. 'Ser' is not used with the gerund to describe actions in progress."
+        },
+        {
+          "index": 5,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Describe esta oración la posición física de Marta en este momento?",
+          "hint_en": "Does this sentence describe Marta’s physical position at this moment?",
+          "feedback_correct_es": "Correcto. 'Estar' se usa para describir una situación física temporal como estar tumbada.",
+          "feedback_correct_en": "Correct. 'Estar' is used to describe temporary physical situations like lying down.",
+          "feedback_incorrect_es": "Incorrecto. 'Ser' no se usa para describir una postura física momentánea.",
+          "feedback_incorrect_en": "Incorrect. 'Ser' is not used to describe a momentary physical position."
+        },
+        {
+          "index": 6,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Este aburrimiento parece una emoción temporal o una característica esencial?",
+          "hint_en": "Does this boredom seem like a temporary emotion or an essential trait?",
+          "feedback_correct_es": "Correcto. 'Estar' se usa para estados emocionales o anímicos del momento.",
+          "feedback_correct_en": "Correct. 'Estar' is used for emotional or mood states of the moment.",
+          "feedback_incorrect_es": "Incorrecto. No hablamos de cómo es Alfredo como persona, sino de cómo se siente ahora.",
+          "feedback_incorrect_en": "Incorrect. We're not talking about Alfredo’s personality but how he feels now."
+        },
+        {
+          "index": 7,
+          "options": [
+            "es"
+          ],
+          "hint_es": "¿Se refiere esto a una característica física que define a Alfredo?",
+          "hint_en": "Is this referring to a defining physical characteristic of Alfredo?",
+          "feedback_correct_es": "Correcto. 'Ser' se usa para cualidades esenciales como el tamaño o la apariencia.",
+          "feedback_correct_en": "Correct. 'Ser' is used for essential qualities like size or appearance.",
+          "feedback_incorrect_es": "Incorrecto. 'Estar' no se usa para describir cualidades físicas duraderas.",
+          "feedback_incorrect_en": "Incorrect. 'Estar' isn’t used to describe lasting physical characteristics."
+        },
+        {
+          "index": 8,
+          "options": [
+            "está"
+          ],
+          "hint_es": "¿Se refiere esto a la posición actual de Alfredo?",
+          "hint_en": "Is this referring to Alfredo’s current position?",
+          "feedback_correct_es": "Correcto. 'Estar' se usa para indicar una ubicación o postura física temporal.",
+          "feedback_correct_en": "Correct. 'Estar' is used to indicate a temporary physical location or posture.",
+          "feedback_incorrect_es": "Incorrecto. 'Ser' no se usa para describir dónde o cómo está físicamente una persona.",
+          "feedback_incorrect_en": "Incorrect. 'Ser' is not used to describe where or how someone is physically."
+        },
+        {
+          "index": 9,
+          "options": [
+            "es"
+          ],
+          "hint_es": "¿El origen nacional de una persona es parte de su esencia?",
+          "hint_en": "Is a person’s nationality part of their essence?",
+          "feedback_correct_es": "Correcto. 'Ser' se usa para indicar el origen o nacionalidad como parte de la identidad.",
+          "feedback_correct_en": "Correct. 'Ser' is used to express origin or nationality as part of one's identity.",
+          "feedback_incorrect_es": "Incorrecto. 'Estar' no se usa para describir nacionalidad.",
+          "feedback_incorrect_en": "Incorrect. 'Estar' is not used to describe nationality."
+        },
+        {
+          "index": 10,
+          "options": [
+            "es"
+          ],
+          "hint_es": "¿Se refiere esto a lo que Alfredo es como parte de su identidad escolar?",
+          "hint_en": "Does this refer to what Alfredo is as part of his school identity?",
+          "feedback_correct_es": "Correcto. 'Ser' se usa para expresar roles o identidades duraderas como ser estudiante.",
+          "feedback_correct_en": "Correct. 'Ser' is used to express lasting roles or identities like being a student.",
+          "feedback_incorrect_es": "Incorrecto. 'Estar' no se usa para expresar la identidad académica.",
+          "feedback_incorrect_en": "Incorrect. 'Estar' is not used to express academic identity."
+        }
+      ],
+      "media": [
+        {
+          "kind": "image",
+          "src": "/media/exercises/fitb/ser-o-estar-llenar-los-huecos-3/img/Marta_y_Alfredo_1_20251203181712.svg",
+          "alt_es": "Marta y Alfredo",
+          "alt_en": "Marta and Alfredo",
+          "caption_es": "",
+          "caption_en": ""
+        }
+      ]
+    }
+  ],
+  "created_by": "admin",
+  "created_at": "2025-12-03T18:44:57.320Z",
+  "checksum": "sha256:fbde02798bc49485687a27092453c1675d77429cf6db768d1c91f86b64eaeaef"
+}

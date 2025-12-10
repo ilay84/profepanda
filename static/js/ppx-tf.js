@@ -269,17 +269,7 @@
     });
     progress.appendChild(btnResults);
 
-    // Restart shortcut (appears when all answered)
-    const btnRestart = document.createElement('button');
-    btnRestart.type = 'button';
-    btnRestart.className = 'ppx-wbtn';
-    btnRestart.textContent = L('Reiniciar', 'Restart');
-    btnRestart.hidden = true;
-    btnRestart.addEventListener('click', () => {
-      clearCache();
-      resetAll();
-    });
-    progress.appendChild(btnRestart);
+    // Removed per-slide restart (header reset + summary restart only)
 
     // Nav pods
     const nav = document.createElement('div');
@@ -1074,9 +1064,22 @@
 
         const restartBtn = document.createElement('button');
         restartBtn.type = 'button';
-        restartBtn.className = 'ppx-wbtn ppx-wbtn--orange';
+        restartBtn.className = 'ppx-btn ppx-btn--ghost';
         restartBtn.setAttribute('id', 'ppx-tf-restart');
         restartBtn.textContent = L('Reiniciar', 'Restart');
+        restartBtn.style.border = '1px solid #f97316';
+        restartBtn.style.color = '#f97316';
+        restartBtn.style.display = 'inline-flex';
+        restartBtn.style.alignItems = 'center';
+        restartBtn.style.gap = '6px';
+        restartBtn.style.width = 'fit-content';
+        restartBtn.style.padding = '8px 14px';
+        const restartIcon = document.createElement('img');
+        restartIcon.src = '/static/assets/icons/refresh.svg';
+        restartIcon.alt = '';
+        restartIcon.width = 16;
+        restartIcon.height = 16;
+        restartBtn.prepend(restartIcon);
         restartRow.appendChild(restartBtn);
         wrap.appendChild(restartRow);
 

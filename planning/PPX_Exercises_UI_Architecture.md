@@ -153,15 +153,17 @@ Naming & structure:
 
 ---
 
-## 9) Cross‑Type UI Decisions (Unification)
+## 9) Cross-Type UI Decisions (Unification)
 - Modal Frame: Use `PPXFrame` for all types to keep header/footer rows aligned with content width.
 - Lightbox: Use `PPXModal` image lightbox (`data-ppx-lightbox="true"`) for images across all types; do not implement per-type zoom overlays.
-- Summary Sentinel: Reserve `idx === items.length` as the summary “slide” for all types; disable Next on summary; provide Restart and “See results” affordances consistently.
+- Summary Sentinel: Reserve `idx === items.length` as the summary "slide" for all types; disable Next on summary; provide Restart and "See results" affordances consistently.
 - Check Semantics: Where applicable (MCQ, DnD, CTW, Dictation), gate feedback on a `Check` action and lock inputs post-check according to type options (e.g., `allowRetry`). Style the primary state uniformly.
 - Dots Behavior: Support a shared option to restrict dot navigation until answered (parity with TF `dotsOnlyAnswered`).
-- Hint Accounting: Increment `hints_used` the first time a hint is opened per item (open‑once semantics) for consistent analytics.
+- Hint Accounting: Increment `hints_used` the first time a hint is opened per item (open-once semantics) for consistent analytics.
 - Media Toggle: Use the same preview/close icons and aria labels; per-item media lives above the work area, hidden on summary.
 - Keyboard/A11y: Ensure roving tabindex for token grids, drop zones, and inline selectable text; announce results via `aria-live` and set focus to the first error on failed checks.
+- Reset/Restart: The header reset icon calls `resetExercise` supplied by the player. The player must clear cached state (localStorage/session), keep the modal open, and reopen slide 1; only trigger a full `location.reload()` on hard failure. Any per-type restart buttons (e.g., summary restart) should reuse the same reset routine.
+- Bilingual strings: Shell meta (title_es/en, instructions_es/en, level) and all user-facing hint/feedback fields are bilingual. Core content (prompts, questions, tokens) stays neutral unless the type demands per-language variants (TF dual text). When adding options, provide both `{field}_es` and `{field}_en` if user-facing.
 
 ---
 
@@ -179,3 +181,5 @@ Naming & structure:
   - `dictation.svg` (Dictation)
   - `ctw.svg` (Click The Words)
   - `fib.svg` (Fill in the Blank)
+  - `ctc.svg` (Choose the Continuation)
+  - `matching-lines.svg` (Matching pairs)

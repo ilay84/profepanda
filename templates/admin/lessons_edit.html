@@ -11,6 +11,25 @@
 
 {% block content %}
 <section class="builder-shell" data-lesson-id="{{ lesson.id if lesson else '' }}">
+  <div id="json-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+    <div style="background:#fff;max-width:1080px;width:100%;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.2);padding:16px;display:grid;gap:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <strong>Lesson JSON</strong>
+          <div id="json-insert-wrap" class="ppx-row" style="gap:6px;flex-wrap:wrap;"></div>
+        </div>
+        <div class="ppx-row" style="gap:6px;flex-wrap:wrap;">
+          <button id="json-validate" class="ppx-pill" type="button">Validate</button>
+          <button id="json-format" class="ppx-pill" type="button">Format</button>
+          <button id="json-close" class="ppx-pill" type="button">Close</button>
+        </div>
+      </div>
+      <textarea id="json-textarea" class="ppx-textarea" style="min-height:420px;font-family:ui-monospace,Consolas,monospace;"></textarea>
+      <div style="display:flex;justify-content:flex-end;gap:8px;">
+        <button id="json-apply" class="ppx-pill" type="button">Apply JSON</button>
+      </div>
+    </div>
+  </div>
   <aside class="builder-palette">
     {% if lesson %}
       <h3>Slides</h3>
@@ -52,9 +71,19 @@
   </aside>
   <main class="builder-canvas">
     <h3>Live Preview</h3>
-    <div class="ppx-row" style="justify-content:flex-end;align-items:center;margin-bottom:8px;gap:6px;">
-      <button class="ppx-pill" id="btn-refresh-preview" type="button">Refresh Preview</button>
-      <a class="ppx-pill" id="btn-open-player" href="{{ url_for('lessons_public.lesson_player', slug=lesson.slug) if lesson else '#' }}" target="_blank" rel="noopener">Open Player</a>
+    <div class="ppx-row" style="justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap;">
+      <div class="ppx-row" style="gap:6px;align-items:center;">
+        <button class="ppx-pill" id="btn-prev-slide" type="button">← Prev</button>
+        <span id="slide-label" style="color:#64748b;">Slide 1/1</span>
+        <button class="ppx-pill" id="btn-next-slide" type="button">Next →</button>
+      </div>
+      <div class="ppx-row" style="gap:6px;flex-wrap:wrap;">
+        <button class="ppx-pill" id="btn-sample-json" type="button">Sample JSON</button>
+        <button class="ppx-pill" id="btn-edit-json" type="button">Edit JSON</button>
+        <button class="ppx-pill" id="btn-refresh-preview" type="button">Refresh Preview</button>
+        <a class="ppx-pill" id="btn-open-player" href="{{ url_for('lessons_public.lesson_player', slug=lesson.slug) if lesson else '#' }}" target="_blank" rel="noopener">Open Player</a>
+        <a class="ppx-pill" href="{{ url_for('admin.lessons_index') }}">Cancel</a>
+      </div>
     </div>
     <iframe class="builder-preview" title="Preview" style="width:100%;height:600px;border:0" src="{% if lesson %}/lessons/{{ lesson.slug }}?edit=1&id={{ lesson.id }}{% endif %}"></iframe>
   </main>

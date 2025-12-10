@@ -1,0 +1,551 @@
+{
+  "type": "mcq",
+  "slug": "ser-o-estar-adjetivos-1",
+  "title_es": "¿SER o ESTAR? Adjetivos (1)",
+  "title_en": "SER or ESTAR? Adjectives (1)",
+  "instructions_es": "Lee cada oración y elige la mejor interpretación según el uso de <strong data-start=\"493\" data-end=\"500\">ser</strong> o <strong data-start=\"503\" data-end=\"512\">estar</strong>.",
+  "instructions_en": "Read each sentence and choose the best interpretation based on the use of <b>ser</b> or <b>estar</b>.",
+  "level": "B1",
+  "status": "draft",
+  "taxonomy_paths": [
+    "verbs",
+    "verbs/special-verbs",
+    "verbs/special-verbs/ser-vs-estar"
+  ],
+  "items": [
+    {
+      "id": "q1",
+      "order": 1,
+      "question_es": "<b>Marcos está aburrido.</b>&nbsp;<div><br></div><div><i>¿Qué indica esta oración?</i></div>",
+      "question_en": "",
+      "hint_es": "Piensa en si se trata de una emoción momentánea o una característica esencial.",
+      "hint_en": "Think about whether this is a temporary emotion or an essential trait.",
+      "options_es": [
+        {
+          "text": "Marcos es una persona aburrida.",
+          "correct": false,
+          "feedback": "Incorrecto. Eso usaría 'ser'. Aquí se describe un estado emocional momentáneo."
+        },
+        {
+          "text": "Marcos está causando aburrimiento en los demás.",
+          "correct": false,
+          "feedback": "No exactamente. Esa interpretación implicaría que 'Marcos es aburrido'."
+        },
+        {
+          "text": "Marcos se siente aburrido en este momento.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Estar aburrido' describe un estado temporal o emocional."
+        },
+        {
+          "text": "Marcos siempre ha sido aburrido.",
+          "correct": false,
+          "feedback": "No. Eso implicaría una cualidad permanente y usaría 'ser'."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q2",
+      "order": 2,
+      "question_es": "<b>El jefe es muy malo.</b>&nbsp;<div><br></div><div><i>¿Qué indica esta oración?</i></div>",
+      "question_en": "",
+      "hint_es": "¿Se describe su personalidad general o una condición específica?",
+      "hint_en": "Is this describing a general personality or a specific condition?",
+      "options_es": [
+        {
+          "text": "El jefe está enfermo hoy.",
+          "correct": false,
+          "feedback": "No. Eso sería 'estar malo'. Aquí se habla de su carácter."
+        },
+        {
+          "text": "El jefe tiene mal carácter o es cruel.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Ser malo' indica una característica permanente o de personalidad."
+        },
+        {
+          "text": "El jefe está de mal humor momentáneamente.",
+          "correct": false,
+          "feedback": "No. Eso usaría 'estar'. Aquí se habla de cómo es en general."
+        },
+        {
+          "text": "El jefe tiene fiebre.",
+          "correct": false,
+          "feedback": "Incorrecto. Estar malo se usaría para indicar enfermedad, pero aquí se usa 'ser'."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q3",
+      "order": 3,
+      "question_es": "<b>¡Estás listo!</b>&nbsp;<div><br></div><div><i>¿Qué se comunica con esta frase?</i></div>",
+      "question_en": "",
+      "hint_es": "Piensa si se refiere a una preparación momentánea o a una cualidad de la persona.",
+      "hint_en": "Think about whether this refers to a temporary readiness or a general trait.",
+      "options_es": [
+        {
+          "text": "Eres una persona inteligente.",
+          "correct": false,
+          "feedback": "No. Eso se expresaría con 'ser listo'."
+        },
+        {
+          "text": "Estás preparado en este momento.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Estar listo' indica preparación para una situación específica."
+        },
+        {
+          "text": "Eres una persona organizada por naturaleza.",
+          "correct": false,
+          "feedback": "No necesariamente. Aquí 'estar' indica un estado momentáneo."
+        },
+        {
+          "text": "Tienes una habilidad especial.",
+          "correct": false,
+          "feedback": "No. Esa interpretación usaría 'ser listo'."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q4",
+      "order": 4,
+      "question_es": "<b>Clara está muy verde en este trabajo.</b>&nbsp;<div><br></div><div><i>¿Qué se quiere decir?</i></div>",
+      "question_en": "",
+      "hint_es": "¿Se refiere a su color literal, a una emoción, o a su nivel de experiencia?",
+      "hint_en": "Is this referring to her literal color, an emotion, or her level of experience?",
+      "options_es": [
+        {
+          "text": "Clara es ecologista.",
+          "correct": false,
+          "feedback": "No. Aquí 'verde' se refiere a su falta de experiencia, no a una ideología."
+        },
+        {
+          "text": "Clara se enfermó.",
+          "correct": false,
+          "feedback": "No exactamente. 'Estar verde' puede tener ese sentido, pero en el contexto laboral, se refiere a experiencia."
+        },
+        {
+          "text": "Clara no tiene experiencia aún.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Estar verde' en este contexto indica inexperiencia."
+        },
+        {
+          "text": "Clara está enojada.",
+          "correct": false,
+          "feedback": "No. El adjetivo 'verde' no se usa para expresar enojo."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q5",
+      "order": 5,
+      "question_es": "<b>¡Está buenísimo este café!</b>&nbsp;<div><br></div><div><i>¿Qué sugiere esta opinión?</i></div>",
+      "question_en": "",
+      "hint_es": "¿La oración habla de una experiencia subjetiva o una cualidad permanente del café?",
+      "hint_en": "Is the sentence describing a subjective experience or a permanent quality of the coffee?",
+      "options_es": [
+        {
+          "text": "El café es de excelente calidad en general.",
+          "correct": false,
+          "feedback": "No. Para hablar de una cualidad permanente se usaría 'es buenísimo'."
+        },
+        {
+          "text": "Me está encantando el sabor en este momento.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Estar buenísimo' transmite una experiencia subjetiva actual."
+        },
+        {
+          "text": "El café es una marca muy famosa.",
+          "correct": false,
+          "feedback": "No. Aquí no se menciona nada sobre marcas o fama."
+        },
+        {
+          "text": "El café tiene un precio muy bajo.",
+          "correct": false,
+          "feedback": "No. 'Buenísimo' se refiere a sabor o calidad percibida, no al precio."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q6",
+      "order": 6,
+      "question_es": "<b>Mi primo es muy seguro.</b>&nbsp;<div><br></div><div><i>¿Qué transmite esta oración?</i></div>",
+      "question_en": "",
+      "hint_es": "¿Habla de su personalidad o de una situación momentánea?",
+      "hint_en": "Is this referring to his personality or a temporary situation?",
+      "options_es": [
+        {
+          "text": "Está en un lugar protegido.",
+          "correct": false,
+          "feedback": "No. Si fuera así, se usaría 'estar seguro'."
+        },
+        {
+          "text": "Tiene miedo.",
+          "correct": false,
+          "feedback": "No. 'Ser seguro' indica confianza, no miedo."
+        },
+        {
+          "text": "Es una persona que genera confianza.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Ser seguro' describe una cualidad de personalidad."
+        },
+        {
+          "text": "Es nuevo en el trabajo.",
+          "correct": false,
+          "feedback": "No está relacionado con la experiencia laboral."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q7",
+      "order": 7,
+      "question_es": "<b>Lucía está guapa hoy.</b>&nbsp;<div><br></div><div><i>¿Qué implica esta afirmación?</i></div>",
+      "question_en": "",
+      "hint_es": "¿Se refiere a su aspecto habitual o a cómo luce en este momento?",
+      "hint_en": "Is this about her usual appearance or how she looks right now?",
+      "options_es": [
+        {
+          "text": "Lucía es guapa por naturaleza.",
+          "correct": false,
+          "feedback": "No. Eso se expresaría con 'ser guapa'."
+        },
+        {
+          "text": "Lucía está menos guapa que siempre.",
+          "correct": false,
+          "feedback": "No. Aquí se destaca que hoy está especialmente atractiva."
+        },
+        {
+          "text": "Lucía luce especialmente bien hoy.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Estar guapa' indica un estado temporal y perceptible."
+        },
+        {
+          "text": "Lucía está enferma.",
+          "correct": false,
+          "feedback": "No. Aquí no hay indicación de enfermedad."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q8",
+      "order": 8,
+      "question_es": "<b>Mi abuela está joven para su edad.</b>&nbsp;<div><br></div><div><i>¿Qué significa esta frase?</i></div>",
+      "question_en": "",
+      "hint_es": "¿La oración habla de su apariencia actual o de su edad real?",
+      "hint_en": "Is this about her current appearance or her real age?",
+      "options_es": [
+        {
+          "text": "Tiene pocos años.",
+          "correct": false,
+          "feedback": "No. La frase no indica su edad real, sino su apariencia."
+        },
+        {
+          "text": "Parece joven o actúa como alguien más joven.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Estar joven' implica una apariencia o actitud rejuvenecida."
+        },
+        {
+          "text": "Es adolescente.",
+          "correct": false,
+          "feedback": "No. Se trata de una persona mayor que luce joven."
+        },
+        {
+          "text": "Tiene una enfermedad que la rejuvenece.",
+          "correct": false,
+          "feedback": "No. Aquí no se menciona nada médico."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q9",
+      "order": 9,
+      "question_es": "<b>El pastel está malo.</b>&nbsp;<div><br></div><div><i>¿Qué comunica esta oración?</i></div>",
+      "question_en": "",
+      "hint_es": "¿Se refiere a una cualidad general del pastel o a su estado actual?",
+      "hint_en": "Is this referring to a general quality or the current condition of the cake?",
+      "options_es": [
+        {
+          "text": "Está en mal estado o sabe mal.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Estar malo' implica que está estropeado o tiene mal sabor."
+        },
+        {
+          "text": "Es de mala calidad siempre.",
+          "correct": false,
+          "feedback": "No. Eso se expresaría con 'ser malo'."
+        },
+        {
+          "text": "Es un postre clásico.",
+          "correct": false,
+          "feedback": "No. Aquí se habla de su sabor o condición actual."
+        },
+        {
+          "text": "Es bajo en calorías.",
+          "correct": false,
+          "feedback": "No. Eso no tiene relación con 'estar malo'."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    },
+    {
+      "id": "q10",
+      "order": 10,
+      "question_es": "<b>La habitación está oscura.</b>&nbsp;<div><br></div><div><i>¿Qué indica esta oración?</i></div>",
+      "question_en": "",
+      "hint_es": "¿La oscuridad es una característica permanente del lugar o algo que sucede ahora?",
+      "hint_en": "Is the darkness a permanent feature or a current situation?",
+      "options_es": [
+        {
+          "text": "Actualmente no hay mucha luz en la habitación.",
+          "correct": true,
+          "feedback": "¡Correcto! 'Estar oscura' indica una condición temporal."
+        },
+        {
+          "text": "La habitación es tenebrosa por naturaleza.",
+          "correct": false,
+          "feedback": "No. Eso se diría con 'ser oscura'."
+        },
+        {
+          "text": "La decoración es gótica.",
+          "correct": false,
+          "feedback": "No se hace referencia al estilo decorativo."
+        },
+        {
+          "text": "Tiene mala energía siempre.",
+          "correct": false,
+          "feedback": "No. 'Estar' se refiere a cómo está ahora, no a percepciones permanentes."
+        }
+      ],
+      "options_en": [
+        {
+          "text": "",
+          "correct": true,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        },
+        {
+          "text": "",
+          "correct": false,
+          "feedback": ""
+        }
+      ],
+      "media": []
+    }
+  ],
+  "version": 6,
+  "created_at": "2025-12-07T14:14:43Z",
+  "created_by": "admin",
+  "checksum": "sha256:8015a84ef10463d7498328ba9560977b1ea606a3f776b469c633b3b1bcb54b3a"
+}

@@ -61,7 +61,7 @@ export function setupControls(shell, lesson) {
       next.disabled = false;
       updateNav(shell);
     }
-    if (slide.type === 'exercise' && (slide.mode === 'tf' || slide.mode === 'tapword' || slide.mode === 'dragblank' || slide.mode === 'flashcard')) {
+    if (slide.type === 'exercise' && (slide.mode === 'tf' || slide.mode === 'tapword' || slide.mode === 'dragblank' || slide.mode === 'flashcard' || slide.mode === 'conjugation_drag')) {
       const card = shell.querySelector('.lp-card');
       const host = card.firstElementChild;
       const ok = host && host.__grade ? host.__grade() : true;

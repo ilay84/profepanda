@@ -34,15 +34,15 @@
           </div>
         </div>
 
-        <!-- Instructions ES/EN side-by-side with spacing -->
-        <div class="ppx-row" style="gap:16px; flex-wrap:wrap;">
-          <div class="ppx-field" style="flex:1; min-width:300px;">
+        <!-- Instructions stacked vertically -->
+        <div class="ppx-col" style="gap:12px;">
+          <div class="ppx-field">
             <label for="ex-inst-es">{{ t('Instrucciones (ES)', 'Instructions (ES)', app_lang) }}</label>
-            <textarea id="ex-inst-es" name="instructions_es" class="ppx-textarea" rows="3" placeholder="{{ t('Elegí Verdadero o Falso.', 'Choose True or False.', app_lang) }}"></textarea>
+            <textarea id="ex-inst-es" name="instructions_es" class="ppx-textarea" rows="3" data-rte="instructions" placeholder="{{ t('Elegí Verdadero o Falso.', 'Choose True or False.', app_lang) }}"></textarea>
           </div>
-          <div class="ppx-field" style="flex:1; min-width:300px;">
+          <div class="ppx-field">
             <label for="ex-inst-en">{{ t('Instrucciones (EN)', 'Instructions (EN)', app_lang) }}</label>
-            <textarea id="ex-inst-en" name="instructions_en" class="ppx-textarea" rows="3" placeholder="Choose True or False."></textarea>
+            <textarea id="ex-inst-en" name="instructions_en" class="ppx-textarea" rows="3" data-rte="instructions" placeholder="Choose True or False."></textarea>
           </div>
         </div>
 

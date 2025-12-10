@@ -82,19 +82,34 @@
       // Options are language-specific arrays: options_es/options_en
       const k = (lang === 'en') ? 'options_en' : 'options_es';
       const alt = (lang === 'en') ? 'options_es' : 'options_en';
-      const arr = item[k] || item[alt] || item.options || [];
-      // Normalize to {text, correct, feedback?}
-      return arr.map(o => ({
-        text: (typeof o === 'string') ? o : (o.text || ''),
-        correct: !!(o.correct),
-        feedback: o.feedback || ''
-      }));
+      const primary = Array.isArray(item[k]) ? item[k] : [];
+      const fallback = Array.isArray(item[alt]) ? item[alt] : [];
+      const base = primary.length ? primary : (fallback.length ? fallback : (item.options || []));
+      return base.map((o, i) => {
+        const altOpt = fallback[i] || {};
+        return {
+          text: (typeof o === 'string') ? o : (o.text || altOpt.text || ''),
+          correct: !!(o.correct ?? altOpt.correct),
+          feedback: (lang === 'en')
+            ? ((o.feedback_en || altOpt.feedback_en || o.feedback || altOpt.feedback || ''))
+            : ((o.feedback_es || altOpt.feedback_es || o.feedback || altOpt.feedback || ''))
+        };
+      });
     }
 
     function getHint(item) {
       const k = (lang === 'en') ? 'hint_en' : 'hint_es';
       const alt = (lang === 'en') ? 'hint_es' : 'hint_en';
       return item[k] || item[alt] || '';
+    }
+    function sanitize(html){
+      try {
+        const allowed = ['b','strong','i','em','br','div','p'];
+        return String(html||'').replace(/<([^>]+)>/g, (m, tag) => {
+          const name = tag.replace(/\/.*/,'').replace(/\s+.*/,'').toLowerCase();
+          return allowed.includes(name) ? `<${tag}>` : '';
+        });
+      } catch(_) { return String(html||''); }
     }
 
     // UI nodes
@@ -140,7 +155,7 @@
     const qEl = document.createElement('div');
     qEl.style.fontSize = '1.05rem';
     qEl.style.lineHeight = '1.55';
-    qEl.style.fontWeight = '600';
+    qEl.style.fontWeight = '400';
 
     const optsWrap = document.createElement('div');
     optsWrap.className = 'ppx-col';
@@ -172,16 +187,27 @@
     root.appendChild(inlineFB);
 
     const hintToggle = document.createElement('button');
-    hintToggle.className = 'ppx-ex__hint-toggle';
+    hintToggle.className = 'ppx-ex__iconBtn ppx-tooltip';
     hintToggle.type = 'button';
-    hintToggle.textContent = L('Ver pista', 'Show hint');
     hintToggle.hidden = true;
     hintToggle.setAttribute('aria-expanded', 'false');
+    const hintIcon = document.createElement('img');
+    hintIcon.src = '/static/assets/icons/hint.svg';
+    hintIcon.alt = '';
+    hintIcon.width = 42; hintIcon.height = 42;
+    hintToggle.appendChild(hintIcon);
     const hintBlock = document.createElement('div');
     hintBlock.className = 'ppx-ex__hint';
     hintBlock.hidden = true;
-    root.appendChild(hintToggle);
-    root.appendChild(hintBlock);
+    const hintRow = document.createElement('div');
+    hintRow.style.display = 'flex';
+    hintRow.style.justifyContent = 'center';
+    hintRow.style.alignItems = 'center';
+    hintRow.style.gap = '8px';
+    hintRow.style.margin = '8px 0';
+    hintRow.appendChild(hintToggle);
+    hintRow.appendChild(hintBlock);
+    root.appendChild(hintRow);
 
     const progressWrap = document.createElement('div');
     progressWrap.className = 'ppx-ex__progress';
@@ -195,8 +221,17 @@
     btnResults.addEventListener('click', (e)=> { try { e.preventDefault(); e.stopPropagation && e.stopPropagation(); } catch(_){} attemptSummary(); });
     progressWrap.appendChild(btnResults);
     const btnRestart = document.createElement('button');
-    btnRestart.type='button'; btnRestart.className='ppx-wbtn';
+    btnRestart.type='button'; btnRestart.className='ppx-btn ppx-btn--ghost';
     btnRestart.textContent = L('Reiniciar','Restart'); btnRestart.hidden = true;
+    btnRestart.style.border='1px solid #f97316';
+    btnRestart.style.color='#f97316';
+    btnRestart.style.display='inline-flex';
+    btnRestart.style.alignItems='center';
+    btnRestart.style.gap='6px';
+    btnRestart.style.width='fit-content';
+    btnRestart.style.padding='8px 14px';
+    const restartIcon = document.createElement('img'); restartIcon.src='/static/assets/icons/refresh.svg'; restartIcon.alt=''; restartIcon.width=16; restartIcon.height=16;
+    btnRestart.prepend(restartIcon);
     btnRestart.addEventListener('click', ()=> resetAll());
     progressWrap.appendChild(btnRestart);
     // Footer row groups progress + arrows (match TF)
@@ -208,7 +243,7 @@
     footer.appendChild(progressWrap); footer.appendChild(nav);
     const btnCheck = document.createElement('button');
     btnCheck.type = 'button';
-    btnCheck.className = 'ppx-wbtn';
+    btnCheck.className = 'ppx-btn ppx-btn--primary';
     btnCheck.textContent = L('Comprobar', 'Check');
     btnCheck.disabled = true;
     // Place Check above feedback and before footer (so feedback sits under the button)
@@ -371,7 +406,7 @@
       try {
         const hasSel = (selectedSetFor(item).size > 0);
         btnCheck.disabled = !hasSel;
-        btnCheck.className = hasSel ? 'ppx-btn' : 'ppx-wbtn';
+        btnCheck.className = 'ppx-btn ppx-btn--primary';
       } catch(_){ }
     }
 
@@ -397,7 +432,8 @@
 
         const text = document.createElement('div');
         text.style.flex = '1';
-        text.textContent = opt.text;
+        text.style.color = '#0f172a';
+        text.innerHTML = sanitize(opt.text);
 
         row.appendChild(box);
         row.appendChild(text);
@@ -421,7 +457,13 @@
     }
 
     function renderFeedback(res, item) {
-      const options = res.options;
+      const options = getOptions(item);
+      const selected = res.selected || new Set();
+      // Recompute correctness with current language options
+      const correctIdx = new Set(options.map((o, i) => o.correct ? i : -1).filter(i => i >= 0));
+      const sameSize = selected.size === correctIdx.size;
+      const allMatch = sameSize && Array.from(selected).every(i => correctIdx.has(i));
+      res.ok = allMatch;
       // Show feedback as a callout like TF hints (green/red box)
       feedback.style.display = 'block';
       feedback.className = res.ok ? 'ppx-state--ok' : 'ppx-state--bad';
@@ -440,23 +482,22 @@
         ? L('¡Correcto!', 'Correct!')
         : L('Hay alguna opción incorrecta o falta seleccionar una correcta.', 'Some choices are wrong or missing.');
 
-      feedback.innerHTML = `
-        <div><strong>${summaryText}</strong></div>
-        ${lines.length ? `<ul style="margin:.5rem 0 0 .9rem;">${lines.join('')}</ul>` : ''}
-      `;
-      srLive.textContent = summaryText;
-      // Overwrite content to show only authored sentences, no heading/bullets
+      // Overwrite content to show only authored sentences, inline with icon
       try {
-        const __fbs = Array.from(res.selected).map(i => (options[i]?.feedback || '').trim()).filter(Boolean);
+        const __fbs = Array.from(selected).map(i => sanitize(options[i]?.feedback || '').trim()).filter(Boolean);
         if (__fbs.length) {
-          const __html = __fbs.map(t => `<div>${t}</div>`).join('');
-          feedback.innerHTML = __html;
-          const tmp = document.createElement('div'); tmp.innerHTML = __html; srLive.textContent = (tmp.textContent || '').trim();
+          feedback.style.display = 'flex';
+          feedback.style.alignItems = 'center';
+          feedback.style.flexWrap = 'wrap';
+          feedback.dataset.hasIcon = 'true';
+          feedback.innerHTML = __fbs.map(t => `<span>${t}</span>`).join(' ');
+          const tmp = document.createElement('div'); tmp.innerHTML = feedback.innerHTML; srLive.textContent = (tmp.textContent || '').trim();
         } else {
-          // If no authored feedback, hide the callout
           feedback.style.display = 'none';
         }
-      } catch(_){}
+      } catch(_){
+        feedback.style.display = 'none';
+      }
 
       // Color selected options: red for wrong selections, green for correct selections
       try {
@@ -543,10 +584,10 @@
       const list = document.createElement('div'); list.setAttribute('role','list'); list.style.display='grid'; list.style.gap='10px';
       items.forEach((it) => {
         const res = results.get(it.id) || { correct:false, selected:new Set() };
-        const ok = !!res.correct; const question = getQuestion(it) || '';
+        const ok = !!res.correct; const question = sanitize(getQuestion(it) || '');
         const details = document.createElement('details'); details.className='ppx-acc'; details.style.border='1px solid var(--ppx-color-line,#e5e7eb)'; details.style.borderRadius='12px'; details.style.overflow='hidden'; details.style.background='#fff';
         const sum = document.createElement('summary'); sum.style.cursor='pointer'; sum.style.listStyle='none'; sum.style.padding='12px 14px'; sum.style.display='flex'; sum.style.alignItems='center'; sum.style.gap='10px';
-        const stmtEl = document.createElement('span'); stmtEl.style.fontWeight='700'; stmtEl.style.flex='1 1 auto'; stmtEl.textContent = question;
+        const stmtEl = document.createElement('span'); stmtEl.style.fontWeight='700'; stmtEl.style.flex='1 1 auto'; stmtEl.innerHTML = question;
         const chipState = document.createElement('span'); chipState.className = `ppx-chip ${ok ? 'ppx-chip--ok':'ppx-chip--bad'}`; chipState.style.whiteSpace='nowrap'; chipState.style.flex='0 0 auto'; chipState.textContent = ok ? L('Correcto','Correct') : L('Incorrecto','Incorrect');
         sum.style.flexWrap = 'nowrap'; stmtEl.style.minWidth = '0';
         sum.appendChild(stmtEl); sum.appendChild(chipState);
@@ -616,11 +657,11 @@
 
         const list = document.createElement('div'); list.setAttribute('role','list'); list.style.display='grid'; list.style.gap='10px';
         items.forEach((it) => {
-          const r = results.get(it.id) || { correct:false, selected:new Set() };
-          const ok = !!r.correct; const question = getQuestion(it) || '';
+           const r = results.get(it.id) || { correct:false, selected:new Set() };
+           const ok = !!r.correct; const question = sanitize(getQuestion(it) || '');
           const details = document.createElement('details'); details.className='ppx-acc'; details.style.border='1px solid var(--ppx-color-line,#e5e7eb)'; details.style.borderRadius='12px'; details.style.overflow='hidden'; details.style.background='#fff';
           const sum = document.createElement('summary'); sum.style.cursor='pointer'; sum.style.listStyle='none'; sum.style.padding='12px 14px'; sum.style.display='flex'; sum.style.alignItems='center'; sum.style.gap='10px';
-          const stmtEl = document.createElement('span'); stmtEl.style.fontWeight='700'; stmtEl.style.flex='1 1 auto'; stmtEl.textContent = question;
+           const stmtEl = document.createElement('span'); stmtEl.style.fontWeight='700'; stmtEl.style.flex='1 1 auto'; stmtEl.innerHTML = question;
           const chipState = document.createElement('span'); chipState.className = `ppx-chip ${ok ? 'ppx-chip--ok':'ppx-chip--bad'}`; chipState.textContent = ok ? L('Correcto','Correct') : L('Incorrecto','Incorrect');
         // Only show the state pill; the chevron is provided via CSS (::after)
         sum.appendChild(stmtEl);
@@ -643,18 +684,15 @@
         });
         wrap.appendChild(list);
 
-        const restartRow = document.createElement('div'); restartRow.style.display='flex'; restartRow.style.justifyContent='center'; restartRow.style.marginTop='14px';
-        const restartBtn = document.createElement('button'); restartBtn.type='button'; restartBtn.className='ppx-wbtn ppx-wbtn--orange'; restartBtn.textContent = L('Reiniciar','Restart'); restartBtn.addEventListener('click', ()=> { resetAll(); }); restartRow.appendChild(restartBtn);
-        wrap.appendChild(restartRow);
-
         summaryWrap.appendChild(wrap);
 
         // Disable navigation on summary (stay until Restart)
         btnNext.disabled = true; btnNext.setAttribute('aria-disabled','true');
         btnPrev.disabled = true; btnPrev.setAttribute('aria-disabled','true');
-        // Hide progress-level controls that duplicate summary controls
+        // Hide dots/fraction but keep bottom restart visible
+        try { fraction.style.display = 'none'; dots.style.display = 'none'; } catch(_){}
         try { btnResults.hidden = true; } catch(_){}
-        try { btnRestart.hidden = true; } catch(_){}
+        try { btnRestart.hidden = false; btnRestart.style.display='inline-flex'; } catch(_){}
 
         // Analytics complete once
         if (!summaryShown) {
@@ -670,14 +708,25 @@
       card.style.display = '';
       inlineFB.style.display = '';
       btnCheck.style.display = '';
+      try { progressWrap.style.display = ''; } catch(_){}
+      try { fraction.style.display = ''; dots.style.display = ''; } catch(_){}
+      try { btnRestart.hidden = true; btnRestart.style.display = 'none'; } catch(_){}
 
       // Media for current item
       const item = currentItem();
       try { renderMediaBlock(item); } catch(_){}
       updateMediaToggleForItem(item);
 
-      // Question
-      qEl.textContent = getQuestion(item);
+      // Question (preserve authored formatting; keep base weight normal, lighten italics)
+      const rawQ = getQuestion(item);
+      const qHtml = sanitize(String(rawQ || ''));
+      qEl.innerHTML = qHtml;
+      try {
+        qEl.querySelectorAll('i, em').forEach(node => {
+          node.style.fontWeight = '400';
+          node.style.fontStyle = 'italic';
+        });
+      } catch(_){}
 
       // Options
       renderOptions(item);
@@ -686,10 +735,13 @@
       const hint = getHint(item);
       if (!hint) { hintToggle.hidden = true; hintBlock.hidden = true; }
       else {
-        hintToggle.hidden = false; hintBlock.hidden = true; hintBlock.textContent = '';
-        try { hintBlock.innerHTML = `<em>${hint}</em>`; } catch { const em=document.createElement('em'); em.textContent=String(hint); hintBlock.appendChild(em); }
-        hintToggle.textContent = L('Ver pista','Show hint'); hintToggle.setAttribute('aria-expanded','false');
-        hintToggle.onclick = () => { const willShow = hintBlock.hidden; hintBlock.hidden = !willShow; hintToggle.setAttribute('aria-expanded', String(willShow)); hintToggle.textContent = willShow ? L('Ocultar pista','Hide hint') : L('Ver pista','Show hint'); if (willShow) { hintsUsed += 1; api.hint({ item: item.id }); srLive.textContent = hint; } };
+        hintToggle.hidden = false; hintBlock.hidden = true; hintBlock.innerHTML = '';
+        hintToggle.setAttribute('data-tooltip', L('Ver pista','Show hint'));
+        hintToggle.setAttribute('aria-label', L('Ver pista','Show hint'));
+        hintToggle.setAttribute('aria-expanded','false');
+        hintBlock.dataset.hasIcon = 'true';
+        hintBlock.innerHTML = `<span>${sanitize(hint)}</span>`;
+        hintToggle.onclick = () => { const willShow = hintBlock.hidden; hintBlock.hidden = !willShow; hintToggle.setAttribute('aria-expanded', String(willShow)); hintToggle.setAttribute('data-tooltip', willShow ? L('Ocultar pista','Hide hint') : L('Ver pista','Show hint')); hintToggle.setAttribute('aria-label', willShow ? L('Ocultar pista','Hide hint') : L('Ver pista','Show hint')); if (willShow) { hintsUsed += 1; api.hint({ item: item.id }); srLive.textContent = hint; } };
       }
 
       // Restore prior result feedback if any
@@ -709,7 +761,7 @@
         try {
           const hasSel = (selectedSetFor(item).size > 0);
           btnCheck.disabled = !hasSel;
-          btnCheck.className = hasSel ? 'ppx-btn' : 'ppx-wbtn';
+          btnCheck.className = 'ppx-btn ppx-btn--primary';
           btnCheck.textContent = L('Comprobar', 'Check');
         } catch(_){ }
       }
