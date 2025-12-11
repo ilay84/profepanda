@@ -1,0 +1,54 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/un-toque/un_toque.mp3?v=1765478574",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "A small amount of something; a little bit.",
+      "definition_es": "Cantidad pequeña de algo; un poco.",
+      "domain": [],
+      "equivalents_en": [
+        "a little bit",
+        "a touch",
+        "a dash"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/un-toque/un_toque_ex_01.mp3?v=1765478574",
+          "en": "I like to add the olive oil at the end—just a little bit.",
+          "es": "A mí me gusta ponerle el aceite de oliva al final, un toque.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_sustantival",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "un-toque",
+  "word": "un toque"
+}

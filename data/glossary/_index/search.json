@@ -669,6 +669,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "locucion_sustantival",
+    "slug": "un-toque",
+    "snippet": "A small amount of something; a little bit.",
+    "word": "un toque"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "sustantivo_masculino_y_femenino",
     "slug": "viejo",
     "snippet": "Affectionate, familiar term for one’s father or mother.",

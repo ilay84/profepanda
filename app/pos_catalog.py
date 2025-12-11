@@ -94,6 +94,8 @@ LEGACY_ALIASES: Mapping[str, str] = {
     "u_tantivo_ma_culino": "sustantivo_masculino",
     "u_tantivo_femenino": "sustantivo_femenino",
     "u_tantivo_ma_culino_y_femenino": "sustantivo_masculino_y_femenino",
+    # Frontend typo guard
+    "locucion_u_tantival": "locucion_sustantival",
 }
 
 

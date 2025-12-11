@@ -844,7 +844,10 @@ const LABELS = (window.PPX_LABELS || {});
       const selectedPos = selectedPosToken(pos) || 'sustantivo_masculino_y_femenino';
       const fallback = (selectedPos === 'verbo') ? 'verbo_transitivo' : selectedPos;
       const canonical = normalizeToCanonical(fallback) || normalizeToCanonical(canonToken(fallback)) || 'sustantivo_masculino_y_femenino';
-      const normalizedPosToken = canonical; 
+      // Guard against legacy frontend typos (e.g., locucion_u_tantival)
+      const normalizedPosToken = (canonical === 'locucion_u_tantival')
+        ? 'locucion_sustantival'
+        : canonical; 
       return {
         id: data?.id || '',
         countries: Array.isArray(data?.countries)? data.countries : [],
