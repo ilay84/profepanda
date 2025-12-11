@@ -35,6 +35,15 @@
         </li>
         {% endfor %}
       </ul>
+      {% if next_mod %}
+      <div class="ppx-mod-next">
+        <div class="ppx-mod-next-label">{{ t('Siguiente','Next', app_lang) }}</div>
+        <a class="ppx-mod-next-link" href="{{ url_for('public.article_module', slug=slug, module_slug=next_mod.slug) }}">
+          <span class="ppx-mod-next-title">{{ next_mod.title }}</span>
+          <img src="{{ url_for('static', filename='assets/icons/arrow_right.svg') }}" alt="" aria-hidden="true" />
+        </a>
+      </div>
+      {% endif %}
     </nav>
 
     <!-- Main content -->
@@ -76,27 +85,80 @@
 
 <script src="{{ url_for('static', filename='js/public_modules.js') }}"></script>
 <script>
-// Normalize embed backgrounds for Canva / Google Slides to avoid black gutters.
+// Normalize and wrap presentation embeds (Canva/Slides) for landscape-friendly view + fullscreen helper.
 (function(){
   const lightBg = getComputedStyle(document.documentElement).getPropertyValue('--ppx-article-bg') || '#f8fafc';
-  document.querySelectorAll('.ppx-article-body iframe').forEach((el)=>{
+  const targets = Array.from(document.querySelectorAll('.ppx-article-body iframe'));
+  targets.forEach((el)=>{
     const src = el.getAttribute('src') || '';
-    if (/canva\.com/.test(src) || /docs\.google\.com\/presentation/.test(src) || /docs\.google\.com\/present/.test(src)) {
-      el.style.background = lightBg.trim() || '#f8fafc';
-      el.setAttribute('allowtransparency', 'true');
-      try {
-        const url = new URL(src, window.location.origin);
-        if (url.hostname.includes('canva.com') && !url.searchParams.has('transparent')) {
-          url.searchParams.set('transparent', '1');
+    const isDeck = /canva\.com/.test(src) || /docs\.google\.com\/presentation/.test(src) || /docs\.google\.com\/present/.test(src);
+    if (!isDeck) return;
+    el.style.background = lightBg.trim() || '#000';
+    el.setAttribute('allowtransparency', 'true');
+    try {
+      const url = new URL(src, window.location.origin);
+      const host = url.hostname.toLowerCase();
+      if (host.includes('canva.com')){
+        if (!url.searchParams.has('transparent')) url.searchParams.set('transparent', '1');
+        if (!url.searchParams.has('embed')) url.searchParams.set('embed', '1');
+        // Ask Canva to auto-resize if supported
+        url.searchParams.set('w', '100%');
+        url.searchParams.set('h', '100%');
+      }
+      if (url.hostname.includes('docs.google.com')) {
+        if (!url.searchParams.has('bgcolor')) url.searchParams.set('bgcolor', 'ffffff');
+        if (!url.searchParams.has('rm')) url.searchParams.set('rm', 'minimal');
+      }
+      const next = url.toString();
+      if (next !== src) el.setAttribute('src', next);
+    } catch(_) {}
+    if (el.closest('.ppx-embed-wrap')) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'ppx-embed-wrap';
+    wrap.style.setProperty('--ppx-embed-aspect', el.getAttribute('data-aspect') || '16/9');
+    const actions = document.createElement('div');
+    actions.className = 'ppx-embed-actions';
+    const btnFull = document.createElement('button');
+    btnFull.type = 'button';
+    btnFull.className = 'ppx-embed-btn';
+    btnFull.innerHTML = '&#x26F6; {{ t('Pantalla completa','Fullscreen', app_lang) }}';
+    const link = document.createElement('a');
+    link.className = 'ppx-embed-link';
+    link.href = src;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = '{{ t('Abrir en nueva pesta▒a','Open in new tab', app_lang) }}';
+    actions.appendChild(link);
+    actions.appendChild(btnFull);
+    wrap.appendChild(el.cloneNode(true));
+    wrap.appendChild(actions);
+    el.replaceWith(wrap);
+    const frame = wrap.querySelector('iframe');
+    if (frame) frame.classList.add('ppx-embed-frame');
+    btnFull.addEventListener('click', async ()=>{
+      try{
+        if (wrap.requestFullscreen) await wrap.requestFullscreen();
+        else if (wrap.webkitRequestFullscreen) wrap.webkitRequestFullscreen();
+      }catch(_){}
+      try{
+        if (screen.orientation && screen.orientation.lock){
+          await screen.orientation.lock('landscape');
         }
-        if (url.hostname.includes('docs.google.com')) {
-          if (!url.searchParams.has('bgcolor')) url.searchParams.set('bgcolor', 'ffffff');
-          if (!url.searchParams.has('rm')) url.searchParams.set('rm', 'minimal');
-        }
-        const next = url.toString();
-        if (next !== src) el.setAttribute('src', next);
-      } catch(_) {}
+      }catch(_){}
+    });
+    // Fullscreen resize handler (cover)
+    function handleFs(){
+      const inFs = !!document.fullscreenElement || !!document.webkitFullscreenElement;
+        if (frame){
+        frame.style.width = inFs ? '100vw' : '100%';
+        frame.style.height = inFs ? '100vh' : '100%';
+        frame.style.objectFit = 'contain';
+        frame.style.transform = 'none';
+        frame.style.transformOrigin = 'center';
+      }
     }
+    document.addEventListener('fullscreenchange', handleFs);
+    document.addEventListener('webkitfullscreenchange', handleFs);
   });
 })();
 </script>

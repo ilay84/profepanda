@@ -154,5 +154,21 @@
     "status": "draft",
     "updated_at": "2025-12-09T21:36:36Z",
     "checksum": "sha256:3fa4d5c394d23f1b468e429204249f6f40881eef52c6962f9f4f365b77ac3924"
+  },
+  "dnd/ser-vs-estar-common-categories": {
+    "title_es": "SER vs ESTAR: Categorías comunes (1)",
+    "title_en": "SER vs ESTAR: Common Categories (1)",
+    "type": "dnd",
+    "level": "A2",
+    "taxonomy_paths": [
+      "verbs",
+      "verbs/special-verbs",
+      "verbs/special-verbs/ser-vs-estar"
+    ],
+    "tags": [],
+    "version": "001",
+    "status": "published",
+    "updated_at": "2025-12-05T13:50:50Z",
+    "checksum": "sha256:84aa5d7c883729faf978e9f96283a817873a2340b27ff1d0d938b884e8f0c7c9"
   }
 }

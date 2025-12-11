@@ -66,6 +66,33 @@
       .rg-filter-option{display:flex;align-items:center;gap:.35rem;font-size:.9rem;color:#475569;}
       .rg-filter-empty{font-size:.85rem;color:#94a3b8;margin:0;}
       .rg-filter-option input{margin:0;}
+      .rg-filters-toggle-btn{display:none;align-items:center;gap:.35rem;}
+      .rg-search-clear{display:none;}
+      #rg-filters-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.35);backdrop-filter:blur(2px);z-index:40;}
+      body.rg-no-scroll{overflow:hidden;}
+      /* Responsive adjustments (preserve desktop defaults) */
+      @media (max-width: 1100px){
+        .rg-glossary-grid{grid-template-columns:220px 1fr;grid-auto-rows:minmax(0,auto);}
+        #rg-filters-pane{grid-column:1 / -1;}
+        .rg-letter-row{margin:0 .25rem 1rem;border-bottom:none;}
+      }
+      @media (max-width: 800px){
+        .rg-glossary-grid{grid-template-columns:1fr;gap:.75rem;}
+        .rg-landing{padding:1rem .9rem 1.1rem;}
+        .rg-header{padding:.75rem .9rem 1rem;}
+        .rg-header .rg-row-top{flex-direction:column;align-items:flex-start;gap:.5rem;}
+        .rg-panels{padding:.5rem .75rem 1rem;}
+        .rg-search-wrap{flex-wrap:wrap;}
+        .rg-search-wrap input{width:100%;}
+        .rg-letter-row{padding:.5rem .75rem .35rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;gap:.25rem;}
+        .rg-letter-row button{flex:0 0 auto;}
+        #rg-filters-pane{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:72vh;overflow:auto;border-radius:18px 18px 0 0;box-shadow:0 -12px 32px rgba(0,0,0,.18);z-index:41;padding:1rem;transform:translateY(100%);transition:transform .25s ease;}
+        #rg-filters-pane[data-mobile="open"]{transform:translateY(0);}
+        #rg-filters-pane[data-mobile="closed"]{transform:translateY(100%);}
+        .rg-filters-toggle-btn{display:inline-flex;}
+        .rg-filters-toggle-btn{align-self:flex-start;}
+        #rg-filters-backdrop.is-open{display:block;}
+      }
     </style>
 
     <div class="rg-glossary-grid">
@@ -117,8 +144,11 @@
             <div class="rg-search-wrap">
               <img class="rg-search-icon" src="{{ url_for('static', filename='assets/icons/search.svg') }}" alt="">
               <input id="rg-q" type="search" placeholder="{{ t('Buscar en este país.', 'Search in this country.', app_lang) }}">
-              <button id="rg-q-clear" class="ppx-btn ppx-btn--subtle">{{ t('Limpiar', 'Clear', app_lang) }}</button>
+              <button id="rg-q-clear" class="ppx-btn ppx-btn--subtle rg-search-clear">{{ t('Limpiar', 'Clear', app_lang) }}</button>
             </div>
+            <button id="rg-filters-toggle" class="rg-filters-toggle-btn ppx-btn ppx-btn--subtle" type="button" aria-expanded="false" aria-controls="rg-filters-pane">
+              {{ t('Filtros', 'Filters', app_lang) }}
+            </button>
           </div>
         </header>
 
@@ -136,6 +166,7 @@
         </div>
       </section>
 
+      <div id="rg-filters-backdrop"></div>
       <aside id="rg-filters-pane" class="ppx-card" style="padding:.75rem; display:none; flex-direction:column; gap:.5rem; position:sticky; top:1rem; align-self:start;">
         <div class="rg-filter-header">
           <div class="rg-filter-title">
@@ -145,6 +176,9 @@
           <button type="button" id="rg-filters-clear" class="ppx-btn ppx-btn--subtle">
             <img src="{{ url_for('static', filename='assets/icons/filter_off.svg') }}" alt="" class="rg-filter-icon">
             <span>{{ t('Limpiar','Clear') }}</span>
+          </button>
+          <button type="button" id="rg-filters-close" class="ppx-btn ppx-btn--muted rg-filters-close" style="display:none;">
+            {{ t('Cerrar','Close', app_lang) }}
           </button>
         </div>
         <div id="rg-filter-pos" class="rg-filter-section" data-filter="pos"></div>
@@ -172,6 +206,9 @@
     const listArea = document.getElementById('rg-list-area');
     const entryList = document.getElementById('rg-entry-list');
     const filters = document.getElementById('rg-filters-pane');
+    const filtersBackdrop = document.getElementById('rg-filters-backdrop');
+    const filtersToggleBtn = document.getElementById('rg-filters-toggle');
+    const filtersCloseBtn = document.getElementById('rg-filters-close');
     const countryTitleFlag = document.getElementById('rg-country-title-flag');
     const countryTitleText = document.getElementById('rg-country-title-text');
     const searchInput = document.getElementById('rg-q');
@@ -186,6 +223,11 @@
       loading: '{{ t('Cargando entradas...','Loading entries...', app_lang) }}',
       noEntries: '{{ t('No hay entradas para mostrar.', 'No entries to show.', app_lang) }}'
     };
+    const filterToggleLabels = {
+      open: '{{ t('Ocultar filtros','Hide filters', app_lang) }}',
+      closed: '{{ t('Filtros','Filters', app_lang) }}'
+    };
+    const bodyEl = document.body || document.getElementsByTagName('body')[0];
     const sensitivityMeta = {
       lenguaje_explicito: {
         label: '{{ t('Lenguaje explícito', 'Explicit language', app_lang) }}',
@@ -227,7 +269,8 @@
         domain: [],
         tone: []
       },
-      filterOptions: {}
+      filterOptions: {},
+      filtersOpen: false
     };
     const staticSensitivityTokens = ['lenguaje_explicito', 'potencialmente_ofensivo'];
     const filterDefinitions = [
@@ -387,6 +430,10 @@
       state.entries = [];
       state.hasMore = false;
       requestEntries();
+      if (isMobileLayout()){
+        state.filtersOpen = false;
+        updateFiltersVisibility();
+      }
     }
 
     function normalizeFlagPath(path){
@@ -557,7 +604,7 @@
       if (hero) hero.style.display = 'none';
       if (header) header.style.display = '';
       if (listArea) listArea.style.display = 'flex';
-      if (filters) filters.style.display = 'flex';
+      updateFiltersVisibility();
     }
 
     function setCountryTitle(label, code){
@@ -589,6 +636,49 @@
       setCountryTitle(label, code);
       showGlossary();
       requestEntries();
+    }
+
+    const mobileMql = window.matchMedia('(max-width: 800px)');
+    function isMobileLayout(){
+      return mobileMql.matches;
+    }
+    function updateFiltersVisibility(){
+      if (!filters) return;
+      if (isMobileLayout()){
+        filters.dataset.mobile = state.filtersOpen ? 'open' : 'closed';
+        filters.style.display = 'flex';
+        if (filtersToggleBtn){
+          filtersToggleBtn.style.display = 'inline-flex';
+          filtersToggleBtn.setAttribute('aria-expanded', state.filtersOpen ? 'true' : 'false');
+          filtersToggleBtn.textContent = state.filtersOpen ? filterToggleLabels.open : filterToggleLabels.closed;
+        }
+        if (filtersCloseBtn){
+          filtersCloseBtn.style.display = 'inline-flex';
+        }
+        if (filtersBackdrop){
+          filtersBackdrop.classList.toggle('is-open', state.filtersOpen);
+        }
+        if (bodyEl){
+          bodyEl.classList.toggle('rg-no-scroll', state.filtersOpen);
+        }
+      } else {
+        filters.dataset.mobile = '';
+        filters.style.display = 'flex';
+        if (filtersToggleBtn){
+          filtersToggleBtn.style.display = 'none';
+          filtersToggleBtn.setAttribute('aria-expanded', 'true');
+          filtersToggleBtn.textContent = filterToggleLabels.closed;
+        }
+        if (filtersCloseBtn){
+          filtersCloseBtn.style.display = 'none';
+        }
+        if (filtersBackdrop){
+          filtersBackdrop.classList.remove('is-open');
+        }
+        if (bodyEl){
+          bodyEl.classList.remove('rg-no-scroll');
+        }
+      }
     }
 
     async function requestEntries({append=false, forceAll=false} = {}){
@@ -665,6 +755,27 @@
     if (filtersClearButton){
       filtersClearButton.addEventListener('click', clearFilters);
     }
+    if (filtersToggleBtn){
+      filtersToggleBtn.addEventListener('click', function(){
+        state.filtersOpen = !state.filtersOpen;
+        updateFiltersVisibility();
+      });
+    }
+    if (filtersCloseBtn){
+      filtersCloseBtn.addEventListener('click', function(){
+        state.filtersOpen = false;
+        updateFiltersVisibility();
+      });
+    }
+    if (filtersBackdrop){
+      filtersBackdrop.addEventListener('click', function(){
+        state.filtersOpen = false;
+        updateFiltersVisibility();
+      });
+    }
+    if (mobileMql && mobileMql.addEventListener){
+      mobileMql.addEventListener('change', updateFiltersVisibility);
+    }
     function initCountryList(){
       if (!countryList) return;
       const first = countryList.querySelector('button[data-country-code]');
@@ -672,6 +783,7 @@
         handleScopeSelection(first.dataset.countryCode, first);
       }
     }
+    updateFiltersVisibility();
     initCountryList();
   })();
   </script>

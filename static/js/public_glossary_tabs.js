@@ -40,8 +40,10 @@
   });
 
   function clearCacheFor(slug){
+    const safe = normalizeSlug(slug);
+    if (!safe) return;
     try{
-      Array.from(Cache.keys()).forEach(k=>{ if (k.startsWith(`${slug}|`)) Cache.delete(k); });
+      Array.from(Cache.keys()).forEach(k=>{ if (k.startsWith(`${safe}|`)) Cache.delete(k); });
     }catch(_){}
   }
   function cacheKey(slug, lang){
@@ -84,6 +86,12 @@
   function cap(s){
     const t = String(s || '').replace(/_/g,' ');
     return t.charAt(0).toUpperCase() + t.slice(1);
+  }
+  function normalizeSlug(slug){
+    const raw = (slug || '').toString().trim().toLowerCase();
+    if (!raw) return '';
+    const stripped = raw.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    return stripped.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g,'');
   }
   const TOKEN_LABELS = {
     register: {
@@ -245,10 +253,12 @@
   }
 
   async function fetchEntry(slug, langOverride){
+    const safeSlug = normalizeSlug(slug);
+    if (!safeSlug) throw new Error('not_found');
     const lang = langOverride || ActiveLang || APP_LANG;
-    const key = cacheKey(slug, lang);
+    const key = cacheKey(safeSlug, lang);
     if (Cache.has(key)) return Cache.get(key);
-    const url = new URL(`/glossary/api/entry/${encodeURIComponent(slug)}`, window.location.origin);
+    const url = new URL(`/glossary/api/entry/${encodeURIComponent(safeSlug)}`, window.location.origin);
     if (lang) url.searchParams.set('lang', lang);
     const r = await fetch(url.toString(), { headers:{ 'Accept':'application/json' }, credentials:'same-origin' });
     const data = await r.json();
@@ -258,10 +268,12 @@
   }
 
   function ensureTab(slug, title){
-    if (!Tabs.find(t => t.slug === slug)) Tabs.push({ slug, title: title || slug });
+    const safe = normalizeSlug(slug);
+    if (!safe) return;
+    if (!Tabs.find(t => t.slug === safe)) Tabs.push({ slug: safe, title: title || safe });
   }
 
-  function activate(slug){ Active = slug; render(); }
+  function activate(slug){ Active = normalizeSlug(slug); render(); }
 
   function close(slug){
     const idx = Tabs.findIndex(t => t.slug === slug);
@@ -569,14 +581,16 @@
   }
 
   async function open(slug){
+    const safeSlug = normalizeSlug(slug);
+    if (!safeSlug) return;
     openWorkspaceIfNeeded();
     try{
       // Always refresh latest entry (avoid stale cache after admin edits)
-      try{ Cache.delete(slug); }catch(_){ }
-      const entry = await fetchEntry(slug, ActiveLang);
-      ensureTab(slug, entry.word || slug);
-      Active = slug;
-      try{ if (window.localStorage) localStorage.setItem(STORAGE_KEY, slug); }catch(_){}
+      try{ Cache.delete(safeSlug); }catch(_){ }
+      const entry = await fetchEntry(safeSlug, ActiveLang);
+      ensureTab(safeSlug, entry.word || safeSlug);
+      Active = safeSlug;
+      try{ if (window.localStorage) localStorage.setItem(STORAGE_KEY, safeSlug); }catch(_){}
       render();
       // Wire language select
       const sel = document.getElementById('glw-lang');
@@ -585,15 +599,15 @@
           const lang = sel.value || APP_LANG;
           ActiveLang = lang;
           saveEntryLang(lang);
-          try{ Cache.delete(slug); }catch(_){}
-          const refreshed = await fetchEntry(slug, lang);
-          Cache.set(slug, refreshed);
+          try{ Cache.delete(safeSlug); }catch(_){}
+          const refreshed = await fetchEntry(safeSlug, lang);
+          Cache.set(safeSlug, refreshed);
           render();
         });
       }
     }catch(e){
-      ensureTab(slug, slug);
-      Active = slug;
+      ensureTab(safeSlug, safeSlug);
+      Active = safeSlug;
       render();
       const pane = document.getElementById('glw-content');
       if (pane) pane.innerHTML = '<div class="ppx-muted">Not found</div>';
@@ -609,7 +623,8 @@
         slug = localStorage.getItem(STORAGE_KEY);
       }
     }catch(_){}
-    if (slug) open(slug);
+    const safe = normalizeSlug(slug);
+    if (safe) open(safe);
   }
 
   window.Tabs = { open, activate, close, resume };

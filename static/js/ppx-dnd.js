@@ -5,6 +5,7 @@
   function renderBoard(ctx) {
     const { el, opts, api, lang } = ctx;
     const t = (es, en) => (lang === 'en' ? (en ?? es) : (es ?? en));
+    const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
     const item = (Array.isArray(opts.items) && opts.items[0]) || { columns: [], tokens: [] };
     const cols = Array.isArray(item.columns) ? item.columns : [];
     const toks = Array.isArray(item.tokens) ? item.tokens : [];
@@ -189,6 +190,14 @@
       } catch(_) {}
     }
 
+    // Mobile selection state (tap-to-drop)
+    let selectedTokId = null;
+    let selectedWrap = null;
+    function clearSelection(){
+      selectedTokId = null;
+      selectedWrap = null;
+      root.querySelectorAll('.ppx-dnd__item.is-selected').forEach(el=> el.classList.remove('is-selected'));
+    }
     function tokenNode(tok){
       const n = document.createElement('button');
       n.type = 'button';
@@ -196,12 +205,12 @@
       n.style.cursor = 'grab';
       n.style.display = 'inline-flex';
       n.style.alignItems = 'center';
-      n.style.gap = '8px';
+      n.style.gap = '6px';
       n.style.padding = '10px 14px';
       n.setAttribute('data-tok', tok.id);
       const label = (lang === 'en' ? tok.text_en : tok.text_es) || tok.text_es || tok.text_en || tok.id;
       n.textContent = label;
-      n.draggable = true;
+      n.draggable = !isMobile();
       n.addEventListener('dragstart', (e) => {
         if (locked) { e.preventDefault(); return; }
         e.dataTransfer.setData('text/plain', tok.id);
@@ -267,6 +276,16 @@
         });
         n.appendChild(hb);
       }
+      // Mobile tap-to-drop fallback (avoids HTML5 drag on touch)
+      n.addEventListener('click', (ev)=>{
+        if (!isMobile() || locked) return;
+        ev.preventDefault();
+        const wrap = n.closest('.ppx-dnd__item') || n;
+        clearSelection();
+        selectedTokId = tok.id;
+        selectedWrap = wrap;
+        wrap.classList.add('is-selected');
+      });
       return n;
     }
 
@@ -308,6 +327,20 @@
         e.preventDefault();
         const tokId = e.dataTransfer.getData('text/plain');
         if (tokId) place(tokId, col.id);
+      });
+      drop.addEventListener('click', (e) => {
+        if (locked) return;
+        if (selectedTokId){
+          e.preventDefault();
+          place(selectedTokId, col.id);
+          clearSelection();
+        }
+      });
+      drop.addEventListener('click', (e) => {
+        if (locked || !selectedTokId) return;
+        e.preventDefault();
+        place(selectedTokId, col.id);
+        clearSelection();
       });
 
       card.appendChild(head);

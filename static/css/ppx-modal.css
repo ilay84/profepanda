@@ -86,7 +86,7 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto; /* head, scrollable body, foot */
   /* Single track controls panel width AND internal content width */
-  --ppx-track: clamp(320px, 92vw, 820px);
+  --ppx-track: clamp(320px, 96vw, 820px);
   width: var(--ppx-track);
   max-height: 92vh;
   background: transparent;               /* canvas below will paint the surface */
@@ -639,4 +639,15 @@
 @media (max-width: 768px) {
   .ppx-ex__row { padding: 8px 12px; }
   .ppx-ex__logo { width: 36px; max-height: 36px; }
+}
+
+@media (max-width: 640px){
+  .ppx-modal__panel{--ppx-track: 100vw; max-height: 96vh;}
+  .ppx-modal__body{padding: 0;}
+  .ppx-ex__row--top,
+  .ppx-ex__row--bottom{padding: 10px 12px; flex-wrap: wrap; gap: 8px;}
+  .ppx-ex__titleWrap{flex: 1 1 100%; min-width: 0;}
+  .ppx-ex__title{font-size: clamp(18px, 5vw, 20px);}
+  .ppx-pill--type{margin-left: 0;}
+  .ppx-ex__content{padding: 12px;}
 }

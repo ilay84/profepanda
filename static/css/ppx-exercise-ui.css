@@ -1347,3 +1347,11 @@ button.ppx-reset {
   border-top: 1px solid #e5e7eb;
 }
 
+@media (max-width: 640px) {
+  .ppx-dnd__pool { gap: 8px; }
+  .ppx-dnd__item .ppx-pill{padding:8px 12px;font-size:14px;line-height:1.35}
+  .ppx-dnd__item.is-selected{outline:2px solid var(--ppx-primary,#4f46e5);outline-offset:2px}
+  .ppx-dnd__drop{min-height:54px}
+  .ppx-dnd__cols{grid-template-columns:1fr !important;gap:10px}
+}
+
