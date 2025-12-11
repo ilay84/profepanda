@@ -640,6 +640,11 @@ def glossary_api_list():
     f_sens_set = set(_split('sensitivity'))
     f_domain = set(_split('domain'))
     f_tone = set(_split('tone'))
+    f_source_titles: set[str] = set()
+    for s in _split('source_title'):
+        tok = glossary.canonical_source_title(s)
+        if tok:
+            f_source_titles.add(tok)
     # Optional multi-country filter: comma-separated ISO codes
     f_countries = set([c.upper() for c in _split('countries')])
     # If multiple countries requested, search across all and filter per-sense later
@@ -669,7 +674,7 @@ def glossary_api_list():
     has_more = (offset + limit) < total_filtered
 
     # If no filters beyond q/country, return quickly
-    if not any([f_pos_set, f_reg_set, f_freq_set, f_status_set, f_sens_set, f_domain, f_tone, f_countries]):
+    if not any([f_pos_set, f_reg_set, f_freq_set, f_status_set, f_sens_set, f_domain, f_tone, f_countries, f_source_titles]):
         return jsonify({'ok': True, 'count': total_filtered, 'items': slice_items, 'has_more': has_more, 'letters': letters})
 
     # Load each entry and keep if any sense matches all provided filters
@@ -679,6 +684,16 @@ def glossary_api_list():
         senses = data.get('senses') or []
         matched = False
         for s in senses:
+            sense_source_tokens: set[str] = set()
+            for ex in (s.get('examples') or []):
+                try:
+                    src_title = glossary.source_title_from_obj((ex or {}).get('source'))
+                except Exception:
+                    src_title = ""
+                if src_title:
+                    tok = glossary.canonical_source_title(src_title)
+                    if tok:
+                        sense_source_tokens.add(tok)
             # country constraint per sense
             sc = set((s.get('countries') or []))
             if country and country not in sc:
@@ -690,6 +705,8 @@ def glossary_api_list():
             if f_reg_set and (s.get('register') or None) not in f_reg_set:
                 continue
             if f_freq_set and (s.get('freq') or None) not in f_freq_set:
+                continue
+            if f_source_titles and not (sense_source_tokens & f_source_titles):
                 continue
             # status/sensitivity may be arrays; treat match as set intersection
             if f_status_set:

@@ -658,6 +658,18 @@
       const modal = qs(D, SEL.modal);
       const overlay = qs(D, SEL.overlay);
 
+      // If focus is inside the modal, move it away before hiding to avoid aria-hidden violations
+      try {
+        const active = D.activeElement;
+        if (active && modal && modal.contains(active)) {
+          if (state.lastActive && typeof state.lastActive.focus === 'function') {
+            state.lastActive.focus({ preventScroll: true });
+          } else if (D.body) {
+            D.body.focus({ preventScroll: true });
+          }
+        }
+      } catch(_) {}
+
       modal.classList.remove('is-open');
       overlay.classList.remove('is-open');
       modal.setAttribute('aria-hidden', 'true');

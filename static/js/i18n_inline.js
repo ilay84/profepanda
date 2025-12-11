@@ -32,11 +32,52 @@
       '.ppx-i18n-col{flex:1;display:flex;flex-direction:column;gap:8px}' +
       '.ppx-i18n-col label{font:600 12px/1.2 Montserrat,system-ui}' +
       '.ppx-i18n-input{font:500 14px/1.35 Montserrat,system-ui;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px}' +
+      '.ppx-i18n-tools{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}' +
+      '.ppx-i18n-toolbtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:28px;border:1px solid #e5e7eb;border-radius:8px;background:#f8fafc;font:700 13px/1.1 Montserrat,system-ui;cursor:pointer}' +
+      '.ppx-i18n-toolbtn:hover{background:#eef2ff;border-color:#c7d2fe}' +
+      '.ppx-i18n-preview{margin-top:6px;padding:10px 12px;border:1px dashed #e5e7eb;border-radius:10px;background:#f8fafc;font:500 14px/1.35 Montserrat,system-ui;min-height:64px;white-space:pre-wrap;}' +
       '.ppx-i18n-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}' +
       '.ppx-i18n-btn2{font:600 13px/1 Montserrat,system-ui;padding:10px 14px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;cursor:pointer}' +
       '.ppx-i18n-btn2--primary{background:#111827;color:#fff;border-color:#111827}' +
       '.ppx-i18n-key{font:600 11px/1.2 Montserrat,system-ui;color:#64748b;word-break:break-all}';
     document.head.appendChild(css);
+  }
+
+  // Allow only simple inline tags (bold/italic/br)
+  function sanitizeInlineHTML(html){
+    try{
+      var norm = String(html||'').replace(/\r\n/g, '\n').replace(/\r/g, '\n').replace(/\n/g, '<br>');
+      var doc = new DOMParser().parseFromString('<div>'+norm+'</div>', 'text/html');
+      var allowed = new Set(['B','STRONG','I','EM','BR']);
+      (function cleanse(node){
+        var child = node.firstChild;
+        while(child){
+          var next = child.nextSibling;
+          if (child.nodeType === 1){
+            if (!allowed.has(child.tagName)){
+              // unwrap disallowed elements
+              while(child.firstChild){ child.parentNode.insertBefore(child.firstChild, child); }
+              child.parentNode.removeChild(child);
+            } else {
+              cleanse(child);
+            }
+          }
+          child = next;
+        }
+      })(doc.body);
+      return doc.body.innerHTML;
+    } catch(_){
+      return String(html||'');
+    }
+  }
+
+  function updatePreview(lang){
+    try{
+      var ta = document.getElementById('ppx-i18n-'+lang);
+      var prev = document.querySelector('.ppx-i18n-preview[data-preview="'+lang+'"]');
+      if (!ta || !prev) return;
+      prev.innerHTML = sanitizeInlineHTML(ta.value || '');
+    }catch(_){}
   }
 
   function ensureModal(){
@@ -55,6 +96,7 @@
         cancelBtn0.addEventListener('click', closeModal);
         cancelBtn0.__ppxBound = true;
       }
+      bindTools();
       return {backdrop:backdrop, shell:shell};
     }
 
@@ -74,11 +116,21 @@
         '<div class="ppx-i18n-row">' +
           '<div class="ppx-i18n-col">' +
             '<label for="ppx-i18n-es">Español (es)</label>' +
+            '<div class="ppx-i18n-tools" data-i18n-tools="es">' +
+              '<button type="button" class="ppx-i18n-toolbtn" data-cmd="bold" aria-label="Negrita">B</button>' +
+              '<button type="button" class="ppx-i18n-toolbtn" data-cmd="italic" aria-label="Cursiva"><em>I</em></button>' +
+            '</div>' +
             '<textarea id="ppx-i18n-es" class="ppx-i18n-input" rows="4"></textarea>' +
+            '<div class="ppx-i18n-preview" data-preview="es"></div>' +
           '</div>' +
           '<div class="ppx-i18n-col">' +
             '<label for="ppx-i18n-en">English (en)</label>' +
+            '<div class="ppx-i18n-tools" data-i18n-tools="en">' +
+              '<button type="button" class="ppx-i18n-toolbtn" data-cmd="bold" aria-label="Bold">B</button>' +
+              '<button type="button" class="ppx-i18n-toolbtn" data-cmd="italic" aria-label="Italic"><em>I</em></button>' +
+            '</div>' +
             '<textarea id="ppx-i18n-en" class="ppx-i18n-input" rows="4"></textarea>' +
+            '<div class="ppx-i18n-preview" data-preview="en"></div>' +
           '</div>' +
         '</div>' +
         '<div class="ppx-i18n-actions">' +
@@ -94,10 +146,52 @@
     backdrop.addEventListener('click', closeModal);
     var cancelBtn = document.getElementById('ppx-i18n-cancel');
     var saveBtn = document.getElementById('ppx-i18n-save');
-    if (cancelBtn && !cancelBtn.__ppxBound) { cancelBtn.addEventListener('click', closeModal); cancelBtn.__ppxBound = true; }
-    if (saveBtn && !saveBtn.__ppxBound) { saveBtn.addEventListener('click', savePair); saveBtn.__ppxBound = true; }
+      if (cancelBtn && !cancelBtn.__ppxBound) { cancelBtn.addEventListener('click', closeModal); cancelBtn.__ppxBound = true; }
+      if (saveBtn && !saveBtn.__ppxBound) { saveBtn.addEventListener('click', savePair); saveBtn.__ppxBound = true; }
 
-    return {backdrop:backdrop, shell:shell};
+      bindTools();
+      ['es','en'].forEach(function(lang){
+        var ta = document.getElementById('ppx-i18n-'+lang);
+        if (ta && !ta.__ppxBoundPreview){
+          ta.__ppxBoundPreview = true;
+          ta.addEventListener('input', function(){ updatePreview(lang); });
+        }
+      });
+
+      return {backdrop:backdrop, shell:shell};
+    }
+
+  function bindTools(){
+    var toolbars = document.querySelectorAll('.ppx-i18n-tools');
+    toolbars.forEach(function(tb){
+      if (tb.__bound) return;
+      tb.__bound = true;
+      var lang = tb.getAttribute('data-i18n-tools') || '';
+      var textarea = document.getElementById('ppx-i18n-'+lang);
+      function wrap(tag){
+        if (!textarea) return;
+        var start = textarea.selectionStart || 0;
+        var end = textarea.selectionEnd || 0;
+        var val = textarea.value || '';
+        var open = '<'+tag+'>';
+        var close = '</'+tag+'>';
+        var selected = val.slice(start, end);
+        var next = val.slice(0, start) + open + selected + close + val.slice(end);
+        textarea.value = next;
+        var caret = start + open.length + selected.length + close.length;
+        textarea.focus();
+        textarea.setSelectionRange(caret, caret);
+      }
+      tb.querySelectorAll('[data-cmd]').forEach(function(btn){
+        btn.addEventListener('click', function(ev){
+          ev.preventDefault();
+          var cmd = btn.getAttribute('data-cmd');
+          if (cmd === 'bold') wrap('strong');
+          else if (cmd === 'italic') wrap('em');
+          updatePreview(lang);
+        });
+      });
+    });
   }
 
   var _state = { currentKey:null, targets:[], seed:{es:'',en:''}, pageLang: (window.PPX_I18N && window.PPX_I18N.currentLang) ? String(window.PPX_I18N.currentLang).toLowerCase() : 'es' };
@@ -111,16 +205,18 @@
       var hasEN = pair && typeof pair.en === 'string' && pair.en.length;
       var es = hasES ? pair.es : (_state.seed.es || '');
       var en = hasEN ? pair.en : (_state.seed.en || '');
-      document.getElementById('ppx-i18n-es').value = es;
-      document.getElementById('ppx-i18n-en').value = en;
+      document.getElementById('ppx-i18n-es').value = sanitizeInlineHTML(es);
+      document.getElementById('ppx-i18n-en').value = sanitizeInlineHTML(en);
       m.backdrop.style.display = 'block';
       m.shell.style.display = 'flex';
       document.getElementById('ppx-i18n-es').focus();
+      updatePreview('es'); updatePreview('en');
     }).catch(function(){
-      document.getElementById('ppx-i18n-es').value = _state.seed.es || '';
-      document.getElementById('ppx-i18n-en').value = _state.seed.en || '';
+      document.getElementById('ppx-i18n-es').value = sanitizeInlineHTML(_state.seed.es || '');
+      document.getElementById('ppx-i18n-en').value = sanitizeInlineHTML(_state.seed.en || '');
       m.backdrop.style.display = 'block';
       m.shell.style.display = 'flex';
+      updatePreview('es'); updatePreview('en');
     });
   }
 
@@ -247,7 +343,12 @@
       var lang = (n.getAttribute('data-i18n-lang') || currentLang || 'es').toLowerCase();
       var val = (lang === 'en') ? pair.en : pair.es;
       if (!val) val = (lang === 'en') ? pair.es : pair.en; // light fallback for live patch only
-      if ('value' in n) n.value = val; else n.textContent = val;
+      if ('value' in n) {
+        n.value = val;
+      } else {
+        var clean = sanitizeInlineHTML(val);
+        n.innerHTML = clean;
+      }
     });
   }
 
@@ -278,7 +379,7 @@
       e.stopPropagation(); e.preventDefault();
       var k = target.getAttribute('data-i18n-key');
       if (!k) return;
-      var cur = (target.textContent || '').trim();
+      var cur = (target.innerHTML || '').trim();
       if (_state.pageLang === 'en') {
         _state.seed = { es: '', en: cur };
       } else {

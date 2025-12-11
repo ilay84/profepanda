@@ -77,6 +77,27 @@ def _canon(s: str) -> str:
         pass
     return v
 
+
+def source_title_from_obj(source: Any) -> str:
+    """
+    Extract a human-readable title from an example source object.
+    Prefers common title fields and falls back to a short label.
+    """
+    if not isinstance(source, dict):
+        return ""
+    for key in ("title", "song_title", "book_title", "label"):
+        val = source.get(key)
+        if isinstance(val, str):
+            cleaned = val.strip()
+            if cleaned:
+                return cleaned
+    return ""
+
+
+def canonical_source_title(value: str) -> str:
+    """Lowercase, accent-stripped token for comparing source titles."""
+    return _norm(value)
+
 # Canonical token sets (no accents, spaces as underscores)
 REGISTER_C = {None, "formal", "neutral", "informal", "vulgar"}
 FREQ_C = {None, "raro", "menos_comun", "comun", "muy_comun"}
@@ -388,6 +409,7 @@ def list_entries_meta() -> List[Dict[str, Any]]:
         sensitivity_set: set[str] = set()
         domain_set: set[str] = set()
         tone_set: set[str] = set()
+        source_titles: set[str] = set()
         examples_count = 0
 
         for s in senses:
@@ -410,6 +432,12 @@ def list_entries_meta() -> List[Dict[str, Any]]:
                 sensitivity_set.add(se.strip())
             domain_set.update([d for d in (s.get("domain") or []) if isinstance(d, str) and d.strip()])
             tone_set.update([t for t in (s.get("tone") or []) if isinstance(t, str) and t.strip()])
+            for ex in (s.get("examples") or []):
+                if not isinstance(ex, dict):
+                    continue
+                title = source_title_from_obj(ex.get("source"))
+                if title:
+                    source_titles.add(title)
             examples_count += len(s.get("examples") or [])
 
         first = senses[0] if senses else {}
@@ -446,6 +474,7 @@ def list_entries_meta() -> List[Dict[str, Any]]:
             "definition_en": _clean_html(first.get("definition_en") or ""),
             "senses_preview": senses_preview,
             "examples_count": examples_count,
+            "source_titles": sorted(source_titles),
         })
     return items
 

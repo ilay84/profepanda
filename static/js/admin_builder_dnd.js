@@ -30,6 +30,7 @@
     const btnSave = D.getElementById('ppx-save-draft');
     const btnPublish = D.getElementById('ppx-publish');
     const btnPreview = D.getElementById('ppx-preview');
+    const btnExport = D.getElementById('ppx-export'); // optional
     let btnEditJson = D.getElementById('ppx-edit-json');
 
     const appLang = (window.PPX_I18N && window.PPX_I18N.currentLang) || (D.documentElement.getAttribute('lang') || 'es');
@@ -562,6 +563,51 @@
         autoSlugFromTitle();
         const slug = (inputSlug.value || '').trim();
         if (!slug) { alert(t('Completa el slug para editar el JSON.', 'Fill the slug before editing JSON.')); return; }
+        const payload = collectPayload();
+        // Prefer shared PPX JSON editor
+        if (window.PPXJsonEditor && typeof window.PPXJsonEditor.open === 'function') {
+          try {
+            const applyFromJson = (obj) => {
+              if (obj.type && obj.type !== 'dnd') {
+                alert(t('Este editor es para ejercicios de tipo DnD.', 'This editor is for Drag-and-drop (dnd) exercises.'));
+                return;
+              }
+              const item = (Array.isArray(obj.items) && obj.items[0]) || null;
+              const cols = (item && Array.isArray(item.columns)) ? item.columns : [];
+              const toks = (item && Array.isArray(item.tokens)) ? item.tokens : [];
+              if (!item || !cols.length || !toks.length) {
+                const ok = window.confirm(t(
+                  'No se detectan columnas o fichas en el JSON. ¿Aplicar de todos modos y limpiar la lista?',
+                  'No columns or tokens found in JSON. Apply anyway and clear the list?'
+                ));
+                if (!ok) return;
+              }
+              const hasExisting = colsWrap.children.length || tokensWrap.children.length;
+              if (hasExisting) {
+                const ok = window.confirm(t(
+                  'Esto reemplazará el contenido actual del constructor. ¿Continuar?',
+                  'This will replace the current builder content. Continue?'
+                ));
+                if (!ok) return;
+              }
+              applyJsonToBuilder(obj);
+            };
+            window.PPXJsonEditor.open({
+              exerciseType: 'dnd',
+              slug: payload.slug || '',
+              title: payload.title_es || payload.title_en || payload.slug || '',
+              level: payload.level || (selLevel ? selLevel.value : ''),
+              initialData: payload,
+              validate: (obj) => validatePayload(obj),
+              apply: (obj) => applyFromJson(obj),
+            });
+            return;
+          } catch (e) {
+            console.error(e);
+            alert(t('No se pudo abrir el editor JSON.', 'Failed to open JSON editor.'));
+          }
+        }
+        // Fallback legacy modal
         openJsonEditor();
       });
     }

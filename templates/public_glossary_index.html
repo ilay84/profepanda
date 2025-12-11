@@ -188,6 +188,7 @@
         <div id="rg-filter-sensitivity" class="rg-filter-section" data-filter="sensitivity"></div>
         <div id="rg-filter-domain" class="rg-filter-section" data-filter="domain"></div>
         <div id="rg-filter-tone" class="rg-filter-section" data-filter="tone"></div>
+        <div id="rg-filter-source_title" class="rg-filter-section" data-filter="source_title"></div>
       </aside>
     </div>
   </div>
@@ -267,7 +268,8 @@
         status: [],
         sensitivity: [],
         domain: [],
-        tone: []
+        tone: [],
+        source_title: []
       },
       filterOptions: {},
       filtersOpen: false
@@ -280,7 +282,8 @@
       { id: 'status', label: '{{ t('Estado','Status', app_lang) }}' },
       { id: 'sensitivity', label: '{{ t('Sensibilidad','Sensitivity', app_lang) }}' },
       { id: 'domain', label: '{{ t('Dominio','Domain', app_lang) }}' },
-      { id: 'tone', label: '{{ t('Tono','Tone', app_lang) }}' }
+      { id: 'tone', label: '{{ t('Tono','Tone', app_lang) }}' },
+      { id: 'source_title', label: '{{ t('Fuentes de ejemplos','Example sources', app_lang) }}' }
     ];
     const filterContainers = {};
     const filterEmptyText = '{{ t('Sin opciones','No options', app_lang) }}';
@@ -358,6 +361,7 @@
         add('sensitivity', entry.sensitivity);
         add('domain', entry.domain);
         add('tone', entry.tone);
+        add('source_title', entry.source_titles);
       });
       staticSensitivityTokens.forEach(tok => map.sensitivity.add(tok));
       const result = {};

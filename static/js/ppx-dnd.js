@@ -5,7 +5,10 @@
   function renderBoard(ctx) {
     const { el, opts, api, lang } = ctx;
     const t = (es, en) => (lang === 'en' ? (en ?? es) : (es ?? en));
-    const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
+    const isMobileLayout = () => window.matchMedia('(max-width: 640px)').matches;
+    const isTouchDevice = () => {
+      try { return ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0; } catch(_) { return false; }
+    };
     const item = (Array.isArray(opts.items) && opts.items[0]) || { columns: [], tokens: [] };
     const cols = Array.isArray(item.columns) ? item.columns : [];
     const toks = Array.isArray(item.tokens) ? item.tokens : [];
@@ -198,6 +201,25 @@
       selectedWrap = null;
       root.querySelectorAll('.ppx-dnd__item.is-selected').forEach(el=> el.classList.remove('is-selected'));
     }
+    // Pointer-based drag fallback (touch-friendly)
+    const touchDrag = {
+      active: false,
+      tokId: null,
+      ghost: null,
+      currentDrop: null,
+    };
+    function endTouchDrag(commit){
+      if (!touchDrag.active) return;
+      try { document.body.style.userSelect = ''; document.body.style.touchAction = ''; } catch(_){}
+      if (touchDrag.ghost){ try { touchDrag.ghost.remove(); } catch(_){ } touchDrag.ghost = null; }
+      if (touchDrag.currentDrop){ touchDrag.currentDrop.classList.remove('is-hover'); touchDrag.currentDrop = null; }
+      if (commit && touchDrag.tokId && touchDrag.currentDrop){
+        place(touchDrag.tokId, touchDrag.currentDrop.dataset.col);
+        clearSelection();
+      }
+      touchDrag.active = false;
+      touchDrag.tokId = null;
+    }
     function tokenNode(tok){
       const n = document.createElement('button');
       n.type = 'button';
@@ -210,7 +232,8 @@
       n.setAttribute('data-tok', tok.id);
       const label = (lang === 'en' ? tok.text_en : tok.text_es) || tok.text_es || tok.text_en || tok.id;
       n.textContent = label;
-      n.draggable = !isMobile();
+      const dragDisabled = isMobileLayout() || isTouchDevice();
+      n.draggable = !dragDisabled;
       n.addEventListener('dragstart', (e) => {
         if (locked) { e.preventDefault(); return; }
         e.dataTransfer.setData('text/plain', tok.id);
@@ -276,16 +299,63 @@
         });
         n.appendChild(hb);
       }
-      // Mobile tap-to-drop fallback (avoids HTML5 drag on touch)
-      n.addEventListener('click', (ev)=>{
-        if (!isMobile() || locked) return;
+      // Mobile/touch tap-to-drop fallback (avoids HTML5 drag on touch)
+      const tapSelect = (ev)=>{
+        if (!dragDisabled || locked) return;
         ev.preventDefault();
         const wrap = n.closest('.ppx-dnd__item') || n;
         clearSelection();
         selectedTokId = tok.id;
         selectedWrap = wrap;
         wrap.classList.add('is-selected');
+      };
+      // Touch-friendly pointer drag/drop
+      n.addEventListener('pointerdown', (ev)=>{
+        if (!dragDisabled || locked) return;
+        if (ev.pointerType && ev.pointerType === 'mouse') return;
+        ev.preventDefault();
+        try { ev.target.setPointerCapture(ev.pointerId); } catch(_){}
+        tapSelect(ev);
+        touchDrag.active = true;
+        touchDrag.tokId = tok.id;
+        try { document.body.style.userSelect = 'none'; document.body.style.touchAction = 'none'; } catch(_){}
+        const g = n.cloneNode(true);
+        g.style.position = 'fixed';
+        g.style.pointerEvents = 'none';
+        g.style.opacity = '0.9';
+        g.style.zIndex = '9999';
+        g.style.transform = 'translate(-50%, -50%)';
+        g.classList.add('ppx-dnd__ghost');
+        touchDrag.ghost = g;
+        document.body.appendChild(g);
+        const move = (e)=>{
+          try { e.preventDefault(); } catch(_){}
+          if (!touchDrag.active) return;
+          if (touchDrag.ghost){
+            touchDrag.ghost.style.left = `${e.clientX}px`;
+            touchDrag.ghost.style.top = `${e.clientY}px`;
+          }
+          const el = document.elementFromPoint(e.clientX, e.clientY);
+          const drop = el && el.closest ? el.closest('[data-drop]') : null;
+          if (drop !== touchDrag.currentDrop){
+            if (touchDrag.currentDrop){ touchDrag.currentDrop.classList.remove('is-hover'); }
+            touchDrag.currentDrop = drop;
+            if (drop){ drop.classList.add('is-hover'); }
+          }
+        };
+        const up = (e)=>{
+          if (touchDrag.currentDrop){ e.preventDefault(); }
+          try { ev.target.releasePointerCapture(ev.pointerId); } catch(_){}
+          endTouchDrag(true);
+          window.removeEventListener('pointermove', move, { passive:false });
+          window.removeEventListener('pointerup', up, { passive:false });
+          window.removeEventListener('pointercancel', up, { passive:false });
+        };
+        window.addEventListener('pointermove', move, { passive:false });
+        window.addEventListener('pointerup', up, { passive:false });
+        window.addEventListener('pointercancel', up, { passive:false });
       });
+      n.addEventListener('click', tapSelect);
       return n;
     }
 
@@ -328,6 +398,8 @@
         const tokId = e.dataTransfer.getData('text/plain');
         if (tokId) place(tokId, col.id);
       });
+      drop.setAttribute('data-drop','true');
+      drop.setAttribute('data-col', col.id);
       drop.addEventListener('click', (e) => {
         if (locked) return;
         if (selectedTokId){
@@ -335,12 +407,6 @@
           place(selectedTokId, col.id);
           clearSelection();
         }
-      });
-      drop.addEventListener('click', (e) => {
-        if (locked || !selectedTokId) return;
-        e.preventDefault();
-        place(selectedTokId, col.id);
-        clearSelection();
       });
 
       card.appendChild(head);

@@ -1,6 +1,8 @@
 # app/langs.py
 from __future__ import annotations
 from typing import Dict, List, Optional, Tuple
+from html.parser import HTMLParser
+from markupsafe import Markup, escape
 
 """
 Canonical language catalog for ProfePanda.
@@ -275,8 +277,8 @@ def ui(key: str, lang: Optional[str] = None, fallback: bool = True) -> str:
     for code in preference_chain(lang):
         store = _UI_CACHE.get(code, {})
         if key in store and store[key]:
-            return store[key]
-    return ""
+            return _sanitize_inline_markup(store[key])
+    return Markup("")
 
 def ui_get_pair(key: str) -> Dict[str, str]:
     """Return both ES/EN values for an editor modal."""
@@ -285,6 +287,39 @@ def ui_get_pair(key: str) -> Dict[str, str]:
         "es": _UI_CACHE.get("es", {}).get(key, ""),
         "en": _UI_CACHE.get("en", {}).get(key, ""),
     }
+
+class _InlineSanitizer(HTMLParser):
+    allowed = {"strong", "b", "em", "i", "br"}
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.out: list[str] = []
+    def handle_starttag(self, tag, attrs):
+        if tag in self.allowed:
+            self.out.append(f"<{tag}>")
+    def handle_endtag(self, tag):
+        if tag in self.allowed:
+            self.out.append(f"</{tag}>")
+    def handle_startendtag(self, tag, attrs):
+        if tag in self.allowed:
+            self.out.append(f"<{tag} />")
+    def handle_data(self, data):
+        self.out.append(str(escape(data)))
+    def get_html(self) -> Markup:
+        return Markup("".join(self.out))
+
+
+def _sanitize_inline_markup(text: str) -> Markup:
+    """
+    Allow only simple inline tags (bold/italic/br); escape everything else.
+    """
+    normalized = (text or "").replace("\r\n", "\n").replace("\r", "\n").replace("\n", "<br>")
+    parser = _InlineSanitizer()
+    try:
+        parser.feed(normalized)
+        parser.close()
+        return parser.get_html()
+    except Exception:
+        return Markup(escape(normalized or ""))
 
 def ui_update_pair(key: str, es: str, en: str) -> None:
     """
