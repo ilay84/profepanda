@@ -96,6 +96,11 @@ LEGACY_ALIASES: Mapping[str, str] = {
     "u_tantivo_ma_culino_y_femenino": "sustantivo_masculino_y_femenino",
     # Frontend typo guard
     "locucion_u_tantival": "locucion_sustantival",
+    # Legacy/fallback POS tokens seen in older UIs
+    "locucion_nominal": "locucion_sustantival",
+    "locucion_preposicional": "locucion_prepositiva",
+    "locucion_prepositional": "locucion_prepositiva",
+    "modismo": "frase_hecha",
 }
 
 

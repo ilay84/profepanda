@@ -4,6 +4,20 @@
   const btnAdd = document.getElementById('add-sense');
   const form = document.getElementById('ppx-glossary-form');
   const hid = document.getElementById('senses_json');
+  function syncHiddenFromCards(){
+    if (!elSenses || !hid) return;
+    const senses = Array.from(elSenses.children).map(c=> c._get && c._get()).filter(Boolean);
+    hid.value = JSON.stringify(senses);
+  }
+  // Keep hidden field updated whenever senses change
+  if (elSenses){
+    elSenses.addEventListener('input', syncHiddenFromCards, true);
+    elSenses.addEventListener('change', syncHiddenFromCards, true);
+    if (window.MutationObserver){
+      const obs = new MutationObserver(()=> syncHiddenFromCards());
+      obs.observe(elSenses, { childList:true, subtree:true });
+    }
+  }
   const btnJson = document.getElementById('btn-json-editor');
   // Infer slug from URL on edit pages: /admin/glossary/edit/<slug>
   const path = (location && location.pathname) || '';
@@ -112,36 +126,41 @@
   const APP_LANG = (document.documentElement.getAttribute('lang')||'es').slice(0,2);
   const TAGS = (window.PPX_TAG_OPTS || {});
   const POS_ALIAS = (window.PPX_POS_ALIASES || {});
+  // Fallback only if backend catalog fails; align values with app.pos_catalog POS_CATALOG
   const FALLBACK_POS = [
     { value:'adjetivo', es:'adjetivo', en:'adjective' },
+    { value:'adjetivo_demostrativo', es:'adjetivo demostrativo', en:'demonstrative adjective' },
     { value:'adverbio', es:'adverbio', en:'adverb' },
+    { value:'articulo', es:'articulo', en:'article' },
     { value:'conjuncion', es:'conjuncion', en:'conjunction' },
+    { value:'construccion_gramatical', es:'construccion gramatical', en:'grammatical construction' },
+    { value:'cuantificador', es:'cuantificador', en:'quantifier' },
     { value:'determinante', es:'determinante', en:'determiner' },
-    { value:'expresion_idiomatica', es:'expresion idiomatica', en:'idiom' },
-    { value:'exclamacion', es:'exclamacion', en:'exclamation' },
     { value:'formula_social', es:'formula social', en:'social formula' },
-    { value:'frase_hecha', es:'frase hecha', en:'set phrase' },
-    { value:'intensificador', es:'intensificador', en:'intensifier' },
+    { value:'frase_hecha', es:'frase hecha', en:'idiom' },
     { value:'interjeccion', es:'interjeccion', en:'interjection' },
     { value:'locucion_adjetival', es:'locucion adjetival', en:'adjectival phrase' },
     { value:'locucion_adverbial', es:'locucion adverbial', en:'adverbial phrase' },
+    { value:'locucion_conjuntiva', es:'locucion conjuntiva', en:'conjunctive phrase' },
     { value:'locucion_interjectiva', es:'locucion interjectiva', en:'interjective phrase' },
-    { value:'locucion_nominal', es:'locucion nominal', en:'noun phrase' },
-    { value:'locucion_preposicional', es:'locucion preposicional', en:'prepositional phrase' },
+    { value:'locucion_prepositiva', es:'locucion prepositiva', en:'prepositional phrase' },
+    { value:'locucion_sustantival', es:'locucion sustantival', en:'nominal phrase' },
     { value:'locucion_verbal', es:'locucion verbal', en:'verbal phrase' },
     { value:'marcador_discursivo', es:'marcador discursivo', en:'discourse marker' },
-    { value:'modismo', es:'modismo', en:'colloquialism' },
-    { value:'muletilla', es:'muletilla', en:'filler' },
+    { value:'muletilla_conversacional', es:'muletilla conversacional', en:'conversational filler' },
+    { value:'nombre_propio', es:'nombre propio', en:'proper noun' },
+    { value:'numeral', es:'numeral', en:'numeral' },
+    { value:'onomatopeya', es:'onomatopeya', en:'onomatopoeia' },
+    { value:'particula_modal', es:'particula modal', en:'modal particle' },
     { value:'preposicion', es:'preposicion', en:'preposition' },
     { value:'pronombre', es:'pronombre', en:'pronoun' },
-    { value:'sustantivo_masculino', es:'sustantivo masculino', en:'masculine noun' },
     { value:'sustantivo_femenino', es:'sustantivo femenino', en:'feminine noun' },
+    { value:'sustantivo_masculino', es:'sustantivo masculino', en:'masculine noun' },
     { value:'sustantivo_masculino_y_femenino', es:'sustantivo masculino y femenino', en:'masculine and feminine noun' },
-    { value:'verbo_intransitivo', es:'verbo (intransitivo)', en:'verb (intransitive)' },
-    { value:'verbo_pronominal_intransitivo', es:'verbo pronominal (intransitivo)', en:'pronominal verb (intransitive)' },
-    { value:'verbo_pronominal_transitivo', es:'verbo pronominal (transitivo)', en:'pronominal verb (transitive)' },
-    { value:'verbo_transitivo', es:'verbo (transitivo)', en:'verb (transitive)' },
-    { value:'verbo_transitivo_e_intransitivo', es:'verbo (transitivo e intransitivo)', en:'verb (transitive & intransitive)' },
+    { value:'verbo_intransitivo', es:'verbo intransitivo', en:'verb (intransitive)' },
+    { value:'verbo_pronominal', es:'verbo pronominal', en:'pronominal verb' },
+    { value:'verbo_transitivo', es:'verbo transitivo', en:'verb (transitive)' },
+    { value:'verbo_transitivo_e_intransitivo', es:'verbo transitivo e intransitivo', en:'verb (transitive & intransitive)' },
   ];
   const POS_CATALOG = ((Array.isArray(window.PPX_POS_CATALOG) && window.PPX_POS_CATALOG.length) ? window.PPX_POS_CATALOG : FALLBACK_POS)
     .map(entry => ({ ...entry, value: (entry.value || '').toString().toLowerCase() }));
@@ -560,13 +579,112 @@ const LABELS = (window.PPX_LABELS || {});
     sourceFields.addEventListener('input', ()=> persistSource(), true);
     sourceFields.addEventListener('blur', ()=> persistSource(), true);
 
+    // Linked glossary terms (per example) with typeahead
+    const linkedWrap = h('div',{style:'display:flex; flex-direction:column; gap:.35rem; margin-top:.35rem;'});
+    const linkedLabel = h('div',{style:'font-weight:600;'},[document.createTextNode('Linked glossary entries')]);
+    const linkedHint = h('div',{style:'font-size:.9rem; color:#475569;'},[document.createTextNode('Type to search existing entries and click to add.')]);
+    const linkedTokens = h('div',{style:'display:flex; flex-wrap:wrap; gap:.35rem;'});
+    const linkedInput = h('input',{type:'text', class:'ppx-input', placeholder:'Search entries…', style:'max-width:320px; padding:.35rem .45rem; border:1px solid #e5e7eb; border-radius:8px;'});
+    const linkedMap = new Map((ex?.linked_terms || []).map(s => {
+      const slug = (s||'').toString().trim();
+      return slug ? [slug, slug] : null;
+    }).filter(Boolean));
+    const linkedSugg = h('div',{style:'position:fixed; z-index:99999; background:#fff; border:1px solid #e5e7eb; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.08); max-height:220px; overflow-y:auto; display:none;'});
+    document.body.appendChild(linkedSugg);
+    function positionLinked(){
+      if (linkedSugg.style.display === 'none') return;
+      const rect = linkedInput.getBoundingClientRect();
+      const spaceBelow = Math.max(0, window.innerHeight - rect.bottom);
+      const spaceAbove = Math.max(0, rect.top);
+      const needUp = spaceBelow < 180 && spaceAbove > spaceBelow;
+      const left = rect.left;
+      const width = rect.width;
+      let top;
+      if (needUp){
+        top = rect.top - 4;
+        linkedSugg.style.transform = `translateY(-100%)`;
+      } else {
+        top = rect.bottom + 4;
+        linkedSugg.style.transform = `translateY(0)`;
+      }
+      linkedSugg.style.left = `${left}px`;
+      linkedSugg.style.top = `${top}px`;
+      linkedSugg.style.width = `${width}px`;
+    }
+    function hideLinked(){ linkedSugg.style.display='none'; }
+    function renderLinked(){
+      linkedTokens.innerHTML = '';
+      Array.from(linkedMap.entries()).forEach(([slug,label])=>{
+        const chip = h('span',{class:'gl-chip'},[document.createTextNode(label || slug)]);
+        const btn = h('button',{type:'button', class:'ppx-btn ppx-btn--sm', style:'margin-left:.25rem;'},[document.createTextNode('x')]);
+        btn.addEventListener('click', ()=>{ linkedMap.delete(slug); renderLinked(); syncHiddenFromCards(); });
+        const wrap = h('span'); wrap.appendChild(chip); wrap.appendChild(btn); linkedTokens.appendChild(wrap);
+      });
+    }
+    function addLinked(slug,label){
+      const s = (slug||'').toString().trim();
+      if (!s) return;
+      linkedMap.set(s, label || s);
+      linkedInput.value = '';
+      renderLinked();
+      syncHiddenFromCards();
+    }
+    async function searchGlossary(q){
+      if (!q || q.length < 2) return [];
+      try{
+        const url = `/admin/api/glossary/list?q=${encodeURIComponent(q)}&limit=20`;
+        const r = await fetch(url, { credentials:'same-origin' });
+        if (!r.ok) return [];
+        const data = await r.json().catch(()=>null);
+        return Array.isArray(data?.items) ? data.items : [];
+      }catch(_){ return []; }
+    }
+    let linkedReq = 0;
+    async function showLinkedSuggestions(q){
+      const id = ++linkedReq;
+      const items = await searchGlossary(q);
+      if (id !== linkedReq) return;
+      linkedSugg.innerHTML='';
+      if (!items.length){ hideLinked(); return; }
+      items.forEach(it=>{
+        const slug = it.slug || '';
+        const word = it.word || slug;
+        const row = h('div',{style:'padding:.35rem .55rem; cursor:pointer; display:flex; gap:.35rem; align-items:center;'},[
+          h('span',{style:'font-weight:600;'},[document.createTextNode(word||slug)]),
+          h('span',{style:'color:#64748b; font-size:.85rem;'},[document.createTextNode(slug ? `(${slug})` : '')])
+        ]);
+        row.addEventListener('mousedown', (e)=>{ e.preventDefault(); addLinked(slug, word); hideLinked(); });
+        linkedSugg.appendChild(row);
+      });
+      linkedSugg.style.display='block';
+      positionLinked();
+    }
+    linkedInput.addEventListener('input', (e)=>{
+      const q = (e.target.value||'').trim();
+      if (q.length >= 2) showLinkedSuggestions(q); else hideLinked();
+    });
+    linkedInput.addEventListener('focus', ()=> {
+      const q = (linkedInput.value||'').trim();
+      if (q.length >= 2) showLinkedSuggestions(q);
+    });
+    window.addEventListener('resize', positionLinked);
+    window.addEventListener('scroll', positionLinked, true);
+    document.addEventListener('click', (e)=>{
+      if (e.target !== linkedInput && !linkedSugg.contains(e.target)) hideLinked();
+    });
+    renderLinked();
+    linkedWrap.appendChild(linkedLabel);
+    linkedWrap.appendChild(linkedHint);
+    linkedWrap.appendChild(linkedTokens);
+    linkedWrap.appendChild(linkedInput);
+
     const del = h('button',{type:'button', class:'ppx-btn', style:'margin-top:.35rem;'}, [document.createTextNode('Eliminar')]);
     del.addEventListener('click', ()=> row.remove());
-    row.appendChild(es); row.appendChild(en); row.appendChild(file); row.appendChild(audioPath); row.appendChild(audioInfo); row.appendChild(sourceType); row.appendChild(sourceFields); row.appendChild(del);
+    row.appendChild(es); row.appendChild(en); row.appendChild(file); row.appendChild(audioPath); row.appendChild(audioInfo); row.appendChild(sourceType); row.appendChild(sourceFields); row.appendChild(linkedWrap); row.appendChild(del);
     row._get = ()=> {
       const source = collectSource() || null;
       if (source) SourceCache.remember(source.type, source);
-      return { es: es.value.trim(), en: en.value.trim()||null, audio: (audioPath.value||null), source };
+      return { es: es.value.trim(), en: en.value.trim()||null, audio: (audioPath.value||null), source, linked_terms: Array.from(linkedMap.keys()) };
     };
     return row;
   }
@@ -628,6 +746,12 @@ const LABELS = (window.PPX_LABELS || {});
     // Remove generic 'sustantivo' from the dropdown options (legacy only via fallback)
     curatedMap.delete('sustantivo');
     const posOpts = Array.from(curatedMap.values()).sort((a,b)=> a.label.localeCompare(b.label,'es'));
+    const POS_FIXUPS = {
+      'locucion_u_tantival': 'locucion_sustantival',
+      'u_tantivo_femenino': 'sustantivo_femenino',
+      'u_tantivo_ma_culino': 'sustantivo_masculino',
+      'u_tantivo_ma_culino_y_femenino': 'sustantivo_masculino_y_femenino'
+    };
     let posVal = normalizeToCanonical(data?.pos) || 'sustantivo_masculino_y_femenino';
     // Map legacy generic verb token to transitive; honor explicit combined subtype
     let normalizedPosVal = (posVal === 'verbo') ? 'verbo_transitivo' : posVal;
@@ -845,9 +969,7 @@ const LABELS = (window.PPX_LABELS || {});
       const fallback = (selectedPos === 'verbo') ? 'verbo_transitivo' : selectedPos;
       const canonical = normalizeToCanonical(fallback) || normalizeToCanonical(canonToken(fallback)) || 'sustantivo_masculino_y_femenino';
       // Guard against legacy frontend typos (e.g., locucion_u_tantival)
-      const normalizedPosToken = (canonical === 'locucion_u_tantival')
-        ? 'locucion_sustantival'
-        : canonical; 
+      const normalizedPosToken = POS_FIXUPS[canonical] || canonical; 
       return {
         id: data?.id || '',
         countries: Array.isArray(data?.countries)? data.countries : [],
@@ -880,6 +1002,7 @@ const LABELS = (window.PPX_LABELS || {});
   function render(prefill){
     elSenses.innerHTML = '';
     (prefill && prefill.length? prefill : [{}]).forEach((s,i)=> elSenses.appendChild(senseCard(s, i+1)));
+    syncHiddenFromCards();
   }
 
   btnAdd.addEventListener('click', ()=> elSenses.appendChild(senseCard({}, elSenses.children.length + 1)));
@@ -893,6 +1016,9 @@ const LABELS = (window.PPX_LABELS || {});
       if (wordInput) wordInput.focus({ preventScroll: true });
       return;
     }
+
+    // Always sync senses into hidden field before any early return
+    syncHiddenFromCards();
 
     let didUpload = false;
 

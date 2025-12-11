@@ -93,6 +93,86 @@
     const stripped = raw.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     return stripped.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g,'');
   }
+  // Ensure accordion CSS once
+  function ensureAccCss(){
+    if (document.getElementById('ppx-acc-shared')) return;
+    const st = document.createElement('style');
+    st.id = 'ppx-acc-shared';
+    st.textContent = `
+      /* Reset any global accordion styling for our modal accordions */
+      #glw-content details.ppx-acc summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        width: 100%;
+        max-width: none !important;
+        box-sizing: border-box;
+        margin: 0 !important;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        outline: none;
+      }
+      #glw-content details.ppx-acc summary::-webkit-details-marker { display: none !important; }
+      #glw-content details.ppx-acc summary::marker { display: none !important; content: none !important; }
+      /* kill any left chevron pseudo from global accordion.css */
+      #glw-content details.ppx-acc summary::before { display: none !important; content: none !important; }
+      #glw-content details.ppx-acc summary::after { display: none !important; content: none !important; }
+      #glw-content details.ppx-acc summary .ppx-acc-ic {
+        width: 16px;
+        height: 16px;
+        flex: 0 0 16px;
+        margin-left: auto;
+      }
+      /* Normalize container so it fills the tab width and drops exercise UI shadows */
+      #glw-content details.ppx-acc {
+        outline: none;
+        padding: 0;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 10px 28px rgba(15,23,42,.06);
+        width: 100% !important;
+        margin: .9rem 0 .45rem 0 !important;
+      }
+      #glw-content details.ppx-acc[open]{
+        border-color: #e5e7eb;
+        box-shadow: 0 12px 30px rgba(15,23,42,.08);
+      }
+      #glw-content details.ppx-acc > summary {
+        padding: .7rem .95rem .55rem .95rem;
+      }
+      #glw-content details.ppx-acc > div {
+        width: 100% !important;
+        max-width: none !important;
+      }
+    `;
+    document.head.appendChild(st);
+  }
+  ensureAccCss();
+  // Persist per-entry UI state (open accordions, scroll)
+  const STATE_KEY = 'ppx_glw_state';
+  function loadStateMap(){
+    try{
+      const raw = window.localStorage && localStorage.getItem(STATE_KEY);
+      return raw ? (JSON.parse(raw)||{}) : {};
+    }catch(_){ return {}; }
+  }
+  function saveState(slug, patch){
+    if (!slug) return;
+    try{
+      const all = loadStateMap();
+      const cur = all[slug] || {};
+      all[slug] = { ...cur, ...patch };
+      localStorage.setItem(STATE_KEY, JSON.stringify(all));
+    }catch(_){}
+  }
+  function loadState(slug){
+    const all = loadStateMap();
+    return all[slug] || {};
+  }
   const TOKEN_LABELS = {
     register: {
       formal: { es:'formal', en:'formal' },
@@ -306,18 +386,31 @@
     const pane = document.getElementById('glw-content');
     if (!bar || !pane) return;
     bar.innerHTML = Tabs.map(t => `
-      <button role="tab" aria-selected="${t.slug===Active}" data-slug="${t.slug}" class="ppx-btn ppx-btn--subtle" style="display:flex;align-items:center;gap:6px;${t.slug===Active ? 'background:#eef2ff; border-color:#c7d2fe; color:#312e81;' : ''}">
+      <button type="button" role="tab" aria-selected="${t.slug===Active}" data-slug="${t.slug}" class="ppx-btn ppx-btn--subtle" style="display:flex;align-items:center;gap:6px;${t.slug===Active ? 'background:#eef2ff; border-color:#c7d2fe; color:#312e81;' : ''}">
         <span>${t.title}</span>
         <span data-close="${t.slug}" aria-label="Close" title="Close" style="opacity:.6;">x</span>
       </button>
     `).join('');
-    bar.querySelectorAll('[data-close]').forEach(x => x.addEventListener('click', (e)=>{ e.stopPropagation(); close(x.getAttribute('data-close')); }));
-    bar.querySelectorAll('[data-slug]').forEach(b => b.addEventListener('click', ()=> activate(b.getAttribute('data-slug'))));
+    bar.querySelectorAll('[data-close]').forEach(x => x.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); close(x.getAttribute('data-close')); }));
+    bar.querySelectorAll('[data-slug]').forEach(b => b.addEventListener('click', (ev)=> {
+      ev.preventDefault();
+      ev.stopPropagation();
+      activate(b.getAttribute('data-slug'));
+    }));
 
     if (!Active){ pane.innerHTML = ''; return; }
     const entryKey = cacheKey(Active, ActiveLang);
     const entry = Cache.get(entryKey) || Cache.get(Active);
-    pane.innerHTML = entry ? renderEntry(entry) : '<div class="ppx-muted">Loading.</div>';
+    if (entry){
+      pane.innerHTML = renderEntry(entry);
+    } else {
+      pane.innerHTML = '<div class="ppx-muted">Loading…</div>';
+      fetchEntry(Active, ActiveLang).then(ent => {
+        Cache.set(cacheKey(Active, ActiveLang), ent);
+        render();
+      }).catch(()=>{ pane.innerHTML = '<div class="ppx-muted">Not found</div>'; });
+      return;
+    }
     // Wire language selector
     const langSel = pane.querySelector('#glw-lang');
     if (langSel){
@@ -332,8 +425,24 @@
       });
     }
 
-    // Wire related links inside pane to open new tabs
-    pane.querySelectorAll('a[data-slug]').forEach(a=> a.addEventListener('click', (ev)=>{ ev.preventDefault(); if (window.Tabs) Tabs.open(a.getAttribute('data-slug')); }));
+    // Wire related links (including example chips) to open new tabs via the modal API
+    pane.querySelectorAll('a[data-slug]').forEach(a=> a.addEventListener('click', (ev)=>{ 
+      ev.preventDefault(); 
+      ev.stopPropagation();
+      const api = (window.Tabs && typeof window.Tabs.open === 'function') ? window.Tabs : null;
+      if (api) api.open(a.getAttribute('data-slug')); 
+    }));
+    // Sync accordion chevrons for examples
+    if (window.PPXAccordions && typeof PPXAccordions.sync === 'function'){
+      PPXAccordions.sync(pane);
+    } else {
+      pane.querySelectorAll('details[data-acc="examples"]').forEach(det => {
+        const ic = det.querySelector('summary img.ppx-acc-ic');
+        const sync = ()=>{ if (ic) ic.src = det.open ? '/static/assets/icons/chevron_up.svg' : '/static/assets/icons/chevron_down.svg'; };
+        det.addEventListener('toggle', sync);
+        sync();
+      });
+    }
     // Wire entry audio play button (prefer a hidden in-DOM audio element for compatibility)
     const btn = pane.querySelector('[data-entry-audio]');
     if (btn){
@@ -370,6 +479,24 @@
         try { aud.playbackRate = val; } catch(_){ /* ignore */ }
       });
     });
+    // Restore open accordions and scroll position
+    const st = loadState(Active);
+    const dets = Array.from(pane.querySelectorAll('details'));
+    if (st && Array.isArray(st.openIdx)){
+      dets.forEach((d,i)=>{ d.open = st.openIdx.includes(i); });
+    }
+    const scrollTarget = document.scrollingElement || document.documentElement || document.body;
+    if (st && typeof st.scroll === 'number'){
+      try { scrollTarget.scrollTo({ top: st.scroll, behavior:'instant' }); } catch(_){ try { scrollTarget.scrollTop = st.scroll; }catch(_){ } }
+    }
+    function persistState(){
+      const openIdx = dets.map((d,i)=> d.open ? i : null).filter(i=> i!==null);
+      let scroll = 0;
+      try { scroll = scrollTarget.scrollTop || 0; }catch(_){}
+      saveState(Active, { openIdx, scroll });
+    }
+    dets.forEach((d)=> d.addEventListener('toggle', persistState));
+    window.addEventListener('scroll', persistState, { passive:true });
   }
 
   function renderEntry(entry){
@@ -558,22 +685,41 @@
             </div>` : '';
         const srcLabel = ex.source ? formatSource(ex.source) : '';
         const srcType = ex.source && ex.source.type ? String(ex.source.type||'').toLowerCase() : '';
+        const linkedHtml = (Array.isArray(ex.linked_terms) && ex.linked_terms.length) ? (() => {
+          const chips = ex.linked_terms.map(lt => {
+            const slug = normalizeSlug(lt);
+            const label = (lt || '').toString().replace(/-/g, ' ');
+            if (!slug) return '';
+            return `<a href="#" class="ppx-btn ppx-btn--subtle" data-slug="${slug}" style="padding:4px 10px; font-size:12px; border-radius:10px; text-decoration:none;">${label}</a>`;
+          }).filter(Boolean).join(' ');
+          return chips ? `<div style="margin-top:.35rem; display:flex; gap:.35rem; flex-wrap:wrap; align-items:center;">
+            <span style="font-size:12px; color:#475569;">${L('Términos relacionados','Related entries')}</span>
+            ${chips}
+          </div>` : '';
+        })() : '';
         const srcHtml = srcLabel ? `<div style=\"margin-top:.4rem;\">
             <span style=\"display:inline-flex; align-items:center; gap:6px; padding:.25rem .6rem; border-radius:9999px; background:#e0f2fe; border:1px solid #bae6fd; font-size:12px;\">
               <img src="${iconForSource(srcType)}" alt="" style="width:14px; height:14px;"> ${srcLabel}
             </span>
           </div>` : '';
+        // Keep examples clean; rely on related chips to open linked entries
+        const esLinked = highlightBackticks(ex.es||'');
+        const enLinked = highlightBackticks(ex.en||'');
         return `<div style=\"padding:.65rem; margin:.45rem 0; background:#eff6ff; border:1px solid #dbeafe; border-radius:12px;\">
           <div style=\"display:flex; align-items:center; gap:10px; flex-wrap:wrap;\">${audio}${speedCtl}</div>
-          <div style=\"margin-top:.5rem; line-height:1.45; white-space:pre-line;\"><strong>${highlightBackticks(ex.es||'')}</strong></div>
-          <div style=\"opacity:.8; line-height:1.45; margin-top:.2rem; white-space:pre-line;\"><em>${highlightBackticks(ex.en||'')}</em></div>
+          <div style=\"margin-top:.5rem; line-height:1.45; white-space:pre-line;\"><strong>${esLinked}</strong></div>
+          <div style=\"opacity:.8; line-height:1.45; margin-top:.2rem; white-space:pre-line;\"><em>${enLinked}</em></div>
           ${srcHtml}
+          ${linkedHtml}
         </div>`;
       }).join('');
       examplesHtml = `
-        <details class="ppx-card" style="padding:.75rem; margin-top:.75rem;">
-          <summary style="cursor:pointer; font-weight:600;">${L('Ejemplos en contexto','Examples in Context')}</summary>
-          <div style="margin-top:.5rem;">${list}</div>
+        <details class="ppx-acc" data-acc="examples" style="margin-top:.75rem; width:100%; box-sizing:border-box; padding:0; border:1px solid #e5e7eb; border-radius:12px; background:#fff; box-shadow:0 10px 28px rgba(15,23,42,.06);">
+          <summary style="font-weight:600; padding:1rem .95rem .8rem .95rem;">
+            <span>${L('Ejemplos en contexto','Examples in Context')}</span>
+            <img class="ppx-acc-ic" src="/static/assets/icons/chevron_down.svg" alt="">
+          </summary>
+          <div style="padding:.35rem .95rem .7rem .95rem;">${list}</div>
         </details>`;
     }
 

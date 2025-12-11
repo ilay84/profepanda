@@ -190,6 +190,31 @@ def _normalize_for_save(payload: Dict[str, Any]) -> Dict[str, Any]:
             af_out.append(afn)
         if af_out:
             sn["alt_forms"] = af_out
+        # examples (optional)
+        ex_in = sn.get("examples") if isinstance(sn.get("examples"), list) else []
+        ex_out: list[dict] = []
+        for ex in ex_in:
+            if not isinstance(ex, dict):
+                continue
+            exn: dict[str, Any] = {
+                "es": (ex.get("es") or "").strip(),
+                "en": (ex.get("en") or "").strip(),
+                "audio": ex.get("audio") or None,
+            }
+            src = ex.get("source")
+            if isinstance(src, dict):
+                exn["source"] = dict(src)
+            linked_in = ex.get("linked_terms") if isinstance(ex.get("linked_terms"), list) else []
+            linked_out: list[str] = []
+            for lt in linked_in:
+                slug = make_slug(lt)
+                if slug:
+                    linked_out.append(slug)
+            if linked_out:
+                exn["linked_terms"] = linked_out
+            ex_out.append(exn)
+        if ex_out:
+            sn["examples"] = ex_out
         senses_out.append(sn)
     d["senses"] = senses_out
     return d

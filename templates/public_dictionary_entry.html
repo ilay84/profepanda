@@ -1,5 +1,5 @@
 {% extends "public_base.html" %}
-{% block title %}{{ entry.word }} – {{ t('Diccionario', 'Dictionary', app_lang) }}{% endblock %}
+{% block title %}{{ entry.word }} - {{ t('Diccionario', 'Dictionary', app_lang) }}{% endblock %}
 {% block body %}
   {% include "_public_bar.html" %}
   <main id="ppx-main" class="ppx-container" style="margin-top:1rem;">
@@ -21,7 +21,7 @@
 
           {% if s.equivalents_en and s.equivalents_en|length %}
           <div style="margin-top:.5rem;">
-            <strong>🇺🇸 {{ t('Equivalentes en inglés', 'American English Equivalents', app_lang) }}</strong>
+            <strong>???? {{ t('Equivalentes en ingl‚s', 'American English Equivalents', app_lang) }}</strong>
             <ul>
               {% for e in s.equivalents_en %}<li>{{ e }}</li>{% endfor %}
             </ul>
@@ -39,12 +39,20 @@
 
           {% if s.examples and s.examples|length %}
           <div style="margin-top:.75rem;">
-            <h4 style="margin:.25rem 0;">{{ t('Ver y oír en contexto', 'See and hear in context with real-world examples', app_lang) }}</h4>
+            <h4 style="margin:.25rem 0;">{{ t('Ver y o¡r en contexto', 'See and hear in context with real-world examples', app_lang) }}</h4>
             {% for ex in s.examples %}
               <div style="padding:.5rem 0; border-top:1px solid #e5e7eb;">
                 {% if ex.audio %}<audio controls src="{{ ex.audio }}" style="width:100%;"></audio>{% endif %}
-                <div>{{ ex.es|replace('\n','<br>')|safe }}</div>
-                {% if ex.en %}<div style="opacity:.8;">{{ ex.en|replace('\n','<br>')|safe }}</div>{% endif %}
+                {% set es_text = ex.es|replace('\n','<br>') %}
+                {% set en_text = (ex.en or '')|replace('\n','<br>') %}
+                {% for lt in ex.linked_terms or [] %}
+                  {% set label = lt.replace('-', ' ') %}
+                  {% set href = '/glossary/' ~ lt ~ '/' %}
+                  {% set es_text = es_text|replace(label, '<a href="' ~ href ~ '" style="color:#4f46e5; text-decoration:underline;">' ~ label ~ '</a>') %}
+                  {% set en_text = en_text|replace(label, '<a href="' ~ href ~ '" style="color:#4f46e5; text-decoration:underline;">' ~ label ~ '</a>') %}
+                {% endfor %}
+                <div>{{ es_text|safe }}</div>
+                {% if ex.en %}<div style="opacity:.8;">{{ en_text|safe }}</div>{% endif %}
                 {% if ex.source %}<div style="opacity:.7; font-size:.9em;">{{ t('Fuente', 'Source', app_lang) }}: {{ ex.source.title or ex.source.label or '' }}{% if ex.source.year %} ({{ ex.source.year }}){% endif %}</div>{% endif %}
               </div>
             {% endfor %}

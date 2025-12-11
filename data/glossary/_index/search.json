@@ -327,6 +327,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "sustantivo_femenino",
+    "slug": "joda",
+    "snippet": "Fun, partying, or carefree activity; can also mean a joke or annoying behavior depending on context.",
+    "word": "joda"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "adjetivo",
     "slug": "jogging",
     "snippet": "Sweatpants.",
@@ -508,6 +517,15 @@
       "AR"
     ],
     "pos": "sustantivo_femenino",
+    "slug": "pavada",
+    "snippet": "Something trivial, minor, or insignificant.",
+    "word": "pavada"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
     "slug": "pelotas",
     "snippet": "Testicles; used in vulgar phrases to intensify anger or annoyance.",
     "word": "pelotas"
@@ -655,6 +673,15 @@
     "slug": "tomarselas",
     "snippet": "Colloquial way to tell someone to leave or go away, often in an irritated or angry tone.",
     "word": "tomárselas"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "tranqui",
+    "snippet": "Mild, gentle, or low-intensity.&nbsp;Colloquial shortened form of&nbsp;tranquilo, used invariably.",
+    "word": "tranqui"
   },
   {
     "countries": [

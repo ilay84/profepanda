@@ -94,6 +94,24 @@
         #rg-filters-backdrop.is-open{display:block;}
       }
     </style>
+    <style>
+      /* Shared accordion styling */
+      details.ppx-acc summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        padding: 0;
+      }
+      details.ppx-acc summary::-webkit-details-marker,
+      details.ppx-acc summary::marker { display: none; }
+      details.ppx-acc summary .ppx-acc-ic {
+        width: 16px;
+        height: 16px;
+        flex: 0 0 16px;
+      }
+    </style>
 
     <div class="rg-glossary-grid">
       <aside class="ppx-card" style="padding:.75rem;">
@@ -252,13 +270,17 @@
       acc[item.value] = label || item.value;
       return acc;
     }, {});
+    const FIXED_LETTERS = ['AZ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    function normLetter(val){
+      const up = ((val||'').toString().trim().toUpperCase()) || 'AZ';
+      return FIXED_LETTERS.includes(up) ? up : 'AZ';
+    }
     const state = {
       scope: null,
-      letter: 'AZ',
+      letter: normLetter('AZ'),
       offset: 0,
       limit: 25,
       entries: [],
-      letters: [],
       hasMore: false,
       loading: false,
       filters: {
@@ -274,6 +296,26 @@
       filterOptions: {},
       filtersOpen: false
     };
+    const BROWSE_STATE_KEY = 'ppx_glossary_browse';
+    const savedBrowse = (function(){ try{ return JSON.parse(localStorage.getItem(BROWSE_STATE_KEY)||'{}'); }catch(_){ return {}; } })();
+    if (savedBrowse.scope) state.scope = savedBrowse.scope;
+    if (savedBrowse.letter) state.letter = normLetter(savedBrowse.letter);
+    function loadBrowseState(){
+      try{
+        const raw = window.localStorage && localStorage.getItem(BROWSE_STATE_KEY);
+        return raw ? (JSON.parse(raw)||{}) : {};
+      }catch(_){ return {}; }
+    }
+    function saveBrowseState(){
+      try{
+        const payload = {
+          scope: state.scope,
+          letter: normLetter(state.letter),
+          scroll: (document.scrollingElement || document.documentElement || document.body || {}).scrollTop || 0
+        };
+        if (window.localStorage) localStorage.setItem(BROWSE_STATE_KEY, JSON.stringify(payload));
+      }catch(_){}
+    }
     const staticSensitivityTokens = ['lenguaje_explicito', 'potencialmente_ofensivo'];
     const filterDefinitions = [
       { id: 'pos', label: '{{ t('Parte del discurso','Part of speech', app_lang) }}' },
@@ -318,7 +360,7 @@
         // keep container visible even when no options exist
         toggle.addEventListener('click', () => {
           const open = toggle.classList.toggle('open');
-          icon.src = `${staticBase}assets/icons/${open ? 'chevron_collapsed.svg' : 'chevron_down.svg'}`;
+          icon.src = `${staticBase}assets/icons/${open ? 'chevron_up.svg' : 'chevron_down.svg'}`;
           options.style.display = open ? 'flex' : 'none';
         });
       });
@@ -454,20 +496,18 @@
 
     function handleLetterSelection(button){
       if (!button) return;
-      state.letter = button.dataset.letter || 'AZ';
+      state.letter = normLetter(button.dataset.letter || 'AZ');
       state.offset = 0;
       state.entries = [];
       state.hasMore = false;
       renderLetters(state.letters);
+      saveBrowseState();
       requestEntries();
     }
 
-    function renderLetters(letters){
+    function renderLetters(){
       if (!letterRow) return;
-      if (!letters || !letters.length){
-        letterRow.style.display = 'none';
-        return;
-      }
+      const letters = FIXED_LETTERS;
       letterRow.innerHTML = '';
       const azBtn = document.createElement('button');
       azBtn.type = 'button';
@@ -475,14 +515,16 @@
       azBtn.textContent = '{{ t('A-Z','A-Z', app_lang) }}';
       letterRow.appendChild(azBtn);
       letters.forEach(letter => {
+        if (letter === 'AZ') return;
         const button = document.createElement('button');
         button.type = 'button';
-        button.dataset.letter = letter;
+        button.dataset.letter = letter.toUpperCase();
         button.textContent = letter;
         letterRow.appendChild(button);
       });
+      const active = normLetter(state.letter || 'AZ');
       [...letterRow.querySelectorAll('button')].forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.letter === state.letter);
+        btn.classList.toggle('active', normLetter(btn.dataset.letter) === active);
         btn.addEventListener('click', () => handleLetterSelection(btn));
       });
       letterRow.style.display = 'flex';
@@ -629,17 +671,21 @@
       }
     }
 
-    function handleScopeSelection(code, button){
+    function handleScopeSelection(code, button, opts={}){
       state.scope = code;
       state.offset = 0;
       state.entries = [];
       state.hasMore = false;
-      state.letter = 'AZ';
+      // Do NOT reset the active letter here; it is driven by saved state or user selection.
+      state.letter = normLetter(state.letter || 'AZ');
       const label = button?.dataset?.label || (code === 'ALL' ? allLabel : code);
       highlightButton(button);
       setCountryTitle(label, code);
       showGlossary();
-      requestEntries();
+      saveBrowseState();
+      if (!opts.skipRequest){
+        requestEntries();
+      }
     }
 
     const mobileMql = window.matchMedia('(max-width: 800px)');
@@ -698,17 +744,17 @@
       applyFiltersToParams(params);
       if (entryList) entryList.innerHTML = `<p class="ppx-muted" style="margin:0;">${translations.loading}</p>`;
       try{
-        const data = await fetchJson(`/glossary/api/list?${params.toString()}`);
-        const items = data.items || [];
-        state.letters = data.letters || state.letters;
-        state.entries = append ? state.entries.concat(items) : items;
-        state.filterOptions = buildFilterOptions(state.entries);
-        renderFilterOptions(state.filterOptions);
-        state.hasMore = forceAll ? false : !!data.has_more;
-        state.offset = offset + limit;
-        renderLetters(state.letters);
-        renderEntries();
-        updateLoadControls();
+      const data = await fetchJson(`/glossary/api/list?${params.toString()}`);
+      const items = data.items || [];
+      state.entries = append ? state.entries.concat(items) : items;
+      state.filterOptions = buildFilterOptions(state.entries);
+      renderFilterOptions(state.filterOptions);
+      state.hasMore = forceAll ? false : !!data.has_more;
+      state.offset = offset + limit;
+      renderLetters();
+      renderEntries();
+      updateLoadControls();
+      saveBrowseState();
       }catch(err){
         if (entryList) entryList.innerHTML = `<p class="ppx-muted" style="margin:0;">${err.message}</p>`;
       }finally{
@@ -745,6 +791,7 @@
     if (searchInput){
       searchInput.addEventListener('input', function(){
         renderEntries();
+        saveBrowseState();
       });
     }
 
@@ -757,7 +804,7 @@
       });
     }
     if (filtersClearButton){
-      filtersClearButton.addEventListener('click', clearFilters);
+      filtersClearButton.addEventListener('click', () => { clearFilters(); saveBrowseState(); });
     }
     if (filtersToggleBtn){
       filtersToggleBtn.addEventListener('click', function(){
@@ -782,17 +829,46 @@
     }
     function initCountryList(){
       if (!countryList) return;
-      const first = countryList.querySelector('button[data-country-code]');
-      if (first){
-        handleScopeSelection(first.dataset.countryCode, first);
+      const st = loadBrowseState();
+      const targetCode = st.scope || (countryList.querySelector('button[data-country-code]')?.dataset.countryCode);
+      if (targetCode){
+        const btn = countryList.querySelector(`button[data-country-code="${targetCode}"]`);
+        // Preserve last letter but skip request until we reapply letter below
+        handleScopeSelection(targetCode, btn || null, { preserveLetter:true, skipRequest:true });
+        if (st.letter){ state.letter = normLetter(st.letter); }
+        renderLetters();
+        requestEntries();
+      } else {
+        const first = countryList.querySelector('button[data-country-code]');
+        if (first){
+          handleScopeSelection(first.dataset.countryCode, first);
+        }
       }
     }
     updateFiltersVisibility();
     initCountryList();
+    // Restore persisted browse state (scope, letter, scroll)
+    (function restoreBrowseState(){
+      const st = loadBrowseState();
+      if (st && st.scope){
+        const btn = countryList && countryList.querySelector(`button[data-country-code="${st.scope}"]`);
+        handleScopeSelection(st.scope, btn || null);
+        if (Array.isArray(state.letters) && state.letters.includes(st.letter)){
+          state.letter = st.letter || 'AZ';
+        }
+        renderLetters(state.letters);
+      }
+      const scrollTarget = document.scrollingElement || document.documentElement || document.body;
+      if (st && typeof st.scroll === 'number'){
+        try { scrollTarget.scrollTo({ top: st.scroll, behavior:'instant' }); } catch(_){ try { scrollTarget.scrollTop = st.scroll; }catch(_){ } }
+      }
+    })();
+    window.addEventListener('scroll', () => { saveBrowseState(); }, { passive:true });
   })();
   </script>
   {# Cache-bust to ensure latest glossary tabs script (newline rendering) #}
   <script src="{{ url_for('static', filename='js/public_glossary_tabs.js', v='26') }}"></script>
+  <script src="{{ url_for('static', filename='js/ppx-accordion.js') }}"></script>
   <script>
     window.openEntry = function(slug){ if (window.Tabs && typeof Tabs.open==='function') { Tabs.open(slug); } };
     document.addEventListener('click', function(e){

@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/pavada/pavada.mp3?v=1765480893",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Something trivial, minor, or insignificant.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Algo trivial, insignificante o de poca importancia.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "a small thing",
+        "a little something",
+        "nothing major"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/pavada/pavada_ex_01.mp3?v=1765480832",
+          "en": "\"Just a chocolate, really — just `a little something`.\"\n\"Yeah, but you didn’t have to.\"",
+          "es": "—Un chocolate, una `pavada`.\n—Sí, pero no hace falta.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "pavadita",
+        "fem_pl": "pavadas",
+        "fem_sg": "pavada",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "pavada",
+  "word": "pavada"
+}

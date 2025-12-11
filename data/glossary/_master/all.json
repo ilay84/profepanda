@@ -1948,6 +1948,68 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/joda/joda.mp3?v=1765482348",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<p><span style=\"font-weight: normal;\">Fun, partying, or carefree activity; can also mean a joke or annoying behavior depending on context.</span></p>",
+        "definition_es": "<p><span style=\"font-weight: normal;\">Diversión, fiesta o actividad despreocupada; también puede referirse a una broma o comportamiento molesto según el contexto.</span></p>",
+        "domain": [
+          "cultura_pop",
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "partying",
+          "messing around",
+          "joking around",
+          "nonsense"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/joda/joda_ex_01.mp3?v=1765482604",
+            "en": "Ugh, this Agusto… he really needs to cut it out with `all the partying`. Kids are going up and down with beers all the time. This isn’t a nightclub.",
+            "es": "Uy, este Agusto. Que la corte con `la joda`, eh. Suben y bajan pendejos todo el tiempo con cervezas. No es un boliche esto.",
+            "linked_terms": [
+              "pendejo",
+              "boliche"
+            ],
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": "joda",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "joda",
+    "word": "joda"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/jogging/jogging.mp3?v=1764180203",
     "senses": [
       {
@@ -3116,6 +3178,62 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/pavada/pavada.mp3?v=1765480893",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<p><span style=\"font-weight: normal;\">Something trivial, minor, or insignificant.</span></p>",
+        "definition_es": "<p><span style=\"font-weight: normal;\">Algo trivial, insignificante o de poca importancia.</span></p>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "a small thing",
+          "a little something",
+          "nothing major"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/pavada/pavada_ex_01.mp3?v=1765480832",
+            "en": "\"Just a chocolate, really — just `a little something`.\"\n\"Yeah, but you didn’t have to.\"",
+            "es": "—Un chocolate, una `pavada`.\n—Sí, pero no hace falta.",
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": "pavadita",
+          "fem_pl": "pavadas",
+          "fem_sg": "pavada",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "pavada",
+    "word": "pavada"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/pelotas/pelotas.mp3?v=1764268483",
     "senses": [
       {
@@ -4148,6 +4266,65 @@
     ],
     "slug": "tomarselas",
     "word": "tomárselas"
+  },
+  {
+    "alt_spellings": [
+      "tranqui."
+    ],
+    "audio": "/media/glossary-audio/entry/tranqui/tranqui.mp3?v=1765481632",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<p><span style=\"font-weight: normal;\">Mild, gentle, or low-intensity.&nbsp;</span><i><span style=\"font-size: 15.2px;\"><span style=\"font-weight: normal;\">Colloquial shortened form of&nbsp;</span></span><span style=\"font-size: 15.2px;\">tranquilo</span><span style=\"font-size: 15.2px; font-weight: normal;\">, used invariably.</span></i></p>",
+        "definition_es": "<p><span style=\"font-weight: normal;\">Suave, leve, moderado o sin intensidad.&nbsp;</span><i style=\"\"><span style=\"font-weight: normal; font-size: 15.2px;\">Forma abreviada y coloquial de&nbsp;</span><span style=\"font-size: 15.2px;\">tranquilo</span><span style=\"font-weight: normal; font-size: 15.2px;\">, usada como adjetivo de manera invariable.</span><span style=\"font-weight: normal; font-size: 15.2px;\">&nbsp;</span></i></p>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "mild",
+          "soft",
+          "gentle",
+          "low-key"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/tranqui/tranqui_ex_01.mp3?v=1765481633",
+            "en": "\"Can you use something a little `milder`?\"\n\"Yeah, we’ll try something else, I guess.\"",
+            "es": "—¿Podés usar algo más `tranqui`?\n—Sí, probamos con otra, no sé.",
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "adjetivo",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "tranqui",
+    "word": "tranqui"
   },
   {
     "alt_spellings": [],
