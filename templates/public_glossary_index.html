@@ -360,7 +360,8 @@
         // keep container visible even when no options exist
         toggle.addEventListener('click', () => {
           const open = toggle.classList.toggle('open');
-          icon.src = `${staticBase}assets/icons/${open ? 'chevron_up.svg' : 'chevron_down.svg'}`;
+          // keep icon static; rotation handled by CSS via .open
+          icon.src = `${staticBase}assets/icons/chevron_down.svg`;
           options.style.display = open ? 'flex' : 'none';
         });
       });
