@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import re
 import unicodedata
+import json
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Iterable
-import shutil
 import shutil
 
 from app.storage import get_data_root, get_project_root, read_json, write_json
@@ -328,6 +329,54 @@ def _prune_audio_files(slug: str, data: Dict[str, Any]) -> None:
                     f.unlink(missing_ok=True)  # type: ignore[arg-type]
     except Exception:
         # Best-effort; ignore prune failures
+        pass
+
+
+# -------------------------------
+# Activity tracking (recent events)
+# -------------------------------
+def _activity_path() -> Path:
+    return get_data_root() / "glossary" / "_activity.json"
+
+
+def load_recent_activity(limit: int = 10, country: Optional[str] = None) -> list[dict]:
+    """Return most recent activity items (already in reverse-chron order)."""
+    path = _activity_path()
+    if not path.exists():
+        return []
+    try:
+        items = json.loads(path.read_text(encoding="utf-8")) or []
+        if not isinstance(items, list):
+            return []
+    except Exception:
+        return []
+    if country:
+        country = country.upper().strip()
+        items = [it for it in items if country in (it.get("countries") or [])]
+    return items[: max(1, int(limit))] if limit else items
+
+
+def record_activity(event: Dict[str, Any], keep: int = 200) -> None:
+    """Append an activity event and keep the list bounded."""
+    path = _activity_path()
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        return
+    try:
+        existing = []
+        if path.exists():
+            existing = json.loads(path.read_text(encoding="utf-8")) or []
+            if not isinstance(existing, list):
+                existing = []
+    except Exception:
+        existing = []
+    event["ts"] = event.get("ts") or f"{datetime.utcnow().isoformat()}Z"
+    payload = [event] + existing
+    payload = payload[: keep]
+    try:
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    except Exception:
         pass
 
 

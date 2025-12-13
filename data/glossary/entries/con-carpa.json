@@ -1,0 +1,60 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/con-carpa/con_carpa.mp3?v=1765638617",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">In a discreet or low-key way, without drawing attention.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">De manera discreta, cuidadosa o sin llamar la atención.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "low-key",
+        "discreetly",
+        "be discreet",
+        "keep it subtle"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/con-carpa/s1/con_carpa_ex_01.mp3?v=1765638618",
+          "en": "`Discreetly`. No, no, no — too obvious, discreetly, come on.",
+          "es": "`Con carpa`. No, no, no, grosero, con carpa, dale.",
+          "linked_terms": [
+            "dale"
+          ],
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_adverbial",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "con-carpa",
+  "word": "con carpa"
+}

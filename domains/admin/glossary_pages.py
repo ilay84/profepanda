@@ -234,6 +234,19 @@ def admin_glossary_create():
             pos_catalog=pos_catalog,
             ppx_pos_aliases=pos_aliases,
         ), 400
+    try:
+        countries_union = []
+        for s in (data.get('senses') or []):
+            countries_union.extend([c for c in (s.get('countries') or []) if c])
+        countries_union = sorted(set(countries_union))
+        glossary.record_activity({
+            "kind": "entry_created",
+            "slug": data.get("slug") or slug,
+            "word": data.get("word") or data.get("slug") or slug,
+            "countries": countries_union,
+        })
+    except Exception:
+        pass
     return redirect(url_for('admin.admin_glossary_edit', slug=slug))
 
 
@@ -262,9 +275,11 @@ def admin_glossary_edit(slug: str):
 @login_required
 def admin_glossary_update(slug: str):
     from app import glossary_store as glossary
+    import copy
     data = glossary.load_entry(slug) or {}
     if not data:
         abort(404)
+    prev_entry = copy.deepcopy(data)
     f = request.form
     word = (f.get('word') or '').strip()
     senses_json = (f.get('senses_json') or '').strip()
@@ -336,6 +351,45 @@ def admin_glossary_update(slug: str):
             pos_catalog=pos_catalog,
             ppx_pos_aliases=pos_aliases,
         ), 400
+    try:
+        countries_union = []
+        for s in (data.get('senses') or []):
+            countries_union.extend([c for c in (s.get('countries') or []) if c])
+        countries_union = sorted(set(countries_union))
+        glossary.record_activity({
+            "kind": "entry_updated",
+            "slug": data.get("slug") or slug,
+            "word": data.get("word") or data.get("slug") or slug,
+            "countries": countries_union,
+        })
+        prev_map = {s.get('id'): s for s in (prev_entry.get('senses') or []) if isinstance(s, dict)}
+        for idx, s in enumerate(data.get('senses') or [], start=1):
+            sid = s.get('id')
+            old = prev_map.get(sid)
+            if not old:
+                glossary.record_activity({
+                    "kind": "sense_added",
+                    "slug": data.get("slug") or slug,
+                    "word": data.get("word") or data.get("slug") or slug,
+                    "sense_id": sid,
+                    "sense_num": idx,
+                    "countries": countries_union,
+                })
+                continue
+            old_examples = old.get('examples') or []
+            new_examples = s.get('examples') or []
+            if len(new_examples) > len(old_examples):
+                glossary.record_activity({
+                    "kind": "example_added",
+                    "slug": data.get("slug") or slug,
+                    "word": data.get("word") or data.get("slug") or slug,
+                    "sense_id": sid,
+                    "sense_num": idx,
+                    "example_num": len(new_examples),
+                    "countries": countries_union,
+                })
+    except Exception:
+        pass
     # If slug changed, migrate media folders and remove old JSON
     if new_slug != slug:
         try:

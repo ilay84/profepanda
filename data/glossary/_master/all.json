@@ -1057,6 +1057,66 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/con-carpa/con_carpa.mp3?v=1765638617",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<p><span style=\"font-weight: normal;\">In a discreet or low-key way, without drawing attention.</span></p>",
+        "definition_es": "<p><span style=\"font-weight: normal;\">De manera discreta, cuidadosa o sin llamar la atención.</span></p>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "low-key",
+          "discreetly",
+          "be discreet",
+          "keep it subtle"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/con-carpa/s1/con_carpa_ex_01.mp3?v=1765638618",
+            "en": "`Discreetly`. No, no, no — too obvious, discreetly, come on.",
+            "es": "`Con carpa`. No, no, no, grosero, con carpa, dale.",
+            "linked_terms": [
+              "dale"
+            ],
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "locucion_adverbial",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "con-carpa",
+    "word": "con carpa"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/conchudo/conchudo.mp3",
     "senses": [
       {
@@ -1310,6 +1370,65 @@
     ],
     "slug": "crique",
     "word": "crique"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/dale/dale.mp3?v=1765637831",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<p><span style=\"font-weight: normal;\">Expression used to urge or press someone to act, especially to do something expected.</span></p>",
+        "definition_es": "<p><span style=\"font-weight: normal;\">Expresión usada para insistir o apurar a alguien para que actúe, especialmente para que cumpla con algo esperado.</span></p>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "come on",
+          "let's go",
+          "alright then"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/dale/s1/dale_ex_01.mp3?v=1765637832",
+            "en": "`Come on`, that’s four grand. `Let's go`.",
+            "es": "`Dale`, son cuatro lucas. `Dale`.",
+            "linked_terms": [
+              "luca"
+            ],
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "interjeccion",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "dale",
+    "word": "dale"
   },
   {
     "alt_spellings": [],
@@ -2580,6 +2699,64 @@
     ],
     "slug": "living",
     "word": "living"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/luca/luca.mp3?v=1765637421",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<p><span style=\"font-weight: normal;\">Monetary unit meaning one thousand, usually pesos or dollars.</span></p>",
+        "definition_es": "<p><span style=\"font-weight: normal;\">Unidad monetaria informal que equivale a mil, generalmente pesos o dólares.</span></p>",
+        "domain": [
+          "economia"
+        ],
+        "equivalents_en": [
+          "a grand",
+          "a thousand"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/luca/s1/luca_ex_01.mp3?v=1765637421",
+            "en": "Alright, that’s four `grand`. Come on.",
+            "es": "Dale, son cuatro `lucas`. Dale.",
+            "linked_terms": [
+              "dale"
+            ],
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "lucas",
+          "fem_sg": "luca",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "luca",
+    "word": "luca"
   },
   {
     "alt_spellings": [],

@@ -278,8 +278,19 @@ const LABELS = (window.PPX_LABELS || {});
       const store = cache.types[type] = cache.types[type] || {};
       Object.entries(data||{}).forEach(([k,v])=>{
         if (!v || k === 'type') return;
+        const val = (v || '').toString().trim();
+        if (val.length < 4) return; // ignore short/partial fragments
         const arr = store[k] = store[k] || [];
-        if (!arr.includes(v)) arr.push(v);
+        const lowerVal = val.toLowerCase();
+        // If a longer value already exists that starts with this, skip adding the shorter
+        if (arr.some(x => (x||'').toString().toLowerCase().startsWith(lowerVal) && (x||'').length > val.length)) return;
+        // Prune shorter prefixes when adding a longer finalized value
+        const pruned = arr.filter(x => {
+          const lx = (x||'').toString().toLowerCase();
+          return !(lowerVal.startsWith(lx) && x.length < val.length);
+        });
+        if (!pruned.includes(val)) pruned.push(val);
+        store[k] = pruned;
       });
       cache._lastType = type;
       persist();
@@ -295,7 +306,34 @@ const LABELS = (window.PPX_LABELS || {});
     function suggestions(type, key){
       if (!cache.types || !type || !key) return [];
       const arr = (cache.types[type] && cache.types[type][key]) || [];
-      return Array.isArray(arr) ? arr : [];
+      if (!Array.isArray(arr)) return [];
+      // Only show finalized values (length >= 4), dedupe, and drop prefixes if a longer value exists
+      let list = [];
+      const seen = new Map(); // lower -> canonical
+      arr.forEach(v => {
+        const val = (v||'').toString().trim();
+        if (val.length < 4) return;
+        const low = val.toLowerCase();
+        if (!seen.has(low)){
+          seen.set(low, val);
+          list.push(val);
+        }
+      });
+      // Remove any value that is a prefix of a longer one
+      list = list.filter(v => {
+        const low = v.toLowerCase();
+        return !list.some(other => {
+          if (other === v) return false;
+          const lo = other.toLowerCase();
+          return lo.startsWith(low) && lo.length > low.length;
+        });
+      });
+      // Persist cleaned list back to cache to avoid re-showing fragments
+      try{
+        cache.types[type][key] = list;
+        persist();
+      }catch(_){}
+      return list;
     }
     function lastType(){
       return cache._lastType || '';
@@ -565,19 +603,33 @@ const LABELS = (window.PPX_LABELS || {});
       });
       return payload;
     }
-    function persistSource(){
+    function persistSource(evtType){
       const cur = collectSource(currentType || sourceType.value);
-      if (cur){ rowSourceCache = cur; SourceCache.remember(cur.type, cur); }
+      if (!cur) return;
+      // Only remember meaningful values (avoid letter-by-letter spam)
+      let hasValue = false;
+      Object.keys(cur).forEach(key=>{
+        if (key === 'type') return;
+        const val = (cur[key] || '').toString().trim();
+        if (val.length >= 2){
+          cur[key] = val;
+          hasValue = true;
+        } else {
+          delete cur[key];
+        }
+      });
+      if (!hasValue) return;
+      rowSourceCache = cur;
+      SourceCache.remember(cur.type, cur);
     }
 
     sourceType.addEventListener('change', ()=>{
       // Save what was typed for the previous type before swapping fields
-      persistSource();
+      persistSource('change');
       currentType = sourceType.value || '';
       renderSource(currentType, (rowSourceCache && rowSourceCache.type === currentType) ? rowSourceCache : null);
     });
-    sourceFields.addEventListener('input', ()=> persistSource(), true);
-    sourceFields.addEventListener('blur', ()=> persistSource(), true);
+    sourceFields.addEventListener('blur', ()=> persistSource('blur'), true);
 
     // Linked glossary terms (per example) with typeahead
     const linkedWrap = h('div',{style:'display:flex; flex-direction:column; gap:.35rem; margin-top:.35rem;'});

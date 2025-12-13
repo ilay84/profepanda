@@ -33,6 +33,17 @@
       .rg-panels{padding:1rem;}
       .rg-list-area{display:flex;flex-direction:column;gap:0;}
       .rg-entry-list{display:flex;flex-direction:column;gap:.5rem;}
+      .rg-stats-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap;}
+      .rg-stat-pill{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .7rem;border-radius:999px;border:1px solid #e2e8f0;background:#f8fafc;font-weight:700;font-size:.9rem;color:#0f172a;}
+      .rg-recent-btn{display:inline-flex;align-items:center;gap:.35rem;}
+      .rg-sheet{position:fixed;left:0;right:0;bottom:0;top:auto;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -12px 32px rgba(0,0,0,.18);transform:translateY(110%);transition:transform .22s ease;z-index:99;max-height:78vh;display:flex;flex-direction:column;}
+      .rg-sheet.open{transform:translateY(0);}
+      .rg-sheet-header{padding:1rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem;border-bottom:1px solid #e5e7eb;}
+      .rg-sheet-body{overflow:auto;padding:.5rem 1rem 1rem;}
+      .rg-recent-item{padding:.65rem 0;border-bottom:1px solid #eef1f6;}
+      .rg-recent-item:last-child{border-bottom:none;}
+      .rg-recent-kind{display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .55rem;border-radius:999px;font-size:.8rem;font-weight:700;border:1px solid #e2e8f0;background:#f8fafc;color:#334155;}
+      .rg-recent-meta{font-size:.85rem;color:#475569;}
       .rg-entry-row{padding:.85rem 0;border-bottom:1px solid #edf0f6;display:flex;flex-direction:column;gap:.25rem;}
       .rg-entry-row:last-child{border-bottom:none;}
       .rg-entry-word{font-weight:700;color:#4f46e5;font-family:'Montserrat',var(--ppx-font),sans-serif;font-size:1.1rem;text-decoration:none;}
@@ -170,6 +181,18 @@
           </div>
         </header>
 
+        <div id="rg-stats-card" style="display:none; margin:.25rem 1rem .2rem; padding:.35rem 0;">
+          <div class="rg-stats-row">
+            <div style="display:flex; flex-wrap:wrap; gap:.35rem; align-items:center;">
+              <span class="rg-stat-pill">{{ t('Entradas','Entries', app_lang) }}: <strong id="rg-stat-total">-</strong></span>
+            </div>
+            <button id="rg-recent-open" class="ppx-btn ppx-btn--subtle rg-recent-btn" type="button">
+              <img src="{{ url_for('static', filename='assets/icons/updates.svg') }}" alt="" style="width:18px; height:18px;">
+              <span>{{ t('Adiciones recientes','Recent additions', app_lang) }}</span>
+            </button>
+          </div>
+        </div>
+
         <div id="rg-letter-row" class="rg-letter-row" style="display:none;"></div>
 
         <div id="rg-panels" class="rg-panels">
@@ -185,6 +208,17 @@
       </section>
 
       <div id="rg-filters-backdrop"></div>
+      <div id="rg-recent-sheet" class="rg-sheet">
+        <div class="rg-sheet-header">
+          <div>
+            <div style="font-weight:700;">{{ t('Actualizaciones recientes','Recent updates', app_lang) }}</div>
+            <div id="rg-recent-scope" class="ppx-muted" style="font-size:.9rem;"></div>
+          </div>
+          <button id="rg-recent-close" class="ppx-btn ppx-btn--subtle" type="button">{{ t('Cerrar','Close', app_lang) }}</button>
+        </div>
+        <div id="rg-recent-body" class="rg-sheet-body">
+        </div>
+      </div>
       <aside id="rg-filters-pane" class="ppx-card" style="padding:.75rem; display:none; flex-direction:column; gap:.5rem; position:sticky; top:1rem; align-self:start;">
         <div class="rg-filter-header">
           <div class="rg-filter-title">
@@ -238,6 +272,13 @@
     const loadMoreBtn = document.getElementById('rg-load-more');
     const loadAllBtn = document.getElementById('rg-load-all');
     const filtersClearButton = document.getElementById('rg-filters-clear');
+    const statsCard = document.getElementById('rg-stats-card');
+    const statTotalEl = document.getElementById('rg-stat-total');
+    const recentOpenBtn = document.getElementById('rg-recent-open');
+    const recentSheet = document.getElementById('rg-recent-sheet');
+    const recentBody = document.getElementById('rg-recent-body');
+    const recentCloseBtn = document.getElementById('rg-recent-close');
+    const recentScope = document.getElementById('rg-recent-scope');
     const translations = {
       loading: '{{ t('Cargando entradas...','Loading entries...', app_lang) }}',
       noEntries: '{{ t('No hay entradas para mostrar.', 'No entries to show.', app_lang) }}'
@@ -294,7 +335,9 @@
         source_title: []
       },
       filterOptions: {},
-      filtersOpen: false
+      filtersOpen: false,
+      statsTotal: null,
+      recentItems: []
     };
     const BROWSE_STATE_KEY = 'ppx_glossary_browse';
     const savedBrowse = (function(){ try{ return JSON.parse(localStorage.getItem(BROWSE_STATE_KEY)||'{}'); }catch(_){ return {}; } })();
@@ -335,6 +378,111 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       });
+    }
+
+    function renderStats(){
+      if (!statsCard) return;
+      if (!state.scope){
+        statsCard.style.display = 'none';
+        return;
+      }
+      statsCard.style.display = '';
+      if (statTotalEl) statTotalEl.textContent = (state.statsTotal == null) ? '-' : state.statsTotal;
+    }
+
+    function kindLabel(kind){
+      switch(kind){
+        case 'entry_created': return '{{ t('Nueva entrada','New entry', app_lang) }}';
+        case 'entry_updated': return '{{ t('Entrada actualizada','Entry updated', app_lang) }}';
+        case 'sense_added': return '{{ t('Nuevo sentido','New sense', app_lang) }}';
+        case 'example_added': return '{{ t('Nuevo ejemplo','New example', app_lang) }}';
+        default: return kind;
+      }
+    }
+
+    function renderRecent(){
+      if (!recentBody) return;
+      recentBody.innerHTML = '';
+      if (!state.recentItems.length){
+        recentBody.innerHTML = `<p class="ppx-muted" style="margin:.5rem 0;">{{ t('Sin actividad reciente','No recent activity', app_lang) }}</p>`;
+        return;
+      }
+      // Deduplicate by slug, keep only most recent per entry
+      const seen = new Set();
+      state.recentItems.forEach(item => {
+        const slugKey = item.slug || '';
+        if (!slugKey || seen.has(slugKey)) return;
+        seen.add(slugKey);
+        const row = document.createElement('div');
+        row.className = 'rg-recent-item';
+        const title = document.createElement('div');
+        title.style.display = 'flex';
+        title.style.alignItems = 'center';
+        title.style.justifyContent = 'space-between';
+        title.style.gap = '.5rem';
+        const word = document.createElement('strong');
+        word.textContent = item.word || item.slug || '';
+        const pill = document.createElement('span');
+        pill.className = 'rg-recent-kind';
+        pill.textContent = kindLabel(item.kind);
+        title.appendChild(word);
+        title.appendChild(pill);
+        const meta = document.createElement('div');
+        meta.className = 'rg-recent-meta';
+        const ts = item.ts ? new Date(item.ts) : null;
+        const tsText = ts ? ts.toLocaleString() : '';
+        const scope = item.countries && item.countries.length ? item.countries.join(', ') : '';
+        const metaRow = document.createElement('div');
+        metaRow.style.display = 'flex';
+        metaRow.style.alignItems = 'center';
+        metaRow.style.gap = '.35rem';
+        if (scope){
+          const flag = document.createElement('img');
+          flag.src = `${staticBase}assets/flags/${scope.split(',')[0].trim().toLowerCase()}.svg`;
+          flag.alt = scope;
+          flag.style.width = '18px';
+          flag.style.height = '12px';
+          flag.style.objectFit = 'cover';
+          flag.style.border = '1px solid #e2e8f0';
+          flag.style.borderRadius = '3px';
+          metaRow.appendChild(flag);
+          const scopeText = document.createElement('span');
+          scopeText.textContent = scope;
+          metaRow.appendChild(scopeText);
+        }
+        if (tsText){
+          const timeText = document.createElement('span');
+          timeText.textContent = tsText;
+          metaRow.appendChild(timeText);
+        }
+        meta.appendChild(metaRow);
+        const link = document.createElement('a');
+        link.href = `?entry=${encodeURIComponent(item.slug)}`;
+        link.textContent = '{{ t('Abrir entrada','Open entry', app_lang) }}';
+        link.className = 'rg-open-link';
+        row.appendChild(title);
+        row.appendChild(meta);
+        row.appendChild(link);
+        recentBody.appendChild(row);
+      });
+    }
+
+    async function loadStats(){
+      if (!state.scope) return;
+      const params = new URLSearchParams();
+      if (state.scope !== 'ALL') params.append('country', state.scope);
+      const data = await fetchJson(`/glossary/api/stats?${params.toString()}`);
+      state.statsTotal = (data && typeof data.total === 'number') ? data.total : null;
+      renderStats();
+    }
+
+    async function loadRecent(){
+      if (!state.scope) return;
+      const params = new URLSearchParams();
+      if (state.scope !== 'ALL') params.append('country', state.scope);
+      const data = await fetchJson(`/glossary/api/recent?${params.toString()}`);
+      state.recentItems = (data && Array.isArray(data.items)) ? data.items : [];
+      renderRecent();
     }
 
     function initFilterSections(){
@@ -684,6 +832,10 @@
       setCountryTitle(label, code);
       showGlossary();
       saveBrowseState();
+      state.statsTotal = null;
+      renderStats();
+      loadStats().catch(()=>{});
+      loadRecent().catch(()=>{});
       if (!opts.skipRequest){
         requestEntries();
       }
@@ -729,6 +881,20 @@
         if (bodyEl){
           bodyEl.classList.remove('rg-no-scroll');
         }
+      }
+    }
+
+    function toggleRecentSheet(open){
+      if (!recentSheet) return;
+      recentSheet.classList.toggle('open', !!open);
+      if (recentScope){
+        const lbl = state.scope === 'ALL'
+          ? allLabel
+          : (countryLookup[state.scope]?.[uiLang === 'es' ? 'name_es' : 'name_en'] || state.scope);
+        recentScope.textContent = lbl || '';
+      }
+      if (open){
+        renderRecent();
       }
     }
 
@@ -823,6 +989,16 @@
       filtersBackdrop.addEventListener('click', function(){
         state.filtersOpen = false;
         updateFiltersVisibility();
+      });
+    }
+    if (recentOpenBtn){
+      recentOpenBtn.addEventListener('click', function(){
+        toggleRecentSheet(true);
+      });
+    }
+    if (recentCloseBtn){
+      recentCloseBtn.addEventListener('click', function(){
+        toggleRecentSheet(false);
       });
     }
     if (mobileMql && mobileMql.addEventListener){

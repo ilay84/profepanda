@@ -738,6 +738,38 @@ def glossary_api_list():
     has_more_filtered = (offset + limit) < total
     return jsonify({'ok': True, 'count': total, 'items': slice_filtered, 'has_more': has_more_filtered, 'letters': letters})
 
+
+@public_bp.get('/glossary/api/stats', endpoint='glossary_api_stats')
+def glossary_api_stats():
+    from flask import jsonify, request
+    from app import glossary_store as glossary
+    cfg = glossary.load_config()
+    allowed = cfg.get('enabled_countries') or []
+    country = (request.args.get('country') or '').strip().upper() or None
+    if country == 'ALL':
+        country = None
+    items = glossary.search_entries(q="", country=country, allowed_countries=allowed, limit=None)
+    total = len(items)
+    return jsonify({'ok': True, 'total': total})
+
+
+@public_bp.get('/glossary/api/recent', endpoint='glossary_api_recent')
+def glossary_api_recent():
+    from flask import jsonify, request
+    from app import glossary_store as glossary
+    cfg = glossary.load_config()
+    allowed = set(cfg.get('enabled_countries') or [])
+    country = (request.args.get('country') or '').strip().upper() or None
+    try:
+        limit = max(1, min(50, int(request.args.get('limit') or 10)))
+    except Exception:
+        limit = 10
+    events = glossary.load_recent_activity(limit=limit, country=country)
+    # If country not specified, filter to allowed countries only
+    if not country and allowed:
+        events = [e for e in events if not e.get('countries') or (set(e.get('countries')) & allowed)]
+    return jsonify({'ok': True, 'items': events})
+
 def _enabled_glossary_countries():
     from app import glossary_store as glossary
     cfg = glossary.load_config()

@@ -183,6 +183,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "locucion_adverbial",
+    "slug": "con-carpa",
+    "snippet": "In a discreet or low-key way, without drawing attention.",
+    "word": "con carpa"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "adjetivo",
     "slug": "conchudo",
     "snippet": "Shameless or blatantly inconsiderate in how one behaves.",
@@ -223,6 +232,15 @@
     "slug": "crique",
     "snippet": "Mechanical tool used to lift a vehicle.",
     "word": "crique"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "interjeccion",
+    "slug": "dale",
+    "snippet": "Expression used to urge or press someone to act, especially to do something expected.",
+    "word": "dale"
   },
   {
     "countries": [
@@ -412,6 +430,15 @@
     "slug": "living",
     "snippet": "Borrowed term used in Argentina to mean a home’s living room.",
     "word": "living"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "luca",
+    "snippet": "Monetary unit meaning one thousand, usually pesos or dollars.",
+    "word": "luca"
   },
   {
     "countries": [
