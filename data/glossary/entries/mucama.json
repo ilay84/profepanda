@@ -20,7 +20,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/mucama/mucama_ex_01.mp3?v=1764262224",
+          "audio": "/media/glossary-audio/examples/mucama/s1/mucama_ex_01.mp3?v=1764262224",
           "en": "They found him dressed up like a little `maid`, dead in the house...",
           "es": "Lo encontraron vestido de `mucamita`, muerto en la casa...",
           "source": {
@@ -32,7 +32,7 @@
           }
         },
         {
-          "audio": "/media/glossary-audio/examples/mucama/mucama_ex_02.mp3?v=1764262224",
+          "audio": "/media/glossary-audio/examples/mucama/s1/mucama_ex_02.mp3?v=1764262224",
           "en": "Why are you here posing as a `housekeeper` in one of my neighbor’s homes?",
           "es": "¿Por qué estás acá infiltrándote como `mucama` en la casa de una vecina mía?",
           "source": {

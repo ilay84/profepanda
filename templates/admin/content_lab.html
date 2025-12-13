@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Content Lab . Admin{% endblock %}
+{% block title %}{{ t("Content Lab . Admin", "Content Lab . Admin", app_lang) }}{% endblock %}
 
 {% block admin_nav %}
   {% include "_admin_bar.html" %}
@@ -13,35 +13,36 @@
         <img alt="" src="{{ url_for('static', filename='assets/icons/preview.svg') }}" style="width:32px; height:32px;" loading="lazy">
         <div>
           <div class="ppx-h2" style="margin:0;">Content Lab</div>
-          <div class="ppx-muted" style="margin-top:.15rem;">Sandbox privado para experimentar UI/UX sin afectar prod.</div>
+          <div class="ppx-muted" style="margin-top:.15rem;">{{ t("Sandbox privado para experimentar UI/UX sin afectar prod.", "Private sandbox to experiment with UI/UX without touching prod.", app_lang) }}</div>
         </div>
       </div>
 
       <div style="margin-top:1rem; display:grid; gap:.75rem;">
         <label class="ppx-field">
-          <div class="ppx-label">Recurso de ejemplo</div>
+          <div class="ppx-label">{{ t("Recurso de ejemplo", "Example resource", app_lang) }}</div>
           <select id="lab-resource-select" class="ppx-select"></select>
         </label>
         <label class="ppx-field">
-          <div class="ppx-label">Tema</div>
+          <div class="ppx-label">{{ t("Tema", "Theme", app_lang) }}</div>
           <select id="lab-theme-select" class="ppx-select"></select>
         </label>
         <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
-          <button id="lab-reload" class="ppx-btn">Recargar JSON</button>
-          <button id="lab-snapshot" class="ppx-btn ppx-btn-secondary">Capturar vista</button>
+          <button id="lab-reload" class="ppx-btn">{{ t("Recargar JSON", "Reload JSON", app_lang) }}</button>
+          <button id="lab-snapshot" class="ppx-btn ppx-btn-secondary">{{ t("Capturar vista", "Capture view", app_lang) }}</button>
+          <a class="ppx-btn ppx-btn-secondary" href="{{ url_for('admin.content_lab_map') }}">{{ t("Content Hub", "Content Hub", app_lang) }}</a>
         </div>
         <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
           <label class="ppx-checkbox">
             <input id="lab-toggle-density" type="checkbox">
-            <span>Modo compacto</span>
+            <span>{{ t("Modo compacto", "Compact mode", app_lang) }}</span>
           </label>
           <label class="ppx-checkbox">
             <input id="lab-toggle-mock" type="checkbox" checked>
-            <span>Mocks de servicios (traduccion/progreso)</span>
+            <span>{{ t("Mocks de servicios (traduccion/progreso)", "Mocked services (translation/progress)", app_lang) }}</span>
           </label>
         </div>
         <div class="ppx-muted" style="font-size:13px;">
-          traducciones, progreso y ejercicios usan stubs en este laboratorio. Ajusta tema y variantes para validar visuales.
+          {{ t("Traducciones, progreso y ejercicios usan stubs en este laboratorio. Ajusta tema y variantes para validar visuales.", "Translations, progress, and exercises are stubbed in this lab. Adjust theme and variants to validate visuals.", app_lang) }}
         </div>
       </div>
     </div>
@@ -49,12 +50,12 @@
     <div class="ppx-card" style="padding:1rem; flex: 2 1 640px; min-width:520px;">
       <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
         <div>
-          <div class="ppx-h3" id="lab-resource-title" style="margin:0;">Recurso</div>
+          <div class="ppx-h3" id="lab-resource-title" style="margin:0;">{{ t("Recurso", "Resource", app_lang) }}</div>
           <div class="ppx-muted" id="lab-resource-meta" style="font-size:13px; margin-top:.1rem;"></div>
         </div>
         <div class="ppx-row" style="gap:.5rem; align-items:center;">
-          <span class="ppx-pill" id="lab-theme-pill">Tema</span>
-          <span class="ppx-pill ppx-pill-muted" id="lab-density-pill">Comodo</span>
+          <span class="ppx-pill" id="lab-theme-pill">{{ t("Tema", "Theme", app_lang) }}</span>
+          <span class="ppx-pill ppx-pill-muted" id="lab-density-pill">{{ t("Cómodo", "Comfortable", app_lang) }}</span>
         </div>
       </div>
 
@@ -62,14 +63,14 @@
       <div id="lab-preview" class="lab-preview"></div>
       <div class="ppx-row" style="margin-top:1rem; gap:1rem; flex-wrap:wrap;">
         <div class="ppx-card" style="padding:.75rem 1rem; flex:1 1 240px; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8);">
-          <div class="ppx-h4" style="margin:0 0 .35rem 0;">Progreso simulado</div>
+          <div class="ppx-h4" style="margin:0 0 .35rem 0;">{{ t("Progreso simulado", "Mock progress", app_lang) }}</div>
           <div class="lab-progress-bar">
             <div id="lab-progress-fill" class="lab-progress-fill" style="width:0%;"></div>
           </div>
-          <div class="ppx-muted" id="lab-progress-text" style="font-size:13px; margin-top:.35rem;">0% completado</div>
+          <div class="ppx-muted" id="lab-progress-text" style="font-size:13px; margin-top:.35rem;">{{ t("0% completado", "0% complete", app_lang) }}</div>
         </div>
         <div class="ppx-card" style="padding:.75rem 1rem; flex:1 1 240px;">
-          <div class="ppx-h4" style="margin:0 0 .35rem 0;">Recomendaciones</div>
+          <div class="ppx-h4" style="margin:0 0 .35rem 0;">{{ t("Recomendaciones", "Recommendations", app_lang) }}</div>
           <ul id="lab-recs" style="margin:0; padding-left:18px; color:#0f172a;"></ul>
         </div>
       </div>
@@ -78,23 +79,73 @@
 
   <div class="ppx-card" style="padding:1rem; margin:1rem 0;">
     <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
-      <div class="ppx-h3" style="margin:0;">JSON en vivo</div>
+      <div>
+        <div class="ppx-h3" style="margin:0;">{{ t("Librer\u00eda de bloques", "Block library", app_lang) }}</div>
+        <div class="ppx-muted" style="font-size:13px; margin-top:.1rem;">{{ t("Ver esquemas y archivos base de cada tipo de bloque (solo lectura por ahora).", "View schemas and base files for each block type (read-only for now).", app_lang) }}</div>
+      </div>
+      <button id="lab-block-refresh" class="ppx-btn ppx-btn-secondary" type="button">{{ t("Recargar lista", "Reload list", app_lang) }}</button>
+    </div>
+    <div class="ppx-row" style="gap:1rem; margin-top:.75rem; flex-wrap:wrap;">
+      <label class="ppx-field" style="min-width:240px; flex:1 1 260px;">
+        <div class="ppx-label">{{ t("Tipo de bloque", "Block type", app_lang) }}</div>
+        <select id="lab-block-select" class="ppx-select"></select>
+      </label>
+    </div>
+      <div id="lab-block-detail" class="ppx-card lab-block-detail">
+        <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
+          <div>
+            <div id="lab-block-title" class="ppx-h4" style="margin:0;">—</div>
+            <div id="lab-block-desc" class="ppx-muted" style="font-size:13px; margin-top:.1rem;">—</div>
+          </div>
+        <span id="lab-block-pill" class="ppx-pill">block</span>
+      </div>
+      <div style="margin-top:.75rem;">
+        <div class="ppx-label" style="margin-bottom:.35rem;">{{ t("Archivos relacionados", "Related files", app_lang) }}</div>
+        <ul id="lab-block-files" style="margin:0; padding-left:18px; color:#0f172a;"></ul>
+      </div>
+      <div class="lab-file-viewer">
+        <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; margin-bottom:.35rem;">
+          <div class="ppx-label" style="margin:0;">{{ t("Contenido", "Content", app_lang) }}</div>
+          <span id="lab-file-meta" class="ppx-muted" style="font-size:12px;"></span>
+        </div>
+        <pre id="lab-file-content" class="lab-json lab-file-pre" aria-label="File content" spellcheck="false"></pre>
+        <textarea id="lab-file-editor" class="lab-json lab-file-pre hidden" aria-label="File editor" spellcheck="false"></textarea>
+        <div id="lab-file-actions" class="ppx-row" style="gap:.5rem; margin-top:.35rem; flex-wrap:wrap; display:none;">
+          <button id="lab-file-edit" class="ppx-btn ppx-btn-secondary" type="button">{{ t("Editar schema", "Edit schema", app_lang) }}</button>
+          <button id="lab-file-save" class="ppx-btn" type="button">{{ t("Guardar", "Save", app_lang) }}</button>
+          <button id="lab-file-cancel" class="ppx-btn ppx-btn-secondary" type="button">{{ t("Cancelar", "Cancel", app_lang) }}</button>
+          <span id="lab-file-status" class="ppx-muted" style="font-size:12px;"></span>
+        </div>
+      </div>
+      <div class="lab-block-preview">
+        <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; margin-bottom:.35rem;">
+          <div class="ppx-label" style="margin:0;">{{ t("Vista previa del bloque", "Block preview", app_lang) }}</div>
+          <span id="lab-preview-meta" class="ppx-muted" style="font-size:12px;"></span>
+        </div>
+        <div id="lab-block-preview" class="lab-preview lab-preview-compact"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ppx-card" style="padding:1rem; margin:1rem 0;">
+    <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
+      <div class="ppx-h3" style="margin:0;">{{ t("JSON en vivo", "Live JSON", app_lang) }}</div>
       <div class="ppx-row" style="gap:.5rem;">
-        <button id="lab-fullscreen-json" class="ppx-btn ppx-btn-secondary" type="button">Pantalla completa</button>
-        <button id="lab-toggle-json" class="ppx-btn ppx-btn-secondary" type="button">Ocultar</button>
+        <button id="lab-fullscreen-json" class="ppx-btn ppx-btn-secondary" type="button">{{ t("Pantalla completa", "Fullscreen", app_lang) }}</button>
+        <button id="lab-toggle-json" class="ppx-btn ppx-btn-secondary" type="button">{{ t("Ocultar", "Hide", app_lang) }}</button>
       </div>
     </div>
     <div class="ppx-row" style="gap:.5rem; margin-top:.5rem; flex-wrap:wrap;">
-      <button id="lab-apply-json" class="ppx-btn">Aplicar cambios</button>
-      <button id="lab-download-json" class="ppx-btn ppx-btn-secondary" type="button">Descargar JSON</button>
+      <button id="lab-apply-json" class="ppx-btn">{{ t("Aplicar cambios", "Apply changes", app_lang) }}</button>
+      <button id="lab-download-json" class="ppx-btn ppx-btn-secondary" type="button">{{ t("Descargar JSON", "Download JSON", app_lang) }}</button>
       <label class="ppx-btn ppx-btn-secondary" style="cursor:pointer;">
-        Cargar JSON
+        {{ t("Cargar JSON", "Upload JSON", app_lang) }}
         <input id="lab-upload-json" type="file" accept="application/json" style="display:none;">
       </label>
       <span id="lab-json-status" class="ppx-muted"></span>
     </div>
     <div class="lab-json-shell" id="lab-json-shell">
-      <button id="lab-exit-fullscreen" class="ppx-btn ppx-btn-secondary lab-exit-fullscreen hidden" type="button">Salir de pantalla completa</button>
+      <button id="lab-exit-fullscreen" class="ppx-btn ppx-btn-secondary lab-exit-fullscreen hidden" type="button">{{ t("Salir de pantalla completa", "Exit fullscreen", app_lang) }}</button>
       <div class="lab-json-scroll" id="lab-json-scroll">
         <pre id="lab-json-lines" class="lab-json lab-json-lines"></pre>
         <textarea id="lab-json" class="lab-json lab-json-code" spellcheck="false"></textarea>
@@ -127,8 +178,109 @@
   .lab-callout .lab-callout-title { font-weight: 600; margin-bottom: 6px; }
   .lab-table { width: 100%; border-collapse: collapse; }
   .lab-table th, .lab-table td { border: 1px solid #e2e8f0; padding: 8px; text-align: left; }
+  .lab-table th { background: #bebed6; color: #0f172a; font-weight: 700; }
+  .lab-table tbody tr:nth-child(odd) { background: #ffffff; }
+  .lab-table tbody tr:nth-child(even) { background: #f3f4ff; }
+  .lab-tt {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 120ms ease, transform 120ms ease;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 8px 10px;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    font-size: 13px;
+    max-width: 280px;
+    border: 1px solid rgba(148,163,184,0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lab-tt.show { opacity: 1; transform: translateY(0); }
+  .lab-tt-flag {
+    width: 18px;
+    height: 12px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.6);
+    object-fit: cover;
+  }
+  .lab-translation-mark { cursor: help; }
   .lab-example-audio { margin-top: 8px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
   .lab-pill { display:inline-flex; align-items:center; padding:2px 8px; border-radius:10px; background:#e2e8f0; font-size:12px; }
+  .lab-audio {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    padding:8px 10px;
+    border-radius:12px;
+    flex-wrap:wrap;
+  }
+  .lab-audio-play {
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:none;
+    background:#475dd7;
+    color:inherit;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 12px rgba(71,93,215,0.35);
+    transition: background-color 120ms ease;
+  }
+  .lab-audio-play.is-paused { background:#0ea5e9; }
+  .lab-audio-icon {
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    display: block;
+  }
+  .lab-audio-progress {
+    position:relative;
+    flex:1 1 200px;
+    height:36px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(71,93,215,0.16) 0,
+      rgba(71,93,215,0.16) 4px,
+      rgba(128,172,95,0.12) 4px,
+      rgba(128,172,95,0.12) 8px
+    );
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #e2e8f0;
+  }
+  .lab-audio-fill {
+    position:absolute;
+    left:0; top:0; bottom:0;
+    background:linear-gradient(90deg,#475dd7,#80ac5f);
+    width:0%;
+    transition:width 80ms linear;
+  }
+  .lab-audio-speed {
+    border:1px solid #d0d7e2;
+    background:#fff;
+    border-radius:10px;
+    padding:6px 28px 6px 10px;
+    cursor:pointer;
+    font-weight:600;
+    color:#0f172a;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background-image: linear-gradient(45deg, transparent 50%, #475dd7 50%), linear-gradient(135deg, #475dd7 50%, transparent 50%);
+    background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+  }
   .lab-json-shell { position: relative; border-radius:12px; border:1px solid #0f172a; overflow:hidden; }
   .lab-json-shell.fullscreen {
     position: fixed;
@@ -153,6 +305,57 @@
   .hidden { display:none !important; }
   .lab-progress-bar { position: relative; width: 100%; height: 10px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
   .lab-progress-fill { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, #475dd7, #80ac5f); }
+  .lab-block-detail {
+    padding: 1rem;
+    background:#f8fafc;
+    border:1px dashed var(--ppx-line,#d4d4d8);
+    margin-top:.75rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .lab-block-detail .ppx-row { flex-wrap: wrap; }
+  .lab-file-viewer {
+    margin-top: .75rem;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    background:#fff;
+    padding:.5rem .75rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .lab-file-pre {
+    background:#0f172a;
+    color:#e2e8f0;
+    max-height:260px;
+    overflow:auto;
+    border-radius:8px;
+    padding:10px;
+    margin:0;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 160px;
+    width: 100%;
+    resize: vertical;
+  }
+  .lab-block-preview {
+    margin-top: .75rem;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    background:#fff;
+    padding:.5rem .75rem 1rem .75rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .lab-preview-compact {
+    border: 1px dashed var(--ppx-line, #d4d4d8);
+    border-radius: 12px;
+    padding: 12px;
+    background: #fbfcff;
+  }
   .lab-bubble {
     position: absolute;
     background: #0f172a;
@@ -208,18 +411,140 @@
     listResources: "/admin/api/content-lab/resources",
     listThemes: "/admin/api/content-lab/themes",
     resource: (id) => `/admin/api/content-lab/resources/${encodeURIComponent(id)}`,
-    theme: (id) => `/admin/api/content-lab/themes/${encodeURIComponent(id)}`
+    theme: (id) => `/admin/api/content-lab/themes/${encodeURIComponent(id)}`,
+    listBlocks: "/admin/api/content-lab/blocks",
+    block: (id) => `/admin/api/content-lab/blocks/${encodeURIComponent(id)}`,
+    blockFile: (id) => `/admin/api/content-lab/blocks/${encodeURIComponent(id)}/file`
   };
 
   const resources = {{ lab_resources|tojson }};
   const themes = {{ lab_themes|tojson }};
+  const canEditSchema = {{ "true" if lab_can_edit_schemas else "false" }};
   const state = {
     resourceId: resources[0]?.id || "",
     themeId: themes[0]?.id || "",
     resourceData: null,
     themeData: null,
-    compact: false
+    compact: false,
+    blockRegistry: [],
+    blockId: ""
   };
+
+  const lang = "{{ app_lang }}";
+  const copy = {
+    es: {
+      noResources: "Sin recursos",
+      themeLabel: "Tema",
+      compact: "Compacto",
+      comfortable: "Cómodo",
+      selectModule: "Selecciona un modulo para previsualizar.",
+      noModules: "Este recurso no tiene modulos.",
+      moduleFallback: "Modulo",
+      resourceFallback: "Recurso",
+      primaryLabel: "Primario",
+      levelLabel: "Nivel",
+      modulesLabel: "modulos",
+      progressComplete: (percent) => `${percent}% completado (simulado)`,
+      recPrefix: "Revisar modulo",
+      noRecs: "Sin recomendaciones",
+      unknownRenderer: "Sin renderer para tipo",
+      loadError: "Error cargando recurso o tema.",
+      appliedLocal: "Aplicado localmente (no guardado en disco)",
+      jsonMustBeObject: "JSON debe ser un objeto.",
+      missingSchemaVersion: "Falta schema_version.",
+      missingResourceId: "Falta resource_id.",
+      modulesMustBeArray: "modules debe ser un array.",
+      missingModuleId: (idx) => `Modulo ${idx} sin module_id.`,
+      blocksMustBeArray: (id) => `Modulo ${id}: blocks debe ser array.`,
+      jsonErrorPrefix: "Error de JSON",
+      downloadFailPrefix: "No se pudo descargar",
+      uploadedStatusPrefix: "Cargado",
+      uploadFailPrefix: "Error al cargar",
+      toggleShow: "Mostrar",
+      toggleHide: "Ocultar",
+      fullscreenOpen: "Pantalla completa",
+      fullscreenClose: "Cerrar pantalla completa",
+      snapshotAlert: "Captura de vista: exportar a PNG/PDF esta en backlog.",
+      translate: "Traducir",
+      translationTitle: "Traducción (demo)",
+      translationEmpty: "(sin selección)",
+      segments: "Segmentos",
+      segmentsNA: "n/d",
+      translationSuffix: "(demo) traducción",
+      exerciseType: "Tipo",
+      exerciseDefault: "Usa motor de ejercicios existente",
+      blockNone: "Sin bloques en el registro",
+      blockSelectPrompt: "Selecciona un bloque para ver detalles.",
+      blockNoFiles: "Sin archivos asociados",
+      fileKindSchema: "Schema",
+      fileKindCSS: "CSS",
+      fileKindJS: "JS",
+      fileKindExample: "Ejemplo",
+      fileKindOther: "Otro",
+      fileStatusStub: "stub",
+      fileStatusInline: "inline",
+      fileStatusExisting: "existente",
+      fileContentUnavailable: "Contenido no disponible para este archivo",
+      fileLoadingError: "No se pudo cargar el contenido"
+    },
+    en: {
+      noResources: "No resources",
+      themeLabel: "Theme",
+      compact: "Compact",
+      comfortable: "Comfortable",
+      selectModule: "Select a module to preview.",
+      noModules: "This resource has no modules.",
+      moduleFallback: "Module",
+      resourceFallback: "Resource",
+      primaryLabel: "Primary",
+      levelLabel: "Level",
+      modulesLabel: "modules",
+      progressComplete: (percent) => `${percent}% complete (mock)`,
+      recPrefix: "Review module",
+      noRecs: "No recommendations",
+      unknownRenderer: "No renderer for type",
+      loadError: "Error loading resource or theme.",
+      appliedLocal: "Applied locally (not saved to disk)",
+      jsonMustBeObject: "JSON must be an object.",
+      missingSchemaVersion: "schema_version is required.",
+      missingResourceId: "resource_id is required.",
+      modulesMustBeArray: "modules must be an array.",
+      missingModuleId: (idx) => `Module ${idx} is missing module_id.`,
+      blocksMustBeArray: (id) => `Module ${id}: blocks must be an array.`,
+      jsonErrorPrefix: "JSON error",
+      downloadFailPrefix: "Download failed",
+      uploadedStatusPrefix: "Uploaded",
+      uploadFailPrefix: "Upload failed",
+      toggleShow: "Show",
+      toggleHide: "Hide",
+      fullscreenOpen: "Fullscreen",
+      fullscreenClose: "Exit fullscreen",
+      snapshotAlert: "Capture view: exporting to PNG/PDF is on the backlog.",
+      translate: "Translate",
+      translationTitle: "Translation (demo)",
+      translationEmpty: "(no selection)",
+      segments: "Segments",
+      segmentsNA: "n/a",
+      translationSuffix: "(demo) translation",
+      exerciseType: "Type",
+      exerciseDefault: "Uses existing exercise engine",
+      blockNone: "No blocks in registry",
+      blockSelectPrompt: "Select a block to see details.",
+      blockNoFiles: "No related files",
+      fileKindSchema: "Schema",
+      fileKindCSS: "CSS",
+      fileKindJS: "JS",
+      fileKindExample: "Example",
+      fileKindOther: "Other",
+      fileStatusStub: "stub",
+      fileStatusInline: "inline",
+      fileStatusExisting: "existing",
+      fileContentUnavailable: "Content not available for this file",
+      fileLoadingError: "Could not load content"
+    }
+  };
+  const tx = (key) => (copy[lang] && copy[lang][key]) || copy.es[key] || key;
+  const preferLang = (enVal, esVal, fallback = "") => (lang === "en" ? (enVal || esVal || fallback) : (esVal || enVal || fallback));
 
   const els = {
     resourceSelect: document.getElementById("lab-resource-select"),
@@ -248,6 +573,23 @@
     progressFill: document.getElementById("lab-progress-fill"),
     progressText: document.getElementById("lab-progress-text"),
     recs: document.getElementById("lab-recs"),
+    blockSelect: document.getElementById("lab-block-select"),
+    blockRefresh: document.getElementById("lab-block-refresh"),
+    blockTitle: document.getElementById("lab-block-title"),
+    blockDesc: document.getElementById("lab-block-desc"),
+    blockPill: document.getElementById("lab-block-pill"),
+    blockFiles: document.getElementById("lab-block-files"),
+    fileMeta: document.getElementById("lab-file-meta"),
+    fileContent: document.getElementById("lab-file-content"),
+    fileEditor: document.getElementById("lab-file-editor"),
+    fileActions: document.getElementById("lab-file-actions"),
+    fileEditBtn: document.getElementById("lab-file-edit"),
+    fileSaveBtn: document.getElementById("lab-file-save"),
+    fileCancelBtn: document.getElementById("lab-file-cancel"),
+    fileStatus: document.getElementById("lab-file-status"),
+    blockPreview: document.getElementById("lab-block-preview"),
+    blockPreviewMeta: document.getElementById("lab-preview-meta"),
+    tooltip: null,
     bubble: null,
     translation: null
   };
@@ -257,12 +599,13 @@
     items.forEach((item) => {
       const opt = document.createElement("option");
       opt.value = item.id;
-      opt.textContent = item[labelKey] || item.id;
+      const label = preferLang(item.title_en, item.title_es, item[labelKey] || item.id);
+      opt.textContent = label;
       select.appendChild(opt);
     });
     if (items.length === 0) {
       const opt = document.createElement("option");
-      opt.textContent = "Sin recursos";
+      opt.textContent = tx("noResources");
       opt.value = "";
       select.appendChild(opt);
     }
@@ -273,6 +616,269 @@
   if (state.resourceId) { els.resourceSelect.value = state.resourceId; }
   if (state.themeId) { els.themeSelect.value = state.themeId; }
 
+  function renderBlockFiles(entry, files) {
+    els.blockFiles.innerHTML = "";
+    els.fileStatus.textContent = "";
+    if (!files || !files.length) {
+      const li = document.createElement("li");
+      li.textContent = tx("blockNoFiles");
+      els.blockFiles.appendChild(li);
+      renderFileContent(null);
+      renderBlockPreview(entry, []);
+      return;
+    }
+    const kindLabel = (kind) => {
+      switch (kind) {
+        case "schema": return copy[lang].fileKindSchema;
+        case "css": return copy[lang].fileKindCSS;
+        case "js": return copy[lang].fileKindJS;
+        case "example": return copy[lang].fileKindExample;
+        default: return copy[lang].fileKindOther;
+      }
+    };
+    const statusLabel = (status) => {
+      switch (status) {
+        case "stub": return copy[lang].fileStatusStub;
+        case "inline": return copy[lang].fileStatusInline;
+        case "existing": return copy[lang].fileStatusExisting;
+        default: return status || "";
+      }
+    };
+    files.forEach((file) => {
+      const li = document.createElement("li");
+      const label = kindLabel(file.kind);
+      const status = statusLabel(file.status);
+      li.textContent = status ? `${label}: ${file.path} (${status})` : `${label}: ${file.path}`;
+      li.style.cursor = "pointer";
+      li.addEventListener("click", () => renderFileContent(file));
+      els.blockFiles.appendChild(li);
+    });
+    renderFileContent(files[0]);
+    renderBlockPreview(entry, files);
+  }
+
+  function renderBlockDetail(entry) {
+    if (!entry) {
+      els.blockTitle.textContent = tx("blockNone");
+      els.blockDesc.textContent = tx("blockSelectPrompt");
+      els.blockPill.textContent = "—";
+      renderBlockFiles(null, []);
+      return;
+    }
+    const title = preferLang(entry.title_en, entry.title_es, entry.type || "-");
+    const desc = preferLang(entry.description_en, entry.description_es, "");
+    els.blockTitle.textContent = title;
+    els.blockDesc.textContent = desc || tx("blockSelectPrompt");
+    els.blockPill.textContent = entry.type || entry.id || "block";
+    renderBlockFiles(entry, entry.files || []);
+  }
+
+  function loadBlockDetail(id, fallback) {
+    fetch(api.block(id))
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("block fetch failed"))))
+      .then((data) => renderBlockDetail(data))
+      .catch(() => renderBlockDetail(fallback || null));
+  }
+
+  function ensureTooltip() {
+    if (els.tooltip) return;
+    const tip = document.createElement("div");
+    tip.className = "lab-tt";
+    const flag = document.createElement("img");
+    flag.className = "lab-tt-flag";
+    flag.alt = "US";
+    flag.src = "{{ url_for('static', filename='assets/flags/usa.svg') }}";
+    const text = document.createElement("span");
+    text.id = "lab-tt-text";
+    tip.appendChild(flag);
+    tip.appendChild(text);
+    document.body.appendChild(tip);
+    els.tooltip = tip;
+  }
+
+  function showTooltip(target) {
+    if (!target || !target.dataset.translation) return;
+    ensureTooltip();
+    const tip = els.tooltip;
+    const text = tip.querySelector("#lab-tt-text");
+    text.textContent = target.dataset.translation;
+    // Temporarily show to measure
+    tip.classList.add("show");
+    tip.style.opacity = "0";
+    tip.style.display = "inline-flex";
+    const rect = target.getBoundingClientRect();
+    const tipRect = tip.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    let left = rect.left + rect.width / 2 - tipRect.width / 2 + window.scrollX;
+    left = Math.max(8 + window.scrollX, Math.min(left, viewportWidth - tipRect.width - 8 + window.scrollX));
+    let top = rect.top + window.scrollY - tipRect.height - 8;
+    if (top < window.scrollY + 8) {
+      top = rect.bottom + window.scrollY + 8;
+    }
+    tip.style.left = `${left}px`;
+    tip.style.top = `${top}px`;
+    tip.style.opacity = "1";
+  }
+
+  function hideTooltip() {
+    if (els.tooltip) {
+      els.tooltip.classList.remove("show");
+      els.tooltip.style.display = "none";
+    }
+  }
+
+  function setEditMode(active) {
+    const file = state.currentFile;
+    const allowedKinds = new Set(["schema", "css", "example"]);
+    const canEdit = !!(canEditSchema && file && allowedKinds.has(file.kind) && file.path);
+    els.fileActions.style.display = canEdit ? "flex" : "none";
+    els.fileSaveBtn.disabled = !active;
+    els.fileCancelBtn.disabled = !active;
+    els.fileEditBtn.disabled = active;
+    els.fileStatus.textContent = "";
+    if (active) {
+      els.fileContent.classList.add("hidden");
+      els.fileEditor.classList.remove("hidden");
+    } else {
+      els.fileContent.classList.remove("hidden");
+      els.fileEditor.classList.add("hidden");
+      if (file && file.content) {
+        els.fileContent.textContent = file.content;
+      }
+    }
+  }
+
+  function saveSchema() {
+    const file = state.currentFile;
+    if (!file || !file.path) return;
+    els.fileStatus.textContent = "";
+    els.fileSaveBtn.disabled = true;
+    fetch(api.blockFile(state.blockId), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path: file.path, content: els.fileEditor.value })
+    }).then(async (res) => {
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || `HTTP ${res.status}`);
+      }
+      els.fileStatus.textContent = copy[lang].appliedLocal;
+      // refresh block to show updated content
+      return fetch(api.block(state.blockId)).then((r) => (r.ok ? r.json() : null));
+    }).then((data) => {
+      if (data) {
+        renderBlockDetail(data);
+      } else {
+        setEditMode(false);
+      }
+    }).catch((err) => {
+      els.fileStatus.textContent = `${copy[lang].fileLoadingError}: ${err.message || err}`;
+      els.fileSaveBtn.disabled = false;
+    }).finally(() => {
+      setEditMode(false);
+    });
+  }
+
+  function renderFileContent(file) {
+    state.currentFile = file || null;
+    setEditMode(false);
+    if (!file) {
+      els.fileMeta.textContent = "";
+      els.fileContent.textContent = tx("blockSelectPrompt");
+      return;
+    }
+    const status = file.status ? ` (${file.status})` : "";
+    els.fileMeta.textContent = `${file.path || ""}${status}`;
+    if (file.content) {
+      els.fileContent.textContent = file.content;
+      els.fileEditor.value = file.content;
+      return;
+    }
+    if (file.error) {
+      els.fileContent.textContent = `${copy[lang].fileLoadingError}: ${file.error}`;
+      return;
+    }
+    els.fileContent.textContent = copy[lang].fileContentUnavailable;
+  }
+
+  function parseExampleBlock(files) {
+    if (!files) return null;
+    const example = files.find((f) => f.kind === "example" && f.content);
+    if (!example || !example.content) return null;
+    try {
+      const targetId = (example.path || "").split("#", 2)[1] || "";
+      const data = JSON.parse(example.content);
+      const modules = data.modules || [];
+      for (const mod of modules) {
+        for (const blk of (mod.blocks || [])) {
+          if (!targetId || blk.id === targetId) return blk;
+        }
+      }
+      return null;
+    } catch (err) {
+      console.warn("parseExampleBlock error", err);
+      return null;
+    }
+  }
+
+  function renderBlockPreview(entry, files) {
+    els.blockPreview.innerHTML = "";
+    els.blockPreviewMeta.textContent = "";
+    const block = parseExampleBlock(files);
+    if (!entry) {
+      els.blockPreview.textContent = tx("blockSelectPrompt");
+      return;
+    }
+    if (!block) {
+      els.blockPreview.textContent = copy[lang].fileContentUnavailable;
+      els.blockPreviewMeta.textContent = copy[lang].blockSelectPrompt;
+      return;
+    }
+    els.blockPreview.appendChild(renderBlock(block));
+    const exampleFile = (files || []).find((f) => f.kind === "example");
+    if (exampleFile) {
+      const status = exampleFile.status ? ` (${exampleFile.status})` : "";
+      els.blockPreviewMeta.textContent = `${exampleFile.path || ""}${status}`;
+    }
+  }
+
+  function renderBlockSelect(items) {
+    els.blockSelect.innerHTML = "";
+    if (!items.length) {
+      const opt = document.createElement("option");
+      opt.textContent = tx("blockNone");
+      opt.value = "";
+      els.blockSelect.appendChild(opt);
+      renderBlockDetail(null);
+      return;
+    }
+    items.forEach((item) => {
+      const opt = document.createElement("option");
+      opt.value = item.id || item.type;
+      opt.textContent = preferLang(item.title_en, item.title_es, item.type || item.id);
+      els.blockSelect.appendChild(opt);
+    });
+    const targetId = state.blockId || items[0].id || items[0].type;
+    state.blockId = targetId;
+    els.blockSelect.value = targetId;
+    const found = items.find((it) => (it.id === targetId) || (it.type === targetId));
+    loadBlockDetail(targetId, found || items[0]);
+  }
+
+  async function refreshBlocks() {
+    try {
+      const res = await fetch(api.listBlocks);
+      if (!res.ok) throw new Error("failed to load blocks");
+      const data = await res.json();
+      state.blockRegistry = data.items || [];
+      renderBlockSelect(state.blockRegistry);
+    } catch (err) {
+      console.error(err);
+      state.blockRegistry = [];
+      renderBlockSelect([]);
+    }
+  }
+
   function applyTheme(theme) {
     if (!theme || !theme.colors) return;
     const root = document.documentElement;
@@ -281,20 +887,149 @@
     root.style.setProperty("--ppx-color-accent", c.accent || "#80ac5f");
     root.style.setProperty("--ppx-color-bg", c.background || "#f8fafc");
     root.style.setProperty("--ppx-color-text", c.text_main || "#0f172a");
-    els.themePill.textContent = theme.theme_id || "Tema";
+    els.themePill.textContent = theme.title || theme.theme_id || tx("themeLabel");
   }
 
-  function renderSegments(segments) {
+  function renderSegments(segments, translationText = null) {
     const span = document.createElement("span");
+    if (translationText) {
+      span.classList.add("lab-translation-mark");
+      span.dataset.translation = translationText;
+      span.addEventListener("mouseenter", (e) => showTooltip(e.currentTarget));
+      span.addEventListener("mouseleave", hideTooltip);
+      span.addEventListener("focus", (e) => showTooltip(e.currentTarget));
+      span.addEventListener("blur", hideTooltip);
+      span.tabIndex = 0;
+    }
     (segments || []).forEach(seg => {
       const s = document.createElement("span");
       s.textContent = seg.text || "";
       s.dataset.segmentId = seg.segment_id || "";
       if (seg.marks && seg.marks.includes("bold")) s.style.fontWeight = "700";
       if (seg.marks && seg.marks.includes("italic")) s.style.fontStyle = "italic";
+      if (seg.color) s.style.color = seg.color;
       span.appendChild(s);
     });
+    if (translationText) {
+      span.setAttribute("aria-label", `${span.textContent} (${translationText})`);
+    } else {
+      // fallback per-segment tooltips when no group translation
+      span.querySelectorAll("span").forEach((s, idx) => {
+        const seg = (segments || [])[idx] || {};
+        if (seg.translations && seg.translations.en) {
+          s.classList.add("lab-translation-mark");
+          s.dataset.translation = seg.translations.en;
+          s.addEventListener("mouseenter", (e) => showTooltip(e.currentTarget));
+          s.addEventListener("mouseleave", hideTooltip);
+          s.addEventListener("focus", (e) => showTooltip(e.currentTarget));
+          s.addEventListener("blur", hideTooltip);
+          s.tabIndex = 0;
+          s.setAttribute("aria-label", `${seg.text} (${seg.translations.en})`);
+        }
+      });
+    }
     return span;
+  }
+
+  function combineTranslations(items) {
+    const parts = [];
+    (items || []).forEach(seg => {
+      const t = seg?.translations?.en;
+      if (t) parts.push(t);
+    });
+    return parts.join(" ").trim() || null;
+  }
+
+  function setTextWithTooltip(el, text, translation) {
+    if (!el) return;
+    el.innerHTML = "";
+    const span = document.createElement("span");
+    span.textContent = text || "";
+    if (translation) {
+      span.classList.add("lab-translation-mark");
+      span.dataset.translation = translation;
+      span.addEventListener("mouseenter", (e) => showTooltip(e.currentTarget));
+      span.addEventListener("mouseleave", hideTooltip);
+      span.addEventListener("focus", (e) => showTooltip(e.currentTarget));
+      span.addEventListener("blur", hideTooltip);
+      span.tabIndex = 0;
+      span.setAttribute("aria-label", `${text} (${translation})`);
+    }
+    el.appendChild(span);
+  }
+
+  function buildAudioPlayer(data) {
+    const wrap = document.createElement("div");
+    wrap.className = "lab-audio";
+    const audio = document.createElement("audio");
+    audio.src = data.audio.src;
+    audio.preload = "metadata";
+    audio.hidden = true;
+    const play = document.createElement("button");
+    play.className = "lab-audio-play";
+    play.textContent = "";
+    play.setAttribute("aria-label", "Reproducir audio");
+    const playIcon = document.createElement("img");
+    playIcon.className = "lab-audio-icon";
+    playIcon.src = "data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff' d='M8 5v14l11-7z'/%3E%3C/svg%3E";
+    playIcon.alt = "";
+    play.appendChild(playIcon);
+    const progress = document.createElement("div");
+    progress.className = "lab-audio-progress";
+    const fill = document.createElement("div");
+    fill.className = "lab-audio-fill";
+    progress.appendChild(fill);
+    const defaultSpeed = data.player_options?.default_speed || 1.0;
+    const speeds = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+    const speedSelect = document.createElement("select");
+    speedSelect.className = "lab-audio-speed";
+    speeds.forEach((s) => {
+      const opt = document.createElement("option");
+      opt.value = s.toFixed(2);
+      opt.textContent = `${Math.round(s*100)}%`;
+      if (Math.abs(s - defaultSpeed) < 0.001) opt.selected = true;
+      speedSelect.appendChild(opt);
+    });
+    function setSpeed(val) {
+      const v = parseFloat(val || speedSelect.value) || 1.0;
+      audio.playbackRate = v;
+      speedSelect.value = v.toFixed(2);
+    }
+    speedSelect.addEventListener("change", (e) => setSpeed(e.target.value));
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      } else {
+        audio.pause();
+      }
+    }
+    play.addEventListener("click", togglePlay);
+    audio.addEventListener("play", () => {
+      play.classList.add("is-paused");
+      playIcon.src = "data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff' d='M6 5h4v14H6zm8 0h4v14h-4z'/%3E%3C/svg%3E";
+      play.setAttribute("aria-label", "Pausar audio");
+    });
+    audio.addEventListener("pause", () => {
+      play.classList.remove("is-paused");
+      playIcon.src = "data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff' d='M8 5v14l11-7z'/%3E%3C/svg%3E";
+      play.setAttribute("aria-label", "Reproducir audio");
+    });
+    audio.addEventListener("timeupdate", () => {
+      const pct = audio.duration ? Math.min(100, Math.max(0, (audio.currentTime / audio.duration) * 100)) : 0;
+      fill.style.width = `${pct}%`;
+    });
+    audio.addEventListener("ended", () => {
+      play.textContent = "▶";
+      play.classList.remove("is-paused");
+      audio.currentTime = 0;
+      fill.style.width = "0%";
+    });
+    setSpeed(defaultSpeed);
+    wrap.appendChild(play);
+    wrap.appendChild(progress);
+    wrap.appendChild(speedSelect);
+    wrap.appendChild(audio);
+    return wrap;
   }
 
   function renderBlock(block) {
@@ -312,7 +1047,8 @@
       case "text": {
         const p = document.createElement("p");
         p.style.margin = "0 0 8px 0";
-        p.appendChild(renderSegments(data.segments || []));
+        const tText = combineTranslations(data.segments || []);
+        p.appendChild(renderSegments(data.segments || [], tText));
         wrap.appendChild(p);
         break;
       }
@@ -352,7 +1088,8 @@
           (data.columns || []).forEach(col => {
             const td = document.createElement("td");
             const cellSegs = (row.cells || {})[col.id] || [];
-            td.appendChild(renderSegments(cellSegs));
+            const tText = combineTranslations(cellSegs);
+            td.appendChild(renderSegments(cellSegs, tText));
             tr.appendChild(td);
           });
           tbody.appendChild(tr);
@@ -366,34 +1103,12 @@
         div.className = "lab-callout info";
         const primary = document.createElement("div");
         primary.style.fontWeight = "700";
-        primary.appendChild(renderSegments(data.segments_primary || []));
-        const translation = document.createElement("div");
-        translation.style.marginTop = "4px";
-        translation.appendChild(renderSegments(data.segments_translation || []));
+        const translationText = combineTranslations(data.segments_translation || []);
+        primary.appendChild(renderSegments(data.segments_primary || [], translationText));
         div.appendChild(primary);
-        div.appendChild(translation);
         if (data.audio && data.audio.src) {
-          const audioWrap = document.createElement("div");
-          audioWrap.className = "lab-example-audio";
-          const audio = document.createElement("audio");
-          audio.controls = true;
-          audio.src = data.audio.src;
-          audioWrap.appendChild(audio);
-          if (data.player_options?.allow_speed_control) {
-            const select = document.createElement("select");
-            (data.player_options.speed_steps || [0.75,1,1.25]).forEach(step => {
-              const opt = document.createElement("option");
-              opt.value = step;
-              opt.textContent = `${step}x`;
-              if (step === data.player_options.default_speed) opt.selected = true;
-              select.appendChild(opt);
-            });
-            select.addEventListener("change", () => {
-              audio.playbackRate = Number(select.value) || 1;
-            });
-            audioWrap.appendChild(select);
-          }
-          div.appendChild(audioWrap);
+          const player = buildAudioPlayer(data);
+          div.appendChild(player);
         }
         wrap.appendChild(div);
         break;
@@ -403,11 +1118,11 @@
         box.className = "lab-callout info";
         const title = document.createElement("div");
         title.className = "lab-callout-title";
-        title.textContent = data.exercise_id || "Ejercicio";
+        title.textContent = data.exercise_id || preferLang("Exercise", "Ejercicio", tx("resourceFallback"));
         const meta = document.createElement("div");
         meta.className = "ppx-muted";
         meta.style.fontSize = "13px";
-        meta.textContent = data.exercise_type ? `Tipo: ${data.exercise_type}` : "Usa motor de ejercicios existente";
+        meta.textContent = data.exercise_type ? `${copy[lang].exerciseType}: ${data.exercise_type}` : copy[lang].exerciseDefault;
         box.appendChild(title);
         box.appendChild(meta);
         wrap.appendChild(box);
@@ -416,7 +1131,7 @@
       default: {
         const unknown = document.createElement("div");
         unknown.className = "lab-callout warning";
-        unknown.textContent = `Sin renderer para tipo: ${block.type}`;
+        unknown.textContent = `${copy[lang].unknownRenderer}: ${block.type}`;
         wrap.appendChild(unknown);
       }
     }
@@ -431,7 +1146,7 @@
       els.preview.classList.remove("compact");
     }
     if (!module) {
-      els.preview.textContent = "Selecciona un modulo para previsualizar.";
+      els.preview.textContent = tx("selectModule");
       return;
     }
     (module.blocks || []).forEach(block => {
@@ -442,12 +1157,14 @@
   function renderModuleNav(modules) {
     els.moduleNav.innerHTML = "";
     if (!modules || modules.length === 0) {
-      els.moduleNav.textContent = "Este recurso no tiene modulos.";
+      els.moduleNav.textContent = tx("noModules");
       return;
     }
     modules.forEach((mod, idx) => {
       const btn = document.createElement("button");
-      btn.textContent = mod.title_en || mod.title_es || mod.module_id || `Modulo ${idx+1}`;
+      const label = preferLang(mod.title_en, mod.title_es, mod.module_id || `${tx("moduleFallback")} ${idx + 1}`);
+      const translationTitle = lang === "es" ? mod.title_en : mod.title_es;
+      setTextWithTooltip(btn, label, translationTitle || "");
       btn.addEventListener("click", () => {
         Array.from(els.moduleNav.querySelectorAll("button")).forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
@@ -461,17 +1178,23 @@
 
   function updateMeta(resource) {
     if (!resource) {
-      els.resourceTitle.textContent = "Recurso";
-      els.resourceMeta.textContent = "";
-      return;
+    els.resourceTitle.textContent = tx("resourceFallback");
+    els.resourceMeta.textContent = "";
+    return;
+  }
+  const meta = resource.meta || {};
+    const displayTitle = preferLang(meta.title_en, meta.title_es, resource.resource_id || tx("resourceFallback"));
+    const translationTitle = lang === "es" ? meta.title_en : meta.title_es;
+    if (translationTitle) {
+      setTextWithTooltip(els.resourceTitle, displayTitle, translationTitle);
+    } else {
+      els.resourceTitle.textContent = displayTitle;
     }
-    const meta = resource.meta || {};
-    els.resourceTitle.textContent = meta.title_en || meta.title_es || resource.resource_id || "Recurso";
-    const parts = [];
-    if (meta.lang_primary) parts.push(`Primario: ${meta.lang_primary}`);
-    if (meta.level) parts.push(`Nivel: ${meta.level}`);
-    if (resource.modules) parts.push(`${resource.modules.length} modulos`);
-    els.resourceMeta.textContent = parts.join(" . ");
+  const parts = [];
+  if (meta.lang_primary) parts.push(`${tx("primaryLabel")}: ${meta.lang_primary}`);
+  if (meta.level) parts.push(`${tx("levelLabel")}: ${meta.level}`);
+  if (resource.modules) parts.push(`${resource.modules.length} ${tx("modulesLabel")}`);
+  els.resourceMeta.textContent = parts.join(" | ");
   }
 
   function renderJson(resource) {
@@ -486,28 +1209,29 @@
     if (!modules.length) return { percent: 0, recs: [] };
     const completed = Math.max(1, Math.floor(modules.length / 2));
     const percent = Math.round((completed / modules.length) * 100);
-    const recs = modules.slice(completed, completed + 3).map((m) => `Revisar modulo: ${m.title_en || m.title_es || m.module_id}`);
+    const recs = modules.slice(completed, completed + 3).map((m) => {
+      const title = preferLang(m.title_en, m.title_es, m.module_id || tx("moduleFallback"));
+      return `${copy[lang].recPrefix}: ${title}`;
+    });
     return { percent, recs };
   }
 
   function renderProgress(resource) {
-    const result = computeMockProgress(resource);
-    const percent = result.percent;
-    const recs = result.recs;
+    const { percent, recs } = computeMockProgress(resource);
     els.progressFill.style.width = `${percent}%`;
-    els.progressText.textContent = `${percent}% completado (simulado)`;
+    els.progressText.textContent = copy[lang].progressComplete(percent);
     els.recs.innerHTML = "";
     if (!recs.length) {
       const li = document.createElement("li");
-      li.textContent = "Sin recomendaciones";
+      li.textContent = copy[lang].noRecs;
       els.recs.appendChild(li);
-    } else {
-      recs.forEach((r) => {
-        const li = document.createElement("li");
-        li.textContent = r;
-        els.recs.appendChild(li);
-      });
+      return;
     }
+    recs.forEach((r) => {
+      const li = document.createElement("li");
+      li.textContent = r;
+      els.recs.appendChild(li);
+    });
   }
 
   // Selection + translation demo
@@ -516,7 +1240,7 @@
     const b = document.createElement("div");
     b.className = "lab-bubble";
     const btnTranslate = document.createElement("button");
-    btnTranslate.textContent = "Traducir";
+    btnTranslate.textContent = copy[lang].translate;
     btnTranslate.addEventListener("click", () => showTranslation());
     b.appendChild(btnTranslate);
     document.body.appendChild(b);
@@ -528,7 +1252,7 @@
     const box = document.createElement("div");
     box.className = "lab-translation";
     const close = document.createElement("button");
-    close.textContent = "×";
+    close.textContent = "x";
     close.style.float = "right";
     close.style.background = "transparent";
     close.style.color = "#e2e8f0";
@@ -536,7 +1260,7 @@
     close.style.cursor = "pointer";
     close.addEventListener("click", () => { box.style.display = "none"; });
     const title = document.createElement("strong");
-    title.textContent = "traduccionn (demo)";
+    title.textContent = copy[lang].translationTitle;
     const body = document.createElement("div");
     body.id = "lab-translation-body";
     box.appendChild(close);
@@ -565,10 +1289,12 @@
     const box = els.translation;
     const body = document.getElementById("lab-translation-body");
     body.innerHTML = "";
-    const text = lastSelection.text || "(sin seleccion)";
-    const segs = lastSelection.segments.length ? `Segmentos: ${lastSelection.segments.join(", ")}` : "Segmentos: n/d";
+    const text = lastSelection.text || copy[lang].translationEmpty;
+    const segs = lastSelection.segments.length
+      ? `${copy[lang].segments}: ${lastSelection.segments.join(", ")}`
+      : `${copy[lang].segments}: ${copy[lang].segmentsNA}`;
     const main = document.createElement("div");
-    main.textContent = `${text} - (demo) traduccion`;
+    main.textContent = `${text} - ${copy[lang].translationSuffix}`;
     const meta = document.createElement("div");
     meta.style.fontSize = "12px";
     meta.style.marginTop = "6px";
@@ -603,48 +1329,19 @@
     showBubble(rect);
   }
 
-  function computeMockProgress(resource) {
-    const modules = (resource && resource.modules) || [];
-    if (!modules.length) return { percent: 0, recs: [] };
-    const completed = Math.max(1, Math.floor(modules.length / 2));
-    const percent = Math.round((completed / modules.length) * 100);
-    const recs = modules.slice(completed, completed + 3).map((m) => `Revisar modulo: ${m.title_en || m.title_es || m.module_id}`);
-    return { percent, recs };
-  }
-
-  function renderProgress(resource) {
-    const result = computeMockProgress(resource);
-    const percent = result.percent;
-    const recs = result.recs;
-    els.progressFill.style.width = `${percent}%`;
-    els.progressText.textContent = `${percent}% completado (simulado)`;
-    els.recs.innerHTML = "";
-    if (!recs.length) {
-      const li = document.createElement("li");
-      li.textContent = "Sin recomendaciones";
-      els.recs.appendChild(li);
-    } else {
-      recs.forEach((r) => {
-        const li = document.createElement("li");
-        li.textContent = r;
-        els.recs.appendChild(li);
-      });
-    }
-  }
-
   function validateResourceShape(resource) {
     const errors = [];
     if (!resource || typeof resource !== "object") {
-      errors.push("JSON debe ser un objeto.");
+      errors.push(copy[lang].jsonMustBeObject);
       return errors;
     }
-    if (!resource.schema_version) errors.push("Falta schema_version.");
-    if (!resource.resource_id) errors.push("Falta resource_id.");
-    if (!Array.isArray(resource.modules)) errors.push("modules debe ser un array.");
+    if (!resource.schema_version) errors.push(copy[lang].missingSchemaVersion);
+    if (!resource.resource_id) errors.push(copy[lang].missingResourceId);
+    if (!Array.isArray(resource.modules)) errors.push(copy[lang].modulesMustBeArray);
     if (Array.isArray(resource.modules)) {
       resource.modules.forEach((mod, idx) => {
-        if (!mod.module_id) errors.push(`Modulo ${idx + 1} sin module_id.`);
-        if (!Array.isArray(mod.blocks)) errors.push(`Modulo ${mod.module_id || idx + 1}: blocks debe ser array.`);
+        if (!mod.module_id) errors.push(copy[lang].missingModuleId(idx + 1));
+        if (!Array.isArray(mod.blocks)) errors.push(copy[lang].blocksMustBeArray(mod.module_id || idx + 1));
       });
     }
     return errors;
@@ -653,14 +1350,14 @@
   async function loadResource(id) {
     if (!id) return;
     const res = await fetch(api.resource(id));
-    if (!res.ok) throw new Error("No se pudo cargar el recurso");
+    if (!res.ok) throw new Error(copy[lang].loadError);
     return res.json();
   }
 
   async function loadTheme(id) {
     if (!id) return;
     const res = await fetch(api.theme(id));
-    if (!res.ok) throw new Error("No se pudo cargar el tema");
+    if (!res.ok) throw new Error(copy[lang].loadError);
     return res.json();
   }
 
@@ -679,7 +1376,7 @@
       if (theme) applyTheme(theme);
     } catch (e) {
       console.error(e);
-      els.preview.textContent = "Error cargando recurso o tema.";
+      els.preview.textContent = copy[lang].loadError;
     }
   }
 
@@ -690,30 +1387,42 @@
   });
   els.themeSelect.addEventListener("change", (e) => {
     state.themeId = e.target.value;
-    els.themePill.textContent = state.themeId || "Tema";
+    const selected = e.target.options[e.target.selectedIndex];
+    els.themePill.textContent = selected?.textContent || tx("themeLabel");
     refreshResource();
   });
+  els.blockSelect.addEventListener("change", (e) => {
+    state.blockId = e.target.value;
+    if (state.blockId) {
+      const fallback = state.blockRegistry.find((it) => (it.id === state.blockId) || (it.type === state.blockId));
+      loadBlockDetail(state.blockId, fallback);
+    }
+  });
+  els.blockRefresh.addEventListener("click", () => refreshBlocks());
+  els.fileEditBtn.addEventListener("click", () => setEditMode(true));
+  els.fileCancelBtn.addEventListener("click", () => setEditMode(false));
+  els.fileSaveBtn.addEventListener("click", () => saveSchema());
   els.reload.addEventListener("click", () => refreshResource());
   els.toggleDensity.addEventListener("change", (e) => {
     state.compact = e.target.checked;
-    els.densityPill.textContent = state.compact ? "Compacto" : "Comodo";
+    els.densityPill.textContent = state.compact ? tx("compact") : tx("comfortable");
     if (state.resourceData) renderModuleNav(state.resourceData.modules || []);
   });
   els.toggleJson.addEventListener("click", () => {
     const hidden = els.jsonShell.classList.toggle("hidden");
     els.jsonLines.classList.toggle("hidden", hidden);
     els.json.classList.toggle("hidden", hidden);
-    els.toggleJson.textContent = hidden ? "Mostrar" : "Ocultar";
+    els.toggleJson.textContent = hidden ? tx("toggleShow") : tx("toggleHide");
   });
   els.fullscreenJson.addEventListener("click", () => {
     const active = els.jsonShell.classList.toggle("fullscreen");
-    els.fullscreenJson.textContent = active ? "Cerrar pantalla completa" : "Pantalla completa";
+    els.fullscreenJson.textContent = active ? tx("fullscreenClose") : tx("fullscreenOpen");
     els.exitFullscreen.classList.toggle("hidden", !active);
   });
   els.exitFullscreen.addEventListener("click", () => {
     els.jsonShell.classList.remove("fullscreen");
     els.exitFullscreen.classList.add("hidden");
-    els.fullscreenJson.textContent = "Pantalla completa";
+    els.fullscreenJson.textContent = tx("fullscreenOpen");
   });
   els.json.addEventListener("scroll", () => {
     els.jsonLines.scrollTop = els.json.scrollTop;
@@ -734,7 +1443,7 @@
         return;
       }
       els.jsonError.classList.add("hidden");
-      els.jsonStatus.textContent = "Aplicado localmente (no guardado en disco)";
+      els.jsonStatus.textContent = copy[lang].appliedLocal;
       state.resourceData = parsed;
       updateMeta(parsed);
       renderModuleNav(parsed.modules || []);
@@ -744,7 +1453,7 @@
       const lines = pretty.split("\n");
       els.jsonLines.textContent = lines.map((_, idx) => String(idx + 1)).join("\n");
     } catch (err) {
-      els.jsonError.textContent = `Error de JSON: ${err}`;
+      els.jsonError.textContent = `${copy[lang].jsonErrorPrefix}: ${err}`;
       els.jsonError.classList.remove("hidden");
       els.jsonStatus.textContent = "";
     }
@@ -761,7 +1470,7 @@
       a.remove();
       URL.revokeObjectURL(url);
     } catch (err) {
-      els.jsonError.textContent = `No se pudo descargar: ${err}`;
+      els.jsonError.textContent = `${copy[lang].downloadFailPrefix}: ${err}`;
       els.jsonError.classList.remove("hidden");
     }
   });
@@ -783,13 +1492,13 @@
         const lines = els.json.value.split("\n");
         els.jsonLines.textContent = lines.map((_, idx) => String(idx + 1)).join("\n");
         els.jsonError.classList.add("hidden");
-        els.jsonStatus.textContent = `Cargado: ${file.name} (no guardado en disco)`;
+        els.jsonStatus.textContent = `${copy[lang].uploadedStatusPrefix}: ${file.name} - ${copy[lang].appliedLocal}`;
         state.resourceData = parsed;
         updateMeta(parsed);
         renderModuleNav(parsed.modules || []);
         renderProgress(parsed);
       } catch (err) {
-        els.jsonError.textContent = `Error al cargar: ${err}`;
+        els.jsonError.textContent = `${copy[lang].uploadFailPrefix}: ${err}`;
         els.jsonError.classList.remove("hidden");
       }
     };
@@ -798,10 +1507,12 @@
     e.target.value = "";
   });
   els.snapshot.addEventListener("click", () => {
-    alert("Captura de vista: exportar a PNG/PDF esta en backlog.");
+    alert(copy[lang].snapshotAlert);
   });
 
   // Initial load
+  setEditMode(false);
+  refreshBlocks();
   refreshResource();
 })();
 </script>

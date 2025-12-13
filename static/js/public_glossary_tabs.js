@@ -619,58 +619,23 @@
       </div>
       ${alsoLine}`;
 
-    // Flat senses listing
-    let sensesHtml = '';
-    const allExamples = [];
-    senses.forEach((s, idx)=>{
-      const def = (LANG==='en' ? (s.definition_en||'') : (s.definition_es||''));
-      const defs = def ? `<p style="margin:.25rem 0;">${LANG==='en' ? `<em>${def}</em>` : def}</p>` : '';
-      const eqs = (s.equivalents_en||[]).map(x=>`<li><em>${x}</em></li>`).join('');
-      const related = (s.related_slugs||[]).map(rs=>{
-        const label = (rs||'').replace(/-/g,' ');
-        return `<a href="#" class="rg-pill rg-pill--accent rg-related-pill" style="text-decoration:none;" data-slug="${rs}">${label}</a>`;
-      }).join(' ');
-      (s.examples||[]).forEach(ex=> allExamples.push({sense: idx+1, ex}));
-      const senseMeta = senseMetaRow(s);
-      const senseVariants = variantsRow(s.variants, LANG);
-
-      // Per-sense alternate forms, if any
-      const sAlt = (s.alt_forms||[]).map(af => (af && af.form ? String(af.form).trim() : '')).filter(Boolean);
-      const sAlso = sAlt.length ? `
-        <div style="margin-top:.15rem;"><span style="color:#64748b;">${L('También:','Also:')}</span>
-          <span style="color: var(--ppx-color-primary); font-weight:600;">${sAlt.join(', ')}</span>
-        </div>` : '';
-
-      sensesHtml += `
-        <div class="ppx-card" style="padding:.75rem; margin-top:.5rem;">
-          <div style="margin-bottom:.25rem; display:flex; align-items:center; gap:.35rem;"><strong>${idx+1}.</strong> ${s.pos ? `<em>${posLabel(s.pos, LANG)}</em>` : ''}</div>
-          ${senseMeta}
-          ${senseVariants}
-          <div>${defs}</div>
-          ${sAlso}
-          <div style="margin-top:.5rem;">
-            <strong><span style="display:inline-flex; align-items:center; gap:.35rem;"><img src="/static/assets/flags/usa.svg" alt="US" style="width:18px; height:12px; object-fit:cover; border:1px solid #e5e7eb;"><span>${L('Equivalentes en ingles','American English Equivalents')}</span></span></strong>
-            <ul style="margin:.25rem 0 0 1rem;">${eqs || '<li><em>-</em></li>'}</ul>
-          </div>
-          ${related? `<div style="margin-top:.5rem; display:flex; gap:.35rem; flex-wrap:wrap; align-items:center;"><strong>${L('Entradas relacionadas','Related entries')}:</strong> ${related}</div>`: ''}
-        </div>`;
-    
-});
-
-    // Examples accordion
-    let examplesHtml = '';
-    if (allExamples.length){
+    function renderExamplesForSense(examples, senseNumber){
+      if (!examples || !examples.length) return '';
       let exIdx = 0;
-      const list = allExamples.map(({sense, ex})=>{
-        exIdx += 1; const aid = `exaud-${slug}-${exIdx}`;
+      const list = examples.map((ex, exPos)=>{
+        exIdx += 1; const aid = `exaud-${slug}-${senseNumber}-${exIdx}`;
         const _xu = (function(){
           const raw = String(ex.audio||'').trim();
           if (!raw) return '';
           let u = raw;
           // Normalize centralized examples route to current slug (handles stale slugs)
           if (u.startsWith('/media/glossary-audio/examples/')){
-            const fname = u.split('/').pop();
-            return `/media/glossary-audio/examples/${encodeURIComponent(slug)}/${fname}`;
+            const rest = u.replace('/media/glossary-audio/examples/','');
+            const parts = rest.split('/');
+            const remainder = parts.slice(1).join('/');
+            if (remainder) return `/media/glossary-audio/examples/${encodeURIComponent(slug)}/${remainder}`;
+            if (parts[0]) return `/media/glossary-audio/examples/${encodeURIComponent(slug)}/${parts[0]}`;
+            return u;
           }
           if (u.startsWith('http') || u.startsWith('/media/')) return u;
           const m = u.match(/^media\/audio\/examples\/(.+)$/);
@@ -697,33 +662,69 @@
             ${chips}
           </div>` : '';
         })() : '';
-        const srcHtml = srcLabel ? `<div style=\"margin-top:.4rem;\">
-            <span style=\"display:inline-flex; align-items:center; gap:6px; padding:.25rem .6rem; border-radius:9999px; background:#e0f2fe; border:1px solid #bae6fd; font-size:12px;\">
+        const srcHtml = srcLabel ? `<div style="margin-top:.4rem;">
+            <span style="display:inline-flex; align-items:center; gap:6px; padding:.25rem .6rem; border-radius:9999px; background:#e0f2fe; border:1px solid #bae6fd; font-size:12px;">
               <img src="${iconForSource(srcType)}" alt="" style="width:14px; height:14px;"> ${srcLabel}
             </span>
           </div>` : '';
         // Keep examples clean; rely on related chips to open linked entries
         const esLinked = highlightBackticks(ex.es||'');
         const enLinked = highlightBackticks(ex.en||'');
-        return `<div style=\"padding:.65rem; margin:.45rem 0; background:#eff6ff; border:1px solid #dbeafe; border-radius:12px;\">
-          <div style=\"display:flex; align-items:center; gap:10px; flex-wrap:wrap;\">${audio}${speedCtl}</div>
-          <div style=\"margin-top:.5rem; line-height:1.45; white-space:pre-line;\"><strong>${esLinked}</strong></div>
-          <div style=\"opacity:.8; line-height:1.45; margin-top:.2rem; white-space:pre-line;\"><em>${enLinked}</em></div>
+        return `<div style="padding:.65rem; margin:.45rem 0; background:#eff6ff; border:1px solid #dbeafe; border-radius:12px;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">${audio}${speedCtl}</div>
+          <div style="margin-top:.5rem; line-height:1.45; white-space:pre-line;"><strong>${esLinked}</strong></div>
+          <div style="opacity:.8; line-height:1.45; margin-top:.2rem; white-space:pre-line;"><em>${enLinked}</em></div>
           ${srcHtml}
           ${linkedHtml}
         </div>`;
       }).join('');
-      examplesHtml = `
-        <details class="ppx-acc" data-acc="examples" style="margin-top:.75rem; width:100%; box-sizing:border-box; padding:0; border:1px solid #e5e7eb; border-radius:12px; background:#fff; box-shadow:0 10px 28px rgba(15,23,42,.06);">
-          <summary style="font-weight:600; padding:1rem .95rem .8rem .95rem;">
-            <span>${L('Ejemplos en contexto','Examples in Context')}</span>
+      return `
+        <details class="ppx-acc" data-acc="examples" style="margin-top:.65rem; width:100%; box-sizing:border-box; padding:0; border:1px solid #e5e7eb; border-radius:12px; background:#fff; box-shadow:0 10px 28px rgba(15,23,42,.06);">
+          <summary style="font-weight:600; padding:.85rem .95rem .65rem .95rem;">
+            <span>${L('Ejemplos en contexto','Examples in Context')} — ${L('Sentido','Sense')} ${senseNumber}</span>
             <img class="ppx-acc-ic" src="/static/assets/icons/chevron_down.svg" alt="">
           </summary>
           <div style="padding:.35rem .95rem .7rem .95rem;">${list}</div>
         </details>`;
     }
 
-    return `<div style="padding:6px 4px;">${header}${sensesHtml || '<div class="ppx-muted">No senses</div>'}${examplesHtml}</div>`;
+    // Flat senses listing
+    let sensesHtml = '';
+    senses.forEach((s, idx)=>{
+      const def = (LANG==='en' ? (s.definition_en||'') : (s.definition_es||''));
+      const defs = def ? `<p style="margin:.25rem 0;">${LANG==='en' ? `<em>${def}</em>` : def}</p>` : '';
+      const eqs = (s.equivalents_en||[]).map(x=>`<li><em>${x}</em></li>`).join('');
+      const related = (s.related_slugs||[]).map(rs=>{
+        const label = (rs||'').replace(/-/g,' ');
+        return `<a href="#" class="rg-pill rg-pill--accent rg-related-pill" style="text-decoration:none;" data-slug="${rs}">${label}</a>`;
+      }).join(' ');
+      const senseMeta = senseMetaRow(s);
+      const senseVariants = variantsRow(s.variants, LANG);
+
+      // Per-sense alternate forms, if any
+      const sAlt = (s.alt_forms||[]).map(af => (af && af.form ? String(af.form).trim() : '')).filter(Boolean);
+      const sAlso = sAlt.length ? `
+        <div style="margin-top:.15rem;"><span style="color:#64748b;">${L('También:','Also:')}</span>
+          <span style="color: var(--ppx-color-primary); font-weight:600;">${sAlt.join(', ')}</span>
+        </div>` : '';
+
+      sensesHtml += `
+        <div class="ppx-card" style="padding:.75rem; margin-top:.5rem;">
+          <div style="margin-bottom:.25rem; display:flex; align-items:center; gap:.35rem;"><strong>${idx+1}.</strong> ${s.pos ? `<em>${posLabel(s.pos, LANG)}</em>` : ''}</div>
+          ${senseMeta}
+          ${senseVariants}
+          <div>${defs}</div>
+          ${sAlso}
+          <div style="margin-top:.5rem;">
+            <strong><span style="display:inline-flex; align-items:center; gap:.35rem;"><img src="/static/assets/flags/usa.svg" alt="US" style="width:18px; height:12px; object-fit:cover; border:1px solid #e5e7eb;"><span>${L('Equivalentes en ingles','American English Equivalents')}</span></span></strong>
+            <ul style="margin:.25rem 0 0 1rem;">${eqs || '<li><em>-</em></li>'}</ul>
+          </div>
+          ${related? `<div style="margin-top:.5rem; display:flex; gap:.35rem; flex-wrap:wrap; align-items:center;"><strong>${L('Entradas relacionadas','Related entries')}:</strong> ${related}</div>`: ''}
+          ${renderExamplesForSense(s.examples, idx+1)}
+        </div>`;
+    });
+
+    return `<div style="padding:6px 4px;">${header}${sensesHtml || '<div class="ppx-muted">No senses</div>'}</div>`;
   }
 
   async function open(slug){

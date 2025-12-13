@@ -630,7 +630,7 @@ const LABELS = (window.PPX_LABELS || {});
       syncHiddenFromCards();
     }
     async function searchGlossary(q){
-      if (!q || q.length < 2) return [];
+      if (!q) return [];
       try{
         const url = `/admin/api/glossary/list?q=${encodeURIComponent(q)}&limit=20`;
         const r = await fetch(url, { credentials:'same-origin' });
@@ -750,7 +750,8 @@ const LABELS = (window.PPX_LABELS || {});
       'locucion_u_tantival': 'locucion_sustantival',
       'u_tantivo_femenino': 'sustantivo_femenino',
       'u_tantivo_ma_culino': 'sustantivo_masculino',
-      'u_tantivo_ma_culino_y_femenino': 'sustantivo_masculino_y_femenino'
+      'u_tantivo_ma_culino_y_femenino': 'sustantivo_masculino_y_femenino',
+      'muletilla_conver_acional': 'muletilla_conversacional'
     };
     let posVal = normalizeToCanonical(data?.pos) || 'sustantivo_masculino_y_femenino';
     // Map legacy generic verb token to transitive; honor explicit combined subtype
@@ -838,7 +839,7 @@ const LABELS = (window.PPX_LABELS || {});
     }
     renderTokens();
     async function searchRelated(q){
-      if (!q || q.length < 2) return [];
+      if (!q) return [];
       try{
         const url = `/admin/api/glossary/list?q=${encodeURIComponent(q)}`;
         const r = await fetch(url, { credentials: 'same-origin' });
@@ -1005,6 +1006,15 @@ const LABELS = (window.PPX_LABELS || {});
     syncHiddenFromCards();
   }
 
+  function buildExampleIndexMap(){
+    const map = new Map();
+    Array.from(elSenses.children || []).forEach((card, sIdx)=>{
+      const files = card.querySelectorAll('.ppx-ex-audio-file');
+      files.forEach((input, exIdx)=> map.set(input, { sense: sIdx + 1, ex: exIdx + 1 }));
+    });
+    return map;
+  }
+
   btnAdd.addEventListener('click', ()=> elSenses.appendChild(senseCard({}, elSenses.children.length + 1)));
 
   let _ppxSubmitting = false;
@@ -1049,6 +1059,7 @@ const LABELS = (window.PPX_LABELS || {});
     // If there are example audio files selected, upload them first to get URLs
     if (EDIT_SLUG) {
       const files = Array.from(form.querySelectorAll('.ppx-ex-audio-file'));
+      const indexMap = buildExampleIndexMap();
       let exIndex = 1;
       for (const f of files) {
         const input = f;
@@ -1058,7 +1069,9 @@ const LABELS = (window.PPX_LABELS || {});
           const fd = new FormData();
           fd.append('file', input.files[0]);
           fd.append('kind','example');
-          fd.append('index', String(exIndex));
+          const idxInfo = indexMap.get(input) || { sense: 1, ex: exIndex };
+          fd.append('sense', String(idxInfo.sense || 1));
+          fd.append('index', String(idxInfo.ex || exIndex));
           try{
             const res = await fetch(`/admin/glossary/${encodeURIComponent(EDIT_SLUG)}/upload-audio`, { method:'POST', body: fd, credentials:'same-origin' });
             let data = {};

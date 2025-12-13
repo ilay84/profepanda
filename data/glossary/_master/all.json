@@ -19,7 +19,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/a-caballo/a_caballo_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/a-caballo/s1/a_caballo_ex_01.mp3",
             "en": "Bring me some fries `with fried eggs on top`. If I'm still hungry, I'll order something else.",
             "es": "Traeme unas papas fritas `a caballo`. Si me quedo con hambre, te pido otra cosa.",
             "source": {
@@ -64,7 +64,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/afanar-se/afanar_se_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/afanar-se/s1/afanar_se_ex_01.mp3",
             "en": "How can you `steal` this?",
             "es": "¿Cómo podés `afanar` esto?",
             "source": {
@@ -93,6 +93,64 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/aire/aire.mp3?v=1765620974",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<p><span style=\"font-weight: normal;\">Shortened form of <em>air conditioner</em>, used to refer to the cooling unit.</span></p>",
+        "definition_es": "<p><span style=\"font-weight: normal;\">Forma abreviada de <em>aire acondicionado</em>, usada para referirse al aparato de climatización.</span></p>",
+        "domain": [
+          "tecnologia"
+        ],
+        "equivalents_en": [
+          "air conditioner",
+          "AC unit"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/aire/s1/aire_ex_01.mp3?v=1765620975",
+            "en": "\"What was wrong with the lady’s `air conditioner`?\"\n\"Well… dirty filters, we topped up the refrigerant.\"",
+            "es": "—¿Qué problema tenía el `aire` de la señora?\n—Y… los filtros sucios, le pusimos gas.",
+            "linked_terms": [
+              "y"
+            ],
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": "airecito",
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": "aires",
+          "masc_sg": "aire"
+        }
+      }
+    ],
+    "slug": "aire",
+    "word": "aire"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/al-toque/al_toque.mp3",
     "senses": [
       {
@@ -111,7 +169,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/al-toque/al_toque_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/al-toque/s1/al_toque_ex_01.mp3",
             "en": "The emergency service gets here `right away`.",
             "es": "El SAME viene `al toque`.",
             "source": {
@@ -155,7 +213,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/atender-el-telefono/atender_el_telefono_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/atender-el-telefono/s1/atender_el_telefono_ex_01.mp3",
             "en": "A couple of months ago I asked you whose number that was that hung up when I `answered` your phone, and you told me it was your guitar teacher’s.",
             "es": "Cuando hace un par de meses te pregunté de quién era ese número que cortó cuando yo `atendí` tu teléfono y me dijiste que era de tu profesor de guitarra.",
             "source": {
@@ -200,7 +258,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/barrio-cerrado/barrio_cerrado_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/barrio-cerrado/s1/barrio_cerrado_ex_01.mp3",
             "en": "“Ugh, I’m so nervous! I’ve never worked in a `gated community` before. What are the people like?”\n“The worst.”",
             "es": "—¡Ay, estoy tan nerviosa! Nunca trabajé en un `barrio cerrado`. ¿Cómo es la gente?\n—Lo peor.",
             "source": {
@@ -247,7 +305,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/birra/birra_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/birra/s1/birra_ex_01.mp3",
             "en": "\"Nice! Well, go have some `beer` on the corner, do something normal for your age.\"",
             "es": "¡Qué bueno! Bueno, vayan a tomar `birra` a la esquina, hagan algo normal de su edad.",
             "source": {
@@ -302,7 +360,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/boliche/boliche_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/boliche/s1/boliche_ex_01.mp3",
             "en": "\"Who was Marcos Gussi? Why does that name sound so familiar?\"\n\"Girl, he owned all the `nightclubs` along the riverfront.\"",
             "es": "—¿Quién era Marcos Gussi? ¿Por qué me suena tanto?\n—¡Ay, gorda! El dueño de todos los `boliches` de la costanera.",
             "source": {
@@ -358,7 +416,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/boludo/boludo_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/boludo/s1/boludo_ex_01.mp3",
             "en": "Yeah, I’m messing with you — `girl`, the empanadas are here.",
             "es": "Sí, te estoy jodiendo, `boluda`, son las empanadas.",
             "source": {
@@ -370,7 +428,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/boludo/boludo_ex_02.mp3",
+            "audio": "/media/glossary-audio/examples/boludo/s1/boludo_ex_02.mp3",
             "en": "It totally sounds like a swinger bar, `dude`.",
             "es": "Parece un bar swinger, `boluda`.",
             "source": {
@@ -429,7 +487,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/cachamai/cachamai_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/cachamai/s1/cachamai_ex_01.mp3",
             "en": "Last night I watched a western, had an `herbal tea`, and I was asleep by 11 just like always.",
             "es": "Yo anoche me vi una película de vaqueros, me tomé un `cachamay` y a las 11 estaba durmiendo como todas las noches.",
             "source": {
@@ -473,7 +531,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/caerle-la-ficha/caerle_la_ficha_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/caerle-la-ficha/s1/caerle_la_ficha_ex_01.mp3",
             "en": "Seriously? You're telling me a story? You're telling me this, like it suddenly `hit you`?",
             "es": "¿En serio? Vos me estás contando una historia a mí? ¿Vos me la estás contando a mí, que `te cayó la ficha` de golpe?",
             "source": {
@@ -519,7 +577,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/cagar/cagar_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/cagar/s1/cagar_ex_01.mp3",
             "en": "I just don’t understand these kids, man. Such a desire to `screw up` their family’s life, you know?",
             "es": "Ahora yo no los entiendo a estos pibes, viejo. Qué ganas de `cagar`le la vida a la familia, ¿no?",
             "source": {
@@ -567,7 +625,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/cagon/cagon_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/cagon/s1/cagon_ex_01.mp3",
             "en": "—It’s bulletproof, you won’t be able to break it!\n—You `coward`!",
             "es": "—¡Está blindado, no lo vas a poder romper!\n—¡`Cagón`!",
             "source": {
@@ -624,7 +682,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/calentarse/calentarse_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/calentarse/s1/calentarse_ex_01.mp3",
             "en": "Don't `lose your cool`. Take it easy.",
             "es": "No `te calentés`. Take it easy.",
             "source": {
@@ -669,7 +727,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/cargar/cargar_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/cargar/s1/cargar_ex_01.mp3",
             "en": "You ruined your life? Are you `kidding` me? You married that ugly guy and saved yourself!",
             "es": "¿Te cagaste la vida? ¿Me estás `cargando`? ¡Te casaste con el feo ese y te salvaste!",
             "source": {
@@ -715,7 +773,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/che/che_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/che/s1/che_ex_01.mp3",
             "en": "\"`Hey`, babe… dressed like that? Come on, no way.\"\n\"What’s wrong with it? Is it bad? Do I need to dress up just to be in my own living room?\"",
             "es": "—`Che`, gordo..., vos así vestido, por favor, no, eh.\n—¿Qué tiene? ¿Está mal? ¿Tengo que vestirme bien para ir a mi living?",
             "source": {
@@ -727,7 +785,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/che/che_ex_02.mp3",
+            "audio": "/media/glossary-audio/examples/che/s1/che_ex_02.mp3",
             "en": "`Hey`, where’s the pregame at?",
             "es": "`Che`, ¿dónde es la previa?",
             "source": {
@@ -778,7 +836,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/cheto/cheto_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/cheto/s1/cheto_ex_01.mp3",
             "en": "You’re from Flores, Marina? Flores is `bougie`! Do you know how much it costs to rent there? Where you live isn’t just upscale — it’s like another planet!",
             "es": "De Flores venís, Marina. ¡Es `cheto` Flores! ¿Sabés lo que sale un alquiler ahí? Esto donde vivís no es `cheto`, ¡es extraterrestre!",
             "source": {
@@ -838,7 +896,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/chocho/chocho_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/chocho/s1/chocho_ex_01.mp3",
             "en": "My mom called—everything’s fine. Clarita was `thrilled`.",
             "es": "Llamó mi vieja, todo bien. Clarita estaba `chocha`.",
             "source": {
@@ -850,7 +908,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/chocho/chocho_ex_02.mp3",
+            "audio": "/media/glossary-audio/examples/chocho/s1/chocho_ex_02.mp3",
             "en": "I'm `thrilled`. You know when everything around you is exactly what you want?",
             "es": "Estoy `chocha`. ¿Viste cuando todo lo que hay es lo que querés?",
             "source": {
@@ -908,7 +966,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/chorro/chorro_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/chorro/s1/chorro_ex_01.mp3",
             "en": "What’s it like to be a `thief`? Tell me. Go on, I want to hear.",
             "es": "¿Qué se siente ser un `chorro`? Decime. Contame.",
             "source": {
@@ -960,7 +1018,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/ciruja/ciruja_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/ciruja/s1/ciruja_ex_01.mp3",
             "en": "The whole neighborhood knew you were having sex with `hobos`.",
             "es": "Todo el barrio sabía que tenías sexo con `cirujas`.",
             "source": {
@@ -1016,7 +1074,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/conchudo/conchudo_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/conchudo/s1/conchudo_ex_01.mp3",
             "en": "What an `asshole` you are, seriously.",
             "es": "Pedazo de `conchudo` que sos, eh.",
             "source": {
@@ -1072,7 +1130,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/cordon/cordon_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/cordon/s1/cordon_ex_01.mp3",
             "en": "The `curb` was completely unpainted — I had no way of knowing you weren’t allowed to park there.",
             "es": "El `cordón` estaba absolutamente despintado, o sea, no había ninguna forma de que yo me enterara de que ahí no se podía estacionar.",
             "source": {
@@ -1124,7 +1182,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/coso/coso_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/coso/s1/coso_ex_01.mp3",
             "en": "And that `thingy` who calls you Mari — is she really your friend? She left me alone with her kid just because I did her nails well. She doesn’t know me! I could have a criminal record!",
             "es": "¿Y ese `coso` que te dice Mari? ¿Es tu amiga en serio? Me dejó sola con su hijo solo porque le hice bien las manos. ¡No me conoce! ¡Yo podría tener antecedentes!",
             "source": {
@@ -1172,7 +1230,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/country/country_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/country/s1/country_ex_01.mp3",
             "en": "Well, that’s the table for the kids from the `gated community`.",
             "es": "Bueno, esa es la mesa de los chicos del `country`.",
             "source": {
@@ -1220,7 +1278,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/crique/crique_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/crique/s1/crique_ex_01.mp3",
             "en": "The car’s new, and honestly, I’m not too good with the `jack`.",
             "es": "Porque el coche es nuevo y la verdad que no me doy mucha maña con el `críquet`.",
             "source": {
@@ -1274,7 +1332,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/embalado/embalado_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/embalado/s1/embalado_ex_01.mp3",
             "en": "I’d been drinking last night, honestly. And, well, I was all `hyped up` and I left.",
             "es": "Y anoche había tomado, la verdad. Y, bueno, estaba `embalado` y salí.",
             "source": {
@@ -1326,7 +1384,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/en-bolas/en_bolas_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/en-bolas/s1/en_bolas_ex_01.mp3",
             "en": "Always `naked`, Bocha!",
             "es": "¡Siempre `en bolas`, Bocha!",
             "source": {
@@ -1382,7 +1440,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/flaco/flaco_ex_01.mp3?v=1764171440",
+            "audio": "/media/glossary-audio/examples/flaco/s1/flaco_ex_01.mp3?v=1764171440",
             "en": "Poor `guy`, we really gave him a hard time.",
             "es": "Pobre `flaco`, cómo le dábamos.",
             "source": {
@@ -1392,7 +1450,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/flaco/flaco_ex_01.mp3?v=1764171586",
+            "audio": "/media/glossary-audio/examples/flaco/s1/flaco_ex_01.mp3?v=1764171586",
             "en": "Come on, `man` — keep going.",
             "es": "Dale, `flaco`, seguí.",
             "source": {
@@ -1402,7 +1460,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/flaco/flaco_ex_01.mp3?v=1764171524",
+            "audio": "/media/glossary-audio/examples/flaco/s1/flaco_ex_01.mp3?v=1764171524",
             "en": "You know what, man? I’ve got plenty of reasons to live.",
             "es": "¿Y sabés qué, `flaco`? Yo tengo muchas razones para vivir.",
             "source": {
@@ -1454,7 +1512,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/forro/forro_ex_01.mp3?v=1764176752",
+            "audio": "/media/glossary-audio/examples/forro/s1/forro_ex_01.mp3?v=1764176752",
             "en": "You know what you are? A bitter lowlife. You `asshole`!",
             "es": "¿Sabés que sos un negro resentido? ¡`Forro`!",
             "source": {
@@ -1513,7 +1571,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/gaseosa/gaseosa_ex_01.mp3?v=1764177299",
+            "audio": "/media/glossary-audio/examples/gaseosa/s1/gaseosa_ex_01.mp3?v=1764177299",
             "en": "Terrible! She doesn’t even let him drink `soda`. The kid lives in hell. I even thought about calling the police, I swear.",
             "es": "¡Terrible! No lo deja tomar `gaseosa` tampoco. Un desastre, un infierno vive el nene. Pensé en llamar a la policía, mirá lo que te digo.",
             "source": {
@@ -1563,7 +1621,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/gil/gil_ex_01.mp3?v=1764177502",
+            "audio": "/media/glossary-audio/examples/gil/s1/gil_ex_01.mp3?v=1764177502",
             "en": "This `sucker` is always available. Forget it.",
             "es": "Este `gil` siempre está disponible. Olvidate.",
             "source": {
@@ -1620,7 +1678,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/goma/goma_ex_01.mp3?v=1764177899",
+            "audio": "/media/glossary-audio/examples/goma/s1/goma_ex_01.mp3?v=1764177899",
             "en": "I was telling you, I got a flat `tire` around kilometer 60 on the road from Salta to Cafayate.",
             "es": "Te decía que pinché una `goma` acá a la altura del kilómetro 60 de la ruta que une Salta Capital con Cafayate, digamos.",
             "source": {
@@ -1677,7 +1735,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/gordo/gordo_ex_01.mp3?v=1764178215",
+            "audio": "/media/glossary-audio/examples/gordo/s1/gordo_ex_01.mp3?v=1764178215",
             "en": "\"Hey, `babe`… dressed like that? Come on, no way. \"\n\"What’s wrong with it? Is it bad? Do I need to dress up just to be in my own living room?\"",
             "es": "—Che, `gordo`..., vos así vestido, por favor, no, eh. \n—¿Qué tiene? ¿Está mal? ¿Tengo que vestirme bien para ir a mi living?",
             "source": {
@@ -1689,7 +1747,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/gordo/gordo_ex_02.mp3?v=1764178216",
+            "audio": "/media/glossary-audio/examples/gordo/s1/gordo_ex_02.mp3?v=1764178216",
             "en": "If I’m being honest, I wouldn’t get involved, `girl`.",
             "es": "Yo no me metería, `gorda`, te soy sincera.",
             "source": {
@@ -1749,7 +1807,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/guita/guita_ex_01.mp3?v=1764178519",
+            "audio": "/media/glossary-audio/examples/guita/s1/guita_ex_01.mp3?v=1764178519",
             "en": "\"And now you too, Micaela? Why’d you do it?\"\n\"He offered me a ton of `dough`.\"",
             "es": "—Y ahora, vos también, Micaela, ¿por qué se lo hiciste? \n—Me puso muchísima `guita`.",
             "source": {
@@ -1761,7 +1819,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/guita/guita_ex_02.mp3?v=1764178520",
+            "audio": "/media/glossary-audio/examples/guita/s1/guita_ex_02.mp3?v=1764178520",
             "en": "The government gave a private company the green light to rake in tons of `money`.",
             "es": "El Gobierno habilita a una empresa privada para que levante `guita` en pala.",
             "source": {
@@ -1813,7 +1871,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/hacer-lo-que-se-te-le-me-cantan-las-pelotas/hacer_lo_que_se_te_le_me_cantan_las_pelotas_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/hacer-lo-que-se-te-le-me-cantan-las-pelotas/s1/hacer_lo_que_se_te_le_me_cantan_las_pelotas_ex_01.mp3",
             "en": "I gave you the best education and you always `did whatever the hell you wanted`, so now screw you, man!",
             "es": "Yo te di la mejor educación y vos siempre `hiciste lo que se te cantaron las pelotas`, así que ahora ¡jodete, hermano!.",
             "source": {
@@ -1862,7 +1920,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/intendente/intendente_ex_01.mp3?v=1764180040",
+            "audio": "/media/glossary-audio/examples/intendente/s1/intendente_ex_01.mp3?v=1764180040",
             "en": "And now he’s going to run for `mayor`. That son of a bitch! Can you believe it?",
             "es": "Encima se va a presentar a `intendente`. ¡Ese hijo de puta! ¿Lo podés creer?",
             "source": {
@@ -1913,7 +1971,7 @@
         "equivalents_en": [],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/italpark/italpark_ex_01.mp3?v=1764274737",
+            "audio": "/media/glossary-audio/examples/italpark/s1/italpark_ex_01.mp3?v=1764274737",
             "en": "Did you live through the `Italpark` era or are you younger? You know they shut it down because a ride car flew off?",
             "es": "¿Vos agarraste la época de `Italpark` o sos más chica? ¿Viste que lo cerraron porque un carrito salió volando?",
             "source": {
@@ -1955,7 +2013,7 @@
         "countries": [
           "AR"
         ],
-        "definition_en": "<p><span style=\"font-weight: normal;\">Fun, partying, or carefree activity; can also mean a joke or annoying behavior depending on context.</span></p>",
+        "definition_en": "<p><span style=\"font-weight: normal;\">Fun, partying, or carefree activity; can also mean joking or annoying behavior depending on context.</span></p>",
         "definition_es": "<p><span style=\"font-weight: normal;\">Diversión, fiesta o actividad despreocupada; también puede referirse a una broma o comportamiento molesto según el contexto.</span></p>",
         "domain": [
           "cultura_pop",
@@ -1969,7 +2027,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/joda/joda_ex_01.mp3?v=1765482604",
+            "audio": "/media/glossary-audio/examples/joda/s1/joda_ex_01.mp3?v=1765623765",
             "en": "Ugh, this Agusto… he really needs to cut it out with `all the partying`. Kids are going up and down with beers all the time. This isn’t a nightclub.",
             "es": "Uy, este Agusto. Que la corte con `la joda`, eh. Suben y bajan pendejos todo el tiempo con cervezas. No es un boliche esto.",
             "linked_terms": [
@@ -1995,6 +2053,56 @@
           "vigente"
         ],
         "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": "joda",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      },
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<p><span style=\"font-weight: normal;\">Something unserious, misleading, or presented as a bogus explanation.</span></p>",
+        "definition_es": "<p><span style=\"font-weight: normal;\">Cosa sin seriedad, explicación engañosa o excusa poco creíble.</span></p>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "bullshit",
+          "nonsense",
+          "a lame excuse"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/joda/s2/joda_ex_01.mp3?v=1765623778",
+            "en": "What kind of `bullshit` is that? “General tune-up…” Did you put refrigerant in it or not?",
+            "es": "¿Qué clase de `joda` es esa? \"Puesta a punto…\" ¿Gas le pusiste o no?",
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s2",
+        "pos": "sustantivo_femenino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "despectivo"
+        ],
         "variants": {
           "augmentative": null,
           "diminutive": null,
@@ -2029,7 +2137,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/jogging/jogging_ex_01.mp3?v=1764180203",
+            "audio": "/media/glossary-audio/examples/jogging/s1/jogging_ex_01.mp3?v=1764180203",
             "en": "Besides, everyone coming today—I see them every day in `sweatpants`.",
             "es": "Además, a todos los que vienen hoy ya los veo todos los días en `jogging`.",
             "source": {
@@ -2084,7 +2192,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/la-concha-de-dios/la_concha_de_dios_ex_01.mp3?v=1764180360",
+            "audio": "/media/glossary-audio/examples/la-concha-de-dios/s1/la_concha_de_dios_ex_01.mp3?v=1764180360",
             "en": "`Holy fuck`! Now Mecha’s going to tell the whole neighborhood about this disaster, and how am I supposed to explain I went to school with you?!",
             "es": "¡`La concha de Dios`! Ahora Mecha que va a contar a todo el barrio este papelón y yo, ¿cómo explico que fui al colegio con vos? ¡¿Cómo?!",
             "source": {
@@ -2144,7 +2252,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/la-concha-de-la-lora/la_concha_de_la_lora_ex_01.mp3?v=1764180506",
+            "audio": "/media/glossary-audio/examples/la-concha-de-la-lora/s1/la_concha_de_la_lora_ex_01.mp3?v=1764180506",
             "en": "`For fuck’s sake`…",
             "es": "Ay, `la concha de la lora`...",
             "source": {
@@ -2202,7 +2310,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/la-concha-de-tu-hermana/la_concha_de_tu_hermana_ex_01.mp3?v=1764181069",
+            "audio": "/media/glossary-audio/examples/la-concha-de-tu-hermana/s1/la_concha_de_tu_hermana_ex_01.mp3?v=1764181069",
             "en": "No — `fuck you`, you son of a bitch.",
             "es": "No, `la concha de tu hermana`, hijo de puta.",
             "source": {
@@ -2262,7 +2370,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/la-concha-de-tu-madre/la_concha_de_tu_madre_ex_01.mp3?v=1764181420",
+            "audio": "/media/glossary-audio/examples/la-concha-de-tu-madre/s1/la_concha_de_tu_madre_ex_01.mp3?v=1764181420",
             "en": "You little shit — `motherfucker`!",
             "es": "¡Uy, pendeja, `la concha de tu madre`!",
             "source": {
@@ -2326,7 +2434,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/laburar/laburar_ex_01.mp3?v=1764181995",
+            "audio": "/media/glossary-audio/examples/laburar/s1/laburar_ex_01.mp3?v=1764181995",
             "en": "Do what you have to do. `Get to work`, man!",
             "es": "Hagan lo que tengan que hacer. ¡`Laburen`, viejo!",
             "source": {
@@ -2382,7 +2490,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/las-pelotas/las_pelotas_ex_01.mp3?v=1764268292",
+            "audio": "/media/glossary-audio/examples/las-pelotas/s1/las_pelotas_ex_01.mp3?v=1764268292",
             "en": "Are you even listening to me? “Enough evidence” — `my ass`!",
             "es": "¿Vos me estás escuchando? Prueba suficiente ¡`las pelotas`!",
             "source": {
@@ -2438,7 +2546,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/living/living_ex_01.mp3?v=1764250670",
+            "audio": "/media/glossary-audio/examples/living/s1/living_ex_01.mp3?v=1764250670",
             "en": "\"Hey, babe… dressed like that? Come on, no way.\"\n\"What’s wrong with it? Is it bad? Do I need to dress up just to be in my own `living room`?\"",
             "es": "—Che, gordo..., vos así vestido, por favor, no, eh.\n—¿Qué tiene? ¿Está mal? ¿Tengo que vestirme bien para ir a mi `living`?",
             "source": {
@@ -2497,7 +2605,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/mango/mango_ex_01.mp3?v=1764261422",
+            "audio": "/media/glossary-audio/examples/mango/s1/mango_ex_01.mp3?v=1764261422",
             "en": "Listen to me — are we going to see a single `dime` from any of this?",
             "es": "Escuchame una cosa, ¿vamos a ver un `mango` de todo esto?",
             "source": {
@@ -2555,7 +2663,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/mina/mina_ex_01.mp3?v=1764261812",
+            "audio": "/media/glossary-audio/examples/mina/s1/mina_ex_01.mp3?v=1764261812",
             "en": "Are you really happy banging a different `chick` every day?",
             "es": "¿Sos feliz volteándote todos los días a una `mina` distinta?",
             "source": {
@@ -2615,7 +2723,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/monigotadas/monigotadas_ex_01.mp3?v=1764261974",
+            "audio": "/media/glossary-audio/examples/monigotadas/s1/monigotadas_ex_01.mp3?v=1764261974",
             "en": "That’s right! `Clowning` around behind the couch—remember you nearly gave Grandma a heart attack?!",
             "es": "¡Eso! De andar haciendo `monigotadas` detrás del sillón, ¡¿te acordás que casi le infartás a la abuela!?",
             "source": {
@@ -2672,7 +2780,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/mosquita-muerta/mosquita_muerta_ex_01.mp3?v=1764262125",
+            "audio": "/media/glossary-audio/examples/mosquita-muerta/s1/mosquita_muerta_ex_01.mp3?v=1764262125",
             "en": "Go ahead, act like a `fake innocent` now — tell me you didn’t notice.",
             "es": "Hacete la `mosquita muerta` ahora, decime que no te diste cuenta.",
             "source": {
@@ -2729,7 +2837,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/mucama/mucama_ex_01.mp3?v=1764262224",
+            "audio": "/media/glossary-audio/examples/mucama/s1/mucama_ex_01.mp3?v=1764262224",
             "en": "They found him dressed up like a little `maid`, dead in the house...",
             "es": "Lo encontraron vestido de `mucamita`, muerto en la casa...",
             "source": {
@@ -2741,7 +2849,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/mucama/mucama_ex_02.mp3?v=1764262224",
+            "audio": "/media/glossary-audio/examples/mucama/s1/mucama_ex_02.mp3?v=1764262224",
             "en": "Why are you here posing as a `housekeeper` in one of my neighbor’s homes?",
             "es": "¿Por qué estás acá infiltrándote como `mucama` en la casa de una vecina mía?",
             "source": {
@@ -2795,7 +2903,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/negro/negro_ex_01.mp3?v=1764177032",
+            "audio": "/media/glossary-audio/examples/negro/s1/negro_ex_01.mp3?v=1764177032",
             "en": "You know what you are? A bitter `lowlife`! Asshole!",
             "es": "¿Sabés que sos un `negro` resentido? ¡Forro!",
             "source": {
@@ -2854,7 +2962,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/nene/nene_ex_01.mp3?v=1764264534",
+            "audio": "/media/glossary-audio/examples/nene/s1/nene_ex_01.mp3?v=1764264534",
             "en": "It’s awful! She won’t even let him drink soda. A total nightmare — that `kid` is living in hell. I almost called the police, I swear.",
             "es": "¡Terrible! No lo deja tomar gaseosa tampoco. Un desastre, un infierno vive el `nene`. Pensé en llamar a la policía, mirá lo que te digo.",
             "source": {
@@ -2914,7 +3022,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/no-me-jodas/no_me_jodas_ex_01.mp3?v=1764266880",
+            "audio": "/media/glossary-audio/examples/no-me-jodas/s1/no_me_jodas_ex_01.mp3?v=1764266880",
             "en": "`Don’t mess with me` anymore, I’m begging you.",
             "es": "`No me jodas` más, te lo pido por favor.",
             "source": {
@@ -2975,7 +3083,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/no-rompas/no_rompas_ex_01.mp3?v=1764267290",
+            "audio": "/media/glossary-audio/examples/no-rompas/s1/no_rompas_ex_01.mp3?v=1764267290",
             "en": "Go buy it yourself. `Knock it off`.",
             "es": "Vas y te lo comprás vos. `No rompas`.",
             "source": {
@@ -3031,7 +3139,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/palo/palo_ex_01.mp3?v=1764267394",
+            "audio": "/media/glossary-audio/examples/palo/s1/palo_ex_01.mp3?v=1764267394",
             "en": "—Expensive? How much? —`A million`.",
             "es": "—¿Caro? ¿Cuánto? —Un `palo`.",
             "source": {
@@ -3086,7 +3194,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/papelon/papelon_ex_01.mp3?v=1764267584",
+            "audio": "/media/glossary-audio/examples/papelon/s1/papelon_ex_01.mp3?v=1764267584",
             "en": "`Holy fuck`! Now Mecha’s going to tell the whole neighborhood about this `embarrassment`, and how am I supposed to explain I went to school with you?!",
             "es": "¡La concha de Dios! Ahora Mecha que va a contar a todo el barrio este `papelón` y yo, ¿cómo explico que fui al colegio con vos? ¡¿Cómo?!",
             "source": {
@@ -3143,7 +3251,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/patente/patente_ex_01.mp3?v=1764267834",
+            "audio": "/media/glossary-audio/examples/patente/s1/patente_ex_01.mp3?v=1764267834",
             "en": "The guy’s `license plate` is...",
             "es": "La `patente` del hombre es...",
             "source": {
@@ -3197,7 +3305,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/pavada/pavada_ex_01.mp3?v=1765480832",
+            "audio": "/media/glossary-audio/examples/pavada/s1/pavada_ex_01.mp3?v=1765480832",
             "en": "\"Just a chocolate, really — just `a little something`.\"\n\"Yeah, but you didn’t have to.\"",
             "es": "—Un chocolate, una `pavada`.\n—Sí, pero no hace falta.",
             "source": {
@@ -3252,7 +3360,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/pelotas/pelotas_ex_01.mp3?v=1764268524",
+            "audio": "/media/glossary-audio/examples/pelotas/s1/pelotas_ex_01.mp3?v=1764268524",
             "en": "Um… can you chill out? You really have me by the `balls`, kid!",
             "es": "Este... ¿te tranquilizás? ¡Cómo me tenés `las pelotas`, pendejo!",
             "source": {
@@ -3317,7 +3425,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/pelotudo/pelotudo_ex_01.mp3?v=1764268786",
+            "audio": "/media/glossary-audio/examples/pelotudo/s1/pelotudo_ex_01.mp3?v=1764268786",
             "en": "What are you, the President of the Republic, you `fucking idiot`?",
             "es": "¿Qué sos, el Presidente de la República, `pelotudo`?",
             "source": {
@@ -3327,7 +3435,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/pelotudo/pelotudo_ex_02.mp3?v=1764268786",
+            "audio": "/media/glossary-audio/examples/pelotudo/s1/pelotudo_ex_02.mp3?v=1764268786",
             "en": "What did you do? You ruined all our lives, you `idiot`!",
             "es": "¿Qué hiciste? ¡Nos arruinaste la vida a todos, `pelotudo`!",
             "source": {
@@ -3387,7 +3495,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/pendejo/pendejo_ex_01.mp3?v=1764269085",
+            "audio": "/media/glossary-audio/examples/pendejo/s1/pendejo_ex_01.mp3?v=1764269085",
             "en": "Um… can you chill out? You’re seriously getting on my nerves, `kid`!",
             "es": "Este... ¿te tranquilizás? ¡Cómo me tenés las pelotas, `pendejo`!",
             "source": {
@@ -3399,7 +3507,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/pendejo/pendejo_ex_02.mp3?v=1764269086",
+            "audio": "/media/glossary-audio/examples/pendejo/s1/pendejo_ex_02.mp3?v=1764269086",
             "en": "You little `shit` — motherfucker!",
             "es": "¡Uy, `pendeja`, la concha de tu madre!",
             "source": {
@@ -3458,7 +3566,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/pibe/pibe_ex_01.mp3?v=1764269668",
+            "audio": "/media/glossary-audio/examples/pibe/s1/pibe_ex_01.mp3?v=1764269668",
             "en": "I just don’t understand these `kids`, man. Such a desire to screw up their family’s life, you know?",
             "es": "Ahora yo no los entiendo a estos `pibes`, viejo. Qué ganas de cagarle la vida a la familia, ¿no?",
             "source": {
@@ -3514,7 +3622,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/plata/plata_ex_01.mp3?v=1764269442",
+            "audio": "/media/glossary-audio/examples/plata/s1/plata_ex_01.mp3?v=1764269442",
             "en": "\"Otherwise, I’ll have to ask you to leave so I can keep working.\"\n\"And what if I don’t have any `money`?\"",
             "es": "—¿Caso contrario, le pido que se retire y me deje seguir atendiendo?\n—¿Y si no tengo `plata`?",
             "source": {
@@ -3524,7 +3632,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/plata/plata_ex_02.mp3?v=1764269442",
+            "audio": "/media/glossary-audio/examples/plata/s1/plata_ex_02.mp3?v=1764269442",
             "en": "Oh, everything’s easy for you. I’m sick of them stealing my `cash`!",
             "es": "Pero qué fácil que es todo para vos. ¡Estoy harto de que me roben la `plata`!",
             "source": {
@@ -3579,7 +3687,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/plomo/plomo_ex_01.mp3?v=1764269949",
+            "audio": "/media/glossary-audio/examples/plomo/s1/plomo_ex_01.mp3?v=1764269949",
             "en": "They always end the same way. It’s like you never find out anything about anyone—what happened. Such a `drag`.",
             "es": "Siempre terminan iguales. Es como que nunca se sabe nada de nadie, qué pasó. Un `plomo`.",
             "source": {
@@ -3637,7 +3745,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/porro/porro_ex_01.mp3?v=1764270270",
+            "audio": "/media/glossary-audio/examples/porro/s1/porro_ex_01.mp3?v=1764270270",
             "en": "These kids don’t even smoke a `joint`. I honestly don’t know what kind of life they’re gonna have.",
             "es": "Ni `porro` fuman estos chicos. Yo no sé qué vida van a tener, eh.",
             "source": {
@@ -3692,7 +3800,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/previa/previa_ex_01.mp3?v=1764270607",
+            "audio": "/media/glossary-audio/examples/previa/s1/previa_ex_01.mp3?v=1764270607",
             "en": "Hey, where’s the `pregame` at?",
             "es": "Che, ¿dónde es la `previa`?",
             "source": {
@@ -3748,7 +3856,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/pucho/pucho_ex_01.mp3?v=1764270691",
+            "audio": "/media/glossary-audio/examples/pucho/s1/pucho_ex_01.mp3?v=1764270691",
             "en": "Micaela, you used to smoke `cigarettes` off the ground.",
             "es": "Micaela, te fumabas los `puchos` del piso.",
             "source": {
@@ -3804,7 +3912,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/rajar-4/rajar_4_ex_01.mp3?v=1764271098",
+            "audio": "/media/glossary-audio/examples/rajar-4/s1/rajar_4_ex_01.mp3?v=1764271098",
             "en": "`Scram`! Get lost! I said get out!",
             "es": "¡`Rajá` de acá! ¡Tomátela! ¡`Rajá` de acá!",
             "source": {
@@ -3862,7 +3970,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/rebusque/rebusque_ex_01.mp3?v=1764271528",
+            "audio": "/media/glossary-audio/examples/rebusque/s1/rebusque_ex_01.mp3?v=1764271528",
             "en": "We're the Argentos. `Hustling` is our thing.",
             "es": "Somos Argento. `El rebusque` es lo nuestro.",
             "source": {
@@ -3918,7 +4026,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/romperla/romperla_ex_01.mp3?v=1764272090",
+            "audio": "/media/glossary-audio/examples/romperla/s1/romperla_ex_01.mp3?v=1764272090",
             "en": "These are tasty. They make them with liver and they really `crush it`.",
             "es": "Están buenos estos. Los hacen de hígado y `la rompen`.",
             "source": {
@@ -3976,7 +4084,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/same/same_ex_01.mp3?v=1764272236",
+            "audio": "/media/glossary-audio/examples/same/s1/same_ex_01.mp3?v=1764272236",
             "en": "Well, you’ve gotta look on the bright side, mom. Now we know that the `paramedics` get here in a jiffy.",
             "es": "Bueno, pero hay que mirarle el lado positivo a las cosas, mamita. Ahora sabemos que `el SAME` viene al toque.",
             "source": {
@@ -4032,7 +4140,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/sorete/sorete_ex_01.mp3?v=1764272575",
+            "audio": "/media/glossary-audio/examples/sorete/s1/sorete_ex_01.mp3?v=1764272575",
             "en": "\"This is the last favor I’ll ever ask you, girl.\"\n\"Girl? Get in the car, you `little bitch`.\"",
             "es": "—El último favor que te pido en la vida, amiga.\n—¿Amiga? Subite al auto, `soreta`.",
             "source": {
@@ -4095,7 +4203,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/tarado/tarado_ex_01.mp3?v=1764273068",
+            "audio": "/media/glossary-audio/examples/tarado/s1/tarado_ex_01.mp3?v=1764273068",
             "en": "Let go of me, dammit! Let go! Let go, you `idiot`!",
             "es": "¡Soltame, mierda! ¡Soltame! ¡Soltame, `tarada`!",
             "source": {
@@ -4156,7 +4264,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/tenencia/tenencia_ex_01.mp3?v=1764273182",
+            "audio": "/media/glossary-audio/examples/tenencia/s1/tenencia_ex_01.mp3?v=1764273182",
             "en": "I don’t know if you remember they took `custody` of your own kids away from you.",
             "es": "No sé si recordás que te sacaron `la tenencia` de tus propios hijos.",
             "source": {
@@ -4168,7 +4276,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/tenencia/tenencia_ex_02.mp3?v=1764273182",
+            "audio": "/media/glossary-audio/examples/tenencia/s1/tenencia_ex_02.mp3?v=1764273182",
             "en": "Therefore, we see no need to grant Mr. Fisher shared `custody`.",
             "es": "Así que no vemos ninguna necesidad de otorgarle al señor Fisher la `tenencia` compartida.",
             "source": {
@@ -4226,7 +4334,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/tomarsela/tomarsela_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/tomarsela/s1/tomarsela_ex_01.mp3",
             "en": "\"Get out of here!\" `Get lost`! \"Get out of here!\"",
             "es": "¡Rajá de acá! ¡`Tomátela`! ¡Rajá de acá!",
             "source": {
@@ -4238,7 +4346,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/tomarsela/tomarsela_ex_02.mp3",
+            "audio": "/media/glossary-audio/examples/tomarsela/s1/tomarsela_ex_02.mp3",
             "en": "Okay, that's enough, man, that's it. You wrecked my car. `Get out of here`!",
             "es": "Bueno, basta loco, ya está. Me destrozaste el auto. ¡`Tomátelas`!",
             "source": {
@@ -4291,7 +4399,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/tranqui/tranqui_ex_01.mp3?v=1765481633",
+            "audio": "/media/glossary-audio/examples/tranqui/s1/tranqui_ex_01.mp3?v=1765481633",
             "en": "\"Can you use something a little `milder`?\"\n\"Yeah, we’ll try something else, I guess.\"",
             "es": "—¿Podés usar algo más `tranqui`?\n—Sí, probamos con otra, no sé.",
             "source": {
@@ -4348,7 +4456,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/un-mate/un_mate_ex_01.mp3?v=1764273328",
+            "audio": "/media/glossary-audio/examples/un-mate/s1/un_mate_ex_01.mp3?v=1764273328",
             "en": "Want a `serving of mate`?",
             "es": "¿Querés un `mate`?",
             "source": {
@@ -4402,7 +4510,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/un-toque/un_toque_ex_01.mp3?v=1765478574",
+            "audio": "/media/glossary-audio/examples/un-toque/s1/un_toque_ex_01.mp3?v=1765478574",
             "en": "I like to add the olive oil at the end—just a little bit.",
             "es": "A mí me gusta ponerle el aceite de oliva al final, un toque.",
             "source": {
@@ -4457,7 +4565,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/viejo/viejo_ex_01.mp3?v=1764273561",
+            "audio": "/media/glossary-audio/examples/viejo/s1/viejo_ex_01.mp3?v=1764273561",
             "en": "My `mom` called—everything’s fine. Clarita was thrilled.",
             "es": "Llamó mi `vieja`, todo bien. Clarita estaba chocha.",
             "source": {
@@ -4513,7 +4621,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/viste/viste_ex_01.mp3?v=1764274602",
+            "audio": "/media/glossary-audio/examples/viste/s1/viste_ex_01.mp3?v=1764274602",
             "en": "And if you’re going to care that much about other people’s opinions… `you know`? You’re done for, girl.",
             "es": "Además, si vas a tener tan en cuenta la opinión de los otros… ¿`viste`? Sonaste, pichona.",
             "source": {
@@ -4523,7 +4631,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/viste/viste_ex_02.mp3?v=1764274602",
+            "audio": "/media/glossary-audio/examples/viste/s1/viste_ex_02.mp3?v=1764274602",
             "en": "Did you live through the Italpark era or are you younger? `You know` they shut it down because a ride car flew off?",
             "es": "¿Vos agarraste la época de Italpark o sos más chica? ¿`Viste` que lo cerraron porque un carrito salió volando?",
             "source": {
@@ -4575,7 +4683,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/voltearse/voltearse_ex_01.mp3?v=1764273865",
+            "audio": "/media/glossary-audio/examples/voltearse/s1/voltearse_ex_01.mp3?v=1764273865",
             "en": "Are you really happy `sleeping with` a different woman every day?",
             "es": "¿Sos feliz `volteándote` todos los días a una mina distinta?",
             "source": {
@@ -4634,7 +4742,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/whisky/whisky_ex_01.mp3?v=1764273964",
+            "audio": "/media/glossary-audio/examples/whisky/s1/whisky_ex_01.mp3?v=1764273964",
             "en": "\"`Say cheese`!\"\n\"`Cheese`!\"",
             "es": "—¡`Whisky`!\n—¡`Whisky`!",
             "source": {
@@ -4666,5 +4774,62 @@
     ],
     "slug": "whisky",
     "word": "whisky"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/y/y.mp3?v=1765621515",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<p><span style=\"font-weight: normal;\">Conversational filler used to begin a response, buy time, or soften what follows, without grammatical linking function.</span></p>",
+        "definition_es": "<p><span style=\"font-weight: normal;\">Muletilla conversacional usada para iniciar una respuesta, ganar tiempo o suavizar lo que se va a decir, sin función de enlace gramatical.</span></p>",
+        "domain": [],
+        "equivalents_en": [
+          "well",
+          "so",
+          "uh"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/y/s1/y_ex_01.mp3?v=1765621444",
+            "en": "\"What was wrong with the lady’s air conditioner?\"\n\"`Well`… dirty filters, we topped up the refrigerant.\"",
+            "es": "—¿Qué problema tenía el aire de la señora?\n—`Y`… los filtros sucios, le pusimos gas.",
+            "linked_terms": [
+              "aire"
+            ],
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "muletilla_conversacional",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "y",
+    "word": "y"
   }
 ]

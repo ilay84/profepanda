@@ -18,7 +18,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/al-toque/al_toque_ex_01.mp3",
+          "audio": "/media/glossary-audio/examples/al-toque/s1/al_toque_ex_01.mp3",
           "en": "The emergency service gets here `right away`.",
           "es": "El SAME viene `al toque`.",
           "source": {

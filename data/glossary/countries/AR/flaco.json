@@ -21,7 +21,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/flaco/flaco_ex_01.mp3?v=1764171440",
+          "audio": "/media/glossary-audio/examples/flaco/s1/flaco_ex_01.mp3?v=1764171440",
           "en": "Poor `guy`, we really gave him a hard time.",
           "es": "Pobre `flaco`, cómo le dábamos.",
           "source": {
@@ -31,7 +31,7 @@
           }
         },
         {
-          "audio": "/media/glossary-audio/examples/flaco/flaco_ex_01.mp3?v=1764171586",
+          "audio": "/media/glossary-audio/examples/flaco/s1/flaco_ex_01.mp3?v=1764171586",
           "en": "Come on, `man` — keep going.",
           "es": "Dale, `flaco`, seguí.",
           "source": {
@@ -41,7 +41,7 @@
           }
         },
         {
-          "audio": "/media/glossary-audio/examples/flaco/flaco_ex_01.mp3?v=1764171524",
+          "audio": "/media/glossary-audio/examples/flaco/s1/flaco_ex_01.mp3?v=1764171524",
           "en": "You know what, man? I’ve got plenty of reasons to live.",
           "es": "¿Y sabés qué, `flaco`? Yo tengo muchas razones para vivir.",
           "source": {

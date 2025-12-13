@@ -21,6 +21,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "sustantivo_masculino",
+    "slug": "aire",
+    "snippet": "Shortened form of air conditioner, used to refer to the cooling unit.",
+    "word": "aire"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "locucion_adverbial",
     "slug": "al-toque",
     "snippet": "Very fast, right away, with almost no delay.",
@@ -329,7 +338,7 @@
     ],
     "pos": "sustantivo_femenino",
     "slug": "joda",
-    "snippet": "Fun, partying, or carefree activity; can also mean a joke or annoying behavior depending on context.",
+    "snippet": "Fun, partying, or carefree activity; can also mean joking or annoying behavior depending on context.",
     "word": "joda"
   },
   {
@@ -736,5 +745,14 @@
     "slug": "whisky",
     "snippet": "Expression used when taking a photo to prompt someone to smile, similar to “cheese”.",
     "word": "whisky"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "muletilla_conversacional",
+    "slug": "y",
+    "snippet": "Conversational filler used to begin a response, buy time, or soften what follows, without grammatical linking function.",
+    "word": "y"
   }
 ]

@@ -19,7 +19,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/boludo/boludo_ex_01.mp3",
+          "audio": "/media/glossary-audio/examples/boludo/s1/boludo_ex_01.mp3",
           "en": "Yeah, I’m messing with you — `girl`, the empanadas are here.",
           "es": "Sí, te estoy jodiendo, `boluda`, son las empanadas.",
           "source": {
@@ -31,7 +31,7 @@
           }
         },
         {
-          "audio": "/media/glossary-audio/examples/boludo/boludo_ex_02.mp3",
+          "audio": "/media/glossary-audio/examples/boludo/s1/boludo_ex_02.mp3",
           "en": "It totally sounds like a swinger bar, `dude`.",
           "es": "Parece un bar swinger, `boluda`.",
           "source": {

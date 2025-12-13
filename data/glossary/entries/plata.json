@@ -19,7 +19,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/plata/plata_ex_01.mp3?v=1764269442",
+          "audio": "/media/glossary-audio/examples/plata/s1/plata_ex_01.mp3?v=1764269442",
           "en": "\"Otherwise, I’ll have to ask you to leave so I can keep working.\"\n\"And what if I don’t have any `money`?\"",
           "es": "—¿Caso contrario, le pido que se retire y me deje seguir atendiendo?\n—¿Y si no tengo `plata`?",
           "source": {
@@ -29,7 +29,7 @@
           }
         },
         {
-          "audio": "/media/glossary-audio/examples/plata/plata_ex_02.mp3?v=1764269442",
+          "audio": "/media/glossary-audio/examples/plata/s1/plata_ex_02.mp3?v=1764269442",
           "en": "Oh, everything’s easy for you. I’m sick of them stealing my `cash`!",
           "es": "Pero qué fácil que es todo para vos. ¡Estoy harto de que me roben la `plata`!",
           "source": {

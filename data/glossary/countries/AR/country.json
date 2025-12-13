@@ -19,7 +19,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/country/country_ex_01.mp3",
+          "audio": "/media/glossary-audio/examples/country/s1/country_ex_01.mp3",
           "en": "Well, that’s the table for the kids from the `gated community`.",
           "es": "Bueno, esa es la mesa de los chicos del `country`.",
           "source": {

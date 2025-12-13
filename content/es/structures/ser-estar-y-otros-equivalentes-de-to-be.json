@@ -1,0 +1,21 @@
+{
+  "schema_version": "4.1.0",
+  "language": "es",
+  "domain": "structures",
+  "resource_id": "ser-estar-y-otros-equivalentes-de-to-be",
+  "meta": {
+    "title_es": "Ser, estar y otros equivalentes de 'to be'",
+    "title_en": "Ser, Estar, and Other Equivalents of 'to be'",
+    "levels": [],
+    "tags": [
+      "sp-ser-estar",
+      "verbs-special"
+    ],
+    "taxonomy_paths": [
+      "es/structures"
+    ]
+  },
+  "relations": [],
+  "modules": [],
+  "storage_path": "/content/es/structures/ser-estar-y-otros-equivalentes-de-to-be.json"
+}

@@ -6,10 +6,19 @@
     "title_es": "Demo: Todos los bloques",
     "title_en": "Demo: All Blocks",
     "lang_primary": "es",
-    "langs_supported": ["es", "en"],
+    "langs_supported": [
+      "es",
+      "en"
+    ],
     "level": "A2-B1",
-    "tags": ["demo", "ppx", "content_lab"],
-    "taxonomy_paths": ["demo/content-lab"]
+    "tags": [
+      "demo",
+      "ppx",
+      "content_lab"
+    ],
+    "taxonomy_paths": [
+      "demo/content-lab"
+    ]
   },
   "modules": [
     {
@@ -23,7 +32,16 @@
           "style_variant": "h2",
           "data": {
             "segments": [
-              { "segment_id": "h1s1", "text": "SER y ESTAR: ubicación y estado", "marks": ["bold"] }
+              {
+                "segment_id": "h1s1",
+                "text": "SER y ESTAR: ubicación y estado",
+                "marks": [
+                  "bold"
+                ],
+                "translations": {
+                  "en": "SER and ESTAR: location and state"
+                }
+              }
             ]
           }
         },
@@ -33,11 +51,50 @@
           "style_variant": "body",
           "data": {
             "segments": [
-              { "segment_id": "s1", "text": "En español usamos ", "marks": [] },
-              { "segment_id": "s2", "text": "SER", "marks": ["bold"], "translations": { "en": "SER (to be: essence/identity)" } },
-              { "segment_id": "s3", "text": " para identidad y ", "marks": [] },
-              { "segment_id": "s4", "text": "ESTAR", "marks": ["bold"], "translations": { "en": "ESTAR (to be: state/location)" } },
-              { "segment_id": "s5", "text": " para estados o ubicación.", "marks": [] }
+              {
+                "segment_id": "s1",
+                "text": "En español usamos ",
+                "marks": [],
+                "translations": {
+                  "en": "In Spanish we use "
+                }
+              },
+              {
+                "segment_id": "s2",
+                "text": "SER",
+                "marks": [
+                  "bold"
+                ],
+                "translations": {
+                  "en": "SER (to be: essence/identity)"
+                }
+              },
+              {
+                "segment_id": "s3",
+                "text": " para identidad y ",
+                "marks": [],
+                "translations": {
+                  "en": " for identity and "
+                }
+              },
+              {
+                "segment_id": "s4",
+                "text": "ESTAR",
+                "marks": [
+                  "bold"
+                ],
+                "translations": {
+                  "en": "ESTAR (to be: state/location)"
+                }
+              },
+              {
+                "segment_id": "s5",
+                "text": " para estados o ubicación.",
+                "marks": [],
+                "translations": {
+                  "en": " for states or location."
+                }
+              }
             ]
           }
         },
@@ -50,13 +107,27 @@
               {
                 "item_id": "li1",
                 "segments": [
-                  { "segment_id": "li1s1", "text": "SER: profesiones, origen, identidad.", "marks": [], "translations": { "en": "SER: professions, origin, identity." } }
+                  {
+                    "segment_id": "li1s1",
+                    "text": "SER: profesiones, origen, identidad.",
+                    "marks": [],
+                    "translations": {
+                      "en": "SER: professions, origin, identity."
+                    }
+                  }
                 ]
               },
               {
                 "item_id": "li2",
                 "segments": [
-                  { "segment_id": "li2s1", "text": "ESTAR: estados temporales, ubicación.", "marks": [], "translations": { "en": "ESTAR: temporary states, location." } }
+                  {
+                    "segment_id": "li2s1",
+                    "text": "ESTAR: estados temporales, ubicación.",
+                    "marks": [],
+                    "translations": {
+                      "en": "ESTAR: temporary states, location."
+                    }
+                  }
                 ]
               }
             ]
@@ -69,11 +140,50 @@
           "data": {
             "icon": "warning_triangle",
             "segments": [
-              { "segment_id": "c1", "text": "Con ", "marks": [] },
-              { "segment_id": "c2", "text": "vivo", "marks": ["bold"], "translations": { "en": "alive" } },
-              { "segment_id": "c3", "text": " y ", "marks": [] },
-              { "segment_id": "c4", "text": "muerto", "marks": ["bold"], "translations": { "en": "dead" } },
-              { "segment_id": "c5", "text": " usamos ESTAR para el estado f\u00edsico real.", "marks": [], "translations": { "en": "Use ESTAR for real physical state." } }
+              {
+                "segment_id": "c1",
+                "text": "Con ",
+                "marks": [],
+                "translations": {
+                  "en": "With "
+                }
+              },
+              {
+                "segment_id": "c2",
+                "text": "vivo",
+                "marks": [
+                  "bold"
+                ],
+                "translations": {
+                  "en": "alive"
+                }
+              },
+              {
+                "segment_id": "c3",
+                "text": " y ",
+                "marks": [],
+                "translations": {
+                  "en": " and "
+                }
+              },
+              {
+                "segment_id": "c4",
+                "text": "muerto",
+                "marks": [
+                  "bold"
+                ],
+                "translations": {
+                  "en": "dead"
+                }
+              },
+              {
+                "segment_id": "c5",
+                "text": " usamos ESTAR para el estado físico real.",
+                "marks": [],
+                "translations": {
+                  "en": "Use ESTAR for real physical state."
+                }
+              }
             ]
           }
         },
@@ -82,15 +192,202 @@
           "type": "table",
           "data": {
             "columns": [
-              { "id": "c1", "label": "SER" },
-              { "id": "c2", "label": "ESTAR" }
+              {
+                "id": "c1",
+                "label": "SER"
+              },
+              {
+                "id": "c2",
+                "label": "ESTAR"
+              }
             ],
             "rows": [
               {
                 "row_id": "r1",
                 "cells": {
-                  "c1": [{ "segment_id": "r1c1s1", "text": "Es m\u00e9dico.", "marks": [], "translations": { "en": "He is a doctor." } }],
-                  "c2": [{ "segment_id": "r1c2s1", "text": "Est\u00e1 cansado.", "marks": [], "translations": { "en": "He is tired." } }]
+                  "c1": [
+                    {
+                      "segment_id": "r1c1s1a",
+                      "text": "Es ",
+                      "marks": [
+                        "bold"
+                      ],
+                      "color": "#8f8ec5",
+                      "translations": {
+                        "en": "He/She is a doctor."
+                      }
+                    },
+                    {
+                      "segment_id": "r1c1s1b",
+                      "text": "médico.",
+                      "marks": [],
+                      "translations": {
+                        "en": "a doctor."
+                      }
+                    }
+                  ],
+                  "c2": [
+                    {
+                      "segment_id": "r1c2s1a",
+                      "text": "Está ",
+                      "marks": [
+                        "bold"
+                      ],
+                      "color": "#c46374",
+                      "translations": {
+                        "en": "He/She is tired."
+                      }
+                    },
+                    {
+                      "segment_id": "r1c2s1b",
+                      "text": "cansado.",
+                      "marks": [],
+                      "translations": {
+                        "en": "tired."
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row_id": "r2",
+                "cells": {
+                  "c1": [
+                    {
+                      "segment_id": "r2c1s1a",
+                      "text": "Soy ",
+                      "marks": [
+                        "bold"
+                      ],
+                      "color": "#8f8ec5",
+                      "translations": {
+                        "en": "I am kind."
+                      }
+                    },
+                    {
+                      "segment_id": "r2c1s1b",
+                      "text": "amable.",
+                      "marks": [],
+                      "translations": {
+                        "en": "kind."
+                      }
+                    }
+                  ],
+                  "c2": [
+                    {
+                      "segment_id": "r2c2s1a",
+                      "text": "Estoy ",
+                      "marks": [
+                        "bold"
+                      ],
+                      "color": "#c46374",
+                      "translations": {
+                        "en": "I am irritated."
+                      }
+                    },
+                    {
+                      "segment_id": "r2c2s1b",
+                      "text": "irritado.",
+                      "marks": [],
+                      "translations": {
+                        "en": "irritated."
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row_id": "r3",
+                "cells": {
+                  "c1": [
+                    {
+                      "segment_id": "r3c1s1a",
+                      "text": "Somos ",
+                      "marks": [
+                        "bold"
+                      ],
+                      "color": "#8f8ec5",
+                      "translations": {
+                        "en": "We are students."
+                      }
+                    },
+                    {
+                      "segment_id": "r3c1s1b",
+                      "text": "estudiantes.",
+                      "marks": [],
+                      "translations": {
+                        "en": "students."
+                      }
+                    }
+                  ],
+                  "c2": [
+                    {
+                      "segment_id": "r3c2s1a",
+                      "text": "Estamos ",
+                      "marks": [
+                        "bold"
+                      ],
+                      "color": "#c46374",
+                      "translations": {
+                        "en": "We are in class."
+                      }
+                    },
+                    {
+                      "segment_id": "r3c2s1b",
+                      "text": "en clase.",
+                      "marks": [],
+                      "translations": {
+                        "en": "in class."
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row_id": "r4",
+                "cells": {
+                  "c1": [
+                    {
+                      "segment_id": "r4c1s1a",
+                      "text": "Ella es ",
+                      "marks": [
+                        "bold"
+                      ],
+                      "color": "#8f8ec5",
+                      "translations": {
+                        "en": "She is Argentinian."
+                      }
+                    },
+                    {
+                      "segment_id": "r4c1s1b",
+                      "text": "argentina.",
+                      "marks": [],
+                      "translations": {
+                        "en": "Argentinian."
+                      }
+                    }
+                  ],
+                  "c2": [
+                    {
+                      "segment_id": "r4c2s1a",
+                      "text": "Ella está ",
+                      "marks": [
+                        "bold"
+                      ],
+                      "color": "#c46374",
+                      "translations": {
+                        "en": "She is in Buenos Aires."
+                      }
+                    },
+                    {
+                      "segment_id": "r4c2s1b",
+                      "text": "en Buenos Aires.",
+                      "marks": [],
+                      "translations": {
+                        "en": "in Buenos Aires."
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -111,14 +408,29 @@
             "language_primary": "es",
             "language_translation": "en",
             "segments_primary": [
-              { "segment_id": "ex1", "text": "Ella est\u00e1 en casa.", "marks": ["bold"] }
+              {
+                "segment_id": "ex1",
+                "text": "Ella está en casa.",
+                "marks": [
+                  "bold"
+                ],
+                "translations": {
+                  "en": "She is at home."
+                }
+              }
             ],
             "segments_translation": [
-              { "segment_id": "ex1_en", "text": "She is at home.", "marks": [] }
+              {
+                "segment_id": "ex1_en",
+                "text": "She is at home.",
+                "marks": [],
+                "translations": {
+                  "en": "She is at home."
+                }
+              }
             ],
-            "audio": null,
-            "player_options": { "allow_speed_control": true, "default_speed": 1.0, "speed_steps": [0.75, 1.0, 1.25] }
-          }
+            "audio": null
+            }
         },
         {
           "id": "example_sentence_audio",
@@ -128,19 +440,34 @@
             "language_primary": "es",
             "language_translation": "en",
             "segments_primary": [
-              { "segment_id": "ex2", "text": "Nosotros estamos listos.", "marks": ["bold"] }
+              {
+                "segment_id": "ex2",
+                "text": "Nosotros estamos listos.",
+                "marks": [
+                  "bold"
+                ],
+                "translations": {
+                  "en": "We are ready."
+                }
+              }
             ],
             "segments_translation": [
-              { "segment_id": "ex2_en", "text": "We are ready.", "marks": [] }
+              {
+                "segment_id": "ex2_en",
+                "text": "We are ready.",
+                "marks": [],
+                "translations": {
+                  "en": "We are ready."
+                }
+              }
             ],
             "audio": {
               "source": "url",
               "src": "https://cdn.pixabay.com/download/audio/2021/08/04/audio_42e9e4b1c7.mp3",
               "mime_type": "audio/mpeg",
               "duration_seconds": 3.0
-            },
-            "player_options": { "allow_speed_control": true, "default_speed": 1.0, "speed_steps": [0.75, 1.0, 1.25] }
-          }
+            }
+            }
         },
         {
           "id": "exercise_ref_01",
@@ -150,7 +477,10 @@
             "exercise_type": "true_false",
             "source": "existing_exercise_library",
             "resource_path": "/exercises/ser_estar/ser_estar_tf_location_01.json",
-            "display_options": { "show_title": true, "show_instructions": true }
+            "display_options": {
+              "show_title": true,
+              "show_instructions": true
+            }
           }
         }
       ]
@@ -159,6 +489,9 @@
   "assets": [],
   "llm_hooks": {
     "allow_qna": true,
-    "context_hints": ["ser-estar", "location"]
+    "context_hints": [
+      "ser-estar",
+      "location"
+    ]
   }
 }

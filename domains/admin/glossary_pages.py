@@ -362,6 +362,11 @@ def admin_glossary_upload_audio(slug: str):
         return jsonify({"ok": False, "error": "empty_file"}), 400
     kind = (request.form.get('kind') or 'entry').strip().lower()
     idx = (request.form.get('index') or '').strip()
+    sense_raw = (request.form.get('sense') or '').strip()
+    try:
+        sense_idx = max(1, int(sense_raw))
+    except Exception:
+        sense_idx = 1
 
     # Build recommended filename: slug (hyphens -> underscores)
     base = (slug or 'item').lower().replace('-', '_')
@@ -373,21 +378,23 @@ def admin_glossary_upload_audio(slug: str):
     entry_dir, ex_dir = ensure_glossary_audio_dirs(slug)
     cache_bust = f"?v={int(time.time())}"
     if kind == 'example':
+        sense_dir = ex_dir / f"s{sense_idx}"
+        sense_dir.mkdir(parents=True, exist_ok=True)
         # prefer provided index; else compute next available
         if idx and idx.isdigit():
             n = int(idx)
         else:
             # find next index
             n = 1
-            existing = {p.stem for p in ex_dir.glob('*.*')}
+            existing = {p.stem for p in sense_dir.glob('*.*')}
             while True:
                 probe = f"{base}_ex_{n:02d}"
                 if probe not in existing:
                     break
                 n += 1
         stem = f"{base}_ex_{n:02d}"
-        save_path = ex_dir / (stem + (ext or '.mp3'))
-        url = f"/media/glossary-audio/examples/{slug}/{save_path.name}{cache_bust}"
+        save_path = sense_dir / (stem + (ext or '.mp3'))
+        url = f"/media/glossary-audio/examples/{slug}/s{sense_idx}/{save_path.name}{cache_bust}"
     else:
         stem = base
         save_path = entry_dir / (stem + (ext or '.mp3'))

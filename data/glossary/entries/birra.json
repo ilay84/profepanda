@@ -18,7 +18,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/birra/birra_ex_01.mp3",
+          "audio": "/media/glossary-audio/examples/birra/s1/birra_ex_01.mp3",
           "en": "\"Nice! Well, go have some `beer` on the corner, do something normal for your age.\"",
           "es": "¡Qué bueno! Bueno, vayan a tomar `birra` a la esquina, hagan algo normal de su edad.",
           "source": {

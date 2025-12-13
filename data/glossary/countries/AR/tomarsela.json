@@ -21,7 +21,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/tomarsela/tomarsela_ex_01.mp3",
+          "audio": "/media/glossary-audio/examples/tomarsela/s1/tomarsela_ex_01.mp3",
           "en": "\"Get out of here!\" `Get lost`! \"Get out of here!\"",
           "es": "¡Rajá de acá! ¡`Tomátela`! ¡Rajá de acá!",
           "source": {
@@ -33,7 +33,7 @@
           }
         },
         {
-          "audio": "/media/glossary-audio/examples/tomarsela/tomarsela_ex_02.mp3",
+          "audio": "/media/glossary-audio/examples/tomarsela/s1/tomarsela_ex_02.mp3",
           "en": "Okay, that's enough, man, that's it. You wrecked my car. `Get out of here`!",
           "es": "Bueno, basta loco, ya está. Me destrozaste el auto. ¡`Tomátelas`!",
           "source": {

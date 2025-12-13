@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/y/y.mp3?v=1765621515",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Conversational filler used to begin a response, buy time, or soften what follows, without grammatical linking function.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Muletilla conversacional usada para iniciar una respuesta, ganar tiempo o suavizar lo que se va a decir, sin función de enlace gramatical.</span></p>",
+      "domain": [],
+      "equivalents_en": [
+        "well",
+        "so",
+        "uh"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/y/s1/y_ex_01.mp3?v=1765621444",
+          "en": "\"What was wrong with the lady’s air conditioner?\"\n\"`Well`… dirty filters, we topped up the refrigerant.\"",
+          "es": "—¿Qué problema tenía el aire de la señora?\n—`Y`… los filtros sucios, le pusimos gas.",
+          "linked_terms": [
+            "aire"
+          ],
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "muletilla_conversacional",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "y",
+  "word": "y"
+}

@@ -749,4 +749,25 @@ Implementation checklist:
 
 ---
 
+## 9. Content Domains & Taxonomy (Spanish first, extensible)
+
+- Languages: top-level partition by language (start with `es`, add `en` later).
+- Domains (per language):
+  - **Language Structures (Grammar)**: tenses, moods, agreement, connectors. Blocks: explanations, tables, examples, audio, drills. Relations: `supports_goal`, `related_structures`.
+  - **Vocabulary**: semantic fields (food, travel, work), frequency, collocations. Blocks: glossed examples, audio, mini-quizzes. Relations: `related_structures`, `supports_goal`.
+  - **Communicative Goals**: scenarios (order food, introduce yourself, give instructions). Blocks: dialogues, examples, audio, micro-tasks; side pane shows supporting structures/vocab. Relations: `requires_structure`, `requires_vocab`.
+- Storage/paths (per language):
+  - `/content/{lang}/structures/{slug}.json`
+  - `/content/{lang}/vocabulary/{slug}.json`
+  - `/content/{lang}/goals/{slug}.json`
+- Slugging: always derive slug automatically from title (`slugify(title)`; lowercase, hyphens, strip diacritics).
+- Metadata (per resource): `title_{lang}`, `level`, `tags`, `taxonomy_paths`, `relations` (array of `{type: structure|vocabulary|goal, id: slug}`), `primary_language`.
+- Authoring (Content Lab, future):
+  - Picker: language → domain → slug (auto from title, editable only if needed).
+  - Relations selector to attach supporting/related items; preview shows side pane for goals to surface linked structures/vocab.
+  - Blocks remain bilingual-capable; translations via tooltips; audio uses shared player defaults.
+- Communicative Goals: add topics incrementally; rely on relations to surface supporting structures/vocab inline without predefining a fixed list.
+
+--- 
+
 End of document.

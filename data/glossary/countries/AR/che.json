@@ -17,7 +17,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/che/che_ex_01.mp3",
+          "audio": "/media/glossary-audio/examples/che/s1/che_ex_01.mp3",
           "en": "\"`Hey`, babe… dressed like that? Come on, no way.\"\n\"What’s wrong with it? Is it bad? Do I need to dress up just to be in my own living room?\"",
           "es": "—`Che`, gordo..., vos así vestido, por favor, no, eh.\n—¿Qué tiene? ¿Está mal? ¿Tengo que vestirme bien para ir a mi living?",
           "source": {
@@ -29,7 +29,7 @@
           }
         },
         {
-          "audio": "/media/glossary-audio/examples/che/che_ex_02.mp3",
+          "audio": "/media/glossary-audio/examples/che/s1/che_ex_02.mp3",
           "en": "`Hey`, where’s the pregame at?",
           "es": "`Che`, ¿dónde es la previa?",
           "source": {

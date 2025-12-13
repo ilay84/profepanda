@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/aire/aire.mp3?v=1765620974",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Shortened form of <em>air conditioner</em>, used to refer to the cooling unit.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Forma abreviada de <em>aire acondicionado</em>, usada para referirse al aparato de climatización.</span></p>",
+      "domain": [
+        "tecnologia"
+      ],
+      "equivalents_en": [
+        "air conditioner",
+        "AC unit"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/aire/s1/aire_ex_01.mp3?v=1765620975",
+          "en": "\"What was wrong with the lady’s `air conditioner`?\"\n\"Well… dirty filters, we topped up the refrigerant.\"",
+          "es": "—¿Qué problema tenía el `aire` de la señora?\n—Y… los filtros sucios, le pusimos gas.",
+          "linked_terms": [
+            "y"
+          ],
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "airecito",
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "aires",
+        "masc_sg": "aire"
+      }
+    }
+  ],
+  "slug": "aire",
+  "word": "aire"
+}

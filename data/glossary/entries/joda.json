@@ -7,7 +7,7 @@
       "countries": [
         "AR"
       ],
-      "definition_en": "<p><span style=\"font-weight: normal;\">Fun, partying, or carefree activity; can also mean a joke or annoying behavior depending on context.</span></p>",
+      "definition_en": "<p><span style=\"font-weight: normal;\">Fun, partying, or carefree activity; can also mean joking or annoying behavior depending on context.</span></p>",
       "definition_es": "<p><span style=\"font-weight: normal;\">Diversión, fiesta o actividad despreocupada; también puede referirse a una broma o comportamiento molesto según el contexto.</span></p>",
       "domain": [
         "cultura_pop",
@@ -21,7 +21,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/joda/joda_ex_01.mp3?v=1765482604",
+          "audio": "/media/glossary-audio/examples/joda/s1/joda_ex_01.mp3?v=1765623765",
           "en": "Ugh, this Agusto… he really needs to cut it out with `all the partying`. Kids are going up and down with beers all the time. This isn’t a nightclub.",
           "es": "Uy, este Agusto. Que la corte con `la joda`, eh. Suben y bajan pendejos todo el tiempo con cervezas. No es un boliche esto.",
           "linked_terms": [
@@ -47,6 +47,56 @@
         "vigente"
       ],
       "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": "joda",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    },
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<p><span style=\"font-weight: normal;\">Something unserious, misleading, or presented as a bogus explanation.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Cosa sin seriedad, explicación engañosa o excusa poco creíble.</span></p>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "bullshit",
+        "nonsense",
+        "a lame excuse"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/joda/s2/joda_ex_01.mp3?v=1765623778",
+          "en": "What kind of `bullshit` is that? “General tune-up…” Did you put refrigerant in it or not?",
+          "es": "¿Qué clase de `joda` es esa? \"Puesta a punto…\" ¿Gas le pusiste o no?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s2",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
       "variants": {
         "augmentative": null,
         "diminutive": null,

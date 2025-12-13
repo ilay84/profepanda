@@ -1,0 +1,1000 @@
+{% extends "base.html" %}
+{% block title %}{{ t("Mapa de Contenido", "Content Map", app_lang) }}{% endblock %}
+
+{% block admin_nav %}
+  {% include "_admin_bar.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="ppx-container ppx-admin" style="max-width: 1280px; padding: 1.5rem 1rem;">
+  <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
+    <div>
+      <div class="ppx-h2" style="margin:0;">{{ t("Mapa de Contenido", "Content Map", app_lang) }}</div>
+      <div class="ppx-muted" style="margin-top:.25rem;">{{ t("Organiza idiomas, dominios y relaciones para nuevos materiales.", "Organize languages, domains, and relationships for new materials.", app_lang) }}</div>
+    </div>
+    <div class="ppx-row" style="gap:.5rem;">
+      <a class="ppx-btn ppx-btn-secondary" href="{{ url_for('admin.content_lab') }}">{{ t("Volver al laboratorio", "Back to lab", app_lang) }}</a>
+    </div>
+  </div>
+
+  <div class="ppx-card" style="margin-top:1rem; padding:1rem; display:grid; gap:1rem;">
+    <div class="ppx-row" style="gap:1rem; flex-wrap:wrap; align-items:flex-start;">
+      <div class="ppx-card" style="flex:0 0 260px; min-width:240px; padding:1rem; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8);">
+        <div class="ppx-label">{{ t("Idioma", "Language", app_lang) }}</div>
+        <select id="map-lang" class="ppx-select">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+        <div class="ppx-muted" style="font-size:13px; margin-top:.5rem;">{{ t("Se pueden añadir más idiomas más adelante.", "More languages can be added later.", app_lang) }}</div>
+      </div>
+      <div class="ppx-card" style="flex:1 1 520px; min-width:320px; padding:1rem;">
+        <div class="ppx-label">{{ t("Nuevo recurso", "New resource", app_lang) }}</div>
+        <div style="display:grid; grid-template-columns: 1fr; gap:.65rem; margin-top:.65rem;">
+          <label class="ppx-field">
+            <div class="ppx-label">{{ t("Título (idioma base)", "Title (primary language)", app_lang) }}</div>
+            <input id="map-title" type="text" class="ppx-input" placeholder="{{ t('Ej: Pretérito vs. Imperfecto', 'E.g., Preterite vs. Imperfect', app_lang) }}">
+          </label>
+          <label class="ppx-field">
+            <div class="ppx-label">{{ t("Título (traducción)", "Title (translation)", app_lang) }}</div>
+            <input id="map-title-trans" type="text" class="ppx-input" placeholder="{{ t('Ej: Preterite vs. Imperfect', 'E.g., Pretérito vs. Imperfecto', app_lang) }}">
+            <div class="ppx-muted" style="font-size:12px;">{{ t("Se usará para tooltip en el otro idioma.", "Used for tooltip in the other language.", app_lang) }}</div>
+          </label>
+          <label class="ppx-field">
+            <div class="ppx-label">{{ t("Dominio", "Domain", app_lang) }}</div>
+            <select id="map-domain" class="ppx-select">
+              <option value="structures">{{ t("Estructuras (Gramática)", "Language Structures (Grammar)", app_lang) }}</option>
+              <option value="vocabulary">{{ t("Vocabulario", "Vocabulary", app_lang) }}</option>
+              <option value="goals">{{ t("Metas comunicativas", "Communicative Goals", app_lang) }}</option>
+            </select>
+          </label>
+          <div class="ppx-field" id="map-level-wrapper" style="display:none;">
+            <div class="ppx-label">{{ t("Nivel", "Level", app_lang) }}</div>
+            <div id="map-level" class="ppx-row" style="gap:.35rem; flex-direction:column; align-items:flex-start;">
+              <label class="ppx-checkbox">
+                <input type="checkbox" value="A1">
+                <span>A1 — {{ t("Principiante", "Beginner", app_lang) }}</span>
+              </label>
+              <label class="ppx-checkbox">
+                <input type="checkbox" value="A2">
+                <span>A2 — {{ t("Elemental", "Elementary", app_lang) }}</span>
+              </label>
+              <label class="ppx-checkbox">
+                <input type="checkbox" value="B1">
+                <span>B1 — {{ t("Intermedio", "Intermediate", app_lang) }}</span>
+              </label>
+              <label class="ppx-checkbox">
+                <input type="checkbox" value="B2">
+                <span>B2 — {{ t("Intermedio alto", "Upper-Intermediate", app_lang) }}</span>
+              </label>
+              <label class="ppx-checkbox">
+                <input type="checkbox" value="C1">
+                <span>C1 — {{ t("Avanzado", "Advanced", app_lang) }}</span>
+              </label>
+              <label class="ppx-checkbox">
+                <input type="checkbox" value="C2">
+                <span>C2 — {{ t("Dominio", "Mastery", app_lang) }}</span>
+              </label>
+            </div>
+            <div class="ppx-muted" style="font-size:12px; margin-top:.25rem;">{{ t("Selecciona uno o varios niveles.", "Select one or multiple levels.", app_lang) }}</div>
+          </div>
+          <label class="ppx-field">
+            <div class="ppx-label">{{ t("Slug (auto)", "Slug (auto)", app_lang) }}</div>
+            <input id="map-slug" type="text" class="ppx-input" readonly>
+            <div class="ppx-muted" style="font-size:12px;">{{ t("Se genera a partir del título y siempre en minúsculas.", "Generated from the title, always lowercase.", app_lang) }}</div>
+          </label>
+          <label class="ppx-field">
+            <div class="ppx-label">{{ t("Tags (coma separada)", "Tags (comma separated)", app_lang) }}</div>
+            <input id="map-tags" type="text" class="ppx-input" placeholder="{{ t('ej: pasado, narrar', 'e.g., past, narration', app_lang) }}">
+          </label>
+          <div class="ppx-field" id="map-struct-tags-wrap" style="display:none;">
+            <div class="ppx-label">{{ t("Etiquetas (Gramática)", "Tags (Grammar)", app_lang) }}</div>
+            <div class="ppx-row" style="gap:.5rem; align-items:center; flex-wrap:wrap;">
+              <button type="button" id="map-struct-tags-open" class="ppx-btn ppx-btn-secondary">{{ t("Editar etiquetas", "Edit tags", app_lang) }}</button>
+              <span id="map-struct-tags-summary" class="ppx-muted" style="font-size:12px;"></span>
+            </div>
+            <div class="ppx-muted" style="font-size:12px; margin-top:.25rem;">{{ t("Solo para estructuras. Selecciona las que apliquen.", "Structures only. Select all that apply.", app_lang) }}</div>
+          </div>
+          <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap; margin-top:.25rem; align-items:center;">
+            <button id="map-preview" class="ppx-btn">{{ t("Crear vista previa", "Create preview", app_lang) }}</button>
+            <button id="map-save" class="ppx-btn ppx-btn-secondary">{{ t("Guardar recurso", "Save resource", app_lang) }}</button>
+            <span id="map-status" class="ppx-muted"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="ppx-card" style="padding:1rem; margin-top:1rem; box-sizing:border-box; overflow:hidden;">
+      <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; flex-wrap:wrap;">
+        <div>
+          <div class="ppx-h4" style="margin:0;">{{ t("Resultado propuesto", "Proposed resource", app_lang) }}</div>
+          <div class="ppx-muted" style="font-size:13px; margin-top:.1rem;">{{ t("Esta vista previa no guarda datos aún, solo muestra la ruta y metadatos.", "Preview only; not saving yet.", app_lang) }}</div>
+        </div>
+      </div>
+      <pre id="map-preview-json" style="background:#0f172a; color:#e2e8f0; padding:12px; border-radius:10px; font-size:13px; line-height:1.4; overflow:auto; margin-top:.75rem;">{}</pre>
+    </div>
+
+    <div class="ppx-card" style="padding:1rem; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8); box-sizing:border-box; overflow:hidden;">
+      <div class="ppx-h4" style="margin:0 0 .5rem 0;">{{ t("Relaciones recomendadas", "Suggested relationships", app_lang) }}</div>
+      <ul style="margin:0; padding-left:18px; color:#0f172a; line-height:1.4;">
+        <li>{{ t("Estructuras pueden vincularse a metas comunicativas y vocabulario que las usa.", "Structures can link to goals and vocabulary that use them.", app_lang) }}</li>
+        <li>{{ t("Vocabulario puede enlazar a estructuras clave y metas donde aplica.", "Vocabulary can link to key structures and goals where it applies.", app_lang) }}</li>
+        <li>{{ t("Metas comunicativas deben mostrar estructuras y vocabulario de apoyo en un panel lateral.", "Communicative goals should surface supporting structures and vocabulary in a side pane.", app_lang) }}</li>
+      </ul>
+    </div>
+
+    <div class="ppx-card" style="padding:1rem; box-sizing:border-box; overflow:hidden;">
+      <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; flex-wrap:wrap;">
+        <div class="ppx-h4" style="margin:0;">{{ t("Recursos existentes", "Existing resources", app_lang) }}</div>
+        <button id="map-new-scroll" class="ppx-btn ppx-btn-secondary" type="button">{{ t("Nuevo recurso", "New resource", app_lang) }}</button>
+      </div>
+      <div class="ppx-muted" style="font-size:13px; margin-top:.25rem;">{{ t("Cada sección muestra recursos actuales y abre el editor en una pestaña nueva.", "Each section shows current resources and opens the editor in a new tab.", app_lang) }}</div>
+      <div id="map-accordions" style="margin-top:.75rem; display:grid; gap:.65rem;"></div>
+    </div>
+  </div>
+</main>
+
+<script>
+(() => {
+  const els = {
+    lang: document.getElementById("map-lang"),
+    title: document.getElementById("map-title"),
+    titleTrans: document.getElementById("map-title-trans"),
+    domain: document.getElementById("map-domain"),
+    levelWrap: document.getElementById("map-level-wrapper"),
+    level: document.getElementById("map-level"),
+    slug: document.getElementById("map-slug"),
+    tags: document.getElementById("map-tags"),
+    structTagsOpen: document.getElementById("map-struct-tags-open"),
+    structTagsSummary: document.getElementById("map-struct-tags-summary"),
+    structTagsModal: null,
+    previewBtn: document.getElementById("map-preview"),
+    previewJson: document.getElementById("map-preview-json"),
+    status: document.getElementById("map-status"),
+    accordions: document.getElementById("map-accordions"),
+    newScroll: document.getElementById("map-new-scroll"),
+    saveBtn: document.getElementById("map-save"),
+  };
+  const uiLang = "{{ app_lang }}";
+  const DOMAIN_COPY = {
+    structures: { es: "Estructuras (Gramática)", en: "Language Structures (Grammar)" },
+    vocabulary: { es: "Vocabulario", en: "Vocabulary" },
+    goals: { es: "Metas comunicativas", en: "Communicative Goals" },
+  };
+  const RESOURCE_SEED = [
+    {
+      id: "ser-estar",
+      domain: "structures",
+      lang: "es",
+      title_es: "Ser vs. Estar",
+      title_en: "Ser vs. Estar",
+      levels: [],
+      tags: ["ser", "estar"]
+    },
+    {
+      id: "ser-estar-en",
+      domain: "structures",
+      lang: "en",
+      title_es: "Ser vs. Estar",
+      title_en: "Ser vs. Estar",
+      levels: [],
+      tags: ["ser", "estar"]
+    },
+    {
+      id: "adjetivos-basicos",
+      domain: "structures",
+      lang: "es",
+      title_es: "Adjetivos básicos",
+      title_en: "Basic adjectives",
+      levels: [],
+      tags: ["adjectives"]
+    },
+    {
+      id: "basic-adjectives-en",
+      domain: "structures",
+      lang: "en",
+      title_es: "Adjetivos básicos",
+      title_en: "Basic adjectives",
+      levels: [],
+      tags: ["adjectives"]
+    },
+    {
+      id: "comida-nivel-a1",
+      domain: "vocabulary",
+      lang: "es",
+      title_es: "Comida esencial",
+      title_en: "Food essentials",
+      levels: ["A1", "A2"],
+      tags: ["comida", "alimentos"]
+    },
+    {
+      id: "hacer-pedidos-restaurante",
+      domain: "goals",
+      lang: "es",
+      title_es: "Cómo pedir en un restaurante",
+      title_en: "How to order in a restaurant",
+      levels: ["A2", "B1"],
+      tags: ["restaurante"]
+    },
+    {
+      id: "ordering-restaurant",
+      domain: "goals",
+      lang: "en",
+      title_es: "Cómo pedir en un restaurante",
+      title_en: "How to order in a restaurant",
+      levels: ["A2", "B1"],
+      tags: ["restaurant"]
+    }
+  ];
+  let resources = [...RESOURCE_SEED];
+  const STRUCTURE_TAGS = [
+    {
+      id: "adjectives",
+      label_es: "Adjetivos",
+      label_en: "Adjectives",
+      children: [
+        { id: "adj-position-meaning", label_es: "Posición y cambio de significado", label_en: "Position and meaning shift" },
+        { id: "adj-comparative", label_es: "Formas comparativas", label_en: "Comparative forms" },
+        { id: "adj-gender", label_es: "Concordancia de género", label_en: "Gender agreement" },
+        { id: "adj-number", label_es: "Concordancia de número", label_en: "Number agreement" },
+        { id: "adj-superlative", label_es: "Formas superlativas", label_en: "Superlative forms" }
+      ]
+    },
+    {
+      id: "comparisons",
+      label_es: "Comparaciones",
+      label_en: "Comparisons",
+      children: [
+        { id: "comp-adj-adv-noun", label_es: "Comparaciones con adjetivos, adverbios y sustantivos", label_en: "Comparatives with adjectives, adverbs, and nouns" },
+        { id: "comp-equality", label_es: "Igualdad", label_en: "Equality" },
+        { id: "comp-inequality", label_es: "Desigualdad", label_en: "Inequality" },
+        { id: "comp-superlatives", label_es: "Superlativos", label_en: "Superlatives" }
+      ]
+    },
+    {
+      id: "conjunctions",
+      label_es: "Conjunciones",
+      label_en: "Conjunctions",
+      children: [
+        { id: "conj-cause-effect", label_es: "Causa y efecto", label_en: "Cause and effect" },
+        { id: "conj-conditionals", label_es: "Condicionales", label_en: "Conditionals" },
+        { id: "conj-coordinating", label_es: "Conjunciones coordinantes", label_en: "Coordinating conjunctions" },
+        { id: "conj-concessive", label_es: "Concesivas", label_en: "Concessives" },
+        { id: "conj-purpose", label_es: "Oraciones de propósito", label_en: "Purpose clauses" },
+        { id: "conj-subordinating", label_es: "Conjunciones subordinantes", label_en: "Subordinating conjunctions" },
+        { id: "conj-time-sequence", label_es: "Tiempo y secuencia", label_en: "Time and sequence" }
+      ]
+    },
+    {
+      id: "determiners",
+      label_es: "Determinantes",
+      label_en: "Determiners",
+      children: [
+        { id: "det-cardinal", label_es: "Números cardinales", label_en: "Cardinal numbers" },
+        { id: "det-definite", label_es: "Artículos definidos", label_en: "Definite articles" },
+        { id: "det-demonstrative", label_es: "Demostrativos", label_en: "Demonstratives" },
+        { id: "det-indefinite", label_es: "Artículos indefinidos", label_en: "Indefinite articles" },
+        { id: "det-interrogative", label_es: "Determinantes interrogativos", label_en: "Interrogative determiners" },
+        { id: "det-negative", label_es: "Determinantes negativos", label_en: "Negative determiners" },
+        { id: "det-ordinal", label_es: "Números ordinales", label_en: "Ordinal numbers" },
+        { id: "det-possessive", label_es: "Determinantes posesivos", label_en: "Possessive determiners" },
+        { id: "det-quantifiers", label_es: "Cuantificadores", label_en: "Quantifiers" }
+      ]
+    },
+    {
+      id: "exclamations",
+      label_es: "Exclamaciones",
+      label_en: "Exclamations",
+      children: [
+        { id: "excl-emphasis", label_es: "Énfasis emocional", label_en: "Emotional emphasis" },
+        { id: "excl-structures", label_es: "Estructuras exclamativas", label_en: "Exclamatory structures" },
+        { id: "excl-que", label_es: "Construcciones con ¡Qué...!", label_en: "¡Qué...! constructions" }
+      ]
+    },
+    {
+      id: "modality-aspect",
+      label_es: "Modalidad y aspecto",
+      label_en: "Modality & Aspect",
+      children: [
+        { id: "aspect-perfective", label_es: "Aspecto (perfectivo vs. imperfectivo)", label_en: "Aspect (perfective vs. imperfective)" },
+        { id: "modality-necessity", label_es: "Expresar necesidad, obligación, posibilidad", label_en: "Expressing necessity, obligation, possibility" },
+        { id: "modality-periphrases", label_es: "Perífrasis modales", label_en: "Modal periphrases" }
+      ]
+    },
+    {
+      id: "nouns",
+      label_es: "Sustantivos",
+      label_en: "Nouns",
+      children: [
+        { id: "nouns-animate", label_es: "Animado vs. inanimado", label_en: "Animate vs. inanimate" },
+        { id: "nouns-concrete", label_es: "Concreto vs. abstracto", label_en: "Concrete vs. abstract" },
+        { id: "nouns-countability", label_es: "Contable vs. incontable", label_en: "Countable vs. uncountable" },
+        { id: "nouns-gender", label_es: "Género", label_en: "Gender" },
+        { id: "nouns-gender-irregular", label_es: "Patrones de género irregulares", label_en: "Irregular gender patterns" },
+        { id: "nouns-number", label_es: "Número", label_en: "Number" }
+      ]
+    },
+    {
+      id: "orthography",
+      label_es: "Ortografía",
+      label_en: "Spelling & Writing Conventions",
+      children: [
+        { id: "orth-accents", label_es: "Acentos y acentuación", label_en: "Accents and stress" },
+        { id: "orth-capitalization", label_es: "Uso de mayúsculas", label_en: "Capitalization" },
+        { id: "orth-diacritics", label_es: "Tildes diacríticas", label_en: "Diacritic marks" },
+        { id: "orth-homophones", label_es: "Homófonos", label_en: "Homophones" },
+        { id: "orth-punctuation", label_es: "Reglas de puntuación", label_en: "Punctuation rules" },
+        { id: "orth-spelling", label_es: "Patrones ortográficos", label_en: "Spelling patterns" }
+      ]
+    },
+    {
+      id: "prepositions",
+      label_es: "Preposiciones",
+      label_en: "Prepositions",
+      children: [
+        { id: "prep-compound", label_es: "Preposiciones compuestas", label_en: "Compound prepositions" },
+        { id: "prep-infinitive", label_es: "Preposiciones + infinitivo", label_en: "Prepositions + infinitive" },
+        { id: "prep-cause", label_es: "Preposiciones de causa", label_en: "Prepositions of cause" },
+        { id: "prep-place", label_es: "Preposiciones de lugar", label_en: "Prepositions of place" },
+        { id: "prep-time", label_es: "Preposiciones de tiempo", label_en: "Prepositions of time" },
+        { id: "prep-simple", label_es: "Preposiciones simples", label_en: "Simple prepositions" }
+      ]
+    },
+    {
+      id: "pronouns",
+      label_es: "Pronombres",
+      label_en: "Pronouns",
+      children: [
+        { id: "pro-clitic-doubling", label_es: "Duplicación de clíticos", label_en: "Clitic doubling" },
+        { id: "pro-clitic", label_es: "Pronombres clíticos", label_en: "Clitic pronouns" },
+        { id: "pro-demonstrative", label_es: "Pronombres demostrativos", label_en: "Demonstrative pronouns" },
+        { id: "pro-indefinite", label_es: "Pronombres indefinidos", label_en: "Indefinite pronouns" },
+        { id: "pro-interrogative", label_es: "Pronombres interrogativos", label_en: "Interrogative pronouns" },
+        { id: "pro-object", label_es: "Pronombres de objeto directo e indirecto", label_en: "Direct and indirect object pronouns" },
+        { id: "pro-prepositional", label_es: "Pronombres con preposición", label_en: "Prepositional pronouns" },
+        { id: "pro-pronominal", label_es: "Construcciones pronominales", label_en: "Pronominal constructions" },
+        { id: "pro-reflexive", label_es: "Pronombres reflexivos", label_en: "Reflexive pronouns" },
+        { id: "pro-relative", label_es: "Pronombres relativos", label_en: "Relative pronouns" },
+        { id: "pro-subject", label_es: "Pronombres personales (sujeto)", label_en: "Subject pronouns" }
+      ]
+    },
+    {
+      id: "questions",
+      label_es: "Preguntas",
+      label_en: "Questions",
+      children: [
+        { id: "q-indirect", label_es: "Preguntas indirectas", label_en: "Indirect questions" },
+        { id: "q-word-order", label_es: "Orden de palabras en preguntas", label_en: "Question word order" },
+        { id: "q-wh", label_es: "Preguntas con palabras interrogativas", label_en: "Wh-questions (interrogatives)" },
+        { id: "q-yes-no", label_es: "Preguntas de sí o no", label_en: "Yes or no questions" }
+      ]
+    },
+    {
+      id: "sentence-structure",
+      label_es: "Estructura de la oración",
+      label_en: "Sentence structure",
+      children: [
+        { id: "sent-complex", label_es: "Oraciones complejas", label_en: "Complex sentences" },
+        { id: "sent-compound", label_es: "Oraciones compuestas", label_en: "Compound sentences" },
+        { id: "sent-negative", label_es: "Oraciones negativas", label_en: "Negative sentences" },
+        { id: "sent-passive", label_es: "Voz pasiva", label_en: "Passive voice" },
+        { id: "sent-simple", label_es: "Oraciones simples", label_en: "Simple sentences" },
+        { id: "sent-word-order", label_es: "Orden de las palabras", label_en: "Word order" }
+      ]
+    },
+    {
+      id: "verbs",
+      label_es: "Verbos",
+      label_en: "Verbs",
+      children: [
+        { id: "verbs-indicative", label_es: "Tiempos del indicativo", label_en: "Indicative tenses" },
+        { id: "ind-conditional", label_es: "Condicional", label_en: "Conditional" },
+        { id: "ind-conditional-perfect", label_es: "Condicional perfecto", label_en: "Conditional perfect" },
+        { id: "ind-future", label_es: "Futuro", label_en: "Future" },
+        { id: "ind-future-perfect", label_es: "Futuro perfecto", label_en: "Future perfect" },
+        { id: "ind-imperfect", label_es: "Pretérito imperfecto", label_en: "Imperfect" },
+        { id: "ind-pluperfect", label_es: "Pretérito pluscuamperfecto", label_en: "Past perfect (pluperfect)" },
+        { id: "ind-preterite", label_es: "Pretérito perfecto simple", label_en: "Preterite" },
+        { id: "ind-present", label_es: "Presente", label_en: "Present" },
+        { id: "ind-present-perfect", label_es: "Pretérito perfecto compuesto", label_en: "Present perfect" },
+        { id: "verbs-other-moods", label_es: "Otros modos", label_en: "Other moods" },
+        { id: "imperative", label_es: "Imperativo", label_en: "Imperative (commands)" },
+        { id: "infinitive-constructions", label_es: "Construcciones con infinitivo", label_en: "Infinitive constructions" },
+        { id: "subjunctive-vs-indicative", label_es: "Subjuntivo vs. indicativo", label_en: "Subjunctive vs. indicative" },
+        { id: "verbs-periphrases", label_es: "Perífrasis verbales", label_en: "Periphrastic constructions" },
+        { id: "peri-acabar-de", label_es: "Acabar de + infinitivo", label_en: "Acabar de + infinitive" },
+        { id: "peri-dejar-de", label_es: "Dejar de + infinitivo", label_en: "Dejar de + infinitive" },
+        { id: "peri-estar-gerund", label_es: "Estar + gerundio", label_en: "Estar + gerund" },
+        { id: "peri-haber-de", label_es: "Haber de + infinitivo", label_en: "Haber de + infinitive" },
+        { id: "peri-haber-que", label_es: "Haber que", label_en: "Haber que" },
+        { id: "peri-ir-a", label_es: "Ir a + infinitivo", label_en: "Ir a + infinitive" },
+        { id: "peri-tener-que", label_es: "Tener que + infinitivo", label_en: "Tener que + infinitive" },
+        { id: "peri-volver-a", label_es: "Volver a + infinitivo", label_en: "Volver a + infinitive" },
+        { id: "verbs-special", label_es: "Verbos especiales", label_en: "Special verbs" },
+        { id: "sp-haber-estar", label_es: "Haber vs. estar", label_en: "Haber vs. estar" },
+        { id: "sp-llevar-traer", label_es: "Llevar vs. traer", label_en: "Llevar vs. traer" },
+        { id: "sp-saber-conocer", label_es: "Saber vs. conocer", label_en: "Saber vs. conocer" },
+        { id: "sp-ser-estar", label_es: "Ser vs. estar", label_en: "Ser vs. estar" },
+        { id: "verbs-subjunctive", label_es: "Tiempos del subjuntivo", label_en: "Subjunctive tenses" },
+        { id: "subj-imperfect", label_es: "Subjuntivo imperfecto", label_en: "Imperfect subjunctive" },
+        { id: "subj-pluperfect", label_es: "Subjuntivo pluscuamperfecto", label_en: "Pluperfect subjunctive" },
+        { id: "subj-present-perfect", label_es: "Subjuntivo perfecto", label_en: "Present perfect subjunctive" },
+        { id: "subj-present", label_es: "Subjuntivo presente", label_en: "Present subjunctive" },
+        { id: "verbs-forms", label_es: "Formas verbales", label_en: "Verb forms" },
+        { id: "forms-gerund", label_es: "Gerundios", label_en: "Gerunds" },
+        { id: "forms-infinitive", label_es: "Infinitivos", label_en: "Infinitives" },
+        { id: "forms-participle", label_es: "Participios pasados", label_en: "Past participles" },
+        { id: "forms-pronominal", label_es: "Verbos pronominales", label_en: "Pronominal verbs" },
+        { id: "forms-reflexive", label_es: "Verbos reflexivos", label_en: "Reflexive verbs" },
+        { id: "forms-verbs-as-adj", label_es: "Verbos como adjetivos", label_en: "Verbs as adjectives" },
+        { id: "verbs-types", label_es: "Tipos de verbos", label_en: "Verb types" },
+        { id: "types-auxiliary", label_es: "Verbos auxiliares", label_en: "Auxiliary verbs" },
+        { id: "types-irregular", label_es: "Verbos irregulares", label_en: "Irregular verbs" },
+        { id: "types-modal", label_es: "Verbos modales", label_en: "Modal verbs" },
+        { id: "types-regular", label_es: "Verbos regulares", label_en: "Regular verbs" },
+        { id: "types-transitive", label_es: "Transitivos vs. intransitivos", label_en: "Transitive vs. intransitive" }
+      ]
+    }
+  ];
+
+  const slugify = (str) => {
+    return (str || "")
+      .toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 80);
+  };
+
+  function toggleLevels() {
+    const domain = els.domain.value;
+    const show = domain === "vocabulary" || domain === "goals";
+    els.levelWrap.style.display = show ? "block" : "none";
+    if (!show) {
+      els.level.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
+    }
+    const structWrap = document.getElementById("map-struct-tags-wrap");
+    if (structWrap) {
+      const showStruct = domain === "structures";
+      structWrap.style.display = showStruct ? "block" : "none";
+      if (!showStruct) {
+        document.querySelectorAll("#map-struct-tags input[type='checkbox']").forEach(cb => cb.checked = false);
+      }
+    }
+  }
+
+  function updateSlug() {
+    els.slug.value = slugify(els.title.value.trim());
+  }
+
+  function buildPreview() {
+    const slug = els.slug.value || slugify(els.title.value.trim());
+    const lang = els.lang.value || "es";
+    const domain = els.domain.value || "structures";
+    const path = `/content/${lang}/${domain}/${slug}.json`;
+    const tags = (els.tags.value || "").split(",").map(t => t.trim()).filter(Boolean);
+    const selectedLevels = Array.from(els.level.querySelectorAll("input[type='checkbox']:checked")).map(opt => opt.value);
+    const structTags = Array.from(document.querySelectorAll("#map-struct-tags input[type='checkbox']:checked")).map(cb => cb.value);
+    const preview = {
+      schema_version: "4.1.0",
+      language: lang,
+      domain,
+      resource_id: slug || "nuevo-recurso",
+      meta: {
+        title_es: lang === "es" ? (els.title.value || "") : (els.titleTrans.value || els.title.value || ""),
+        title_en: lang === "en" ? (els.title.value || "") : (els.titleTrans.value || ""),
+        levels: selectedLevels,
+        tags: domain === "structures" ? structTags : tags,
+        taxonomy_paths: [`${lang}/${domain}`],
+      },
+      relations: [],
+      modules: [],
+      storage_path: path,
+    };
+    els.previewJson.textContent = JSON.stringify(preview, null, 2);
+    els.status.textContent = "{{ t('Slug generado automáticamente.', 'Slug generated automatically.', app_lang) }}";
+    return preview;
+  }
+
+  ["input", "change"].forEach(evt => els.title.addEventListener(evt, updateSlug));
+  ["input", "change"].forEach(evt => els.titleTrans.addEventListener(evt, () => {}));
+  els.domain.addEventListener("change", () => { toggleLevels(); buildPreview(); });
+  if (els.newScroll) {
+    els.newScroll.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // Render structured tags once inside a modal
+  (function initStructTagsModal() {
+    const modal = document.createElement("div");
+    modal.id = "struct-tag-modal";
+    modal.style.position = "fixed";
+    modal.style.inset = "0";
+    modal.style.display = "none";
+    modal.style.alignItems = "center";
+    modal.style.justifyContent = "center";
+    modal.style.background = "rgba(15,23,42,0.45)";
+    modal.style.zIndex = "9999";
+
+    const box = document.createElement("div");
+    box.style.background = "#fff";
+    box.style.borderRadius = "12px";
+    box.style.padding = "1.25rem";
+    box.style.width = "min(1100px, 95vw)";
+    box.style.maxHeight = "82vh";
+    box.style.overflow = "auto";
+    box.style.boxShadow = "0 20px 60px rgba(0,0,0,0.25)";
+
+    const header = document.createElement("div");
+    header.className = "ppx-row";
+    header.style.justifyContent = "space-between";
+    header.style.alignItems = "center";
+    header.style.gap = ".5rem";
+    const hTitle = document.createElement("div");
+    hTitle.className = "ppx-h4";
+    hTitle.style.margin = "0";
+    hTitle.textContent = uiLang === "es" ? "Etiquetas de gramática" : "Grammar tags";
+    const btnClose = document.createElement("button");
+    btnClose.className = "ppx-btn ppx-btn-secondary";
+    btnClose.type = "button";
+    btnClose.textContent = uiLang === "es" ? "Cerrar" : "Close";
+    header.appendChild(hTitle);
+    header.appendChild(btnClose);
+    box.appendChild(header);
+
+    const grid = document.createElement("div");
+    grid.id = "map-struct-tags";
+    grid.style.display = "grid";
+    grid.style.gridTemplateColumns = "repeat(auto-fit,minmax(240px,1fr))";
+    grid.style.columnGap = "1rem";
+    grid.style.rowGap = "1.25rem";
+    grid.style.marginTop = "1rem";
+    grid.style.padding = "0.85rem";
+    box.appendChild(grid);
+
+    const addWrap = document.createElement("div");
+    addWrap.className = "ppx-card";
+    addWrap.style.padding = "0.75rem";
+    addWrap.style.marginTop = ".75rem";
+    addWrap.style.border = "1px dashed var(--ppx-line,#d4d4d8)";
+    addWrap.innerHTML = `
+      <div class="ppx-label" style="margin-bottom:.35rem;">${uiLang === "es" ? "Agregar nueva etiqueta (temporal)" : "Add new tag (temporary)"}</div>
+      <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
+        <input id="new-tag-es" class="ppx-input" style="flex:1 1 200px;" placeholder="${uiLang === "es" ? "Etiqueta en español" : "Label in Spanish"}">
+        <input id="new-tag-en" class="ppx-input" style="flex:1 1 200px;" placeholder="${uiLang === "es" ? "Etiqueta en inglés" : "Label in English"}">
+        <select id="new-tag-cat" class="ppx-select" style="flex:1 1 200px;"></select>
+        <button type="button" id="new-tag-add" class="ppx-btn">${uiLang === "es" ? "Agregar" : "Add"}</button>
+      </div>
+      <div class="ppx-muted" style="font-size:12px; margin-top:.25rem;">${uiLang === "es" ? "Las etiquetas añadidas aquí solo viven en esta vista previa." : "Tags added here live only in this preview."}</div>
+    `;
+    box.appendChild(addWrap);
+
+    const footer = document.createElement("div");
+    footer.className = "ppx-row";
+    footer.style.justifyContent = "flex-end";
+    footer.style.gap = ".5rem";
+    footer.style.marginTop = ".5rem";
+    const btnApply = document.createElement("button");
+    btnApply.className = "ppx-btn";
+    btnApply.type = "button";
+    btnApply.textContent = uiLang === "es" ? "Aplicar" : "Apply";
+    footer.appendChild(btnApply);
+    box.appendChild(footer);
+
+    modal.appendChild(box);
+    document.body.appendChild(modal);
+    els.structTagsModal = modal;
+
+    function renderTags() {
+      grid.innerHTML = "";
+      STRUCTURE_TAGS.forEach(cat => {
+        // sort children by active language label
+        const children = [...(cat.children || [])].sort((a,b) => {
+          const la = uiLang === "es" ? (a.label_es || a.label_en || "") : (a.label_en || a.label_es || "");
+          const lb = uiLang === "es" ? (b.label_es || b.label_en || "") : (b.label_en || b.label_es || "");
+          return la.localeCompare(lb);
+        });
+        const card = document.createElement("div");
+      card.className = "ppx-card";
+      card.style.padding = "1rem";
+      card.style.border = "1px dashed var(--ppx-line,#d4d4d8)";
+      card.style.margin = "0.35rem";
+      card.style.boxSizing = "border-box";
+      card.style.minWidth = "0";
+        const ttl = document.createElement("div");
+        ttl.className = "ppx-label";
+        const catLabelRaw = uiLang === "es" ? (cat.label_es || cat.label_en) : (cat.label_en || cat.label_es);
+        ttl.textContent = (catLabelRaw || "").replace(/\s*\/\s*/g, ", ");
+        card.appendChild(ttl);
+        const lst = document.createElement("div");
+      lst.style.display = "grid";
+      lst.style.gap = ".35rem";
+      lst.style.marginTop = ".35rem";
+      lst.style.wordBreak = "break-word";
+      lst.style.whiteSpace = "normal";
+      lst.style.overflowWrap = "anywhere";
+        children.forEach(tag => {
+          const lbl = document.createElement("label");
+          lbl.className = "ppx-checkbox";
+          lbl.style.display = "flex";
+          lbl.style.alignItems = "flex-start";
+          lbl.style.gap = ".35rem";
+          lbl.style.lineHeight = "1.35";
+          lbl.style.whiteSpace = "normal";
+          lbl.style.wordBreak = "break-word";
+          lbl.style.overflowWrap = "anywhere";
+          const input = document.createElement("input");
+          input.type = "checkbox";
+          input.value = tag.id;
+          // preserve checked state if present
+          const existing = document.querySelector(`#map-struct-tags input[value='${tag.id}']`);
+          if (existing && existing.checked) input.checked = true;
+          lbl.appendChild(input);
+          const span = document.createElement("span");
+          const rawLabel = uiLang === "es" ? (tag.label_es || tag.label_en) : (tag.label_en || tag.label_es);
+          const cleanedLabel = (rawLabel || "").replace(/\s*\/\s*/g, ", ");
+          span.textContent = cleanedLabel;
+          span.style.wordBreak = "break-word";
+          span.style.overflowWrap = "anywhere";
+          lbl.appendChild(span);
+          lst.appendChild(lbl);
+        });
+        card.appendChild(lst);
+        grid.appendChild(card);
+      });
+      populateAddCategory();
+    }
+
+    function slugifyLocal(str) {
+      return (str || "").toLowerCase()
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 80);
+    }
+
+    function populateAddCategory() {
+      const sel = document.getElementById("new-tag-cat");
+      if (!sel) return;
+      sel.innerHTML = "";
+      STRUCTURE_TAGS.forEach(cat => {
+        const opt = document.createElement("option");
+        opt.value = cat.id;
+        opt.textContent = uiLang === "es" ? (cat.label_es || cat.label_en) : (cat.label_en || cat.label_es);
+        sel.appendChild(opt);
+      });
+    }
+
+    const btnAdd = document.getElementById("new-tag-add");
+    if (btnAdd) {
+      btnAdd.addEventListener("click", () => {
+        const es = document.getElementById("new-tag-es")?.value?.trim() || "";
+        const en = document.getElementById("new-tag-en")?.value?.trim() || "";
+        const catId = document.getElementById("new-tag-cat")?.value || "";
+        if (!es && !en) return;
+        const id = slugifyLocal(en || es || `tag-${Date.now()}`);
+        const cat = STRUCTURE_TAGS.find(c => c.id === catId);
+        if (!cat) return;
+        cat.children = cat.children || [];
+        // prevent duplicates
+        if (cat.children.some(t => t.id === id)) return;
+        cat.children.push({ id, label_es: es || en, label_en: en || es });
+        renderTags();
+        document.getElementById("new-tag-es").value = "";
+        document.getElementById("new-tag-en").value = "";
+      });
+    }
+
+    renderTags();
+
+    function closeModal() { modal.style.display = "none"; }
+    btnClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    btnApply.addEventListener("click", () => { updateStructSummary(); closeModal(); });
+  })();
+
+  function updateStructSummary() {
+    const checked = Array.from(document.querySelectorAll("#map-struct-tags input[type='checkbox']:checked"));
+    const count = checked.length;
+    if (els.structTagsSummary) {
+      els.structTagsSummary.textContent = count
+        ? (uiLang === "es" ? `${count} seleccionadas` : `${count} selected`)
+        : (uiLang === "es" ? "Ninguna seleccionada" : "None selected");
+    }
+  }
+
+  if (els.structTagsOpen) {
+    els.structTagsOpen.addEventListener("click", () => {
+      if (els.structTagsModal) els.structTagsModal.style.display = "flex";
+    });
+  }
+
+  toggleLevels();
+  els.previewBtn.addEventListener("click", () => { updateStructSummary(); buildPreview(); });
+  updateStructSummary();
+  updateSlug();
+  buildPreview();
+
+  // Accordions for existing resources (placeholder until wired to persistence)
+  function setTextWithTooltip(el, primary, tooltip) {
+    el.textContent = primary || "";
+    if (tooltip) el.title = tooltip;
+  }
+
+  function createAccordion(domain) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "ppx-card";
+    wrapper.style.padding = ".85rem 1rem";
+    wrapper.style.boxSizing = "border-box";
+    wrapper.style.overflow = "hidden";
+    wrapper.style.fontFamily = "'Montserrat', var(--ppx-font, sans-serif)";
+
+    const header = document.createElement("button");
+    header.type = "button";
+    header.className = "ppx-row";
+    header.style.width = "100%";
+    header.style.justifyContent = "space-between";
+    header.style.alignItems = "center";
+    header.style.gap = ".5rem";
+    header.style.background = "transparent";
+    header.style.border = "none";
+    header.style.padding = ".25rem 0";
+
+    const left = document.createElement("div");
+    const title = document.createElement("div");
+    title.className = "ppx-h4";
+    title.style.margin = "0";
+    title.style.fontFamily = "'Montserrat', var(--ppx-font, sans-serif)";
+    title.style.fontSize = "1.05rem";
+    title.style.fontWeight = "700";
+    setTextWithTooltip(
+      title,
+      uiLang === "es" ? DOMAIN_COPY[domain].es : DOMAIN_COPY[domain].en,
+      uiLang === "es" ? DOMAIN_COPY[domain].en : DOMAIN_COPY[domain].es
+    );
+    left.appendChild(title);
+
+    const right = document.createElement("div");
+    right.style.display = "flex";
+    right.style.alignItems = "center";
+    right.style.gap = ".5rem";
+
+    const countPill = document.createElement("div");
+    countPill.className = "ppx-pill";
+    countPill.style.fontSize = "12px";
+    countPill.style.padding = ".15rem .6rem";
+    countPill.style.background = "#eef2ff";
+    countPill.style.color = "#111827";
+    countPill.style.border = "1px solid #e5e7eb";
+
+    const icon = document.createElement("img");
+    icon.alt = "toggle";
+    icon.style.width = "16px";
+    icon.style.height = "16px";
+    icon.style.transition = "transform 0.2s ease";
+    icon.src = "/static/assets/icons/chevron_down.svg";
+
+    right.appendChild(countPill);
+    right.appendChild(icon);
+
+    header.appendChild(left);
+    header.appendChild(right);
+
+    const body = document.createElement("div");
+    body.style.display = "none";
+    body.style.marginTop = ".65rem";
+    body.style.borderTop = "1px solid var(--ppx-line,#e5e7eb)";
+    body.style.paddingTop = ".65rem";
+    body.style.boxSizing = "border-box";
+    body.style.overflow = "hidden";
+    body.dataset.domain = domain;
+
+    header.addEventListener("click", () => {
+      const open = body.style.display === "block";
+      body.style.display = open ? "none" : "block";
+      icon.src = open ? "/static/assets/icons/chevron_down.svg" : "/static/assets/icons/chevron_up.svg";
+    });
+
+    wrapper.appendChild(header);
+    wrapper.appendChild(body);
+    return { wrapper, body, countPill };
+  }
+
+  function renderAccordions() {
+    if (!els.accordions) return;
+    els.accordions.innerHTML = "";
+    const lang = els.lang?.value || "es";
+    const domains = ["structures", "vocabulary", "goals"];
+    domains.forEach(domain => {
+      const { wrapper, body, countPill } = createAccordion(domain);
+      const items = resources
+        .filter(r => r.domain === domain && r.lang === lang)
+        .map(r => ({ ...r, persisted: !!r.persisted }));
+      countPill.textContent = items.length.toString();
+
+      if (items.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "ppx-muted";
+        empty.style.fontSize = "13px";
+        empty.textContent = uiLang === "es"
+          ? "Usa “Crear vista previa” para añadir uno nuevo."
+          : "Use “Create preview” to add a new one.";
+        body.appendChild(empty);
+      } else {
+        items.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "ppx-card";
+          card.style.padding = ".65rem .75rem";
+          card.style.marginBottom = ".5rem";
+          card.style.boxSizing = "border-box";
+          card.style.display = "grid";
+          card.style.gridTemplateColumns = "1fr auto";
+          card.style.alignItems = "center";
+          card.style.gap = ".35rem";
+
+          const left = document.createElement("div");
+          const t = document.createElement("div");
+          t.className = "ppx-label";
+          setTextWithTooltip(
+            t,
+            uiLang === "es" ? (item.title_es || item.title_en || item.id) : (item.title_en || item.title_es || item.id),
+            uiLang === "es" ? item.title_en : item.title_es
+          );
+          const meta = document.createElement("div");
+          meta.className = "ppx-muted";
+          meta.style.fontSize = "12px";
+          meta.style.display = "flex";
+          meta.style.flexWrap = "wrap";
+          meta.style.gap = "6px 10px";
+          const slug = document.createElement("span");
+          slug.textContent = item.id;
+          meta.appendChild(slug);
+          if (item.levels?.length) {
+            const lv = document.createElement("span");
+            lv.textContent = (uiLang === "es" ? "Nivel: " : "Level: ") + item.levels.join(", ");
+            meta.appendChild(lv);
+          }
+          left.appendChild(t);
+          left.appendChild(meta);
+
+          const actions = document.createElement("div");
+          actions.style.display = "flex";
+          actions.style.gap = ".35rem";
+          actions.style.alignItems = "center";
+
+          const openBtn = document.createElement("button");
+          openBtn.type = "button";
+          openBtn.className = "ppx-btn ppx-btn-secondary";
+          openBtn.style.whiteSpace = "nowrap";
+          openBtn.textContent = uiLang === "es" ? "Abrir editor" : "Open editor";
+
+          openBtn.addEventListener("click", () => {
+            const params = new URLSearchParams({
+              title_es: item.title_es || "",
+              title_en: item.title_en || "",
+              lang: item.lang || "",
+              domain: item.domain || "",
+              slug: item.id || ""
+            });
+            const openEditor = () => {
+              const url = `/admin/content-lab/editor/${encodeURIComponent(item.id)}?${params.toString()}`;
+              window.open(url, "_blank");
+            };
+            if (item.persisted) {
+              openEditor();
+              return;
+            }
+            // Save a minimal stub, then open
+            const payload = {
+              schema_version: "4.1.0",
+              language: item.lang,
+              domain: item.domain,
+              resource_id: item.id,
+              meta: {
+                title_es: item.title_es || item.title_en || "",
+                title_en: item.title_en || item.title_es || "",
+                levels: item.levels || [],
+                tags: item.tags || [],
+                taxonomy_paths: [`${item.lang}/${item.domain}`],
+              },
+              relations: [],
+              modules: [],
+              storage_path: `/content/${item.lang}/${item.domain}/${item.id}.json`,
+            };
+            fetch(`/admin/api/content-lab/resource/${encodeURIComponent(item.lang)}/${encodeURIComponent(item.domain)}/${encodeURIComponent(item.id)}`, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            }).then(res => res.json().then(data => ({ res, data })))
+              .then(({ res, data }) => {
+                if (res.ok && data.ok) {
+                  item.persisted = true;
+                  resources = resources.map(r => (r.id === item.id && r.lang === item.lang && r.domain === item.domain) ? { ...r, persisted: true } : r);
+                  openEditor();
+                } else {
+                  alert((data && data.error) || (uiLang === "es" ? "No se pudo guardar el recurso." : "Could not save resource."));
+                }
+              })
+              .catch(() => {
+                alert(uiLang === "es" ? "No se pudo guardar el recurso." : "Could not save resource.");
+              });
+          });
+
+          const delBtn = document.createElement("button");
+          delBtn.type = "button";
+          delBtn.className = "ppx-btn ppx-btn-danger";
+          delBtn.style.whiteSpace = "nowrap";
+          delBtn.textContent = uiLang === "es" ? "Eliminar" : "Delete";
+          delBtn.addEventListener("click", () => {
+            const msg = uiLang === "es"
+              ? "¿Eliminar este recurso de la lista de ejemplo? (No borra archivos aún)"
+              : "Remove this example resource from the list? (Does not delete files yet)";
+            if (!confirm(msg)) return;
+            resources = resources.filter(r => !(r.id === item.id && r.domain === item.domain && r.lang === item.lang));
+            renderAccordions();
+          });
+
+          actions.appendChild(openBtn);
+          actions.appendChild(delBtn);
+
+          card.appendChild(left);
+          card.appendChild(actions);
+          body.appendChild(card);
+        });
+      }
+
+      els.accordions.appendChild(wrapper);
+    });
+  }
+
+  if (els.saveBtn) {
+    els.saveBtn.addEventListener("click", () => {
+      updateStructSummary();
+      const preview = buildPreview();
+      const slug = preview.resource_id;
+      if (!slug) {
+        els.status.textContent = uiLang === "es" ? "Falta el slug (título vacío)." : "Missing slug (empty title).";
+        return;
+      }
+      const lang = preview.language;
+      const domain = preview.domain;
+      fetch(`/admin/api/content-lab/resource/${encodeURIComponent(lang)}/${encodeURIComponent(domain)}/${encodeURIComponent(slug)}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(preview),
+      }).then(res => res.json().then(data => ({ res, data })))
+        .then(({ res, data }) => {
+          if (!res.ok || !data.ok) {
+            els.status.textContent = (data && data.error) || (uiLang === "es" ? "Error al guardar." : "Save failed.");
+            return;
+          }
+          const exists = resources.some(r => r.id === slug && r.lang === lang && r.domain === domain);
+      const newItem = {
+        id: slug,
+        domain,
+        lang,
+        title_es: preview.meta.title_es,
+        title_en: preview.meta.title_en,
+        levels: preview.meta.levels || [],
+        tags: preview.meta.tags || [],
+        persisted: true
+      };
+          resources = exists
+            ? resources.map(r => (r.id === slug && r.lang === lang && r.domain === domain) ? newItem : r)
+            : [...resources, newItem];
+          renderAccordions();
+          els.status.textContent = uiLang === "es" ? "Guardado." : "Saved.";
+        })
+        .catch(() => {
+          els.status.textContent = uiLang === "es" ? "Error al guardar." : "Save failed.";
+        });
+    });
+  }
+
+  if (els.accordions && els.lang) {
+    els.lang.addEventListener("change", renderAccordions);
+    renderAccordions();
+  }
+})();
+</script>
+{% endblock %}

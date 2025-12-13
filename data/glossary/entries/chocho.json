@@ -23,7 +23,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/chocho/chocho_ex_01.mp3",
+          "audio": "/media/glossary-audio/examples/chocho/s1/chocho_ex_01.mp3",
           "en": "My mom called—everything’s fine. Clarita was `thrilled`.",
           "es": "Llamó mi vieja, todo bien. Clarita estaba `chocha`.",
           "source": {
@@ -35,7 +35,7 @@
           }
         },
         {
-          "audio": "/media/glossary-audio/examples/chocho/chocho_ex_02.mp3",
+          "audio": "/media/glossary-audio/examples/chocho/s1/chocho_ex_02.mp3",
           "en": "I'm `thrilled`. You know when everything around you is exactly what you want?",
           "es": "Estoy `chocha`. ¿Viste cuando todo lo que hay es lo que querés?",
           "source": {
