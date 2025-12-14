@@ -39,6 +39,18 @@
             "type": "movie",
             "year": "2014"
           }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/pelotudo/s1/pelotudo_ex_03.mp3?v=1765647970",
+          "en": "You’re such an `idiot`!",
+          "es": "¡Qué `pelotudo` que sos!",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
         }
       ],
       "freq": "muy_comun",

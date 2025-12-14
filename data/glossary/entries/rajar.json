@@ -15,7 +15,8 @@
       "equivalents_en": [
         "leave quickly",
         "scram",
-        "get out"
+        "get out",
+        "split"
       ],
       "examples": [
         {
@@ -28,6 +29,18 @@
             "title": "Viudas negras: P*tas y chorras",
             "type": "series",
             "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/rajar/s1/rajar_ex_02.mp3?v=1765649618",
+          "en": "\"I gotta `split`.\"\n\"Alright.\"",
+          "es": "—Bueno, tengo que `rajar`.\n—Bueno.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
           }
         }
       ],

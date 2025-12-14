@@ -409,10 +409,12 @@
       }
       // Deduplicate by slug, keep only most recent per entry
       const seen = new Set();
+      let count = 0;
       state.recentItems.forEach(item => {
         const slugKey = item.slug || '';
         if (!slugKey || seen.has(slugKey)) return;
         seen.add(slugKey);
+        if (count >= 15) return;
         const row = document.createElement('div');
         row.className = 'rg-recent-item';
         const title = document.createElement('div');
@@ -464,6 +466,7 @@
         row.appendChild(meta);
         row.appendChild(link);
         recentBody.appendChild(row);
+        count += 1;
       });
     }
 
@@ -480,6 +483,7 @@
       if (!state.scope) return;
       const params = new URLSearchParams();
       if (state.scope !== 'ALL') params.append('country', state.scope);
+      params.append('limit','50');
       const data = await fetchJson(`/glossary/api/recent?${params.toString()}`);
       state.recentItems = (data && Array.isArray(data.items)) ? data.items : [];
       renderRecent();

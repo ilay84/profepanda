@@ -264,6 +264,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "sustantivo_masculino",
+    "slug": "enchastre",
+    "snippet": "A mess or botched situation caused by disorder, carelessness, or poor execution, often leading to problems.",
+    "word": "enchastre"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "adjetivo",
     "slug": "flaco",
     "snippet": "Friendly, informal way to address someone, not literally referring to body type.",
@@ -664,6 +673,15 @@
     "slug": "romperla",
     "snippet": "To perform exceptionally well or impress greatly.",
     "word": "romperla"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "rosarino",
+    "snippet": "A person from the city of Rosario, in Santa Fe province, Argentina.",
+    "word": "rosarino"
   },
   {
     "countries": [

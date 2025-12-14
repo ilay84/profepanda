@@ -31,6 +31,21 @@
             "type": "series",
             "year": "2005"
           }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/mina/s1/mina_ex_02.mp3?v=1765650973",
+          "en": "My favorite woman from Rosario. You’re a great `girl`, Paola. I know you’re capable of more.",
+          "es": "Mi rosarina favorita. Sos buena `mina`, Paola. Sé que estás para más.",
+          "linked_terms": [
+            "mina"
+          ],
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
         }
       ],
       "freq": "muy_comun",

@@ -1,6 +1,231 @@
 [
   {
     "kind": "entry_updated",
+    "slug": "rosarino",
+    "word": "rosarino",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:37:41.575113Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "rosarino",
+    "word": "rosarino",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:37:40.911130Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "rosarino",
+    "word": "rosarino",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:36:41.573250Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "mina",
+    "word": "mina",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:36:15.006144Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "mina",
+    "word": "mina",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:36:14.573970Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "mina",
+    "word": "mina",
+    "sense_id": "s1",
+    "sense_num": 1,
+    "example_num": 2,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:36:14.196966Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "mina",
+    "word": "mina",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:36:14.183977Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "rosarino",
+    "word": "rosarino",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:34:53.632157Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "rosarino",
+    "word": "rosarino",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:34:53.406644Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "rosarino",
+    "word": "rosarino",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:34:52.574690Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "rosarino",
+    "word": "rosarino",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:34:27.260111Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "rosarino",
+    "word": "rosarino",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:33:21.259944Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "rajar",
+    "word": "rajar",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:14:07.379637Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "rajar",
+    "word": "rajar",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:13:39.705147Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "rajar",
+    "word": "rajar",
+    "sense_id": "s1",
+    "sense_num": 1,
+    "example_num": 2,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:13:39.198723Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "rajar",
+    "word": "rajar",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:13:39.183409Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "enchastre",
+    "word": "enchastre",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:05:36.502827Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "enchastre",
+    "word": "enchastre",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:05:36.339968Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "enchastre",
+    "word": "enchastre",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:05:35.583719Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "enchastre",
+    "word": "enchastre",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T18:02:28.850824Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "pelotudo",
+    "word": "pelotudo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T17:46:11.287640Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "pelotudo",
+    "word": "pelotudo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T17:46:10.696115Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "pelotudo",
+    "word": "pelotudo",
+    "sense_id": "s1",
+    "sense_num": 1,
+    "example_num": 3,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T17:45:55.007806Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "pelotudo",
+    "word": "pelotudo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-13T17:45:54.996764Z"
+  },
+  {
+    "kind": "entry_updated",
     "slug": "con-carpa",
     "word": "con carpa",
     "countries": [

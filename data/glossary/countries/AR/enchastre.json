@@ -1,0 +1,57 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/enchastre/enchastre.mp3?v=1765649135",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A mess or botched situation caused by disorder, carelessness, or poor execution, often leading to problems.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Situación, acción o resultado desordenado, mal hecho o problemático que genera molestia o consecuencias negativas.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "mess",
+        "screw-up",
+        "botched job",
+        "disaster"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/enchastre/s1/enchastre_ex_01.mp3?v=1765649135",
+          "en": "Look at the `mess` you’re making there.",
+          "es": "Mirá el `enchastre` que estás haciendo ahí.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "enchastres",
+        "masc_sg": "enchastre"
+      }
+    }
+  ],
+  "slug": "enchastre",
+  "word": "enchastre"
+}

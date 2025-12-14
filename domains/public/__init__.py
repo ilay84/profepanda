@@ -761,9 +761,9 @@ def glossary_api_recent():
     allowed = set(cfg.get('enabled_countries') or [])
     country = (request.args.get('country') or '').strip().upper() or None
     try:
-        limit = max(1, min(50, int(request.args.get('limit') or 10)))
+        limit = max(1, min(50, int(request.args.get('limit') or 15)))
     except Exception:
-        limit = 10
+        limit = 15
     events = glossary.load_recent_activity(limit=limit, country=country)
     # If country not specified, filter to allowed countries only
     if not country and allowed:

@@ -1538,6 +1538,63 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/enchastre/enchastre.mp3?v=1765649135",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A mess or botched situation caused by disorder, carelessness, or poor execution, often leading to problems.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Situación, acción o resultado desordenado, mal hecho o problemático que genera molestia o consecuencias negativas.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "mess",
+          "screw-up",
+          "botched job",
+          "disaster"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/enchastre/s1/enchastre_ex_01.mp3?v=1765649135",
+            "en": "Look at the `mess` you’re making there.",
+            "es": "Mirá el `enchastre` que estás haciendo ahí.",
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": "enchastres",
+          "masc_sg": "enchastre"
+        }
+      }
+    ],
+    "slug": "enchastre",
+    "word": "enchastre"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/flaco/flaco.mp3",
     "senses": [
       {
@@ -2850,6 +2907,21 @@
               "type": "series",
               "year": "2005"
             }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/mina/s1/mina_ex_02.mp3?v=1765650973",
+            "en": "My favorite woman from Rosario. You’re a great `girl`, Paola. I know you’re capable of more.",
+            "es": "Mi rosarina favorita. Sos buena `mina`, Paola. Sé que estás para más.",
+            "linked_terms": [
+              "mina"
+            ],
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
           }
         ],
         "freq": "muy_comun",
@@ -3620,6 +3692,18 @@
               "type": "movie",
               "year": "2014"
             }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/pelotudo/s1/pelotudo_ex_03.mp3?v=1765647970",
+            "en": "You’re such an `idiot`!",
+            "es": "¡Qué `pelotudo` que sos!",
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
           }
         ],
         "freq": "muy_comun",
@@ -4085,7 +4169,8 @@
         "equivalents_en": [
           "leave quickly",
           "scram",
-          "get out"
+          "get out",
+          "split"
         ],
         "examples": [
           {
@@ -4098,6 +4183,18 @@
               "title": "Viudas negras: P*tas y chorras",
               "type": "series",
               "year": "2025"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/rajar/s1/rajar_ex_02.mp3?v=1765649618",
+            "en": "\"I gotta `split`.\"\n\"Alright.\"",
+            "es": "—Bueno, tengo que `rajar`.\n—Bueno.",
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
             }
           }
         ],
@@ -4237,6 +4334,63 @@
     ],
     "slug": "romperla",
     "word": "romperla"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/rosarino/rosarino.mp3?v=1765651060",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A person from the city of Rosario, in Santa Fe province, Argentina.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Persona originaria de la ciudad de Rosario, en la provincia de Santa Fe, Argentina.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "person from Rosario"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/rosarino/s1/rosarino_ex_01.mp3?v=1765650892",
+            "en": "My favorite `woman from Rosario`. You’re a great girl, Paola. I know you’re capable of more.",
+            "es": "Mi `rosarina` favorita. Sos buena mina, Paola. Sé que estás para más.",
+            "linked_terms": [
+              "mina"
+            ],
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino_y_femenino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "rosarinas",
+          "fem_sg": "rosarina",
+          "masc_pl": "rosarinos",
+          "masc_sg": "rosarino"
+        }
+      }
+    ],
+    "slug": "rosarino",
+    "word": "rosarino"
   },
   {
     "alt_spellings": [
