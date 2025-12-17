@@ -1,6 +1,65 @@
 [
   {
     "kind": "entry_updated",
+    "slug": "garca",
+    "word": "garca",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-16T14:53:29.305380Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "garca",
+    "word": "garca",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-16T14:53:28.635431Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "garca",
+    "word": "garca",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-16T14:51:47.905389Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "garca",
+    "word": "garca",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-16T14:51:47.194485Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "garca",
+    "word": "garca",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-16T14:51:38.771381Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "cordon",
+    "word": "cordón",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-15T16:11:20.493268Z"
+  },
+  {
+    "kind": "entry_updated",
     "slug": "rosarino",
     "word": "rosarino",
     "countries": [

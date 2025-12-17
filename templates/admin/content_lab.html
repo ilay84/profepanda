@@ -59,8 +59,13 @@
         </div>
       </div>
 
-      <div id="lab-module-nav" class="ppx-row" style="margin:1rem 0 .5rem 0; gap:.5rem; flex-wrap:wrap;"></div>
-      <div id="lab-preview" class="lab-preview"></div>
+      <div class="lab-preview-shell">
+        <div class="lab-module-nav-panel">
+          <div class="ppx-label" style="margin-bottom:.35rem;">{{ t("Módulos", "Modules", app_lang) }}</div>
+          <div id="lab-module-nav" class="lab-module-nav"></div>
+        </div>
+        <div id="lab-preview" class="lab-preview"></div>
+      </div>
       <div class="ppx-row" style="margin-top:1rem; gap:1rem; flex-wrap:wrap;">
         <div class="ppx-card" style="padding:.75rem 1rem; flex:1 1 240px; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8);">
           <div class="ppx-h4" style="margin:0 0 .35rem 0;">{{ t("Progreso simulado", "Mock progress", app_lang) }}</div>
@@ -162,6 +167,57 @@
     padding: 16px;
     background: #fbfcff;
     min-height: 280px;
+    flex: 1 1 520px;
+  }
+  .lab-preview-shell {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .lab-module-nav-panel {
+    flex: 0 0 260px;
+    min-width: 240px;
+    background: #f8fafc;
+    border: 1px solid var(--ppx-line, #e5e7eb);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  }
+  .lab-module-nav {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .lab-module-header {
+    padding: 8px 0 14px 0;
+    border-bottom: 1px solid var(--ppx-line, #e5e7eb);
+    margin-bottom: 12px;
+  }
+  .lab-module-header .lab-module-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .lab-module-header .lab-module-meta {
+    margin-top: 4px;
+    color: #475569;
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .lab-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+  .lab-block-card {
+    background: #ffffff;
+    border: 1px solid var(--ppx-line, #e5e7eb);
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
   }
   .lab-preview.compact { padding: 10px; }
   .lab-block { margin: 0 0 14px 0; }
@@ -392,16 +448,23 @@
   .lab-translation strong { display:block; margin-bottom:6px; }
   #lab-module-nav button {
     border: 1px solid var(--ppx-line,#d4d4d8);
-    border-radius: 10px;
-    padding: 6px 10px;
-    background: #fff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #ffffff;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
+    text-align: left;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    display: grid;
+    gap: 4px;
   }
+  #lab-module-nav button .lab-nav-title { color: #0f172a; }
+  #lab-module-nav button .lab-nav-meta { color: #475569; font-size: 12px; font-weight: 500; }
   #lab-module-nav button.active {
-    background: #e0e7ff;
+    background: linear-gradient(135deg, #e0e7ff, #eef2ff);
     border-color: #c7d2fe;
-    color: #312e81;
+    color: #1e1b4b;
+    box-shadow: 0 12px 26px rgba(59, 130, 246, 0.20);
   }
 </style>
 
@@ -1149,9 +1212,40 @@
       els.preview.textContent = tx("selectModule");
       return;
     }
-    (module.blocks || []).forEach(block => {
-      els.preview.appendChild(renderBlock(block));
-    });
+    const header = document.createElement("div");
+    header.className = "lab-module-header";
+    const title = document.createElement("div");
+    title.className = "lab-module-title";
+    title.textContent = preferLang(module.title_en, module.title_es, module.module_id || tx("moduleFallback"));
+    const meta = document.createElement("div");
+    meta.className = "lab-module-meta";
+    const blockCount = (module.blocks && module.blocks.length) || 0;
+    const blockLabel = blockCount === 1 ? preferLang("block", "bloque") : preferLang("blocks", "bloques");
+    const metaParts = [];
+    if (module.module_id) metaParts.push(module.module_id);
+    metaParts.push(`${blockCount} ${blockLabel}`);
+    meta.textContent = metaParts.join(" • ");
+    header.appendChild(title);
+    header.appendChild(meta);
+
+    const blocksWrap = document.createElement("div");
+    blocksWrap.className = "lab-blocks";
+    if (!blockCount) {
+      const empty = document.createElement("div");
+      empty.className = "lab-callout info";
+      empty.textContent = preferLang("This module has no blocks yet.", "Este módulo no tiene bloques todavía.");
+      blocksWrap.appendChild(empty);
+    } else {
+      (module.blocks || []).forEach(block => {
+        const card = document.createElement("div");
+        card.className = "lab-block-card";
+        card.appendChild(renderBlock(block));
+        blocksWrap.appendChild(card);
+      });
+    }
+
+    els.preview.appendChild(header);
+    els.preview.appendChild(blocksWrap);
   }
 
   function renderModuleNav(modules) {
@@ -1164,7 +1258,16 @@
       const btn = document.createElement("button");
       const label = preferLang(mod.title_en, mod.title_es, mod.module_id || `${tx("moduleFallback")} ${idx + 1}`);
       const translationTitle = lang === "es" ? mod.title_en : mod.title_es;
-      setTextWithTooltip(btn, label, translationTitle || "");
+      const titleEl = document.createElement("div");
+      titleEl.className = "lab-nav-title";
+      setTextWithTooltip(titleEl, label, translationTitle || "");
+      const metaEl = document.createElement("div");
+      metaEl.className = "lab-nav-meta";
+      const blocksCount = (mod.blocks && mod.blocks.length) || 0;
+      const blocksLabel = blocksCount === 1 ? preferLang("block", "bloque") : preferLang("blocks", "bloques");
+      metaEl.textContent = `${blocksCount} ${blocksLabel}`;
+      btn.appendChild(titleEl);
+      btn.appendChild(metaEl);
       btn.addEventListener("click", () => {
         Array.from(els.moduleNav.querySelectorAll("button")).forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
@@ -1517,13 +1620,3 @@
 })();
 </script>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-

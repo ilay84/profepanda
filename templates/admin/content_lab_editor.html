@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+<script src="/static/js/content_renderer.js"></script>
 <style>
   .tab-btn {
     display: inline-flex;
@@ -40,10 +41,163 @@
     align-items: center;
     gap: 6px;
   }
+  .pill-main {
+    font-weight: 700;
+    padding: 6px 12px;
+    background: #e0e7ff;
+    border-color: #cbd5ff;
+  }
+  .pill-active {
+    background: #2563eb !important;
+    color: #fff !important;
+    border-color: #1d4ed8 !important;
+  }
   .pill.active {
     background: #2563eb;
     color: #fff;
     border-color: #1d4ed8;
+  }
+  .lab-callout {
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    background: #f8fafc;
+  }
+  .lab-callout.info { border-color: #bfdbfe; background:#eff6ff; }
+  .lab-callout.warning { border-color: #fcd34d; background:#fef3c7; }
+  .lab-callout-title { font-weight: 700; margin-bottom: 4px; }
+  .lab-table { width:100%; border-collapse: collapse; margin: 6px 0; }
+  .lab-table th, .lab-table td { border:1px solid #e5e7eb; padding:6px 8px; text-align:left; }
+  .lab-table th { background:#f8fafc; }
+  /* Module rail styles */
+  .ed-module-rail {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ed-module-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ed-module-separator {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 4px 0 2px;
+  }
+  .ed-module-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: #eef2ff;
+    color: #0f172a;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+    transition: all 0.15s ease;
+  }
+  .ed-module-btn:hover {
+    box-shadow: 0 6px 14px rgba(15,23,42,0.08);
+  }
+  .ed-module-btn:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+  }
+  .ed-module-btn.main {
+    background: #7b7bc1;
+    color: #fff;
+  }
+  .ed-module-btn.sub {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-weight: 600;
+    padding: 8px 12px;
+  }
+  .ed-module-btn.active {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.35);
+  }
+  .ed-module-num {
+    min-width: 28px;
+    text-align: center;
+    font-weight: 700;
+  }
+  .ed-module-title {
+    flex: 1;
+    text-align: left;
+    line-height: 1.2;
+    font-size: 14px;
+  }
+  /* Responsive overlay */
+  .ed-rail-wrapper {
+    position: relative;
+  }
+  .ed-rail-overlay {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .ed-rail-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.45);
+      display: none;
+      z-index: 9990;
+      align-items: flex-start;
+      padding: 70px 12px 12px;
+      box-sizing: border-box;
+    }
+    .ed-rail-overlay.open {
+      display: flex;
+    }
+    .ed-rail-panel {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      width: min(360px, 100%);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      max-height: calc(100vh - 100px);
+      overflow: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #ed-modules-list { display: none; }
+    #ed-rail-open { display: inline-flex !important; }
+  }
+  .ed-preview-layout {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .ed-preview-nav {
+    flex: 0 0 240px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 10px;
+  }
+  .ed-preview-content {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px;
+    min-height: 180px;
+  }
+  .ed-preview-heading {
+    margin: 0 0 8px 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  @media (max-width: 768px) {
+    .ed-preview-layout { flex-direction: column; }
+    .ed-preview-nav { display: none; }
+    #ed-preview-rail-open { display: inline-flex !important; }
   }
 </style>
 <main class="ppx-container ppx-admin" style="max-width: 1280px; padding: 1.25rem 1rem;">
@@ -141,35 +295,92 @@
       </div>
       <div class="ppx-card" style="margin-top:.5rem; padding:.75rem; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8); width:100%; box-sizing:border-box; overflow:hidden;">
         <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; flex-wrap:wrap;">
-          <div class="ppx-label" style="margin:0;">{{ t("Módulos", "Modules", app_lang) }}</div>
-          <div class="ppx-row" style="gap:.35rem; flex-wrap:wrap; align-items:center;">
-            <input id="ed-module-title" class="ppx-input" style="width:180px;" placeholder="{{ t('Título módulo (base)', 'Module title (primary)', app_lang) }}">
-            <input id="ed-module-title-trans" class="ppx-input" style="width:180px;" placeholder="{{ t('Título módulo (traducción)', 'Module title (translation)', app_lang) }}">
-            <button type="button" id="ed-module-add" class="ppx-btn ppx-btn-secondary">{{ t("Agregar módulo", "Add module", app_lang) }}</button>
+          <div class="ppx-row" style="gap:.35rem; align-items:center; flex-wrap:wrap;">
+            <div class="ppx-label" style="margin:0;">{{ t("Mdulos", "Modules", app_lang) }}</div>
+            <button type="button" id="ed-rail-open" class="ppx-btn ppx-btn-secondary" style="display:none; padding:6px 10px;">{{ t("Mdulos", "Modules", app_lang) }}</button>
           </div>
+          <div class="ppx-row" style="gap:.35rem; flex-wrap:wrap; align-items:center;">
+            <input id="ed-module-title" class="ppx-input" style="width:180px;" placeholder="{{ t('Ttulo mdulo (base)', 'Module title (primary)', app_lang) }}">
+            <input id="ed-module-title-trans" class="ppx-input" style="width:180px;" placeholder="{{ t('Ttulo mdulo (traduccin)', 'Module title (translation)', app_lang) }}">
+            <button type="button" id="ed-module-add" class="ppx-btn ppx-btn-secondary">{{ t("Agregar mdulo", "Add module", app_lang) }}</button>
+          </div>
+
         </div>
         <div id="ed-modules-list" class="ppx-row" style="gap:.35rem; flex-wrap:wrap; margin-top:.5rem;"></div>
       </div>
       <div class="ppx-muted" style="margin-top:.35rem; font-size:13px;">{{ t("Aquí vivirá el editor real de bloques, JSON y previsualización.", "The real block/JSON/preview editor will live here.", app_lang) }}</div>
       <div id="panel-blocks" class="ppx-card" style="margin-top:.75rem; padding:1rem; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8); width:100%; box-sizing:border-box; overflow:hidden;">
         <div class="ppx-label">{{ t("Bloques", "Blocks", app_lang) }}</div>
-        <p class="ppx-muted" style="margin:0; font-size:13px; line-height:1.4;" id="ed-blocks-placeholder">
-          {{ t("Selecciona o agrega un módulo para editar sus bloques.", "Select or add a module to edit its blocks.", app_lang) }}
-        </p>
+        <div class="ppx-row" style="gap:.5rem; align-items:center; flex-wrap:wrap; margin-top:.35rem;">
+          <select id="ed-block-type" class="ppx-select" style="width:160px;">
+            <option value="rich_text">Rich text</option>
+            <option value="markdown">Markdown</option>
+            <option value="list">List</option>
+            <option value="exercise">Exercise</option>
+          </select>
+          <input id="ed-block-id" class="ppx-input" style="width:160px;" placeholder="{{ t('ID del bloque', 'Block ID', app_lang) }}">
+          <button id="ed-block-add" type="button" class="ppx-btn ppx-btn-secondary">{{ t("Agregar bloque", "Add block", app_lang) }}</button>
+        </div>
+        <div id="ed-blocks-list" style="margin-top:.5rem; display:flex; flex-direction:column; gap:.4rem;"></div>
       </div>
+      <div class="ed-rail-overlay" id="ed-rail-overlay">
+        <div class="ed-rail-panel">
+          <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; margin-bottom:.5rem;">
+            <div class="ppx-label">{{ t("Mdulos", "Modules", app_lang) }}</div>
+            <button type="button" id="ed-rail-close" class="ppx-btn ppx-btn-secondary">{{ t("Cerrar", "Close", app_lang) }}</button>
+          </div>
+          <div id="ed-modules-overlay" class="ed-module-rail"></div>
+        </div>
+      </div>
+
+
       <div id="panel-json" class="ppx-card" style="margin-top:.75rem; padding:1rem; background:#0f172a; color:#e2e8f0; width:100%; box-sizing:border-box; overflow:hidden; display:none;">
         <div class="ppx-label" style="color:#e2e8f0;">JSON</div>
         <textarea id="ed-json" style="width:100%; min-height:260px; margin-top:.5rem; font-family:monospace; font-size:13px; line-height:1.4; background:#0f172a; color:#e2e8f0; border:1px solid #1f2937; border-radius:8px; padding:10px; box-sizing:border-box;"></textarea>
         <div class="ppx-muted" style="font-size:12px; margin-top:.35rem; color:#cbd5e1;">{{ t("Edita el JSON completo del recurso. Se validará al guardar.", "Edit full resource JSON. Will be validated on save.", app_lang) }}</div>
       </div>
       <div id="panel-preview" class="ppx-card" style="margin-top:.75rem; padding:1rem; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8); width:100%; box-sizing:border-box; overflow:hidden; display:none;">
-        <div class="ppx-label">{{ t("Vista previa", "Preview", app_lang) }}</div>
-        <p class="ppx-muted" style="margin:0; font-size:13px; line-height:1.4;">
-          {{ t("Renderizado pendiente. Se mostrará el recurso tal como lo verían los usuarios.", "Preview pending. Will render the resource as users see it.", app_lang) }}
-        </p>
+        <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
+          <div class="ppx-label">{{ t("Vista previa", "Preview", app_lang) }}</div>
+          <button id="ed-preview-rail-open" type="button" class="ppx-btn ppx-btn-secondary" style="display:none; padding:6px 10px;">{{ t("Módulos", "Modules", app_lang) }}</button>
+        </div>
+        <div id="ed-preview-shell" style="margin-top:.35rem;"></div>
       </div>
+
     </section>
   </div>
+      <div id="ed-block-modal" style="position:fixed; inset:0; background:rgba(15,23,42,0.4); display:none; align-items:center; justify-content:center; z-index:10000; padding:1rem; box-sizing:border-box;">
+        <div style="background:#fff; border-radius:12px; width:min(680px, 95vw); box-shadow:0 20px 60px rgba(0,0,0,0.25); padding:1.25rem; box-sizing:border-box;">
+          <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; flex-wrap:wrap;">
+            <div class="ppx-h4" style="margin:0;">{{ t("Editar bloque", "Edit block", app_lang) }}</div>
+            <button id="ed-block-close" type="button" class="ppx-btn ppx-btn-secondary">{{ t("Cerrar", "Close", app_lang) }}</button>
+          </div>
+          <div style="margin-top:.75rem; display:grid; grid-template-columns: 1fr 1fr; gap:.65rem;">
+            <div>
+              <div class="ppx-label" style="margin-bottom:.25rem;">ID</div>
+              <div id="ed-block-modal-id" class="ppx-card" style="padding:.55rem .65rem; background:#f8fafc; border:1px solid #e5e7eb; border-radius:8px; word-break:break-word;"></div>
+            </div>
+            <div>
+              <div class="ppx-label" style="margin-bottom:.25rem;">{{ t("Tipo", "Type", app_lang) }}</div>
+              <select id="ed-block-modal-type" class="ppx-select">
+                <option value="rich_text">Rich text</option>
+                <option value="markdown">Markdown</option>
+                <option value="list">List</option>
+                <option value="exercise">Exercise</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:.75rem;">
+            <div class="ppx-label" style="margin-bottom:.25rem;">JSON</div>
+            <textarea id="ed-block-modal-json" style="width:100%; min-height:220px; font-family:monospace; font-size:13px; line-height:1.4; border:1px solid #e5e7eb; border-radius:8px; padding:10px; box-sizing:border-box;"></textarea>
+            <div id="ed-block-modal-error" class="ppx-muted" style="color:#dc2626; font-size:12px; margin-top:.25rem;"></div>
+          </div>
+          <div class="ppx-row" style="justify-content:flex-end; gap:.5rem; margin-top:.85rem;">
+            <button id="ed-block-modal-save" type="button" class="ppx-btn">{{ t("Guardar bloque", "Save block", app_lang) }}</button>
+          </div>
+        </div>
+      </div>
+
 </main>
 <script>
 (() => {
@@ -200,14 +411,34 @@
     panelBlocks: document.getElementById("panel-blocks"),
     panelJson: document.getElementById("panel-json"),
     panelPreview: document.getElementById("panel-preview"),
+    previewShell: document.getElementById("ed-preview-shell"),
     jsonArea: document.getElementById("ed-json"),
     modulesList: document.getElementById("ed-modules-list"),
     moduleAdd: document.getElementById("ed-module-add"),
     moduleTitle: document.getElementById("ed-module-title"),
     moduleTitleTrans: document.getElementById("ed-module-title-trans"),
+    blockType: document.getElementById("ed-block-type"),
+    blockId: document.getElementById("ed-block-id"),
+    blockAdd: document.getElementById("ed-block-add"),
+    blocksList: document.getElementById("ed-blocks-list"),
+    previewRailOpen: document.getElementById("ed-preview-rail-open"),
+    railOpen: document.getElementById("ed-rail-open"),
+    railOverlay: document.getElementById("ed-rail-overlay"),
+    railClose: document.getElementById("ed-rail-close"),
+    modulesOverlay: document.getElementById("ed-modules-overlay"),
+    blockModal: document.getElementById("ed-block-modal"),
+    blockModalId: document.getElementById("ed-block-modal-id"),
+    blockModalType: document.getElementById("ed-block-modal-type"),
+    blockModalJson: document.getElementById("ed-block-modal-json"),
+    blockModalError: document.getElementById("ed-block-modal-error"),
+    blockModalSave: document.getElementById("ed-block-modal-save"),
+    blockModalClose: document.getElementById("ed-block-close"),
   };
   const STRUCT_TAG_ID_SET = new Set();
+  const ALLOWED_TAGS = ["Ser vs Estar", "Special verbs"];
   let modulesState = [];
+  let activeModuleId = null;
+  let editingBlock = null;
 
   if (els.lang && lang) els.lang.value = lang;
   if (els.domain && domain) els.domain.value = domain;
@@ -289,7 +520,7 @@
       label_es: "Exclamaciones",
       label_en: "Exclamations",
       children: [
-        { id: "excl-emphasis", label_es: "Énfasis emocional", label_en: "Emotional emphasis" },
+        { id: "excl-emphasis", label_es: "nfasis emocional", label_en: "Emotional emphasis" },
         { id: "excl-structures", label_es: "Estructuras exclamativas", label_en: "Exclamatory structures" },
         { id: "excl-que", label_es: "Construcciones con ¡Qué...!", label_en: "¡Qué...! constructions" }
       ]
@@ -452,7 +683,10 @@
 
   function renderPills() {
     if (!els.tagsPills) return;
-    const structSelected = (els.tagsPills.dataset.structSelected || "").split(",").filter(Boolean);
+    const domainVal = els.domain?.value || "structures";
+    const structSelected = domainVal === "structures"
+      ? []
+      : (els.tagsPills.dataset.structSelected || "").split(",").filter(Boolean);
     const otherTags = (els.tagsHidden?.value || "")
       .split(",").map(t => t.trim()).filter(Boolean);
     const all = [...structSelected, ...otherTags];
@@ -651,9 +885,24 @@
     const tagsList = meta.tags || [];
     const structTags = tagsList.filter(t => STRUCT_TAG_ID_SET.has(t));
     const otherTags = tagsList.filter(t => !STRUCT_TAG_ID_SET.has(t));
-    if (els.tagsPills) els.tagsPills.dataset.structSelected = structTags.join(",");
-    if (els.tagsHidden) els.tagsHidden.value = otherTags.join(", ");
-    modulesState = Array.isArray(obj.modules) ? obj.modules : [];
+    const domainVal = els.domain?.value || "structures";
+    let filteredOther = domainVal === "structures"
+      ? otherTags.filter(t => ALLOWED_TAGS.includes(t))
+      : otherTags;
+    if (domainVal === "structures") {
+      if (!filteredOther.length) filteredOther = [...ALLOWED_TAGS];
+      if (els.tagsPills) els.tagsPills.dataset.structSelected = "";
+    } else if (els.tagsPills) {
+      els.tagsPills.dataset.structSelected = structTags.join(",");
+    }
+    if (els.tagsHidden) els.tagsHidden.value = filteredOther.join(", ");
+    modulesState = Array.isArray(obj.modules)
+      ? obj.modules.map(m => ({ ...m, blocks: Array.isArray(m.blocks) ? m.blocks : [] }))
+      : [];
+    if (!activeModuleId) {
+      const firstRoot = modulesState.find(m => !m.parent_id);
+      if (firstRoot) activeModuleId = firstRoot.module_id;
+    }
     toggleLevels();
     renderPills();
     applyStructSelection();
@@ -663,34 +912,278 @@
   function renderModules() {
     if (!els.modulesList) return;
     els.modulesList.innerHTML = "";
+    if (els.modulesOverlay) els.modulesOverlay.innerHTML = "";
     if (!modulesState.length) {
+      activeModuleId = null;
       const empty = document.createElement("div");
       empty.className = "ppx-muted";
       empty.style.fontSize = "13px";
-      empty.textContent = "{{ t('Sin módulos aún.', 'No modules yet.', app_lang) }}";
+      empty.textContent = "{{ t('Sin modulos aun.', 'No modules yet.', app_lang) }}";
       els.modulesList.appendChild(empty);
+      if (els.modulesOverlay) {
+        const empty2 = empty.cloneNode(true);
+        els.modulesOverlay.appendChild(empty2);
+      }
+      renderBlocks();
       return;
     }
-    modulesState.forEach((mod, idx) => {
-      const pill = document.createElement("button");
-      pill.type = "button";
-      pill.className = "pill";
-      pill.style.border = "1px solid #d4d4d8";
-      pill.style.background = "#fff";
-      pill.style.cursor = "pointer";
-      const primary = "{{ app_lang }}" === "es" ? (mod.title_es || mod.title_en || mod.module_id) : (mod.title_en || mod.title_es || mod.module_id);
-      const tooltip = "{{ app_lang }}" === "es" ? (mod.title_en || "") : (mod.title_es || "");
-      pill.textContent = primary || `Módulo ${idx+1}`;
-      if (tooltip) pill.title = tooltip;
-      pill.dataset.moduleId = mod.module_id || `module-${idx}`;
-      // active style placeholder
-      pill.addEventListener("click", () => {
-        document.querySelectorAll("#ed-modules-list .pill").forEach(p => p.classList.remove("active"));
-        pill.classList.add("active");
-      });
-      els.modulesList.appendChild(pill);
+    const byParent = {};
+    modulesState.forEach((mod) => {
+      const pid = mod.parent_id || "__root";
+      (byParent[pid] = byParent[pid] || []).push(mod);
     });
+    if (activeModuleId && !modulesState.find(m => m.module_id === activeModuleId)) {
+      activeModuleId = null;
+    }
+    const roots = modulesState.filter(m => !m.parent_id);
+    if (!activeModuleId && roots.length) {
+      activeModuleId = roots[0].module_id;
+    }
+    const buildRail = () => {
+      const container = document.createElement("div");
+      container.className = "ed-module-rail";
+      const makeBtn = (mod, numLabel, isMain) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = `ed-module-btn ${isMain ? 'main' : 'sub'}`;
+        if (mod.module_id === activeModuleId) btn.classList.add("active");
+        const num = document.createElement("span");
+        num.className = "ed-module-num";
+        num.textContent = numLabel;
+        const title = document.createElement("span");
+        title.className = "ed-module-title";
+        const primary = "{{ app_lang }}" === "es" ? (mod.title_es || mod.title_en || mod.module_id) : (mod.title_en || mod.title_es || mod.module_id);
+        title.textContent = primary;
+        btn.appendChild(num);
+        btn.appendChild(title);
+        btn.addEventListener("click", () => {
+          activeModuleId = mod.module_id;
+          renderModules();
+          if (els.railOverlay) els.railOverlay.classList.remove("open");
+        });
+        return btn;
+      };
+      roots.forEach((root, rIdx) => {
+        const group = document.createElement("div");
+        group.className = "ed-module-group";
+        group.appendChild(makeBtn(root, `${rIdx + 1}`, true));
+        const children = byParent[root.module_id] || [];
+        children.forEach((sub, sIdx) => {
+          group.appendChild(makeBtn(sub, `${rIdx + 1}.${sIdx + 1}`, false));
+        });
+        container.appendChild(group);
+        if (rIdx < roots.length - 1) {
+          const sep = document.createElement("div");
+          sep.className = "ed-module-separator";
+          container.appendChild(sep);
+        }
+      });
+      return container;
+    };
+    els.modulesList.appendChild(buildRail());
+    if (els.modulesOverlay) {
+      els.modulesOverlay.appendChild(buildRail());
+    }
+    renderBlocks();
   }
+
+
+
+  function getActiveModule() {
+    if (!activeModuleId) return null;
+    return modulesState.find(m => m.module_id === activeModuleId) || null;
+  }
+
+  function openBlockModal(mod, blk, idx) {
+    if (!els.blockModal) return;
+    editingBlock = { moduleId: mod.module_id, index: idx };
+    if (els.blockModalId) els.blockModalId.textContent = blk.id || `block-${idx+1}`;
+    if (els.blockModalType) els.blockModalType.value = blk.type || "rich_text";
+    if (els.blockModalJson) {
+      try {
+        els.blockModalJson.value = JSON.stringify(blk.data || {}, null, 2);
+      } catch (e) {
+        els.blockModalJson.value = "{}";
+      }
+    }
+    if (els.blockModalError) els.blockModalError.textContent = "";
+    els.blockModal.style.display = "flex";
+  }
+
+  function closeBlockModal() {
+    if (!els.blockModal) return;
+    els.blockModal.style.display = "none";
+    editingBlock = null;
+    if (els.blockModalError) els.blockModalError.textContent = "";
+  }
+
+  function renderPreview() {
+    if (!els.previewShell) return;
+    els.previewShell.innerHTML = "";
+    const module = getActiveModule();
+    if (!module) {
+      const p = document.createElement("p");
+      p.className = "ppx-muted";
+      p.textContent = "{{ t('Selecciona un modulo para previsualizar.', 'Select a module to preview.', app_lang) }}";
+      els.previewShell.appendChild(p);
+      return;
+    }
+    const byParent = {};
+    modulesState.forEach((mod) => {
+      const pid = mod.parent_id || "__root";
+      (byParent[pid] = byParent[pid] || []).push(mod);
+    });
+    const roots = modulesState.filter(m => !m.parent_id);
+    const layout = document.createElement("div");
+    layout.className = "ed-preview-layout";
+
+    const nav = document.createElement("div");
+    nav.className = "ed-preview-nav";
+    const navRail = document.createElement("div");
+    navRail.className = "ed-module-rail";
+
+    const makeBtn = (mod, numLabel, isMain) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `ed-module-btn ${isMain ? 'main' : 'sub'}`;
+      if (mod.module_id === activeModuleId) btn.classList.add("active");
+      const num = document.createElement("span");
+      num.className = "ed-module-num";
+      num.textContent = numLabel;
+      const title = document.createElement("span");
+      title.className = "ed-module-title";
+      const primary = "{{ app_lang }}" === "es" ? (mod.title_es || mod.title_en || mod.module_id) : (mod.title_en || mod.title_es || mod.module_id);
+      title.textContent = primary;
+      btn.appendChild(num);
+      btn.appendChild(title);
+      btn.addEventListener("click", () => {
+        activeModuleId = mod.module_id;
+        renderModules();
+        renderPreview();
+      });
+      return btn;
+    };
+
+    roots.forEach((root, rIdx) => {
+      const group = document.createElement("div");
+      group.className = "ed-module-group";
+      group.appendChild(makeBtn(root, `${rIdx + 1}`, true));
+      const children = byParent[root.module_id] || [];
+      children.forEach((sub, sIdx) => {
+        group.appendChild(makeBtn(sub, `${rIdx + 1}.${sIdx + 1}`, false));
+      });
+      navRail.appendChild(group);
+      if (rIdx < roots.length - 1) {
+        const sep = document.createElement("div");
+        sep.className = "ed-module-separator";
+        navRail.appendChild(sep);
+      }
+    });
+
+    nav.appendChild(navRail);
+
+    const content = document.createElement("div");
+    content.className = "ed-preview-content";
+    const rawBlocks = Array.isArray(module.blocks) ? module.blocks : [];
+    if (!rawBlocks.length) {
+      const p = document.createElement("p");
+      p.className = "ppx-muted";
+      p.textContent = "{{ t('El modulo no tiene bloques aun.', 'Module has no blocks yet.', app_lang) }}";
+      content.appendChild(p);
+    } else {
+      const renderer = window.ContentLabRenderer;
+      if (!renderer || typeof renderer.renderBlock !== "function") {
+        content.appendChild(document.createTextNode("Renderer missing."));
+      } else {
+        const langVal = els.lang?.value || "es";
+        const normalized = rawBlocks.map((blk, idx) => ({
+          id: blk.id || blk.block_id || `block-${idx+1}`,
+          type: blk.type || blk.block_type || "rich_text",
+          style_variant: blk.style_variant,
+          data: blk.data || (blk.segments ? { segments: blk.segments } : {})
+        }));
+        const hasHeading = normalized.length && normalized[0].type === "heading";
+        if (!hasHeading) {
+          const heading = document.createElement("div");
+          heading.className = "ed-preview-heading";
+          const primaryTitle = "{{ app_lang }}" === "es" ? (module.title_es || module.title_en || module.module_id) : (module.title_en || module.title_es || module.module_id);
+          heading.textContent = primaryTitle;
+          content.appendChild(heading);
+        }
+        normalized.forEach((blk) => {
+          const node = renderer.renderBlock(blk, langVal);
+          content.appendChild(node);
+        });
+      }
+    }
+
+    layout.appendChild(nav);
+    layout.appendChild(content);
+    els.previewShell.appendChild(layout);
+  }
+
+
+  function renderBlocks() {
+    if (!els.blocksList) return;
+    els.blocksList.innerHTML = "";
+    const module = getActiveModule();
+    if (!module) {
+      const p = document.createElement("p");
+      p.className = "ppx-muted";
+      p.style.margin = "0";
+      p.style.fontSize = "13px";
+      p.textContent = "{{ t('Selecciona o agrega un modulo para editar sus bloques.', 'Select or add a module to edit its blocks.', app_lang) }}";
+      els.blocksList.appendChild(p);
+      return;
+    }
+    const blocks = Array.isArray(module.blocks) ? module.blocks : [];
+    if (!blocks.length) {
+      const p = document.createElement("p");
+      p.className = "ppx-muted";
+      p.style.margin = "0";
+      p.style.fontSize = "13px";
+      p.textContent = "{{ t('Sin bloques todavia.', 'No blocks yet.', app_lang) }}";
+      els.blocksList.appendChild(p);
+      if (els.panelPreview && els.panelPreview.style.display !== "none") {
+        renderPreview();
+      }
+      return;
+    }
+    blocks.forEach((blk, idx) => {
+      const blockId = blk.id || `block-${idx+1}`;
+      const blockType = blk.type || "rich_text";
+      const card = document.createElement("div");
+      card.className = "ppx-card";
+      card.style.padding = ".6rem .75rem";
+      card.style.border = "1px solid #e5e7eb";
+      card.style.display = "flex";
+      card.style.justifyContent = "space-between";
+      card.style.alignItems = "center";
+      const left = document.createElement("div");
+      const name = document.createElement("strong");
+      name.textContent = blockId;
+      const typeSpan = document.createElement("span");
+      typeSpan.className = "ppx-muted";
+      typeSpan.style.fontSize = "12px";
+      typeSpan.style.marginLeft = "8px";
+      typeSpan.textContent = blockType;
+      left.appendChild(name);
+      left.appendChild(typeSpan);
+      card.appendChild(left);
+      const editBtn = document.createElement("button");
+      editBtn.type = "button";
+      editBtn.className = "ppx-btn ppx-btn-secondary";
+      editBtn.style.padding = "6px 10px";
+      editBtn.textContent = "{{ t('Editar', 'Edit', app_lang) }}";
+      editBtn.addEventListener("click", () => openBlockModal(module, blk, idx));
+      card.appendChild(editBtn);
+      els.blocksList.appendChild(card);
+    });
+    if (els.panelPreview && els.panelPreview.style.display !== "none") {
+      renderPreview();
+    }
+  }
+
 
   if (els.moduleAdd) {
     els.moduleAdd.addEventListener("click", () => {
@@ -710,9 +1203,68 @@
         title_en: langVal === "en" ? titleBase : titleTrans || titleBase,
         blocks: []
       });
+      activeModuleId = module_id;
       if (els.moduleTitle) els.moduleTitle.value = "";
       if (els.moduleTitleTrans) els.moduleTitleTrans.value = "";
       renderModules();
+    });
+  }
+  if (els.railOverlay) {
+    const openRail = () => { els.railOverlay.classList.add("open"); };
+    const closeRail = () => { els.railOverlay.classList.remove("open"); };
+    if (els.railOpen) els.railOpen.addEventListener("click", openRail);
+    if (els.previewRailOpen) els.previewRailOpen.addEventListener("click", openRail);
+    if (els.railClose) els.railClose.addEventListener("click", closeRail);
+    els.railOverlay.addEventListener("click", (e) => {
+      if (e.target === els.railOverlay) closeRail();
+    });
+  }
+
+
+  if (els.blockAdd) {
+    els.blockAdd.addEventListener("click", () => {
+      if (!activeModuleId) {
+        alert("Select a module first");
+        return;
+      }
+      const mod = modulesState.find(m => m.module_id === activeModuleId);
+      if (!mod) return;
+      const type = (els.blockType?.value || "rich_text").trim() || "rich_text";
+      const proposedId = (els.blockId?.value || "").trim();
+      const blockId = proposedId || `${type}-${(mod.blocks || []).length + 1}`;
+      mod.blocks = Array.isArray(mod.blocks) ? mod.blocks : [];
+      mod.blocks.push({ id: blockId, type, data: {} });
+      if (els.blockId) els.blockId.value = "";
+      renderBlocks();
+    });
+  }
+
+  if (els.blockModalClose) {
+    els.blockModalClose.addEventListener("click", closeBlockModal);
+  }
+  if (els.blockModal) {
+    els.blockModal.addEventListener("click", (e) => {
+      if (e.target === els.blockModal) closeBlockModal();
+    });
+  }
+  if (els.blockModalSave) {
+    els.blockModalSave.addEventListener("click", () => {
+      if (!editingBlock) return;
+      const { moduleId, index } = editingBlock;
+      const mod = modulesState.find(m => m.module_id === moduleId);
+      if (!mod || !mod.blocks || !mod.blocks[index]) return;
+      let parsed = {};
+      if (els.blockModalError) els.blockModalError.textContent = "";
+      try {
+        parsed = els.blockModalJson ? JSON.parse(els.blockModalJson.value || "{}") : {};
+      } catch (err) {
+        if (els.blockModalError) els.blockModalError.textContent = err.message || "Invalid JSON";
+        return;
+      }
+      const newType = els.blockModalType?.value || mod.blocks[index].type || "rich_text";
+      mod.blocks[index] = { ...mod.blocks[index], type: newType, data: parsed };
+      closeBlockModal();
+      renderBlocks();
     });
   }
 
@@ -727,8 +1279,8 @@
       .map(t => t.trim())
       .filter(Boolean);
     const finalTags = domVal === "structures"
-      ? Array.from(new Set([...structSelected, ...tags]))
-      : tags;
+      ? [...ALLOWED_TAGS]
+      : Array.from(new Set([...structSelected, ...tags]));
     return {
       schema_version: "4.1.0",
       language: langVal,
@@ -820,6 +1372,9 @@
     if (target === els.panelJson && els.jsonArea) {
       const payload = buildPayload();
       els.jsonArea.value = JSON.stringify(payload, null, 2);
+    }
+    if (target === els.panelPreview) {
+      renderPreview();
     }
   }
   if (els.tabBlocks && els.panelBlocks) switchTab(els.panelBlocks);

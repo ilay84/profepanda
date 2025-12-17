@@ -1202,7 +1202,7 @@
         ],
         "freq": "muy_comun",
         "id": "s1",
-        "pos": "adjetivo",
+        "pos": "sustantivo_masculino",
         "register": "neutral",
         "related_slugs": [],
         "sensitivity": [],
@@ -1725,6 +1725,69 @@
     ],
     "slug": "forro",
     "word": "forro"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/garca/garca.mp3?v=1765896808",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Dishonest or abusive person who cheats, scams, or takes advantage of others.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Persona deshonesta o abusiva que engaña, estafa o se aprovecha de otros.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "crook",
+          "scumbag",
+          "asshole"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/garca/s1/garca_ex_01.mp3?v=1765896706",
+            "en": "Dr. Zambrano, what a `crook` of a lawyer you are.",
+            "es": "Doctor Zambrano, qué abogado `garca` que sos.",
+            "source": {
+              "episode": "1",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino_y_femenino",
+        "register": "vulgar",
+        "related_slugs": [],
+        "sensitivity": [
+          "potencialmente_ofensivo"
+        ],
+        "status": [
+          "regionalismo_fuerte",
+          "vigente"
+        ],
+        "tone": [
+          "agresivo",
+          "despectivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "garcas",
+          "fem_sg": "garca",
+          "masc_pl": "garcas",
+          "masc_sg": "garca"
+        }
+      }
+    ],
+    "slug": "garca",
+    "word": "garca"
   },
   {
     "alt_spellings": [],

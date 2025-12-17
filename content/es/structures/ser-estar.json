@@ -1,0 +1,21 @@
+{
+  "schema_version": "4.1.0",
+  "language": "es",
+  "domain": "structures",
+  "resource_id": "ser-estar",
+  "meta": {
+    "title_es": "Ser vs. Estar",
+    "title_en": "Ser vs. Estar",
+    "levels": [],
+    "tags": [
+      "ser",
+      "estar"
+    ],
+    "taxonomy_paths": [
+      "es/structures"
+    ]
+  },
+  "relations": [],
+  "modules": [],
+  "storage_path": "/content/es/structures/ser-estar.json"
+}

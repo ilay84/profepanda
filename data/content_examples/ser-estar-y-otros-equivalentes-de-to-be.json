@@ -1,1481 +1,1462 @@
 {
   "schema_version": "4.1.0",
-  "language": "es",
-  "domain": "structures",
   "resource_id": "ser-estar-y-otros-equivalentes-de-to-be",
+  "resource_type": "grammar_resource",
   "meta": {
     "title_es": "Ser, estar y otros equivalentes de 'to be'",
     "title_en": "Ser, Estar, and Other Equivalents of 'to be'",
-    "levels": [],
+    "lang_primary": "es",
+    "langs_supported": [
+      "es",
+      "en"
+    ],
     "tags": [
-      "Ser vs Estar",
-      "Special verbs"
+      "grammar",
+      "ser",
+      "estar",
+      "haber",
+      "hacer",
+      "tener",
+      "to-be"
     ],
     "taxonomy_paths": [
-      "es/structures"
+      "es/structures/ser-estar"
     ]
   },
-  "relations": [],
   "modules": [
     {
+      "module_id": "mod1",
+      "title_es": "Módulo 1: Lo básico de SER y ESTAR",
+      "title_en": "Module 1: The Basics of SER and ESTAR",
+      "parent_id": null,
       "blocks": [
         {
+          "id": "mod1-heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Módulo 1: Lo básico de SER y ESTAR",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Módulo 1: Lo básico de SER y ESTAR",
                 "translations": {
                   "en": "Module 1: The Basics of SER and ESTAR"
                 }
               }
             ]
-          },
-          "id": "mod1-heading",
-          "style_variant": "h2",
-          "type": "heading"
-        },
-        {
-          "id": "rich_text-2",
-          "type": "rich_text",
-          "data": {
-            "id": "intro-ser-estar-core",
-            "type": "rich_text",
-            "data": {
-              "segments": [
-                {
-                  "text": "SER y ESTAR: esencia y situación",
-                  "translations": {
-                    "en": "SER and ESTAR: Essence and Situation"
-                  },
-                  "marks": [
-                    "bold"
-                  ]
-                },
-                {
-                  "text": "En español, SER y ESTAR no dicen lo mismo. Usamos SER para hablar de la esencia: cómo definimos o entendemos a una persona o cosa. Usamos ESTAR para hablar de la situación: cómo está o dónde se encuentra en un momento concreto.",
-                  "translations": {
-                    "en": "In Spanish, SER and ESTAR do not mean the same thing. We use SER to talk about essence: how we define or understand a person or thing. We use ESTAR to talk about situation: how something is or where it is at a specific moment."
-                  }
-                },
-                {
-                  "text": "Ojo: SER no significa «permanente» ni ESTAR significa «temporal». La diferencia no está en la duración, sino en la perspectiva: identidad con SER, contexto o estado con ESTAR.",
-                  "translations": {
-                    "en": "Careful: SER does not mean “permanent,” and ESTAR does not mean “temporary.” The difference is not duration, but perspective: identity with SER, context or state with ESTAR."
-                  }
-                }
-              ]
-            }
           }
         }
-      ],
-      "module_id": "mod1",
-      "parent_id": null,
-      "title_en": "Module 1: The Basics of SER and ESTAR",
-      "title_es": "Módulo 1: Lo básico de SER y ESTAR"
+      ]
     },
     {
+      "module_id": "mod2",
+      "title_es": "Módulo 2: Ubicación y lugar",
+      "title_en": "Module 2: Location and Place",
+      "parent_id": null,
       "blocks": [
         {
+          "id": "mod2-heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Módulo 2: Ubicación y lugar",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Módulo 2: Ubicación y lugar",
                 "translations": {
                   "en": "Module 2: Location and Place"
                 }
               }
             ]
-          },
-          "id": "mod2-heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         }
-      ],
-      "module_id": "mod2",
-      "parent_id": null,
-      "title_en": "Module 2: Location and Place",
-      "title_es": "Módulo 2: Ubicación y lugar"
+      ]
     },
     {
+      "module_id": "mod3",
+      "title_es": "Módulo 3: SER y ESTAR con participios",
+      "title_en": "Module 3: SER and ESTAR with Past Participles",
+      "parent_id": null,
       "blocks": [
         {
+          "id": "mod3-heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Módulo 3: SER y ESTAR con participios",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Módulo 3: SER y ESTAR con participios",
                 "translations": {
                   "en": "Module 3: SER and ESTAR with Past Participles"
                 }
               }
             ]
-          },
-          "id": "mod3-heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         }
-      ],
-      "module_id": "mod3",
-      "parent_id": null,
-      "title_en": "Module 3: SER and ESTAR with Past Participles",
-      "title_es": "Módulo 3: SER y ESTAR con participios"
+      ]
     },
     {
+      "module_id": "mod4",
+      "title_es": "Módulo 4: SER y ESTAR con adjetivos",
+      "title_en": "Module 4: SER and ESTAR with Adjectives",
+      "parent_id": null,
       "blocks": [
         {
+          "id": "mod4-heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Módulo 4: SER y ESTAR con adjetivos",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Módulo 4: SER y ESTAR con adjetivos",
                 "translations": {
                   "en": "Module 4: SER and ESTAR with Adjectives"
                 }
               }
             ]
-          },
-          "id": "mod4-heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         }
-      ],
-      "module_id": "mod4",
-      "parent_id": null,
-      "title_en": "Module 4: SER and ESTAR with Adjectives",
-      "title_es": "Módulo 4: SER y ESTAR con adjetivos"
+      ]
     },
     {
+      "module_id": "mod5",
+      "title_es": "Módulo 5: Otros equivalentes de “to be” en español",
+      "title_en": "Module 5: Other Ways to Say “To Be” in Spanish",
+      "parent_id": null,
       "blocks": [
         {
+          "id": "mod5-heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Módulo 5: Otros equivalentes de “to be” en español",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Módulo 5: Otros equivalentes de “to be” en español",
                 "translations": {
                   "en": "Module 5: Other Ways to Say “To Be” in Spanish"
                 }
               }
             ]
-          },
-          "id": "mod5-heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         }
-      ],
-      "module_id": "mod5",
-      "parent_id": null,
-      "title_en": "Module 5: Other Ways to Say “To Be” in Spanish",
-      "title_es": "Módulo 5: Otros equivalentes de “to be” en español"
+      ]
     },
     {
+      "module_id": "mod6",
+      "title_es": "Módulo 6: Expresiones comunes con SER y ESTAR",
+      "title_en": "Module 6: Common Expressions with SER and ESTAR",
+      "parent_id": null,
       "blocks": [
         {
+          "id": "mod6-heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Módulo 6: Expresiones comunes con SER y ESTAR",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Módulo 6: Expresiones comunes con SER y ESTAR",
                 "translations": {
                   "en": "Module 6: Common Expressions with SER and ESTAR"
                 }
               }
             ]
-          },
-          "id": "mod6-heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         }
-      ],
-      "module_id": "mod6",
-      "parent_id": null,
-      "title_en": "Module 6: Common Expressions with SER and ESTAR",
-      "title_es": "Módulo 6: Expresiones comunes con SER y ESTAR"
+      ]
     },
     {
+      "module_id": "m1s1-que-expresa-ser",
+      "title_es": "Submódulo 1.1: Qué expresa SER",
+      "title_en": "Submodule 1.1: What SER Expresses",
       "blocks": [
         {
+          "id": "m1s1-que-expresa-ser_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 1.1: Qué expresa SER",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 1.1: Qué expresa SER",
                 "translations": {
                   "en": "Submodule 1.1: What SER Expresses"
                 }
               }
             ]
-          },
-          "id": "m1s1-que-expresa-ser_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m1s1-que-expresa-ser_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 1: Lo básico de SER y ESTAR.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 1: The Basics of SER and ESTAR."
                 }
               }
             ]
-          },
-          "id": "m1s1-que-expresa-ser_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m1s1-que-expresa-ser_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Reconocer usos esenciales de SER para identidad y características permanentes.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Recognize essential uses of SER for identity and permanent characteristics."
                 }
               }
             ]
-          },
-          "id": "m1s1-que-expresa-ser_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m1s1-que-expresa-ser_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Crea 5 oraciones describiendo personas o cosas con SER.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Create 5 sentences describing people or things with SER."
                 }
               }
             ]
-          },
-          "id": "m1s1-que-expresa-ser_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m1s1-que-expresa-ser",
-      "parent_id": "mod1",
-      "title_en": "Submodule 1.1: What SER Expresses",
-      "title_es": "Submódulo 1.1: Qué expresa SER"
+      "parent_id": "mod1"
     },
     {
+      "module_id": "m1s2-que-expresa-estar",
+      "title_es": "Submódulo 1.2: Qué expresa ESTAR",
+      "title_en": "Submodule 1.2: What ESTAR Expresses",
       "blocks": [
         {
+          "id": "m1s2-que-expresa-estar_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 1.2: Qué expresa ESTAR",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 1.2: Qué expresa ESTAR",
                 "translations": {
                   "en": "Submodule 1.2: What ESTAR Expresses"
                 }
               }
             ]
-          },
-          "id": "m1s2-que-expresa-estar_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m1s2-que-expresa-estar_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 1: Lo básico de SER y ESTAR.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 1: The Basics of SER and ESTAR."
                 }
               }
             ]
-          },
-          "id": "m1s2-que-expresa-estar_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m1s2-que-expresa-estar_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Identificar usos de ESTAR para estados temporales y ubicaciones físicas.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Identify uses of ESTAR for temporary states and physical locations."
                 }
               }
             ]
-          },
-          "id": "m1s2-que-expresa-estar_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m1s2-que-expresa-estar_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Escribe 5 oraciones sobre estados de ánimo y ubicaciones actuales.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Write 5 sentences about moods and current locations."
                 }
               }
             ]
-          },
-          "id": "m1s2-que-expresa-estar_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m1s2-que-expresa-estar",
-      "parent_id": "mod1",
-      "title_en": "Submodule 1.2: What ESTAR Expresses",
-      "title_es": "Submódulo 1.2: Qué expresa ESTAR"
+      "parent_id": "mod1"
     },
     {
+      "module_id": "m1s3-vision-general",
+      "title_es": "Submódulo 1.3: SER vs. ESTAR — Visión general",
+      "title_en": "Submodule 1.3: SER vs. ESTAR — Big Picture Overview",
       "blocks": [
         {
+          "id": "m1s3-vision-general_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 1.3: SER vs. ESTAR — Visión general",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 1.3: SER vs. ESTAR — Visión general",
                 "translations": {
                   "en": "Submodule 1.3: SER vs. ESTAR — Big Picture Overview"
                 }
               }
             ]
-          },
-          "id": "m1s3-vision-general_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m1s3-vision-general_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 1: Lo básico de SER y ESTAR.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 1: The Basics of SER and ESTAR."
                 }
               }
             ]
-          },
-          "id": "m1s3-vision-general_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m1s3-vision-general_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Comparar patrones comunes y excepciones entre SER y ESTAR.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Compare common patterns and exceptions between SER and ESTAR."
                 }
               }
             ]
-          },
-          "id": "m1s3-vision-general_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m1s3-vision-general_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Convierte 5 oraciones de SER a ESTAR (o viceversa) y explica el cambio.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Rewrite 5 sentences swapping SER and ESTAR and explain the change."
                 }
               }
             ]
-          },
-          "id": "m1s3-vision-general_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m1s3-vision-general",
-      "parent_id": "mod1",
-      "title_en": "Submodule 1.3: SER vs. ESTAR — Big Picture Overview",
-      "title_es": "Submódulo 1.3: SER vs. ESTAR — Visión general"
+      "parent_id": "mod1"
     },
     {
+      "module_id": "m2s1-ubicacion-fisica",
+      "title_es": "Submódulo 2.1: ESTAR para la ubicación física",
+      "title_en": "Submodule 2.1: ESTAR for Physical Location",
       "blocks": [
         {
+          "id": "m2s1-ubicacion-fisica_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 2.1: ESTAR para la ubicación física",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 2.1: ESTAR para la ubicación física",
                 "translations": {
                   "en": "Submodule 2.1: ESTAR for Physical Location"
                 }
               }
             ]
-          },
-          "id": "m2s1-ubicacion-fisica_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m2s1-ubicacion-fisica_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 2: Ubicación y lugar.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 2: Location and Place."
                 }
               }
             ]
-          },
-          "id": "m2s1-ubicacion-fisica_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m2s1-ubicacion-fisica_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Usar ESTAR para situar personas y objetos en el espacio.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Use ESTAR to place people and objects in space."
                 }
               }
             ]
-          },
-          "id": "m2s1-ubicacion-fisica_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m2s1-ubicacion-fisica_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Describe dónde están 5 objetos en tu habitación usando ESTAR.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Describe where 5 objects are in your room using ESTAR."
                 }
               }
             ]
-          },
-          "id": "m2s1-ubicacion-fisica_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m2s1-ubicacion-fisica",
-      "parent_id": "mod2",
-      "title_en": "Submodule 2.1: ESTAR for Physical Location",
-      "title_es": "Submódulo 2.1: ESTAR para la ubicación física"
+      "parent_id": "mod2"
     },
     {
+      "module_id": "m2s2-ser-ubicacion-eventos",
+      "title_es": "Submódulo 2.2: SER para la ubicación de eventos",
+      "title_en": "Submodule 2.2: SER for Event Location",
       "blocks": [
         {
+          "id": "m2s2-ser-ubicacion-eventos_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 2.2: SER para la ubicación de eventos",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 2.2: SER para la ubicación de eventos",
                 "translations": {
                   "en": "Submodule 2.2: SER for Event Location"
                 }
               }
             ]
-          },
-          "id": "m2s2-ser-ubicacion-eventos_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m2s2-ser-ubicacion-eventos_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 2: Ubicación y lugar.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 2: Location and Place."
                 }
               }
             ]
-          },
-          "id": "m2s2-ser-ubicacion-eventos_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m2s2-ser-ubicacion-eventos_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Aplicar SER para indicar dónde tienen lugar eventos.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Apply SER to indicate where events take place."
                 }
               }
             ]
-          },
-          "id": "m2s2-ser-ubicacion-eventos_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m2s2-ser-ubicacion-eventos_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Redacta 5 frases sobre eventos (conciertos, clases) usando SER.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Draft 5 sentences about events (concerts, classes) using SER."
                 }
               }
             ]
-          },
-          "id": "m2s2-ser-ubicacion-eventos_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m2s2-ser-ubicacion-eventos",
-      "parent_id": "mod2",
-      "title_en": "Submodule 2.2: SER for Event Location",
-      "title_es": "Submódulo 2.2: SER para la ubicación de eventos"
+      "parent_id": "mod2"
     },
     {
+      "module_id": "m2s3-ubicacion-ser-vs-estar",
+      "title_es": "Submódulo 2.3: Ubicación — SER vs. ESTAR",
+      "title_en": "Submodule 2.3: Location — SER vs. ESTAR",
       "blocks": [
         {
+          "id": "m2s3-ubicacion-ser-vs-estar_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 2.3: Ubicación — SER vs. ESTAR",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 2.3: Ubicación — SER vs. ESTAR",
                 "translations": {
                   "en": "Submodule 2.3: Location — SER vs. ESTAR"
                 }
               }
             ]
-          },
-          "id": "m2s3-ubicacion-ser-vs-estar_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m2s3-ubicacion-ser-vs-estar_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 2: Ubicación y lugar.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 2: Location and Place."
                 }
               }
             ]
-          },
-          "id": "m2s3-ubicacion-ser-vs-estar_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m2s3-ubicacion-ser-vs-estar_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Elegir correctamente SER o ESTAR según el tipo de ubicación.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Choose SER or ESTAR correctly based on the type of location."
                 }
               }
             ]
-          },
-          "id": "m2s3-ubicacion-ser-vs-estar_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m2s3-ubicacion-ser-vs-estar_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Empareja 6 contextos con SER o ESTAR y justifica la elección.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Match 6 contexts to SER or ESTAR and justify your choice."
                 }
               }
             ]
-          },
-          "id": "m2s3-ubicacion-ser-vs-estar_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m2s3-ubicacion-ser-vs-estar",
-      "parent_id": "mod2",
-      "title_en": "Submodule 2.3: Location — SER vs. ESTAR",
-      "title_es": "Submódulo 2.3: Ubicación — SER vs. ESTAR"
+      "parent_id": "mod2"
     },
     {
+      "module_id": "m3s1-ser-participio",
+      "title_es": "Submódulo 3.1: SER + participio pasado",
+      "title_en": "Submodule 3.1: SER + Past Participle",
       "blocks": [
         {
+          "id": "m3s1-ser-participio_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 3.1: SER + participio pasado",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 3.1: SER + participio pasado",
                 "translations": {
                   "en": "Submodule 3.1: SER + Past Participle"
                 }
               }
             ]
-          },
-          "id": "m3s1-ser-participio_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m3s1-ser-participio_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 3: SER y ESTAR con participios.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 3: SER and ESTAR with Past Participles."
                 }
               }
             ]
-          },
-          "id": "m3s1-ser-participio_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m3s1-ser-participio_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Formar la voz pasiva con SER + participio pasado.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Form the passive voice with SER + past participle."
                 }
               }
             ]
-          },
-          "id": "m3s1-ser-participio_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m3s1-ser-participio_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Transforma 5 oraciones activas a pasivas con SER + participio.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Transform 5 active sentences into passives with SER + participle."
                 }
               }
             ]
-          },
-          "id": "m3s1-ser-participio_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m3s1-ser-participio",
-      "parent_id": "mod3",
-      "title_en": "Submodule 3.1: SER + Past Participle",
-      "title_es": "Submódulo 3.1: SER + participio pasado"
+      "parent_id": "mod3"
     },
     {
+      "module_id": "m3s2-estar-participio",
+      "title_es": "Submódulo 3.2: ESTAR + participio pasado",
+      "title_en": "Submodule 3.2: ESTAR + Past Participle",
       "blocks": [
         {
+          "id": "m3s2-estar-participio_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 3.2: ESTAR + participio pasado",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 3.2: ESTAR + participio pasado",
                 "translations": {
                   "en": "Submodule 3.2: ESTAR + Past Participle"
                 }
               }
             ]
-          },
-          "id": "m3s2-estar-participio_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m3s2-estar-participio_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 3: SER y ESTAR con participios.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 3: SER and ESTAR with Past Participles."
                 }
               }
             ]
-          },
-          "id": "m3s2-estar-participio_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m3s2-estar-participio_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Describir estados/resultados usando ESTAR + participio.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Describe resulting states using ESTAR + past participle."
                 }
               }
             ]
-          },
-          "id": "m3s2-estar-participio_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m3s2-estar-participio_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Crea 5 oraciones describiendo estados resultantes con ESTAR.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Write 5 sentences describing resulting states with ESTAR."
                 }
               }
             ]
-          },
-          "id": "m3s2-estar-participio_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m3s2-estar-participio",
-      "parent_id": "mod3",
-      "title_en": "Submodule 3.2: ESTAR + Past Participle",
-      "title_es": "Submódulo 3.2: ESTAR + participio pasado"
+      "parent_id": "mod3"
     },
     {
+      "module_id": "m3s3-participios-contraste",
+      "title_es": "Submódulo 3.3: Participios — SER vs. ESTAR",
+      "title_en": "Submodule 3.3: Participles — SER vs. ESTAR",
       "blocks": [
         {
+          "id": "m3s3-participios-contraste_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 3.3: Participios — SER vs. ESTAR",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 3.3: Participios — SER vs. ESTAR",
                 "translations": {
                   "en": "Submodule 3.3: Participles — SER vs. ESTAR"
                 }
               }
             ]
-          },
-          "id": "m3s3-participios-contraste_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m3s3-participios-contraste_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 3: SER y ESTAR con participios.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 3: SER and ESTAR with Past Participles."
                 }
               }
             ]
-          },
-          "id": "m3s3-participios-contraste_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m3s3-participios-contraste_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Distinguir entre acciones (SER) y estados (ESTAR) con participios.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Distinguish actions (SER) from states (ESTAR) when using participles."
                 }
               }
             ]
-          },
-          "id": "m3s3-participios-contraste_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m3s3-participios-contraste_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Escribe pares de frases (SER vs. ESTAR) y comenta la diferencia.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Write paired sentences (SER vs. ESTAR) and note the difference."
                 }
               }
             ]
-          },
-          "id": "m3s3-participios-contraste_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m3s3-participios-contraste",
-      "parent_id": "mod3",
-      "title_en": "Submodule 3.3: Participles — SER vs. ESTAR",
-      "title_es": "Submódulo 3.3: Participios — SER vs. ESTAR"
+      "parent_id": "mod3"
     },
     {
+      "module_id": "m4s1-ser-adjetivos",
+      "title_es": "Submódulo 4.1: SER + adjetivos",
+      "title_en": "Submodule 4.1: SER + Adjectives",
       "blocks": [
         {
+          "id": "m4s1-ser-adjetivos_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 4.1: SER + adjetivos",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 4.1: SER + adjetivos",
                 "translations": {
                   "en": "Submodule 4.1: SER + Adjectives"
                 }
               }
             ]
-          },
-          "id": "m4s1-ser-adjetivos_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m4s1-ser-adjetivos_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 4: SER y ESTAR con adjetivos.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 4: SER and ESTAR with Adjectives."
                 }
               }
             ]
-          },
-          "id": "m4s1-ser-adjetivos_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m4s1-ser-adjetivos_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Usar SER para rasgos esenciales y definitorios con adjetivos.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Use SER for essential or defining traits with adjectives."
                 }
               }
             ]
-          },
-          "id": "m4s1-ser-adjetivos_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m4s1-ser-adjetivos_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Describe 5 personas con SER + adjetivo (profesión, carácter).",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Describe 5 people with SER + adjective (profession, character)."
                 }
               }
             ]
-          },
-          "id": "m4s1-ser-adjetivos_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m4s1-ser-adjetivos",
-      "parent_id": "mod4",
-      "title_en": "Submodule 4.1: SER + Adjectives",
-      "title_es": "Submódulo 4.1: SER + adjetivos"
+      "parent_id": "mod4"
     },
     {
+      "module_id": "m4s2-estar-adjetivos",
+      "title_es": "Submódulo 4.2: ESTAR + adjetivos",
+      "title_en": "Submodule 4.2: ESTAR + Adjectives",
       "blocks": [
         {
+          "id": "m4s2-estar-adjetivos_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 4.2: ESTAR + adjetivos",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 4.2: ESTAR + adjetivos",
                 "translations": {
                   "en": "Submodule 4.2: ESTAR + Adjectives"
                 }
               }
             ]
-          },
-          "id": "m4s2-estar-adjetivos_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m4s2-estar-adjetivos_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 4: SER y ESTAR con adjetivos.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 4: SER and ESTAR with Adjectives."
                 }
               }
             ]
-          },
-          "id": "m4s2-estar-adjetivos_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m4s2-estar-adjetivos_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Usar ESTAR para estados o condiciones cambiantes con adjetivos.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Use ESTAR for changing states or conditions with adjectives."
                 }
               }
             ]
-          },
-          "id": "m4s2-estar-adjetivos_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m4s2-estar-adjetivos_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Describe 5 estados temporales (enfermo, cansado, feliz) con ESTAR.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Describe 5 temporary states (sick, tired, happy) with ESTAR."
                 }
               }
             ]
-          },
-          "id": "m4s2-estar-adjetivos_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m4s2-estar-adjetivos",
-      "parent_id": "mod4",
-      "title_en": "Submodule 4.2: ESTAR + Adjectives",
-      "title_es": "Submódulo 4.2: ESTAR + adjetivos"
+      "parent_id": "mod4"
     },
     {
+      "module_id": "m4s3-adjetivos-contraste",
+      "title_es": "Submódulo 4.3: Adjetivos — SER vs. ESTAR",
+      "title_en": "Submodule 4.3: Adjectives — SER vs. ESTAR",
       "blocks": [
         {
+          "id": "m4s3-adjetivos-contraste_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 4.3: Adjetivos — SER vs. ESTAR",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 4.3: Adjetivos — SER vs. ESTAR",
                 "translations": {
                   "en": "Submodule 4.3: Adjectives — SER vs. ESTAR"
                 }
               }
             ]
-          },
-          "id": "m4s3-adjetivos-contraste_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m4s3-adjetivos-contraste_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 4: SER y ESTAR con adjetivos.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 4: SER and ESTAR with Adjectives."
                 }
               }
             ]
-          },
-          "id": "m4s3-adjetivos-contraste_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m4s3-adjetivos-contraste_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Comparar significados que cambian con SER vs. ESTAR + adjetivos.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Compare meaning shifts with SER vs. ESTAR + adjectives."
                 }
               }
             ]
-          },
-          "id": "m4s3-adjetivos-contraste_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m4s3-adjetivos-contraste_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Escribe pares como 'es listo' vs. 'está listo' y explica matices.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Write pairs like 'es listo' vs. 'está listo' and explain the nuance."
                 }
               }
             ]
-          },
-          "id": "m4s3-adjetivos-contraste_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m4s3-adjetivos-contraste",
-      "parent_id": "mod4",
-      "title_en": "Submodule 4.3: Adjectives — SER vs. ESTAR",
-      "title_es": "Submódulo 4.3: Adjetivos — SER vs. ESTAR"
+      "parent_id": "mod4"
     },
     {
+      "module_id": "m5s1-haber",
+      "title_es": "Submódulo 5.1: HABER — existencia y ocurrencia",
+      "title_en": "Submodule 5.1: HABER — Existence and Occurrence",
       "blocks": [
         {
+          "id": "m5s1-haber_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 5.1: HABER — existencia y ocurrencia",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 5.1: HABER — existencia y ocurrencia",
                 "translations": {
                   "en": "Submodule 5.1: HABER — Existence and Occurrence"
                 }
               }
             ]
-          },
-          "id": "m5s1-haber_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m5s1-haber_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 5: Otros equivalentes de \"to be\" en español.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 5: Other Ways to Say \"To Be\" in Spanish."
                 }
               }
             ]
-          },
-          "id": "m5s1-haber_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m5s1-haber_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Usar HABER para hablar de existencia y eventos impersonales.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Use HABER to talk about existence and impersonal events."
                 }
               }
             ]
-          },
-          "id": "m5s1-haber_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m5s1-haber_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Crea 5 frases con \"hay\" describiendo objetos o eventos.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Create 5 sentences with \"hay\" describing objects or events."
                 }
               }
             ]
-          },
-          "id": "m5s1-haber_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m5s1-haber",
-      "parent_id": "mod5",
-      "title_en": "Submodule 5.1: HABER — Existence and Occurrence",
-      "title_es": "Submódulo 5.1: HABER — existencia y ocurrencia"
+      "parent_id": "mod5"
     },
     {
+      "module_id": "m5s2-hacer",
+      "title_es": "Submódulo 5.2: HACER — clima y expresiones de tiempo",
+      "title_en": "Submodule 5.2: HACER — Weather and Time Expressions",
       "blocks": [
         {
+          "id": "m5s2-hacer_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 5.2: HACER — clima y expresiones de tiempo",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 5.2: HACER — clima y expresiones de tiempo",
                 "translations": {
                   "en": "Submodule 5.2: HACER — Weather and Time Expressions"
                 }
               }
             ]
-          },
-          "id": "m5s2-hacer_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m5s2-hacer_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 5: Otros equivalentes de \"to be\" en español.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 5: Other Ways to Say \"To Be\" in Spanish."
                 }
               }
             ]
-          },
-          "id": "m5s2-hacer_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m5s2-hacer_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Aplicar HACER en expresiones de clima y tiempo transcurrido.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Apply HACER in weather and elapsed-time expressions."
                 }
               }
             ]
-          },
-          "id": "m5s2-hacer_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m5s2-hacer_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Escribe 5 frases de clima o duración usando HACER.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Write 5 weather or duration sentences using HACER."
                 }
               }
             ]
-          },
-          "id": "m5s2-hacer_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m5s2-hacer",
-      "parent_id": "mod5",
-      "title_en": "Submodule 5.2: HACER — Weather and Time Expressions",
-      "title_es": "Submódulo 5.2: HACER — clima y expresiones de tiempo"
+      "parent_id": "mod5"
     },
     {
+      "module_id": "m5s3-tener",
+      "title_es": "Submódulo 5.3: TENER — estados físicos y mentales",
+      "title_en": "Submodule 5.3: TENER — Physical and Mental States",
       "blocks": [
         {
+          "id": "m5s3-tener_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 5.3: TENER — estados físicos y mentales",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 5.3: TENER — estados físicos y mentales",
                 "translations": {
                   "en": "Submodule 5.3: TENER — Physical and Mental States"
                 }
               }
             ]
-          },
-          "id": "m5s3-tener_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m5s3-tener_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 5: Otros equivalentes de \"to be\" en español.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 5: Other Ways to Say \"To Be\" in Spanish."
                 }
               }
             ]
-          },
-          "id": "m5s3-tener_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m5s3-tener_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Usar TENER para sensaciones físicas/mentales y expresiones idiomáticas.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Use TENER for physical/mental sensations and idiomatic expressions."
                 }
               }
             ]
-          },
-          "id": "m5s3-tener_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m5s3-tener_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Redacta 5 expresiones con TENER (frío, hambre, sueño, prisa, miedo).",
+                "marks": [],
                 "translations": {
                   "en": "Practice: Write 5 expressions with TENER (frío, hambre, sueño, prisa, miedo)."
                 }
               }
             ]
-          },
-          "id": "m5s3-tener_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m5s3-tener",
-      "parent_id": "mod5",
-      "title_en": "Submodule 5.3: TENER — Physical and Mental States",
-      "title_es": "Submódulo 5.3: TENER — estados físicos y mentales"
+      "parent_id": "mod5"
     },
     {
+      "module_id": "m6s1-expresiones-comunes",
+      "title_es": "Submódulo 6.1: Expresiones frecuentes y práctica",
+      "title_en": "Submodule 6.1: High-Frequency Expressions and Practice",
       "blocks": [
         {
+          "id": "m6s1-expresiones-comunes_heading",
+          "type": "heading",
+          "style_variant": "h2",
           "data": {
             "segments": [
               {
+                "segment_id": "h1",
+                "text": "Submódulo 6.1: Expresiones frecuentes y práctica",
                 "marks": [
                   "bold"
                 ],
-                "segment_id": "h1",
-                "text": "Submódulo 6.1: Expresiones frecuentes y práctica",
                 "translations": {
                   "en": "Submodule 6.1: High-Frequency Expressions and Practice"
                 }
               }
             ]
-          },
-          "id": "m6s1-expresiones-comunes_heading",
-          "style_variant": "h2",
-          "type": "heading"
+          }
         },
         {
+          "id": "m6s1-expresiones-comunes_context",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "c1",
                 "text": "Parte de Módulo 6: Expresiones comunes con SER y ESTAR.",
+                "marks": [],
                 "translations": {
                   "en": "Part of Module 6: Common Expressions with SER and ESTAR."
                 }
               }
             ]
-          },
-          "id": "m6s1-expresiones-comunes_context",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m6s1-expresiones-comunes_goal",
+          "type": "text",
+          "style_variant": "body",
           "data": {
             "segments": [
               {
-                "marks": [],
                 "segment_id": "g1",
                 "text": "Meta: Dominar expresiones idiomáticas frecuentes con SER y ESTAR.",
+                "marks": [],
                 "translations": {
                   "en": "Goal: Master high-frequency idiomatic expressions with SER and ESTAR."
                 }
               }
             ]
-          },
-          "id": "m6s1-expresiones-comunes_goal",
-          "style_variant": "body",
-          "type": "text"
+          }
         },
         {
+          "id": "m6s1-expresiones-comunes_practice",
+          "type": "callout",
+          "style_variant": "info",
           "data": {
             "icon": "lightbulb",
             "segments": [
               {
-                "marks": [],
                 "segment_id": "p1",
                 "text": "Práctica: Haz una lista de 10 expresiones comunes y úsala en diálogos cortos.",
+                "marks": [],
                 "translations": {
                   "en": "Practice: List 10 common expressions and use them in short dialogues."
                 }
               }
             ]
-          },
-          "id": "m6s1-expresiones-comunes_practice",
-          "style_variant": "info",
-          "type": "callout"
+          }
         }
       ],
-      "module_id": "m6s1-expresiones-comunes",
-      "parent_id": "mod6",
-      "title_en": "Submodule 6.1: High-Frequency Expressions and Practice",
-      "title_es": "Submódulo 6.1: Expresiones frecuentes y práctica"
+      "parent_id": "mod6"
     }
   ],
-  "storage_path": "/content/es/structures/ser-estar-y-otros-equivalentes-de-to-be.json"
+  "assets": [],
+  "llm_hooks": {
+    "allow_qna": true,
+    "context_hints": [
+      "ser-estar",
+      "to-be-equivalents"
+    ]
+  }
 }

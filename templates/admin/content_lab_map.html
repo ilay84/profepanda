@@ -160,72 +160,8 @@
     vocabulary: { es: "Vocabulario", en: "Vocabulary" },
     goals: { es: "Metas comunicativas", en: "Communicative Goals" },
   };
-  const RESOURCE_SEED = [
-    {
-      id: "ser-estar",
-      domain: "structures",
-      lang: "es",
-      title_es: "Ser vs. Estar",
-      title_en: "Ser vs. Estar",
-      levels: [],
-      tags: ["ser", "estar"]
-    },
-    {
-      id: "ser-estar-en",
-      domain: "structures",
-      lang: "en",
-      title_es: "Ser vs. Estar",
-      title_en: "Ser vs. Estar",
-      levels: [],
-      tags: ["ser", "estar"]
-    },
-    {
-      id: "adjetivos-basicos",
-      domain: "structures",
-      lang: "es",
-      title_es: "Adjetivos básicos",
-      title_en: "Basic adjectives",
-      levels: [],
-      tags: ["adjectives"]
-    },
-    {
-      id: "basic-adjectives-en",
-      domain: "structures",
-      lang: "en",
-      title_es: "Adjetivos básicos",
-      title_en: "Basic adjectives",
-      levels: [],
-      tags: ["adjectives"]
-    },
-    {
-      id: "comida-nivel-a1",
-      domain: "vocabulary",
-      lang: "es",
-      title_es: "Comida esencial",
-      title_en: "Food essentials",
-      levels: ["A1", "A2"],
-      tags: ["comida", "alimentos"]
-    },
-    {
-      id: "hacer-pedidos-restaurante",
-      domain: "goals",
-      lang: "es",
-      title_es: "Cómo pedir en un restaurante",
-      title_en: "How to order in a restaurant",
-      levels: ["A2", "B1"],
-      tags: ["restaurante"]
-    },
-    {
-      id: "ordering-restaurant",
-      domain: "goals",
-      lang: "en",
-      title_es: "Cómo pedir en un restaurante",
-      title_en: "How to order in a restaurant",
-      levels: ["A2", "B1"],
-      tags: ["restaurant"]
-    }
-  ];
-  let resources = [...RESOURCE_SEED];
+  const RESOURCE_SEED = {{ resource_seed|default([], true)|tojson }};
+  let resources = Array.isArray(RESOURCE_SEED) ? [...RESOURCE_SEED] : [];
   const STRUCTURE_TAGS = [
     {
       id: "adjectives",
@@ -817,8 +753,8 @@
         empty.className = "ppx-muted";
         empty.style.fontSize = "13px";
         empty.textContent = uiLang === "es"
-          ? "Usa “Crear vista previa” para añadir uno nuevo."
-          : "Use “Create preview” to add a new one.";
+          ? "Usa \\\"Crear vista previa\\\" para añadir uno nuevo."
+          : "Use \\\"Create preview\\\" to add a new one.";
         body.appendChild(empty);
       } else {
         items.forEach(item => {

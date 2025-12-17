@@ -311,6 +311,55 @@
       acc[item.value] = label || item.value;
       return acc;
     }, {});
+    const filterTokenLabels = {
+      register: {
+        formal: { es: 'formal', en: 'formal' },
+        neutral: { es: 'neutral', en: 'neutral' },
+        informal: { es: 'informal', en: 'informal' },
+        vulgar: { es: 'vulgar', en: 'vulgar' }
+      },
+      freq: {
+        muy_comun: { es: 'muy comun', en: 'very common' },
+        comun: { es: 'comun', en: 'common' },
+        menos_comun: { es: 'menos comun', en: 'less common' },
+        raro: { es: 'raro', en: 'rare' }
+      },
+      status: {
+        vigente: { es: 'vigente', en: 'current' },
+        en_desuso: { es: 'en desuso', en: 'obsolete' },
+        arcaico: { es: 'arcaico', en: 'archaic' },
+        regionalismo_fuerte: { es: 'regionalismo fuerte', en: 'strong regionalism' }
+      },
+      sensitivity: {
+        potencialmente_ofensivo: { es: 'potencialmente ofensivo', en: 'potentially offensive' },
+        lenguaje_explicito: { es: 'lenguaje explicito', en: 'explicit language' },
+        connotacion_sexual: { es: 'connotacion sexual', en: 'sexual connotation' }
+      },
+      domain: {
+        comida: { es: 'comida', en: 'food' },
+        salud: { es: 'salud', en: 'health' },
+        emociones: { es: 'emociones', en: 'emotions' },
+        familia: { es: 'familia', en: 'family' },
+        trabajo: { es: 'trabajo', en: 'work' },
+        educacion: { es: 'educacion', en: 'education' },
+        tecnologia: { es: 'tecnologia', en: 'technology' },
+        politica: { es: 'politica', en: 'politics' },
+        economia: { es: 'economia', en: 'economy' },
+        cultura_pop: { es: 'cultura pop', en: 'pop culture' },
+        deporte: { es: 'deporte', en: 'sports' },
+        naturaleza: { es: 'naturaleza', en: 'nature' },
+        sociedad: { es: 'sociedad', en: 'society' },
+        transporte: { es: 'transporte', en: 'transport' }
+      },
+      tone: {
+        afectuoso: { es: 'afectuoso', en: 'affectionate' },
+        despectivo: { es: 'despectivo', en: 'pejorative' },
+        ironico: { es: 'ironico', en: 'ironic' },
+        humoristico: { es: 'humoristico', en: 'humorous' },
+        poetico: { es: 'poetico', en: 'poetic' },
+        agresivo: { es: 'agresivo', en: 'aggressive' }
+      }
+    };
     const FIXED_LETTERS = ['AZ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
     function normLetter(val){
       const up = ((val||'').toString().trim().toUpperCase()) || 'AZ';
@@ -525,12 +574,17 @@
       return posAliases[lower] || lower;
     }
 
-    function formatFilterLabel(value){
+    function formatFilterLabel(value, filterId){
       if (!value) return '';
-      if (filterDefinitions.some(def => def.id === 'pos')) {
+      if (filterId === 'source_title') return String(value || '');
+      if (filterId === 'pos') {
         const label = posLabels[value];
         if (label) return label;
       }
+      const normalized = String(value || '').toLowerCase().replace(/\s+/g, '_');
+      const labelMap = filterTokenLabels[filterId] || {};
+      const entry = labelMap[normalized];
+      if (entry) return uiLang === 'es' ? entry.es : entry.en;
       return String(value || '').replace(/_/g, ' ');
     }
 
@@ -586,7 +640,7 @@
           checkbox.checked = state.filters[section.id].includes(value);
           checkbox.addEventListener('change', () => handleFilterChange(section.id, value, checkbox.checked));
           const text = document.createElement('span');
-          text.textContent = section.id === 'pos' ? formatFilterLabel(value) : formatFilterLabel(value);
+          text.textContent = formatFilterLabel(value, section.id);
           wrapper.appendChild(checkbox);
           wrapper.appendChild(text);
           opts.appendChild(wrapper);
@@ -755,13 +809,18 @@
             label.textContent = posLabel ? `${num} · ${posLabel}` : `${num}`;
             const def = document.createElement('p');
             def.className = 'rg-definition';
-            def.textContent = (s.definition || '').replace(/\s+/g, ' ').trim();
+            const senseDef = uiLang === 'en'
+              ? (s.definition_en || s.definition || s.definition_es || '')
+              : (s.definition_es || s.definition || s.definition_en || '');
+            def.textContent = (senseDef || '').replace(/\s+/g, ' ').trim();
             block.appendChild(label);
             block.appendChild(def);
             row.appendChild(block);
           });
         } else {
-          const snippetText = (entry.definition_es || entry.definition_en || '').replace(/\s+/g, ' ').trim();
+          const snippetText = (uiLang === 'en'
+            ? (entry.definition_en || entry.definition_es || '')
+            : (entry.definition_es || entry.definition_en || '')).replace(/\s+/g, ' ').trim();
           if (snippetText){
             const snippet = document.createElement('p');
             snippet.className = 'rg-definition';

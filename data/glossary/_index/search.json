@@ -201,7 +201,7 @@
     "countries": [
       "AR"
     ],
-    "pos": "adjetivo",
+    "pos": "sustantivo_masculino",
     "slug": "cordon",
     "snippet": "Raised edge separating the sidewalk from the street.",
     "word": "cordón"
@@ -286,6 +286,16 @@
     "slug": "forro",
     "snippet": "A despicable or extremely annoying person.",
     "word": "forro"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "garca",
+    "snippet": "Dishonest or abusive person who cheats, scams, or takes advantage of others.",
+    "word": "garca"
   },
   {
     "countries": [

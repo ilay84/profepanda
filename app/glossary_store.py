@@ -523,13 +523,17 @@ def list_entries_meta() -> List[Dict[str, Any]]:
         for idx, s in enumerate(senses, start=1):
             if not isinstance(s, dict):
                 continue
-            definition = _clean_html(s.get("definition_es") or s.get("definition_en") or "")
+            def_es = _clean_html(s.get("definition_es") or "")
+            def_en = _clean_html(s.get("definition_en") or "")
+            definition = def_es or def_en or ""
             if not definition:
                 continue
             senses_preview.append({
                 "num": idx,
                 "pos": s.get("pos"),
                 "definition": definition,
+                "definition_es": def_es,
+                "definition_en": def_en,
             })
 
         items.append({
@@ -920,5 +924,4 @@ def entries_for_country(country: str) -> List[Dict[str, Any]]:
         if code in sense_countries:
             items.append({"slug": slug, "word": (data.get("word") or slug)})
     return sorted(items, key=lambda x: (x["word"].lower(), x["slug"]))
-
 

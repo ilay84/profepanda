@@ -203,6 +203,45 @@ def _list_themes() -> list[dict[str, str]]:
     return themes
 
 
+def _list_content_resources() -> list[dict[str, Any]]:
+    """
+    List existing content resources from /content/{lang}/{domain}/*.json so the
+    Content Map can surface them in the accordions.
+    """
+    root = _content_root()
+    resources: list[dict[str, Any]] = []
+    if not root.exists():
+        return resources
+    for path in sorted(root.glob("*/*/*.json")):
+        try:
+            rel = path.relative_to(root)
+            lang = rel.parts[0]
+            domain = rel.parts[1]
+            slug = path.stem
+            data = _load_json(path)
+            meta = data.get("meta") or {}
+            title_es = meta.get("title_es")
+            title_en = meta.get("title_en")
+            levels = meta.get("levels") or meta.get("level") or []
+            if isinstance(levels, str):
+                levels = [levels]
+            resources.append(
+                {
+                    "id": slug,
+                    "lang": lang,
+                    "domain": domain,
+                    "title_es": title_es,
+                    "title_en": title_en,
+                    "levels": levels if isinstance(levels, list) else [],
+                    "tags": meta.get("tags") or [],
+                    "persisted": True,
+                }
+            )
+        except Exception:
+            continue
+    return resources
+
+
 @bp.get("/content-lab")
 @login_required
 def content_lab():
@@ -398,7 +437,10 @@ def content_lab_map():
         abort(404)
     if not getattr(g, "is_admin", False):
         abort(403)
-    return render_template("admin/content_lab_map.html")
+    return render_template(
+        "admin/content_lab_map.html",
+        resource_seed=_list_content_resources(),
+    )
 
 
 @bp.get("/content-lab/editor/<resource_id>")
