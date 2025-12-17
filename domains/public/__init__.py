@@ -38,6 +38,14 @@ def _set_app_lang():
     except Exception:
         g.is_admin = False
 
+@public_bp.after_app_request
+def _persist_lang_cookie(resp):
+    # Persist language selection on any public request with ?lang=..
+    lang_q = request.args.get("lang")
+    if lang_q:
+        resp.set_cookie("lang", _coerce_lang(lang_q), max_age=60 * 60 * 24 * 365, samesite="Lax")
+    return resp
+
 @public_bp.context_processor
 def _inject_lang_helpers():
     # Simple translation helper: t(es, en, lang_override=None)

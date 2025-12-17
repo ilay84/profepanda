@@ -11,11 +11,16 @@
   const STORAGE_KEY = 'ppx_last_glossary_entry';
   const ENTRY_LANG_KEY = 'ppx_gl_entry_lang';
   let ActiveLang = (function(){
+    let lang = APP_LANG;
     try{
       const raw = window.localStorage && localStorage.getItem(ENTRY_LANG_KEY);
-      if (raw) return raw;
+      if (raw && raw === APP_LANG){
+        lang = raw;
+      } else if (window.localStorage){
+        localStorage.setItem(ENTRY_LANG_KEY, APP_LANG);
+      }
     }catch(_){}
-    return APP_LANG;
+    return lang;
   })();
   function saveEntryLang(lang){
     try{ if (window.localStorage) localStorage.setItem(ENTRY_LANG_KEY, lang); }catch(_){}
@@ -776,7 +781,6 @@
 
   window.Tabs = { open, activate, close, resume };
 })();
-
 
 
 

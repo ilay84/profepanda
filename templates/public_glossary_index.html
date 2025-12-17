@@ -753,7 +753,7 @@
         row.dataset.slug = entry.slug;
         const heading = document.createElement('a');
         heading.className = 'rg-entry-word';
-        heading.href = `?entry=${entry.slug}`;
+        heading.href = `?lang=${encodeURIComponent(uiLang)}&entry=${encodeURIComponent(entry.slug)}`;
         heading.dataset.slug = entry.slug;
         heading.textContent = entry.word || entry.slug;
         row.appendChild(heading);
@@ -830,7 +830,7 @@
         }
         const hintLink = document.createElement('a');
         hintLink.className = 'rg-open-link';
-        hintLink.href = `?entry=${entry.slug}`;
+        hintLink.href = `?lang=${encodeURIComponent(uiLang)}&entry=${encodeURIComponent(entry.slug)}`;
         hintLink.dataset.slug = entry.slug;
         hintLink.textContent = '{{ t('Ver la entrada completa', 'See the full entry', app_lang) }}';
         row.appendChild(hintLink);
@@ -838,7 +838,7 @@
           if (ev.target && ev.target.closest('a')) return;
           const slug = row.dataset.slug;
           if (window.Tabs && typeof Tabs.open === 'function'){ Tabs.open(slug); return; }
-          window.location.href = `?entry=${encodeURIComponent(slug)}`;
+          window.location.href = `?lang=${encodeURIComponent(uiLang)}&entry=${encodeURIComponent(slug)}`;
         });
         entryList.appendChild(row);
       });
