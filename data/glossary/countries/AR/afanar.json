@@ -7,7 +7,7 @@
       "countries": [
         "AR"
       ],
-      "definition_en": "<p><span style=\"font-weight: normal;\">To</span>&nbsp;<span style=\"font-weight: normal;\">steal.</span></p>",
+      "definition_en": "<p><span style=\"font-weight: 400;\">To steal.</span></p>",
       "definition_es": "<p><span style=\"font-weight: normal;\">Robar.</span></p>",
       "domain": [
         "sociedad"
@@ -39,7 +39,15 @@
       "status": [
         "vigente"
       ],
-      "tone": []
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
     }
   ],
   "slug": "afanar",
