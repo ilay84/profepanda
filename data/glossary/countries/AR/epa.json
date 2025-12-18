@@ -1,0 +1,54 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/epa/epa.mp3?v=1766064374",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Interjection used to express surprise, get someone’s attention, or signal a pause to look at or assess something.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Interjección usada para expresar sorpresa, llamar la atención o marcar una pausa para observar o evaluar algo.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "whoa",
+        "oh",
+        "hey"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/epa/s1/epa_ex_01.mp3?v=1766064374",
+          "en": "“Oh, very good.” \n“`Whoa`, let’s see…”",
+          "es": "—O muy bien. \n—¡`Epa`! A ver...",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "interjeccion",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "epa",
+  "word": "epa"
+}

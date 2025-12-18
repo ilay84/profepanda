@@ -7,6 +7,11 @@
 
 <article class="ppx-article-modules">
   <header class="ppx-article-header">
+    <div class="ppx-article-kicker">
+      <a class="ppx-article-kicker-link" href="{{ url_for('public.articles_index') }}">
+        {{ t('Artículos y guías', 'Articles & Guides', app_lang) }}
+      </a>
+    </div>
     <h1 class="ppx-h1" style="margin:0 0 .25rem 0;">{{ page_title }}</h1>
     <div class="ppx-muted">{{ current_index + 1 }} / {{ modules|length }}</div>
   </header>

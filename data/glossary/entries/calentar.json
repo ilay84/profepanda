@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/calentar/calentar.mp3?v=1766004570",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">To sexually arouse or turn someone on.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Provocar excitación o deseo sexual en otra persona.</span>",
+      "domain": [
+        "emociones"
+      ],
+      "equivalents_en": [
+        "turn on",
+        "arouse",
+        "to make horny"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/calentar/s1/calentar_ex_01.mp3?v=1766004570",
+          "en": "Stop. Stop, because you’re really `turning me on`.",
+          "es": "Pará. Pará, porque me `calentás` un montón.",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [
+        "connotacion_sexual"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "calentar",
+  "word": "calentar"
+}

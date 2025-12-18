@@ -16,6 +16,14 @@
     "word": "al toque"
   },
   {
+    "slug": "amenities",
+    "word": "amenities"
+  },
+  {
+    "slug": "anda",
+    "word": "andá"
+  },
+  {
     "slug": "atender-el-telefono",
     "word": "atender el teléfono"
   },
@@ -52,6 +60,10 @@
     "word": "cagón"
   },
   {
+    "slug": "calentar",
+    "word": "calentar"
+  },
+  {
     "slug": "calentarse",
     "word": "calentarse"
   },
@@ -68,12 +80,24 @@
     "word": "cheto"
   },
   {
+    "slug": "chiche",
+    "word": "chiche"
+  },
+  {
+    "slug": "chiquis",
+    "word": "chiquis"
+  },
+  {
     "slug": "chocho",
     "word": "chocho"
   },
   {
     "slug": "chorro",
     "word": "chorro"
+  },
+  {
+    "slug": "chupar",
+    "word": "chupar"
   },
   {
     "slug": "ciruja",
@@ -108,6 +132,14 @@
     "word": "dale"
   },
   {
+    "slug": "de-joda",
+    "word": "de joda"
+  },
+  {
+    "slug": "dietetica",
+    "word": "dietética"
+  },
+  {
     "slug": "embalado",
     "word": "embalado"
   },
@@ -118,6 +150,10 @@
   {
     "slug": "enchastre",
     "word": "enchastre"
+  },
+  {
+    "slug": "epa",
+    "word": "epa"
   },
   {
     "slug": "flaco",
@@ -244,6 +280,10 @@
     "word": "palo"
   },
   {
+    "slug": "pampeano",
+    "word": "pampeano"
+  },
+  {
     "slug": "papelon",
     "word": "papelón"
   },
@@ -322,6 +362,10 @@
   {
     "slug": "tenencia",
     "word": "tenencia"
+  },
+  {
+    "slug": "tirarle-onda",
+    "word": "tirarle onda"
   },
   {
     "slug": "tomarselas",

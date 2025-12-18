@@ -14,7 +14,8 @@
       ],
       "equivalents_en": [
         "dad",
-        "mom"
+        "mom",
+        "folks (mom and dad)"
       ],
       "examples": [
         {
@@ -27,6 +28,18 @@
             "title": "Viudas negras: P*tas y chorras",
             "type": "series",
             "year": "2025"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/viejo/s1/viejo_ex_02.mp3?v=1766066380",
+          "en": "If your `folks` knew about this...",
+          "es": "Si tus `viejos` supieran…",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
           }
         }
       ],

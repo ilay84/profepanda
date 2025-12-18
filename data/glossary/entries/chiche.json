@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/chiche/chiche.mp3?v=1766005788",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: 400;\">Artefacto novedoso o sofisticado, especialmente cuando se lo valora de manera afectuosa o entusiasta.</span>",
+      "definition_es": "<span style=\"font-weight: 400;\">A novel or sophisticated gadget, often spoken of with affection or enthusiasm.</span>",
+      "domain": [
+        "tecnologia"
+      ],
+      "equivalents_en": [
+        "new toy",
+        "gadget",
+        "cool new thing"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/chiche/s1/chiche_ex_01.mp3?v=1766005744",
+          "en": "\"Well, I’m going to take a shower and enjoy the new toy.\"\n\"Alright.\"",
+          "es": "—Bueno, me voy a pegar una ducha y a disfrutar del `chiche` nuevo.\n—Bueno, doctor.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "chiches",
+        "masc_sg": "chiche"
+      }
+    }
+  ],
+  "slug": "chiche",
+  "word": "chiche"
+}

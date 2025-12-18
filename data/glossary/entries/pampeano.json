@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/pampeano/pampeano.mp3?v=1766065410",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Demonym for someone from the province of La Pampa, Argentina.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Gentilicio de la provincia de La Pampa, en Argentina.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "from La Pampa"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/pampeano/s1/pampeano_ex_01.mp3?v=1766065677",
+          "en": "Agusto… never a book with you, `pampeano`, huh? Partying every day, getting drunk with these bums that are just like you.",
+          "es": "Agusto... Nunca un libro vos, `pampeano`, ¿eh? Todos los días de joda, chupando con estos vagos como vos.",
+          "linked_terms": [
+            "de-joda",
+            "chupar"
+          ],
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "pampeanas",
+        "fem_sg": "pampeana",
+        "masc_pl": "pampeanos",
+        "masc_sg": "pampeano"
+      }
+    }
+  ],
+  "slug": "pampeano",
+  "word": "pampeano"
+}

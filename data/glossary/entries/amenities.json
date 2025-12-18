@@ -1,0 +1,53 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/amenities/amenities.mp3?v=1766066746",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Shared services and facilities in a residential building, such as a pool, gym, or common areas.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Conjunto de servicios e instalaciones comunes de un edificio residencial, como pileta, gimnasio o salón de usos múltiples.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "amenities",
+        "building amenities"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/amenities/s1/amenities_ex_01.mp3?v=1766066746",
+          "en": "He lives in a modern building with `amenities`.",
+          "es": "Vive en un edificio moderno con `amenities`.",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "amenities",
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "amenities",
+  "word": "amenities"
+}

@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/chiquis/chiquis.mp3?v=1766005023",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Colloquial and affectionate way to refer to children or someone’s kids.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Forma coloquial y afectuosa de referirse a los niños o a los hijos de alguien.</span>",
+      "domain": [
+        "familia"
+      ],
+      "equivalents_en": [
+        "kids",
+        "little ones"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/chiquis/s1/chiquis_ex_01.mp3?v=1766005023",
+          "en": "\"Hi, how are the `kids`?\"",
+          "es": "—Hola, ¿qué tal los `chiquis`?",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "afectuoso"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "chiquis",
+        "fem_sg": "chiqui",
+        "masc_pl": "chiquis",
+        "masc_sg": "chiqui"
+      }
+    }
+  ],
+  "slug": "chiquis",
+  "word": "chiquis"
+}

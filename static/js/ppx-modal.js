@@ -313,7 +313,7 @@
     const typeLabel   = state.opts?.typeLabel   || '';
     const levelText   = state.opts?.level       || '';
     const levelLabel  = state.opts?.levelLabel  || 'Nivel:';
-    const logoPath    = state.opts?.logoPath    || '/static/assets/logo/header_logo.png';
+    const logoPath    = state.opts?.logoPath    || '/static/assets/logo/header-logo.svg';
 
     // Build header row inside the modal head
     if (head) {

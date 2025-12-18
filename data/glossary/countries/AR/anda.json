@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/anda/anda.mp3?v=1766004051",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Expression used to urge someone to leave, move on, or bring an interaction to a close.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Expresión usada para apurar, despedir o cerrar una interacción, indicando que la otra persona debe irse o avanzar.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "go on",
+        "off you go",
+        "move along"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/anda/s1/anda_ex_01.mp3?v=1766004052",
+          "en": "Get your hair dyed, yeah? It’s about time. `Go on`, `go on`.",
+          "es": "Hacete la tintura, ¿eh? Que te toca. `Andá`, `andá`.",
+          "source": {
+            "episode": "1",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "anda",
+  "word": "andá"
+}

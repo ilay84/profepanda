@@ -1,0 +1,61 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/de-joda/de_joda.mp3?v=1766065907",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Out partying, having fun, or not taking things seriously.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Dedicado a divertirse, salir de fiesta o no tomarse las cosas en serio.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "partying",
+        "out having fun"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/de-joda/s1/de_joda_ex_01.mp3?v=1766065907",
+          "en": "Agusto… never a book with you, pampeano, huh? `Partying` every day, getting drunk with these bums just like you.",
+          "es": "Agusto... Nunca un libro vos, pampeano, ¿eh? Todos los días `de joda`, chupando con estos vagos como vos.",
+          "linked_terms": [
+            "pampeano",
+            "chupar"
+          ],
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_adverbial",
+      "register": "informal",
+      "related_slugs": [
+        "joda"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "de-joda",
+  "word": "de joda"
+}

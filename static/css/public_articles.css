@@ -85,7 +85,10 @@
 
 .ppx-hero-title {
   margin: 0;
-  font: 800 36px/1.15 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: var(--ppx-font, 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.15;
   color: #0f172a;
   letter-spacing: -0.05px;
   text-align: center;
@@ -335,6 +338,9 @@
    -------------------------------------------- */
 .ppx-article-modules{position:relative;--ppx-article-nav-w:300px;--ppx-article-gap:1.5rem;--ppx-article-content-w:920px;max-width:min(1180px,96vw);margin:0 auto}
 .ppx-article-header{margin-bottom:.75rem}
+.ppx-article-kicker{margin-bottom:.25rem}
+.ppx-article-kicker-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#475569;text-decoration:none}
+.ppx-article-kicker-link:hover{color:#3730a3;text-decoration:underline}
 .ppx-article-layout{display:grid;grid-template-columns:var(--ppx-article-nav-w) minmax(0,var(--ppx-article-content-w));gap:var(--ppx-article-gap);justify-content:start;align-items:start}
 .ppx-article-nav{position:sticky;top:1rem;align-self:start;border:1px solid #e5e7eb;border-radius:14px;background:#fff;max-height:calc(100vh - 2rem);overflow:auto;box-shadow:0 10px 30px rgba(0,0,0,.08)}
 .ppx-article-nav ul{list-style:none;margin:0;padding:.35rem}

@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/dietetica/dietetica.mp3?v=1766067146",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Shop that sells natural foods, health products, supplements, and diet-related items.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Comercio donde se venden alimentos naturales, productos saludables, suplementos y artículos dietéticos.</span>",
+      "domain": [
+        "comida",
+        "salud"
+      ],
+      "equivalents_en": [
+        "health food store",
+        "natural food shop"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/dietetica/s1/dietetica_ex_01.mp3?v=1766067146",
+          "en": "\"This woman?\"\n\"A divorced cosmetologist. She’s on her way to a `health food store` to buy a mix of nuts.\"",
+          "es": "—¿Esta mina? —Cosmetóloga divorciada. Está yendo a una `dietética` a comprar un mix de frutos secos.",
+          "linked_terms": [
+            "mina"
+          ],
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "dietéticas",
+        "fem_sg": "dietética",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "dietetica",
+  "word": "dietética"
+}

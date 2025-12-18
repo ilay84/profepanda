@@ -199,6 +199,64 @@
     .ed-preview-nav { display: none; }
     #ed-preview-rail-open { display: inline-flex !important; }
   }
+  .ed-editable {
+    cursor: text;
+    border-radius: 4px;
+    padding: 1px 2px;
+  }
+  .ed-editable:hover {
+    background: #e0e7ff;
+  }
+  .ed-editable.ed-active {
+    background: #dbeafe;
+    outline: 1px solid #93c5fd;
+  }
+  .ed-text-editor {
+    position: fixed;
+    z-index: 10080;
+    display: none;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    padding: 12px;
+    width: min(420px, 92vw);
+  }
+  .ed-text-toolbar {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 6px 0 8px;
+  }
+  .ed-text-btn {
+    border: 1px solid #d1d5db;
+    background: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .ed-text-btn.is-active {
+    background: #2563eb;
+    color: #fff;
+    border-color: #1d4ed8;
+  }
+  .ed-text-input {
+    width: 100%;
+    min-height: 80px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px;
+    font-family: inherit;
+  }
+  .ed-text-translation {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 6px;
+  }
 </style>
 <main class="ppx-container ppx-admin" style="max-width: 1280px; padding: 1.25rem 1rem;">
   <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.75rem; flex-wrap:wrap;">
@@ -339,17 +397,21 @@
         <textarea id="ed-json" style="width:100%; min-height:260px; margin-top:.5rem; font-family:monospace; font-size:13px; line-height:1.4; background:#0f172a; color:#e2e8f0; border:1px solid #1f2937; border-radius:8px; padding:10px; box-sizing:border-box;"></textarea>
         <div class="ppx-muted" style="font-size:12px; margin-top:.35rem; color:#cbd5e1;">{{ t("Edita el JSON completo del recurso. Se validará al guardar.", "Edit full resource JSON. Will be validated on save.", app_lang) }}</div>
       </div>
-      <div id="panel-preview" class="ppx-card" style="margin-top:.75rem; padding:1rem; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8); width:100%; box-sizing:border-box; overflow:hidden; display:none;">
+      
+
+
+    </section>
+  </div>
+  <div style="margin-top:1rem;">
+<div id="panel-preview" class="ppx-card" style="margin-top:.75rem; padding:1rem; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8); width:100%; box-sizing:border-box; overflow:hidden; display:none;">
         <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
           <div class="ppx-label">{{ t("Vista previa", "Preview", app_lang) }}</div>
           <button id="ed-preview-rail-open" type="button" class="ppx-btn ppx-btn-secondary" style="display:none; padding:6px 10px;">{{ t("Módulos", "Modules", app_lang) }}</button>
         </div>
         <div id="ed-preview-shell" style="margin-top:.35rem;"></div>
       </div>
-
-    </section>
   </div>
-      <div id="ed-block-modal" style="position:fixed; inset:0; background:rgba(15,23,42,0.4); display:none; align-items:center; justify-content:center; z-index:10000; padding:1rem; box-sizing:border-box;">
+<div id="ed-block-modal" style="position:fixed; inset:0; background:rgba(15,23,42,0.4); display:none; align-items:center; justify-content:center; z-index:10000; padding:1rem; box-sizing:border-box;">
         <div style="background:#fff; border-radius:12px; width:min(680px, 95vw); box-shadow:0 20px 60px rgba(0,0,0,0.25); padding:1.25rem; box-sizing:border-box;">
           <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; flex-wrap:wrap;">
             <div class="ppx-h4" style="margin:0;">{{ t("Editar bloque", "Edit block", app_lang) }}</div>
@@ -380,10 +442,30 @@
           </div>
         </div>
       </div>
+        </div>
 
+<div id="ed-text-editor" class="ed-text-editor" role="dialog" aria-modal="false">
+  <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
+    <div class="ppx-label">{{ t("Editar texto", "Edit text", app_lang) }}</div>
+    <button id="ed-text-close" type="button" class="ppx-btn ppx-btn-secondary" style="padding:4px 8px;">{{ t("Cerrar", "Close", app_lang) }}</button>
+  </div>
+  <div class="ed-text-toolbar">
+    <button id="ed-text-bold" type="button" class="ed-text-btn">B</button>
+    <button id="ed-text-italic" type="button" class="ed-text-btn">I</button>
+    <input id="ed-text-color" type="color" value="#000000" style="width:32px; height:28px; border:none; background:transparent;">
+    <button id="ed-text-color-clear" type="button" class="ed-text-btn" style="font-weight:600;">{{ t("Sin color", "No color", app_lang) }}</button>
+  </div>
+  <textarea id="ed-text-input" class="ed-text-input" placeholder="{{ t('Texto', 'Text', app_lang) }}"></textarea>
+  <input id="ed-text-translation" class="ed-text-translation" placeholder="{{ t('Traduccion (tooltip)', 'Translation (tooltip)', app_lang) }}">
+  <div class="ppx-row" style="justify-content:flex-end; gap:.5rem; margin-top:.6rem;">
+    <button id="ed-text-save" type="button" class="ppx-btn">{{ t("Guardar", "Save", app_lang) }}</button>
+    <button id="ed-text-cancel" type="button" class="ppx-btn ppx-btn-secondary">{{ t("Cancelar", "Cancel", app_lang) }}</button>
+  </div>
+</div>
 </main>
 <script>
 (() => {
+  window.ContentLabEditorMode = true;
   const params = new URLSearchParams(window.location.search);
   const lang = params.get("lang");
   const domain = params.get("domain");
@@ -421,6 +503,16 @@
     blockId: document.getElementById("ed-block-id"),
     blockAdd: document.getElementById("ed-block-add"),
     blocksList: document.getElementById("ed-blocks-list"),
+    textEditor: document.getElementById("ed-text-editor"),
+    textEditorText: document.getElementById("ed-text-input"),
+    textEditorTranslation: document.getElementById("ed-text-translation"),
+    textEditorBold: document.getElementById("ed-text-bold"),
+    textEditorItalic: document.getElementById("ed-text-italic"),
+    textEditorColor: document.getElementById("ed-text-color"),
+    textEditorColorClear: document.getElementById("ed-text-color-clear"),
+    textEditorSave: document.getElementById("ed-text-save"),
+    textEditorCancel: document.getElementById("ed-text-cancel"),
+    textEditorClose: document.getElementById("ed-text-close"),
     previewRailOpen: document.getElementById("ed-preview-rail-open"),
     railOpen: document.getElementById("ed-rail-open"),
     railOverlay: document.getElementById("ed-rail-overlay"),
@@ -439,6 +531,10 @@
   let modulesState = [];
   let activeModuleId = null;
   let editingBlock = null;
+  let textEditState = null;
+  let textEditMarks = new Set();
+  let textEditColor = "";
+  let activeEditableEl = null;
 
   if (els.lang && lang) els.lang.value = lang;
   if (els.domain && domain) els.domain.value = domain;
@@ -1054,6 +1150,14 @@
       title.className = "ed-module-title";
       const primary = "{{ app_lang }}" === "es" ? (mod.title_es || mod.title_en || mod.module_id) : (mod.title_en || mod.title_es || mod.module_id);
       title.textContent = primary;
+      title.classList.add("ed-editable");
+      title.dataset.editable = "module-title";
+      title.dataset.moduleId = mod.module_id;
+      title.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openTextEditorForModuleTitle(title);
+      });
       btn.appendChild(num);
       btn.appendChild(title);
       btn.addEventListener("click", () => {
@@ -1108,10 +1212,13 @@
           heading.className = "ed-preview-heading";
           const primaryTitle = "{{ app_lang }}" === "es" ? (module.title_es || module.title_en || module.module_id) : (module.title_en || module.title_es || module.module_id);
           heading.textContent = primaryTitle;
+          heading.classList.add("ed-editable");
+          heading.dataset.editable = "module-title";
+          heading.dataset.moduleId = module.module_id;
           content.appendChild(heading);
         }
         normalized.forEach((blk) => {
-          const node = renderer.renderBlock(blk, langVal);
+          const node = renderer.renderBlock(blk, langVal, { moduleId: module.module_id, blockId: blk.id });
           content.appendChild(node);
         });
       }
@@ -1121,6 +1228,249 @@
     layout.appendChild(content);
     els.previewShell.appendChild(layout);
   }
+
+
+  function setActiveEditable(el) {
+    if (activeEditableEl && activeEditableEl !== el) {
+      activeEditableEl.classList.remove("ed-active");
+    }
+    activeEditableEl = el;
+    if (activeEditableEl) activeEditableEl.classList.add("ed-active");
+  }
+
+  function closeTextEditor() {
+    if (!els.textEditor) return;
+    els.textEditor.style.display = "none";
+    setActiveEditable(null);
+    textEditState = null;
+    textEditMarks = new Set();
+    textEditColor = "";
+  }
+
+  function updateTextToolbar() {
+    if (els.textEditorBold) {
+      els.textEditorBold.classList.toggle("is-active", textEditMarks.has("bold"));
+    }
+    if (els.textEditorItalic) {
+      els.textEditorItalic.classList.toggle("is-active", textEditMarks.has("italic"));
+    }
+  }
+
+  function setTextEditorMode(isModuleTitle) {
+    const disabled = Boolean(isModuleTitle);
+    [els.textEditorBold, els.textEditorItalic, els.textEditorColor, els.textEditorColorClear].forEach(el => {
+      if (!el) return;
+      el.disabled = disabled;
+      el.style.opacity = disabled ? "0.5" : "1";
+      el.style.pointerEvents = disabled ? "none" : "auto";
+    });
+  }
+
+  function positionTextEditor(target) {
+    if (!els.textEditor) return;
+    const rect = target.getBoundingClientRect();
+    els.textEditor.style.display = "block";
+    els.textEditor.style.visibility = "hidden";
+    requestAnimationFrame(() => {
+      const editorRect = els.textEditor.getBoundingClientRect();
+      let top = rect.bottom + 8;
+      if (top + editorRect.height > window.innerHeight) {
+        top = rect.top - editorRect.height - 8;
+      }
+      if (top < 8) top = 8;
+      let left = rect.left;
+      if (left + editorRect.width > window.innerWidth) {
+        left = window.innerWidth - editorRect.width - 8;
+      }
+      if (left < 8) left = 8;
+      els.textEditor.style.top = `${top}px`;
+      els.textEditor.style.left = `${left}px`;
+      els.textEditor.style.visibility = "visible";
+    });
+  }
+
+  function findModuleById(moduleId) {
+    return modulesState.find(m => m.module_id === moduleId) || null;
+  }
+
+  function findBlockById(module, blockId) {
+    if (!module) return null;
+    return (module.blocks || []).find(b => (b.id || b.block_id) === blockId) || null;
+  }
+
+  function resolveSegmentArray(block, path) {
+    const root = block.data || block;
+    const parts = String(path || "segments").split(".");
+    let obj = root;
+    for (const part of parts) {
+      if (part === "") continue;
+      const index = Number(part);
+      const isIndex = !Number.isNaN(index) && String(index) === part;
+      if (isIndex) {
+        if (!Array.isArray(obj)) return null;
+        obj = obj[index];
+      } else {
+        if (!obj || typeof obj !== "object") return null;
+        obj = obj[part];
+      }
+    }
+    return Array.isArray(obj) ? obj : null;
+  }
+
+  function openTextEditorForSegment(target) {
+    const moduleId = target.dataset.moduleId;
+    const blockId = target.dataset.blockId;
+    const segPath = target.dataset.segPath || "segments";
+    const segIndex = Number(target.dataset.segIndex || 0);
+    const module = findModuleById(moduleId);
+    const block = findBlockById(module, blockId);
+    if (!module || !block) return;
+    const segs = resolveSegmentArray(block, segPath);
+    if (!segs) return;
+    const seg = segs[segIndex] || { text: "", translations: {} };
+
+    setActiveEditable(target);
+    textEditState = { kind: "segment", moduleId, blockId, segPath, segIndex };
+    textEditMarks = new Set(seg.marks || []);
+    textEditColor = seg.color || "";
+    if (els.textEditorText) els.textEditorText.value = seg.text || "";
+    if (els.textEditorTranslation) {
+      els.textEditorTranslation.value = (seg.translations && seg.translations.en) ? seg.translations.en : "";
+    }
+    if (els.textEditorColor) {
+      els.textEditorColor.value = textEditColor || "#000000";
+    }
+    updateTextToolbar();
+    setTextEditorMode(false);
+    positionTextEditor(target);
+  }
+
+  function openTextEditorForModuleTitle(target) {
+    const moduleId = target.dataset.moduleId;
+    const module = findModuleById(moduleId);
+    if (!module) return;
+    setActiveEditable(target);
+    textEditState = { kind: "module", moduleId };
+    const langVal = els.lang?.value || "es";
+    const primary = langVal === "es" ? (module.title_es || "") : (module.title_en || "");
+    const trans = langVal === "es" ? (module.title_en || "") : (module.title_es || "");
+    if (els.textEditorText) els.textEditorText.value = primary;
+    if (els.textEditorTranslation) els.textEditorTranslation.value = trans;
+    setTextEditorMode(true);
+    positionTextEditor(target);
+  }
+
+  if (els.previewShell) {
+    els.previewShell.addEventListener("click", (e) => {
+      const moduleTitle = e.target.closest("[data-editable='module-title']");
+      if (moduleTitle && !moduleTitle.closest(".ed-preview-nav")) {
+        e.preventDefault();
+        openTextEditorForModuleTitle(moduleTitle);
+        return;
+      }
+      const segment = e.target.closest("[data-editable='segment']");
+      if (segment) {
+        e.preventDefault();
+        openTextEditorForSegment(segment);
+      }
+    });
+    els.previewShell.addEventListener("dblclick", (e) => {
+      const moduleTitle = e.target.closest("[data-editable='module-title']");
+      if (!moduleTitle) return;
+      e.preventDefault();
+      openTextEditorForModuleTitle(moduleTitle);
+    });
+  }
+
+  if (els.textEditorBold) {
+    els.textEditorBold.addEventListener("click", () => {
+      if (textEditMarks.has("bold")) textEditMarks.delete("bold");
+      else textEditMarks.add("bold");
+      updateTextToolbar();
+    });
+  }
+  if (els.textEditorItalic) {
+    els.textEditorItalic.addEventListener("click", () => {
+      if (textEditMarks.has("italic")) textEditMarks.delete("italic");
+      else textEditMarks.add("italic");
+      updateTextToolbar();
+    });
+  }
+  if (els.textEditorColor) {
+    els.textEditorColor.addEventListener("input", () => {
+      textEditColor = els.textEditorColor.value || "";
+    });
+  }
+  if (els.textEditorColorClear) {
+    els.textEditorColorClear.addEventListener("click", () => {
+      textEditColor = "";
+      if (els.textEditorColor) els.textEditorColor.value = "#000000";
+    });
+  }
+  if (els.textEditorClose) {
+    els.textEditorClose.addEventListener("click", closeTextEditor);
+  }
+  if (els.textEditorCancel) {
+    els.textEditorCancel.addEventListener("click", closeTextEditor);
+  }
+  if (els.textEditorSave) {
+    els.textEditorSave.addEventListener("click", () => {
+      if (!textEditState) return;
+      const textVal = els.textEditorText ? els.textEditorText.value : "";
+      const transVal = els.textEditorTranslation ? els.textEditorTranslation.value : "";
+      if (textEditState.kind === "module") {
+        const module = findModuleById(textEditState.moduleId);
+        if (!module) return;
+        const langVal = els.lang?.value || "es";
+        if (langVal === "es") {
+          module.title_es = textVal;
+          module.title_en = transVal;
+        } else {
+          module.title_en = textVal;
+          module.title_es = transVal;
+        }
+        closeTextEditor();
+        renderModules();
+        renderPreview();
+        return;
+      }
+      if (textEditState.kind === "segment") {
+        const module = findModuleById(textEditState.moduleId);
+        const block = findBlockById(module, textEditState.blockId);
+        if (!block) return;
+        const segs = resolveSegmentArray(block, textEditState.segPath);
+        if (!segs) return;
+        const idx = textEditState.segIndex;
+        const seg = segs[idx] || { text: "", translations: {} };
+        seg.text = textVal;
+        if (textEditMarks.size) seg.marks = Array.from(textEditMarks);
+        else if (seg.marks) delete seg.marks;
+        if (textEditColor) seg.color = textEditColor;
+        else if (seg.color) delete seg.color;
+        if (transVal) {
+          seg.translations = seg.translations || {};
+          seg.translations.en = transVal;
+        } else if (seg.translations && seg.translations.en) {
+          delete seg.translations.en;
+        }
+        segs[idx] = seg;
+        closeTextEditor();
+        renderPreview();
+        renderBlocks();
+      }
+    });
+  }
+
+  document.addEventListener("mousedown", (e) => {
+    if (!els.textEditor || els.textEditor.style.display === "none") return;
+    if (els.textEditor.contains(e.target)) return;
+    if (e.target.closest("[data-editable]")) return;
+    closeTextEditor();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeTextEditor();
+  });
 
 
   function renderBlocks() {

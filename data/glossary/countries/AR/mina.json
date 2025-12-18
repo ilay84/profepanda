@@ -46,6 +46,21 @@
             "type": "series",
             "year": "2022"
           }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/mina/s1/mina_ex_03.mp3?v=1766067015",
+          "en": "“This woman?”\n“A divorced cosmetologist. She’s on her way to a health food store to buy a mix of nuts.”",
+          "es": "—¿Esta `mina`?\n—Cosmetóloga divorciada. Está yendo a una dietética a comprar un mix de frutos secos.",
+          "linked_terms": [
+            "dietetica"
+          ],
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
         }
       ],
       "freq": "muy_comun",

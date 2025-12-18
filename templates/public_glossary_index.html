@@ -1,8 +1,8 @@
 {% extends "public_base.html" %}
-{% block title %}{{ t('Glosarios regionales', 'Regional countries', app_lang) }}{% endblock %}
+{% block title %}{{ t('Glosarios regionales', 'Regional Glossaries', app_lang) }}{% endblock %}
 {% block public_content %}
   <div style="max-width:min(96vw, 1300px); margin:1rem auto; padding:0 1rem;">
-    <h1 style="font-family: var(--ppx-font); font-weight:700;">{{ t('Glosarios regionales', 'Regional countries', app_lang) }}</h1>
+    <h1 style="font-family: var(--ppx-font); font-weight:700;">{{ t('Glosarios regionales', 'Regional Glossaries', app_lang) }}</h1>
 
     <style>
       .rg-pill{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .55rem;border-radius:999px;border:1px solid #e5e7eb;background:#f8fafc;color:#0f172a;font-size:12px;font-weight:600;line-height:1;}
@@ -219,7 +219,7 @@
         <div id="rg-recent-body" class="rg-sheet-body">
         </div>
       </div>
-      <aside id="rg-filters-pane" class="ppx-card" style="padding:.75rem; display:none; flex-direction:column; gap:.5rem; position:sticky; top:1rem; align-self:start;">
+      <aside id="rg-filters-pane" class="ppx-card" style="padding:.75rem; display:none; flex-direction:column; gap:.5rem; align-self:start;">
         <div class="rg-filter-header">
           <div class="rg-filter-title">
             <img src="{{ url_for('static', filename='assets/icons/filter.svg') }}" alt="" class="rg-filter-icon">

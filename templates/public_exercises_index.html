@@ -1,6 +1,6 @@
 {% extends "public_base.html" %}
 
-{% block title %}ProfePanda · {{ t('Ejercicios', 'Exercises', app_lang) }}{% endblock %}
+{% block title %}ProfePanda · {{ t('Ejercicios en línea', 'Online Exercises', app_lang) }}{% endblock %}
 
 {% block public_content %}
 <style>
@@ -43,7 +43,7 @@
 </style>
 
   <header class="ppx-article-header">
-    <h1 class="ppx-h1" style="margin:0;">{{ t('Ejercicios', 'Exercises', app_lang) }}</h1>
+    <h1 class="ppx-h1" style="margin:0;">{{ t('Ejercicios en línea', 'Online Exercises', app_lang) }}</h1>
     <div class="ppx-center" style="margin:.75rem 0 0.5rem;">
       <form action="" method="get" role="search" aria-label="{{ t('Buscar ejercicios', 'Search exercises', app_lang) }}" style="max-width:920px;margin:0 auto;display:flex;gap:.5rem;align-items:center;justify-content:center;flex-wrap:wrap;">
         <label for="q" class="ppx-visually-hidden">{{ t('Buscar', 'Search', app_lang) }}</label>
@@ -213,4 +213,3 @@
     })();
   </script>
 {% endblock %}
-

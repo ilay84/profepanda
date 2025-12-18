@@ -13,8 +13,7 @@
       color: var(--ppx-color-text, #0f172a); font-family: var(--ppx-font, 'Montserrat', sans-serif);
       font-weight: 600; letter-spacing: .2px;
     " aria-label="ProfePanda Home">
-      <img src="{{ url_for('static', filename='assets/logo/header_logo.png') }}" alt="ProfePanda Logo" style="height:30px; width:auto; display:inline-block;">
-      <span></span>
+      <img src="{{ url_for('static', filename='assets/logo/header-logo.svg') }}" alt="ProfePanda Logo" style="height:45px; width:auto; display:inline-block;">
     </a>
 
     <!-- Right: Nav menu + Language dropdown -->
@@ -63,7 +62,7 @@
                 padding:.45rem .6rem; border-radius:8px;
               " onmouseover="this.style.background='#f3f4ff';"
                  onmouseout="this.style.background='transparent';">
-                <span>📝</span><span>{{ t('Artículos', 'Articles', app_lang) }}</span>
+                <span>📝</span><span>{{ t('Artículos y guías', 'Articles & Guides', app_lang) }}</span>
               </a>
             </li>
             <li>
@@ -73,7 +72,7 @@
                 padding:.45rem .6rem; border-radius:8px;
               " onmouseover="this.style.background='#f3f4ff';"
                  onmouseout="this.style.background='transparent';">
-                <span>🎯</span><span>{{ t('Ejercicios', 'Exercises', app_lang) }}</span>
+                <span>🎯</span><span>{{ t('Ejercicios en línea', 'Online Exercises', app_lang) }}</span>
               </a>
             </li>
             <li>

@@ -240,7 +240,7 @@
         })(),
           level: data.level || '',
           levelLabel: (activeLang === 'en') ? 'Level:' : 'Nivel:',
-          logoPath: '/static/assets/logo/header_logo.png',
+          logoPath: '/static/assets/logo/header-logo.svg',
           instructionsHTML: instructionsHTML,
           instructionsTitle: instructionsTitle,
           instructionsCloseLabel: instructionsCloseLabel,

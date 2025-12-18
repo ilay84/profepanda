@@ -26,7 +26,7 @@
   function createFrame(opts = {}) {
     const lang = (opts.lang || getLang());
     const labelLevel = lang === 'en' ? 'Level:' : 'Nivel:';
-    const logoPath = opts.logoPath || '/static/assets/logo/header_logo.png';
+    const logoPath = opts.logoPath || '/static/assets/logo/header-logo.svg';
     const typeText = opts.typeLabel || '';     // e.g., "¿Verdadero o falso?"
     const titleText = opts.title || '';
 

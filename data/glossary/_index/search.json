@@ -39,6 +39,25 @@
     "countries": [
       "AR"
     ],
+    "pos": "sustantivo_masculino",
+    "slug": "amenities",
+    "snippet": "Shared services and facilities in a residential building, such as a pool, gym, or common areas.",
+    "word": "amenities"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "anda",
+    "snippet": "Expression used to urge someone to leave, move on, or bring an interaction to a close.",
+    "word": "andá"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "verbo_transitivo",
     "slug": "atender-el-telefono",
     "snippet": "To answer a phone call by picking up or activating the call.",
@@ -118,6 +137,16 @@
   },
   {
     "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "calentar",
+    "snippet": "To sexually arouse or turn someone on.",
+    "word": "calentar"
+  },
+  {
+    "countries": [
       "AR"
     ],
     "pos": "sustantivo",
@@ -140,7 +169,7 @@
     ],
     "pos": "interjeccion",
     "slug": "che",
-    "snippet": "Colloquial interjection used to get someone's attention or address someone informally.",
+    "snippet": "Interjection used to get someone’s attention or address someone informally, regardless of the person’s gender.",
     "word": "che"
   },
   {
@@ -151,6 +180,25 @@
     "slug": "cheto",
     "snippet": "Showing attitudes or style associated with wealthy or upper-class people.",
     "word": "cheto"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "chiche",
+    "snippet": "Artefacto novedoso o sofisticado, especialmente cuando se lo valora de manera afectuosa o entusiasta.",
+    "word": "chiche"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "chiquis",
+    "snippet": "Colloquial and affectionate way to refer to children or someone’s kids.",
+    "word": "chiquis"
   },
   {
     "countries": [
@@ -169,6 +217,15 @@
     "slug": "chorro",
     "snippet": "A thief or someone who steals.",
     "word": "chorro"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "verbo_intransitivo",
+    "slug": "chupar",
+    "snippet": "To drink alcohol, especially heavily or habitually.",
+    "word": "chupar"
   },
   {
     "countries": [
@@ -246,6 +303,24 @@
     "countries": [
       "AR"
     ],
+    "pos": "locucion_adverbial",
+    "slug": "de-joda",
+    "snippet": "Out partying, having fun, or not taking things seriously.",
+    "word": "de joda"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "dietetica",
+    "snippet": "Shop that sells natural foods, health products, supplements, and diet-related items.",
+    "word": "dietética"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "adjetivo",
     "slug": "embalado",
     "snippet": "Very excited or worked up, acting on impulse.",
@@ -268,6 +343,15 @@
     "slug": "enchastre",
     "snippet": "A mess or botched situation caused by disorder, carelessness, or poor execution, often leading to problems.",
     "word": "enchastre"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "interjeccion",
+    "slug": "epa",
+    "snippet": "Interjection used to express surprise, get someone’s attention, or signal a pause to look at or assess something.",
+    "word": "epa"
   },
   {
     "countries": [
@@ -553,6 +637,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "adjetivo",
+    "slug": "pampeano",
+    "snippet": "Demonym for someone from the province of La Pampa, Argentina.",
+    "word": "pampeano"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "sustantivo_masculino",
     "slug": "papelon",
     "snippet": "A situation that causes major embarrassment or public ridicule.",
@@ -728,6 +821,15 @@
     "slug": "tenencia",
     "snippet": "Legal right to care for and take responsibility for a child or dependent, including decisions about their upbringing and wellbeing.",
     "word": "tenencia"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "locucion_verbal",
+    "slug": "tirarle-onda",
+    "snippet": "To show romantic or sexual interest in someone, usually in a subtle or indirect way.",
+    "word": "tirarle onda"
   },
   {
     "countries": [

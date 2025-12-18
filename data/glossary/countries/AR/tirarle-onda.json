@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/tirarle-onda/tirarle_onda.mp3?v=1766064884",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">To show romantic or sexual interest in someone, usually in a subtle or indirect way.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Mostrar interés romántico o sexual hacia alguien, generalmente de manera sutil o indirecta.</span>",
+      "domain": [
+        "emociones"
+      ],
+      "equivalents_en": [
+        "hit on",
+        "flirt with",
+        "show interest in"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/tirarle-onda/s1/tirarle_onda_ex_01.mp3?v=1766064884",
+          "en": "\"I mean, just a way of saying hello. I mean, she’s `hitting on` me.\" \n\"One of the owners here is `hitting on`...?\"",
+          "es": "—O sea, una manera de saludar. O sea, me `tira onda`. \n—¿Una propietaria de acá te `tira`...?",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_verbal",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [
+        "connotacion_sexual"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "tirarle-onda",
+  "word": "tirarle onda"
+}

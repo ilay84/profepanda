@@ -1,0 +1,60 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/chupar/chupar.mp3?v=1766066066",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">To drink alcohol, especially heavily or habitually.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Consumir bebidas alcohólicas, especialmente en exceso o de manera habitual.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "drink",
+        "get drunk",
+        "hit the bottle"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/chupar/s1/chupar_ex_01.mp3?v=1766066066",
+          "en": "Agusto… never a book with you, pampeano, huh? Partying every day, `getting drunk` with these bums just like you.",
+          "es": "Agusto... Nunca un libro vos, pampeano, ¿eh? Todos los días de joda, `chupando` con estos vagos como vos.",
+          "linked_terms": [
+            "de-joda",
+            "pampeano"
+          ],
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "verbo_intransitivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "chupar",
+  "word": "chupar"
+}

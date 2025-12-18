@@ -1,13 +1,13 @@
 {% extends "public_base.html" %}
 
-{% block title %}ProfePanda · {{ t('Artículos', 'Articles', app_lang) }}{% endblock %}
+{% block title %}ProfePanda · {{ t('Artículos y guías', 'Articles & Guides', app_lang) }}{% endblock %}
 
 {% block public_content %}
 <style>@import url("{{ url_for('static', filename='css/public_articles.css') }}");</style>
   <!-- Header: title row, then centered search row -->
   <header>
     <div class="ppx-row" style="align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.5rem;">
-      <h1 class="ppx-h1" style="margin:0;">{{ t('Artículos', 'Articles', app_lang) }}</h1>
+      <h1 class="ppx-h1" style="margin:0;">{{ t('Artículos y guías', 'Articles & Guides', app_lang) }}</h1>
     </div>
 
     <div class="ppx-center" style="margin-bottom:1rem;">

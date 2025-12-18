@@ -7,8 +7,8 @@
       "countries": [
         "AR"
       ],
-      "definition_en": "<p><span style=\"font-weight: normal;\">Colloquial interjection used to get someone's attention or address someone informally.</span></p>",
-      "definition_es": "<p><span style=\"font-weight: normal;\">Interjección coloquial usada para llamar la atención o dirigirse a alguien de manera informal.</span></p>",
+      "definition_en": "<p><span style=\"font-weight: normal;\">Interjection used to get someone’s attention or address someone informally, regardless of the person’s gender.</span></p>",
+      "definition_es": "<p><span style=\"font-weight: normal;\">Interjección usada para llamar la atención o dirigirse a alguien de manera informal, independientemente de su género.</span></p>",
       "domain": [],
       "equivalents_en": [
         "hey",
@@ -39,6 +39,18 @@
             "type": "series",
             "year": "2025"
           }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/che/s1/che_ex_03.mp3?v=1766063893",
+          "en": "`Hey`, Eliseo, tell me—how… how did that thing you were telling me about the building and everything else turn out?",
+          "es": "`Che`, Eliseo, contame ¿cómo… cómo ha seguido eso que me decías del edificio y de más?",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
         }
       ],
       "freq": "muy_comun",
@@ -50,7 +62,15 @@
       "status": [
         "vigente"
       ],
-      "tone": []
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
     }
   ],
   "slug": "che",
