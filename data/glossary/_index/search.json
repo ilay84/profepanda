@@ -49,7 +49,7 @@
       "AR",
       "UY"
     ],
-    "pos": "sustantivo_masculino_y_femenino",
+    "pos": "formula_social",
     "slug": "anda",
     "snippet": "Expression used to urge someone to leave, move on, or bring an interaction to a close.",
     "word": "andá"
@@ -130,7 +130,7 @@
     "countries": [
       "AR"
     ],
-    "pos": "sustantivo_femenino",
+    "pos": "sustantivo_masculino_y_femenino",
     "slug": "cagon",
     "snippet": "A coward; someone who avoids facing a situation.",
     "word": "cagón"
@@ -140,7 +140,7 @@
       "AR",
       "UY"
     ],
-    "pos": "sustantivo_masculino_y_femenino",
+    "pos": "verbo_transitivo",
     "slug": "calentar",
     "snippet": "To sexually arouse or turn someone on.",
     "word": "calentar"
@@ -231,7 +231,7 @@
     "countries": [
       "AR"
     ],
-    "pos": "sustantivo_femenino",
+    "pos": "sustantivo_masculino_y_femenino",
     "slug": "ciruja",
     "snippet": "Someone who picks through trash or lives off what they scavenge on the street.",
     "word": "ciruja"
@@ -574,7 +574,7 @@
     "countries": [
       "AR"
     ],
-    "pos": "sustantivo_masculino_y_femenino",
+    "pos": "sustantivo_femenino",
     "slug": "mosquita-muerta",
     "snippet": "A woman who pretends to be innocent or harmless to manipulate or avoid responsibility.",
     "word": "mosquita muerta"
@@ -767,6 +767,16 @@
     "slug": "rebusque",
     "snippet": "Resourcefulness or hustling to make money or solve problems in difficult economic situations.",
     "word": "rebusque"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "remisero",
+    "snippet": "Person who drives a remís, a private car service booked in advance.",
+    "word": "remisero"
   },
   {
     "countries": [

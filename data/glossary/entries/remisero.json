@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/remisero/remisero.mp3?v=1766075776",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Person who drives a </span>remís<span style=\"font-weight: normal;\">, a private car service booked in advance.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Persona que conduce un </span>remís<span style=\"font-weight: normal;\">, un servicio de transporte privado contratado previamente.</span>",
+      "domain": [
+        "transporte"
+      ],
+      "equivalents_en": [
+        "private car driver",
+        "car service driver"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/remisero/s1/remisero_ex_01.mp3?v=1766075776",
+          "en": "\"A `car service driver` or a taxi driver? \"\n\"A `car service driver`.\"",
+          "es": "—¿`Remisero` o taxista? \n—`Remisero`.",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "remiseras",
+        "fem_sg": "remisera",
+        "masc_pl": "remiseros",
+        "masc_sg": "remisero"
+      }
+    }
+  ],
+  "slug": "remisero",
+  "word": "remisero"
+}

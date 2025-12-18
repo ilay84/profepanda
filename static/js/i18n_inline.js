@@ -27,15 +27,15 @@
       '.ppx-i18n-target:hover .ppx-i18n-imgbtn{opacity:1}' +
       '.ppx-i18n-modal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.35);display:none;z-index:1000}' +
       '.ppx-i18n-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:1001}' +
-      '.ppx-i18n-card{width:min(640px,94vw);background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,.18);padding:16px}' +
-      '.ppx-i18n-row{display:flex;gap:12px;margin-top:8px}' +
-      '.ppx-i18n-col{flex:1;display:flex;flex-direction:column;gap:8px}' +
+      '.ppx-i18n-card{width:min(640px,94vw);max-width:94vw;background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,.18);padding:16px;box-sizing:border-box;overflow:hidden}' +
+      '.ppx-i18n-row{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;align-items:flex-start}' +
+      '.ppx-i18n-col{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0}' +
       '.ppx-i18n-col label{font:600 12px/1.2 Montserrat,system-ui}' +
-      '.ppx-i18n-input{font:500 14px/1.35 Montserrat,system-ui;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px}' +
+      '.ppx-i18n-input{font:500 14px/1.35 Montserrat,system-ui;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px;width:100%;max-width:100%;box-sizing:border-box}' +
       '.ppx-i18n-tools{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}' +
       '.ppx-i18n-toolbtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:28px;border:1px solid #e5e7eb;border-radius:8px;background:#f8fafc;font:700 13px/1.1 Montserrat,system-ui;cursor:pointer}' +
       '.ppx-i18n-toolbtn:hover{background:#eef2ff;border-color:#c7d2fe}' +
-      '.ppx-i18n-preview{margin-top:6px;padding:10px 12px;border:1px dashed #e5e7eb;border-radius:10px;background:#f8fafc;font:500 14px/1.35 Montserrat,system-ui;min-height:64px;white-space:pre-wrap;}' +
+      '.ppx-i18n-preview{margin-top:6px;padding:10px 12px;border:1px dashed #e5e7eb;border-radius:10px;background:#f8fafc;font:500 14px/1.35 Montserrat,system-ui;min-height:64px;white-space:pre-wrap;width:100%;max-width:100%;box-sizing:border-box;overflow:auto;}' +
       '.ppx-i18n-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}' +
       '.ppx-i18n-btn2{font:600 13px/1 Montserrat,system-ui;padding:10px 14px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;cursor:pointer}' +
       '.ppx-i18n-btn2--primary{background:#111827;color:#fff;border-color:#111827}' +
@@ -517,3 +517,4 @@
     });
   });
 })();
+

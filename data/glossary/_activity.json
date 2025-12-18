@@ -1,6 +1,103 @@
 [
   {
     "kind": "entry_updated",
+    "slug": "mosquita-muerta",
+    "word": "mosquita muerta",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-18T16:42:22.877254Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "calentar",
+    "word": "calentar",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-18T16:41:18.024385Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "anda",
+    "word": "andá",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-18T16:39:45.360258Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "ciruja",
+    "word": "ciruja",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-18T16:38:30.820939Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "cagon",
+    "word": "cagón",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-18T16:37:38.309847Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "remisero",
+    "word": "remisero",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-18T16:36:18.004281Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "remisero",
+    "word": "remisero",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-18T16:36:17.276298Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "remisero",
+    "word": "remisero",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-18T16:36:16.691239Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "remisero",
+    "word": "remisero",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-18T16:35:57.501739Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "remisero",
+    "word": "remisero",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-18T16:35:33.449454Z"
+  },
+  {
+    "kind": "entry_updated",
     "slug": "mina",
     "word": "mina",
     "countries": [

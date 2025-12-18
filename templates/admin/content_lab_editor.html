@@ -221,6 +221,13 @@
     box-shadow: 0 20px 60px rgba(0,0,0,0.25);
     padding: 12px;
     width: min(420px, 92vw);
+    max-width: 92vw;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .ed-text-editor * {
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .ed-text-toolbar {
     display: flex;
@@ -228,6 +235,33 @@
     align-items: center;
     flex-wrap: wrap;
     margin: 6px 0 8px;
+  }
+  .ed-text-color-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ed-text-color-input {
+    width: 96px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 4px 6px;
+    font-size: 12px;
+    font-family: inherit;
+  }
+  .ed-text-color-palette {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .ed-text-color-swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    border: 1px solid #cbd5f5;
+    cursor: pointer;
+    padding: 0;
+    background: transparent;
   }
   .ed-text-btn {
     border: 1px solid #d1d5db;
@@ -249,6 +283,11 @@
     border-radius: 8px;
     padding: 8px;
     font-family: inherit;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block;
+    min-width: 0;
+    resize: vertical;
   }
   .ed-text-translation {
     width: 100%;
@@ -256,6 +295,10 @@
     border-radius: 8px;
     padding: 8px;
     margin-top: 6px;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: block;
+    min-width: 0;
   }
 </style>
 <main class="ppx-container ppx-admin" style="max-width: 1280px; padding: 1.25rem 1rem;">
@@ -452,7 +495,17 @@
   <div class="ed-text-toolbar">
     <button id="ed-text-bold" type="button" class="ed-text-btn">B</button>
     <button id="ed-text-italic" type="button" class="ed-text-btn">I</button>
-    <input id="ed-text-color" type="color" value="#000000" style="width:32px; height:28px; border:none; background:transparent;">
+    <div class="ed-text-color-wrap">
+      <input id="ed-text-color" type="text" class="ed-text-color-input" placeholder="#000000" inputmode="text" autocomplete="off">
+      <div class="ed-text-color-palette" aria-label="Brand colors">
+        <button type="button" class="ed-text-color-swatch" data-color="#000000" style="background:#000000;" title="#000000"></button>
+        <button type="button" class="ed-text-color-swatch" data-color="#bebed6" style="background:#bebed6;" title="#bebed6"></button>
+        <button type="button" class="ed-text-color-swatch" data-color="#f3f4ff" style="background:#f3f4ff;" title="#f3f4ff"></button>
+        <button type="button" class="ed-text-color-swatch" data-color="#8f8ec5" style="background:#8f8ec5;" title="#8f8ec5"></button>
+        <button type="button" class="ed-text-color-swatch" data-color="#c46374" style="background:#c46374;" title="#c46374"></button>
+        <button type="button" class="ed-text-color-swatch" data-color="#475dd7" style="background:#475dd7;" title="#475dd7"></button>
+      </div>
+    </div>
     <button id="ed-text-color-clear" type="button" class="ed-text-btn" style="font-weight:600;">{{ t("Sin color", "No color", app_lang) }}</button>
   </div>
   <textarea id="ed-text-input" class="ed-text-input" placeholder="{{ t('Texto', 'Text', app_lang) }}"></textarea>
@@ -1254,6 +1307,23 @@
     if (els.textEditorItalic) {
       els.textEditorItalic.classList.toggle("is-active", textEditMarks.has("italic"));
     }
+    applyTextEditorStyles();
+  }
+
+  function normalizeHexColor(raw) {
+    if (!raw) return "";
+    const val = String(raw).trim();
+    if (!val) return "";
+    const withHash = val.startsWith("#") ? val : `#${val}`;
+    if (!/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(withHash)) return "";
+    return withHash.toLowerCase();
+  }
+
+  function applyTextEditorStyles() {
+    if (!els.textEditorText) return;
+    els.textEditorText.style.fontWeight = textEditMarks.has("bold") ? "700" : "400";
+    els.textEditorText.style.fontStyle = textEditMarks.has("italic") ? "italic" : "normal";
+    els.textEditorText.style.color = textEditColor || "#111827";
   }
 
   function setTextEditorMode(isModuleTitle) {
@@ -1338,10 +1408,11 @@
       els.textEditorTranslation.value = (seg.translations && seg.translations.en) ? seg.translations.en : "";
     }
     if (els.textEditorColor) {
-      els.textEditorColor.value = textEditColor || "#000000";
+      els.textEditorColor.value = textEditColor || "";
     }
     updateTextToolbar();
     setTextEditorMode(false);
+    applyTextEditorStyles();
     positionTextEditor(target);
   }
 
@@ -1357,6 +1428,7 @@
     if (els.textEditorText) els.textEditorText.value = primary;
     if (els.textEditorTranslation) els.textEditorTranslation.value = trans;
     setTextEditorMode(true);
+    applyTextEditorStyles();
     positionTextEditor(target);
   }
 
@@ -1398,15 +1470,29 @@
   }
   if (els.textEditorColor) {
     els.textEditorColor.addEventListener("input", () => {
-      textEditColor = els.textEditorColor.value || "";
+      const next = normalizeHexColor(els.textEditorColor.value);
+      if (next || !String(els.textEditorColor.value || "").trim()) {
+        textEditColor = next;
+        applyTextEditorStyles();
+      }
     });
   }
   if (els.textEditorColorClear) {
     els.textEditorColorClear.addEventListener("click", () => {
       textEditColor = "";
-      if (els.textEditorColor) els.textEditorColor.value = "#000000";
+      if (els.textEditorColor) els.textEditorColor.value = "";
+      applyTextEditorStyles();
     });
   }
+  document.querySelectorAll(".ed-text-color-swatch").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const color = normalizeHexColor(btn.dataset.color || "");
+      if (!color) return;
+      textEditColor = color;
+      if (els.textEditorColor) els.textEditorColor.value = color;
+      applyTextEditorStyles();
+    });
+  });
   if (els.textEditorClose) {
     els.textEditorClose.addEventListener("click", closeTextEditor);
   }
