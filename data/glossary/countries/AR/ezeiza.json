@@ -1,0 +1,54 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/ezeiza/ezeiza.mp3?v=1766156024",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Name commonly used to refer to Ministro Pistarini International Airport, Buenos Aires’s main international airport.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Nombre usado para referirse al Aeropuerto Internacional Ministro Pistarini, principal aeropuerto internacional de Buenos Aires.</span>",
+      "domain": [
+        "transporte"
+      ],
+      "equivalents_en": [
+        "Ezeiza International Airport"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/ezeiza/s1/ezeiza_ex_01.mp3?v=1766156025",
+          "en": "\"What do you mean coming back? Where are you calling from?\"\n\"From `Ezeiza`.\"",
+          "es": "—¿Cómo volvernos? ¿De dónde me llama? \n—De `Ezeiza`.",
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "nombre_propio",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "ezeiza",
+  "word": "Ezeiza"
+}

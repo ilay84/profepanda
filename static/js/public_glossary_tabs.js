@@ -98,6 +98,82 @@
     const stripped = raw.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     return stripped.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g,'');
   }
+  // Glossary audio player (reused from lessons, scoped)
+  (function initGlossaryAudio(){
+    const SPEEDS = [0.30,0.40,0.50,0.60,0.70,0.80,0.90,1.00,1.10,1.20,1.30,1.40,1.50];
+    const SPEED_ICONS = {
+      '0.30': 'speed-.30x.svg','0.40': 'speed-.40x.svg','0.50': 'speed-.50x.svg','0.60': 'speed-.60x.svg','0.70': 'speed-.70x.svg','0.80': 'speed-.80x.svg','0.90': 'speed-.90x.svg',
+      '1.00': 'speed-1x.svg','1.10': 'speed-1.1x.svg','1.20': 'speed-1.2x.svg','1.30': 'speed-1.3x.svg','1.40': 'speed-1.4x.svg','1.50': 'speed-1.5x.svg'
+    };
+    const ICON_BASE = '/static/assets/lesson-icons/';
+    const ICON_VER = 'v2';
+    const SPEED_MIN = SPEEDS[0];
+    const SPEED_MAX = SPEEDS[SPEEDS.length-1];
+    function clampSpeed(v){ return SPEEDS.reduce((a,b)=> Math.abs(b-v)<Math.abs(a-v)? b:a, SPEEDS[0]); }
+    function speedLabel(v){ const r = clampSpeed(v); return `${r.toFixed(2).replace(/\.00$/,'').replace(/0$/,'')}x`; }
+    function speedIcon(v){ const key = clampSpeed(v).toFixed(2); const file = SPEED_ICONS[key] || SPEED_ICONS['1.00']; return `${ICON_BASE}${file}?${ICON_VER}`; }
+    function formatTime(sec){ if(!Number.isFinite(sec)) return '0:00'; const m=Math.floor(sec/60), s=Math.floor(sec%60); return `${m}:${s.toString().padStart(2,'0')}`; }
+    function mountGlossaryAudioPlayers(root){
+      const lang = (window.ActiveLang || window.APP_LANG || 'es');
+      const figs = root.querySelectorAll('figure.gl-audio');
+      figs.forEach(fig=>{
+        if (fig.__gl_bound) return;
+        const audio = fig.querySelector('[data-gl-audio]');
+        const playBtn = fig.querySelector('[data-gl-audio-play]');
+        const icon = fig.querySelector('[data-gl-audio-icon]');
+        const progress = fig.querySelector('[data-gl-audio-progress]');
+        const progressTrack = fig.querySelector('[data-gl-audio-track]');
+        const speedRange = fig.querySelector('[data-gl-speed-range]');
+        const speedIconEl = fig.querySelector('[data-gl-speed-icon]');
+        if (!audio || !playBtn || !progress || !progressTrack || !speedRange || !speedIconEl) return;
+        function setPitch(){ if ('preservesPitch' in audio) audio.preservesPitch = true; if ('mozPreservesPitch' in audio) audio.mozPreservesPitch = true; if ('webkitPreservesPitch' in audio) audio.webkitPreservesPitch = true; }
+        function applySpeed(v){
+          const rate = clampSpeed(parseFloat(v)||1);
+          try { audio.playbackRate = rate; } catch(_){}
+          setPitch();
+          const label = speedLabel(rate);
+          speedRange.value = rate.toFixed(2);
+          const aria = lang === 'es' ? `Velocidad ${label}` : `Speed ${label}`;
+          speedRange.setAttribute('aria-label', aria);
+          speedIconEl.setAttribute('alt', aria);
+          speedIconEl.src = speedIcon(rate);
+        }
+        function updateProgress(){
+          const pct = audio.duration ? Math.min(100, Math.max(0, (audio.currentTime/audio.duration)*100)) : 0;
+          progress.style.setProperty('--gl-progress', `${pct}%`);
+          progress.style.width = `${pct}%`;
+        }
+        function seek(event){
+          const rect = progressTrack.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const pct = Math.min(1, Math.max(0, x / rect.width));
+          if (audio.duration && Number.isFinite(audio.duration)){
+            audio.currentTime = pct * audio.duration;
+          }
+        }
+        function setPlaying(on){
+          fig.classList.toggle('is-playing', !!on);
+          if (icon) icon.src = on ? `${ICON_BASE}pause.svg` : `${ICON_BASE}audio.svg`;
+          playBtn.setAttribute('aria-label', on ? (lang==='es'?'Pausar audio':'Pause audio') : (lang==='es'?'Reproducir audio':'Play audio'));
+        }
+        function togglePlay(){ try{ audio.paused ? audio.play() : audio.pause(); }catch(_){ } }
+        playBtn.addEventListener('click', togglePlay);
+        progressTrack.addEventListener('click', seek);
+        progressTrack.addEventListener('pointerdown', (e)=> { seek(e); });
+        audio.addEventListener('play', ()=> setPlaying(true));
+        audio.addEventListener('pause', ()=> setPlaying(false));
+        audio.addEventListener('ended', ()=>{ setPlaying(false); audio.currentTime=0; updateProgress(); });
+        audio.addEventListener('timeupdate', updateProgress);
+        audio.addEventListener('loadedmetadata', updateProgress);
+        speedRange.addEventListener('input', e=> applySpeed(e.target.value));
+        speedRange.addEventListener('change', e=> applySpeed(e.target.value));
+        applySpeed(audio.playbackRate || 1.0);
+        updateProgress();
+        fig.__gl_bound = true;
+      });
+    }
+    window.mountGlossaryAudioPlayers = mountGlossaryAudioPlayers;
+  })();
   // Ensure accordion CSS once
   function ensureAccCss(){
     if (document.getElementById('ppx-acc-shared')) return;
@@ -408,6 +484,7 @@
     const entry = Cache.get(entryKey) || Cache.get(Active);
     if (entry){
       pane.innerHTML = renderEntry(entry);
+      try { if (window.mountGlossaryAudioPlayers) window.mountGlossaryAudioPlayers(pane); } catch(_){}
     } else {
       pane.innerHTML = '<div class="ppx-muted">Loading…</div>';
       fetchEntry(Active, ActiveLang).then(ent => {
@@ -551,13 +628,13 @@
       explicit_language: { es:'Lenguaje explícito', en:'Explicit language' },
       potentially_offensive: { es:'Potencialmente ofensivo', en:'Potentially offensive' },
     };
-    const iconForFlag = (flag)=> {
-      const map = {
-        explicit_language: '/static/assets/icons/explicit_language.svg',
-        potentially_offensive: '/static/assets/icons/potentially_offensive.svg'
-      };
-      return map[flag] || '';
+  const iconForFlag = (flag)=> {
+    const map = {
+      explicit_language: '/static/assets/icons/explicit_language.svg',
+      potentially_offensive: '/static/assets/icons/potentially_offensive.svg'
     };
+    return map[flag] || '';
+  };
     const renderExampleFlags = (flags)=>{
       const arr = Array.isArray(flags) ? flags : [];
       const pills = arr.map(f=>{
@@ -646,7 +723,7 @@
       </div>
       ${alsoLine}`;
 
-    function renderExamplesForSense(examples, senseNumber){
+  function renderExamplesForSense(examples, senseNumber){
       if (!examples || !examples.length) return '';
       let exIdx = 0;
       const list = examples.map((ex, exPos)=>{
@@ -670,11 +747,23 @@
           if (!u.includes('/')) return `/media/glossary-audio/examples/${encodeURIComponent(slug)}/${u}`;
           return '/' + u.replace(/^\/+/, '');
         })();
-        const audio = _xu ? `<audio controls preload="metadata" data-audio-id="${aid}" src="${_xu}" style="height:28px; border-radius:8px; background:#fff;"></audio>` : '';
-        const speedCtl = ex.audio ? `<div style="display:flex; align-items:center; gap:8px;">
-              <span class="ppx-muted" style="font-size:12px;">${L('Velocidad','Speed')}</span>
-              <input type="range" min="0.5" max="1.5" step="0.05" value="1.0" data-rate-for="${aid}">
-            </div>` : '';
+        const audio = _xu ? `
+          <figure class="gl-audio" data-gl-audio>
+            <button class="gl-audio__play" type="button" data-gl-audio-play aria-label="${L('Reproducir audio','Play audio')}">
+              <img data-gl-audio-icon src="/static/assets/lesson-icons/audio.svg" alt="" width="24" height="24">
+            </button>
+            <div class="gl-audio__track" data-gl-audio-track>
+              <div class="gl-audio__wave"></div>
+              <div class="gl-audio__wave is-progress" data-gl-audio-progress style="--gl-progress:0%"></div>
+            </div>
+            <div class="gl-audio__meta">
+              <div class="gl-speed gl-speed--inline">
+                <img data-gl-speed-icon src="/static/assets/lesson-icons/speed-1x.svg" alt="${L('Velocidad 1x','Speed 1x')}" width="30" height="30">
+                <input class="gl-speed__range" data-gl-speed-range type="range" min="0.3" max="1.5" step="0.01" value="1.0" aria-label="${L('Velocidad','Speed')}">
+              </div>
+            </div>
+            <audio preload="none" src="${_xu}" data-gl-audio></audio>
+          </figure>` : '';
         const srcLabel = ex.source ? formatSource(ex.source) : '';
         const srcType = ex.source && ex.source.type ? String(ex.source.type||'').toLowerCase() : '';
         const flagsHtml = renderExampleFlags(ex.flags);
@@ -699,7 +788,7 @@
         const esLinked = highlightBackticks(ex.es||'');
         const enLinked = highlightBackticks(ex.en||'');
         return `<div style="padding:.65rem; margin:.45rem 0; background:#eff6ff; border:1px solid #dbeafe; border-radius:12px;">
-          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">${audio}${speedCtl}</div>
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">${audio}</div>
           <div style="margin-top:.6rem; line-height:1.45; white-space:pre-line;"><strong>${esLinked}</strong></div>
           <div style="opacity:.8; line-height:1.45; margin-top:.25rem; white-space:pre-line;"><em>${enLinked}</em></div>
           ${flagsHtml}

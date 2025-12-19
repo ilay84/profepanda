@@ -1,0 +1,66 @@
+/* Glossary audio player (scoped, adapted from lesson player) */
+.gl-audio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  padding: 4px 0;
+  border: 0;
+  box-shadow: none;
+  width: 55%;
+  max-width: 380px;
+  justify-content: flex-start;
+  margin: 0;
+}
+.gl-audio__play {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e1;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  cursor: pointer;
+}
+.gl-audio__play:hover { border-color: #c7d2fe; box-shadow: 0 4px 12px rgba(99,102,241,.18); }
+.gl-audio__track {
+  position: relative;
+  flex: 1;
+  height: 12px;
+  border-radius: 999px;
+  background: #cbd5e1;
+  overflow: hidden;
+  min-width: 140px;
+}
+.gl-audio__wave {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(99,102,241,.15), rgba(99,102,241,.25));
+}
+.gl-audio__wave.is-progress {
+  background: linear-gradient(90deg, #6366f1, #4f46e5);
+  width: var(--gl-progress, 0%);
+}
+.gl-audio__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 70px;
+  justify-content: flex-start;
+}
+.gl-audio__time { font-variant-numeric: tabular-nums; color: #334155; font-size: 13px; }
+.gl-speed { position: relative; }
+.gl-speed { display:flex; align-items:center; gap:8px; }
+.gl-speed--inline img { display:block; }
+.gl-speed__range { width:100%; accent-color:#6366f1; }
+.gl-speed__range { width:140px; max-width: 180px; min-width: 90px; }
+.gl-audio.is-playing .gl-audio__play {
+  background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+  border-color: #93c5fd;
+}
+
+@media (max-width: 900px) {
+  .gl-audio { width: 100%; max-width: 100%; }
+}

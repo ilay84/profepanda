@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/bronca/bronca.mp3?v=1766154812",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Strong anger, frustration, or annoyance caused by an unpleasant situation.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Enojo, rabia o fastidio intenso provocado por una situación desagradable o frustrante.</span>",
+      "domain": [
+        "emociones"
+      ],
+      "equivalents_en": [
+        "anger",
+        "frustration",
+        "annoyance"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/bronca/s1/bronca_ex_01.mp3?v=1766155296",
+          "en": "\"How were the holidays?\" \n\"Great, my friend, great. The `frustration` we felt having to come back!\"",
+          "es": "—¿Qué tal las vacaciones? \n—Bien, querido, bien. ¡La `bronca` que nos dio volvernos!",
+          "linked_terms": [
+            "querido"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "broncas",
+        "fem_sg": "bronca",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "bronca",
+  "word": "bronca"
+}

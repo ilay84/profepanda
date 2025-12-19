@@ -1,6 +1,6 @@
 {
   "alt_spellings": [],
-  "audio": "/media/glossary-audio/entry/barrio-cerrado/barrio_cerrado.mp3",
+  "audio": "/media/glossary-audio/entry/barrio-cerrado/barrio_cerrado.mp3?v=1766158004",
   "senses": [
     {
       "alt_forms": [],
@@ -18,7 +18,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/barrio-cerrado/s1/barrio_cerrado_ex_01.mp3",
+          "audio": "/media/glossary-audio/examples/barrio-cerrado/s1/barrio_cerrado_ex_01.mp3?v=1766157955",
           "en": "“Ugh, I’m so nervous! I’ve never worked in a `gated community` before. What are the people like?”\n“The worst.”",
           "es": "—¡Ay, estoy tan nerviosa! Nunca trabajé en un `barrio cerrado`. ¿Cómo es la gente?\n—Lo peor.",
           "source": {
@@ -39,7 +39,15 @@
       "status": [
         "vigente"
       ],
-      "tone": []
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
     }
   ],
   "slug": "barrio-cerrado",

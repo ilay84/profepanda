@@ -1,0 +1,61 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/querido/querido.mp3?v=1766155397",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "Form of address used with someone one has familiarity or rapport with, without implying romantic affection.",
+      "definition_es": "Vocativo usado para dirigirse a alguien con quien se tiene confianza o trato cercano, sin implicar afecto romántico.",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "my friend",
+        "buddy",
+        "man"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/querido/s1/querido_ex_01.mp3?v=1766155314",
+          "en": "—How were the holidays? —Good, my `friend`, good. The frustration we felt having to come back!",
+          "es": "—¿Qué tal las vacaciones? —Bien, `querido`, bien. ¡La bronca que nos dio volvernos!",
+          "linked_terms": [
+            "bronca"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "formula_social",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "afectuoso"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "queridas",
+        "fem_sg": "querida",
+        "masc_pl": "queridos",
+        "masc_sg": "querido"
+      }
+    }
+  ],
+  "slug": "querido",
+  "word": "querido"
+}

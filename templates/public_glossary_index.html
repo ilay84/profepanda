@@ -105,6 +105,7 @@
         #rg-filters-backdrop.is-open{display:block;}
       }
     </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/glossary_audio.css', v='3') }}">
     <style>
       /* Shared accordion styling */
       details.ppx-acc summary {
@@ -126,7 +127,7 @@
 
     <div class="rg-glossary-grid">
       <aside class="ppx-card" style="padding:.75rem;">
-        <h2 class="rg-section-title">{{ t('Países', 'Countries', app_lang) }}</h2>
+        <h2 class="rg-section-title">{{ t('Pa├¡ses', 'Countries', app_lang) }}</h2>
         <div class="rg-country-wrapper">
           <button id="rg-all-glossaries" type="button" class="rg-country-btn rg-country-btn--globe" data-country-code="ALL" data-label="{{ t('Todos los glosarios', 'All glossaries', app_lang) }}">
             <img src="{{ url_for('static', filename='assets/icons/globe.svg') }}" alt="globe">
@@ -160,19 +161,19 @@
           </div>
         </div>
         <div id="rg-landing-msg" class="ppx-muted rg-landing" style="display:block; padding:1rem 1.25rem 1.25rem; text-align:center;">
-          <div class="ppx-h2" style="margin:0;">{{ t('Elige cualquier país para comenzar', 'Choose any country to begin', app_lang) }}</div>
-          <p style="margin:.5rem 0 0;">{{ t('Explora glosarios regionales auténticos.', 'Browse real regional glossaries.', app_lang) }}</p>
+          <div class="ppx-h2" style="margin:0;">{{ t('Elige cualquier pa├¡s para comenzar', 'Choose any country to begin', app_lang) }}</div>
+          <p style="margin:.5rem 0 0;">{{ t('Explora glosarios regionales aut├⌐nticos.', 'Browse real regional glossaries.', app_lang) }}</p>
         </div>
 
         <header id="rg-header" class="rg-header" style="display:none; padding:.85rem 1rem 1.25rem; border-bottom:1px solid #e5e7eb; margin-bottom:.35rem;">
           <div class="rg-row-top">
             <div id="rg-country-title" class="rg-country-title">
               <img id="rg-country-title-flag" class="rg-country-title-flag" alt="" aria-hidden="true" />
-              <span id="rg-country-title-text">{{ t('Selecciona un país para comenzar', 'Select a country to start', app_lang) }}</span>
+              <span id="rg-country-title-text">{{ t('Selecciona un pa├¡s para comenzar', 'Select a country to start', app_lang) }}</span>
             </div>
             <div class="rg-search-wrap">
               <img class="rg-search-icon" src="{{ url_for('static', filename='assets/icons/search.svg') }}" alt="">
-              <input id="rg-q" type="search" placeholder="{{ t('Buscar en este país.', 'Search in this country.', app_lang) }}">
+              <input id="rg-q" type="search" placeholder="{{ t('Buscar en este pa├¡s.', 'Search in this country.', app_lang) }}">
               <button id="rg-q-clear" class="ppx-btn ppx-btn--subtle rg-search-clear">{{ t('Limpiar', 'Clear', app_lang) }}</button>
             </div>
             <button id="rg-filters-toggle" class="rg-filters-toggle-btn ppx-btn ppx-btn--subtle" type="button" aria-expanded="false" aria-controls="rg-filters-pane">
@@ -201,7 +202,7 @@
             <div id="rg-empty-state" class="rg-empty-state" style="display:none;">{{ t('No hay entradas para mostrar.', 'No entries to show.', app_lang) }}</div>
           </div>
           <div id="rg-load-controls" class="rg-load-controls" style="display:none;">
-            <button id="rg-load-more" class="ppx-btn ppx-btn--subtle">{{ t('Ver más', 'Load more', app_lang) }}</button>
+            <button id="rg-load-more" class="ppx-btn ppx-btn--subtle">{{ t('Ver m├ís', 'Load more', app_lang) }}</button>
             <button id="rg-load-all" class="ppx-btn ppx-btn--muted">{{ t('Cargar todo', 'Load all entries', app_lang) }}</button>
           </div>
         </div>
@@ -290,8 +291,8 @@
     const bodyEl = document.body || document.getElementsByTagName('body')[0];
     const sensitivityMeta = {
       lenguaje_explicito: {
-        label: '{{ t('Lenguaje explícito', 'Explicit language', app_lang) }}',
-        tooltip: '{{ t('Etiquetado como lenguaje explícito', 'Marked as explicit language', app_lang) }}'
+        label: '{{ t('Lenguaje expl├¡cito', 'Explicit language', app_lang) }}',
+        tooltip: '{{ t('Etiquetado como lenguaje expl├¡cito', 'Marked as explicit language', app_lang) }}'
       },
       potencialmente_ofensivo: {
         label: '{{ t('Potencialmente ofensivo', 'Potentially offensive', app_lang) }}',
@@ -806,7 +807,7 @@
             label.className = 'rg-sense-label';
             const posLabel = s.pos ? (posLabels[s.pos] || s.pos) : '';
             const num = s.num || idx + 1;
-            label.textContent = posLabel ? `${num} · ${posLabel}` : `${num}`;
+            label.textContent = posLabel ? `${num} ┬╖ ${posLabel}` : `${num}`;
             const def = document.createElement('p');
             def.className = 'rg-definition';
             const senseDef = uiLang === 'en'
@@ -1107,7 +1108,7 @@
   })();
   </script>
   {# Cache-bust to ensure latest glossary tabs script (newline rendering) #}
-  <script src="{{ url_for('static', filename='js/public_glossary_tabs.js', v='31') }}"></script>
+  <script src="{{ url_for('static', filename='js/public_glossary_tabs.js', v='39') }}"></script>
   <script src="{{ url_for('static', filename='js/ppx-accordion.js') }}"></script>
   <script>
     window.openEntry = function(slug){ if (window.Tabs && typeof Tabs.open==='function') { Tabs.open(slug); } };

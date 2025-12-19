@@ -130,6 +130,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "sustantivo_femenino",
+    "slug": "bronca",
+    "snippet": "Strong anger, frustration, or annoyance caused by an unpleasant situation.",
+    "word": "bronca"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "sustantivo_masculino_y_femenino",
     "slug": "cachamai",
     "snippet": "Argentine brand of herbal teas, also used to refer to a tea from that brand.",
@@ -388,6 +397,15 @@
     "slug": "epa",
     "snippet": "Interjection used to express surprise, get someone’s attention, or signal a pause to look at or assess something.",
     "word": "epa"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "nombre_propio",
+    "slug": "ezeiza",
+    "snippet": "Name commonly used to refer to Ministro Pistarini International Airport, Buenos Aires’s main international airport.",
+    "word": "Ezeiza"
   },
   {
     "countries": [
@@ -812,6 +830,15 @@
     "slug": "pucho",
     "snippet": "Cigarette, either whole or partly smoked.",
     "word": "pucho"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "formula_social",
+    "slug": "querido",
+    "snippet": "Form of address used with someone one has familiarity or rapport with, without implying romantic affection.",
+    "word": "querido"
   },
   {
     "countries": [

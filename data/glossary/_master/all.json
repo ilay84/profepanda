@@ -472,7 +472,7 @@
   },
   {
     "alt_spellings": [],
-    "audio": "/media/glossary-audio/entry/barrio-cerrado/barrio_cerrado.mp3",
+    "audio": "/media/glossary-audio/entry/barrio-cerrado/barrio_cerrado.mp3?v=1766158004",
     "senses": [
       {
         "alt_forms": [],
@@ -490,7 +490,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/barrio-cerrado/s1/barrio_cerrado_ex_01.mp3",
+            "audio": "/media/glossary-audio/examples/barrio-cerrado/s1/barrio_cerrado_ex_01.mp3?v=1766157955",
             "en": "“Ugh, I’m so nervous! I’ve never worked in a `gated community` before. What are the people like?”\n“The worst.”",
             "es": "—¡Ay, estoy tan nerviosa! Nunca trabajé en un `barrio cerrado`. ¿Cómo es la gente?\n—Lo peor.",
             "source": {
@@ -511,7 +511,15 @@
         "status": [
           "vigente"
         ],
-        "tone": []
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
       }
     ],
     "slug": "barrio-cerrado",
@@ -754,6 +762,65 @@
     ],
     "slug": "boludo",
     "word": "boludo"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/bronca/bronca.mp3?v=1766154812",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Strong anger, frustration, or annoyance caused by an unpleasant situation.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Enojo, rabia o fastidio intenso provocado por una situación desagradable o frustrante.</span>",
+        "domain": [
+          "emociones"
+        ],
+        "equivalents_en": [
+          "anger",
+          "frustration",
+          "annoyance"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/bronca/s1/bronca_ex_01.mp3?v=1766155296",
+            "en": "\"How were the holidays?\" \n\"Great, my friend, great. The `frustration` we felt having to come back!\"",
+            "es": "—¿Qué tal las vacaciones? \n—Bien, querido, bien. ¡La `bronca` que nos dio volvernos!",
+            "linked_terms": [
+              "querido"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "broncas",
+          "fem_sg": "bronca",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "bronca",
+    "word": "bronca"
   },
   {
     "alt_spellings": [
@@ -2364,6 +2431,60 @@
     ],
     "slug": "epa",
     "word": "epa"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/ezeiza/ezeiza.mp3?v=1766156024",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Name commonly used to refer to Ministro Pistarini International Airport, Buenos Aires’s main international airport.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Nombre usado para referirse al Aeropuerto Internacional Ministro Pistarini, principal aeropuerto internacional de Buenos Aires.</span>",
+        "domain": [
+          "transporte"
+        ],
+        "equivalents_en": [
+          "Ezeiza International Airport"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/ezeiza/s1/ezeiza_ex_01.mp3?v=1766156025",
+            "en": "\"What do you mean coming back? Where are you calling from?\"\n\"From `Ezeiza`.\"",
+            "es": "—¿Cómo volvernos? ¿De dónde me llama? \n—De `Ezeiza`.",
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "nombre_propio",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "ezeiza",
+    "word": "Ezeiza"
   },
   {
     "alt_spellings": [],
@@ -5246,6 +5367,67 @@
     ],
     "slug": "pucho",
     "word": "pucho"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/querido/querido.mp3?v=1766155397",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "Form of address used with someone one has familiarity or rapport with, without implying romantic affection.",
+        "definition_es": "Vocativo usado para dirigirse a alguien con quien se tiene confianza o trato cercano, sin implicar afecto romántico.",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "my friend",
+          "buddy",
+          "man"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/querido/s1/querido_ex_01.mp3?v=1766155314",
+            "en": "—How were the holidays? —Good, my `friend`, good. The frustration we felt having to come back!",
+            "es": "—¿Qué tal las vacaciones? —Bien, `querido`, bien. ¡La bronca que nos dio volvernos!",
+            "linked_terms": [
+              "bronca"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "formula_social",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "afectuoso"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "queridas",
+          "fem_sg": "querida",
+          "masc_pl": "queridos",
+          "masc_sg": "querido"
+        }
+      }
+    ],
+    "slug": "querido",
+    "word": "querido"
   },
   {
     "alt_spellings": [],
