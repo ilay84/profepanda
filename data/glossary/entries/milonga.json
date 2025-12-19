@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/milonga/milonga.mp3?v=1766150516",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Social dance event or venue where tango and related rhythms are danced, usually at night.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Baile social o lugar donde se baila tango y otros ritmos relacionados, generalmente en un ambiente nocturno.</span>",
+      "domain": [
+        "cultura_pop"
+      ],
+      "equivalents_en": [
+        "tango dance hall",
+        "tango dance event"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/milonga/s1/milonga_ex_01.mp3?v=1766150516",
+          "en": "If you’d like to go to a `milonga` tonight, I can make a reservation for you. You’ll love it.",
+          "es": "Si usted quiere ir a una `milonga` esta noche, yo le puedo hacer una reserva. Le va a encantar, eh.",
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "milongas",
+        "fem_sg": "milonga",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "milonga",
+  "word": "milonga"
+}

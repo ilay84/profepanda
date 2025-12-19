@@ -21,6 +21,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "adjetivo",
+    "slug": "agreta",
+    "snippet": "Said of a person: unpleasant, bitter, or ill-tempered.",
+    "word": "agreta"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "sustantivo_masculino",
     "slug": "aire",
     "snippet": "Shortened form of air conditioner, used to refer to the cooling unit.",
@@ -34,6 +43,15 @@
     "slug": "al-toque",
     "snippet": "Very fast, right away, with almost no delay.",
     "word": "al toque"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "amarrete",
+    "snippet": "Said of a person: unwilling to spend or share money; stingy.",
+    "word": "amarrete"
   },
   {
     "countries": [
@@ -67,7 +85,7 @@
     "countries": [
       "AR"
     ],
-    "pos": "locucion_nominal",
+    "pos": "locucion_sustantival",
     "slug": "barrio-cerrado",
     "snippet": "A residential area with restricted access, typically fenced and guarded.",
     "word": "barrio cerrado"
@@ -80,6 +98,15 @@
     "slug": "birra",
     "snippet": "Beer, especially when mentioned in casual or colloquial speech.",
     "word": "birra"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "bodrio",
+    "snippet": "Something very boring, unpleasant, or of poor quality.",
+    "word": "bodrio"
   },
   {
     "countries": [
@@ -103,7 +130,7 @@
     "countries": [
       "AR"
     ],
-    "pos": "sustantivo",
+    "pos": "sustantivo_masculino_y_femenino",
     "slug": "cachamai",
     "snippet": "Argentine brand of herbal teas, also used to refer to a tea from that brand.",
     "word": "Cachamai"
@@ -121,7 +148,7 @@
     "countries": [
       "AR"
     ],
-    "pos": "sustantivo",
+    "pos": "sustantivo_masculino_y_femenino",
     "slug": "cagar",
     "snippet": "To seriously damage or ruin.",
     "word": "cagar"
@@ -149,7 +176,7 @@
     "countries": [
       "AR"
     ],
-    "pos": "sustantivo",
+    "pos": "sustantivo_masculino_y_femenino",
     "slug": "calentarse",
     "snippet": "To get upset or lose one's cool.",
     "word": "calentarse"
@@ -158,7 +185,7 @@
     "countries": [
       "AR"
     ],
-    "pos": "sustantivo",
+    "pos": "sustantivo_masculino_y_femenino",
     "slug": "cargar",
     "snippet": "To tease, joke, or mess with someone.",
     "word": "cargar"
@@ -208,6 +235,15 @@
     "slug": "chocho",
     "snippet": "Very happy or excited.",
     "word": "chocho"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "chomba",
+    "snippet": "Shirt with a collar and usually buttons, similar to a polo shirt.",
+    "word": "chomba"
   },
   {
     "countries": [
@@ -556,6 +592,24 @@
     "countries": [
       "AR"
     ],
+    "pos": "frase_hecha",
+    "slug": "me-chupa-un-huevo",
+    "snippet": "Expression used to show complete indifference or contempt toward something or someone.",
+    "word": "me chupa un huevo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "milonga",
+    "snippet": "Social dance event or venue where tango and related rhythms are danced, usually at night.",
+    "word": "milonga"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "sustantivo_femenino",
     "slug": "mina",
     "snippet": "In lunfardo, a woman; can sound dismissive or objectifying depending on tone.",
@@ -709,6 +763,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "sustantivo_masculino",
+    "slug": "placard",
+    "snippet": "Built-in closet or wardrobe used to store clothes and other items.",
+    "word": "placard"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "sustantivo_femenino",
     "slug": "plata",
     "snippet": "Money in general; an informal, widely used term regardless of currency.",
@@ -758,6 +821,15 @@
     "slug": "rajar",
     "snippet": "To leave a place quickly or abruptly.",
     "word": "rajar"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "particula_modal",
+    "slug": "re",
+    "snippet": "Intensifying prefix added to words to strengthen their meaning or expressive force, especially in colloquial speech.",
+    "word": "re-"
   },
   {
     "countries": [

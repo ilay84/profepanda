@@ -282,14 +282,14 @@
     const tone = s.tone || [];
     const freq = s.freq ? [s.freq] : [];
     const parts = [];
-    if (s.pos) parts.push(pill(posLabel(s.pos, ActiveLang), 'accent'));
+    // POS pill rendered inline with the sense number; skip here to avoid duplicates
     if (reg.length) parts.push(pill(reg.map(v=> labelFor('register', v, ActiveLang)).join(' / '), reg.some(r=> normTok(r)==='vulgar') ? 'alert' : 'muted'));
     if (freq.length) parts.push(pill(labelFor('freq', freq[0], ActiveLang), 'muted'));
     if (status.length) parts.push(pill(status.map(v=> labelFor('status', v, ActiveLang)).join(' / '), 'muted'));
     if (sens.length) parts.push(pill(sensitivityLabel(sens, ActiveLang), 'alert'));
     if (domain.length) parts.push(pill(domain.slice(0,2).map(v=> labelFor('domain', v, ActiveLang)).join(', '), 'muted'));
     if (tone.length) parts.push(pill(tone.slice(0,2).map(v=> labelFor('tone', v, ActiveLang)).join(', '), 'muted'));
-    return parts.length ? `<div style="display:flex; flex-wrap:wrap; gap:6px; margin:.35rem 0;">${parts.join('')}</div>` : '';
+    return parts.length ? `<div style="display:flex; flex-wrap:wrap; gap:6px; margin:.35rem 0 .7rem 0;">${parts.join('')}</div>` : '';
   }
   function warningForSense(s){
     const reg = s.register ? [s.register].flat().filter(Boolean) : [];
@@ -547,6 +547,28 @@
       const name = map[(type||'').toLowerCase()] || 'other';
       return `/static/assets/icons/${name}.svg`;
     };
+    const FLAG_LABELS = {
+      explicit_language: { es:'Lenguaje explícito', en:'Explicit language' },
+      potentially_offensive: { es:'Potencialmente ofensivo', en:'Potentially offensive' },
+    };
+    const iconForFlag = (flag)=> {
+      const map = {
+        explicit_language: '/static/assets/icons/explicit_language.svg',
+        potentially_offensive: '/static/assets/icons/potentially_offensive.svg'
+      };
+      return map[flag] || '';
+    };
+    const renderExampleFlags = (flags)=>{
+      const arr = Array.isArray(flags) ? flags : [];
+      const pills = arr.map(f=>{
+        const icon = iconForFlag(f);
+        const labelFlag = (FLAG_LABELS[f] && FLAG_LABELS[f][LANG]) || f;
+        return `<span title="${labelFlag}" style="display:inline-flex; align-items:center; gap:4px;">
+          ${icon ? `<img src="${icon}" alt="${labelFlag}" style="width:16px; height:16px;">` : ''}
+        </span>`;
+      }).join('');
+      return pills ? `<div style="margin-top:.25rem; display:flex; flex-wrap:wrap; gap:.35rem; align-items:center;">${pills}</div>` : '';
+    };
     const formatSource = (src)=>{
       if (!src || !src.type) return '';
       const t = (src.type||'').toLowerCase();
@@ -655,6 +677,7 @@
             </div>` : '';
         const srcLabel = ex.source ? formatSource(ex.source) : '';
         const srcType = ex.source && ex.source.type ? String(ex.source.type||'').toLowerCase() : '';
+        const flagsHtml = renderExampleFlags(ex.flags);
         const linkedHtml = (Array.isArray(ex.linked_terms) && ex.linked_terms.length) ? (() => {
           const chips = ex.linked_terms.map(lt => {
             const slug = normalizeSlug(lt);
@@ -677,8 +700,9 @@
         const enLinked = highlightBackticks(ex.en||'');
         return `<div style="padding:.65rem; margin:.45rem 0; background:#eff6ff; border:1px solid #dbeafe; border-radius:12px;">
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">${audio}${speedCtl}</div>
-          <div style="margin-top:.5rem; line-height:1.45; white-space:pre-line;"><strong>${esLinked}</strong></div>
-          <div style="opacity:.8; line-height:1.45; margin-top:.2rem; white-space:pre-line;"><em>${enLinked}</em></div>
+          <div style="margin-top:.6rem; line-height:1.45; white-space:pre-line;"><strong>${esLinked}</strong></div>
+          <div style="opacity:.8; line-height:1.45; margin-top:.25rem; white-space:pre-line;"><em>${enLinked}</em></div>
+          ${flagsHtml}
           ${srcHtml}
           ${linkedHtml}
         </div>`;
@@ -697,7 +721,7 @@
     let sensesHtml = '';
     senses.forEach((s, idx)=>{
       const def = (LANG==='en' ? (s.definition_en||'') : (s.definition_es||''));
-      const defs = def ? `<p style="margin:.25rem 0;">${LANG==='en' ? `<em>${def}</em>` : def}</p>` : '';
+      const defs = def ? `<p style="margin:.6rem 0 .85rem 0;">${def}</p>` : '';
       const eqs = (s.equivalents_en||[]).map(x=>`<li><em>${x}</em></li>`).join('');
       const related = (s.related_slugs||[]).map(rs=>{
         const label = (rs||'').replace(/-/g,' ');
@@ -715,7 +739,10 @@
 
       sensesHtml += `
         <div class="ppx-card" style="padding:.75rem; margin-top:.5rem;">
-          <div style="margin-bottom:.25rem; display:flex; align-items:center; gap:.35rem;"><strong>${idx+1}.</strong> ${s.pos ? `<em>${posLabel(s.pos, LANG)}</em>` : ''}</div>
+          <div style="margin-bottom:.25rem; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap;">
+            <strong>${idx+1}.</strong>
+            ${s.pos ? `<span style="display:inline-flex; align-items:center; padding:6px 10px; border-radius:999px; border:1px solid #c7d2fe; background:#eef2ff; color:#312e81; font-weight:700; font-size:13px;">${posLabel(s.pos, LANG)}</span>` : ''}
+          </div>
           ${senseMeta}
           ${senseVariants}
           <div>${defs}</div>
@@ -781,9 +808,3 @@
 
   window.Tabs = { open, activate, close, resume };
 })();
-
-
-
-
-
-

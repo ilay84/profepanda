@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/bodrio/bodrio.mp3?v=1766094483",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Something very boring, unpleasant, or of poor quality.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Cosa, actividad o situación muy aburrida, desagradable o de mala calidad.</span>",
+      "domain": [
+        "cultura_pop"
+      ],
+      "equivalents_en": [
+        "bore",
+        "drag",
+        "dud"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/bodrio/s1/bodrio_ex_01.mp3?v=1766094484",
+          "en": "They asked me to give a masterclass at the School of Fine Arts. A total `drag`.",
+          "es": "Me encargaron una masterclass en Bellas Artes. Un `bodrio`.",
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "bodrios",
+        "masc_sg": "bodrio"
+      }
+    }
+  ],
+  "slug": "bodrio",
+  "word": "bodrio"
+}

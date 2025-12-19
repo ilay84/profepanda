@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/amarrete/amarrete.mp3?v=1766089138",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Said of a person: unwilling to spend or share money; stingy.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Dicho de una persona: que no quiere gastar dinero ni compartirlo; tacaña.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "stingy",
+        "cheap",
+        "tight-fisted"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/amarrete/s1/amarrete_ex_01.mp3?v=1766089147",
+          "en": "No, we don’t give. Not because I’m `stingy`, no. I give when I pay my taxes to the state.",
+          "es": "No, nosotros no damos. No de `amarrete`, no. Yo doy cuando pago mis impuestos al Estado.",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "amarretes",
+        "fem_sg": "amarrete",
+        "masc_pl": "amarretes",
+        "masc_sg": "amarrete"
+      }
+    }
+  ],
+  "slug": "amarrete",
+  "word": "amarrete"
+}

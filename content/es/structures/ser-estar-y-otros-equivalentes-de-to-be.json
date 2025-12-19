@@ -39,21 +39,17 @@
           "type": "heading"
         },
         {
-          "id": "rich_text-2",
-          "type": "rich_text",
           "data": {
-            "id": "intro-ser-estar-core",
-            "type": "rich_text",
             "data": {
               "segments": [
                 {
+                  "marks": [
+                    "bold"
+                  ],
                   "text": "SER y ESTAR: esencia y situación",
                   "translations": {
                     "en": "SER and ESTAR: Essence and Situation"
-                  },
-                  "marks": [
-                    "bold"
-                  ]
+                  }
                 },
                 {
                   "text": "En español, SER y ESTAR no dicen lo mismo. Usamos SER para hablar de la esencia: cómo definimos o entendemos a una persona o cosa. Usamos ESTAR para hablar de la situación: cómo está o dónde se encuentra en un momento concreto.",
@@ -68,8 +64,12 @@
                   }
                 }
               ]
-            }
-          }
+            },
+            "id": "intro-ser-estar-core",
+            "type": "rich_text"
+          },
+          "id": "rich_text-2",
+          "type": "rich_text"
         }
       ],
       "module_id": "mod1",

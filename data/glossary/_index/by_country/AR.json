@@ -8,12 +8,20 @@
     "word": "afanar"
   },
   {
+    "slug": "agreta",
+    "word": "agreta"
+  },
+  {
     "slug": "aire",
     "word": "aire"
   },
   {
     "slug": "al-toque",
     "word": "al toque"
+  },
+  {
+    "slug": "amarrete",
+    "word": "amarrete"
   },
   {
     "slug": "amenities",
@@ -34,6 +42,10 @@
   {
     "slug": "birra",
     "word": "birra"
+  },
+  {
+    "slug": "bodrio",
+    "word": "bodrio"
   },
   {
     "slug": "boliche",
@@ -90,6 +102,10 @@
   {
     "slug": "chocho",
     "word": "chocho"
+  },
+  {
+    "slug": "chomba",
+    "word": "chomba"
   },
   {
     "slug": "chorro",
@@ -244,6 +260,14 @@
     "word": "mango"
   },
   {
+    "slug": "me-chupa-un-huevo",
+    "word": "me chupa un huevo"
+  },
+  {
+    "slug": "milonga",
+    "word": "milonga"
+  },
+  {
     "slug": "mina",
     "word": "mina"
   },
@@ -312,6 +336,10 @@
     "word": "pibe"
   },
   {
+    "slug": "placard",
+    "word": "placard"
+  },
+  {
     "slug": "plata",
     "word": "plata"
   },
@@ -334,6 +362,10 @@
   {
     "slug": "rajar",
     "word": "rajar"
+  },
+  {
+    "slug": "re",
+    "word": "re-"
   },
   {
     "slug": "rebusque",

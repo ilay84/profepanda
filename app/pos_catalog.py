@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 from typing import Any, Dict, Iterable, List, Mapping, Optional
 
 POS_CATALOG: List[Dict[str, Any]] = [
@@ -44,10 +45,11 @@ POS_CATALOG: List[Dict[str, Any]] = [
     {
         "value": "verbo_transitivo_e_intransitivo",
         "es": "verbo transitivo e intransitivo",
-        "en": "transitive–intransitive verb",
+        "en": "transitive-intransitive verb",
         "group": "verb",
     },
 ]
+
 
 POS_VALUES = {entry["value"] for entry in POS_CATALOG}
 
@@ -108,6 +110,8 @@ LEGACY_ALIASES: Mapping[str, str] = {
 def _canon(token: Any) -> str:
     try:
         text = str(token or "").lower().strip()
+        text = unicodedata.normalize("NFD", text)
+        text = "".join(ch for ch in text if unicodedata.category(ch) != "Mn")
         text = re.sub(r"\s+", "_", text)
         text = re.sub(r"[^a-z0-9_]", "_", text)
         text = re.sub(r"_+", "_", text).strip("_")

@@ -110,6 +110,7 @@ DOMAIN_C = {
 TONE_C = {"afectuoso", "despectivo", "ironico", "humoristico", "poetico", "agresivo"}
 STATUS_C = {"vigente", "en_desuso", "arcaico", "regionalismo_fuerte"}
 SENSITIVITY_C = {"potencialmente_ofensivo", "lenguaje_explicito", "connotacion_sexual"}
+EXAMPLE_FLAGS = {"explicit_language", "potentially_offensive"}
 # -------------------------------
 # Normalize entry payload for save (canonical tokens, ids, ordering)
 # -------------------------------
@@ -213,6 +214,19 @@ def _normalize_for_save(payload: Dict[str, Any]) -> Dict[str, Any]:
                     linked_out.append(slug)
             if linked_out:
                 exn["linked_terms"] = linked_out
+            flags_in = ex.get("flags") if isinstance(ex.get("flags"), list) else []
+            flags_out: list[str] = []
+            for f in flags_in:
+                tok = _canon(f)
+                if tok in EXAMPLE_FLAGS:
+                    flags_out.append(tok)
+            # backward-compatible booleans
+            if ex.get("explicit_language"):
+                flags_out.append("explicit_language")
+            if ex.get("potentially_offensive"):
+                flags_out.append("potentially_offensive")
+            if flags_out:
+                exn["flags"] = sorted(set(flags_out))
             ex_out.append(exn)
         if ex_out:
             sn["examples"] = ex_out
@@ -765,8 +779,10 @@ def validate_entry(data: Dict[str, Any]) -> Tuple[bool, List[str]]:
                 if c not in COUNTRIES:
                     errs.append(f"sense #{i}: invalid country {c!r}")
         pos_c = _normalize_pos(s.get("pos"))
-        # Be permissive: accept any normalized POS token (including new ones) and default to 'sustantivo' if missing.
-        s["pos"] = pos_c or "sustantivo"
+        if not pos_c:
+            errs.append(f"sense #{i}: pos invalid or missing")
+        else:
+            s["pos"] = pos_c
         reg = s.get("register") if s.get("register") is not None else None
         reg_c = (_canon(reg) if reg is not None else None)
         if reg_c not in REGISTER_C:
@@ -824,6 +840,28 @@ def validate_entry(data: Dict[str, Any]) -> Tuple[bool, List[str]]:
 
         if not (s.get("definition_es") or s.get("definition_en")):
             errs.append(f"sense #{i}: definition_es/en required")
+
+        # examples (optional)
+        ex_list = s.get("examples") or []
+        if not isinstance(ex_list, list):
+            errs.append(f"sense #{i}: examples must be an array")
+        else:
+            for ex_idx, ex in enumerate(ex_list, start=1):
+                if not isinstance(ex, dict):
+                    errs.append(f"sense #{i} example #{ex_idx}: must be an object")
+                    continue
+                if not isinstance(ex.get("es"), str):
+                    errs.append(f"sense #{i} example #{ex_idx}: 'es' required (string)")
+                if ex.get("linked_terms") is not None:
+                    if not isinstance(ex.get("linked_terms"), list) or any(not isinstance(x, str) for x in ex.get("linked_terms")):
+                        errs.append(f"sense #{i} example #{ex_idx}: linked_terms must be array of strings")
+                if ex.get("flags") is not None:
+                    if not isinstance(ex.get("flags"), list):
+                        errs.append(f"sense #{i} example #{ex_idx}: flags must be an array")
+                    else:
+                        for flag in ex.get("flags"):
+                            if _canon(flag) not in EXAMPLE_FLAGS:
+                                errs.append(f"sense #{i} example #{ex_idx}: unknown flag {flag!r}")
 
     return (len(errs) == 0), errs
 
@@ -924,4 +962,3 @@ def entries_for_country(country: str) -> List[Dict[str, Any]]:
         if code in sense_countries:
             items.append({"slug": slug, "word": (data.get("word") or slug)})
     return sorted(items, key=lambda x: (x["word"].lower(), x["slug"]))
-

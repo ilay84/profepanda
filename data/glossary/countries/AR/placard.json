@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [
+    "placar"
+  ],
+  "audio": "/media/glossary-audio/entry/placard/placard.mp3?v=1766089487",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Built-in closet or wardrobe used to store clothes and other items.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Mueble o espacio empotrado destinado a guardar ropa y otros objetos, equivalente a un armario.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "closet",
+        "wardrobe"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/placard/s1/placard_ex_01.mp3?v=1766089487",
+          "en": "She’s going to be happy that I’m making space for her in the `closet`.",
+          "es": "Se va a poner contenta de que le hago lugar en el `placar`.",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "placards",
+        "masc_sg": "placard"
+      }
+    }
+  ],
+  "slug": "placard",
+  "word": "placard"
+}

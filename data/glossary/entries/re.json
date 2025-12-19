@@ -1,0 +1,76 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/re/re.mp3?v=1766100425",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "Intensifying prefix added to words to strengthen their meaning or expressive force, especially in colloquial speech.",
+      "definition_es": "Prefijo intensificador que se antepone a palabras para reforzar su significado o carga expresiva, especialmente en registros coloquiales.",
+      "domain": [],
+      "equivalents_en": [
+        "very",
+        "really",
+        "extremely"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/re/s1/re_ex_01.mp3?v=1766100426",
+          "en": "Then to hell with him!",
+          "es": "¡Que se vaya a la `reputa` que lo parió entonces!",
+          "flags": [
+            "explicit_language",
+            "potentially_offensive"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/re/s1/re_ex_02.mp3?v=1766100426",
+          "en": "Son of a fucking bitch.",
+          "es": "Hijo de `recontra` mil puta.",
+          "flags": [
+            "explicit_language",
+            "potentially_offensive"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "particula_modal",
+      "register": "informal",
+      "related_slugs": [
+        "re"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "re",
+  "word": "re-"
+}

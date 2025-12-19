@@ -53,6 +53,19 @@
                 {% endfor %}
                 <div>{{ es_text|safe }}</div>
                 {% if ex.en %}<div style="opacity:.8;">{{ en_text|safe }}</div>{% endif %}
+                {% if ex.flags %}
+                  <div style="margin-top:.25rem; display:flex; flex-wrap:wrap; gap:.35rem; align-items:center;">
+                    {% for flag in ex.flags %}
+                      {% set label = flag == 'explicit_language' and t('Lenguaje explícito','Explicit language', app_lang) or flag == 'potentially_offensive' and t('Potencialmente ofensivo','Potentially offensive', app_lang) or flag %}
+                      {% set icon = flag == 'explicit_language' and '/static/assets/icons/explicit_language.svg' or flag == 'potentially_offensive' and '/static/assets/icons/potentially_offensive.svg' or '' %}
+                      {% if icon %}
+                        <span title="{{ label }}" style="display:inline-flex; align-items:center; gap:6px; padding:2px 4px;">
+                          <img src="{{ icon }}" alt="{{ label }}" style="width:16px; height:16px;">
+                        </span>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
                 {% if ex.source %}<div style="opacity:.7; font-size:.9em;">{{ t('Fuente', 'Source', app_lang) }}: {{ ex.source.title or ex.source.label or '' }}{% if ex.source.year %} ({{ ex.source.year }}){% endif %}</div>{% endif %}
               </div>
             {% endfor %}

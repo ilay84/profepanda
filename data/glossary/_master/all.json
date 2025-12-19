@@ -101,6 +101,64 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/agreta/agreta.mp3?v=1766088680",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Said of a person: unpleasant, bitter, or ill-tempered.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Dicho de una persona: antipática, amarga o de mal carácter.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "unpleasant",
+          "bitter",
+          "sour"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/agreta/s1/agreta_ex_01.mp3?v=1766088680",
+            "en": "—But the one from 5A? `The unpleasant one`? —Yes.",
+            "es": "—¿Pero la del quinto A? ¿La `agreta`? —Sí.",
+            "source": {
+              "episode": "2",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "menos_comun",
+        "id": "s1",
+        "pos": "adjetivo",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "despectivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "agretas",
+          "fem_sg": "agreta",
+          "masc_pl": "agretas",
+          "masc_sg": "agreta"
+        }
+      }
+    ],
+    "slug": "agreta",
+    "word": "agreta"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/aire/aire.mp3?v=1765620974",
     "senses": [
       {
@@ -203,6 +261,64 @@
     ],
     "slug": "al-toque",
     "word": "al toque"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/amarrete/amarrete.mp3?v=1766089138",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Said of a person: unwilling to spend or share money; stingy.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Dicho de una persona: que no quiere gastar dinero ni compartirlo; tacaña.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "stingy",
+          "cheap",
+          "tight-fisted"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/amarrete/s1/amarrete_ex_01.mp3?v=1766089147",
+            "en": "No, we don’t give. Not because I’m `stingy`, no. I give when I pay my taxes to the state.",
+            "es": "No, nosotros no damos. No de `amarrete`, no. Yo doy cuando pago mis impuestos al Estado.",
+            "source": {
+              "episode": "2",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "adjetivo",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "despectivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "amarretes",
+          "fem_sg": "amarrete",
+          "masc_pl": "amarretes",
+          "masc_sg": "amarrete"
+        }
+      }
+    ],
+    "slug": "amarrete",
+    "word": "amarrete"
   },
   {
     "alt_spellings": [],
@@ -388,7 +504,7 @@
         ],
         "freq": "comun",
         "id": "s1",
-        "pos": "locucion_nominal",
+        "pos": "locucion_sustantival",
         "register": "neutral",
         "related_slugs": [],
         "sensitivity": [],
@@ -455,6 +571,64 @@
     ],
     "slug": "birra",
     "word": "birra"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/bodrio/bodrio.mp3?v=1766094483",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Something very boring, unpleasant, or of poor quality.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Cosa, actividad o situación muy aburrida, desagradable o de mala calidad.</span>",
+        "domain": [
+          "cultura_pop"
+        ],
+        "equivalents_en": [
+          "bore",
+          "drag",
+          "dud"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/bodrio/s1/bodrio_ex_01.mp3?v=1766094484",
+            "en": "They asked me to give a masterclass at the School of Fine Arts. A total `drag`.",
+            "es": "Me encargaron una masterclass en Bellas Artes. Un `bodrio`.",
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "despectivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": "bodrios",
+          "masc_sg": "bodrio"
+        }
+      }
+    ],
+    "slug": "bodrio",
+    "word": "bodrio"
   },
   {
     "alt_spellings": [],
@@ -615,7 +789,7 @@
         ],
         "freq": "comun",
         "id": "s1",
-        "pos": "sustantivo",
+        "pos": "sustantivo_masculino_y_femenino",
         "register": "neutral",
         "related_slugs": [],
         "sensitivity": [],
@@ -707,7 +881,7 @@
         ],
         "freq": "muy_comun",
         "id": "s1",
-        "pos": "sustantivo",
+        "pos": "sustantivo_masculino_y_femenino",
         "register": "vulgar",
         "related_slugs": [],
         "sensitivity": [
@@ -869,7 +1043,7 @@
         ],
         "freq": "muy_comun",
         "id": "s1",
-        "pos": "sustantivo",
+        "pos": "sustantivo_masculino_y_femenino",
         "register": "neutral",
         "related_slugs": [],
         "sensitivity": [],
@@ -916,7 +1090,7 @@
         ],
         "freq": "muy_comun",
         "id": "s1",
-        "pos": "sustantivo",
+        "pos": "sustantivo_masculino_y_femenino",
         "register": "informal",
         "related_slugs": [],
         "sensitivity": [],
@@ -1251,6 +1425,61 @@
     ],
     "slug": "chocho",
     "word": "chocho"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/chomba/chomba.mp3?v=1766088626",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Shirt with a collar and usually buttons, similar to a polo shirt.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Remera o camiseta con cuello y, generalmente, con botones, similar a una camiseta tipo polo.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "polo shirt"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/chomba/s1/chomba_ex_01.mp3?v=1766088626",
+            "en": "And why don’t you give away that horrible pink `polo shirt` of yours?",
+            "es": "¿Y por qué no regalás esa `chomba` horrible tuya, la rosa?",
+            "linked_terms": [
+              "y"
+            ],
+            "source": {
+              "episode": "2",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "chombas",
+          "fem_sg": "chomba",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "chomba",
+    "word": "chomba"
   },
   {
     "alt_spellings": [
@@ -3482,6 +3711,138 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/me-chupa-un-huevo/me_chupa_un_huevo.mp3?v=1766095359",
+    "senses": [
+      {
+        "alt_forms": [
+          {
+            "audio": null,
+            "form": "me chupa los dos huevos",
+            "note_en": "More emphatic and vulgar variant.",
+            "note_es": "Variante más enfática y vulgar.",
+            "regions": [
+              "AR"
+            ],
+            "related_slug": null,
+            "type": "aumentativo"
+          }
+        ],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Expression used to show complete indifference or contempt toward something or someone.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Expresión usada para indicar desinterés total o desprecio por algo o alguien.</span>",
+        "domain": [
+          "emociones"
+        ],
+        "equivalents_en": [
+          "I don't give a damn",
+          "I could fucking care less",
+          "I don't give a shit",
+          "I don't give a fuck"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/me-chupa-un-huevo/s1/me_chupa_un_huevo_ex_01.mp3?v=1766095359",
+            "en": "I `don’t give a fuck` what the undersecretary says.",
+            "es": "Me `chupa los dos huevos` lo que diga el subsecretario.",
+            "flags": [
+              "explicit_language",
+              "potentially_offensive"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "frase_hecha",
+        "register": "vulgar",
+        "related_slugs": [],
+        "sensitivity": [
+          "lenguaje_explicito"
+        ],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "agresivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "me-chupa-un-huevo",
+    "word": "me chupa un huevo"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/milonga/milonga.mp3?v=1766150516",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Social dance event or venue where tango and related rhythms are danced, usually at night.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Baile social o lugar donde se baila tango y otros ritmos relacionados, generalmente en un ambiente nocturno.</span>",
+        "domain": [
+          "cultura_pop"
+        ],
+        "equivalents_en": [
+          "tango dance hall",
+          "tango dance event"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/milonga/s1/milonga_ex_01.mp3?v=1766150516",
+            "en": "If you’d like to go to a `milonga` tonight, I can make a reservation for you. You’ll love it.",
+            "es": "Si usted quiere ir a una `milonga` esta noche, yo le puedo hacer una reserva. Le va a encantar, eh.",
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "milongas",
+          "fem_sg": "milonga",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "milonga",
+    "word": "milonga"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/mina/mina.mp3?v=1764261811",
     "senses": [
       {
@@ -4542,6 +4903,61 @@
     "word": "pibe"
   },
   {
+    "alt_spellings": [
+      "placar"
+    ],
+    "audio": "/media/glossary-audio/entry/placard/placard.mp3?v=1766089487",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Built-in closet or wardrobe used to store clothes and other items.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Mueble o espacio empotrado destinado a guardar ropa y otros objetos, equivalente a un armario.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "closet",
+          "wardrobe"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/placard/s1/placard_ex_01.mp3?v=1766089487",
+            "en": "She’s going to be happy that I’m making space for her in the `closet`.",
+            "es": "Se va a poner contenta de que le hago lugar en el `placar`.",
+            "source": {
+              "episode": "2",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": "placards",
+          "masc_sg": "placard"
+        }
+      }
+    ],
+    "slug": "placard",
+    "word": "placard"
+  },
+  {
     "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/plata/plata.mp3?v=1764269419",
     "senses": [
@@ -4899,6 +5315,82 @@
     ],
     "slug": "rajar",
     "word": "rajar"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/re/re.mp3?v=1766100425",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "Intensifying prefix added to words to strengthen their meaning or expressive force, especially in colloquial speech.",
+        "definition_es": "Prefijo intensificador que se antepone a palabras para reforzar su significado o carga expresiva, especialmente en registros coloquiales.",
+        "domain": [],
+        "equivalents_en": [
+          "very",
+          "really",
+          "extremely"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/re/s1/re_ex_01.mp3?v=1766100426",
+            "en": "Then to hell with him!",
+            "es": "¡Que se vaya a la `reputa` que lo parió entonces!",
+            "flags": [
+              "explicit_language",
+              "potentially_offensive"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/re/s1/re_ex_02.mp3?v=1766100426",
+            "en": "Son of a fucking bitch.",
+            "es": "Hijo de `recontra` mil puta.",
+            "flags": [
+              "explicit_language",
+              "potentially_offensive"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "particula_modal",
+        "register": "informal",
+        "related_slugs": [
+          "re"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "re",
+    "word": "re-"
   },
   {
     "alt_spellings": [],

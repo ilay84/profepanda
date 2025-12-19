@@ -119,9 +119,9 @@
           {value:'vulgar', label:"{{ t('vulgar','vulgar', app_lang) }}"}
         ],
         freq: [
-          {value:'muy_comun', label:"{{ t('muy com�n','very common', app_lang) }}"},
-          {value:'comun', label:"{{ t('com�n','common', app_lang) }}"},
-          {value:'menos_comun', label:"{{ t('menos com�n','less common', app_lang) }}"},
+          {value:'muy_comun', label:"{{ t('muy común','very common', app_lang) }}"},
+          {value:'comun', label:"{{ t('común','common', app_lang) }}"},
+          {value:'menos_comun', label:"{{ t('menos común','less common', app_lang) }}"},
           {value:'raro', label:"{{ t('raro','rare', app_lang) }}"}
         ],
         status: [
@@ -133,8 +133,8 @@
         sensitivity: [
           {value:'', label:'-'},
           {value:'potencialmente_ofensivo', label:"{{ t('potencialmente ofensivo','potentially offensive', app_lang) }}"},
-          {value:'lenguaje_explicito', label:"{{ t('lenguaje expl�cito','explicit language', app_lang) }}"},
-          {value:'connotacion_sexual', label:"{{ t('connotaci�n sexual','sexual connotation', app_lang) }}"}
+          {value:'lenguaje_explicito', label:"{{ t('lenguaje explícito','explicit language', app_lang) }}"},
+          {value:'connotacion_sexual', label:"{{ t('connotación sexual','sexual connotation', app_lang) }}"}
         ],
         domain: [
           {value:'comida', label:"{{ t('comida','food', app_lang) }}"},
@@ -142,10 +142,10 @@
           {value:'emociones', label:"{{ t('emociones','emotions', app_lang) }}"},
           {value:'familia', label:"{{ t('familia','family', app_lang) }}"},
           {value:'trabajo', label:"{{ t('trabajo','work', app_lang) }}"},
-          {value:'educacion', label:"{{ t('educaci�n','education', app_lang) }}"},
-          {value:'tecnologia', label:"{{ t('tecnolog�a','technology', app_lang) }}"},
-          {value:'politica', label:"{{ t('pol�tica','politics', app_lang) }}"},
-          {value:'economia', label:"{{ t('econom�a','economy', app_lang) }}"},
+          {value:'educacion', label:"{{ t('educación','education', app_lang) }}"},
+          {value:'tecnologia', label:"{{ t('tecnología','technology', app_lang) }}"},
+          {value:'politica', label:"{{ t('política','politics', app_lang) }}"},
+          {value:'economia', label:"{{ t('economía','economy', app_lang) }}"},
           {value:'cultura_pop', label:"{{ t('cultura pop','pop culture', app_lang) }}"},
           {value:'deporte', label:"{{ t('deporte','sports', app_lang) }}"},
           {value:'naturaleza', label:"{{ t('naturaleza','nature', app_lang) }}"},
@@ -155,9 +155,9 @@
         tone: [
           {value:'afectuoso', label:"{{ t('afectuoso','affectionate', app_lang) }}"},
           {value:'despectivo', label:"{{ t('despectivo','pejorative', app_lang) }}"},
-          {value:'ironico', label:"{{ t('ir�nico','ironic', app_lang) }}"},
-          {value:'humoristico', label:"{{ t('humor�stico','humorous', app_lang) }}"},
-          {value:'poetico', label:"{{ t('po�tico','poetic', app_lang) }}"}
+          {value:'ironico', label:"{{ t('irónico','ironic', app_lang) }}"},
+          {value:'humoristico', label:"{{ t('humorístico','humorous', app_lang) }}"},
+          {value:'poetico', label:"{{ t('poético','poetic', app_lang) }}"}
         ]
       };
     })();
@@ -214,7 +214,7 @@
     </script>
     {# Cache-bust to ensure latest JS (POS normalization fixes) is loaded #}
     <script src="{{ url_for('static', filename='js/ppx-json-editor.js', v='20251122a') }}"></script>
-    <script src="{{ url_for('static', filename='js/admin_glossary_builder.js', v='36') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin_glossary_builder.js', v='50') }}"></script>
   {% endblock %}
 
 {% endblock %}

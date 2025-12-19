@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/agreta/agreta.mp3?v=1766088680",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Said of a person: unpleasant, bitter, or ill-tempered.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Dicho de una persona: antipática, amarga o de mal carácter.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "unpleasant",
+        "bitter",
+        "sour"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/agreta/s1/agreta_ex_01.mp3?v=1766088680",
+          "en": "—But the one from 5A? `The unpleasant one`? —Yes.",
+          "es": "—¿Pero la del quinto A? ¿La `agreta`? —Sí.",
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "menos_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "agretas",
+        "fem_sg": "agreta",
+        "masc_pl": "agretas",
+        "masc_sg": "agreta"
+      }
+    }
+  ],
+  "slug": "agreta",
+  "word": "agreta"
+}

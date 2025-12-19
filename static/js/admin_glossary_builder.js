@@ -198,6 +198,16 @@ function labelForPos(val){
   const pretty = (val||'').toString().replace(/_/g,' ');
   return pretty.charAt(0).toUpperCase() + pretty.slice(1);
 }
+const POS_LABEL_MAP = new Map();
+POS_CATALOG.forEach(entry => {
+  const canonVal = canonToken(entry.value);
+  [entry.es, entry.en, labelForPos(entry.value)].forEach(lbl => {
+    const key = canonToken(lbl);
+    if (key && canonVal && !POS_LABEL_MAP.has(key)) {
+      POS_LABEL_MAP.set(key, canonVal);
+    }
+  });
+});
 const LABELS = (window.PPX_LABELS || {});
 
   function normOpts(arr){
@@ -351,7 +361,7 @@ const LABELS = (window.PPX_LABELS || {});
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g,'') // strip diacritics
         .replace(/[^a-z0-9_ ]/g,'_')
-        .replace(/[\\s]+/g,'_')
+        .replace(/\s+/g,'_')
         .replace(/_+/g,'_')
         .replace(/^_+|_+$/g,'');
     }catch(_){ return (v || ''); }
@@ -730,13 +740,42 @@ const LABELS = (window.PPX_LABELS || {});
     linkedWrap.appendChild(linkedTokens);
     linkedWrap.appendChild(linkedInput);
 
+    // Flags for sensitive/explicit language (future-proof as flag array)
+    const flagDefs = [
+      { value:'explicit_language', label: LABELS.flag_explicit || 'Lenguaje explícito', icon:'/static/assets/icons/explicit_language.svg' },
+      { value:'potentially_offensive', label: LABELS.flag_offensive || 'Potencialmente ofensivo', icon:'/static/assets/icons/potentially_offensive.svg' },
+    ];
+    const existingFlags = new Set(
+      Array.isArray(ex?.flags) ? ex.flags.map(f=> (f||'').toString()) : []
+    );
+    if (ex?.explicit_language) existingFlags.add('explicit_language');
+    if (ex?.potentially_offensive) existingFlags.add('potentially_offensive');
+    const flagsWrap = h('div',{style:'display:flex; gap:.75rem; flex-wrap:wrap; align-items:center; margin-top:.35rem;'});
+    flagDefs.forEach(fd => {
+      const lab = h('label',{style:'display:inline-flex; align-items:center; gap:6px; font-size:.9rem; color:#334155; border:1px solid #e2e8f0; border-radius:999px; padding:4px 10px; background:#fff; cursor:pointer;'});
+      const cb = h('input',{type:'checkbox', value:fd.value});
+      cb.checked = existingFlags.has(fd.value);
+      const icon = h('img',{src:fd.icon, alt:'', style:'width:16px; height:16px;'});
+      const span = h('span',{html:fd.label});
+      lab.appendChild(cb); lab.appendChild(icon); lab.appendChild(span);
+      flagsWrap.appendChild(lab);
+    });
+    flagsWrap._get = ()=> Array.from(flagsWrap.querySelectorAll('input[type=checkbox]:checked')).map(i=> i.value);
+
     const del = h('button',{type:'button', class:'ppx-btn', style:'margin-top:.35rem;'}, [document.createTextNode('Eliminar')]);
     del.addEventListener('click', ()=> row.remove());
-    row.appendChild(es); row.appendChild(en); row.appendChild(file); row.appendChild(audioPath); row.appendChild(audioInfo); row.appendChild(sourceType); row.appendChild(sourceFields); row.appendChild(linkedWrap); row.appendChild(del);
+    row.appendChild(es); row.appendChild(en); row.appendChild(file); row.appendChild(audioPath); row.appendChild(audioInfo); row.appendChild(sourceType); row.appendChild(sourceFields); row.appendChild(linkedWrap); row.appendChild(flagsWrap); row.appendChild(del);
     row._get = ()=> {
       const source = collectSource() || null;
       if (source) SourceCache.remember(source.type, source);
-      return { es: es.value.trim(), en: en.value.trim()||null, audio: (audioPath.value||null), source, linked_terms: Array.from(linkedMap.keys()) };
+      return {
+        es: es.value.trim(),
+        en: en.value.trim()||null,
+        audio: (audioPath.value||null),
+        source,
+        linked_terms: Array.from(linkedMap.keys()),
+        flags: flagsWrap._get()
+      };
     };
     return row;
   }
@@ -781,22 +820,9 @@ const LABELS = (window.PPX_LABELS || {});
     const title = (LABELS.sense || (lang==='en'?'Sense':'Sentido')) + ' ' + (idx||'');
     card.appendChild(h('summary',{html:title, style:'cursor:pointer; font-weight:700;'}));
 
-    // Build POS options from curated list; append any backend extras (humanized) without overriding curated labels.
-    const backendPos = Array.isArray(TAGS.pos) ? TAGS.pos : [];
+    // Build POS options strictly from the canonical catalog (canonical value, localized label).
     const curatedMap = new Map();
     POS_CATALOG.forEach(p => curatedMap.set(canonToken(p.value), { value: canonToken(p.value), label: labelForPos(p.value) }));
-    backendPos.forEach(it => {
-      const raw = typeof it === 'string' ? it : (it && it.value);
-      const normalized = normalizeToCanonical(raw) || canonToken(raw || '');
-      const val = normalized || '';
-      // Do not re-add generic sustantivo from backend config
-      if (!val || val === 'sustantivo' || curatedMap.has(val)) return;
-      const pretty = (typeof it === 'string' ? it : (it && (it.label || it.value || ''))).toString().replace(/_/g,' ');
-      const lbl = pretty ? (pretty.charAt(0).toUpperCase() + pretty.slice(1)) : val;
-      curatedMap.set(val, { value: val, label: lbl });
-    });
-    // Remove generic 'sustantivo' from the dropdown options (legacy only via fallback)
-    curatedMap.delete('sustantivo');
     const posOpts = Array.from(curatedMap.values()).sort((a,b)=> a.label.localeCompare(b.label,'es'));
     const POS_FIXUPS = {
       'locucion_u_tantival': 'locucion_sustantival',
@@ -811,6 +837,10 @@ const LABELS = (window.PPX_LABELS || {});
     // If legacy generic noun, default to the inclusive noun option
     if (normalizedPosVal === 'sustantivo') normalizedPosVal = 'sustantivo_masculino_y_femenino';
     const pos = select('pos', posOpts, normalizedPosVal, { allowFallback: false });
+    const posWarn = h('div', {class:'ppx-hint', style:'color:#b91c1c; font-size:.85rem; margin-top:.25rem; display:none;'});
+    posWarn.textContent = (APP_LANG === 'en')
+      ? "POS value is not recognized. Please pick a valid option."
+      : "El valor de POS no se reconoce. Elige una opción válida.";
     const reg = select('register', [{value:'', label:'-'}, ...(TAGS.register||[])], data?.register||'');
     const freq = select('freq', [{value:'', label:'-'}, ...(TAGS.freq||[])], data?.freq||'');
     const status = chipMulti('status', TAGS.status || [], Array.isArray(data?.status) ? data.status : (data?.status ? [data.status] : []));
@@ -843,25 +873,52 @@ const LABELS = (window.PPX_LABELS || {});
       const k = (posTok || '').toString().toLowerCase();
       return k.includes('sustantivo') || k.includes('adjetiv');
     }
-    function selectedPosToken(select){
-      const opt = select.options && select.selectedIndex >= 0 ? select.options[select.selectedIndex] : null;
-      const candidate = (opt && opt.value) ? opt.value : (select.value || '');
-      if (candidate && candidate !== '') {
-        return candidate;
+    function resolveSelectedPos(){
+      const opt = pos.options && pos.selectedIndex >= 0 ? pos.options[pos.selectedIndex] : null;
+      const candidates = [];
+      if (opt && opt.value) candidates.push(opt.value);
+      if (pos.value) candidates.push(pos.value);
+      if (opt && opt.textContent) candidates.push(opt.textContent);
+      for (const c of candidates){
+        const labelCanon = POS_LABEL_MAP.get(canonToken(c || ''));
+        if (labelCanon && (CANON_POS_SET.has(labelCanon) || POS_MAP.has(labelCanon))) {
+          const fixedFromLabel = POS_FIXUPS[labelCanon] || labelCanon;
+          if (CANON_POS_SET.has(fixedFromLabel) || POS_MAP.has(fixedFromLabel)) return fixedFromLabel;
+        }
+        const canon = normalizeToCanonical(c) || canonToken(c || '');
+        if (canon && (CANON_POS_SET.has(canon) || POS_MAP.has(canon))){
+          const fixed = POS_FIXUPS[canon] || canon;
+          if (CANON_POS_SET.has(fixed) || POS_MAP.has(fixed)) return fixed;
+        }
       }
-      if (opt){
-        return canonToken(opt.textContent || '');
+      // Last-resort: return a canonized version of whatever is selected so backend normalization can handle it.
+      if (candidates.length){
+        return canonToken(candidates[0]);
       }
       return '';
     }
+    function enforcePosCanonical(){
+      const canonical = resolveSelectedPos();
+      if (canonical){
+        // Force select value to the canonical token so backend gets the right POS
+        pos.value = canonical;
+        posWarn.style.display = 'none';
+      } else {
+        posWarn.style.display = 'block';
+      }
+    }
     function currentPosVal(){
       const opt = pos.options && pos.selectedIndex >= 0 ? pos.options[pos.selectedIndex] : null;
-      const raw = selectedPosToken(pos);
-      const canonical = normalizeToCanonical(raw) || canonToken(raw || '');
+      const canonical = resolveSelectedPos();
       return {
         val: canonical,
         label: (opt ? (opt.textContent || '') : '')
       };
+    }
+    function updatePosWarning(){
+      const canonical = resolveSelectedPos();
+      const ok = !!canonical && (CANON_POS_SET.has(canonical) || POS_MAP.has(canonical));
+      posWarn.style.display = ok ? 'none' : 'block';
     }
     function updateVariantsVisibility(){
       const { val, label } = currentPosVal();
@@ -874,6 +931,12 @@ const LABELS = (window.PPX_LABELS || {});
     setTimeout(updateVariantsVisibility, 100);
     pos.addEventListener('change', updateVariantsVisibility);
     pos.addEventListener('input', updateVariantsVisibility);
+    pos.addEventListener('change', updatePosWarning);
+    pos.addEventListener('input', updatePosWarning);
+    pos.addEventListener('change', enforcePosCanonical);
+    pos.addEventListener('input', enforcePosCanonical);
+    updatePosWarning();
+    enforcePosCanonical();
 
     // Related entries (tokens + typeahead)
     const relatedWrap = h('div');
@@ -964,7 +1027,9 @@ const LABELS = (window.PPX_LABELS || {});
     const secTags = h('details',{open:true, class:'ppx-card', style:'padding:.75rem; margin-top:.5rem;'});
     secTags.appendChild(h('summary',{html: LABELS.tags_section || 'Part of Speech and Tags', style:'cursor:pointer; font-weight:600;'}));
     const tagsBody = h('div',{style:'display:flex; flex-direction:column; gap:.5rem; margin-top:.5rem;'});
-    tagsBody.appendChild(lab(LABELS.pos || 'Part of Speech', pos));
+    const posField = lab(LABELS.pos || 'Part of Speech', pos);
+    posField.appendChild(posWarn);
+    tagsBody.appendChild(posField);
     tagsBody.appendChild(variantsWrap);
     tagsBody.appendChild(lab(LABELS.register || 'Register', reg));
     tagsBody.appendChild(lab(LABELS.frequency || 'Frequency', freq));
@@ -1018,15 +1083,12 @@ const LABELS = (window.PPX_LABELS || {});
     card.appendChild(delSense);
 
     card._get = ()=> {
-      const selectedPos = selectedPosToken(pos) || 'sustantivo_masculino_y_femenino';
-      const fallback = (selectedPos === 'verbo') ? 'verbo_transitivo' : selectedPos;
-      const canonical = normalizeToCanonical(fallback) || normalizeToCanonical(canonToken(fallback)) || 'sustantivo_masculino_y_femenino';
-      // Guard against legacy frontend typos (e.g., locucion_u_tantival)
-      const normalizedPosToken = POS_FIXUPS[canonical] || canonical; 
+      const resolved = resolveSelectedPos();
+      const normalized = resolved ? (POS_FIXUPS[resolved] || resolved) : null;
       return {
         id: data?.id || '',
         countries: Array.isArray(data?.countries)? data.countries : [],
-          pos: normalizedPosToken,
+          pos: normalized,
         register: reg.value || null,
         freq: freq.value || null,
         domain: dom._get(),

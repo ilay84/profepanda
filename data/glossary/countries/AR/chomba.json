@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/chomba/chomba.mp3?v=1766088626",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Shirt with a collar and usually buttons, similar to a polo shirt.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Remera o camiseta con cuello y, generalmente, con botones, similar a una camiseta tipo polo.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "polo shirt"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/chomba/s1/chomba_ex_01.mp3?v=1766088626",
+          "en": "And why don’t you give away that horrible pink `polo shirt` of yours?",
+          "es": "¿Y por qué no regalás esa `chomba` horrible tuya, la rosa?",
+          "linked_terms": [
+            "y"
+          ],
+          "source": {
+            "episode": "2",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "chombas",
+        "fem_sg": "chomba",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "chomba",
+  "word": "chomba"
+}

@@ -141,7 +141,7 @@ def admin_glossary_create():
         senses = [{
             'id': 's1',
             'countries': [country] if country else [],
-            'pos': glossary._normalize_pos(pos) or 'sustantivo',
+            'pos': glossary._normalize_pos(pos) or 'sustantivo_masculino_y_femenino',
             'register': None,
             'freq': None,
             'domain': [],
@@ -161,7 +161,8 @@ def admin_glossary_create():
             if not isinstance(s, dict):
                 continue
             pos_norm = _normalize_pos(s.get('pos'))
-            s['pos'] = pos_norm if pos_norm in POS_C else 'sustantivo'
+            # keep invalid/unknown so validation surfaces the problem instead of silently defaulting
+            s['pos'] = pos_norm if pos_norm in POS_C else None
     for i, s in enumerate(senses, start=1):
         s['id'] = s.get('id') or f's{i}'
         if country and isinstance(s.get('countries'), list) and country not in s['countries']:
@@ -302,7 +303,8 @@ def admin_glossary_update(slug: str):
                     prev_pos = prev.get('pos') if isinstance(prev, dict) else None
                     if prev_pos and prev_pos in POS_C:
                         pos_norm = prev_pos
-                s['pos'] = pos_norm if pos_norm in POS_C else 'sustantivo'
+                # keep invalid/unknown so validation surfaces the problem instead of silently defaulting
+                s['pos'] = pos_norm if pos_norm in POS_C else None
             data['senses'] = senses
         except Exception:
             pass
