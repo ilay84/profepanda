@@ -11,7 +11,7 @@
   max-width: 380px;
   justify-content: flex-start;
   margin: 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .gl-audio__play {
   width: 38px;
@@ -50,9 +50,9 @@
   gap: 8px;
   min-width: 70px;
   justify-content: flex-start;
-  flex: 0 0 100%;
-  padding-left: 46px; /* align with start of track when wrapped */
-  margin-top: 4px;
+  flex: 0 0 auto;
+  padding-left: 0;
+  margin-top: 0;
 }
 .gl-audio__time { font-variant-numeric: tabular-nums; color: #334155; font-size: 13px; }
 .gl-speed { position: relative; }
@@ -74,6 +74,7 @@
     width: 100%;
     max-width: 100%;
     gap: 8px;
+    flex-wrap: wrap;
   }
   .gl-audio__track {
     min-width: 160px;
@@ -85,6 +86,8 @@
     min-width: 130px;
   }
   .gl-audio__meta {
+    flex: 0 0 100%;
     padding-left: 44px;
+    margin-top: 4px;
   }
 }
