@@ -78,11 +78,11 @@
       .rg-filter-empty{font-size:.85rem;color:#94a3b8;margin:0;}
       .rg-filter-option input{margin:0;}
       .rg-filters-toggle-btn{display:none;align-items:center;gap:.35rem;}
-  .rg-search-clear{display:none;}
-  #rg-filters-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.35);backdrop-filter:blur(2px);z-index:40;}
-  body.rg-no-scroll{overflow:hidden;}
-  /* Responsive adjustments (preserve desktop defaults) */
-  @media (max-width: 1100px){
+      .rg-search-clear{display:none;}
+      #rg-filters-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.35);backdrop-filter:blur(2px);z-index:40;}
+      body.rg-no-scroll{overflow:hidden;}
+      /* Responsive adjustments (preserve desktop defaults) */
+      @media (max-width: 1100px){
         .rg-glossary-grid{grid-template-columns:220px 1fr;grid-auto-rows:minmax(0,auto);}
         #rg-filters-pane{grid-column:1 / -1;}
         .rg-letter-row{margin:0 .25rem 1rem;border-bottom:none;}
@@ -103,10 +103,9 @@
         .rg-filters-toggle-btn{display:inline-flex;}
         .rg-filters-toggle-btn{align-self:flex-start;}
         #rg-filters-backdrop.is-open{display:block;}
-  }
+      }
     </style>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/glossary_audio.css', v='4') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/glossary_audio.css', v='4') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/glossary_audio.css', v='3') }}">
     <style>
       /* Shared accordion styling */
       details.ppx-acc summary {
@@ -1109,7 +1108,7 @@
   })();
   </script>
   {# Cache-bust to ensure latest glossary tabs script (newline rendering) #}
-  <script src="{{ url_for('static', filename='js/public_glossary_tabs.js', v='47') }}"></script>
+  <script src="{{ url_for('static', filename='js/public_glossary_tabs.js', v='39') }}"></script>
   <script src="{{ url_for('static', filename='js/ppx-accordion.js') }}"></script>
   <script>
     window.openEntry = function(slug){ if (window.Tabs && typeof Tabs.open==='function') { Tabs.open(slug); } };

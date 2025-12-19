@@ -98,6 +98,30 @@
     const stripped = raw.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     return stripped.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g,'');
   }
+  // Shared share handler (uses data attributes on the anchor)
+  async function handleShareClick(ev){
+    ev.preventDefault();
+    const btn = ev.currentTarget;
+    const url = (btn && btn.dataset && btn.dataset.shareUrl) || window.location.href;
+    const title = (btn && btn.dataset && btn.dataset.shareTitle) || document.title || 'Share';
+    const lang = (window.ActiveLang || window.APP_LANG || 'es');
+    const copiedMsg = lang === 'es' ? 'Enlace copiado' : 'Link copied';
+    const promptMsg = lang === 'es' ? 'Copia este enlace' : 'Copy this link';
+    if (navigator.share){
+      try{
+        await navigator.share({ title, url });
+        return;
+      }catch(_){ /* fall back */ }
+    }
+    try{
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        await navigator.clipboard.writeText(url);
+        alert(copiedMsg);
+        return;
+      }
+    }catch(_){}
+    prompt(promptMsg, url);
+  }
   // Glossary audio player (reused from lessons, scoped)
   (function initGlossaryAudio(){
     const SPEEDS = [0.30,0.40,0.50,0.60,0.70,0.80,0.90,1.00,1.10,1.20,1.30,1.40,1.50];
@@ -507,6 +531,11 @@
       });
     }
 
+
+    // Wire share button
+    pane.querySelectorAll('[data-share-btn]').forEach(btn => btn.addEventListener('click', handleShareClick));
+    // Wire report link stays as normal anchor
+
     // Wire related links (including example chips) to open new tabs via the modal API
     pane.querySelectorAll('a[data-slug]').forEach(a=> a.addEventListener('click', (ev)=>{ 
       ev.preventDefault(); 
@@ -704,6 +733,20 @@
       </div>` : '';
 
     const headerAlerts = alertEmojis({ register: meta.register, sensitivity: meta.sensitivity });
+    const reportLabel = L('Reportar un problema','Report an issue');
+    const shareLabel = L('Compartir','Share');
+    const reportUrlBase = 'https://docs.google.com/forms/d/e/1FAIpQLScSSyjqxQlB6rXzKU8fDIVRTG4QRKx2IY7QtXapqRkj53UGvA/viewform';
+    const reportField = 'entry.1022146846';
+    const entryHref = (function(){
+      try{
+        const origin = window.location && window.location.origin ? window.location.origin : '';
+        return `${origin}/glossary/${encodeURIComponent(slug)}/`;
+      }catch(_){
+        return slug;
+      }
+    })();
+    const reportLink = `${reportUrlBase}?usp=pp_url&${reportField}=${encodeURIComponent(entryHref)}`;
+
     const langSel = `
       <label style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#475569;">
         <span>${L('Idioma','Language')}</span>
@@ -712,6 +755,14 @@
           <option value="en" ${LANG==='en'?'selected':''}>English</option>
         </select>
       </label>`;
+    const shareBtn = `
+      <a href="#" data-share-btn data-share-url="${entryHref}" data-share-title="${(e.word||slug).replace(/\"/g,'&quot;')}" title="${shareLabel}" aria-label="${shareLabel}" style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; border:1px solid #cbd5e1; background:#fff; padding:0; text-decoration:none; cursor:pointer;">
+        <img src="/static/assets/icons/share.svg" alt="" style="width:34px; height:34px; border-radius:50%; object-fit:contain;">
+      </a>`;
+    const reportBtn = `
+      <a href="${reportLink}" target="_blank" rel="noopener noreferrer" title="${reportLabel}" aria-label="${reportLabel}" style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; border:1px solid #cbd5e1; background:#fff; padding:0; text-decoration:none;">
+        <img src="/static/assets/icons/report-flag.svg" alt="" style="width:34px; height:34px; border-radius:50%; object-fit:contain;">
+      </a>`;
 
     const header = `
       <div style="display:flex; align-items:center; gap:.5rem; justify-content:space-between; flex-wrap:wrap;">
@@ -719,7 +770,13 @@
           ${headerAudio}
           <h2 style="margin:.25rem 0; display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">${e.word||slug}${headerAlerts? `<span aria-label="${L('Contenido sensible','Sensitive content')}" title="${L('Contenido sensible','Sensitive content')}" style="font-size:1.05rem;">${headerAlerts}</span>`:''}</h2>
         </div>
-        ${langSel}
+        <div style="display:flex; align-items:center; gap:.35rem;">
+          ${langSel}
+          <div style="display:flex; align-items:center; gap:.25rem;">
+            ${shareBtn}
+            ${reportBtn}
+          </div>
+        </div>
       </div>
       ${alsoLine}`;
 
