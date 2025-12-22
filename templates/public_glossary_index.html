@@ -808,7 +808,9 @@
             label.className = 'rg-sense-label';
             const posLabel = s.pos ? (posLabels[s.pos] || s.pos) : '';
             const num = s.num || idx + 1;
-            label.textContent = posLabel ? `${num} Γö¼Γòû ${posLabel}` : `${num}`;
+            label.innerHTML = posLabel
+              ? `<span class="rg-sense-num">${num}.</span> <span class="rg-pill rg-pill--accent">${posLabel}</span>`
+              : `<span class="rg-sense-num">${num}.</span>`;
             const def = document.createElement('p');
             def.className = 'rg-definition';
             const senseDef = uiLang === 'en'

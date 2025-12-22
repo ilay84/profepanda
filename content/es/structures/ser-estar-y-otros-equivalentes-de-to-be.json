@@ -288,8 +288,8 @@
       ],
       "module_id": "m1s1-que-expresa-ser",
       "parent_id": "mod1",
-      "title_en": "Submodule 1.1: What SER Expresses",
-      "title_es": "Submódulo 1.1: Qué expresa SER"
+      "title_en": "What SER Expresses",
+      "title_es": "Qué expresa SER"
     },
     {
       "blocks": [
@@ -367,8 +367,8 @@
       ],
       "module_id": "m1s2-que-expresa-estar",
       "parent_id": "mod1",
-      "title_en": "Submodule 1.2: What ESTAR Expresses",
-      "title_es": "Submódulo 1.2: Qué expresa ESTAR"
+      "title_en": "What ESTAR Expresses",
+      "title_es": " Qué expresa ESTAR"
     },
     {
       "blocks": [
@@ -446,8 +446,8 @@
       ],
       "module_id": "m1s3-vision-general",
       "parent_id": "mod1",
-      "title_en": "Submodule 1.3: SER vs. ESTAR — Big Picture Overview",
-      "title_es": "Submódulo 1.3: SER vs. ESTAR — Visión general"
+      "title_en": "SER vs. ESTAR — Big Picture Overview",
+      "title_es": " SER vs. ESTAR — Visión general"
     },
     {
       "blocks": [

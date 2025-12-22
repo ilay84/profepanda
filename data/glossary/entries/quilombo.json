@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/quilombo/quilombo.mp3?v=1766400053",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Complicated, chaotic, or troublesome situation that causes conflict or stress.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Situación complicada, caótica o problemática que genera conflictos, estrés o molestias.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "mess",
+        "problem",
+        "nightmare"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/quilombo/s1/quilombo_ex_01.mp3?v=1766400053",
+          "en": "Don’t tell me you’re the husband because, I swear, it’s the last `mess` I need.",
+          "es": "No me digas que sos el marido porque, te juro, es el último `quilombo` que yo necesito.",
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "quilombos",
+        "masc_sg": "quilombo"
+      }
+    }
+  ],
+  "slug": "quilombo",
+  "word": "quilombo"
+}

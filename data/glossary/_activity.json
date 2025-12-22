@@ -1,6 +1,42 @@
 [
   {
     "kind": "entry_updated",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-22T10:40:55.263093Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-22T10:40:55.043650Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-22T10:40:54.189079Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-22T10:40:18.044163Z"
+  },
+  {
+    "kind": "entry_updated",
     "slug": "barrio-cerrado",
     "word": "barrio cerrado",
     "countries": [
@@ -1806,44 +1842,5 @@
       "AR"
     ],
     "ts": "2025-12-13T18:02:28.850824Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "pelotudo",
-    "word": "pelotudo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-13T17:46:11.287640Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "pelotudo",
-    "word": "pelotudo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-13T17:46:10.696115Z"
-  },
-  {
-    "kind": "example_added",
-    "slug": "pelotudo",
-    "word": "pelotudo",
-    "sense_id": "s1",
-    "sense_num": 1,
-    "example_num": 3,
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-13T17:45:55.007806Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "pelotudo",
-    "word": "pelotudo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-13T17:45:54.996764Z"
   }
 ]

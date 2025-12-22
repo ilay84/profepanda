@@ -51,6 +51,7 @@ POS_CATALOG: List[Dict[str, Any]] = [
 ]
 
 
+
 POS_VALUES = {entry["value"] for entry in POS_CATALOG}
 
 LEGACY_ALIASES: Mapping[str, str] = {
