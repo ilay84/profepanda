@@ -1,0 +1,65 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/fangote/fangote.mp3?v=1766521450",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A very large amount of something. Used to emphasize abundance.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Cantidad muy grande de algo. Usada para enfatizar abundancia.</span>",
+      "domain": [
+        "economia",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "a ton of",
+        "a huge amount of",
+        "a lot of"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/fangote/s1/fangote_ex_01.mp3?v=1766521687",
+          "en": "“No, and now you’re going to get the severance pay, which is a `ton` of money. What are you going to do with all that cash?”",
+          "es": "No, y ahora vas a recibir la indemnización que es un `fangote` de guita. ¿Qué vas a hacer con tanta plata?",
+          "linked_terms": [
+            "guita",
+            "plata"
+          ],
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "informal",
+      "related_slugs": [
+        "guita",
+        "plata"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "fangotes",
+        "masc_sg": "fangote"
+      }
+    }
+  ],
+  "slug": "fangote",
+  "word": "fangote"
+}

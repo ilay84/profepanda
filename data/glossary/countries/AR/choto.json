@@ -1,0 +1,71 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/choto/choto.mp3?v=1766531628",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Of poor quality or worth; when applied to people, used disparagingly to describe someone as insignificant, unappealing, or pathetic.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">De mala calidad o poco valor; aplicado a personas, se usa de forma despectiva para calificarlas como insignificantes, poco atractivas o despreciables.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "lousy",
+        "pathetic",
+        "loser"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/choto/s1/choto_ex_01.mp3?v=1766531629",
+          "en": "What an idiot. How could I think he wanted to be with me, that a young guy could have fun with an old `lousy` woman like me?",
+          "es": "Pero qué estúpida. ¿Cómo podía pensar que quería estar conmigo y que un chico joven podía divertirse con una vieja `chota` como yo?",
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/choto/s1/choto_ex_02.mp3?v=1766531629",
+          "en": "“I have fun with an old `lousy` woman like you, Beba.”",
+          "es": "Yo me divierto con una vieja `chota` como vos, Beba.",
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "chotas",
+        "fem_sg": "chota",
+        "masc_pl": "chotos",
+        "masc_sg": "choto"
+      }
+    }
+  ],
+  "slug": "choto",
+  "word": "choto"
+}

@@ -86,14 +86,30 @@
       "type": "object",
       "required": ["exercise_id"],
       "properties": {
-        "exercise_id": { "type": "string", "description": "e.g., mcq/ser-o-estar" },
-        "exercise_type": { "type": "string" },
+        "exercise_id": { "type": "string", "description": "e.g., mcq/ser-o-estar or library id" },
+        "exercise_type": { "type": "string", "description": "Optional type hint: mcq|tf|fitb|ctw|dnd|dictation|ctc|matching" },
         "version": { "type": ["string", "null"] },
-        "display_options": {
+        "display": {
           "type": "object",
           "properties": {
-            "show_title": { "type": "boolean" },
-            "show_instructions": { "type": "boolean" }
+            "show_title": { "type": "boolean", "description": "Show exercise title if available" },
+            "show_instructions": { "type": "boolean", "description": "Show exercise instructions if available" },
+            "width": { "type": "string", "enum": ["full", "narrow"], "description": "Layout hint for renderer" }
+          },
+          "additionalProperties": false
+        },
+        "overrides": {
+          "type": "object",
+          "properties": {
+            "prompt": {
+              "type": "object",
+              "properties": {
+                "es": { "type": "string" },
+                "en": { "type": "string" }
+              },
+              "additionalProperties": false
+            },
+            "feedbackLocale": { "type": "string", "enum": ["es", "en"], "description": "Force hint/feedback language" }
           },
           "additionalProperties": false
         }
@@ -269,7 +285,7 @@
         { "$ref": "#/definitions/block_base" },
         {
           "properties": {
-            "block_type": { "const": "exercise_reference" },
+            "block_type": { "enum": ["exercise_reference", "exercise"] },
             "data": { "$ref": "#/definitions/exercise_reference" }
           },
           "required": ["data"]

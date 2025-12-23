@@ -1,6 +1,45 @@
 
 // Shared renderer used by admin content lab and editor preview
 (function(){
+  const EX_SCRIPT_MAP = {
+    core: '/static/js/ppx-core.js',
+    mcq: '/static/js/ppx-mcq.js',
+    tf: '/static/js/ppx-tf.js',
+    fitb: '/static/js/ppx-fitb.js',
+    ctw: '/static/js/ppx-ctw.js',
+    dnd: '/static/js/ppx-dnd.js',
+    dictation: '/static/js/ppx-dictation.js',
+    ctc: '/static/js/ppx-ctc.js',
+    matching: '/static/js/ppx-matching.js',
+  };
+
+  function loadScriptOnce(src, attrName) {
+    return new Promise((resolve, reject) => {
+      if (!src) { resolve(); return; }
+      const attr = attrName || src;
+      if (document.querySelector(`script[data-src="${attr}"]`)) { resolve(); return; }
+      const s = document.createElement("script");
+      s.src = src;
+      s.async = true;
+      s.defer = true;
+      s.dataset.src = attr;
+      s.onload = () => resolve();
+      s.onerror = (e) => reject(e);
+      document.head.appendChild(s);
+      setTimeout(resolve, 1500); // failsafe
+    });
+  }
+
+  async function ensureExerciseAssets(types) {
+    const set = new Set(types.filter(Boolean).map(t => t.toLowerCase()));
+    if (!set.size) return;
+    await loadScriptOnce(EX_SCRIPT_MAP.core, "ppx-core");
+    for (const t of set) {
+      const src = EX_SCRIPT_MAP[t];
+      if (!src) continue;
+      await loadScriptOnce(src, `ppx-${t}`);
+    }
+  }
   function renderSegments(segments, translationText = null, ctx = null, path = "segments") {
     const span = document.createElement("span");
     if (translationText) {
@@ -154,6 +193,7 @@
         wrap.appendChild(div);
         break;
       }
+      case "exercise":
       case "exercise_reference": {
         const box = document.createElement("div");
         box.className = "lab-callout info";
@@ -163,12 +203,13 @@
 
         const exId = data.exercise_id || "";
         const parts = exId.split("/");
-        const exType = data.exercise_type || parts[0] || "";
+        const exType = (data.exercise_type || parts[0] || "").toLowerCase();
         const slug = parts.length > 1 ? parts.slice(1).join("/") : exId;
+        const display = data.display || data.display_options || {};
 
         const title = document.createElement("div");
         title.className = "lab-callout-title";
-        title.textContent = (data.display_options?.show_title === false)
+        title.textContent = (display.show_title === false)
           ? ""
           : (data.title || exId || (lang === "en" ? "Exercise" : "Ejercicio"));
 
@@ -176,7 +217,7 @@
         meta.className = "ppx-muted";
         meta.style.fontSize = "13px";
         meta.textContent = exType
-          ? `${lang === "en" ? "Type" : "Tipo"}: ${exType} · ${slug || ""}`
+          ? `${lang === "en" ? "Type" : "Tipo"}: ${exType} - ${slug || ""}`
           : (lang === "en" ? "Exercise" : "Ejercicio");
 
         if (title.textContent) box.appendChild(title);
@@ -194,7 +235,7 @@
             type: exType,
             slug,
             version: data.version || null,
-            lang: lang || "es",
+            lang: data.overrides?.feedbackLocale || lang || "es",
             context: { source: "content_hub" }
           });
         });
@@ -213,5 +254,54 @@
     return wrap;
   }
 
-  window.ContentLabRenderer = { renderBlock, renderSegments, combineTranslations };
+  async function renderContent(doc, opts = {}) {
+    const lang = (opts.lang || doc?.language || "es");
+    const root = document.createElement("div");
+    root.className = "lab-root";
+    const modules = Array.isArray(doc?.modules) ? doc.modules : [];
+
+    const exerciseTypes = [];
+    modules.forEach(m => {
+      (m.blocks || []).forEach(b => {
+        if (b?.type === "exercise" || b?.type === "exercise_reference") {
+          const data = b.data || {};
+          const exId = data.exercise_id || "";
+          const parts = exId.split("/");
+          const exType = (data.exercise_type || parts[0] || "").toLowerCase();
+          if (exType) exerciseTypes.push(exType);
+        }
+      });
+    });
+    ensureExerciseAssets(exerciseTypes).catch(() => {});
+
+    modules.forEach(mod => {
+      const modWrap = document.createElement("section");
+      modWrap.className = "lab-module";
+      modWrap.style.marginBottom = "18px";
+      if (mod.title_es || mod.title_en) {
+        const h = document.createElement("h2");
+        h.textContent = lang === "en"
+          ? (mod.title_en || mod.title_es || "")
+          : (mod.title_es || mod.title_en || "");
+        h.style.margin = "0 0 10px 0";
+        modWrap.appendChild(h);
+      }
+      (mod.blocks || []).forEach(b => {
+        const ctx = { moduleId: mod.module_id || mod.id || "" };
+        modWrap.appendChild(renderBlock(b, lang, ctx));
+      });
+      root.appendChild(modWrap);
+    });
+
+    if (opts.target) {
+      const el = (typeof opts.target === "string") ? document.querySelector(opts.target) : opts.target;
+      if (el) {
+        el.innerHTML = "";
+        el.appendChild(root);
+      }
+    }
+    return root;
+  }
+
+  window.ContentLabRenderer = { renderContent, renderBlock, renderSegments, combineTranslations };
 })();

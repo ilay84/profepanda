@@ -489,6 +489,61 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/art/art.mp3?v=1766518743",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Acronym for *Aseguradora de Riesgos del Trabajo*, Argentina’s mandatory workers’ compensation insurance system covering job-related accidents and occupational illnesses.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Sigla de Aseguradora de Riesgos del Trabajo, sistema obligatorio en Argentina que cubre accidentes laborales y enfermedades profesionales de trabajadores en relación de dependencia.</span>",
+        "domain": [
+          "economia",
+          "trabajo"
+        ],
+        "equivalents_en": [
+          "workers’ compensation insurance"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/art/s1/art_ex_01.mp3?v=1766518743",
+            "en": "You know what the good news is? You don’t have to pay workers’ comp or payroll taxes… It won’t sue you.",
+            "es": "¿Sabés cuál es la buena noticia? No hay que pagar `ART` ni cargas sociales... No te hace juicio.",
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "abreviatura_institucional",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "art",
+    "word": "ART"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/atender-el-telefono/atender_el_telefono.mp3",
     "senses": [
       {
@@ -955,7 +1010,7 @@
         ],
         "examples": [
           {
-            "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_03.mp3?v=1766450516",
+            "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_01.mp3?v=1766530610",
             "en": "I end up looking like a professional idiot.",
             "es": "Yo quedo como una `boluda` profesionalmente.",
             "source": {
@@ -967,7 +1022,7 @@
             }
           },
           {
-            "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_04.mp3?v=1766494264",
+            "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_02.mp3?v=1766530677",
             "en": "And you actually believed him, you idiot? I feel sorry for you. Don’t be such a moron.",
             "es": "¿Y vos le creíste, imbécil? Me das pena. No seas `boluda`.",
             "flags": [
@@ -980,11 +1035,23 @@
               "type": "series",
               "year": "2022"
             }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_03.mp3?v=1766530611",
+            "en": "What do I look like to you, an `idiot`?",
+            "es": "¿Qué me ves? ¿Cara de `boludo` a mí?",
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
           }
         ],
         "freq": "muy_comun",
         "id": "s2",
-        "pos": "adjetivo",
+        "pos": "sustantivo_masculino_y_femenino",
         "register": "informal",
         "related_slugs": [
           "boludito"
@@ -1601,6 +1668,64 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/changa/changa.mp3?v=1766520734",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A small, occasional job, usually informal and short-term, done to earn extra money.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Trabajo ocasional, generalmente informal y de corta duración, que se hace para ganar dinero extra.</span>",
+        "domain": [
+          "economia",
+          "trabajo"
+        ],
+        "equivalents_en": [
+          "side job",
+          "odd job",
+          "gig"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/changa/s1/changa_ex_01.mp3?v=1766520735",
+            "en": "“Well, 30 years working, saving 90% of my salary, plus the occasional `side job`. Do the math.”",
+            "es": "Y bueno, 30 años trabajando, ahorrando el 90 % de mi salario, más alguna `changuita`. Haga la cuenta.",
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": "changuita",
+          "fem_pl": "changas",
+          "fem_sg": "changa",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "changa",
+    "word": "changa"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/che/che.mp3",
     "senses": [
       {
@@ -2032,6 +2157,77 @@
     ],
     "slug": "chorro",
     "word": "chorro"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/choto/choto.mp3?v=1766531628",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Of poor quality or worth; when applied to people, used disparagingly to describe someone as insignificant, unappealing, or pathetic.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">De mala calidad o poco valor; aplicado a personas, se usa de forma despectiva para calificarlas como insignificantes, poco atractivas o despreciables.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "lousy",
+          "pathetic",
+          "loser"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/choto/s1/choto_ex_01.mp3?v=1766531629",
+            "en": "What an idiot. How could I think he wanted to be with me, that a young guy could have fun with an old `lousy` woman like me?",
+            "es": "Pero qué estúpida. ¿Cómo podía pensar que quería estar conmigo y que un chico joven podía divertirse con una vieja `chota` como yo?",
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/choto/s1/choto_ex_02.mp3?v=1766531629",
+            "en": "“I have fun with an old `lousy` woman like you, Beba.”",
+            "es": "Yo me divierto con una vieja `chota` como vos, Beba.",
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "adjetivo",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "despectivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "chotas",
+          "fem_sg": "chota",
+          "masc_pl": "chotos",
+          "masc_sg": "choto"
+        }
+      }
+    ],
+    "slug": "choto",
+    "word": "choto"
   },
   {
     "alt_spellings": [],
@@ -2866,6 +3062,65 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/encargado/encargado.mp3?v=1766519405",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A building superintendent or caretaker responsible for maintenance, oversight, and general tasks in an apartment building, often living on the premises.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Persona responsable del mantenimiento, control y tareas generales de un edificio de departamentos, a menudo residente en el mismo.</span>",
+        "domain": [
+          "sociedad",
+          "trabajo"
+        ],
+        "equivalents_en": [
+          "building superintendent"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/encargado/s1/encargado_ex_01.mp3?v=1766519406",
+            "en": "Before lawyers are phased out, the maids will be, — the building `superintendents` will be…",
+            "es": "Antes de caer los abogados, van a caer las mucamas, los `encargados` de edificio...",
+            "linked_terms": [
+              "mucama"
+            ],
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "encargadas",
+          "fem_sg": "encargada",
+          "masc_pl": "encargados",
+          "masc_sg": "encargado"
+        }
+      }
+    ],
+    "slug": "encargado",
+    "word": "encargado"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/enchastre/enchastre.mp3?v=1765649135",
     "senses": [
       {
@@ -3031,6 +3286,71 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/fangote/fangote.mp3?v=1766521450",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A very large amount of something. Used to emphasize abundance.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Cantidad muy grande de algo. Usada para enfatizar abundancia.</span>",
+        "domain": [
+          "economia",
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "a ton of",
+          "a huge amount of",
+          "a lot of"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/fangote/s1/fangote_ex_01.mp3?v=1766521687",
+            "en": "“No, and now you’re going to get the severance pay, which is a `ton` of money. What are you going to do with all that cash?”",
+            "es": "No, y ahora vas a recibir la indemnización que es un `fangote` de guita. ¿Qué vas a hacer con tanta plata?",
+            "linked_terms": [
+              "guita",
+              "plata"
+            ],
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino",
+        "register": "informal",
+        "related_slugs": [
+          "guita",
+          "plata"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": "fangotes",
+          "masc_sg": "fangote"
+        }
+      }
+    ],
+    "slug": "fangote",
+    "word": "fangote"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/flaco/flaco.mp3",
     "senses": [
       {
@@ -3161,6 +3481,67 @@
     ],
     "slug": "forro",
     "word": "forro"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/fuera-de-joda/fuera_de_joda.mp3?v=1766519059",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Used</span><span style=\"font-weight: normal;\">&nbsp;to signal that what follows is meant seriously or sincerely, not as a joke.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Se usa para marcar que lo que se dice a continuación es serio o sincero, y no una broma.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "seriously",
+          "no joke",
+          "all joking aside",
+          "all jokes aside",
+          "for real"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/fuera-de-joda/s1/fuera_de_joda_ex_01.mp3?v=1766519059",
+            "en": "Nah, `all joking aside`. The truth is, they’re really great.",
+            "es": "Nah, `fuera de joda`. La verdad es que son buenísimas.",
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "locucion_adverbial",
+        "register": "informal",
+        "related_slugs": [
+          "joda"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "fuera-de-joda",
+    "word": "fuera de joda"
   },
   {
     "alt_spellings": [],
@@ -3697,6 +4078,22 @@
               "title": "Relatos salvajes",
               "type": "movie",
               "year": "2014"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/guita/s1/guita_ex_03.mp3?v=1766521649",
+            "en": "“No, and now you’re going to get the severance pay, which is a ton of `money`. What are you going to do with all that cash?”",
+            "es": "No, y ahora vas a recibir la indemnización que es un fangote de `guita`. ¿Qué vas a hacer con tanta plata?",
+            "linked_terms": [
+              "guita",
+              "plata"
+            ],
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
             }
           }
         ],
@@ -4237,7 +4634,8 @@
         "equivalents_en": [
           "motherfucker",
           "fuck you",
-          "you son of a bitch"
+          "you son of a bitch",
+          "holy shit"
         ],
         "examples": [
           {
@@ -4248,6 +4646,14 @@
               "title": "Relatos salvajes",
               "type": "movie",
               "year": "2014"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/la-concha-de-tu-madre/s1/la_concha_de_tu_madre_ex_02.mp3?v=1766520077",
+            "en": "“Five hundred twenty-five thousand four hundred dollars, doctor.”\n“`Holy shit!`”",
+            "es": "—Quinientos veinticinco mil cuatrocientos dólares, doctor.\n—¡`La concha de tu madre`!",
+            "source": {
+              "type": "movie"
             }
           }
         ],
@@ -5106,6 +5512,21 @@
               "title": "Viudas negras: P*tas y chorras",
               "type": "series",
               "year": "2025"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/mucama/s1/mucama_ex_03.mp3?v=1766519695",
+            "en": "Before lawyers are phased out, the `maids` will be, — the building`superintendents will be…",
+            "es": "Antes de caer los abogados, van a caer las `mucamas`, los encargados de edificio...",
+            "linked_terms": [
+              "encargado"
+            ],
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
             }
           }
         ],
@@ -6092,6 +6513,22 @@
               "title": "Relatos salvajes",
               "type": "movie",
               "year": "2014"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/plata/s1/plata_ex_03.mp3?v=1766521604",
+            "en": "“No, and now you’re going to get the severance pay, which is a ton of money. What are you going to do with all that `cash`?”",
+            "es": "No, y ahora vas a recibir la indemnización que es un fangote de guita. ¿Qué vas a hacer con tanta `plata`?",
+            "linked_terms": [
+              "fangote",
+              "guita"
+            ],
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
             }
           }
         ],
@@ -7432,6 +7869,18 @@
             "es": "¿Qué tenés? Contame, con esa cara de `trucho`.",
             "source": {
               "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/trucho/s1/trucho_ex_02.mp3?v=1766529428",
+            "en": "A kind of `shady` notary could have your friend sign a power of attorney, a will… and she wouldn’t even realize it.",
+            "es": "Un escribano medio `trucho` le puede hacer firmar a su amiga un poder, un testamento... y ella no se va a dar cuenta.",
+            "source": {
+              "episode": "5",
               "season": "1",
               "title": "El encargado",
               "type": "series",

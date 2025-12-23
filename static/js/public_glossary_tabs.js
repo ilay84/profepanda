@@ -73,7 +73,8 @@
     if (entry){
       return lang === 'es' ? entry.es : entry.en;
     }
-    return (tok||'').toString().replace(/_/g,' ');
+    // Graceful fallback: prettify the raw token
+    return cap(tok);
   }
 
   const pillBase = 'display:inline-flex; align-items:center; gap:4px; padding:3px 8px; border-radius:999px; border:1px solid #e2e8f0; font-size:12px; font-weight:600; line-height:1; background:#f8fafc; color:#0f172a;';

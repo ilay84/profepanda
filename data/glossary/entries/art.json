@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/art/art.mp3?v=1766518743",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Acronym for *Aseguradora de Riesgos del Trabajo*, Argentina’s mandatory workers’ compensation insurance system covering job-related accidents and occupational illnesses.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Sigla de Aseguradora de Riesgos del Trabajo, sistema obligatorio en Argentina que cubre accidentes laborales y enfermedades profesionales de trabajadores en relación de dependencia.</span>",
+      "domain": [
+        "economia",
+        "trabajo"
+      ],
+      "equivalents_en": [
+        "workers’ compensation insurance"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/art/s1/art_ex_01.mp3?v=1766518743",
+          "en": "You know what the good news is? You don’t have to pay workers’ comp or payroll taxes… It won’t sue you.",
+          "es": "¿Sabés cuál es la buena noticia? No hay que pagar `ART` ni cargas sociales... No te hace juicio.",
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "abreviatura_institucional",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "art",
+  "word": "ART"
+}

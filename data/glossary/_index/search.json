@@ -85,6 +85,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "abreviatura_institucional",
+    "slug": "art",
+    "snippet": "Acronym for *Aseguradora de Riesgos del Trabajo*, Argentina’s mandatory workers’ compensation insurance system covering job-related accidents and occupational illnesses.",
+    "word": "ART"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "verbo_transitivo",
     "slug": "atender-el-telefono",
     "snippet": "To answer a phone call by picking up or activating the call.",
@@ -257,6 +266,16 @@
   },
   {
     "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "changa",
+    "snippet": "A small, occasional job, usually informal and short-term, done to earn extra money.",
+    "word": "changa"
+  },
+  {
+    "countries": [
       "AR"
     ],
     "pos": "interjeccion",
@@ -318,6 +337,16 @@
     "slug": "chorro",
     "snippet": "A thief or someone who steals.",
     "word": "chorro"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "adjetivo",
+    "slug": "choto",
+    "snippet": "Of poor quality or worth; when applied to people, used disparagingly to describe someone as insignificant, unappealing, or pathetic.",
+    "word": "choto"
   },
   {
     "countries": [
@@ -457,6 +486,16 @@
   },
   {
     "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "encargado",
+    "snippet": "A building superintendent or caretaker responsible for maintenance, oversight, and general tasks in an apartment building, often living on the premises.",
+    "word": "encargado"
+  },
+  {
+    "countries": [
       "AR"
     ],
     "pos": "sustantivo_masculino",
@@ -484,6 +523,16 @@
   },
   {
     "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "fangote",
+    "snippet": "A very large amount of something. Used to emphasize abundance.",
+    "word": "fangote"
+  },
+  {
+    "countries": [
       "AR"
     ],
     "pos": "adjetivo",
@@ -499,6 +548,16 @@
     "slug": "forro",
     "snippet": "A despicable or extremely annoying person.",
     "word": "forro"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "locucion_adverbial",
+    "slug": "fuera-de-joda",
+    "snippet": "Used&nbsp;to signal that what follows is meant seriously or sincerely, not as a joke.",
+    "word": "fuera de joda"
   },
   {
     "countries": [

@@ -37,6 +37,22 @@
             "type": "movie",
             "year": "2014"
           }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/plata/s1/plata_ex_03.mp3?v=1766521604",
+          "en": "“No, and now you’re going to get the severance pay, which is a ton of money. What are you going to do with all that `cash`?”",
+          "es": "No, y ahora vas a recibir la indemnización que es un fangote de guita. ¿Qué vas a hacer con tanta `plata`?",
+          "linked_terms": [
+            "fangote",
+            "guita"
+          ],
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
         }
       ],
       "freq": "muy_comun",

@@ -1,5 +1,625 @@
 [
   {
+    "kind": "entry_updated",
+    "slug": "choto",
+    "word": "choto",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T23:13:51.351651Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "choto",
+    "word": "choto",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T23:13:50.653530Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "choto",
+    "word": "choto",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T23:13:49.453813Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "choto",
+    "word": "choto",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T23:13:23.635486Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "choto",
+    "word": "choto",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T23:12:10.111177Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "boludo",
+    "word": "boludo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:57:59.738051Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "boludo",
+    "word": "boludo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:57:59.232210Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "boludo",
+    "word": "boludo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:57:58.723014Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "boludo",
+    "word": "boludo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:56:52.945887Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "boludo",
+    "word": "boludo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:56:52.901210Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "boludo",
+    "word": "boludo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:56:51.712329Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "boludo",
+    "word": "boludo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:52:02.518421Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "boludo",
+    "word": "boludo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:47:47.076268Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "boludo",
+    "word": "boludo",
+    "sense_id": "s2",
+    "sense_num": 2,
+    "example_num": 3,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:47:46.400699Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "boludo",
+    "word": "boludo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:47:46.385906Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "trucho",
+    "word": "trucho",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:38:45.240490Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "trucho",
+    "word": "trucho",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:37:10.366642Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "trucho",
+    "word": "trucho",
+    "sense_id": "s1",
+    "sense_num": 1,
+    "example_num": 2,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:37:09.773576Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "trucho",
+    "word": "trucho",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T22:37:09.756947Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "fangote",
+    "word": "fangote",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:28:09.420988Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "fangote",
+    "word": "fangote",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:28:09.067258Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "fangote",
+    "word": "fangote",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:28:08.323312Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "guita",
+    "word": "guita",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:27:30.910019Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "guita",
+    "word": "guita",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:27:30.540842Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "guita",
+    "word": "guita",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:27:29.730048Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "plata",
+    "word": "plata",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:27:11.470391Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "plata",
+    "word": "plata",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:26:46.352305Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "plata",
+    "word": "plata",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:26:46.009032Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "plata",
+    "word": "plata",
+    "sense_id": "s1",
+    "sense_num": 1,
+    "example_num": 3,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:26:45.259634Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "plata",
+    "word": "plata",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:26:45.245569Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "guita",
+    "word": "guita",
+    "sense_id": "s1",
+    "sense_num": 1,
+    "example_num": 3,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:25:40.034637Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "guita",
+    "word": "guita",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:25:40.020279Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "fangote",
+    "word": "fangote",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:24:11.595539Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "fangote",
+    "word": "fangote",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:24:10.871952Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "fangote",
+    "word": "fangote",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:22:21.182188Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "changa",
+    "word": "changa",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:12:16.704710Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "changa",
+    "word": "changa",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:12:15.998658Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "changa",
+    "word": "changa",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:12:15.229973Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "changa",
+    "word": "changa",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:11:13.574034Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "la-concha-de-tu-madre",
+    "word": "la concha de tu madre",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:01:18.679726Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "la-concha-de-tu-madre",
+    "word": "la concha de tu madre",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:01:17.941400Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "la-concha-de-tu-madre",
+    "word": "la concha de tu madre",
+    "sense_id": "s1",
+    "sense_num": 1,
+    "example_num": 2,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:01:05.395643Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "la-concha-de-tu-madre",
+    "word": "la concha de tu madre",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T20:01:05.382592Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "encargado",
+    "word": "encargado",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T20:00:15.552532Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "mucama",
+    "word": "mucama",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:55:09.896273Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "mucama",
+    "word": "mucama",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:54:56.735359Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "mucama",
+    "word": "mucama",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:54:56.353701Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "mucama",
+    "word": "mucama",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:54:55.571840Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "mucama",
+    "word": "mucama",
+    "sense_id": "s1",
+    "sense_num": 1,
+    "example_num": 3,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:54:42.850873Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "mucama",
+    "word": "mucama",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:54:42.836920Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "encargado",
+    "word": "encargado",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:54:08.499744Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "encargado",
+    "word": "encargado",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:50:33.091780Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "encargado",
+    "word": "encargado",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:50:07.875671Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "encargado",
+    "word": "encargado",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:50:07.668477Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "encargado",
+    "word": "encargado",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:50:06.770949Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "encargado",
+    "word": "encargado",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:49:46.804069Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "fuera-de-joda",
+    "word": "fuera de joda",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:44:21.185476Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "fuera-de-joda",
+    "word": "fuera de joda",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:44:20.980565Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "fuera-de-joda",
+    "word": "fuera de joda",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:44:20.055060Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "fuera-de-joda",
+    "word": "fuera de joda",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-23T19:44:04.806760Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "art",
+    "word": "ART",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:39:05.259925Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "art",
+    "word": "ART",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:39:05.101600Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "art",
+    "word": "ART",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:39:04.205871Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "art",
+    "word": "ART",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-23T19:38:43.425841Z"
+  },
+  {
     "kind": "sense_added",
     "slug": "boludo",
     "word": "boludo",
@@ -1307,581 +1927,5 @@
       "AR"
     ],
     "ts": "2025-12-22T13:01:38.515931Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "grogui",
-    "word": "grogui",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T13:01:37.754994Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "grogui",
-    "word": "grogui",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T13:01:23.408605Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "boludez",
-    "word": "boludez",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T12:44:59.444040Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "boludez",
-    "word": "boludez",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T12:44:59.347329Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "boludez",
-    "word": "boludez",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T12:44:58.284506Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "boludez",
-    "word": "boludez",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T12:44:38.965469Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "quilombo",
-    "word": "quilombo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T10:40:55.263093Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "quilombo",
-    "word": "quilombo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T10:40:55.043650Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "quilombo",
-    "word": "quilombo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T10:40:54.189079Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "quilombo",
-    "word": "quilombo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T10:40:18.044163Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "barrio-cerrado",
-    "word": "barrio cerrado",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T15:26:45.821102Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "barrio-cerrado",
-    "word": "barrio cerrado",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T15:26:45.127351Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "barrio-cerrado",
-    "word": "barrio cerrado",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T15:25:56.953568Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "barrio-cerrado",
-    "word": "barrio cerrado",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T15:25:56.776164Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "barrio-cerrado",
-    "word": "barrio cerrado",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T15:25:55.918530Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "ezeiza",
-    "word": "Ezeiza",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:53:46.666054Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "ezeiza",
-    "word": "Ezeiza",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:53:45.961946Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "ezeiza",
-    "word": "Ezeiza",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:53:45.131309Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "ezeiza",
-    "word": "Ezeiza",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:52:58.793187Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "querido",
-    "word": "querido",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:43:18.732380Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "querido",
-    "word": "querido",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:43:18.303860Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "querido",
-    "word": "querido",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:43:17.804518Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "querido",
-    "word": "querido",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:41:55.259980Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "querido",
-    "word": "querido",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:41:54.593044Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bronca",
-    "word": "bronca",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:41:37.621922Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bronca",
-    "word": "bronca",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:41:36.941865Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bronca",
-    "word": "bronca",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:39:13.051569Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "querido",
-    "word": "querido",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:38:19.431951Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bronca",
-    "word": "bronca",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:37:23.177916Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bronca",
-    "word": "bronca",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:33:34.292372Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bronca",
-    "word": "bronca",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:33:34.079507Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bronca",
-    "word": "bronca",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:33:33.200160Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "bronca",
-    "word": "bronca",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T14:32:15.842486Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "milonga",
-    "word": "milonga",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T13:21:57.681516Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "milonga",
-    "word": "milonga",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T13:21:57.461540Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "milonga",
-    "word": "milonga",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T13:21:56.646521Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "milonga",
-    "word": "milonga",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T13:20:41.936744Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "re",
-    "word": "re-",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T13:10:52.642944Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T13:09:59.959534Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-19T00:57:26.620883Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T23:44:04.189738Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T23:40:57.559844Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T23:38:42.618048Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T23:31:55.146634Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "re",
-    "word": "re-",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T23:27:07.884589Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "re",
-    "word": "re-",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T23:27:07.092573Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "re",
-    "word": "re-",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T23:27:05.865676Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "re",
-    "word": "re-",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T23:26:36.707072Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T23:06:46.206986Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T22:03:36.354475Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T22:02:40.783932Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T22:02:40.554312Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T22:02:39.836252Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T22:00:00.172441Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T21:57:23.957037Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "me-chupa-un-huevo",
-    "word": "me chupa un huevo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T21:56:07.770852Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bodrio",
-    "word": "bodrio",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T21:48:05.338227Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bodrio",
-    "word": "bodrio",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T21:48:04.554432Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "bodrio",
-    "word": "bodrio",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T21:48:03.912877Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "bodrio",
-    "word": "bodrio",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T21:47:45.636624Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "placard",
-    "word": "placard",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T20:24:49.173598Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "placard",
-    "word": "placard",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T20:24:48.455231Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "placard",
-    "word": "placard",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T20:24:47.798755Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "placard",
-    "word": "placard",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-18T20:24:04.746875Z"
   }
 ]

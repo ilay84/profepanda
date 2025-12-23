@@ -1657,6 +1657,29 @@
     });
   }
 
+  function defaultBlockData(type) {
+    const langVal = els.lang?.value || "es";
+    if (type === "exercise" || type === "exercise_reference") {
+      return {
+        exercise_id: "",
+        exercise_type: "",
+        version: null,
+        display: {
+          show_title: true,
+          show_instructions: true,
+          width: "full"
+        },
+        overrides: {
+          prompt: {
+            es: "",
+            en: ""
+          },
+          feedbackLocale: langVal === "en" ? "en" : "es"
+        }
+      };
+    }
+    return {};
+  }
 
   if (els.blockAdd) {
     els.blockAdd.addEventListener("click", () => {
@@ -1670,7 +1693,7 @@
       const proposedId = (els.blockId?.value || "").trim();
       const blockId = proposedId || `${type}-${(mod.blocks || []).length + 1}`;
       mod.blocks = Array.isArray(mod.blocks) ? mod.blocks : [];
-      mod.blocks.push({ id: blockId, type, data: {} });
+      mod.blocks.push({ id: blockId, type, data: defaultBlockData(type) });
       if (els.blockId) els.blockId.value = "";
       renderBlocks();
     });

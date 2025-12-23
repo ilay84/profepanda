@@ -7,81 +7,81 @@
 
 {% block content %}
 <main class="ppx-container ppx-admin" style="--ppx-admin-width: 1260px;">
-  <div class="ppx-row" style="margin-top:1rem; gap:1rem; align-items:stretch; flex-wrap:wrap;">
-    <div class="ppx-card" style="padding:1rem; flex: 1 1 320px; min-width:320px;">
-      <div class="ppx-row" style="align-items:center; gap:.75rem;">
-        <img alt="" src="{{ url_for('static', filename='assets/icons/preview.svg') }}" style="width:32px; height:32px;" loading="lazy">
-        <div>
-          <div class="ppx-h2" style="margin:0;">Content Lab</div>
-          <div class="ppx-muted" style="margin-top:.15rem;">{{ t("Sandbox privado para experimentar UI/UX sin afectar prod.", "Private sandbox to experiment with UI/UX without touching prod.", app_lang) }}</div>
+    <div class="lab-layout">
+    <div class="lab-topbar ppx-card">
+      <div class="ppx-row" style="align-items:center; gap:.75rem; flex-wrap:wrap;">
+        <div class="ppx-row" style="align-items:center; gap:.5rem;">
+          <img alt="" src="{{ url_for('static', filename='assets/icons/preview.svg') }}" style="width:32px; height:32px;" loading="lazy">
+          <div>
+            <div class="ppx-h2" style="margin:0;">Content Lab</div>
+            <div class="ppx-muted" style="margin-top:.15rem;">{{ t("Sandbox privado para experimentar UI/UX sin afectar prod.", "Private sandbox to experiment with UI/UX without touching prod.", app_lang) }}</div>
+          </div>
         </div>
-      </div>
-
-      <div style="margin-top:1rem; display:grid; gap:.75rem;">
-        <label class="ppx-field">
-          <div class="ppx-label">{{ t("Recurso de ejemplo", "Example resource", app_lang) }}</div>
-          <select id="lab-resource-select" class="ppx-select"></select>
-        </label>
-        <label class="ppx-field">
-          <div class="ppx-label">{{ t("Tema", "Theme", app_lang) }}</div>
-          <select id="lab-theme-select" class="ppx-select"></select>
-        </label>
-        <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
-          <button id="lab-reload" class="ppx-btn">{{ t("Recargar JSON", "Reload JSON", app_lang) }}</button>
-          <button id="lab-snapshot" class="ppx-btn ppx-btn-secondary">{{ t("Capturar vista", "Capture view", app_lang) }}</button>
-          <a class="ppx-btn ppx-btn-secondary" href="{{ url_for('admin.content_lab_map') }}">{{ t("Content Hub", "Content Hub", app_lang) }}</a>
-        </div>
-        <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
-          <label class="ppx-checkbox">
-            <input id="lab-toggle-density" type="checkbox">
-            <span>{{ t("Modo compacto", "Compact mode", app_lang) }}</span>
+        <div class="lab-topbar-controls">
+          <label class="ppx-field">
+            <div class="ppx-label">{{ t("Recurso de ejemplo", "Example resource", app_lang) }}</div>
+            <select id="lab-resource-select" class="ppx-select"></select>
           </label>
-          <label class="ppx-checkbox">
-            <input id="lab-toggle-mock" type="checkbox" checked>
-            <span>{{ t("Mocks de servicios (traduccion/progreso)", "Mocked services (translation/progress)", app_lang) }}</span>
+          <label class="ppx-field">
+            <div class="ppx-label">{{ t("Tema", "Theme", app_lang) }}</div>
+            <select id="lab-theme-select" class="ppx-select"></select>
           </label>
+          <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
+            <button id="lab-reload" class="ppx-btn">{{ t("Recargar JSON", "Reload JSON", app_lang) }}</button>
+            <button id="lab-snapshot" class="ppx-btn ppx-btn-secondary">{{ t("Capturar vista", "Capture view", app_lang) }}</button>
+            <a class="ppx-btn ppx-btn-secondary" href="{{ url_for('admin.content_lab_map') }}">{{ t("Content Hub", "Content Hub", app_lang) }}</a>
+          </div>
+          <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
+            <label class="ppx-checkbox">
+              <input id="lab-toggle-density" type="checkbox">
+              <span>{{ t("Modo compacto", "Compact mode", app_lang) }}</span>
+            </label>
+            <label class="ppx-checkbox">
+              <input id="lab-toggle-mock" type="checkbox" checked>
+              <span>{{ t("Mocks de servicios (traduccion/progreso)", "Mocked services (translation/progress)", app_lang) }}</span>
+            </label>
+          </div>
         </div>
-        <div class="ppx-muted" style="font-size:13px;">
+        <div class="ppx-muted" style="font-size:13px; flex:1 1 100%; margin-top:.35rem;">
           {{ t("Traducciones, progreso y ejercicios usan stubs en este laboratorio. Ajusta tema y variantes para validar visuales.", "Translations, progress, and exercises are stubbed in this lab. Adjust theme and variants to validate visuals.", app_lang) }}
         </div>
       </div>
     </div>
 
-    <div class="ppx-card" style="padding:1rem; flex: 2 1 640px; min-width:520px;">
-      <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
-        <div>
-          <div class="ppx-h3" id="lab-resource-title" style="margin:0;">{{ t("Recurso", "Resource", app_lang) }}</div>
-          <div class="ppx-muted" id="lab-resource-meta" style="font-size:13px; margin-top:.1rem;"></div>
+    <div class="lab-main">
+      <aside class="lab-side ppx-card">
+        <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
+          <div>
+            <div class="ppx-h3" id="lab-resource-title" style="margin:0;">{{ t("Recurso", "Resource", app_lang) }}</div>
+            <div class="ppx-muted" id="lab-resource-meta" style="font-size:13px; margin-top:.1rem;"></div>
+          </div>
+          <div class="ppx-row" style="gap:.35rem; align-items:center; flex-wrap:wrap;">
+            <span class="ppx-pill" id="lab-theme-pill">{{ t("Tema", "Theme", app_lang) }}</span>
+            <span class="ppx-pill ppx-pill-muted" id="lab-density-pill">{{ t("Cómodo", "Comfortable", app_lang) }}</span>
+          </div>
         </div>
-        <div class="ppx-row" style="gap:.5rem; align-items:center;">
-          <span class="ppx-pill" id="lab-theme-pill">{{ t("Tema", "Theme", app_lang) }}</span>
-          <span class="ppx-pill ppx-pill-muted" id="lab-density-pill">{{ t("Cómodo", "Comfortable", app_lang) }}</span>
-        </div>
-      </div>
-
-      <div class="lab-preview-shell">
-        <div class="lab-module-nav-panel">
+        <div class="lab-module-nav-panel" style="margin-top:.65rem;">
           <div class="ppx-label" style="margin-bottom:.35rem;">{{ t("Módulos", "Modules", app_lang) }}</div>
           <div id="lab-module-nav" class="lab-module-nav"></div>
         </div>
-        <div id="lab-preview" class="lab-preview"></div>
-      </div>
-      <div class="ppx-row" style="margin-top:1rem; gap:1rem; flex-wrap:wrap;">
-        <div class="ppx-card" style="padding:.75rem 1rem; flex:1 1 240px; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8);">
+        <div class="ppx-card lab-side-card">
           <div class="ppx-h4" style="margin:0 0 .35rem 0;">{{ t("Progreso simulado", "Mock progress", app_lang) }}</div>
           <div class="lab-progress-bar">
             <div id="lab-progress-fill" class="lab-progress-fill" style="width:0%;"></div>
           </div>
           <div class="ppx-muted" id="lab-progress-text" style="font-size:13px; margin-top:.35rem;">{{ t("0% completado", "0% complete", app_lang) }}</div>
         </div>
-        <div class="ppx-card" style="padding:.75rem 1rem; flex:1 1 240px;">
+        <div class="ppx-card lab-side-card">
           <div class="ppx-h4" style="margin:0 0 .35rem 0;">{{ t("Recomendaciones", "Recommendations", app_lang) }}</div>
           <ul id="lab-recs" style="margin:0; padding-left:18px; color:#0f172a;"></ul>
         </div>
-      </div>
+      </aside>
+
+      <section class="lab-preview-pane ppx-card">
+        <div id="lab-preview" class="lab-preview"></div>
+      </section>
     </div>
   </div>
-
   <div class="ppx-card" style="padding:1rem; margin:1rem 0;">
     <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem;">
       <div>
@@ -161,6 +161,8 @@
 </main>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
   .lab-preview {
     border: 1px dashed var(--ppx-line, #d4d4d8);
     border-radius: 12px;
@@ -183,11 +185,65 @@
     border-radius: 14px;
     padding: 12px;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    font-family: 'Montserrat', 'Inter', system-ui, -apple-system, sans-serif;
   }
   .lab-module-nav {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    font-family: 'Montserrat', 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+  }
+  .lab-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .lab-topbar {
+    padding: 1rem;
+  }
+  .lab-topbar-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: .75rem;
+    flex: 1 1 auto;
+  }
+  .lab-main {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+  .lab-side {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    padding: 1rem;
+    min-width: 300px;
+    flex: 0 0 320px;
+    box-sizing: border-box;
+  }
+  .lab-side-card {
+    margin-top: .35rem;
+    background: #f8fafc;
+    border: 1px dashed var(--ppx-line,#d4d4d8);
+  }
+  .lab-preview-pane {
+    padding: 1rem;
+    min-height: 420px;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  @media (max-width: 1080px) {
+    .lab-main {
+      flex-direction: column;
+    }
+    .lab-side {
+      flex-direction: column;
+      flex: 1 1 auto;
+    }
   }
   .lab-module-header {
     padding: 8px 0 14px 0;
@@ -213,20 +269,21 @@
     gap: .75rem;
   }
   .lab-block-card {
-    background: #ffffff;
-    border: 1px solid var(--ppx-line, #e5e7eb);
-    border-radius: 12px;
-    padding: 12px 14px;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
   }
   .lab-preview.compact { padding: 10px; }
   .lab-block { margin: 0 0 14px 0; }
   .lab-block:last-child { margin-bottom: 0; }
   .lab-callout {
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 12px 14px;
     border: 1px solid #dbeafe;
     background: #f8fbff;
+    margin: 6px 0;
   }
   .lab-callout.info { border-color: #dbeafe; background: #f1f5ff; }
   .lab-callout.warning { border-color: #fbbf24; background: #fff7ed; }
@@ -448,23 +505,72 @@
   .lab-translation strong { display:block; margin-bottom:6px; }
   #lab-module-nav button {
     border: 1px solid var(--ppx-line,#d4d4d8);
-    border-radius: 12px;
-    padding: 10px 12px;
+    border-radius: 14px;
+    padding: 12px 14px;
     background: #ffffff;
     cursor: pointer;
     font-weight: 700;
     text-align: left;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
     display: grid;
-    gap: 4px;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 10px;
+    row-gap: 4px;
+    align-items: center;
+    position: relative;
   }
-  #lab-module-nav button .lab-nav-title { color: #0f172a; }
-  #lab-module-nav button .lab-nav-meta { color: #475569; font-size: 12px; font-weight: 500; }
+  #lab-module-nav button .lab-nav-title { color: #0f172a; font-weight: 700; grid-column: 2; grid-row: 1; }
+  #lab-module-nav button .lab-nav-meta { color: #475569; font-size: 12px; font-weight: 500; grid-column: 2; grid-row: 2; }
+  #lab-module-nav button .lab-nav-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    height: 30px;
+    border-radius: 999px;
+    padding: 0 14px;
+    background: linear-gradient(135deg, #dfe3ff, #e9ecff);
+    color: #1f2a66;
+    font-weight: 700;
+    font-size: 13px;
+    margin: 0;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  #lab-module-nav button.depth-1 .lab-nav-num {
+    background: #e5e7eb;
+    color: #334155;
+  }
+  #lab-module-nav button.depth-1 {
+    background: #ffffff;
+    border-color: #e5e7eb;
+    box-shadow: 0 2px 8px rgba(15,23,42,0.05);
+    padding-left: 20px;
+  }
+  #lab-module-nav button.depth-1 .lab-nav-title {
+    font-weight: 600;
+  }
   #lab-module-nav button.active {
     background: linear-gradient(135deg, #e0e7ff, #eef2ff);
     border-color: #c7d2fe;
     color: #1e1b4b;
     box-shadow: 0 12px 26px rgba(59, 130, 246, 0.20);
+  }
+  #lab-module-nav button.active .lab-nav-num {
+    background: #4b46af;
+    color: #ffffff;
+  }
+  #lab-module-nav button.depth-0 .lab-nav-num {
+    background: linear-gradient(135deg, #3944b3, #5560df);
+    color: #fff;
+  }
+  #lab-module-nav button.depth-0 {
+    border-color: #c7d2fe;
+    background: linear-gradient(135deg, #ecf0ff, #eef0ff);
+  }
+  #lab-module-nav button.depth-1 {
+    background: #f5f6f8;
   }
 </style>
 
@@ -501,12 +607,12 @@
       compact: "Compacto",
       comfortable: "Cómodo",
       selectModule: "Selecciona un modulo para previsualizar.",
-      noModules: "Este recurso no tiene modulos.",
+      noModules: "Este recurso no tiene módulos.",
       moduleFallback: "Modulo",
       resourceFallback: "Recurso",
       primaryLabel: "Primario",
       levelLabel: "Nivel",
-      modulesLabel: "modulos",
+      modulesLabel: "módulos",
       progressComplete: (percent) => `${percent}% completado (simulado)`,
       recPrefix: "Revisar modulo",
       noRecs: "Sin recomendaciones",
@@ -772,10 +878,12 @@
     const rect = target.getBoundingClientRect();
     const tipRect = tip.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
+    // position centered above; if not enough room, place below; avoid going off-screen
     let left = rect.left + rect.width / 2 - tipRect.width / 2 + window.scrollX;
     left = Math.max(8 + window.scrollX, Math.min(left, viewportWidth - tipRect.width - 8 + window.scrollX));
     let top = rect.top + window.scrollY - tipRect.height - 8;
-    if (top < window.scrollY + 8) {
+    const minTop = window.scrollY + 8;
+    if (top < minTop) {
       top = rect.bottom + window.scrollY + 8;
     }
     tip.style.left = `${left}px`;
@@ -1254,18 +1362,36 @@
       els.moduleNav.textContent = tx("noModules");
       return;
     }
-    modules.forEach((mod, idx) => {
+
+    const byId = new Map();
+    modules.forEach(m => byId.set(m.module_id || m.id || m.title_es || m.title_en || "", m));
+    const children = new Map();
+    modules.forEach(m => {
+      const pid = m.parent_id || null;
+      if (!children.has(pid)) children.set(pid, []);
+      children.get(pid).push(m);
+    });
+    const roots = children.get(null) || children.get(undefined) || modules;
+
+    let firstModule = null;
+    function renderNode(mod, depth = 0, prefix = "") {
       const btn = document.createElement("button");
-      const label = preferLang(mod.title_en, mod.title_es, mod.module_id || `${tx("moduleFallback")} ${idx + 1}`);
+      btn.style.paddingLeft = `${12 + depth * 16}px`;
+      btn.classList.add(`depth-${depth}`);
+      const label = preferLang(mod.title_en, mod.title_es, mod.module_id || `${tx("moduleFallback")}`);
       const translationTitle = lang === "es" ? mod.title_en : mod.title_es;
       const titleEl = document.createElement("div");
       titleEl.className = "lab-nav-title";
       setTextWithTooltip(titleEl, label, translationTitle || "");
+      const numEl = document.createElement("span");
+      numEl.className = "lab-nav-num";
+      numEl.textContent = prefix || "";
       const metaEl = document.createElement("div");
       metaEl.className = "lab-nav-meta";
       const blocksCount = (mod.blocks && mod.blocks.length) || 0;
       const blocksLabel = blocksCount === 1 ? preferLang("block", "bloque") : preferLang("blocks", "bloques");
       metaEl.textContent = `${blocksCount} ${blocksLabel}`;
+      if (prefix) btn.appendChild(numEl);
       btn.appendChild(titleEl);
       btn.appendChild(metaEl);
       btn.addEventListener("click", () => {
@@ -1273,10 +1399,20 @@
         btn.classList.add("active");
         renderModule(mod);
       });
-      if (idx === 0) btn.classList.add("active");
       els.moduleNav.appendChild(btn);
-    });
-    renderModule(modules[0]);
+      if (!firstModule) firstModule = mod;
+      const kids = children.get(mod.module_id) || children.get(mod.id) || [];
+      kids.forEach((k, idx) => {
+        const childPrefix = prefix ? `${prefix}.${idx + 1}` : `${idx + 1}`;
+        renderNode(k, depth + 1, childPrefix);
+      });
+    }
+
+    roots.forEach((r, idx) => renderNode(r, 0, `${idx + 1}`));
+    if (els.moduleNav.querySelector("button")) {
+      els.moduleNav.querySelector("button").classList.add("active");
+    }
+    if (firstModule) renderModule(firstModule);
   }
 
   function updateMeta(resource) {

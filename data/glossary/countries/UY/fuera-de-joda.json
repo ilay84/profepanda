@@ -1,0 +1,61 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/fuera-de-joda/fuera_de_joda.mp3?v=1766519059",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Used</span><span style=\"font-weight: normal;\">&nbsp;to signal that what follows is meant seriously or sincerely, not as a joke.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Se usa para marcar que lo que se dice a continuación es serio o sincero, y no una broma.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "seriously",
+        "no joke",
+        "all joking aside",
+        "all jokes aside",
+        "for real"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/fuera-de-joda/s1/fuera_de_joda_ex_01.mp3?v=1766519059",
+          "en": "Nah, `all joking aside`. The truth is, they’re really great.",
+          "es": "Nah, `fuera de joda`. La verdad es que son buenísimas.",
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_adverbial",
+      "register": "informal",
+      "related_slugs": [
+        "joda"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "fuera-de-joda",
+  "word": "fuera de joda"
+}

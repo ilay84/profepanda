@@ -5,6 +5,14 @@ import unicodedata
 from typing import Any, Dict, Iterable, List, Mapping, Optional
 
 POS_CATALOG: List[Dict[str, Any]] = [
+    {"value": "abreviatura", "es": "abreviatura", "en": "abbreviation", "group": "misc"},
+    {
+        "value": "abreviatura_institucional",
+        "es": "abreviatura institucional",
+        "en": "institutional abbreviation",
+        "group": "misc",
+    },
+    {"value": "acronimo", "es": "acrónimo", "en": "acronym", "group": "misc"},
     {"value": "adjetivo", "es": "adjetivo", "en": "adjective", "group": "misc"},
     {"value": "adjetivo_demostrativo", "es": "adjetivo demostrativo", "en": "demonstrative adjective", "group": "misc"},
     {"value": "adverbio", "es": "adverbio", "en": "adverb", "group": "misc"},
@@ -74,6 +82,18 @@ LEGACY_ALIASES: Mapping[str, str] = {
     "formulaic expression (social formula)": "formula_social",
     "idiom": "frase_hecha",
     "interjection": "interjeccion",
+    "acronym": "acronimo",
+    "acronymn": "acronimo",
+    "abbreviation": "abreviatura",
+    "abbr": "abreviatura",
+    "abrev": "abreviatura",
+    "abreviacion": "abreviatura",
+    "abreviatura_institucional": "abreviatura_institucional",
+    "abreviacion_institucional": "abreviatura_institucional",
+    "institutional_abbreviation": "abreviatura_institucional",
+    "institutional abbreviation": "abreviatura_institucional",
+    "institutional_acronym": "abreviatura_institucional",
+    "institutional acronym": "abreviatura_institucional",
     "adjectival phrase": "locucion_adjetival",
     "adverbial phrase": "locucion_adverbial",
     "conjunctive phrase": "locucion_conjuntiva",

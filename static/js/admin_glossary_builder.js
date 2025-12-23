@@ -128,6 +128,9 @@
   const POS_ALIAS = (window.PPX_POS_ALIASES || {});
   // Fallback only if backend catalog fails; align values with app.pos_catalog POS_CATALOG
   const FALLBACK_POS = [
+    { value:'abreviatura', es:'abreviatura', en:'abbreviation' },
+    { value:'abreviatura_institucional', es:'abreviatura institucional', en:'institutional abbreviation' },
+    { value:'acronimo', es:'acrónimo', en:'acronym' },
     { value:'adjetivo', es:'adjetivo', en:'adjective' },
     { value:'adjetivo_demostrativo', es:'adjetivo demostrativo', en:'demonstrative adjective' },
     { value:'adverbio', es:'adverbio', en:'adverb' },

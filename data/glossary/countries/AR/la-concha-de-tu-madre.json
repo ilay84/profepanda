@@ -13,7 +13,8 @@
       "equivalents_en": [
         "motherfucker",
         "fuck you",
-        "you son of a bitch"
+        "you son of a bitch",
+        "holy shit"
       ],
       "examples": [
         {
@@ -24,6 +25,14 @@
             "title": "Relatos salvajes",
             "type": "movie",
             "year": "2014"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/la-concha-de-tu-madre/s1/la_concha_de_tu_madre_ex_02.mp3?v=1766520077",
+          "en": "“Five hundred twenty-five thousand four hundred dollars, doctor.”\n“`Holy shit!`”",
+          "es": "—Quinientos veinticinco mil cuatrocientos dólares, doctor.\n—¡`La concha de tu madre`!",
+          "source": {
+            "type": "movie"
           }
         }
       ],

@@ -83,6 +83,9 @@ All fields are strings and optional; type is required when a source is present.
 `AR, UY, CL, MX, ES, CO, PE, PY, BO, EC, VE, PR, DO, CU, GT, CR, PA, HN, NI, SV, GQ, US`
 
 ### Parts of speech (value → English label)
+- `abreviatura` → abbreviation
+- `abreviatura_institucional` → institutional abbreviation
+- `acronimo` → acronym
 - `adjetivo` → adjective
 - `adjetivo_demostrativo` → demonstrative adjective
 - `adverbio` → adverb

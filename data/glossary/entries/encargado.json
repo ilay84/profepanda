@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/encargado/encargado.mp3?v=1766519405",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A building superintendent or caretaker responsible for maintenance, oversight, and general tasks in an apartment building, often living on the premises.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Persona responsable del mantenimiento, control y tareas generales de un edificio de departamentos, a menudo residente en el mismo.</span>",
+      "domain": [
+        "sociedad",
+        "trabajo"
+      ],
+      "equivalents_en": [
+        "building superintendent"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/encargado/s1/encargado_ex_01.mp3?v=1766519406",
+          "en": "Before lawyers are phased out, the maids will be, — the building `superintendents` will be…",
+          "es": "Antes de caer los abogados, van a caer las mucamas, los `encargados` de edificio...",
+          "linked_terms": [
+            "mucama"
+          ],
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "encargadas",
+        "fem_sg": "encargada",
+        "masc_pl": "encargados",
+        "masc_sg": "encargado"
+      }
+    }
+  ],
+  "slug": "encargado",
+  "word": "encargado"
+}

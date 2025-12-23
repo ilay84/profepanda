@@ -80,7 +80,7 @@
       ],
       "examples": [
         {
-          "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_03.mp3?v=1766450516",
+          "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_01.mp3?v=1766530610",
           "en": "I end up looking like a professional idiot.",
           "es": "Yo quedo como una `boluda` profesionalmente.",
           "source": {
@@ -92,7 +92,7 @@
           }
         },
         {
-          "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_04.mp3?v=1766494264",
+          "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_02.mp3?v=1766530677",
           "en": "And you actually believed him, you idiot? I feel sorry for you. Don’t be such a moron.",
           "es": "¿Y vos le creíste, imbécil? Me das pena. No seas `boluda`.",
           "flags": [
@@ -105,11 +105,23 @@
             "type": "series",
             "year": "2022"
           }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_03.mp3?v=1766530611",
+          "en": "What do I look like to you, an `idiot`?",
+          "es": "¿Qué me ves? ¿Cara de `boludo` a mí?",
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
         }
       ],
       "freq": "muy_comun",
       "id": "s2",
-      "pos": "adjetivo",
+      "pos": "sustantivo_masculino_y_femenino",
       "register": "informal",
       "related_slugs": [
         "boludito"

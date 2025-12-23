@@ -36,6 +36,10 @@
     "word": "andá"
   },
   {
+    "slug": "art",
+    "word": "ART"
+  },
+  {
     "slug": "atender-el-telefono",
     "word": "atender el teléfono"
   },
@@ -112,6 +116,10 @@
     "word": "cargar"
   },
   {
+    "slug": "changa",
+    "word": "changa"
+  },
+  {
     "slug": "che",
     "word": "che"
   },
@@ -138,6 +146,10 @@
   {
     "slug": "chorro",
     "word": "chorro"
+  },
+  {
+    "slug": "choto",
+    "word": "choto"
   },
   {
     "slug": "chupar",
@@ -200,6 +212,10 @@
     "word": "en bolas"
   },
   {
+    "slug": "encargado",
+    "word": "encargado"
+  },
+  {
     "slug": "enchastre",
     "word": "enchastre"
   },
@@ -212,12 +228,20 @@
     "word": "Ezeiza"
   },
   {
+    "slug": "fangote",
+    "word": "fangote"
+  },
+  {
     "slug": "flaco",
     "word": "flaco"
   },
   {
     "slug": "forro",
     "word": "forro"
+  },
+  {
+    "slug": "fuera-de-joda",
+    "word": "fuera de joda"
   },
   {
     "slug": "garca",

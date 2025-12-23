@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/changa/changa.mp3?v=1766520734",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A small, occasional job, usually informal and short-term, done to earn extra money.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Trabajo ocasional, generalmente informal y de corta duración, que se hace para ganar dinero extra.</span>",
+      "domain": [
+        "economia",
+        "trabajo"
+      ],
+      "equivalents_en": [
+        "side job",
+        "odd job",
+        "gig"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/changa/s1/changa_ex_01.mp3?v=1766520735",
+          "en": "“Well, 30 years working, saving 90% of my salary, plus the occasional `side job`. Do the math.”",
+          "es": "Y bueno, 30 años trabajando, ahorrando el 90 % de mi salario, más alguna `changuita`. Haga la cuenta.",
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "changuita",
+        "fem_pl": "changas",
+        "fem_sg": "changa",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "changa",
+  "word": "changa"
+}
