@@ -28,6 +28,22 @@
             "type": "movie",
             "year": "2014"
           }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/laburar/s1/laburar_ex_02.mp3?v=1766445075",
+          "en": "\"Cut the bullshit, three hundred dollars. How much do you charge?\"\n\"I `work` fucking, I don’t do charity.\"",
+          "es": "—Dejate de joder, $300 dólares. ¿Cuánto cobrás?\n—Yo `laburo` de garchar no hago caridad.",
+          "linked_terms": [
+            "garchar",
+            "dejate-de-joder"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
         }
       ],
       "freq": "muy_comun",

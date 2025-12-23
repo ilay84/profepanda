@@ -4,7 +4,8 @@
 
   function renderBoard(ctx) {
     const { el, opts, api, lang } = ctx;
-    const t = (es, en) => (lang === 'en' ? (en ?? es) : (es ?? en));
+    const IS_EN = String(lang || 'es').toLowerCase().startsWith('en');
+    const t = (es, en) => (IS_EN ? (en ?? es) : (es ?? en));
     const isMobileLayout = () => window.matchMedia('(max-width: 640px)').matches;
     const isTouchDevice = () => {
       try { return ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0; } catch(_) { return false; }
@@ -230,7 +231,7 @@
       n.style.gap = '6px';
       n.style.padding = '10px 14px';
       n.setAttribute('data-tok', tok.id);
-      const label = (lang === 'en' ? tok.text_en : tok.text_es) || tok.text_es || tok.text_en || tok.id;
+      const label = IS_EN ? (tok.text_en || tok.text_es || tok.id) : (tok.text_es || tok.text_en || tok.id);
       n.textContent = label;
       const dragDisabled = isMobileLayout() || isTouchDevice();
       n.draggable = !dragDisabled;
@@ -269,7 +270,7 @@
         hb.appendChild(img);
         hb.addEventListener('click', (ev) => {
           ev.stopPropagation();
-          const hintText = (lang === 'en' ? tok.hint_en : tok.hint_es) || tok.hint_es || tok.hint_en || '';
+           const hintText = IS_EN ? (tok.hint_en || tok.hint_es || '') : (tok.hint_es || tok.hint_en || '');
           if (!hintText) return;
           try { api.hint({ item: tok.id }); } catch(_) {}
           expandModal();
@@ -367,7 +368,6 @@
       card.style.display = 'flex';
       card.style.flexDirection = 'column';
       card.style.gap = '10px';
-      card.setAttribute('data-col', col.id);
 
       const head = document.createElement('div');
       head.className = 'ppx-row';
@@ -376,7 +376,7 @@
       head.style.gap = '8px';
       const title = document.createElement('div');
       title.className = 'ppx-pill ppx-pill--type';
-      title.textContent = (lang === 'en' ? col.label_en : col.label_es) || col.label_es || col.label_en || t('Columna', 'Column') + ' ' + (idx+1);
+      title.textContent = IS_EN ? (col.label_en || col.label_es || t('Columna','Column') + ' ' + (idx+1)) : (col.label_es || col.label_en || t('Columna','Column') + ' ' + (idx+1));
       const hint = document.createElement('div');
       hint.className = 'ppx-muted';
       hint.textContent = `${idx+1}`;
@@ -384,21 +384,25 @@
 
       const drop = document.createElement('div');
       drop.className = 'ppx-dnd__drop';
-      drop.style.minHeight = '60px';
-      drop.style.border = '1px dashed var(--ppx-color-line,#e5e7eb)';
-      drop.style.borderRadius = '8px';
-      drop.style.padding = '8px';
+      drop.style.minHeight = '90px';
+      drop.style.setProperty('border', '2px dashed #c7d3e8', 'important');
+      drop.style.setProperty('background', '#f5f8fc', 'important');
+      drop.style.borderRadius = '12px';
+      drop.style.padding = '12px';
       drop.style.display = 'flex';
       drop.style.flexWrap = 'wrap';
-      drop.style.gap = '8px';
-      drop.setAttribute('data-drop', col.id);
+      drop.style.alignItems = 'flex-start';
+      drop.style.gap = '10px';
+      drop.style.width = '100%';
+      drop.setAttribute('data-drop', '1');
+      drop.setAttribute('data-col', col.id);
       drop.addEventListener('dragover', (e) => e.preventDefault());
       drop.addEventListener('drop', (e) => {
         e.preventDefault();
         const tokId = e.dataTransfer.getData('text/plain');
         if (tokId) place(tokId, col.id);
       });
-      drop.setAttribute('data-drop','true');
+      drop.setAttribute('data-drop','1');
       drop.setAttribute('data-col', col.id);
       drop.addEventListener('click', (e) => {
         if (locked) return;
@@ -436,13 +440,17 @@
       if (locked) return;
       placements.set(tokId, colId);
       const btn = root.querySelector(`[data-tok="${CSS.escape(tokId)}"]`);
-      const target = root.querySelector(`[data-drop="${CSS.escape(colId)}"]`);
+      const target = root.querySelector(`.ppx-dnd__drop[data-col="${CSS.escape(colId)}"]`);
       if (!btn || !target) return;
       // FLIP animation: measure start
       const startRect = (btn.closest('.ppx-dnd__item') || btn).getBoundingClientRect();
       // Ensure wrapper exists
-      const wrap = ensureTokWrap(btn);
-      target.appendChild(wrap);
+        const wrap = ensureTokWrap(btn);
+        target.appendChild(wrap);
+        // Keep drop growing with content while removing any accidental external spacing
+        wrap.style.margin = '0';
+        wrap.style.width = 'fit-content';
+        wrap.style.alignSelf = 'flex-start';
       // Measure end
       const endRect = wrap.getBoundingClientRect();
       const dx = startRect.left - endRect.left;

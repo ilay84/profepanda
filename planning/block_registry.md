@@ -1,6 +1,6 @@
 # Block Registry (Authoring Reference)
 
-Quick reference for content block shapes, required/optional fields, and allowed `style_variant`s. Use alongside the JSON Schemas in `data/schemas/content/`.
+Quick reference for content block shapes, required/optional fields, and allowed `style_variant`s. Use alongside the single schema `planning/content.schema.json`.
 
 | type | required data | optional data | allowed style_variant examples |
 | --- | --- | --- | --- |
@@ -31,4 +31,4 @@ Example_sentence audio:
 
 Notes:
 - `style_variant` must come from the allowed set per block; the theme maps variants to visuals.
-- Blocks are modular; new types should extend the schema in `data/schemas/content/block.schema.json`.
+- Blocks are modular; new types should extend the schema in `planning/content.schema.json`.

@@ -19,7 +19,8 @@
     pill.addEventListener('mouseleave', ()=>{ pill.style.transform=''; pill.style.boxShadow='0 1px 2px rgba(16,24,40,0.08)'; });
     pill.draggable = true;
     pill.dataset.cid = data.id;
-    pill.textContent = (lang === 'en' ? (data.text_en || data.text_es || data.id) : (data.text_es || data.text_en || data.id));
+    const isEn = String(lang || 'es').toLowerCase().startsWith('en');
+    pill.textContent = isEn ? (data.text_en || data.text_es || data.id) : (data.text_es || data.text_en || data.id);
     return pill;
   }
 
@@ -55,8 +56,9 @@
     const api = ctx && ctx.api ? ctx.api : {};
     const data = (ctx && (ctx.data || ctx.payload)) || {};
     const lang = ctx?.lang || api.lang || 'es';
-    const t = (es, en) => (lang === 'en' ? (en ?? es) : (es ?? en));
-    const pick = (es, en) => (lang === 'en' ? (en || es || '') : (es || en || ''));
+    const IS_EN = String(lang || 'es').toLowerCase().startsWith('en');
+    const t = (es, en) => (IS_EN ? (en ?? es) : (es ?? en));
+    const pick = (es, en) => (IS_EN ? (en || es || '') : (es || en || ''));
     const items = Array.isArray(data.items) ? data.items.slice().sort((a,b)=>(a.order||0)-(b.order||0)) : [];
     const sanitize = (html) => String(html||'').replace(/<(?!\/?(b|strong|i|em)\b)[^>]*>/gi,'');
 
@@ -133,7 +135,7 @@
         const det = document.createElement('details'); det.className='ppx-acc'; det.style.border='1px solid var(--ppx-color-line,#e5e7eb)'; det.style.borderRadius='12px'; det.style.overflow='hidden'; det.style.background='#fff';
         const sum = document.createElement('summary'); sum.style.cursor='pointer'; sum.style.listStyle='none'; sum.style.padding='12px 14px'; sum.style.display='flex'; sum.style.alignItems='center'; sum.style.gap='10px'; sum.style.flexWrap='nowrap';
         const title = document.createElement('span'); title.style.flex='1 1 auto'; title.style.minWidth='0'; title.style.whiteSpace='pre-wrap';
-        const promptNames = (it.prompts||[]).slice(0,2).map(p => sanitize(lang==='en' ? (p.prompt_en || p.prompt_es || '') : (p.prompt_es || p.prompt_en || ''))).filter(Boolean);
+        const promptNames = (it.prompts||[]).slice(0,2).map(p => sanitize(IS_EN ? (p.prompt_en || p.prompt_es || '') : (p.prompt_es || p.prompt_en || ''))).filter(Boolean);
         const idxLabel = `<strong>${idxItem+1}.</strong> `;
         title.innerHTML = idxLabel + (promptNames.length ? promptNames.join(' / ') : `${t('Item','Item')} ${idxItem+1}`);
         sum.appendChild(title);
@@ -148,7 +150,7 @@
           if (ok) itemCorrect += 1;
           const card = document.createElement('div'); card.className='ppx-card'; card.style.padding='10px'; card.style.gap='8px'; card.style.display='flex'; card.style.flexDirection='column';
           const rowTop = document.createElement('div'); rowTop.className='ppx-row'; rowTop.style.gap='8px'; rowTop.style.alignItems='center';
-          const promptTxt = document.createElement('div'); promptTxt.innerHTML = sanitize(lang==='en' ? (p.prompt_en || p.prompt_es || '') : (p.prompt_es || p.prompt_en || ''));
+          const promptTxt = document.createElement('div'); promptTxt.innerHTML = sanitize(IS_EN ? (p.prompt_en || p.prompt_es || '') : (p.prompt_es || p.prompt_en || ''));
           promptTxt.style.flex='1';
           const status = document.createElement('span'); status.className = ok ? 'ppx-chip ppx-chip--ok' : 'ppx-chip ppx-chip--bad';
           status.textContent = ok ? t('Correcto','Correct') : t('Incorrecto','Incorrect');
@@ -156,7 +158,7 @@
           card.appendChild(rowTop);
           const chosenRow = document.createElement('div'); chosenRow.className='ppx-row'; chosenRow.style.gap='6px'; chosenRow.style.alignItems='center';
           const lblChosen = document.createElement('span'); lblChosen.className='ppx-muted'; lblChosen.textContent = t('Tu elección:','Your choice:');
-          const chosenTxt = document.createElement('span'); chosenTxt.textContent = cont ? (lang==='en' ? (cont.text_en || cont.text_es || cont.id) : (cont.text_es || cont.text_en || cont.id)) : t('Sin respuesta','No answer');
+          const chosenTxt = document.createElement('span'); chosenTxt.textContent = cont ? (IS_EN ? (cont.text_en || cont.text_es || cont.id) : (cont.text_es || cont.text_en || cont.id)) : t('Sin respuesta','No answer');
           chosenRow.appendChild(lblChosen); chosenRow.appendChild(chosenTxt);
           card.appendChild(chosenRow);
           const hintText = pick(p.hint_es, p.hint_en);
@@ -325,7 +327,7 @@
 
       prompts.forEach((p, pi) => {
         const card = document.createElement('div'); card.className='ppx-card'; card.style.padding='12px'; card.style.display='flex'; card.style.flexDirection='column'; card.style.gap='8px';
-        const txt = document.createElement('div'); txt.innerHTML = sanitize(lang==='en' ? (p.prompt_en || p.prompt_es || '') : (p.prompt_es || p.prompt_en || ''));
+        const txt = document.createElement('div'); txt.innerHTML = sanitize(IS_EN ? (p.prompt_en || p.prompt_es || '') : (p.prompt_es || p.prompt_en || ''));
         card.appendChild(txt);
         const slotRow = document.createElement('div'); slotRow.className='ppx-row'; slotRow.style.gap='6px'; slotRow.style.alignItems='center';
         const arrow = document.createElement('img'); arrow.src='/static/assets/icons/arrow_right.svg'; arrow.alt=''; arrow.width=20; arrow.height=20;

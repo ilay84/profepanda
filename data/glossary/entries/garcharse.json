@@ -1,0 +1,64 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/garcharse/garcharse.mp3?v=1766493544",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">To have sex with someone, emphasizing direct personal involvement; the pronominal form of *garchar*, typically used with a specific human partner.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Tener relaciones sexuales con alguien, enfatizando la implicación personal o el vínculo directo con esa persona; forma pronominal de *garchar* usada casi siempre con referente humano.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "to fuck",
+        "to sleep with"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/garcharse/s1/garcharse_ex_01.mp3?v=1766493545",
+          "en": "“What do you think you are? You think you’re the first young girl he’s ever `fucked`?”",
+          "es": "¿Vos qué te pensás? ¿Qué sos la primera pendeja que `se garcha`?",
+          "linked_terms": [
+            "pendejo",
+            "vos-que-te-pensas"
+          ],
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encarcado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "verbo_pronominal",
+      "register": "vulgar",
+      "related_slugs": [
+        "garchar"
+      ],
+      "sensitivity": [
+        "lenguaje_explicito"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "garcharse",
+  "word": "garcharse"
+}

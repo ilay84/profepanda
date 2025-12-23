@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/a-upa/a_upa.mp3?v=1766449809",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">In one’s arms, carrying a person, usually a child.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">En brazos, cargando a una persona, generalmente a un niño.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "in one's arms",
+        "being carried"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/a-upa/s1/a_upa_ex_01.mp3?v=1766449809",
+          "en": "\"To Ezeiza it’d be 5,000 pesos.\"\n\"What? Are you carrying her `in your arms`, jogging?\"\n\"That’s what the ride costs, buddy.\"",
+          "es": "—A Ezeiza serían 5000 pesos.\n—¿Qué? ¿La llevás `a upa`, trotando?\n—Es lo que sale el viaje, capo.",
+          "linked_terms": [
+            "ezeiza",
+            "capo"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "locucion_adverbial",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "a-upa",
+  "word": "a upa"
+}

@@ -1,0 +1,52 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/dar-bola/dar_bola.mp3?v=1766451438",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">To pay attention to or show interest in someone, especially in a social interaction.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Prestar atención o mostrar interés hacia alguien, especialmente en una interacción social.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "to pay attention",
+        "to give someone the time of day"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/dar-bola/s1/dar_bola_ex_01.mp3?v=1766451397",
+          "en": "—“And what does that mean?”\n—“You saw how when they came in, they didn’t give you any `attention`? Next time, you should do the same. You don’t have to `give her the time of day`.”",
+          "es": "—¿Y qué es eso?\n—¿Viste que cuando entró no te dio `bola`? Vos tenés que hacer en la próxima lo mismo. No le tenés que dar `bola`.",
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_verbal",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "dar-bola",
+  "word": "dar bola"
+}

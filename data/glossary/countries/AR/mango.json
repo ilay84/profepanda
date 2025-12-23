@@ -32,6 +32,30 @@
             "type": "series",
             "year": "2025"
           }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/mango/s1/mango_ex_02.mp3?v=1766450265",
+          "en": "Everyone backed out. Nobody wanted to do it. Nobody wanted to put in `a dime`.",
+          "es": "Todos fueron para atrás. Nadie lo quiso hacer. Nadie quería poner un `mango`.",
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/mango/s1/mango_ex_03.mp3?v=1766491974",
+          "en": "That’s why I want to give you the chance to, I don’t know, make some good `money`.",
+          "es": "Por eso te quiero dar la oportunidad que, no sé, te puedas ganar unos buenos `mangos`.",
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
         }
       ],
       "freq": "muy_comun",

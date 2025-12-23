@@ -1,0 +1,58 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/trucho/trucho.mp3?v=1766450922",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Said of a person or thing: fake, untrustworthy, or suspicious.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Dicho de una persona o cosa: falsa, poco confiable o sospechosa.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "shady",
+        "fake",
+        "dodgy"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/trucho/s1/trucho_ex_01.mp3?v=1766450922",
+          "en": "\"What’s going on? Tell me — with that `shady` look on your face.\"",
+          "es": "¿Qué tenés? Contame, con esa cara de `trucho`.",
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "truchas",
+        "fem_sg": "trucha",
+        "masc_pl": "truchos",
+        "masc_sg": "trucho"
+      }
+    }
+  ],
+  "slug": "trucho",
+  "word": "trucho"
+}

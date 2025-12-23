@@ -203,7 +203,7 @@
             <div id="rg-empty-state" class="rg-empty-state" style="display:none;">{{ t('No hay entradas para mostrar.', 'No entries to show.', app_lang) }}</div>
           </div>
           <div id="rg-load-controls" class="rg-load-controls" style="display:none;">
-            <button id="rg-load-more" class="ppx-btn ppx-btn--subtle">{{ t('Ver mΓö£├¡s', 'Load more', app_lang) }}</button>
+            <button id="rg-load-more" class="ppx-btn ppx-btn--subtle">{{ t('Ver más', 'Load more', app_lang) }}</button>
             <button id="rg-load-all" class="ppx-btn ppx-btn--muted">{{ t('Cargar todo', 'Load all entries', app_lang) }}</button>
           </div>
         </div>
@@ -778,27 +778,6 @@
           pill.appendChild(codeSpan);
           row.appendChild(pill);
         }
-        const sens = entry.sensitivity || [];
-        const mapped = sens.map(code => {
-          const data = sensitivityMeta[code];
-          return data ? { ...data, code } : null;
-        }).filter(Boolean);
-        if (mapped.length){
-          const sensRow = document.createElement('div');
-          sensRow.className = 'rg-sensitive';
-          mapped.forEach(meta => {
-            const chip = document.createElement('span');
-            chip.title = meta.tooltip;
-        const icon = document.createElement('img');
-        const iconName = { lenguaje_explicito: 'explicit_language.svg',
-                          potencialmente_ofensivo: 'potentially_offensive.svg' }[meta.code] || 'aviso_glossary.svg';
-        icon.src = `${staticBase}assets/icons/${iconName}`;
-            icon.alt = '';
-            chip.appendChild(icon);
-            sensRow.appendChild(chip);
-          });
-          row.appendChild(sensRow);
-        }
         const senses = Array.isArray(entry.senses_preview) ? entry.senses_preview : [];
         if (senses.length){
           senses.forEach((s, idx) => {
@@ -808,15 +787,40 @@
             label.className = 'rg-sense-label';
             const posLabel = s.pos ? (posLabels[s.pos] || s.pos) : '';
             const num = s.num || idx + 1;
+            const sensList = (function(){
+              const arr = [];
+              const sens = Array.isArray(s.sensitivity) ? s.sensitivity : (s.sensitivity ? [s.sensitivity] : []);
+              sens.forEach(v=> arr.push(v));
+              const flags = Array.isArray(s.flags) ? s.flags : (s.flags ? [s.flags] : []);
+              flags.forEach(v=> arr.push(v));
+              // Fallback to full entry senses (if provided) when preview omits sensitivity
+              const fullSenses = Array.isArray(entry.senses) ? entry.senses : [];
+              const full = fullSenses[idx] || null;
+              if (full){
+                const sensFull = Array.isArray(full.sensitivity) ? full.sensitivity : (full.sensitivity ? [full.sensitivity] : []);
+                sensFull.forEach(v=> arr.push(v));
+                const flagsFull = Array.isArray(full.flags) ? full.flags : (full.flags ? [full.flags] : []);
+                flagsFull.forEach(v=> arr.push(v));
+              }
+              // dedupe
+              return Array.from(new Set(arr));
+            })();
+            const sensHtml = sensList.map(code => {
+              const meta = sensitivityMeta[code];
+              if (!meta) return '';
+              const iconName = { lenguaje_explicito: 'explicit_language.svg', potencialmente_ofensivo: 'potentially_offensive.svg' }[code] || 'aviso_glossary.svg';
+              const iconUrl = `${staticBase}assets/icons/${iconName}`;
+              return `<span title="${meta.tooltip}" style="display:inline-flex;align-items:center;gap:.25rem;padding:.15rem .45rem;border-radius:999px;border:1px solid #fecaca;background:#fff1f2;"><img src="${iconUrl}" alt="" style="width:14px;height:14px;object-fit:contain;"></span>`;
+            }).join(' ');
             label.innerHTML = posLabel
-              ? `<span class="rg-sense-num">${num}.</span> <span class="rg-pill rg-pill--accent">${posLabel}</span>`
-              : `<span class="rg-sense-num">${num}.</span>`;
+              ? `<span class="rg-sense-num">${num}.</span> <span class="rg-pill rg-pill--accent">${posLabel}</span> ${sensHtml}`
+              : `<span class="rg-sense-num">${num}.</span> ${sensHtml}`;
             const def = document.createElement('p');
             def.className = 'rg-definition';
             const senseDef = uiLang === 'en'
               ? (s.definition_en || s.definition || s.definition_es || '')
               : (s.definition_es || s.definition || s.definition_en || '');
-            def.textContent = (senseDef || '').replace(/\s+/g, ' ').trim();
+            def.innerHTML = (senseDef || '').replace(/\n/g, ' ').trim();
             block.appendChild(label);
             block.appendChild(def);
             row.appendChild(block);

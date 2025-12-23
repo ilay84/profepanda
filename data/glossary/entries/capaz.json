@@ -1,0 +1,54 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/capaz/capaz.mp3?v=1766452661",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Expresses possibility or uncertainty; equivalent to “maybe” or “perhaps.”</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Expresa posibilidad o duda, equivalente a “tal vez” o “quizás”.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "maybe",
+        "perhaps"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/capaz/s1/capaz_ex_01.mp3?v=1766452662",
+          "en": "`Maybe` we even end up doing her a favor, getting that anvil off her back, you know?",
+          "es": "`Capaz` que terminamos haciéndole un favor y todo, sacándole ese yunque de encima, ¿sabés?",
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encarcado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "adverbio",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "capaz",
+  "word": "capaz"
+}

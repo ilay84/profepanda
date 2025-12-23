@@ -1,0 +1,64 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/garchar/garchar.mp3?v=1766445149",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">To have sex with someone.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Tener relaciones sexuales con alguien.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "to fuck",
+        "to bang",
+        "to screw"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/garchar/s1/garchar_ex_01.mp3?v=1766445150",
+          "en": "\"Cut the bullshit, three hundred dollars. How much do you charge?\"\n\"Fucking's my job, I don’t do charity.\"",
+          "es": "—Dejate de joder, $300 dólares. ¿Cuánto cobrás?\n—Yo laburo de `garchar` no hago caridad.",
+          "linked_terms": [
+            "dejate-de-joder",
+            "laburar"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "verbo_transitivo",
+      "register": "vulgar",
+      "related_slugs": [
+        "garcharse"
+      ],
+      "sensitivity": [
+        "lenguaje_explicito"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "garchar",
+  "word": "garchar"
+}

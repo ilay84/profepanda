@@ -256,6 +256,13 @@
       inlineFB.hidden = !msg;
     }
 
+    function getFeedback(it, ok){
+      const es = ok ? it.feedback_correct_es : it.feedback_incorrect_es;
+      const en = ok ? it.feedback_correct_en : it.feedback_incorrect_en;
+      const fallback = ok ? L('Correcto','Correct') : L('Incorrecto','Incorrect');
+      return lang.startsWith('en') ? (en || es || fallback) : (es || en || fallback);
+    }
+
     function renderHint(it, show){
       const hint = lang.startsWith('en') ? (it.hint_en || it.hint_es || '') : (it.hint_es || it.hint_en || '');
       if (!hint){
@@ -385,7 +392,7 @@
       }
 
       if (state.graded){
-        setInlineFeedback(state.correct ? (item.feedback_correct_es || item.feedback_correct_en || L('Correcto','Correct')) : (item.feedback_incorrect_es || item.feedback_incorrect_en || L('Incorrecto','Incorrect')), state.correct);
+        setInlineFeedback(getFeedback(item, state.correct), state.correct);
       } else {
         setInlineFeedback('', false);
       }
@@ -416,7 +423,7 @@
           const ok = grade(item, tokenList);
           renderTokens(item);
           renderProgress();
-          setInlineFeedback(ok ? (item.feedback_correct_es || item.feedback_correct_en || L('Correcto','Correct')) : (item.feedback_incorrect_es || item.feedback_incorrect_en || L('Incorrecto','Incorrect')), ok);
+          setInlineFeedback(getFeedback(item, ok), ok);
           if (AUTO_ADV_SINGLE && ok && idx < items.length - 1){
             setTimeout(() => { idx += 1; render(); saveCache(); }, 420);
           }
@@ -616,9 +623,7 @@
         fbText.className = s.correct ? 'ppx-chip ppx-chip--ok' : 'ppx-chip ppx-chip--bad';
         fbText.style.display = 'inline-block';
         fbText.style.marginTop = '4px';
-        fbText.textContent = s.correct
-          ? (it.feedback_correct_es || it.feedback_correct_en || L('Correcto', 'Correct'))
-          : (it.feedback_incorrect_es || it.feedback_incorrect_en || L('Incorrecto', 'Incorrect'));
+        fbText.textContent = getFeedback(it, s.correct);
         fbRow.appendChild(fbLabel);
         fbRow.appendChild(fbText);
 

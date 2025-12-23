@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/grogui/grogui.mp3?v=1766408497",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Said of a person: dazed or semi-conscious, usually due to alcohol, drugs, medication, or physical exhaustion.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Dicho de una persona: aturdida o semiconsciente, generalmente por efecto del alcohol, drogas, medicación o agotamiento físico.</span>",
+      "domain": [
+        "salud"
+      ],
+      "equivalents_en": [
+        "out of it",
+        "passed out",
+        "knocked out"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/grogui/s1/grogui_ex_01.mp3?v=1766408497",
+          "en": "Now this girl was `out of it` really quickly, you know.",
+          "es": "Ahora esta quedó `grogui` enseguida, eh.",
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "groguis",
+        "fem_sg": "grogui",
+        "masc_pl": "groguis",
+        "masc_sg": "grogui"
+      }
+    }
+  ],
+  "slug": "grogui",
+  "word": "grogui"
+}

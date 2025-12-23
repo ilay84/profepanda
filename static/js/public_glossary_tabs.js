@@ -355,11 +355,10 @@
     return (arr||[]).map(v=> labelFor('sensitivity', v, lang)).join(' / ');
   }
   function alertEmojis(meta){
+    // Only used for legacy header badges; sensitivity now shown per sense.
     const regs = meta.register || [];
-    const sens = meta.sensitivity || [];
     const parts = [];
     if (regs.find(r=> normTok(r)==='vulgar')) parts.push('🚫');
-    if (sens.length) parts.push('⚠️');
     return parts.join('');
   }
   function metaBar(meta){
@@ -368,7 +367,6 @@
     if (meta.register && meta.register.length) parts.push(pill(meta.register.map(v=> labelFor('register', v, ActiveLang)).join(' / '), meta.register.some(r=> normTok(r)==='vulgar') ? 'alert' : 'muted'));
     if (meta.freq && meta.freq.length) parts.push(pill(labelFor('freq', meta.freq[0], ActiveLang), 'muted'));
     if (meta.status && meta.status.length) parts.push(pill(meta.status.map(v=> labelFor('status', v, ActiveLang)).join(' / '), 'muted'));
-    if (meta.sensitivity && meta.sensitivity.length) parts.push(pill(sensitivityLabel(meta.sensitivity, ActiveLang), 'alert'));
     if (meta.domain && meta.domain.length) parts.push(pill(meta.domain.slice(0,2).map(v=> labelFor('domain', v, ActiveLang)).join(', '), 'muted'));
     if (meta.tone && meta.tone.length) parts.push(pill(meta.tone.slice(0,2).map(v=> labelFor('tone', v, ActiveLang)).join(', '), 'muted'));
     if (meta.countries && meta.countries.length) parts.push(pill(meta.countries.join(' / '), 'muted'));
@@ -386,7 +384,6 @@
     if (reg.length) parts.push(pill(reg.map(v=> labelFor('register', v, ActiveLang)).join(' / '), reg.some(r=> normTok(r)==='vulgar') ? 'alert' : 'muted'));
     if (freq.length) parts.push(pill(labelFor('freq', freq[0], ActiveLang), 'muted'));
     if (status.length) parts.push(pill(status.map(v=> labelFor('status', v, ActiveLang)).join(' / '), 'muted'));
-    if (sens.length) parts.push(pill(sensitivityLabel(sens, ActiveLang), 'alert'));
     if (domain.length) parts.push(pill(domain.slice(0,2).map(v=> labelFor('domain', v, ActiveLang)).join(', '), 'muted'));
     if (tone.length) parts.push(pill(tone.slice(0,2).map(v=> labelFor('tone', v, ActiveLang)).join(', '), 'muted'));
     return parts.length ? `<div style="display:flex; flex-wrap:wrap; gap:6px; margin:.35rem 0 .7rem 0;">${parts.join('')}</div>` : '';
@@ -622,7 +619,7 @@
       register: new Set(),
       freq: new Set(),
       status: new Set(),
-      sensitivity: new Set(),
+      // sensitivity intentionally per-sense only; do not aggregate at entry level
       domain: new Set(),
       tone: new Set(),
       countries: new Set()
@@ -635,8 +632,6 @@
       if (s.freq) metaSets.freq.add(s.freq);
       const st = Array.isArray(s.status) ? s.status : (s.status ? [s.status] : []);
       st.forEach(v=> metaSets.status.add(v));
-      const se = Array.isArray(s.sensitivity) ? s.sensitivity : (s.sensitivity ? [s.sensitivity] : []);
-      se.forEach(v=> metaSets.sensitivity.add(v));
       (s.domain || []).forEach(v=> metaSets.domain.add(v));
       (s.tone || []).forEach(v=> metaSets.tone.add(v));
       (s.countries || []).forEach(c=> metaSets.countries.add(c));
@@ -653,24 +648,37 @@
       const name = map[(type||'').toLowerCase()] || 'other';
       return `/static/assets/icons/${name}.svg`;
     };
-    const FLAG_LABELS = {
+const FLAG_LABELS = {
       explicit_language: { es:'Lenguaje explícito', en:'Explicit language' },
       potentially_offensive: { es:'Potencialmente ofensivo', en:'Potentially offensive' },
     };
+  const canonicalFlag = (flag)=> {
+    const f = normTok(flag);
+    const map = {
+      potencialmente_ofensivo: 'potentially_offensive',
+      potentially_offensive: 'potentially_offensive',
+      lenguaje_explicito: 'explicit_language',
+      explicit_language: 'explicit_language',
+      connotacion_sexual: 'explicit_language',
+    };
+    return map[f] || '';
+  };
   const iconForFlag = (flag)=> {
+    const canon = canonicalFlag(flag);
     const map = {
       explicit_language: '/static/assets/icons/explicit_language.svg',
       potentially_offensive: '/static/assets/icons/potentially_offensive.svg'
     };
-    return map[flag] || '';
+    return map[canon] || '';
   };
     const renderExampleFlags = (flags)=>{
       const arr = Array.isArray(flags) ? flags : [];
       const pills = arr.map(f=>{
-        const icon = iconForFlag(f);
-        const labelFlag = (FLAG_LABELS[f] && FLAG_LABELS[f][LANG]) || f;
+        const iconUrl = iconForFlag(f);
+        const canon = canonicalFlag(f);
+        const labelFlag = (FLAG_LABELS[canon] && FLAG_LABELS[canon][LANG]) || f;
         return `<span title="${labelFlag}" style="display:inline-flex; align-items:center; gap:4px;">
-          ${icon ? `<img src="${icon}" alt="${labelFlag}" style="width:16px; height:16px;">` : ''}
+          ${iconUrl ? `<img src="${iconUrl}" alt="${labelFlag}" style="width:16px; height:16px;">` : ''}
         </span>`;
       }).join('');
       return pills ? `<div style="margin-top:.25rem; display:flex; flex-wrap:wrap; gap:.35rem; align-items:center;">${pills}</div>` : '';
@@ -732,7 +740,7 @@
         </span>
       </div>` : '';
 
-    const headerAlerts = alertEmojis({ register: meta.register, sensitivity: meta.sensitivity });
+    const headerAlerts = ''; // sensitivity now shown per sense; no entry-level emoji
     const reportLabel = L('Reportar un problema','Report an issue');
     const shareLabel = L('Compartir','Share');
     const reportUrlBase = 'https://docs.google.com/forms/d/e/1FAIpQLScSSyjqxQlB6rXzKU8fDIVRTG4QRKx2IY7QtXapqRkj53UGvA/viewform';
@@ -767,8 +775,8 @@
     const header = `
       <div style="display:flex; align-items:center; gap:.5rem; justify-content:space-between; flex-wrap:wrap;">
         <div style="display:flex; align-items:center; gap:.5rem; flex-wrap:wrap;">
-          ${headerAudio}
-          <h2 style="margin:.25rem 0; display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">${e.word||slug}${headerAlerts? `<span aria-label="${L('Contenido sensible','Sensitive content')}" title="${L('Contenido sensible','Sensitive content')}" style="font-size:1.05rem;">${headerAlerts}</span>`:''}</h2>
+           ${headerAudio}
+           <h2 style="margin:.25rem 0; display:flex; align-items:center; gap:.35rem; flex-wrap:wrap;">${e.word||slug}${headerAlerts}</h2>
         </div>
         <div style="display:flex; align-items:center; gap:.35rem;">
           ${langSel}
@@ -873,6 +881,21 @@
         const label = (rs||'').replace(/-/g,' ');
         return `<a href="#" class="rg-pill rg-pill--accent rg-related-pill" style="text-decoration:none;" data-slug="${rs}">${label}</a>`;
       }).join(' ');
+      const sensArr = (function(){
+        const out = [];
+        const sens = Array.isArray(s.sensitivity) ? s.sensitivity : (s.sensitivity ? [s.sensitivity] : []);
+        sens.forEach(v=> out.push(v));
+        const flags = Array.isArray(s.flags) ? s.flags : (s.flags ? [s.flags] : []);
+        flags.forEach(v=> out.push(v));
+        return Array.from(new Set(out));
+      })();
+      const sensPill = sensArr.map(code => {
+        const iconUrl = iconForFlag(code);
+        if (!iconUrl) return '';
+        const canon = canonicalFlag(code);
+        const label = (FLAG_LABELS[canon] && FLAG_LABELS[canon][LANG]) || '';
+        return `<span title="${label}" style="display:inline-flex; align-items:center; padding:4px 6px; border-radius:999px; border:1px solid #fecaca; background:#fff1f2;">${iconUrl ? `<img src="${iconUrl}" alt="${label}" style="width:14px; height:14px;">` : ''}</span>`;
+      }).join(' ');
       const senseMeta = senseMetaRow(s);
       const senseVariants = variantsRow(s.variants, LANG);
 
@@ -888,6 +911,7 @@
           <div style="margin-bottom:.25rem; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap;">
             <strong>${idx+1}.</strong>
             ${s.pos ? `<span style="display:inline-flex; align-items:center; padding:6px 10px; border-radius:999px; border:1px solid #c7d2fe; background:#eef2ff; color:#312e81; font-weight:700; font-size:13px;">${posLabel(s.pos, LANG)}</span>` : ''}
+            ${sensPill}
           </div>
           ${senseMeta}
           ${senseVariants}

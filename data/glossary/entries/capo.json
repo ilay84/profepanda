@@ -1,0 +1,59 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/capo/capo.mp3?v=1766449551",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Form of address used informally to speak to someone in a familiar or direct way; it can take on an ironic or confrontational tone depending on context.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Vocativo usado para dirigirse a alguien de manera informal y cercana, generalmente para marcar familiaridad o trato directo; puede adquirir un tono irónico o confrontativo según el contexto.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "buddy",
+        "pal",
+        "chief"
+      ],
+      "examples": [
+        {
+          "audio": null,
+          "en": "\"To Ezeiza it’d be 5,000 pesos.\"\n\"What? Are you carrying her, jogging?\"\n\"That’s what the ride costs, `buddy`.\"",
+          "es": "—A Ezeiza serían 5000 pesos.\n—¿Qué? ¿La llevás a upa, trotando?\n—Es lo que sale el viaje, `capo`.",
+          "linked_terms": [
+            "ezeiza"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "formula_social",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "capas",
+        "fem_sg": "capa",
+        "masc_pl": "capos",
+        "masc_sg": "capo"
+      }
+    }
+  ],
+  "slug": "capo",
+  "word": "capo"
+}

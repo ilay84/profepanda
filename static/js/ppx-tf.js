@@ -4,6 +4,7 @@
 
   function legacyPlugin({ data, lang, api }) {
     const L = (es, en) => api.t(es, en);
+    const IS_EN = String(lang || '').toLowerCase().startsWith('en');
 
     // ─────────────────────────────────────────────────────────────
     // Config flags (with safe defaults)
@@ -125,20 +126,20 @@
     const currentItem = () => items[Math.max(0, Math.min(items.length - 1, idx))];
 
     const getText = (item) => {
-      const key = (lang === 'en') ? 'statement_en' : 'statement_es';
-      const alt = (lang === 'en') ? 'statement_es' : 'statement_en';
+      const key = IS_EN ? 'statement_en' : 'statement_es';
+      const alt = IS_EN ? 'statement_es' : 'statement_en';
       return item[key] || item[alt] || '';
     };
     const getHint = (item) => {
-      const key = (lang === 'en') ? 'hint_en' : 'hint_es';
-      const alt = (lang === 'en') ? 'hint_es' : 'hint_en';
+      const key = IS_EN ? 'hint_en' : 'hint_es';
+      const alt = IS_EN ? 'hint_es' : 'hint_en';
       return item[key] || item[alt] || '';
     };
     const feedbackCopy = (item, correct) => {
-      const kOk = (lang === 'en') ? 'feedback_correct_en' : 'feedback_correct_es';
-      const kBad = (lang === 'en') ? 'feedback_incorrect_en' : 'feedback_incorrect_es';
-      const altOk = (lang === 'en') ? 'feedback_correct_es' : 'feedback_correct_en';
-      const altBad = (lang === 'en') ? 'feedback_incorrect_es' : 'feedback_incorrect_en';
+      const kOk = IS_EN ? 'feedback_correct_en' : 'feedback_correct_es';
+      const kBad = IS_EN ? 'feedback_incorrect_en' : 'feedback_incorrect_es';
+      const altOk = IS_EN ? 'feedback_correct_es' : 'feedback_correct_en';
+      const altBad = IS_EN ? 'feedback_incorrect_es' : 'feedback_incorrect_en';
       return correct
         ? (item[kOk] || item[altOk] || L('Correcto ✅', 'Correct ✅'))
         : (item[kBad] || item[altBad] || L('Incorrecto ❌', 'Incorrect ❌'));
@@ -308,7 +309,7 @@
     let frameRef = null;
     (function () {
       const titleText =
-        (lang === 'en'
+        (IS_EN
           ? (data.title_en || data.title_es)
           : (data.title_es || data.title_en)) || '';
       if (window.PPXFrame && typeof window.PPXFrame.create === 'function') {
@@ -1320,7 +1321,8 @@
     _cleanup: null,
     init(ctx){
       if (!ctx.api || typeof ctx.api.t !== 'function') {
-        ctx.api = Object.assign({ t: (es,en)=> (ctx.lang === 'en' ? (en ?? es) : (es ?? en)) }, ctx.api || {});
+        const isEn = String(ctx.lang || '').toLowerCase().startsWith('en');
+        ctx.api = Object.assign({ t: (es,en)=> (isEn ? (en ?? es) : (es ?? en)) }, ctx.api || {});
       }
       const impl = (window.PPX_TF_LEGACY || null);
       if (!impl) {

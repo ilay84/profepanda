@@ -13,6 +13,7 @@
   const getTranscript = (item) => item.transcript || '';
 
   function plugin({ data, lang, api }){
+    const IS_EN = String(lang || 'es').toLowerCase().startsWith('en');
     const L = (es, en) => api.t(es, en);
     const items = (data.items||[]).slice().sort((a,b)=> (a.order||0)-(b.order||0));
     const opts = Object.assign({ ignoreCase:true, ignorePunctuation:true, normalizeWhitespace:true, ignoreAccents:true, minCharsToEnableCheck:1, allowRetry:false, attemptsMax:1, autoPlay:false, multiline:false }, data.options||{});
@@ -76,7 +77,7 @@
     try {
       const slug = (data && (data.slug || data.id)) || 'dictation';
       const introKey = 'ppx:intro:dismissed:dictation/' + String(slug);
-      const instr = (lang && lang.startsWith('en'))
+      const instr = IS_EN
         ? (data.instructions_en || data.instructions_es || '')
         : (data.instructions_es || data.instructions_en || '');
       const shouldShowIntro = !!instr && !localStorage.getItem(introKey);
@@ -131,7 +132,7 @@
     try {
       const slug = (data && (data.slug || data.id)) || 'dictation';
       const introKey = 'ppx:intro:dismissed:dictation/' + String(slug);
-      const hasIntro = !!((lang && lang.startsWith('en')) ? (data.instructions_en || data.instructions_es || '') : (data.instructions_es || data.instructions_en || ''));
+      const hasIntro = !!(IS_EN ? (data.instructions_en || data.instructions_es || '') : (data.instructions_es || data.instructions_en || ''));
       const suppressed = !!localStorage.getItem(introKey);
       if (!hasIntro || suppressed) {
         api.setBody(root);

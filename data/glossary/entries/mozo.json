@@ -1,0 +1,55 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/mozo/mozo.mp3?v=1766494846",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A person who serves tables in a bar, restaurant, or similar establishment.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Persona que atiende mesas en un bar, restaurante u otro establecimiento gastronómico.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "waiter",
+        "server"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/mozo/s1/mozo_ex_01.mp3?v=1766494846",
+          "en": "“I’m not the complaint book for idiot `waitresses` who believe anything.”",
+          "es": "Yo no soy el libro de quejas de `mozas` boluditas que se creen cualquier cosa.",
+          "linked_terms": [
+            "boludito"
+          ],
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino_y_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "mozas",
+        "fem_sg": "moza",
+        "masc_pl": "mozos",
+        "masc_sg": "mozo"
+      }
+    }
+  ],
+  "slug": "mozo",
+  "word": "mozo"
+}

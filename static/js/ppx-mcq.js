@@ -17,6 +17,8 @@
     const exVer  = (data.version ?? 'current');
     const cacheKey = `ppx:${exType}:${exSlug}:${exVer}`;
 
+    const IS_EN = String(lang || '').toLowerCase().startsWith('en');
+
     function saveCache(){
       try {
         const payload = {
@@ -73,15 +75,15 @@
     }
 
     function getQuestion(item) {
-      const k = (lang === 'en') ? 'question_en' : 'question_es';
-      const alt = (lang === 'en') ? 'question_es' : 'question_en';
+      const k = IS_EN ? 'question_en' : 'question_es';
+      const alt = IS_EN ? 'question_es' : 'question_en';
       return item[k] || item[alt] || '';
     }
 
     function getOptions(item) {
       // Options are language-specific arrays: options_es/options_en
-      const k = (lang === 'en') ? 'options_en' : 'options_es';
-      const alt = (lang === 'en') ? 'options_es' : 'options_en';
+      const k = IS_EN ? 'options_en' : 'options_es';
+      const alt = IS_EN ? 'options_es' : 'options_en';
       const primary = Array.isArray(item[k]) ? item[k] : [];
       const fallback = Array.isArray(item[alt]) ? item[alt] : [];
       const base = primary.length ? primary : (fallback.length ? fallback : (item.options || []));
@@ -90,7 +92,7 @@
         return {
           text: (typeof o === 'string') ? o : (o.text || altOpt.text || ''),
           correct: !!(o.correct ?? altOpt.correct),
-          feedback: (lang === 'en')
+          feedback: IS_EN
             ? ((o.feedback_en || altOpt.feedback_en || o.feedback || altOpt.feedback || ''))
             : ((o.feedback_es || altOpt.feedback_es || o.feedback || altOpt.feedback || ''))
         };
@@ -98,8 +100,8 @@
     }
 
     function getHint(item) {
-      const k = (lang === 'en') ? 'hint_en' : 'hint_es';
-      const alt = (lang === 'en') ? 'hint_es' : 'hint_en';
+      const k = IS_EN ? 'hint_en' : 'hint_es';
+      const alt = IS_EN ? 'hint_es' : 'hint_en';
       return item[k] || item[alt] || '';
     }
     function sanitize(html){
@@ -326,7 +328,7 @@
           const tile = document.createElement('div'); tile.className = 'ppx-media-tile';
           if (kind === 'image') {
             const box = document.createElement('div'); box.className = 'ppx-imgbox'; box.setAttribute('data-ppx-lightbox','true');
-            const img = document.createElement('img'); img.className = 'ppx-media-img'; img.src = m.src; img.alt = (lang === 'en') ? (m.alt_en || '') : (m.alt_es || '');
+            const img = document.createElement('img'); img.className = 'ppx-media-img'; img.src = m.src; img.alt = IS_EN ? (m.alt_en || '') : (m.alt_es || '');
             box.appendChild(img); tile.appendChild(box);
           } else if (kind === 'audio') {
             const row = document.createElement('div'); row.className = 'ppx-media-audio';
@@ -800,7 +802,8 @@
     _cleanup: null,
     init(ctx){
       if (!ctx.api || typeof ctx.api.t !== 'function') {
-        ctx.api = Object.assign({ t: (es,en)=> (ctx.lang === 'en' ? (en ?? es) : (es ?? en)) }, ctx.api || {});
+        const isEn = String(ctx.lang || '').toLowerCase().startsWith('en');
+        ctx.api = Object.assign({ t: (es,en)=> (isEn ? (en ?? es) : (es ?? en)) }, ctx.api || {});
       }
       const impl = (window.PPX_MCQ_LEGACY || null);
       if (!impl) {

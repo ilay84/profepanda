@@ -3,7 +3,8 @@
   if (!window.PPX) { try { console.warn('[PPX FITB] Core not present yet; will register when available.'); } catch(_){} }
 
   function plugin({ data, lang, api, context }){
-    const L = (es, en) => (api.t ? api.t(es, en) : ((lang||'es').startsWith('en') ? (en ?? es) : (es ?? en)));
+    const IS_EN = String(lang || 'es').toLowerCase().startsWith('en');
+    const L = (es, en) => (api.t ? api.t(es, en) : (IS_EN ? (en ?? es) : (es ?? en)));
     // Normalize + de-duplicate items defensively (unique by id|order)
     const rawItems = Array.isArray(data.items) ? data.items : [];
     const seenKeys = new Set();
@@ -111,7 +112,7 @@
       try {
         const slug = (data && (data.slug || data.id)) || 'fitb';
         const introKey = 'ppx:intro:dismissed:fitb/' + String(slug);
-        const instr = (lang||'es').toLowerCase().startsWith('en')
+        const instr = IS_EN
           ? ((data.instructions_en || (data.options && data.options.instructions_en)) || (data.instructions_es || (data.options && data.options.instructions_es)) || '')
           : ((data.instructions_es || (data.options && data.options.instructions_es)) || (data.instructions_en || (data.options && data.options.instructions_en)) || '');
         const shouldShowIntro = !!instr && !localStorage.getItem(introKey);
@@ -214,13 +215,13 @@
       return `[${n}]`;
     }
     function getHint(it){
-      const h = (lang||'es').startsWith('en') ? (it.hint_en || it.hint_es) : (it.hint_es || it.hint_en);
+      const h = IS_EN ? (it.hint_en || it.hint_es) : (it.hint_es || it.hint_en);
       return h || '';
     }
     function pickFeedback(meta, ok){
       if (!meta) return '';
-      const keyGood = (lang||'es').startsWith('en') ? 'feedback_correct_en' : 'feedback_correct_es';
-      const keyBad  = (lang||'es').startsWith('en') ? 'feedback_incorrect_en' : 'feedback_incorrect_es';
+      const keyGood = IS_EN ? 'feedback_correct_en' : 'feedback_correct_es';
+      const keyBad  = IS_EN ? 'feedback_incorrect_en' : 'feedback_incorrect_es';
       if (ok) return meta[keyGood] || meta.feedback_correct_es || meta.feedback_correct_en || '';
       return meta[keyBad] || meta.feedback_incorrect_es || meta.feedback_incorrect_en || '';
     }
@@ -512,7 +513,7 @@
         const idx1 = Number(slot.getAttribute('data-blank')) || 0;
         const zero = Math.max(0, idx1 - 1);
         const meta = itemBlanks ? (itemBlanks[zero] || {}) : {};
-        const hintText = (lang||'es').startsWith('en') ? (meta.hint_en || meta.hint_es || '') : (meta.hint_es || meta.hint_en || '');
+        const hintText = IS_EN ? (meta.hint_en || meta.hint_es || '') : (meta.hint_es || meta.hint_en || '');
         const group = document.createElement('span');
         group.style.display='inline-flex';
         group.style.alignItems='baseline';

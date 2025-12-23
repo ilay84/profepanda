@@ -7,6 +7,7 @@
 
 {% block content %}
 <script src="/static/js/content_renderer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ajv@8/dist/ajv7.min.js"></script>
 <style>
   .tab-btn {
     display: inline-flex;
@@ -1764,6 +1765,13 @@
       const langVal = els.lang?.value || "es";
       const domVal = els.domain?.value || "structures";
       const payload = buildPayload();
+      const validation = await validateAgainstSchema(payload);
+      if (!validation.ok) {
+        const msg = validation.message || "Validation failed";
+        if (!silent) alert(msg);
+        if (els.status) els.status.textContent = msg;
+        return;
+      }
       const res = await fetch(`/admin/api/content-lab/resource/${encodeURIComponent(langVal)}/${encodeURIComponent(domVal)}/${encodeURIComponent(slugVal)}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -1793,6 +1801,33 @@
   renderPillsNow();
   renderModules();
 
+  // Schema validation (planning/content.schema.json via AJV)
+  let contentSchema = null;
+  let contentValidator = null;
+  async function ensureValidator(){
+    if (contentValidator) return contentValidator;
+    if (!window.Ajv) return null;
+    try {
+      const res = await fetch('/planning/content.schema.json?_=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('Schema fetch failed');
+      contentSchema = await res.json();
+      const ajv = new Ajv({ allErrors: true, strict: false });
+      contentValidator = ajv.compile(contentSchema);
+      return contentValidator;
+    } catch (err) {
+      console.warn('Schema load/compile failed', err);
+      return null;
+    }
+  }
+  async function validateAgainstSchema(payload){
+    const validator = await ensureValidator();
+    if (!validator) return { ok: true };
+    const ok = validator(payload);
+    if (ok) return { ok: true };
+    const errs = (validator.errors || []).map(e => `${e.instancePath || ''} ${e.message || ''}`.trim()).join('; ');
+    return { ok: false, message: errs || 'Invalid content' };
+  }
+
   function switchTab(target) {
     const panels = [
       { btn: els.tabBlocks, panel: els.panelBlocks },
@@ -1817,6 +1852,214 @@
   if (els.tabBlocks) els.tabBlocks.addEventListener("click", () => switchTab(els.panelBlocks));
   if (els.tabJson) els.tabJson.addEventListener("click", () => switchTab(els.panelJson));
   if (els.tabPreview) els.tabPreview.addEventListener("click", () => switchTab(els.panelPreview));
+})();
+</script>
+
+<script>
+// Lightweight inline block palette + preview (non-persistent demo)
+(function(){
+  const R = window.ContentLabRenderer;
+  const shell = document.getElementById('ed-preview-shell');
+  if (!R || !shell) return;
+
+  const blocks = [];
+  let exIndex = null;
+
+  function uid(){ return crypto.randomUUID ? crypto.randomUUID() : ('blk-' + Math.random().toString(16).slice(2)); }
+  function lang(){ const sel = document.getElementById('ed-lang'); return (sel && sel.value) || 'es'; }
+
+  async function loadExerciseIndex(){
+    if (exIndex) return exIndex;
+    try {
+      const res = await fetch('/data/exercises/index.json?_=' + Date.now(), { cache:'no-store' });
+      if (res.ok) exIndex = await res.json();
+    } catch(_){}
+    exIndex = exIndex || {};
+    return exIndex;
+  }
+
+  function defaultBlock(type){
+    switch(type){
+      case 'heading': return { id: uid(), type:'heading', data:{ segments:[{ text: lang().startsWith('en') ? 'New heading' : 'Nuevo título', marks:['bold'] }] } };
+      case 'text': return { id: uid(), type:'text', data:{ segments:[{ text: lang().startsWith('en') ? 'Start writing…' : 'Empieza a escribir…' }] } };
+      case 'callout': return { id: uid(), type:'callout', style_variant:'info', data:{ segments:[{ text: lang().startsWith('en') ? 'Quick note' : 'Nota rápida' }] } };
+      case 'list': return { id: uid(), type:'list', data:{ ordered:false, items:[{ segments:[{ text: lang().startsWith('en') ? 'List item' : 'Elemento de lista' }] }] } };
+      case 'exercise_reference': return { id: uid(), type:'exercise_reference', data:{ exercise_id:'', exercise_type:'', display_options:{ show_title:true, show_instructions:true } } };
+      default: return null;
+    }
+  }
+
+  function move(idx, dir){
+    const to = idx + dir;
+    if (to < 0 || to >= blocks.length) return;
+    const tmp = blocks[idx];
+    blocks[idx] = blocks[to];
+    blocks[to] = tmp;
+    render();
+  }
+
+  function render(){
+    shell.innerHTML = '';
+    const addRow = document.createElement('div');
+    addRow.className = 'ppx-row';
+    addRow.style.justifyContent = 'flex-start';
+    addRow.style.marginBottom = '8px';
+    const addBtn = document.createElement('button');
+    addBtn.type = 'button';
+    addBtn.className = 'ppx-btn';
+    addBtn.textContent = lang().startsWith('en') ? 'Add block' : 'Agregar bloque';
+    addBtn.addEventListener('click', openPalette);
+    addRow.appendChild(addBtn);
+    shell.appendChild(addRow);
+
+    blocks.forEach((blk, idx) => {
+      const card = document.createElement('div');
+      card.className = 'ppx-card';
+      card.style.padding = '10px';
+      card.style.marginBottom = '10px';
+      const controls = document.createElement('div');
+      controls.className = 'ppx-row';
+      controls.style.justifyContent = 'space-between';
+      controls.style.alignItems = 'center';
+
+      const label = document.createElement('span');
+      label.className = 'ppx-muted';
+      label.textContent = `${blk.type} · ${idx+1}`;
+
+      const btns = document.createElement('div');
+      btns.className = 'ppx-row';
+      btns.style.gap = '6px';
+      const up = document.createElement('button');
+      up.type = 'button';
+      up.className = 'ppx-btn ppx-btn-secondary';
+      up.textContent = '↑';
+      up.disabled = idx === 0;
+      up.addEventListener('click', ()=> move(idx,-1));
+      const down = document.createElement('button');
+      down.type = 'button';
+      down.className = 'ppx-btn ppx-btn-secondary';
+      down.textContent = '↓';
+      down.disabled = idx === blocks.length-1;
+      down.addEventListener('click', ()=> move(idx,1));
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'ppx-btn ppx-btn-secondary';
+      del.textContent = lang().startsWith('en') ? 'Delete' : 'Eliminar';
+      del.addEventListener('click', ()=>{ blocks.splice(idx,1); render(); });
+      btns.appendChild(up); btns.appendChild(down); btns.appendChild(del);
+      controls.appendChild(label); controls.appendChild(btns);
+      card.appendChild(controls);
+
+      if (blk.type === 'exercise_reference') {
+        const searchWrap = document.createElement('div');
+        searchWrap.className = 'ppx-row';
+        searchWrap.style.gap = '6px';
+        searchWrap.style.alignItems = 'center';
+        searchWrap.style.margin = '8px 0';
+        const input = document.createElement('input');
+        input.type = 'search';
+        input.className = 'ppx-input';
+        input.placeholder = lang().startsWith('en') ? 'Search exercises…' : 'Buscar ejercicios…';
+        input.value = blk.data.exercise_id || '';
+        const results = document.createElement('div');
+        results.className = 'ppx-col';
+        results.style.gap = '4px';
+        results.style.maxHeight = '180px';
+        results.style.overflow = 'auto';
+
+        input.addEventListener('input', async () => {
+          const term = input.value.trim().toLowerCase();
+          results.innerHTML = '';
+          if (!term) return;
+          const idxData = await loadExerciseIndex();
+          const matches = Object.entries(idxData).filter(([id, meta]) => {
+            return id.toLowerCase().includes(term) || (meta.title_en || meta.title_es || '').toLowerCase().includes(term) || (meta.type||'').toLowerCase().includes(term);
+          }).slice(0,10);
+          matches.forEach(([id, meta]) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'ppx-btn ppx-btn-secondary';
+            btn.style.justifyContent = 'space-between';
+            btn.textContent = `${meta.type || ''} · ${meta.title_en || meta.title_es || id}`;
+            btn.addEventListener('click', ()=>{
+              blk.data.exercise_id = id;
+              blk.data.exercise_type = meta.type || (id.split('/')[0] || '');
+              input.value = id;
+              results.innerHTML = '';
+              render();
+            });
+            results.appendChild(btn);
+          });
+        });
+        searchWrap.appendChild(input);
+        card.appendChild(searchWrap);
+        card.appendChild(results);
+
+        const open = document.createElement('button');
+        open.type = 'button';
+        open.className = 'ppx-btn ppx-btn--ghost';
+        open.textContent = lang().startsWith('en') ? 'Open exercise' : 'Abrir ejercicio';
+        open.disabled = !(blk.data.exercise_id && blk.data.exercise_type && window.PPX && typeof window.PPX.openExercise === 'function');
+        open.addEventListener('click', ()=>{
+          if (!window.PPX || typeof window.PPX.openExercise !== 'function') return;
+          const parts = (blk.data.exercise_id || '').split('/');
+          const exType = blk.data.exercise_type || parts[0] || '';
+          const slug = parts.length > 1 ? parts.slice(1).join('/') : blk.data.exercise_id;
+          if (!exType || !slug) return;
+          window.PPX.openExercise({ type: exType, slug, version: blk.data.version || null, lang: lang(), context:{ source:'content_hub' } });
+        });
+        card.appendChild(open);
+      }
+
+      const rendered = R.renderBlock(blk, lang(), { moduleId:'demo', blockId: blk.id });
+      card.appendChild(rendered);
+      shell.appendChild(card);
+    });
+  }
+
+  function openPalette(){
+    const palette = document.createElement('div');
+    palette.className = 'ppx-card';
+    palette.style.position = 'fixed';
+    palette.style.zIndex = '9999';
+    palette.style.top = '90px';
+    palette.style.right = '24px';
+    palette.style.width = '220px';
+    palette.style.padding = '10px';
+    palette.style.boxShadow = '0 20px 60px rgba(0,0,0,0.2)';
+    palette.style.display = 'flex';
+    palette.style.flexDirection = 'column';
+    palette.style.gap = '6px';
+    const close = () => { try { palette.remove(); } catch(_){ } };
+    const options = [
+      { key:'heading', label: lang().startsWith('en') ? 'Heading' : 'Título' },
+      { key:'text', label: lang().startsWith('en') ? 'Text' : 'Texto' },
+      { key:'callout', label: lang().startsWith('en') ? 'Callout' : 'Llamada' },
+      { key:'list', label: lang().startsWith('en') ? 'List' : 'Lista' },
+      { key:'exercise_reference', label: lang().startsWith('en') ? 'Exercise (reference)' : 'Ejercicio (referencia)' },
+    ];
+    options.forEach(opt => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ppx-btn ppx-btn-secondary';
+      b.textContent = opt.label;
+      b.addEventListener('click', ()=>{
+        const blk = defaultBlock(opt.key);
+        if (blk) { blocks.push(blk); render(); }
+        close();
+      });
+      palette.appendChild(b);
+    });
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'ppx-btn ppx-btn-secondary';
+    closeBtn.textContent = lang().startsWith('en') ? 'Close' : 'Cerrar';
+    closeBtn.addEventListener('click', close);
+    palette.appendChild(closeBtn);
+    document.body.appendChild(palette);
+  }
+
+  render();
 })();
 </script>
 {% endblock %}

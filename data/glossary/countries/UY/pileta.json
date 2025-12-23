@@ -1,0 +1,52 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/pileta/pileta.mp3?v=1766452096",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Swimming pool, especially one at a private home, club, or recreational facility.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Piscina, especialmente la de una casa, club o complejo recreativo.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "swimming pool",
+        "pool"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/pileta/s1/pileta_ex_01.mp3?v=1766452096",
+          "en": "Investigate. To get him off my back, some kind of mess has to blow up — a big problem that makes him forget about the `swimming pool`.",
+          "es": "Investigar. Para sacármelo de encima, le tiene que explotar un quilombo, un problema grande que lo haga olvidar de la `pileta`.",
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encarcado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "piletita",
+        "fem_pl": "piletas",
+        "fem_sg": "pileta",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "pileta",
+  "word": "pileta"
+}

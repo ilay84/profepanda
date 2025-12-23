@@ -1,0 +1,62 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/mamarse/mamarse.mp3?v=1766432263",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">To drink alcohol excessively, to the point of becoming dazed or incapacitated.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Beber alcohol en exceso hasta quedar aturdido o incapacitado.</span>",
+      "domain": [
+        "salud",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "get drunk",
+        "get wasted",
+        "get smashed"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/mamarse/s1/mamarse_ex_01.mp3?v=1766432276",
+          "en": "Relax, she `got completely wasted`. It’s just a matter of time now.",
+          "es": "Tranquilo, se `remamó`. Ya está, es cuestión de tiempo.",
+          "linked_terms": [
+            "re"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "verbo_pronominal",
+      "register": "informal",
+      "related_slugs": [
+        "grogui"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "mamarse",
+  "word": "mamarse"
+}

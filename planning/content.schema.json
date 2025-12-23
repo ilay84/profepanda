@@ -1,0 +1,295 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://profepanda/content.schema.json",
+  "title": "Profepanda Content",
+  "type": "object",
+  "required": ["schema_version", "language", "domain", "resource_id", "meta", "modules"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "language": { "type": "string", "description": "Primary language of the resource (e.g., es, en)" },
+    "domain": { "type": "string", "description": "structures | vocabulary | goals | other" },
+    "resource_id": { "type": "string", "description": "Slugified id for the resource" },
+    "storage_path": { "type": "string" },
+    "meta": {
+      "type": "object",
+      "required": ["title_es", "title_en"],
+      "properties": {
+        "title_es": { "type": "string" },
+        "title_en": { "type": "string" },
+        "levels": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "taxonomy_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "relations": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "modules": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/module" }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "translations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": { "type": "string" }
+      }
+    },
+    "segment": {
+      "type": "object",
+      "required": ["segment_id", "text"],
+      "properties": {
+        "segment_id": { "type": "string" },
+        "kind": { "type": "string", "description": "heading|paragraph|text|... optional hint" },
+        "level": { "type": "integer", "minimum": 1, "maximum": 6 },
+        "lang": { "type": "string" },
+        "text": { "type": "string" },
+        "style": {
+          "type": "object",
+          "properties": {
+            "color": { "type": "string" },
+            "weight": { "type": "string" },
+            "italic": { "type": "boolean" },
+            "underline": { "type": "boolean" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "kind": { "type": "string", "enum": ["image", "audio", "video"] },
+        "src": { "type": "string" },
+        "alt_es": { "type": "string" },
+        "alt_en": { "type": "string" }
+      },
+      "required": ["kind", "src"],
+      "additionalProperties": true
+    },
+    "exercise_reference": {
+      "type": "object",
+      "required": ["exercise_id"],
+      "properties": {
+        "exercise_id": { "type": "string", "description": "e.g., mcq/ser-o-estar" },
+        "exercise_type": { "type": "string" },
+        "version": { "type": ["string", "null"] },
+        "display_options": {
+          "type": "object",
+          "properties": {
+            "show_title": { "type": "boolean" },
+            "show_instructions": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "block_base": {
+      "type": "object",
+      "required": ["block_id", "block_type"],
+      "properties": {
+        "block_id": { "type": "string" },
+        "block_type": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "block": {
+      "oneOf": [
+        { "$ref": "#/definitions/block_rich_text" },
+        { "$ref": "#/definitions/block_example_sentence" },
+        { "$ref": "#/definitions/block_list" },
+        { "$ref": "#/definitions/block_callout" },
+        { "$ref": "#/definitions/block_table" },
+        { "$ref": "#/definitions/block_accordion" },
+        { "$ref": "#/definitions/block_media" },
+        { "$ref": "#/definitions/block_exercise_reference" }
+      ]
+    },
+    "block_rich_text": {
+      "allOf": [
+        { "$ref": "#/definitions/block_base" },
+        {
+          "properties": {
+            "block_type": { "const": "rich_text" },
+            "segments": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/segment" }
+            },
+            "translations": { "$ref": "#/definitions/translations" }
+          },
+          "required": ["segments"]
+        }
+      ]
+    },
+    "block_example_sentence": {
+      "allOf": [
+        { "$ref": "#/definitions/block_base" },
+        {
+          "properties": {
+            "block_type": { "const": "example_sentence" },
+            "segments": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/segment" }
+            },
+            "media": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/media" }
+            },
+            "translations": { "$ref": "#/definitions/translations" }
+          },
+          "required": ["segments"]
+        }
+      ]
+    },
+    "block_list": {
+      "allOf": [
+        { "$ref": "#/definitions/block_base" },
+        {
+          "properties": {
+            "block_type": { "const": "list" },
+            "ordered": { "type": "boolean" },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["segments"],
+                "properties": {
+                  "segments": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/segment" }
+                  }
+                },
+                "additionalProperties": true
+              }
+            },
+            "translations": { "$ref": "#/definitions/translations" }
+          },
+          "required": ["items"]
+        }
+      ]
+    },
+    "block_callout": {
+      "allOf": [
+        { "$ref": "#/definitions/block_base" },
+        {
+          "properties": {
+            "block_type": { "const": "callout" },
+            "style_variant": { "type": "string", "enum": ["info", "warning", "success", "danger"], "default": "info" },
+            "segments": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/segment" }
+            },
+            "translations": { "$ref": "#/definitions/translations" }
+          },
+          "required": ["segments"]
+        }
+      ]
+    },
+    "block_table": {
+      "allOf": [
+        { "$ref": "#/definitions/block_base" },
+        {
+          "properties": {
+            "block_type": { "const": "table" },
+            "columns": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "rows": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          },
+          "required": ["columns", "rows"]
+        }
+      ]
+    },
+    "block_accordion": {
+      "allOf": [
+        { "$ref": "#/definitions/block_base" },
+        {
+          "properties": {
+            "block_type": { "const": "accordion" },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["title", "body"],
+                "properties": {
+                  "title": { "type": "string" },
+                  "body": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/segment" }
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          },
+          "required": ["items"]
+        }
+      ]
+    },
+    "block_media": {
+      "allOf": [
+        { "$ref": "#/definitions/block_base" },
+        {
+          "properties": {
+            "block_type": { "const": "media" },
+            "items": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/media" }
+            }
+          },
+          "required": ["items"]
+        }
+      ]
+    },
+    "block_exercise_reference": {
+      "allOf": [
+        { "$ref": "#/definitions/block_base" },
+        {
+          "properties": {
+            "block_type": { "const": "exercise_reference" },
+            "data": { "$ref": "#/definitions/exercise_reference" }
+          },
+          "required": ["data"]
+        }
+      ]
+    },
+    "module": {
+      "type": "object",
+      "required": ["module_id", "title_es", "title_en", "blocks"],
+      "properties": {
+        "module_id": { "type": "string" },
+        "parent_id": { "type": ["string", "null"] },
+        "title_es": { "type": "string" },
+        "title_en": { "type": "string" },
+        "blocks": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/block" }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

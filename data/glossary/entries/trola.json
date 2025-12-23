@@ -1,0 +1,62 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/trola/trola.mp3?v=1766492835",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A vulgar insult directed at a woman, implying she is sexually promiscuous or morally loose.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Insulto dirigido a una mujer aludiendo de forma despectiva a una supuesta conducta sexual promiscua o inmoral.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "slut",
+        "whore",
+        "bitch"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/trola/s1/trola_ex_01.mp3?v=1766492836",
+          "en": "“This is Julieta.”\n“'How dare you, fucking `slut`? Huh? You fucking whore.' Calm down, she can react like that. Don’t get upset. Let’s get started.”",
+          "es": "—Habla Julieta.\n—¿Cómo te atrevés a llamarme, `trola` de mierda? ¿Eh? Hija de mil putas. Tranquila, ella puede reaccionar así. No te pongas mal. Vamos a arrancar.",
+          "flags": [
+            "explicit_language",
+            "potentially_offensive"
+          ],
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encarcado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "vulgar",
+      "related_slugs": [],
+      "sensitivity": [
+        "lenguaje_explicito",
+        "potencialmente_ofensivo"
+      ],
+      "status": [],
+      "tone": [
+        "agresivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": "trolita",
+        "fem_pl": "trolas",
+        "fem_sg": "trola",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "trola",
+  "word": "trola"
+}

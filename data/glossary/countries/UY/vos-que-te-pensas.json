@@ -1,0 +1,64 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/vos-que-te-pensas/vos_que_te_pensas.mp3?v=1766493983",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A confrontational formula used to challenge or dismiss someone, roughly equivalent to “who do you think you are?” or “what do you think you’re doing?”.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Fórmula confrontativa usada para cuestionar o desautorizar a alguien, equivalente a “¿quién te creés que sos?” o “¿en qué estás pensando?”.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "Who do you think you are?",
+        "What do you think you're doing?"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/vos-que-te-pensas/s1/vos_que_te_pensas_ex_01.mp3?v=1766493953",
+          "en": "`Who do you think you are`? You think you’re the first girl he’s ever fucked?",
+          "es": "¿`Vos qué te pensás`? ¿Qué sos la primera pendeja que se garcha?",
+          "flags": [
+            "explicit_language",
+            "potentially_offensive"
+          ],
+          "linked_terms": [
+            "garcharse",
+            "pendejo"
+          ],
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encarcado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "construccion_gramatical",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "vos-que-te-pensas",
+  "word": "vos qué te pensás"
+}

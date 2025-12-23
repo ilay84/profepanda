@@ -1,0 +1,62 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/dejate-de-joder/dejate_de_joder.mp3?v=1766444988",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Expression used to bluntly reject something or tell someone to stop saying or doing something foolish.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Expresión usada para rechazar algo de manera tajante o exigir que alguien deje de decir o hacer una tontería.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "cut the bullshit",
+        "come on",
+        "stop messing around"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/dejate-de-joder/s1/dejate_de_joder_ex_01.mp3?v=1766444988",
+          "en": "\"`Cut the bullshit`, three hundred dollars. How much do you charge?\"\n\"Fucking's my job, I don’t do charity.\"",
+          "es": "—`Dejate de joder`, $300 dólares. ¿Cuánto cobrás?\n—Yo laburo de garchar no hago caridad.",
+          "linked_terms": [
+            "laburar",
+            "garchar"
+          ],
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "frase_hecha",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "agresivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "dejate-de-joder",
+  "word": "dejate de joder"
+}

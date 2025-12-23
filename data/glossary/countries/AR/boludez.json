@@ -1,0 +1,60 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/boludez/boludez.mp3?v=1766407497",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Something foolish, nonsensical, or pointless, especially something said or done irresponsibly.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Cosa sin sentido, tonta o carente de importancia, especialmente dicha o hecha de manera irresponsable.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "nonsense",
+        "bullshit",
+        "stupid thing"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/boludez/s1/boludez_ex_01.mp3?v=1766407498",
+          "en": "What are you talking about? Don’t say `nonsense`.",
+          "es": "¿Qué estás diciendo? No digas `boludeces`.",
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [
+        "boludo"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "boludeces",
+        "fem_sg": "boludez",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "boludez",
+  "word": "boludez"
+}

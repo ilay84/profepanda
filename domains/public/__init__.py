@@ -681,9 +681,38 @@ def glossary_api_list():
     slice_items = filtered[offset: offset + limit]
     has_more = (offset + limit) < total_filtered
 
-    # If no filters beyond q/country, return quickly
+    def enrich_with_senses_preview(items):
+        """Attach a lightweight senses_preview array so UI can render per-sense flags/POS."""
+        enriched = []
+        for meta in items:
+            slug = (meta.get("slug") or "").strip()
+            if not slug:
+                enriched.append(meta)
+                continue
+            entry_full = glossary.load_entry(slug) or {}
+            senses_preview = []
+            for s in (entry_full.get("senses") or []):
+                senses_preview.append({
+                    "pos": s.get("pos"),
+                    "definition_es": s.get("definition_es") or s.get("definition") or "",
+                    "definition_en": s.get("definition_en") or "",
+                    "sensitivity": s.get("sensitivity") or [],
+                    "flags": s.get("flags") or [],
+                })
+            meta = dict(meta)
+            meta["senses_preview"] = senses_preview
+            enriched.append(meta)
+        return enriched
+
+    # If no filters beyond q/country, return quickly (but include senses_preview)
     if not any([f_pos_set, f_reg_set, f_freq_set, f_status_set, f_sens_set, f_domain, f_tone, f_countries, f_source_titles]):
-        return jsonify({'ok': True, 'count': total_filtered, 'items': slice_items, 'has_more': has_more, 'letters': letters})
+        return jsonify({
+            'ok': True,
+            'count': total_filtered,
+            'items': enrich_with_senses_preview(slice_items),
+            'has_more': has_more,
+            'letters': letters
+        })
 
     # Load each entry and keep if any sense matches all provided filters
     out_all = []
@@ -744,7 +773,7 @@ def glossary_api_list():
     total = len(out_all)
     slice_filtered = out_all[offset: offset + limit]
     has_more_filtered = (offset + limit) < total
-    return jsonify({'ok': True, 'count': total, 'items': slice_filtered, 'has_more': has_more_filtered, 'letters': letters})
+    return jsonify({'ok': True, 'count': total, 'items': enrich_with_senses_preview(slice_filtered), 'has_more': has_more_filtered, 'letters': letters})
 
 
 @public_bp.get('/glossary/api/stats', endpoint='glossary_api_stats')

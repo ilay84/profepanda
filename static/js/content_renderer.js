@@ -157,15 +157,49 @@
       case "exercise_reference": {
         const box = document.createElement("div");
         box.className = "lab-callout info";
+        box.style.display = "flex";
+        box.style.flexDirection = "column";
+        box.style.gap = "6px";
+
+        const exId = data.exercise_id || "";
+        const parts = exId.split("/");
+        const exType = data.exercise_type || parts[0] || "";
+        const slug = parts.length > 1 ? parts.slice(1).join("/") : exId;
+
         const title = document.createElement("div");
         title.className = "lab-callout-title";
-        title.textContent = data.exercise_id || (lang === "en" ? "Exercise" : "Ejercicio");
+        title.textContent = (data.display_options?.show_title === false)
+          ? ""
+          : (data.title || exId || (lang === "en" ? "Exercise" : "Ejercicio"));
+
         const meta = document.createElement("div");
         meta.className = "ppx-muted";
         meta.style.fontSize = "13px";
-        meta.textContent = data.exercise_type ? `Type: ${data.exercise_type}` : (lang === "en" ? "Exercise" : "Ejercicio");
-        box.appendChild(title);
+        meta.textContent = exType
+          ? `${lang === "en" ? "Type" : "Tipo"}: ${exType} · ${slug || ""}`
+          : (lang === "en" ? "Exercise" : "Ejercicio");
+
+        if (title.textContent) box.appendChild(title);
         box.appendChild(meta);
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "ppx-btn ppx-btn--primary";
+        btn.style.alignSelf = "flex-start";
+        btn.textContent = lang === "en" ? "Open exercise" : "Abrir ejercicio";
+        btn.disabled = !(exType && slug && window.PPX && typeof window.PPX.openExercise === "function");
+        btn.addEventListener("click", () => {
+          if (!window.PPX || typeof window.PPX.openExercise !== "function") return;
+          window.PPX.openExercise({
+            type: exType,
+            slug,
+            version: data.version || null,
+            lang: lang || "es",
+            context: { source: "content_hub" }
+          });
+        });
+
+        box.appendChild(btn);
         wrap.appendChild(box);
         break;
       }

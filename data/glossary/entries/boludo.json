@@ -7,8 +7,8 @@
       "countries": [
         "AR"
       ],
-      "definition_en": "<p><span style=\"font-weight: normal;\">Casual, affectionate way to address someone you know well.</span></p>",
-      "definition_es": "<p><span style=\"font-weight: normal;\">Usado como tratamiento coloquial y afectuoso entre personas con confianza.</span></p>",
+      "definition_en": "<span style=\"font-weight: normal;\">A casual, affectionate way to address someone you know well.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Usado como tratamiento coloquial y afectuoso entre personas con confianza.</span>",
       "domain": [
         "sociedad"
       ],
@@ -54,6 +54,74 @@
       ],
       "tone": [
         "afectuoso"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "boludas",
+        "fem_sg": "boluda",
+        "masc_pl": "boludos",
+        "masc_sg": "boludo"
+      }
+    },
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Used disparagingly to describe someone as foolish, naïve, or lacking intelligence.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Usado de forma despectiva para calificar a alguien como tonto, ingenuo o poco inteligente.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "idiot",
+        "moron"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_03.mp3?v=1766450516",
+          "en": "I end up looking like a professional idiot.",
+          "es": "Yo quedo como una `boluda` profesionalmente.",
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        },
+        {
+          "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_04.mp3?v=1766494264",
+          "en": "And you actually believed him, you idiot? I feel sorry for you. Don’t be such a moron.",
+          "es": "¿Y vos le creíste, imbécil? Me das pena. No seas `boluda`.",
+          "flags": [
+            "potentially_offensive"
+          ],
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s2",
+      "pos": "adjetivo",
+      "register": "informal",
+      "related_slugs": [
+        "boludito"
+      ],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo"
       ],
       "variants": {
         "augmentative": null,

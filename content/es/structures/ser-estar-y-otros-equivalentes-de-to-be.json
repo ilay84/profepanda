@@ -74,8 +74,8 @@
       ],
       "module_id": "mod1",
       "parent_id": null,
-      "title_en": "Module 1: The Basics of SER and ESTAR",
-      "title_es": "Módulo 1: Lo básico de SER y ESTAR"
+      "title_en": "The Basics of SER and ESTAR",
+      "title_es": "Lo básico de SER y ESTAR"
     },
     {
       "blocks": [
@@ -101,8 +101,8 @@
       ],
       "module_id": "mod2",
       "parent_id": null,
-      "title_en": "Module 2: Location and Place",
-      "title_es": "Módulo 2: Ubicación y lugar"
+      "title_en": "Location and Place",
+      "title_es": "Ubicación y lugar"
     },
     {
       "blocks": [
@@ -128,8 +128,8 @@
       ],
       "module_id": "mod3",
       "parent_id": null,
-      "title_en": "Module 3: SER and ESTAR with Past Participles",
-      "title_es": "Módulo 3: SER y ESTAR con participios"
+      "title_en": "SER and ESTAR with Past Participles",
+      "title_es": "SER y ESTAR con participios"
     },
     {
       "blocks": [
@@ -155,8 +155,8 @@
       ],
       "module_id": "mod4",
       "parent_id": null,
-      "title_en": "Module 4: SER and ESTAR with Adjectives",
-      "title_es": "Módulo 4: SER y ESTAR con adjetivos"
+      "title_en": "SER and ESTAR with Adjectives",
+      "title_es": "SER y ESTAR con adjetivos"
     },
     {
       "blocks": [
@@ -182,8 +182,8 @@
       ],
       "module_id": "mod5",
       "parent_id": null,
-      "title_en": "Module 5: Other Ways to Say “To Be” in Spanish",
-      "title_es": "Módulo 5: Otros equivalentes de “to be” en español"
+      "title_en": "Other Ways to Say “To Be” in Spanish",
+      "title_es": "Otros equivalentes de “to be” en español"
     },
     {
       "blocks": [
@@ -209,8 +209,8 @@
       ],
       "module_id": "mod6",
       "parent_id": null,
-      "title_en": "Module 6: Common Expressions with SER and ESTAR",
-      "title_es": "Módulo 6: Expresiones comunes con SER y ESTAR"
+      "title_en": "Common Expressions with SER and ESTAR",
+      "title_es": "Expresiones comunes con SER y ESTAR"
     },
     {
       "blocks": [
@@ -442,6 +442,11 @@
           "id": "m1s3-vision-general_practice",
           "style_variant": "info",
           "type": "callout"
+        },
+        {
+          "id": "rich_text-5",
+          "type": "rich_text",
+          "data": {}
         }
       ],
       "module_id": "m1s3-vision-general",
@@ -525,8 +530,8 @@
       ],
       "module_id": "m2s1-ubicacion-fisica",
       "parent_id": "mod2",
-      "title_en": "Submodule 2.1: ESTAR for Physical Location",
-      "title_es": "Submódulo 2.1: ESTAR para la ubicación física"
+      "title_en": "ESTAR for Physical Location",
+      "title_es": " ESTAR para la ubicación física"
     },
     {
       "blocks": [
@@ -604,8 +609,8 @@
       ],
       "module_id": "m2s2-ser-ubicacion-eventos",
       "parent_id": "mod2",
-      "title_en": "Submodule 2.2: SER for Event Location",
-      "title_es": "Submódulo 2.2: SER para la ubicación de eventos"
+      "title_en": "SER for Event Location",
+      "title_es": "SER para la ubicación de eventos"
     },
     {
       "blocks": [
@@ -683,8 +688,8 @@
       ],
       "module_id": "m2s3-ubicacion-ser-vs-estar",
       "parent_id": "mod2",
-      "title_en": "Submodule 2.3: Location — SER vs. ESTAR",
-      "title_es": "Submódulo 2.3: Ubicación — SER vs. ESTAR"
+      "title_en": "Location — SER vs. ESTAR",
+      "title_es": "Ubicación — SER vs. ESTAR"
     },
     {
       "blocks": [
@@ -762,8 +767,8 @@
       ],
       "module_id": "m3s1-ser-participio",
       "parent_id": "mod3",
-      "title_en": "Submodule 3.1: SER + Past Participle",
-      "title_es": "Submódulo 3.1: SER + participio pasado"
+      "title_en": "SER + Past Participle",
+      "title_es": "SER + participio pasado"
     },
     {
       "blocks": [
@@ -841,8 +846,8 @@
       ],
       "module_id": "m3s2-estar-participio",
       "parent_id": "mod3",
-      "title_en": "Submodule 3.2: ESTAR + Past Participle",
-      "title_es": "Submódulo 3.2: ESTAR + participio pasado"
+      "title_en": "ESTAR + Past Participle",
+      "title_es": "ESTAR + participio pasado"
     },
     {
       "blocks": [
@@ -920,8 +925,8 @@
       ],
       "module_id": "m3s3-participios-contraste",
       "parent_id": "mod3",
-      "title_en": "Submodule 3.3: Participles — SER vs. ESTAR",
-      "title_es": "Submódulo 3.3: Participios — SER vs. ESTAR"
+      "title_en": "Participles — SER vs. ESTAR",
+      "title_es": "Participios — SER vs. ESTAR"
     },
     {
       "blocks": [
@@ -1000,7 +1005,7 @@
       "module_id": "m4s1-ser-adjetivos",
       "parent_id": "mod4",
       "title_en": "Submodule 4.1: SER + Adjectives",
-      "title_es": "Submódulo 4.1: SER + adjetivos"
+      "title_es": "SER + adjetivos"
     },
     {
       "blocks": [
@@ -1079,7 +1084,7 @@
       "module_id": "m4s2-estar-adjetivos",
       "parent_id": "mod4",
       "title_en": "Submodule 4.2: ESTAR + Adjectives",
-      "title_es": "Submódulo 4.2: ESTAR + adjetivos"
+      "title_es": "ESTAR + adjetivos"
     },
     {
       "blocks": [
@@ -1158,7 +1163,7 @@
       "module_id": "m4s3-adjetivos-contraste",
       "parent_id": "mod4",
       "title_en": "Submodule 4.3: Adjectives — SER vs. ESTAR",
-      "title_es": "Submódulo 4.3: Adjetivos — SER vs. ESTAR"
+      "title_es": "Adjetivos — SER vs. ESTAR"
     },
     {
       "blocks": [
@@ -1236,8 +1241,8 @@
       ],
       "module_id": "m5s1-haber",
       "parent_id": "mod5",
-      "title_en": "Submodule 5.1: HABER — Existence and Occurrence",
-      "title_es": "Submódulo 5.1: HABER — existencia y ocurrencia"
+      "title_en": "HABER — Existence and Occurrence",
+      "title_es": "HABER — existencia y ocurrencia"
     },
     {
       "blocks": [
@@ -1315,8 +1320,8 @@
       ],
       "module_id": "m5s2-hacer",
       "parent_id": "mod5",
-      "title_en": "Submodule 5.2: HACER — Weather and Time Expressions",
-      "title_es": "Submódulo 5.2: HACER — clima y expresiones de tiempo"
+      "title_en": "HACER — Weather and Time Expressions",
+      "title_es": "HACER — clima y expresiones de tiempo"
     },
     {
       "blocks": [
@@ -1394,8 +1399,8 @@
       ],
       "module_id": "m5s3-tener",
       "parent_id": "mod5",
-      "title_en": "Submodule 5.3: TENER — Physical and Mental States",
-      "title_es": "Submódulo 5.3: TENER — estados físicos y mentales"
+      "title_en": "TENER — Physical and Mental States",
+      "title_es": "TENER — estados físicos y mentales"
     },
     {
       "blocks": [
@@ -1473,8 +1478,8 @@
       ],
       "module_id": "m6s1-expresiones-comunes",
       "parent_id": "mod6",
-      "title_en": "Submodule 6.1: High-Frequency Expressions and Practice",
-      "title_es": "Submódulo 6.1: Expresiones frecuentes y práctica"
+      "title_en": "High-Frequency Expressions and Practice",
+      "title_es": "Expresiones frecuentes y práctica"
     }
   ],
   "storage_path": "/content/es/structures/ser-estar-y-otros-equivalentes-de-to-be.json"

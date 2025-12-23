@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/cana/cana.mp3?v=1766445987",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">The police or law enforcement, referred to in a colloquial way.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">La policía o las fuerzas de seguridad, referidas de manera coloquial.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "the cops",
+        "the police",
+        "the fuzz"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/cana/s1/cana_ex_01.mp3?v=1766445987",
+          "en": "\"No, no. What are you saying? That’s not how it happened.\"\n\"I’m not saying it. The `cops` might think so.\"",
+          "es": "—No, no. ¿Qué estás diciendo? Si no fue así eso.\n—Pero yo no lo digo. La `cana` puede pensarlo.",
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": "cana",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "cana",
+  "word": "cana"
+}

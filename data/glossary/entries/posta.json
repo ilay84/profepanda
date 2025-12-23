@@ -1,0 +1,56 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/posta/posta.mp3?v=1766445521",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">The truth or genuine information, said plainly and without evasion.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">La verdad o información verdadera, dicha sin vueltas ni engaños.</span>",
+      "domain": [
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "the truth",
+        "the real story",
+        "the straight answer"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/posta/s1/posta_ex_01.mp3?v=1766445521",
+          "en": "\"No, tell me the `truth`. Who owns the apartment?\"",
+          "es": "No, decime la `posta`. ¿Quién es el dueño del departamento?",
+          "source": {
+            "episode": "3",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "informal",
+      "related_slugs": [],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": "posta",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "posta",
+  "word": "posta"
+}

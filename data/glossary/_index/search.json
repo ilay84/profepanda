@@ -12,6 +12,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "locucion_adverbial",
+    "slug": "a-upa",
+    "snippet": "In one’s arms, carrying a person, usually a child.",
+    "word": "a upa"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "verbo_transitivo",
     "slug": "afanar",
     "snippet": "To steal.",
@@ -121,9 +130,28 @@
     "countries": [
       "AR"
     ],
+    "pos": "sustantivo_femenino",
+    "slug": "boludez",
+    "snippet": "Something foolish, nonsensical, or pointless, especially something said or done irresponsibly.",
+    "word": "boludez"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "boludito",
+    "snippet": "A diminutive, insulting form of *boludo*, used to dismiss someone as foolish, gullible, or lacking intelligence, usually with contempt.",
+    "word": "boludito"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "adjetivo",
     "slug": "boludo",
-    "snippet": "Casual, affectionate way to address someone you know well.",
+    "snippet": "A casual, affectionate way to address someone you know well.",
     "word": "boludo"
   },
   {
@@ -189,6 +217,34 @@
     "slug": "calentarse",
     "snippet": "To get upset or lose one's cool.",
     "word": "calentarse"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "cana",
+    "snippet": "The police or law enforcement, referred to in a colloquial way.",
+    "word": "cana"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "adverbio",
+    "slug": "capaz",
+    "snippet": "Expresses possibility or uncertainty; equivalent to “maybe” or “perhaps.”",
+    "word": "capaz"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "formula_social",
+    "slug": "capo",
+    "snippet": "Form of address used informally to speak to someone in a familiar or direct way; it can take on an ironic or confrontational tone depending on context.",
+    "word": "capo"
   },
   {
     "countries": [
@@ -346,12 +402,31 @@
   },
   {
     "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "locucion_verbal",
+    "slug": "dar-bola",
+    "snippet": "To pay attention to or show interest in someone, especially in a social interaction.",
+    "word": "dar bola"
+  },
+  {
+    "countries": [
       "AR"
     ],
     "pos": "locucion_adverbial",
     "slug": "de-joda",
     "snippet": "Out partying, having fun, or not taking things seriously.",
     "word": "de joda"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "frase_hecha",
+    "slug": "dejate-de-joder",
+    "snippet": "Expression used to bluntly reject something or tell someone to stop saying or doing something foolish.",
+    "word": "dejate de joder"
   },
   {
     "countries": [
@@ -439,6 +514,25 @@
     "countries": [
       "AR"
     ],
+    "pos": "verbo_transitivo",
+    "slug": "garchar",
+    "snippet": "To have sex with someone.",
+    "word": "garchar"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "verbo_pronominal",
+    "slug": "garcharse",
+    "snippet": "To have sex with someone, emphasizing direct personal involvement; the pronominal form of *garchar*, typically used with a specific human partner.",
+    "word": "garcharse"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "sustantivo_femenino",
     "slug": "gaseosa",
     "snippet": "Carbonated soft drink.",
@@ -470,6 +564,15 @@
     "slug": "gordo",
     "snippet": "Affectionate nickname used between partners, family, or friends, not literally about body size.",
     "word": "gordo"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "grogui",
+    "snippet": "Said of a person: dazed or semi-conscious, usually due to alcohol, drugs, medication, or physical exhaustion.",
+    "word": "grogui"
   },
   {
     "countries": [
@@ -601,6 +704,15 @@
     "countries": [
       "AR"
     ],
+    "pos": "verbo_pronominal",
+    "slug": "mamarse",
+    "snippet": "To drink alcohol excessively, to the point of becoming dazed or incapacitated.",
+    "word": "mamarse"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
     "pos": "sustantivo_masculino",
     "slug": "mango",
     "snippet": "A small or specific amount of money.",
@@ -650,6 +762,16 @@
     "slug": "mosquita-muerta",
     "snippet": "A woman who pretends to be innocent or harmless to manipulate or avoid responsibility.",
     "word": "mosquita muerta"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino_y_femenino",
+    "slug": "mozo",
+    "snippet": "A person who serves tables in a bar, restaurant, or similar establishment.",
+    "word": "mozo"
   },
   {
     "countries": [
@@ -779,6 +901,16 @@
   },
   {
     "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "pileta",
+    "snippet": "Swimming pool, especially one at a private home, club, or recreational facility.",
+    "word": "pileta"
+  },
+  {
+    "countries": [
       "AR"
     ],
     "pos": "sustantivo_masculino",
@@ -812,6 +944,15 @@
     "slug": "porro",
     "snippet": "Marijuana cigarette.",
     "word": "porro"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "posta",
+    "snippet": "The truth or genuine information, said plainly and without evasion.",
+    "word": "posta"
   },
   {
     "countries": [
@@ -969,6 +1110,25 @@
   },
   {
     "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "trola",
+    "snippet": "A vulgar insult directed at a woman, implying she is sexually promiscuous or morally loose.",
+    "word": "trola"
+  },
+  {
+    "countries": [
+      "AR"
+    ],
+    "pos": "adjetivo",
+    "slug": "trucho",
+    "snippet": "Said of a person or thing: fake, untrustworthy, or suspicious.",
+    "word": "trucho"
+  },
+  {
+    "countries": [
       "AR"
     ],
     "pos": "locucion_sustantival",
@@ -1011,6 +1171,16 @@
     "slug": "voltearse",
     "snippet": "To have sex with someone.",
     "word": "voltearse"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "construccion_gramatical",
+    "slug": "vos-que-te-pensas",
+    "snippet": "A confrontational formula used to challenge or dismiss someone, roughly equivalent to “who do you think you are?” or “what do you think you’re doing?”.",
+    "word": "vos qué te pensás"
   },
   {
     "countries": [

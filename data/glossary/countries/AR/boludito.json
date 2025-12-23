@@ -1,0 +1,61 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/boludito/boludito.mp3?v=1766494740",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A diminutive, insulting form of *boludo*, used to dismiss someone as foolish, gullible, or lacking intelligence, usually with contempt.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Forma diminutiva e insultante de *boludo*, usada para descalificar a alguien como ingenuo, tonto o poco inteligente, normalmente con tono de desprecio.</span>",
+      "domain": [],
+      "equivalents_en": [
+        "idiot",
+        "moron"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/boludito/s1/boludito_ex_01.mp3?v=1766494740",
+          "en": "“I’m not the complaint book for `idiot` waitresses who believe anything.”",
+          "es": "Yo no soy el libro de quejas de mozas `boluditas` que se creen cualquier cosa.",
+          "linked_terms": [
+            "mozo"
+          ],
+          "source": {
+            "episode": "4",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "vulgar",
+      "related_slugs": [
+        "boludo"
+      ],
+      "sensitivity": [
+        "potencialmente_ofensivo"
+      ],
+      "status": [],
+      "tone": [
+        "despectivo"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "boluditas",
+        "fem_sg": "boludita",
+        "masc_pl": "boluditos",
+        "masc_sg": "boludito"
+      }
+    }
+  ],
+  "slug": "boludito",
+  "word": "boludito"
+}

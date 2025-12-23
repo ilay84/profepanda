@@ -46,6 +46,65 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/a-upa/a_upa.mp3?v=1766449809",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">In one’s arms, carrying a person, usually a child.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">En brazos, cargando a una persona, generalmente a un niño.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "in one's arms",
+          "being carried"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/a-upa/s1/a_upa_ex_01.mp3?v=1766449809",
+            "en": "\"To Ezeiza it’d be 5,000 pesos.\"\n\"What? Are you carrying her `in your arms`, jogging?\"\n\"That’s what the ride costs, buddy.\"",
+            "es": "—A Ezeiza serían 5000 pesos.\n—¿Qué? ¿La llevás `a upa`, trotando?\n—Es lo que sale el viaje, capo.",
+            "linked_terms": [
+              "ezeiza",
+              "capo"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "locucion_adverbial",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "a-upa",
+    "word": "a upa"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/afanar-se/afanar_se.mp3",
     "senses": [
       {
@@ -695,6 +754,127 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/boludez/boludez.mp3?v=1766407497",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Something foolish, nonsensical, or pointless, especially something said or done irresponsibly.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Cosa sin sentido, tonta o carente de importancia, especialmente dicha o hecha de manera irresponsable.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "nonsense",
+          "bullshit",
+          "stupid thing"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/boludez/s1/boludez_ex_01.mp3?v=1766407498",
+            "en": "What are you talking about? Don’t say `nonsense`.",
+            "es": "¿Qué estás diciendo? No digas `boludeces`.",
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "informal",
+        "related_slugs": [
+          "boludo"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "despectivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "boludeces",
+          "fem_sg": "boludez",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "boludez",
+    "word": "boludez"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/boludito/boludito.mp3?v=1766494740",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A diminutive, insulting form of *boludo*, used to dismiss someone as foolish, gullible, or lacking intelligence, usually with contempt.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Forma diminutiva e insultante de *boludo*, usada para descalificar a alguien como ingenuo, tonto o poco inteligente, normalmente con tono de desprecio.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "idiot",
+          "moron"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/boludito/s1/boludito_ex_01.mp3?v=1766494740",
+            "en": "“I’m not the complaint book for `idiot` waitresses who believe anything.”",
+            "es": "Yo no soy el libro de quejas de mozas `boluditas` que se creen cualquier cosa.",
+            "linked_terms": [
+              "mozo"
+            ],
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino",
+        "register": "vulgar",
+        "related_slugs": [
+          "boludo"
+        ],
+        "sensitivity": [
+          "potencialmente_ofensivo"
+        ],
+        "status": [],
+        "tone": [
+          "despectivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "boluditas",
+          "fem_sg": "boludita",
+          "masc_pl": "boluditos",
+          "masc_sg": "boludito"
+        }
+      }
+    ],
+    "slug": "boludito",
+    "word": "boludito"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/boludo/boludo.mp3",
     "senses": [
       {
@@ -702,8 +882,8 @@
         "countries": [
           "AR"
         ],
-        "definition_en": "<p><span style=\"font-weight: normal;\">Casual, affectionate way to address someone you know well.</span></p>",
-        "definition_es": "<p><span style=\"font-weight: normal;\">Usado como tratamiento coloquial y afectuoso entre personas con confianza.</span></p>",
+        "definition_en": "<span style=\"font-weight: normal;\">A casual, affectionate way to address someone you know well.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Usado como tratamiento coloquial y afectuoso entre personas con confianza.</span>",
         "domain": [
           "sociedad"
         ],
@@ -758,6 +938,74 @@
           "masc_pl": "boludos",
           "masc_sg": "boludo"
         }
+      },
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Used disparagingly to describe someone as foolish, naïve, or lacking intelligence.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Usado de forma despectiva para calificar a alguien como tonto, ingenuo o poco inteligente.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "idiot",
+          "moron"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_03.mp3?v=1766450516",
+            "en": "I end up looking like a professional idiot.",
+            "es": "Yo quedo como una `boluda` profesionalmente.",
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/boludo/s2/boludo_ex_04.mp3?v=1766494264",
+            "en": "And you actually believed him, you idiot? I feel sorry for you. Don’t be such a moron.",
+            "es": "¿Y vos le creíste, imbécil? Me das pena. No seas `boluda`.",
+            "flags": [
+              "potentially_offensive"
+            ],
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s2",
+        "pos": "adjetivo",
+        "register": "informal",
+        "related_slugs": [
+          "boludito"
+        ],
+        "sensitivity": [
+          "potencialmente_ofensivo"
+        ],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "despectivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "boludas",
+          "fem_sg": "boluda",
+          "masc_pl": "boludos",
+          "masc_sg": "boludo"
+        }
       }
     ],
     "slug": "boludo",
@@ -792,6 +1040,18 @@
             ],
             "source": {
               "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/bronca/s1/bronca_ex_02.mp3?v=1766491774",
+            "en": "And that’s why it really `pisses me off` when you run into people like this, who don’t tip you. The rage I feel…",
+            "es": "Y por eso me da mucha `bronca` que te topes con personajes como este, que no te dan propina. El odio que me da...",
+            "source": {
+              "episode": "4",
               "season": "1",
               "title": "El encargado",
               "type": "series",
@@ -1122,6 +1382,175 @@
     ],
     "slug": "calentarse",
     "word": "calentarse"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/cana/cana.mp3?v=1766445987",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">The police or law enforcement, referred to in a colloquial way.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">La policía o las fuerzas de seguridad, referidas de manera coloquial.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "the cops",
+          "the police",
+          "the fuzz"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/cana/s1/cana_ex_01.mp3?v=1766445987",
+            "en": "\"No, no. What are you saying? That’s not how it happened.\"\n\"I’m not saying it. The `cops` might think so.\"",
+            "es": "—No, no. ¿Qué estás diciendo? Si no fue así eso.\n—Pero yo no lo digo. La `cana` puede pensarlo.",
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": "cana",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "cana",
+    "word": "cana"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/capaz/capaz.mp3?v=1766452661",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Expresses possibility or uncertainty; equivalent to “maybe” or “perhaps.”</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Expresa posibilidad o duda, equivalente a “tal vez” o “quizás”.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "maybe",
+          "perhaps"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/capaz/s1/capaz_ex_01.mp3?v=1766452662",
+            "en": "`Maybe` we even end up doing her a favor, getting that anvil off her back, you know?",
+            "es": "`Capaz` que terminamos haciéndole un favor y todo, sacándole ese yunque de encima, ¿sabés?",
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encarcado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "adverbio",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "capaz",
+    "word": "capaz"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/capo/capo.mp3?v=1766449551",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Form of address used informally to speak to someone in a familiar or direct way; it can take on an ironic or confrontational tone depending on context.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Vocativo usado para dirigirse a alguien de manera informal y cercana, generalmente para marcar familiaridad o trato directo; puede adquirir un tono irónico o confrontativo según el contexto.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "buddy",
+          "pal",
+          "chief"
+        ],
+        "examples": [
+          {
+            "audio": null,
+            "en": "\"To Ezeiza it’d be 5,000 pesos.\"\n\"What? Are you carrying her, jogging?\"\n\"That’s what the ride costs, `buddy`.\"",
+            "es": "—A Ezeiza serían 5000 pesos.\n—¿Qué? ¿La llevás a upa, trotando?\n—Es lo que sale el viaje, `capo`.",
+            "linked_terms": [
+              "ezeiza"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "formula_social",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "capas",
+          "fem_sg": "capa",
+          "masc_pl": "capos",
+          "masc_sg": "capo"
+        }
+      }
+    ],
+    "slug": "capo",
+    "word": "capo"
   },
   {
     "alt_spellings": [],
@@ -2097,6 +2526,58 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/dar-bola/dar_bola.mp3?v=1766451438",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">To pay attention to or show interest in someone, especially in a social interaction.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Prestar atención o mostrar interés hacia alguien, especialmente en una interacción social.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "to pay attention",
+          "to give someone the time of day"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/dar-bola/s1/dar_bola_ex_01.mp3?v=1766451397",
+            "en": "—“And what does that mean?”\n—“You saw how when they came in, they didn’t give you any `attention`? Next time, you should do the same. You don’t have to `give her the time of day`.”",
+            "es": "—¿Y qué es eso?\n—¿Viste que cuando entró no te dio `bola`? Vos tenés que hacer en la próxima lo mismo. No le tenés que dar `bola`.",
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "locucion_verbal",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "dar-bola",
+    "word": "dar bola"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/de-joda/de_joda.mp3?v=1766065907",
     "senses": [
       {
@@ -2155,6 +2636,68 @@
     ],
     "slug": "de-joda",
     "word": "de joda"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/dejate-de-joder/dejate_de_joder.mp3?v=1766444988",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Expression used to bluntly reject something or tell someone to stop saying or doing something foolish.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Expresión usada para rechazar algo de manera tajante o exigir que alguien deje de decir o hacer una tontería.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "cut the bullshit",
+          "come on",
+          "stop messing around"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/dejate-de-joder/s1/dejate_de_joder_ex_01.mp3?v=1766444988",
+            "en": "\"`Cut the bullshit`, three hundred dollars. How much do you charge?\"\n\"Fucking's my job, I don’t do charity.\"",
+            "es": "—`Dejate de joder`, $300 dólares. ¿Cuánto cobrás?\n—Yo laburo de garchar no hago caridad.",
+            "linked_terms": [
+              "laburar",
+              "garchar"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "frase_hecha",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "agresivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "dejate-de-joder",
+    "word": "dejate de joder"
   },
   {
     "alt_spellings": [],
@@ -2651,6 +3194,18 @@
               "type": "series",
               "year": "2022"
             }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/garca/s1/garca_ex_02.mp3?v=1766452400",
+            "en": "You don't have to feel any sympathy for her, because if she’s married to a `scumbag` like Zambrano, there’s probably a reason for it.",
+            "es": "No te tiene que dar ningún tipo de pena ella, porque si está casada con un `garca`\ncomo Zambrano, por algo debe ser.",
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
           }
         ],
         "freq": "muy_comun",
@@ -2681,6 +3236,134 @@
     ],
     "slug": "garca",
     "word": "garca"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/garchar/garchar.mp3?v=1766445149",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">To have sex with someone.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Tener relaciones sexuales con alguien.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "to fuck",
+          "to bang",
+          "to screw"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/garchar/s1/garchar_ex_01.mp3?v=1766445150",
+            "en": "\"Cut the bullshit, three hundred dollars. How much do you charge?\"\n\"Fucking's my job, I don’t do charity.\"",
+            "es": "—Dejate de joder, $300 dólares. ¿Cuánto cobrás?\n—Yo laburo de `garchar` no hago caridad.",
+            "linked_terms": [
+              "dejate-de-joder",
+              "laburar"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "verbo_transitivo",
+        "register": "vulgar",
+        "related_slugs": [
+          "garcharse"
+        ],
+        "sensitivity": [
+          "lenguaje_explicito"
+        ],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "garchar",
+    "word": "garchar"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/garcharse/garcharse.mp3?v=1766493544",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">To have sex with someone, emphasizing direct personal involvement; the pronominal form of *garchar*, typically used with a specific human partner.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Tener relaciones sexuales con alguien, enfatizando la implicación personal o el vínculo directo con esa persona; forma pronominal de *garchar* usada casi siempre con referente humano.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "to fuck",
+          "to sleep with"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/garcharse/s1/garcharse_ex_01.mp3?v=1766493545",
+            "en": "“What do you think you are? You think you’re the first young girl he’s ever `fucked`?”",
+            "es": "¿Vos qué te pensás? ¿Qué sos la primera pendeja que `se garcha`?",
+            "linked_terms": [
+              "pendejo",
+              "vos-que-te-pensas"
+            ],
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encarcado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "verbo_pronominal",
+        "register": "vulgar",
+        "related_slugs": [
+          "garchar"
+        ],
+        "sensitivity": [
+          "lenguaje_explicito"
+        ],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "agresivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "garcharse",
+    "word": "garcharse"
   },
   {
     "alt_spellings": [],
@@ -2915,6 +3598,62 @@
     ],
     "slug": "gordo",
     "word": "gordo"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/grogui/grogui.mp3?v=1766408497",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Said of a person: dazed or semi-conscious, usually due to alcohol, drugs, medication, or physical exhaustion.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Dicho de una persona: aturdida o semiconsciente, generalmente por efecto del alcohol, drogas, medicación o agotamiento físico.</span>",
+        "domain": [
+          "salud"
+        ],
+        "equivalents_en": [
+          "out of it",
+          "passed out",
+          "knocked out"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/grogui/s1/grogui_ex_01.mp3?v=1766408497",
+            "en": "Now this girl was `out of it` really quickly, you know.",
+            "es": "Ahora esta quedó `grogui` enseguida, eh.",
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "adjetivo",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "groguis",
+          "fem_sg": "grogui",
+          "masc_pl": "groguis",
+          "masc_sg": "grogui"
+        }
+      }
+    ],
+    "slug": "grogui",
+    "word": "grogui"
   },
   {
     "alt_spellings": [],
@@ -3574,6 +4313,22 @@
               "type": "movie",
               "year": "2014"
             }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/laburar/s1/laburar_ex_02.mp3?v=1766445075",
+            "en": "\"Cut the bullshit, three hundred dollars. How much do you charge?\"\n\"I `work` fucking, I don’t do charity.\"",
+            "es": "—Dejate de joder, $300 dólares. ¿Cuánto cobrás?\n—Yo `laburo` de garchar no hago caridad.",
+            "linked_terms": [
+              "garchar",
+              "dejate-de-joder"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
           }
         ],
         "freq": "muy_comun",
@@ -3773,6 +4528,68 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/mamarse/mamarse.mp3?v=1766432263",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">To drink alcohol excessively, to the point of becoming dazed or incapacitated.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Beber alcohol en exceso hasta quedar aturdido o incapacitado.</span>",
+        "domain": [
+          "salud",
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "get drunk",
+          "get wasted",
+          "get smashed"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/mamarse/s1/mamarse_ex_01.mp3?v=1766432276",
+            "en": "Relax, she `got completely wasted`. It’s just a matter of time now.",
+            "es": "Tranquilo, se `remamó`. Ya está, es cuestión de tiempo.",
+            "linked_terms": [
+              "re"
+            ],
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "verbo_pronominal",
+        "register": "informal",
+        "related_slugs": [
+          "grogui"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "mamarse",
+    "word": "mamarse"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/mango/mango.mp3?v=1764261520",
     "senses": [
       {
@@ -3804,6 +4621,30 @@
               "title": "Viudas negras: P*tas y chorras",
               "type": "series",
               "year": "2025"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/mango/s1/mango_ex_02.mp3?v=1766450265",
+            "en": "Everyone backed out. Nobody wanted to do it. Nobody wanted to put in `a dime`.",
+            "es": "Todos fueron para atrás. Nadie lo quiso hacer. Nadie quería poner un `mango`.",
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/mango/s1/mango_ex_03.mp3?v=1766491974",
+            "en": "That’s why I want to give you the chance to, I don’t know, make some good `money`.",
+            "es": "Por eso te quiero dar la oportunidad que, no sé, te puedas ganar unos buenos `mangos`.",
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
             }
           }
         ],
@@ -4166,6 +5007,61 @@
     ],
     "slug": "mosquita-muerta",
     "word": "mosquita muerta"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/mozo/mozo.mp3?v=1766494846",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A person who serves tables in a bar, restaurant, or similar establishment.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Persona que atiende mesas en un bar, restaurante u otro establecimiento gastronómico.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "waiter",
+          "server"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/mozo/s1/mozo_ex_01.mp3?v=1766494846",
+            "en": "“I’m not the complaint book for idiot `waitresses` who believe anything.”",
+            "es": "Yo no soy el libro de quejas de `mozas` boluditas que se creen cualquier cosa.",
+            "linked_terms": [
+              "boludito"
+            ],
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino_y_femenino",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "mozas",
+          "fem_sg": "moza",
+          "masc_pl": "mozos",
+          "masc_sg": "mozo"
+        }
+      }
+    ],
+    "slug": "mozo",
+    "word": "mozo"
   },
   {
     "alt_spellings": [],
@@ -4913,6 +5809,7 @@
         "equivalents_en": [
           "kid",
           "brat",
+          "young man/woman",
           "little shit"
         ],
         "examples": [
@@ -4920,6 +5817,9 @@
             "audio": "/media/glossary-audio/examples/pendejo/s1/pendejo_ex_01.mp3?v=1764269085",
             "en": "Um… can you chill out? You’re seriously getting on my nerves, `kid`!",
             "es": "Este... ¿te tranquilizás? ¡Cómo me tenés las pelotas, `pendejo`!",
+            "flags": [
+              "potentially_offensive"
+            ],
             "source": {
               "episode": "1",
               "season": "1",
@@ -4932,10 +5832,34 @@
             "audio": "/media/glossary-audio/examples/pendejo/s1/pendejo_ex_02.mp3?v=1764269086",
             "en": "You little `shit` — motherfucker!",
             "es": "¡Uy, `pendeja`, la concha de tu madre!",
+            "flags": [
+              "explicit_language",
+              "potentially_offensive"
+            ],
             "source": {
               "title": "Relatos salvajes",
               "type": "movie",
               "year": "2014"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/pendejo/s1/pendejo_ex_03.mp3?v=1766493691",
+            "en": "What do you think you are? You think you’re the first young girl he’s ever fucked?",
+            "es": "¿Vos qué te pensás? ¿Qué sos la primera `pendeja` que se garcha?",
+            "flags": [
+              "explicit_language",
+              "potentially_offensive"
+            ],
+            "linked_terms": [
+              "garcharse",
+              "vos-que-te-pensas"
+            ],
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
             }
           }
         ],
@@ -5022,6 +5946,58 @@
     ],
     "slug": "pibe",
     "word": "pibe"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/pileta/pileta.mp3?v=1766452096",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Swimming pool, especially one at a private home, club, or recreational facility.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Piscina, especialmente la de una casa, club o complejo recreativo.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "swimming pool",
+          "pool"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/pileta/s1/pileta_ex_01.mp3?v=1766452096",
+            "en": "Investigate. To get him off my back, some kind of mess has to blow up — a big problem that makes him forget about the `swimming pool`.",
+            "es": "Investigar. Para sacármelo de encima, le tiene que explotar un quilombo, un problema grande que lo haga olvidar de la `pileta`.",
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encarcado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "neutral",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": "piletita",
+          "fem_pl": "piletas",
+          "fem_sg": "pileta",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "pileta",
+    "word": "pileta"
   },
   {
     "alt_spellings": [
@@ -5259,6 +6235,62 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/posta/posta.mp3?v=1766445521",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">The truth or genuine information, said plainly and without evasion.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">La verdad o información verdadera, dicha sin vueltas ni engaños.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "the truth",
+          "the real story",
+          "the straight answer"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/posta/s1/posta_ex_01.mp3?v=1766445521",
+            "en": "\"No, tell me the `truth`. Who owns the apartment?\"",
+            "es": "No, decime la `posta`. ¿Quién es el dueño del departamento?",
+            "source": {
+              "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": "posta",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "posta",
+    "word": "posta"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/previa/previa.mp3?v=1764270607",
     "senses": [
       {
@@ -5455,6 +6487,18 @@
             "es": "No me digas que sos el marido porque, te juro, es el último `quilombo` que yo necesito.",
             "source": {
               "episode": "3",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/quilombo/s1/quilombo_ex_02.mp3?v=1766451864",
+            "en": "Investigate. To get him off my back, some kind of mess has to blow up — a `big problem` that makes him forget about the pool.",
+            "es": "Investigar. Para sacármelo de encima, le tiene que explotar un `quilombo`,\nun problema grande que lo haga olvidar la pileta.",
+            "source": {
+              "episode": "4",
               "season": "1",
               "title": "El encargado",
               "type": "series",
@@ -5946,6 +6990,18 @@
               "type": "series",
               "year": "2025"
             }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/sorete/s1/sorete_ex_02.mp3?v=1766450670",
+            "en": "“What are you hiding, you piece of shit?”",
+            "es": "¿Qué escondés, pedazo de sorete?",
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
           }
         ],
         "freq": "muy_comun",
@@ -6290,6 +7346,126 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/trola/trola.mp3?v=1766492835",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A vulgar insult directed at a woman, implying she is sexually promiscuous or morally loose.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Insulto dirigido a una mujer aludiendo de forma despectiva a una supuesta conducta sexual promiscua o inmoral.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "slut",
+          "whore",
+          "bitch"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/trola/s1/trola_ex_01.mp3?v=1766492836",
+            "en": "“This is Julieta.”\n“'How dare you, fucking `slut`? Huh? You fucking whore.' Calm down, she can react like that. Don’t get upset. Let’s get started.”",
+            "es": "—Habla Julieta.\n—¿Cómo te atrevés a llamarme, `trola` de mierda? ¿Eh? Hija de mil putas. Tranquila, ella puede reaccionar así. No te pongas mal. Vamos a arrancar.",
+            "flags": [
+              "explicit_language",
+              "potentially_offensive"
+            ],
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encarcado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "vulgar",
+        "related_slugs": [],
+        "sensitivity": [
+          "lenguaje_explicito",
+          "potencialmente_ofensivo"
+        ],
+        "status": [],
+        "tone": [
+          "agresivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": "trolita",
+          "fem_pl": "trolas",
+          "fem_sg": "trola",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "trola",
+    "word": "trola"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/trucho/trucho.mp3?v=1766450922",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Said of a person or thing: fake, untrustworthy, or suspicious.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Dicho de una persona o cosa: falsa, poco confiable o sospechosa.</span>",
+        "domain": [
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "shady",
+          "fake",
+          "dodgy"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/trucho/s1/trucho_ex_01.mp3?v=1766450922",
+            "en": "\"What’s going on? Tell me — with that `shady` look on your face.\"",
+            "es": "¿Qué tenés? Contame, con esa cara de `trucho`.",
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "adjetivo",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "despectivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "truchas",
+          "fem_sg": "trucha",
+          "masc_pl": "truchos",
+          "masc_sg": "trucho"
+        }
+      }
+    ],
+    "slug": "trucho",
+    "word": "trucho"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/un-mate/un_mate.mp3?v=1764273327",
     "senses": [
       {
@@ -6587,6 +7763,70 @@
     ],
     "slug": "voltearse",
     "word": "voltearse"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/vos-que-te-pensas/vos_que_te_pensas.mp3?v=1766493983",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A confrontational formula used to challenge or dismiss someone, roughly equivalent to “who do you think you are?” or “what do you think you’re doing?”.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Fórmula confrontativa usada para cuestionar o desautorizar a alguien, equivalente a “¿quién te creés que sos?” o “¿en qué estás pensando?”.</span>",
+        "domain": [],
+        "equivalents_en": [
+          "Who do you think you are?",
+          "What do you think you're doing?"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/vos-que-te-pensas/s1/vos_que_te_pensas_ex_01.mp3?v=1766493953",
+            "en": "`Who do you think you are`? You think you’re the first girl he’s ever fucked?",
+            "es": "¿`Vos qué te pensás`? ¿Qué sos la primera pendeja que se garcha?",
+            "flags": [
+              "explicit_language",
+              "potentially_offensive"
+            ],
+            "linked_terms": [
+              "garcharse",
+              "pendejo"
+            ],
+            "source": {
+              "episode": "4",
+              "season": "1",
+              "title": "El encarcado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "construccion_gramatical",
+        "register": "informal",
+        "related_slugs": [],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "agresivo"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "vos-que-te-pensas",
+    "word": "vos qué te pensás"
   },
   {
     "alt_spellings": [

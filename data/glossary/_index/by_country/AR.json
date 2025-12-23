@@ -4,6 +4,10 @@
     "word": "a caballo"
   },
   {
+    "slug": "a-upa",
+    "word": "a upa"
+  },
+  {
     "slug": "afanar",
     "word": "afanar"
   },
@@ -52,6 +56,14 @@
     "word": "boliche"
   },
   {
+    "slug": "boludez",
+    "word": "boludez"
+  },
+  {
+    "slug": "boludito",
+    "word": "boludito"
+  },
+  {
     "slug": "boludo",
     "word": "boludo"
   },
@@ -82,6 +94,18 @@
   {
     "slug": "calentarse",
     "word": "calentarse"
+  },
+  {
+    "slug": "cana",
+    "word": "cana"
+  },
+  {
+    "slug": "capaz",
+    "word": "capaz"
+  },
+  {
+    "slug": "capo",
+    "word": "capo"
   },
   {
     "slug": "cargar",
@@ -152,8 +176,16 @@
     "word": "dale"
   },
   {
+    "slug": "dar-bola",
+    "word": "dar bola"
+  },
+  {
     "slug": "de-joda",
     "word": "de joda"
+  },
+  {
+    "slug": "dejate-de-joder",
+    "word": "dejate de joder"
   },
   {
     "slug": "dietetica",
@@ -192,6 +224,14 @@
     "word": "garca"
   },
   {
+    "slug": "garchar",
+    "word": "garchar"
+  },
+  {
+    "slug": "garcharse",
+    "word": "garcharse"
+  },
+  {
     "slug": "gaseosa",
     "word": "gaseosa"
   },
@@ -206,6 +246,10 @@
   {
     "slug": "gordo",
     "word": "gordo"
+  },
+  {
+    "slug": "grogui",
+    "word": "grogui"
   },
   {
     "slug": "guita",
@@ -264,6 +308,10 @@
     "word": "luca"
   },
   {
+    "slug": "mamarse",
+    "word": "mamarse"
+  },
+  {
     "slug": "mango",
     "word": "mango"
   },
@@ -286,6 +334,10 @@
   {
     "slug": "mosquita-muerta",
     "word": "mosquita muerta"
+  },
+  {
+    "slug": "mozo",
+    "word": "mozo"
   },
   {
     "slug": "mucama",
@@ -344,6 +396,10 @@
     "word": "pibe"
   },
   {
+    "slug": "pileta",
+    "word": "pileta"
+  },
+  {
     "slug": "placard",
     "word": "placard"
   },
@@ -358,6 +414,10 @@
   {
     "slug": "porro",
     "word": "porro"
+  },
+  {
+    "slug": "posta",
+    "word": "posta"
   },
   {
     "slug": "previa",
@@ -428,6 +488,14 @@
     "word": "tranqui"
   },
   {
+    "slug": "trola",
+    "word": "trola"
+  },
+  {
+    "slug": "trucho",
+    "word": "trucho"
+  },
+  {
     "slug": "un-mate",
     "word": "un mate"
   },
@@ -446,6 +514,10 @@
   {
     "slug": "voltearse",
     "word": "voltearse"
+  },
+  {
+    "slug": "vos-que-te-pensas",
+    "word": "vos qué te pensás"
   },
   {
     "slug": "whisky",
