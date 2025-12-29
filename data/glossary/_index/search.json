@@ -101,6 +101,16 @@
   },
   {
     "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "locucion_verbal",
+    "slug": "bajar-un-cambio",
+    "snippet": "To reduce the intensity of one’s behavior or attitude; to calm down or take it down a notch.",
+    "word": "bajar un cambio"
+  },
+  {
+    "countries": [
       "AR"
     ],
     "pos": "locucion_sustantival",
@@ -435,6 +445,16 @@
       "UY"
     ],
     "pos": "locucion_verbal",
+    "slug": "dale-con",
+    "snippet": "Used to express annoyance or dismissive reproach at someone’s repeated insistence on a topic, option, or behavior, conveying the idea of “enough with that” or “here you go again with the same thing.”",
+    "word": "dale con"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "locucion_verbal",
     "slug": "dar-bola",
     "snippet": "To pay attention to or show interest in someone, especially in a social interaction.",
     "word": "dar bola"
@@ -465,6 +485,16 @@
     "slug": "dietetica",
     "snippet": "Shop that sells natural foods, health products, supplements, and diet-related items.",
     "word": "dietética"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "dulce-de-batata",
+    "snippet": "A thick sweet potato paste used as a filling in desserts.",
+    "word": "dulce de batata"
   },
   {
     "countries": [
@@ -788,6 +818,16 @@
   },
   {
     "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_masculino",
+    "slug": "membrillo",
+    "snippet": "A thick quince paste made from quince fruit, commonly used as a filling in desserts.",
+    "word": "membrillo"
+  },
+  {
+    "countries": [
       "AR"
     ],
     "pos": "sustantivo_femenino",
@@ -903,6 +943,16 @@
     "slug": "papelon",
     "snippet": "A situation that causes major embarrassment or public ridicule.",
     "word": "papelón"
+  },
+  {
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "pos": "sustantivo_femenino",
+    "slug": "pastafrola",
+    "snippet": "A traditional sweet tart made with pastry dough and a filling—usually quince paste or sweet potato—topped with a lattice crust.",
+    "word": "pastafrola"
   },
   {
     "countries": [

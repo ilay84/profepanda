@@ -1,0 +1,64 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/dulce-de-batata/dulce_de_batata.mp3?v=1766580847",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A thick sweet potato paste used as a filling in desserts.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Dulce espeso hecho con batata, usado como relleno en postres.</span>",
+      "domain": [
+        "comida"
+      ],
+      "equivalents_en": [
+        "sweet potato",
+        "sweet potato paste"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/dulce-de-batata/s1/dulce_de_batata_ex_01.mp3?v=1766580848",
+          "en": "“Make me a pastafrola. Come on.”\n“Yeah?\" \n\"But quince jelly, okay?”\n“No, not quince. `Sweet potato`…”\n“Alright, `sweet potato` then.”\n“I’ll make it for you.”\n“Alright. Go on, go on.”",
+          "es": "—Haceme una pastrafrola. Dale. \n—¿Sí? \n—Pero de `membrillo`, mami, eh. \n—No. De `membrillo`, no. De batata... \n—Dale con la batata. \n—Te hago. \n—Bueh. Dale, dale, dale.",
+          "linked_terms": [
+            "pastafrola",
+            "membrillo",
+            "dale-con"
+          ],
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [
+        "pastafrola",
+        "membrillo"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "dulce-de-batata",
+  "word": "dulce de batata"
+}

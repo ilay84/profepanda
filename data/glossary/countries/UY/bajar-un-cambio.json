@@ -1,0 +1,60 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/bajar-un-cambio/bajar_un_cambio.mp3?v=1766579603",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">To reduce the intensity of one’s behavior or attitude; to calm down or take it down a notch.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Reducir la intensidad de una actitud, comportamiento o emoción; calmarse o moderarse.</span>",
+      "domain": [
+        "emociones",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "calm down",
+        "take it down a notch",
+        "cool it"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/bajar-un-cambio/s1/bajar_un_cambio_ex_01.mp3?v=1766579604",
+          "en": "“Homeowners are complaining that you’re making a ruckus everyday. `Take it down a notch`, please.”\n“Alright, alright. Sorry.”",
+          "es": "—Los propietarios se están quejando que hacen quilombo todos los días. `Bajá un cambio`, por favor.\n—Dale, dale. Disculpá.",
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "locucion_verbal",
+      "register": "informal",
+      "related_slugs": [
+        "quilombo"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "bajar-un-cambio",
+  "word": "bajar un cambio"
+}

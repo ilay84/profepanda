@@ -586,6 +586,66 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/bajar-un-cambio/bajar_un_cambio.mp3?v=1766579603",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">To reduce the intensity of one’s behavior or attitude; to calm down or take it down a notch.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Reducir la intensidad de una actitud, comportamiento o emoción; calmarse o moderarse.</span>",
+        "domain": [
+          "emociones",
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "calm down",
+          "take it down a notch",
+          "cool it"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/bajar-un-cambio/s1/bajar_un_cambio_ex_01.mp3?v=1766579604",
+            "en": "“Homeowners are complaining that you’re making a ruckus everyday. `Take it down a notch`, please.”\n“Alright, alright. Sorry.”",
+            "es": "—Los propietarios se están quejando que hacen quilombo todos los días. `Bajá un cambio`, por favor.\n—Dale, dale. Disculpá.",
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "locucion_verbal",
+        "register": "informal",
+        "related_slugs": [
+          "quilombo"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "bajar-un-cambio",
+    "word": "bajar un cambio"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/barrio-cerrado/barrio_cerrado.mp3?v=1766158004",
     "senses": [
       {
@@ -2722,6 +2782,74 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/dale-con/dale_con.mp3?v=1766581780",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">Used to express annoyance or dismissive reproach at someone’s repeated insistence on a topic, option, or behavior, conveying the idea of “enough with that” or “here you go again with the same thing.”</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Se usa para expresar fastidio, reproche o desestimación ante la insistencia en un tema, opción o actitud, con el sentido de “basta con eso” o “otra vez con lo mismo”.</span>",
+        "domain": [
+          "emociones",
+          "sociedad"
+        ],
+        "equivalents_en": [
+          "enough with... already",
+          "here you go again with...",
+          "you keep harping on about..."
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/dale-con/s1/dale_con_ex_01.mp3?v=1766581780",
+            "en": "“Make me a pastafrola. Come on.”\n“Yeah?”\n“But quince jelly, okay?”\n“No, not quince. Sweet potato…”\n“`Enough with` the sweet potato `already`.”\n“I’ll make it for you.”\n“Alright. Go on, go on.”",
+            "es": "—Haceme una pastafrola. Dale.\n—¿Sí?\n—Pero de membrillo, mami, eh.\n—No. De membrillo, no. De batata...\n—`Dale con` la batata.\n—Te hago.\n—Bueh. Dale, dale, dale.",
+            "linked_terms": [
+              "pastafrola",
+              "membrillo",
+              "dulce-de-batata"
+            ],
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "locucion_verbal",
+        "register": "informal",
+        "related_slugs": [
+          "dale"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [
+          "despectivo",
+          "ironico"
+        ],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "dale-con",
+    "word": "dale con"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/dar-bola/dar_bola.mp3?v=1766451438",
     "senses": [
       {
@@ -2953,6 +3081,70 @@
     ],
     "slug": "dietetica",
     "word": "dietética"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/dulce-de-batata/dulce_de_batata.mp3?v=1766580847",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A thick sweet potato paste used as a filling in desserts.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Dulce espeso hecho con batata, usado como relleno en postres.</span>",
+        "domain": [
+          "comida"
+        ],
+        "equivalents_en": [
+          "sweet potato",
+          "sweet potato paste"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/dulce-de-batata/s1/dulce_de_batata_ex_01.mp3?v=1766580848",
+            "en": "“Make me a pastafrola. Come on.”\n“Yeah?\" \n\"But quince jelly, okay?”\n“No, not quince. `Sweet potato`…”\n“Alright, `sweet potato` then.”\n“I’ll make it for you.”\n“Alright. Go on, go on.”",
+            "es": "—Haceme una pastrafrola. Dale. \n—¿Sí? \n—Pero de `membrillo`, mami, eh. \n—No. De `membrillo`, no. De batata... \n—Dale con la batata. \n—Te hago. \n—Bueh. Dale, dale, dale.",
+            "linked_terms": [
+              "pastafrola",
+              "membrillo",
+              "dale-con"
+            ],
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "neutral",
+        "related_slugs": [
+          "pastafrola",
+          "membrillo"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "dulce-de-batata",
+    "word": "dulce de batata"
   },
   {
     "alt_spellings": [],
@@ -3663,6 +3855,7 @@
           "garcharse"
         ],
         "sensitivity": [
+          "connotacion_sexual",
           "lenguaje_explicito"
         ],
         "status": [
@@ -5156,6 +5349,69 @@
   },
   {
     "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/membrillo/membrillo.mp3?v=1766580614",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A thick quince paste made from quince fruit, commonly used as a filling in desserts.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Dulce espeso hecho a base de la fruta del membrillo, muy usado como relleno en postres.</span>",
+        "domain": [
+          "comida"
+        ],
+        "equivalents_en": [
+          "quince jelly"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/membrillo/s1/membrillo_ex_01.mp3?v=1766580614",
+            "en": "“Make me a pastafrola. Come on.”\n“Yeah?\" \n\"But `quince jelly`, okay?”\n“No, not `quince`. Sweet potato…”\n“Alright, sweet potato then.”\n“I’ll make it for you.”\n“Alright. Go on, go on.”",
+            "es": "—Haceme una pastrafrola. Dale. \n—¿Sí? \n—Pero de `membrillo`, mami, eh. \n—No. De `membrillo`, no. De batata... \n—Dale con la batata. \n—Te hago. \n—Bueh. Dale, dale, dale.",
+            "linked_terms": [
+              "pastafrola",
+              "dulce-de-batata",
+              "dale-con"
+            ],
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "muy_comun",
+        "id": "s1",
+        "pos": "sustantivo_masculino",
+        "register": "neutral",
+        "related_slugs": [
+          "pastafrola",
+          "batata"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": null,
+          "fem_sg": null,
+          "masc_pl": "membrillos",
+          "masc_sg": "membrillo"
+        }
+      }
+    ],
+    "slug": "membrillo",
+    "word": "membrillo"
+  },
+  {
+    "alt_spellings": [],
     "audio": "/media/glossary-audio/entry/milonga/milonga.mp3?v=1766150516",
     "senses": [
       {
@@ -5955,6 +6211,71 @@
     ],
     "slug": "papelon",
     "word": "papelón"
+  },
+  {
+    "alt_spellings": [],
+    "audio": "/media/glossary-audio/entry/pastafrola/pastafrola.mp3?v=1766580482",
+    "senses": [
+      {
+        "alt_forms": [],
+        "countries": [
+          "AR",
+          "UY"
+        ],
+        "definition_en": "<span style=\"font-weight: normal;\">A traditional sweet tart made with pastry dough and a filling—usually quince paste or sweet potato—topped with a lattice crust.</span>",
+        "definition_es": "<span style=\"font-weight: normal;\">Tarta dulce tradicional hecha con masa y relleno, generalmente de membrillo o batata, cubierta con tiras de masa en forma de enrejado.</span>",
+        "domain": [
+          "comida",
+          "cultura_pop"
+        ],
+        "equivalents_en": [
+          "sweet tart",
+          "jam tart"
+        ],
+        "examples": [
+          {
+            "audio": "/media/glossary-audio/examples/pastafrola/s1/pastafrola_ex_01.mp3?v=1766580482",
+            "en": "“Make me a `pastafrola`. Come on.”\n“Yeah?\" \n\"But quince jelly, okay?”\n“No, not quince. Sweet potato…”\n“Alright, sweet potato then.”\n“I’ll make it for you.”\n“Alright. Go on, go on.”",
+            "es": "—Haceme una `pastrafrola`. Dale. \n—¿Sí? \n—Pero de membrillo, mami, eh. \n—No. De membrillo, no. De batata... \n—Dale con la batata. \n—Te hago. \n—Bueh. Dale, dale, dale.",
+            "linked_terms": [
+              "membrillo",
+              "dulce-de-batata",
+              "dale-con"
+            ],
+            "source": {
+              "episode": "5",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          }
+        ],
+        "freq": "comun",
+        "id": "s1",
+        "pos": "sustantivo_femenino",
+        "register": "neutral",
+        "related_slugs": [
+          "membrillo",
+          "batata"
+        ],
+        "sensitivity": [],
+        "status": [
+          "vigente"
+        ],
+        "tone": [],
+        "variants": {
+          "augmentative": null,
+          "diminutive": null,
+          "fem_pl": "pastafrolas",
+          "fem_sg": "pastafrola",
+          "masc_pl": null,
+          "masc_sg": null
+        }
+      }
+    ],
+    "slug": "pastafrola",
+    "word": "pastafrola"
   },
   {
     "alt_spellings": [],
@@ -6915,7 +7236,8 @@
         "equivalents_en": [
           "mess",
           "problem",
-          "nightmare"
+          "nightmare",
+          "ruckus"
         ],
         "examples": [
           {
@@ -6936,6 +7258,21 @@
             "es": "Investigar. Para sacármelo de encima, le tiene que explotar un `quilombo`,\nun problema grande que lo haga olvidar la pileta.",
             "source": {
               "episode": "4",
+              "season": "1",
+              "title": "El encargado",
+              "type": "series",
+              "year": "2022"
+            }
+          },
+          {
+            "audio": "/media/glossary-audio/examples/quilombo/s1/quilombo_ex_03.mp3?v=1766579547",
+            "en": "\"Homeowners are complaining that you’re making a `ruckus` everyday. Take it down a notch, please.”\n“Alright, alright. Sorry.",
+            "es": "—Los propietarios se están quejando que hacen quilombo todos los días. Bajá un cambio, por favor.\n—Dale, dale. Disculpa.",
+            "linked_terms": [
+              "bajar-un-cambio"
+            ],
+            "source": {
+              "episode": "5",
               "season": "1",
               "title": "El encargado",
               "type": "series",
@@ -8193,6 +8530,7 @@
         "register": "vulgar",
         "related_slugs": [],
         "sensitivity": [
+          "connotacion_sexual",
           "lenguaje_explicito",
           "potencialmente_ofensivo"
         ],

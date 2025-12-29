@@ -43,6 +43,7 @@
         "garcharse"
       ],
       "sensitivity": [
+        "connotacion_sexual",
         "lenguaje_explicito"
       ],
       "status": [

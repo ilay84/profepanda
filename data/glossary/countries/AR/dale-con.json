@@ -1,0 +1,68 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/dale-con/dale_con.mp3?v=1766581780",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">Used to express annoyance or dismissive reproach at someone’s repeated insistence on a topic, option, or behavior, conveying the idea of “enough with that” or “here you go again with the same thing.”</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Se usa para expresar fastidio, reproche o desestimación ante la insistencia en un tema, opción o actitud, con el sentido de “basta con eso” o “otra vez con lo mismo”.</span>",
+      "domain": [
+        "emociones",
+        "sociedad"
+      ],
+      "equivalents_en": [
+        "enough with... already",
+        "here you go again with...",
+        "you keep harping on about..."
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/dale-con/s1/dale_con_ex_01.mp3?v=1766581780",
+          "en": "“Make me a pastafrola. Come on.”\n“Yeah?”\n“But quince jelly, okay?”\n“No, not quince. Sweet potato…”\n“`Enough with` the sweet potato `already`.”\n“I’ll make it for you.”\n“Alright. Go on, go on.”",
+          "es": "—Haceme una pastafrola. Dale.\n—¿Sí?\n—Pero de membrillo, mami, eh.\n—No. De membrillo, no. De batata...\n—`Dale con` la batata.\n—Te hago.\n—Bueh. Dale, dale, dale.",
+          "linked_terms": [
+            "pastafrola",
+            "membrillo",
+            "dulce-de-batata"
+          ],
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "locucion_verbal",
+      "register": "informal",
+      "related_slugs": [
+        "dale"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [
+        "despectivo",
+        "ironico"
+      ],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "dale-con",
+  "word": "dale con"
+}

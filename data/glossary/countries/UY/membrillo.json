@@ -1,0 +1,63 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/membrillo/membrillo.mp3?v=1766580614",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A thick quince paste made from quince fruit, commonly used as a filling in desserts.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Dulce espeso hecho a base de la fruta del membrillo, muy usado como relleno en postres.</span>",
+      "domain": [
+        "comida"
+      ],
+      "equivalents_en": [
+        "quince jelly"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/membrillo/s1/membrillo_ex_01.mp3?v=1766580614",
+          "en": "“Make me a pastafrola. Come on.”\n“Yeah?\" \n\"But `quince jelly`, okay?”\n“No, not `quince`. Sweet potato…”\n“Alright, sweet potato then.”\n“I’ll make it for you.”\n“Alright. Go on, go on.”",
+          "es": "—Haceme una pastrafrola. Dale. \n—¿Sí? \n—Pero de `membrillo`, mami, eh. \n—No. De `membrillo`, no. De batata... \n—Dale con la batata. \n—Te hago. \n—Bueh. Dale, dale, dale.",
+          "linked_terms": [
+            "pastafrola",
+            "dulce-de-batata",
+            "dale-con"
+          ],
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "muy_comun",
+      "id": "s1",
+      "pos": "sustantivo_masculino",
+      "register": "neutral",
+      "related_slugs": [
+        "pastafrola",
+        "batata"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": null,
+        "fem_sg": null,
+        "masc_pl": "membrillos",
+        "masc_sg": "membrillo"
+      }
+    }
+  ],
+  "slug": "membrillo",
+  "word": "membrillo"
+}

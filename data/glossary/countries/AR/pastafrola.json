@@ -1,0 +1,65 @@
+{
+  "alt_spellings": [],
+  "audio": "/media/glossary-audio/entry/pastafrola/pastafrola.mp3?v=1766580482",
+  "senses": [
+    {
+      "alt_forms": [],
+      "countries": [
+        "AR",
+        "UY"
+      ],
+      "definition_en": "<span style=\"font-weight: normal;\">A traditional sweet tart made with pastry dough and a filling—usually quince paste or sweet potato—topped with a lattice crust.</span>",
+      "definition_es": "<span style=\"font-weight: normal;\">Tarta dulce tradicional hecha con masa y relleno, generalmente de membrillo o batata, cubierta con tiras de masa en forma de enrejado.</span>",
+      "domain": [
+        "comida",
+        "cultura_pop"
+      ],
+      "equivalents_en": [
+        "sweet tart",
+        "jam tart"
+      ],
+      "examples": [
+        {
+          "audio": "/media/glossary-audio/examples/pastafrola/s1/pastafrola_ex_01.mp3?v=1766580482",
+          "en": "“Make me a `pastafrola`. Come on.”\n“Yeah?\" \n\"But quince jelly, okay?”\n“No, not quince. Sweet potato…”\n“Alright, sweet potato then.”\n“I’ll make it for you.”\n“Alright. Go on, go on.”",
+          "es": "—Haceme una `pastrafrola`. Dale. \n—¿Sí? \n—Pero de membrillo, mami, eh. \n—No. De membrillo, no. De batata... \n—Dale con la batata. \n—Te hago. \n—Bueh. Dale, dale, dale.",
+          "linked_terms": [
+            "membrillo",
+            "dulce-de-batata",
+            "dale-con"
+          ],
+          "source": {
+            "episode": "5",
+            "season": "1",
+            "title": "El encargado",
+            "type": "series",
+            "year": "2022"
+          }
+        }
+      ],
+      "freq": "comun",
+      "id": "s1",
+      "pos": "sustantivo_femenino",
+      "register": "neutral",
+      "related_slugs": [
+        "membrillo",
+        "batata"
+      ],
+      "sensitivity": [],
+      "status": [
+        "vigente"
+      ],
+      "tone": [],
+      "variants": {
+        "augmentative": null,
+        "diminutive": null,
+        "fem_pl": "pastafrolas",
+        "fem_sg": "pastafrola",
+        "masc_pl": null,
+        "masc_sg": null
+      }
+    }
+  ],
+  "slug": "pastafrola",
+  "word": "pastafrola"
+}

@@ -1,6 +1,381 @@
 [
   {
     "kind": "entry_updated",
+    "slug": "voltearse",
+    "word": "voltearse",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-24T16:28:09.401748Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "garchar",
+    "word": "garchar",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-24T16:27:57.311847Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dulce-de-batata",
+    "word": "dulce de batata",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T13:10:14.150436Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "membrillo",
+    "word": "membrillo",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T13:10:06.697845Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "pastafrola",
+    "word": "pastafrola",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T13:09:59.579514Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dale-con",
+    "word": "dale con",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T13:09:42.428826Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dale-con",
+    "word": "dale con",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T13:09:42.056291Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dale-con",
+    "word": "dale con",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T13:09:40.912766Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "dale-con",
+    "word": "dale con",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T13:09:20.174323Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dulce-de-batata",
+    "word": "dulce de batata",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:56:34.011432Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "membrillo",
+    "word": "membrillo",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:56:32.323839Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dulce-de-batata",
+    "word": "dulce de batata",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:55:55.690282Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "pastafrola",
+    "word": "pastafrola",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:55:03.539773Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "membrillo",
+    "word": "membrillo",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:54:47.258198Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dulce-de-batata",
+    "word": "dulce de batata",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:54:26.306432Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dulce-de-batata",
+    "word": "dulce de batata",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:54:09.988493Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dulce-de-batata",
+    "word": "dulce de batata",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:54:09.630302Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "dulce-de-batata",
+    "word": "dulce de batata",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:54:08.512029Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "dulce-de-batata",
+    "word": "dulce de batata",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:52:47.978339Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "membrillo",
+    "word": "membrillo",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:50:16.242548Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "membrillo",
+    "word": "membrillo",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:50:15.842864Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "membrillo",
+    "word": "membrillo",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:50:14.651418Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "membrillo",
+    "word": "membrillo",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:49:47.343228Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "pastafrola",
+    "word": "pastafrola",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:48:04.447192Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "pastafrola",
+    "word": "pastafrola",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:48:04.110961Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "pastafrola",
+    "word": "pastafrola",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:48:03.010226Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "pastafrola",
+    "word": "pastafrola",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:47:38.008135Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "bajar-un-cambio",
+    "word": "bajar un cambio",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:34:10.203092Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "bajar-un-cambio",
+    "word": "bajar un cambio",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:33:25.984166Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "bajar-un-cambio",
+    "word": "bajar un cambio",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:33:25.642038Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "bajar-un-cambio",
+    "word": "bajar un cambio",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:33:24.600958Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-24T12:33:05.999341Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-24T12:32:29.026862Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-24T12:32:28.662744Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-24T12:32:27.828558Z"
+  },
+  {
+    "kind": "example_added",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "sense_id": "s1",
+    "sense_num": 1,
+    "example_num": 3,
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-24T12:32:14.296033Z"
+  },
+  {
+    "kind": "entry_updated",
+    "slug": "quilombo",
+    "word": "quilombo",
+    "countries": [
+      "AR"
+    ],
+    "ts": "2025-12-24T12:32:14.281197Z"
+  },
+  {
+    "kind": "entry_created",
+    "slug": "bajar-un-cambio",
+    "word": "bajar un cambio",
+    "countries": [
+      "AR",
+      "UY"
+    ],
+    "ts": "2025-12-24T12:31:22.159146Z"
+  },
+  {
+    "kind": "entry_updated",
     "slug": "choto",
     "word": "choto",
     "countries": [
@@ -1582,350 +1957,5 @@
       "AR"
     ],
     "ts": "2025-12-23T00:29:52.534765Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "capo",
-    "word": "capo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-23T00:25:52.975589Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "capo",
-    "word": "capo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-23T00:25:52.333661Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "capo",
-    "word": "capo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:44:55.864168Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "capo",
-    "word": "capo",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:37:29.460884Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "cana",
-    "word": "cana",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:26:29.211359Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "cana",
-    "word": "cana",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:26:29.025486Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "cana",
-    "word": "cana",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:26:28.148407Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "cana",
-    "word": "cana",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:26:12.620970Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "posta",
-    "word": "posta",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:24:07.458972Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "posta",
-    "word": "posta",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:18:42.776029Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "posta",
-    "word": "posta",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:18:42.109981Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "posta",
-    "word": "posta",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:18:41.322123Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "posta",
-    "word": "posta",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:18:22.953153Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "laburar",
-    "word": "laburar",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:13:32.674234Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "dejate-de-joder",
-    "word": "dejate de joder",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:13:11.009347Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "garchar",
-    "word": "garchar",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:12:48.815418Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "garchar",
-    "word": "garchar",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:12:31.529781Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "garchar",
-    "word": "garchar",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:12:30.898318Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "garchar",
-    "word": "garchar",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:12:30.124385Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "garchar",
-    "word": "garchar",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:12:18.463298Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "laburar",
-    "word": "laburar",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:11:17.047655Z"
-  },
-  {
-    "kind": "example_added",
-    "slug": "laburar",
-    "word": "laburar",
-    "sense_id": "s1",
-    "sense_num": 1,
-    "example_num": 2,
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:11:16.415833Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "laburar",
-    "word": "laburar",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:11:16.401192Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "dejate-de-joder",
-    "word": "dejate de joder",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:09:50.195179Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "dejate-de-joder",
-    "word": "dejate de joder",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:09:49.358758Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "dejate-de-joder",
-    "word": "dejate de joder",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:09:48.666375Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "dejate-de-joder",
-    "word": "dejate de joder",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T23:09:31.901802Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "mamarse",
-    "word": "mamarse",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T19:38:42.937722Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "mamarse",
-    "word": "mamarse",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T19:38:21.758027Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "mamarse",
-    "word": "mamarse",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T19:37:57.963119Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "mamarse",
-    "word": "mamarse",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T19:37:57.286965Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "mamarse",
-    "word": "mamarse",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T19:37:44.615404Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "mamarse",
-    "word": "mamarse",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T19:37:44.187806Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "mamarse",
-    "word": "mamarse",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T19:37:43.691421Z"
-  },
-  {
-    "kind": "entry_created",
-    "slug": "mamarse",
-    "word": "mamarse",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T19:37:33.770043Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "grogui",
-    "word": "grogui",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T13:03:29.678058Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "grogui",
-    "word": "grogui",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T13:01:39.143979Z"
-  },
-  {
-    "kind": "entry_updated",
-    "slug": "grogui",
-    "word": "grogui",
-    "countries": [
-      "AR"
-    ],
-    "ts": "2025-12-22T13:01:38.515931Z"
   }
 ]

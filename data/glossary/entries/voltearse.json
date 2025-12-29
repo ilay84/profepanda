@@ -35,6 +35,7 @@
       "register": "vulgar",
       "related_slugs": [],
       "sensitivity": [
+        "connotacion_sexual",
         "lenguaje_explicito",
         "potencialmente_ofensivo"
       ],
