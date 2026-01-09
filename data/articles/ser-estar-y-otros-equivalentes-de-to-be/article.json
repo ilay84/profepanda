@@ -1,0 +1,96 @@
+{
+  "category_id": "mod4-verbos",
+  "created_at": "2026-01-01T21:36:16.743356Z",
+  "html": "<p><br></p>",
+  "i18n": {},
+  "image_url": "",
+  "modules": [
+    {
+      "html": "<p><br></p>",
+      "parent_id": "",
+      "slug": "ser-y-estar-lo-basico",
+      "title": "SER y ESTAR: Lo básico",
+      "translations": {
+        "en": {
+          "html": "",
+          "title": "SER & ESTAR: The Basics"
+        }
+      }
+    },
+    {
+      "html": "<p><br></p>",
+      "parent_id": "ser-y-estar-lo-basico",
+      "slug": "que-expresa-ser",
+      "title": "¿Qué expresa SER?",
+      "translations": {
+        "en": {
+          "html": "",
+          "title": "What does SER express?"
+        }
+      }
+    },
+    {
+      "html": "<p><br></p>",
+      "parent_id": "ser-y-estar-lo-basico",
+      "slug": "que-expresa-estar",
+      "title": "¿Qué expresa ESTAR?",
+      "translations": {
+        "en": {
+          "html": "",
+          "title": "What does ESTAR express?"
+        }
+      }
+    },
+    {
+      "html": "<p><br></p>",
+      "parent_id": "ser-y-estar-lo-basico",
+      "slug": "ser-vs-estar-comparacion-general",
+      "title": "SER vs ESTAR: comparación general",
+      "translations": {
+        "en": {
+          "html": "",
+          "title": "SER vs ESTAR: General Comparison"
+        }
+      }
+    },
+    {
+      "html": "<p><br></p>",
+      "parent_id": "",
+      "slug": "ubicacion-y-lugar",
+      "title": "Ubicación y lugar",
+      "translations": {}
+    },
+    {
+      "html": "<p><br></p>",
+      "parent_id": "ubicacion-y-lugar",
+      "slug": "estar-el-lugar-objetos-en-el-espacio",
+      "title": "ESTAR: El lugar objetos en el espacio",
+      "translations": {}
+    },
+    {
+      "html": "<p><br></p>",
+      "parent_id": "ubicacion-y-lugar",
+      "slug": "ser-el-lugar-de-eventos",
+      "title": "SER: El lugar de eventos",
+      "translations": {}
+    },
+    {
+      "html": "<p><br></p>",
+      "parent_id": "ubicacion-y-lugar",
+      "slug": "el-lugar-de-objetos-estar-y-el-lugar-de-actividades-ser",
+      "title": "El lugar de objetos (ESTAR) y el lugar de actividades (SER)",
+      "translations": {}
+    }
+  ],
+  "mother_lang": "es",
+  "slug": "ser-estar-y-otros-equivalentes-de-to-be",
+  "status": "draft",
+  "summary_html": "",
+  "tags": [],
+  "taxonomy_paths": [],
+  "title": "SER, ESTAR y otros equivalentes de 'to be'",
+  "title_en": null,
+  "title_es": null,
+  "type": "structure",
+  "updated_at": "2026-01-04T15:46:41.487580Z"
+}

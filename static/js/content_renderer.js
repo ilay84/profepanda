@@ -195,38 +195,35 @@
       }
       case "exercise":
       case "exercise_reference": {
-        const box = document.createElement("div");
-        box.className = "lab-callout info";
-        box.style.display = "flex";
-        box.style.flexDirection = "column";
-        box.style.gap = "6px";
-
         const exId = data.exercise_id || "";
         const parts = exId.split("/");
         const exType = (data.exercise_type || parts[0] || "").toLowerCase();
         const slug = parts.length > 1 ? parts.slice(1).join("/") : exId;
         const display = data.display || data.display_options || {};
 
-        const title = document.createElement("div");
-        title.className = "lab-callout-title";
-        title.textContent = (display.show_title === false)
+        const card = document.createElement("div");
+        card.className = "lab-exercise-card";
+
+        const titleText = (display.show_title === false)
           ? ""
           : (data.title || exId || (lang === "en" ? "Exercise" : "Ejercicio"));
+        if (titleText) {
+          const titleEl = document.createElement("div");
+          titleEl.className = "lab-exercise-title";
+          titleEl.textContent = titleText;
+          card.appendChild(titleEl);
+        }
 
         const meta = document.createElement("div");
-        meta.className = "ppx-muted";
-        meta.style.fontSize = "13px";
+        meta.className = "lab-exercise-meta";
         meta.textContent = exType
-          ? `${lang === "en" ? "Type" : "Tipo"}: ${exType} - ${slug || ""}`
+          ? `${lang === "en" ? "Type" : "Tipo"}: ${exType} · ${slug || ""}`
           : (lang === "en" ? "Exercise" : "Ejercicio");
-
-        if (title.textContent) box.appendChild(title);
-        box.appendChild(meta);
+        card.appendChild(meta);
 
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "ppx-btn ppx-btn--primary";
-        btn.style.alignSelf = "flex-start";
         btn.textContent = lang === "en" ? "Open exercise" : "Abrir ejercicio";
         btn.disabled = !(exType && slug && window.PPX && typeof window.PPX.openExercise === "function");
         btn.addEventListener("click", () => {
@@ -239,9 +236,9 @@
             context: { source: "content_hub" }
           });
         });
+        card.appendChild(btn);
 
-        box.appendChild(btn);
-        wrap.appendChild(box);
+        wrap.appendChild(card);
         break;
       }
       default: {

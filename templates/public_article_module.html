@@ -3,7 +3,79 @@
 {% block title %}{{ page_title }} – ProfePanda{% endblock %}
 
 {% block public_content %}
-<style>@import url("{{ url_for('static', filename='css/public_articles.css') }}");</style>
+<style>
+  @import url("{{ url_for('static', filename='css/public_articles.css') }}");
+  /* Translation tooltips removed */
+  /* Nav layout and responsive overlay */
+  .ppx-article-layout {
+    display:grid;
+    grid-template-columns:minmax(300px,340px) 1fr;
+    gap:1.25rem;
+    align-items:start;
+  }
+  .ppx-article-nav {
+    position:sticky;
+    top:120px;
+    align-self:start;
+    min-width:320px;
+    max-width:360px;
+    max-height:calc(100vh - 140px);
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding:0 .15rem 0 0;
+  }
+  .ppx-mod-tree { width:100%; }
+  .ppx-mod-parent-row { align-items:flex-start; }
+  .ppx-mod-link {
+    white-space:normal;
+    line-height:1.35;
+  }
+  .ppx-mod-title { white-space:normal; overflow:visible; }
+  .ppx-mod-parent .ppx-mod-title { font-weight:700; }
+  .ppx-mod-child .ppx-mod-title { font-weight:600; }
+  .ppx-mod-parent .ppx-mod-num { color:#4b5563; font-weight:700; }
+  .ppx-mod-child .ppx-mod-num { color:#6b7280; }
+
+  /* Mobile overlay */
+  .ppx-nav-toggle-btn {
+    display:none;
+    align-items:center;
+    gap:.35rem;
+    padding:.35rem .65rem;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    background:#fff;
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+    cursor:pointer;
+  }
+  .ppx-nav-toggle-btn img { width:16px; height:16px; }
+  @media (max-width: 900px){
+    .ppx-article-layout { grid-template-columns:1fr; }
+    .ppx-nav-toggle-btn { display:inline-flex; }
+    .ppx-article-nav {
+      position:fixed;
+      inset:0;
+      max-height:100vh;
+      background:#f8fafc;
+      z-index:50;
+      padding:1rem;
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+      transform:translateX(-105%);
+      transition:transform .2s ease;
+    }
+    .ppx-nav-open .ppx-article-nav { transform:translateX(0); }
+    .ppx-nav-overlay {
+      content:"";
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,.35);
+      z-index:45;
+      display:none;
+    }
+    .ppx-nav-open .ppx-nav-overlay { display:block; }
+  }
+</style>
+</style>
 
 <article class="ppx-article-modules">
   <header class="ppx-article-header">
@@ -12,11 +84,48 @@
         {{ t('Artículos y guías', 'Articles & Guides', app_lang) }}
       </a>
     </div>
-    <h1 class="ppx-h1" style="margin:0 0 .25rem 0;">{{ page_title }}</h1>
+    {% set title_en = current.translations.en.title if current and current.translations and current.translations.en and current.translations.en.title else '' %}
+    {% set body_en = current.translations.en.html if current and current.translations and current.translations.en and current.translations.en.html else '' %}
+  <div class="ppx-row" style="justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap;">
+    <h1 class="ppx-h1 ppx-title-toggle" style="margin:0 0 .25rem 0;"
+        data-en-title="{{ title_en|e }}"
+        data-es-title="{{ current.title|e }}">
+      {{ current.title }}
+      </h1>
+      {% if body_en %}
+      <button type="button"
+              class="ppx-btn ppx-btn--subtle ppx-body-toggle"
+              title="Show in English"
+              aria-pressed="false"
+              style="display:inline-flex;align-items:center;gap:.35rem;"
+              data-tip-en="Show in English"
+              data-tip-es="Ver en español">
+        <img src="{{ url_for('static', filename='assets/icons/globe.svg') }}" alt="" width="16" height="16" aria-hidden="true">
+        <span class="ppx-body-toggle-label">Español</span>
+      </button>
+      {% endif %}
+    </div>
+    <div class="ppx-row" style="gap:.5rem; flex-wrap:wrap;">
+      <span class="ppx-chip ppx-chip--soft ppx-chip-lang"
+            data-es-text="Gramática"
+            data-en-text="{{ 'Grammar reference' if article_type == 'structure' else 'Communicative lesson' }}">
+        {{ 'Gramática' if article_type == 'structure' else t('Lección comunicativa','Communicative lesson', app_lang) }}
+      </span>
+      {% if category %}
+      <span class="ppx-chip ppx-chip-lang"
+            data-es-text="{{ category.title_es }}"
+            data-en-text="{{ category.title_en }}">{{ t(category.title_es, category.title_en, app_lang) }}</span>
+      {% endif %}
+    </div>
     <div class="ppx-muted">{{ current_index + 1 }} / {{ modules|length }}</div>
   </header>
 
   <div class="ppx-article-layout">
+    <button type="button" class="ppx-nav-toggle-btn" aria-label="{{ t('Abrir secciones','Open sections', app_lang) }}">
+      <img src="{{ url_for('static', filename='assets/icons/stack.svg') }}" alt="" aria-hidden="true">
+      <span>{{ t('Secciones','Sections', app_lang) }}</span>
+    </button>
+    <div class="ppx-nav-overlay"></div>
     <!-- Left pane navigator (hidden on narrow) -->
     <nav class="ppx-article-nav" aria-label="Modules">
       <div class="ppx-mod-nav-head">
@@ -26,17 +135,44 @@
         <label class="ppx-visually-hidden" for="ppx-mod-q">{{ t('Buscar módulo','Search module', app_lang) }}</label>
         <input id="ppx-mod-q" class="ppx-input" type="search" placeholder="{{ t('Buscar…','Search…', app_lang) }}">
       </div>
-      <ul id="ppx-mod-list">
-        {% for m in modules %}
-        <li data-index="{{ loop.index0 }}">
-          <a class="ppx-mod-link {% if loop.index0 == current_index %}is-active{% endif %}"
-             href="{{ url_for('public.article_module', slug=slug, module_slug=m.slug) }}"
-             aria-current="{{ 'page' if loop.index0 == current_index else 'false' }}"
-             title="{{ m.title }}">
-            <span class="ppx-mod-num">{{ loop.index }}</span>
-            <span class="ppx-mod-title">{{ m.title }}</span>
-            {% if m.est_read_min %}<span class="ppx-mod-eta">{{ m.est_read_min }} min</span>{% endif %}
-          </a>
+      {% set tree = modules_tree or modules %}
+      <ul id="ppx-mod-list" class="ppx-mod-tree">
+        {% for m in tree %}
+        {% set is_open = (m.slug == active_parent_slug) or (m.slug == current.slug) %}
+        {% set m_title_en = m.translations.en.title if m.translations and m.translations.en and m.translations.en.title else '' %}
+        <li class="ppx-mod-parent {% if is_open %}is-open{% endif %}" data-slug="{{ m.slug }}">
+          <div class="ppx-mod-parent-row">
+              <a class="ppx-mod-link {% if m.slug == current.slug %}is-active{% endif %}"
+                 href="{{ url_for('public.article_module', slug=slug, module_slug=m.slug) }}"
+                 aria-current="{{ 'page' if m.slug == current.slug else 'false' }}"
+                 data-es-title="{{ m.title }}"
+                 data-en-title="{{ m_title_en }}">
+        <span class="ppx-mod-num">{{ loop.index }}</span>
+        <span class="ppx-mod-title">{{ m.title }}</span>
+                {% if m.est_read_min %}<span class="ppx-mod-eta">{{ m.est_read_min }} min</span>{% endif %}
+              </a>
+            {% if m.children and m.children|length %}
+            <button class="ppx-mod-toggle" type="button" aria-expanded="{{ 'true' if is_open else 'false' }}" aria-label="{{ t('Expandir','Expand', app_lang) }}"></button>
+            {% endif %}
+          </div>
+          {% if m.children and m.children|length %}
+          <ul class="ppx-sublist" {% if not is_open %}style="display:none"{% endif %}>
+            {% for child in m.children %}
+            {% set c_title_en = child.translations.en.title if child.translations and child.translations.en and child.translations.en.title else '' %}
+            <li class="ppx-mod-child">
+              <a class="ppx-mod-link {% if child.slug == current.slug %}is-active{% endif %}"
+                 href="{{ url_for('public.article_module', slug=slug, module_slug=child.slug) }}"
+                 aria-current="{{ 'page' if child.slug == current.slug else 'false' }}"
+                 data-es-title="{{ child.title }}"
+                 data-en-title="{{ c_title_en }}">
+                <span class="ppx-mod-num">{{ loop.parentloop.index }}.{{ loop.index }}</span>
+                <span class="ppx-mod-title">{{ child.title }}</span>
+                {% if child.est_read_min %}<span class="ppx-mod-eta">{{ child.est_read_min }} min</span>{% endif %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>
@@ -53,8 +189,15 @@
 
     <!-- Main content -->
     <div class="ppx-article-content">
-      <h2 class="ppx-h2" style="margin:0 0 .5rem 0;">{{ current.title }}</h2>
-      <div class="ppx-article-body">{{ current.html|safe }}</div>
+      <h2 class="ppx-h2 ppx-title-toggle" style="margin:0 0 .5rem 0;"
+          data-en-title="{{ current.translations.en.title if current and current.translations and current.translations.en and current.translations.en.title else '' }}"
+          data-es-title="{{ current.title }}">
+        {{ current.title }}
+      </h2>
+      <div class="ppx-article-body ppx-body-es">{{ current.html|safe }}</div>
+      {% if body_en %}
+      <div class="ppx-article-body ppx-body-en" style="display:none;">{{ body_en|safe }}</div>
+      {% endif %}
     </div>
   </div>
 
@@ -88,6 +231,26 @@
   </footer>
 </article>
 
+<!-- Translation modal scaffold -->
+<div id="ppx-trans-modal" class="ppx-trans-modal" aria-hidden="true" role="dialog">
+  <div class="ppx-trans-dialog">
+    <div class="ppx-trans-header">
+      <div class="ppx-trans-title">{{ t('Traducción', 'Translation', app_lang) }}</div>
+      <div class="ppx-trans-lang" id="ppx-trans-lang"></div>
+      <button type="button" class="ppx-trans-close" aria-label="{{ t('Cerrar','Close', app_lang) }}">&times;</button>
+    </div>
+    <div class="ppx-trans-body">
+      <div class="ppx-trans-col">
+        <div class="ppx-trans-col-head">{{ t('Original (ES)', 'Original (ES)', app_lang) }}</div>
+        <div id="ppx-trans-src" class="ppx-trans-content"></div>
+      </div>
+      <div class="ppx-trans-col">
+        <div class="ppx-trans-col-head">{{ t('Traducción', 'Translation', app_lang) }}</div>
+        <div id="ppx-trans-dst" class="ppx-trans-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="{{ url_for('static', filename='js/public_modules.js') }}"></script>
 <script>
 // Normalize and wrap presentation embeds (Canva/Slides) for landscape-friendly view + fullscreen helper.
@@ -132,7 +295,7 @@
     link.href = src;
     link.target = '_blank';
     link.rel = 'noopener';
-    link.textContent = '{{ t('Abrir en nueva pesta▒a','Open in new tab', app_lang) }}';
+    link.textContent = '{{ t('Abrir en nueva pestaña','Open in new tab', app_lang) }}';
     actions.appendChild(link);
     actions.appendChild(btnFull);
     wrap.appendChild(el.cloneNode(true));
@@ -164,6 +327,202 @@
     }
     document.addEventListener('fullscreenchange', handleFs);
     document.addEventListener('webkitfullscreenchange', handleFs);
+  });
+})();
+
+// Module nav collapse/expand for submodules
+(function(){
+  const parents = Array.from(document.querySelectorAll('.ppx-mod-parent'));
+  parents.forEach((li)=>{
+    const toggle = li.querySelector('.ppx-mod-toggle');
+    const sub = li.querySelector('.ppx-sublist');
+    if (!toggle || !sub) return;
+    toggle.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const open = li.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      sub.style.display = open ? 'block' : 'none';
+    });
+  });
+})();
+
+// Translation chips + modal (requires data-translation-XX attributes on blocks)
+(function(){
+  const modal = document.getElementById('ppx-trans-modal');
+  const closeBtn = modal?.querySelector('.ppx-trans-close');
+  const srcEl = modal?.querySelector('#ppx-trans-src');
+  const dstEl = modal?.querySelector('#ppx-trans-dst');
+  const langWrap = modal?.querySelector('#ppx-trans-lang');
+  let currentTranslations = {};
+  let currentLang = 'en';
+
+  // Convert inline example translations into data-translation attributes on the sentence
+  function prepareExampleTranslations(){
+    const lines = Array.from(document.querySelectorAll('.ppx-ex-lines'));
+    lines.forEach(line=>{
+      const sentence = line.querySelector('.ppx-ex-sentence');
+      const trans = line.querySelector('.ppx-ex-translation');
+      if (!sentence || !trans) return;
+      const txt = (trans.innerText || trans.textContent || '').trim();
+      if (!txt) return;
+      sentence.dataset.translationEn = txt;
+      trans.style.display = 'none';
+    });
+  }
+
+  function closeModal(){
+    if (!modal) return;
+    modal.setAttribute('aria-hidden','true');
+    modal.style.display = 'none';
+    document.body.classList.remove('ppx-trans-open');
+  }
+  function openModal(){
+    if (!modal) return;
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('ppx-trans-open');
+  }
+  function renderLangSelector(){
+    if (!langWrap) return;
+    const langs = Object.keys(currentTranslations);
+    langWrap.innerHTML = '';
+    if (langs.length <= 1) { langWrap.style.display = 'none'; return; }
+    langWrap.style.display = 'inline-flex';
+    const sel = document.createElement('select');
+    sel.className = 'ppx-trans-select';
+    langs.forEach(l=>{
+      const opt = document.createElement('option');
+      opt.value = l;
+      opt.textContent = l.toUpperCase();
+      if (l === currentLang) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', ()=>{
+      currentLang = sel.value;
+      renderContents();
+    });
+    langWrap.appendChild(sel);
+  }
+  function renderContents(){
+    if (!srcEl || !dstEl) return;
+    dstEl.textContent = currentTranslations[currentLang] || '';
+  }
+
+  function attachChips(){
+    const selector = '.ppx-article-body [data-translation-en], .ppx-article-body [data-translation-es], .ppx-article-body [data-translation-fr], .ppx-article-body [data-translation-pt], .ppx-article-body [data-translations]';
+    const blocks = Array.from(document.querySelectorAll(selector));
+    blocks.forEach(el=>{
+      if (el.dataset.transChipAttached) return;
+      let translations = {};
+      // Accept a JSON map in data-translations ({"en":"...","fr":"..."})
+      if (el.dataset.translations) {
+        try {
+          const parsed = JSON.parse(el.dataset.translations);
+          if (parsed && typeof parsed === 'object') translations = { ...parsed };
+        } catch(_) {}
+      }
+      Object.entries(el.dataset).forEach(([k,v])=>{
+        if (!k.toLowerCase().startsWith('translation')) return;
+        const lang = k.toLowerCase().replace('translation','') || 'en';
+        translations[lang] = v;
+      });
+      const available = Object.keys(translations);
+      if (!available.length) return;
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'ppx-trans-chip';
+      chip.textContent = '{{ t("Traducir","Translate", app_lang) }}';
+      chip.addEventListener('click', ()=>{
+        currentTranslations = translations;
+        currentLang = available.includes('en') ? 'en' : available[0];
+        if (srcEl) srcEl.textContent = el.innerText || el.textContent || '';
+        renderLangSelector();
+        renderContents();
+        openModal();
+      });
+      el.insertAdjacentElement('afterend', chip);
+      el.dataset.transChipAttached = 'true';
+    });
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (modal) modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
+  document.addEventListener('keyup', (e)=>{ if (e.key === 'Escape') closeModal(); });
+  prepareExampleTranslations();
+  attachChips();
+})();
+</script>
+
+<script>
+// Toggle between ES/EN for module body and nav titles
+(function(){
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.ppx-body-toggle');
+    var navToggleBtn = e.target.closest('.ppx-nav-toggle-btn');
+    var overlay = document.querySelector('.ppx-nav-overlay');
+    if (!btn) return;
+    var es = document.querySelector('.ppx-body-es');
+    var en = document.querySelector('.ppx-body-en');
+    var titleNodes = Array.prototype.slice.call(document.querySelectorAll('.ppx-title-toggle'));
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('.ppx-mod-link'));
+    var activeLink = document.querySelector('.ppx-mod-link.is-active');
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.ppx-chip-lang'));
+    if (!es || !en) return;
+    var showingEn = en.style.display !== 'none';
+    if (showingEn){
+      en.style.display = 'none';
+      es.style.display = '';
+      btn.setAttribute('aria-pressed', 'false');
+      btn.querySelector('.ppx-body-toggle-label').textContent = 'Español';
+      btn.setAttribute('title', btn.dataset.tipEn || 'Show in English');
+      titleNodes.forEach(function(node){
+        if (!node.dataset.esTitle && activeLink && activeLink.dataset.esTitle){
+          node.dataset.esTitle = activeLink.dataset.esTitle;
+        }
+        if (node.dataset.esTitle) node.textContent = node.dataset.esTitle;
+      });
+      navLinks.forEach(function(a){
+        var titleSpan = a.querySelector('.ppx-mod-title');
+        if (titleSpan && a.dataset.esTitle) titleSpan.textContent = a.dataset.esTitle;
+      });
+      chips.forEach(function(ch){
+        var txt = ch.getAttribute('data-es-text') || ch.textContent;
+        ch.textContent = txt;
+      });
+    } else {
+      es.style.display = 'none';
+      en.style.display = '';
+      btn.setAttribute('aria-pressed', 'true');
+      btn.querySelector('.ppx-body-toggle-label').textContent = 'English';
+      btn.setAttribute('title', btn.dataset.tipEs || 'Ver en español');
+      titleNodes.forEach(function(node){
+        if (!node.dataset.esTitle) node.dataset.esTitle = node.textContent;
+        var enTitle = node.dataset.enTitle || (activeLink && activeLink.dataset.enTitle) || '';
+        if (enTitle) node.textContent = enTitle;
+      });
+      navLinks.forEach(function(a){
+        var titleSpan = a.querySelector('.ppx-mod-title');
+        if (!titleSpan) return;
+        if (!a.dataset.esTitle) a.dataset.esTitle = titleSpan.textContent;
+        var enTitle = a.dataset.enTitle || '';
+        if (enTitle) titleSpan.textContent = enTitle;
+      });
+      chips.forEach(function(ch){
+        var enText = ch.getAttribute('data-en-text') || ch.textContent;
+        if (enText) ch.textContent = enText;
+      });
+    }
+  });
+  // Mobile nav overlay toggle
+  document.addEventListener('click', function(e){
+    var openBtn = e.target.closest('.ppx-nav-toggle-btn');
+    var closeOverlay = e.target.classList && e.target.classList.contains('ppx-nav-overlay');
+    if (openBtn){
+      document.body.classList.toggle('ppx-nav-open');
+    }
+    if (closeOverlay){
+      document.body.classList.remove('ppx-nav-open');
+    }
   });
 })();
 </script>

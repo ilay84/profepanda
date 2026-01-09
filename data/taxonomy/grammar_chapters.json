@@ -1,0 +1,42 @@
+[
+  {
+    "id": "mod1-sustantivos-adjetivos",
+    "title_es": "Sección 1 — Sustantivos y adjetivos: nombrar y describir entidades",
+    "title_en": "Section 1 — Nouns and adjectives: naming and describing entities"
+  },
+  {
+    "id": "mod2-determinantes",
+    "title_es": "Sección 2 — Determinantes: limitar y controlar la referencia",
+    "title_en": "Section 2 — Determiners: limiting and controlling reference"
+  },
+  {
+    "id": "mod3-pronombres",
+    "title_es": "Sección 3 — Pronombres personales: referenciar participantes",
+    "title_en": "Section 3 — Personal pronouns: referencing participants"
+  },
+  {
+    "id": "mod4-verbos",
+    "title_es": "Sección 4 — Verbos: construir eventos en el tiempo",
+    "title_en": "Section 4 — Verbs: building events in time"
+  },
+  {
+    "id": "mod5-preposiciones",
+    "title_es": "Sección 5 — Preposiciones: relacionar entidades",
+    "title_en": "Section 5 — Prepositions: relating entities"
+  },
+  {
+    "id": "mod6-oraciones",
+    "title_es": "Sección 6 — Oraciones: interactuar y conectar ideas",
+    "title_en": "Section 6 — Sentences: interacting and connecting ideas"
+  },
+  {
+    "id": "mod7-ortografia",
+    "title_es": "Sección 7 — Ortografía: forma, sonido y significado",
+    "title_en": "Section 7 — Orthography: form, sound, and meaning"
+  },
+  {
+    "id": "meta-operativa",
+    "title_es": "Sección Meta (transversal) — Pensar la gramática como hablante",
+    "title_en": "Meta Section (cross-cutting) — Thinking about grammar as a speaker"
+  }
+]

@@ -1,7 +1,10 @@
 # domains/admin/__init__.py
 from __future__ import annotations
-from flask import Blueprint, render_template, render_template_string, jsonify, current_app, request, redirect, url_for, make_response, g
+from flask import Blueprint, render_template, render_template_string, jsonify, current_app, request, redirect, url_for, make_response, g, abort
+import json
+from pathlib import Path
 from flask_login import login_required
+from datetime import datetime, timezone
 
 bp = Blueprint("admin", __name__, template_folder="../../templates/admin")
 
@@ -34,6 +37,8 @@ from domains.admin import glossary_pages    # /admin/glossary (index + validate)
 from domains.admin import lessons_pages     # /admin/lessons (interactive lessons)
 from domains.admin import lessons_api       # /admin/api/lessons (CRUD)
 from domains.admin import content_lab       # /admin/content-lab (UI/UX sandbox)
+from app.storage import get_project_root
+from app.storage import load_article, save_article, ensure_article_dirs
 
 # Safe-import exercises_api so we can surface any import errors
 _exercises_api_error = None
@@ -48,6 +53,106 @@ def _api_exercises_import_status():
     Diagnostic: confirms whether domains.admin.exercises_api imported successfully.
     """
     return jsonify({"ok": _exercises_api_error is None, "error": _exercises_api_error})
+
+
+# ─────────────────────────────────────────────────────────────
+# Structured Article (minimal JSON editor + preview)
+# ─────────────────────────────────────────────────────────────
+
+def _is_admin_user():
+    try:
+        return bool(getattr(g, "is_admin", False))
+    except Exception:
+        return False
+
+def _article_structured_path(slug: str) -> Path:
+    return get_project_root() / "data" / "articles" / slug / "article_structured.json"
+
+@bp.get("/language-structures-and-lessons/new", endpoint="admin_lsl_new")
+@login_required
+def admin_lsl_new():
+    """
+    Start a new language-structure/lesson using the same editor as /<slug>/edit.
+    We create a temporary draft slug and seed a minimal article.json, then redirect
+    into the full modules/submodules editor so the UX matches the existing resources.
+    """
+    if not _is_admin_user():
+        abort(403)
+    slug = f"draft-{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}"
+    # Only seed if it does not already exist (highly unlikely collision)
+    if not load_article(slug):
+        ensure_article_dirs(slug)
+        now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        seed = {
+            "slug": slug,
+            "title": "",
+            "title_es": "",
+            "title_en": "",
+            "html": "<p><br></p>",
+            "modules": [],
+            "status": "draft",
+            "type": "structure",
+            "tags": [],
+            "created_at": now,
+            "updated_at": now,
+        }
+        save_article(slug, seed)
+    return redirect(url_for("admin.admin_lsl_edit", slug=slug))
+
+@bp.get("/article-structured/<slug>")
+@login_required
+def article_structured(slug: str):
+    if not _is_admin_user():
+        abort(403)
+    return render_template("admin/article_structured.html", slug=slug)
+
+@bp.get("/api/article-structured/<slug>")
+@login_required
+def api_article_structured_get(slug: str):
+    if not _is_admin_user():
+        abort(403)
+    path = _article_structured_path(slug)
+    if not path.is_file():
+        default = {
+            "schema_version": "1.0.0",
+            "title": slug.replace("-", " ").title(),
+            "slug": slug,
+            "language": "es",
+            "summary": "",
+            "modules": [
+                {
+                    "slug": "mod1",
+                    "title": "Módulo 1",
+                    "blocks": [
+                        { "type": "heading", "data": { "text": "Título", "translations": {} } },
+                        { "type": "text", "data": { "html": "<p>Contenido en español.</p>", "translations": {} } },
+                        { "type": "example_sentence", "data": { "sentence": "Ejemplo en español.", "translations": {}, "audio_url": "" } }
+                    ]
+                }
+            ]
+        }
+        return jsonify({"ok": True, "data": default})
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return jsonify({"ok": True, "data": data})
+    except Exception as e:
+        return jsonify({"ok": False, "error": f"{type(e).__name__}: {e}"}), 500
+
+@bp.put("/api/article-structured/<slug>")
+@login_required
+def api_article_structured_save(slug: str):
+    if not _is_admin_user():
+        abort(403)
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return jsonify({"ok": False, "error": "invalid JSON payload"}), 400
+    path = _article_structured_path(slug)
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        return jsonify({"ok": True, "path": str(path.relative_to(get_project_root()))})
+    except Exception as e:
+        return jsonify({"ok": False, "error": f"{type(e).__name__}: {e}"}), 500
 
 # fixed admin UI language options (ES/EN only for site chrome)
 _ADMIN_LANG_OPTIONS = [

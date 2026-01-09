@@ -1,0 +1,353 @@
+/* static/css/courses.css
+   Courses (server-rendered) styles.
+   Derived from Tailwind defaults + your custom status palette.
+*/
+
+body {
+  margin: 0;
+}
+
+#ppx-public-bar {
+  --ppx-font: "Montserrat", sans-serif;
+}
+
+/* Replace globe emoji with proper icon in public bar (courses pages only) */
+#ppx-public-bar details:last-of-type > summary > span:first-child {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url("/static/assets/icons/globe.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+/* Active language: use the same check.svg asset as other public pages */
+#ppx-public-bar [role="menu"] a[aria-current="true"] > span:last-child {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+
+  /* Replace the ✓ glyph visually with the check.svg icon */
+  background-image: url("/static/assets/icons/check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+
+  /* Hide the literal ✓ character without removing the element */
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+/* ---- Tailwind-default palette references (slate/indigo/emerald) ----
+   slate-900: #0f172a
+   slate-600: #475569
+   slate-500: #64748b
+   slate-400: #94a3b8
+   slate-300: #cbd5e1
+   slate-200: #e2e8f0
+   slate-100: #f1f5f9
+   indigo-600: #4f46e5
+   indigo-500: #6366f1
+   indigo-100: #e0e7ff
+   indigo-200: #c7d2fe
+   indigo-800: #3730a3
+   emerald-100: #d1fae5
+   emerald-200: #a7f3d0
+   emerald-600: #059669
+   emerald-800: #065f46
+*/
+
+/* ---- Your Tailwind custom palette (authoritative) ---- */
+:root {
+  --pp-complete: #80ac5f;
+  --pp-complete-soft: #eaf2e3;
+  --pp-complete-ring: #c7ddb4;
+  --pp-complete-hover: #6f9951;
+
+  --pp-inprogress: #475dd7;
+  --pp-inprogress-soft: #e7eaff;
+  --pp-inprogress-ring: #c6cdfb;
+  --pp-inprogress-hover: #3b4fc3;
+
+  --pp-notstarted: #d25c7f;
+  --pp-notstarted-soft: #fde7ee;
+  --pp-notstarted-ring: #f5bfd0;
+  --pp-notstarted-hover: #be4d70;
+}
+
+/* =========================
+   Page layout (MyCourses)
+   ========================= */
+
+.courses-page {
+  /* space-y-6 */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* 24px */
+}
+
+.courses-page__header {
+  /* space-y-1 */
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /* 4px */
+}
+
+.courses-page__title {
+  /* text-3xl font-bold text-slate-900 */
+  margin: 0;
+  font-size: 1.875rem;     /* 30px */
+  line-height: 2.25rem;    /* 36px */
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.courses-page__subtitle {
+  /* text-slate-600 */
+  margin: 0;
+  color: #475569;
+}
+
+.courses-empty {
+  /* rounded-2xl bg-white p-6 ring-1 ring-slate-200 */
+  border-radius: 1rem; /* rounded-2xl */
+  background: #ffffff;
+  padding: 1.5rem;     /* p-6 */
+  border: 1px solid #e2e8f0; /* ring-1 ring-slate-200 (approx as border) */
+}
+
+.courses-empty__text {
+  /* text-slate-600 */
+  margin: 0;
+  color: #475569;
+}
+
+.courses-grid {
+  /* grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; /* 16px */
+}
+
+@media (min-width: 768px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .courses-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =========================
+   Course card (CourseCard)
+   ========================= */
+
+.course-card {
+  /* group block overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition */
+  display: block;
+  overflow: hidden;
+  border-radius: 1rem; /* rounded-2xl */
+  background: #ffffff;
+  border: 1px solid #e2e8f0; /* ring-1 ring-slate-200 */
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); /* shadow-sm */
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.course-card:hover {
+  /* hover:shadow-md hover:ring-slate-300 */
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.10), 0 2px 4px -2px rgba(0,0,0,0.10);
+}
+
+.course-card:focus {
+  outline: none; /* focus:outline-none */
+}
+
+.course-card:focus-visible {
+  /* focus-visible:ring-2 focus-visible:ring-indigo-500 */
+  box-shadow:
+    0 0 0 2px #6366f1,
+    0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+.course-card__media {
+  /* relative h-36 bg-slate-100 */
+  position: relative;
+  height: 9rem; /* h-36 */
+  background: #f1f5f9;
+}
+
+.course-card__img {
+  /* h-full w-full object-cover */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.course-card__img-fallback {
+  /* bg-gradient-to-br from-slate-100 to-slate-200 */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.course-card__badge-wrap {
+  /* absolute left-3 bottom-3 */
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+}
+
+.course-card__badge {
+  /* inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ring-1 */
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.25rem 0.625rem; /* px-2.5 py-1 */
+  font-size: 0.75rem;        /* text-xs */
+  line-height: 1rem;
+  font-weight: 600;
+  border: 1px solid transparent; /* ring-1 approximated as border */
+}
+
+/* Mastered badge: emerald */
+.course-card__badge--mastered {
+  background: #d1fae5; /* emerald-100 */
+  color: #065f46;      /* emerald-800 */
+  border-color: #a7f3d0; /* emerald-200 */
+}
+
+/* Level badge: indigo */
+.course-card__badge--level {
+  background: #e0e7ff; /* indigo-100 */
+  color: #3730a3;      /* indigo-800 */
+  border-color: #c7d2fe; /* indigo-200 */
+}
+
+.course-card__body {
+  /* space-y-2 p-4 */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.course-card__toprow {
+  /* flex items-start justify-between gap-3 */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.course-card__name {
+  /* line-clamp-2 text-base font-semibold leading-snug text-slate-900 */
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.375; /* leading-snug-ish */
+  font-weight: 600;
+  color: #0f172a;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.course-card__chevron {
+  /* mt-0.5 text-slate-400 transition group-hover:text-slate-500 */
+  margin-top: 0.125rem;
+  color: #94a3b8;
+  transition: color 150ms ease;
+}
+
+.course-card:hover .course-card__chevron {
+  color: #64748b;
+}
+
+.course-card__desc {
+  /* line-clamp-2 text-sm text-slate-600 */
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #475569;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.course-card__desc--fallback {
+  /* text-sm text-slate-500 */
+  color: #64748b;
+}
+
+.course-card__meta {
+  /* space-y-2 pt-1 */
+  padding-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.course-card__lang {
+  /* text-xs font-medium text-slate-600 */
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.course-card__progress-row {
+  /* flex items-center justify-between text-xs text-slate-500 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #64748b;
+}
+
+.course-card__pct {
+  /* tabular-nums */
+  font-variant-numeric: tabular-nums;
+}
+
+.course-card__track {
+  /* h-2 w-full overflow-hidden rounded-full bg-slate-100 */
+  height: 0.5rem;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: #f1f5f9;
+}
+
+.course-card__bar {
+  /* h-full rounded-full transition-[width] duration-300 */
+  height: 100%;
+  border-radius: 9999px;
+  width: 0%;
+  transition: width 300ms ease;
+}
+
+/* bar color by state (mirrors CourseCard.jsx behavior) */
+.course-card__bar--mastered {
+  background: #059669; /* emerald-600 */
+}
+
+.course-card__bar--active {
+  background: #4f46e5; /* indigo-600 */
+}

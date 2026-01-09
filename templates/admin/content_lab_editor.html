@@ -186,12 +186,15 @@
     background: #fff;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
-    padding: 12px;
-    min-height: 180px;
+    padding: 20px 22px;
+    min-height: 240px;
+    font-family: 'Inter', 'Montserrat', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: #0f172a;
   }
   .ed-preview-heading {
-    margin: 0 0 8px 0;
-    font-size: 1.05rem;
+    margin: 0 0 10px 0;
+    font-size: 1.18rem;
     font-weight: 700;
     color: #0f172a;
   }
@@ -414,16 +417,31 @@
       <div id="panel-blocks" class="ppx-card" style="margin-top:.75rem; padding:1rem; background:#f8fafc; border:1px dashed var(--ppx-line,#d4d4d8); width:100%; box-sizing:border-box; overflow:hidden;">
         <div class="ppx-label">{{ t("Bloques", "Blocks", app_lang) }}</div>
         <div class="ppx-row" style="gap:.5rem; align-items:center; flex-wrap:wrap; margin-top:.35rem;">
-          <select id="ed-block-type" class="ppx-select" style="width:160px;">
+          <input id="ed-block-search" class="ppx-input" style="width:200px;" placeholder="{{ t('Buscar tipo de bloque', 'Search block type', app_lang) }}">
+          <select id="ed-block-type" class="ppx-select" style="width:200px;">
             <option value="rich_text">Rich text</option>
             <option value="markdown">Markdown</option>
             <option value="list">List</option>
             <option value="exercise">Exercise</option>
           </select>
-          <input id="ed-block-id" class="ppx-input" style="width:160px;" placeholder="{{ t('ID del bloque', 'Block ID', app_lang) }}">
+          <input id="ed-block-id" class="ppx-input" style="width:180px;" list="ed-ex-id-options" placeholder="{{ t('ID del bloque', 'Block ID', app_lang) }}">
+          <datalist id="ed-ex-id-options"></datalist>
           <button id="ed-block-add" type="button" class="ppx-btn ppx-btn-secondary">{{ t("Agregar bloque", "Add block", app_lang) }}</button>
+          <button id="ed-ex-add" type="button" class="ppx-btn ppx-btn-secondary" style="display:none;">{{ t("Elegir ejercicio", "Pick exercise", app_lang) }}</button>
+          <a id="ed-ex-create" class="ppx-btn ppx-btn-secondary" style="display:none;" href="/admin/exercises" target="_blank">{{ t("Crear ejercicio", "Create exercise", app_lang) }}</a>
         </div>
         <div id="ed-blocks-list" style="margin-top:.5rem; display:flex; flex-direction:column; gap:.4rem;"></div>
+      </div>
+      <div id="ed-ex-picker-overlay" style="position:fixed; inset:0; background:rgba(15,23,42,0.35); display:none; align-items:flex-start; justify-content:center; z-index:11000; padding:1rem; box-sizing:border-box;">
+        <div class="ppx-card" style="width:min(700px,95vw); max-height:80vh; overflow:hidden; padding:1rem; box-sizing:border-box; display:flex; flex-direction:column; gap:.5rem;">
+          <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; flex-wrap:wrap;">
+            <div class="ppx-h4" style="margin:0;">{{ t("Elegir ejercicio", "Pick an exercise", app_lang) }}</div>
+            <button type="button" id="ed-ex-picker-close" class="ppx-btn ppx-btn-secondary">{{ t("Cerrar", "Close", app_lang) }}</button>
+          </div>
+          <input id="ed-ex-search" class="ppx-input" placeholder="{{ t('Buscar por título, tipo o slug', 'Search by title, type or slug', app_lang) }}">
+          <div id="ed-ex-list" style="overflow:auto; border:1px solid #e5e7eb; border-radius:10px; max-height:60vh; padding:.35rem; display:flex; flex-direction:column; gap:.35rem;"></div>
+          <div class="ppx-muted" style="font-size:12px;">{{ t("Se insertará un bloque de ejercicio con el ID seleccionado.", "An exercise block will be inserted with the selected ID.", app_lang) }}</div>
+        </div>
       </div>
       <div class="ed-rail-overlay" id="ed-rail-overlay">
         <div class="ed-rail-panel">
@@ -556,6 +574,14 @@
     blockType: document.getElementById("ed-block-type"),
     blockId: document.getElementById("ed-block-id"),
     blockAdd: document.getElementById("ed-block-add"),
+    blockSearch: document.getElementById("ed-block-search"),
+    exAdd: document.getElementById("ed-ex-add"),
+    exCreate: document.getElementById("ed-ex-create"),
+    exDataList: document.getElementById("ed-ex-id-options"),
+    exPickerOverlay: document.getElementById("ed-ex-picker-overlay"),
+    exPickerClose: document.getElementById("ed-ex-picker-close"),
+    exPickerSearch: document.getElementById("ed-ex-search"),
+    exPickerList: document.getElementById("ed-ex-list"),
     blocksList: document.getElementById("ed-blocks-list"),
     textEditor: document.getElementById("ed-text-editor"),
     textEditorText: document.getElementById("ed-text-input"),
@@ -1613,7 +1639,35 @@
       editBtn.style.padding = "6px 10px";
       editBtn.textContent = "{{ t('Editar', 'Edit', app_lang) }}";
       editBtn.addEventListener("click", () => openBlockModal(module, blk, idx));
-      card.appendChild(editBtn);
+      const addAbove = document.createElement("button");
+      addAbove.type = "button";
+      addAbove.className = "ppx-btn ppx-btn-secondary";
+      addAbove.style.padding = "6px 10px";
+      addAbove.textContent = "+";
+      addAbove.title = "{{ t('Agregar arriba', 'Add above', app_lang) }}";
+      addAbove.addEventListener("click", () => {
+        const type = blk.type || "rich_text";
+        addBlockAt(module, idx, type);
+        renderBlocks();
+      });
+      const addBelow = document.createElement("button");
+      addBelow.type = "button";
+      addBelow.className = "ppx-btn ppx-btn-secondary";
+      addBelow.style.padding = "6px 10px";
+      addBelow.textContent = "+";
+      addBelow.title = "{{ t('Agregar abajo', 'Add below', app_lang) }}";
+      addBelow.addEventListener("click", () => {
+        const type = blk.type || "rich_text";
+        addBlockAt(module, idx + 1, type);
+        renderBlocks();
+      });
+      const btnWrap = document.createElement("div");
+      btnWrap.className = "ppx-row";
+      btnWrap.style.gap = "6px";
+      btnWrap.appendChild(addAbove);
+      btnWrap.appendChild(editBtn);
+      btnWrap.appendChild(addBelow);
+      card.appendChild(btnWrap);
       els.blocksList.appendChild(card);
     });
     if (els.panelPreview && els.panelPreview.style.display !== "none") {
@@ -1657,6 +1711,127 @@
     });
   }
 
+  // Exercise picker wiring
+  if (els.exPickerOverlay && els.exPickerOverlay.addEventListener) {
+    els.exPickerOverlay.addEventListener("click", (e) => {
+      if (e.target === els.exPickerOverlay) closeExercisePicker();
+    });
+  }
+  if (els.exPickerClose) els.exPickerClose.addEventListener("click", closeExercisePicker);
+  if (els.exPickerSearch) {
+    els.exPickerSearch.addEventListener("input", () => renderExercisePicker(els.exPickerSearch.value || ""));
+  }
+  // Preload exercise index in the background so suggestions are ready
+  loadExerciseIndex();
+
+  const BLOCK_TYPES = [
+    { value: "rich_text", label: "Rich text" },
+    { value: "markdown", label: "Markdown" },
+    { value: "list", label: "List" },
+    { value: "exercise", label: "Exercise" },
+  ];
+
+  let exerciseIndex = [];
+  let exerciseIndexLoaded = false;
+
+  async function loadExerciseIndex() {
+    if (exerciseIndexLoaded) return exerciseIndex;
+    try {
+      const res = await fetch("/admin/api/exercises");
+      const data = await res.json();
+      const payload = data?.data;
+      let rows = [];
+      if (Array.isArray(payload)) {
+        rows = payload;
+      } else if (payload && typeof payload === "object") {
+        rows = Object.entries(payload).map(([key, meta]) => ({
+          ...(meta || {}),
+          _id: key,
+          type: meta?.type || (key.split("/")[0] || "")
+        }));
+      }
+      exerciseIndex = rows.map(ex => ({
+        ...ex,
+        _id: ex._id || `${ex.type || ""}/${ex.slug || ""}`.replace(/\/+$/,"")
+      }));
+      exerciseIndexLoaded = true;
+      hydrateExerciseOptions();
+    } catch (e) {
+      console.error("Could not load exercise index", e);
+    }
+    return exerciseIndex;
+  }
+
+  function hydrateExerciseOptions() {
+    if (!els.exDataList) return;
+    els.exDataList.innerHTML = "";
+    exerciseIndex.forEach(ex => {
+      const opt = document.createElement("option");
+      const type = ex.type || "";
+      const slug = ex.slug || "";
+      const id = ex._id || `${type}/${slug}`;
+      opt.value = id;
+      const title = (lang === "en" ? ex.title_en : ex.title_es) || ex.title_es || ex.title_en || "";
+      opt.label = `${id} — ${title || ""}`;
+      els.exDataList.appendChild(opt);
+    });
+  }
+
+  function renderExercisePicker(filter = "") {
+    if (!els.exPickerList) return;
+    const q = filter.toLowerCase();
+    els.exPickerList.innerHTML = "";
+    exerciseIndex
+      .filter(ex => {
+        const title = `${ex.title_es || ""} ${ex.title_en || ""}`.toLowerCase();
+        const slug = (ex.slug || "").toLowerCase();
+        const type = (ex.type || "").toLowerCase();
+        const id = (ex._id || "").toLowerCase();
+        return !q || title.includes(q) || slug.includes(q) || type.includes(q) || id.includes(q);
+      })
+      .slice(0, 200)
+      .forEach(ex => {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "ppx-btn ppx-btn-secondary";
+        row.style.display = "flex";
+        row.style.flexDirection = "column";
+        row.style.alignItems = "flex-start";
+        row.style.gap = "2px";
+        row.style.textAlign = "left";
+        row.style.width = "100%";
+        const id = ex._id || `${ex.type}/${ex.slug}`;
+        const title = (lang === "en" ? ex.title_en : ex.title_es) || ex.title_es || ex.title_en || "";
+        row.innerHTML = `<span style="font-weight:700;">${title || id}</span><span class="ppx-muted" style="font-size:12px;">${id}</span>`;
+        row.addEventListener("click", () => {
+          if (els.blockType) els.blockType.value = "exercise";
+          if (els.blockId) els.blockId.value = id;
+          setExerciseButtonsVisibility();
+          addExerciseBlock(id);
+          closeExercisePicker();
+        });
+        els.exPickerList.appendChild(row);
+      });
+    if (!els.exPickerList.children.length) {
+      const empty = document.createElement("div");
+      empty.className = "ppx-muted";
+      empty.textContent = lang === "en" ? "No matches" : "Sin coincidencias";
+      els.exPickerList.appendChild(empty);
+    }
+  }
+
+  function openExercisePicker() {
+    if (!els.exPickerOverlay) return;
+    loadExerciseIndex().then(() => {
+      els.exPickerOverlay.style.display = "flex";
+      renderExercisePicker(els.exPickerSearch?.value || "");
+    });
+  }
+
+  function closeExercisePicker() {
+    if (els.exPickerOverlay) els.exPickerOverlay.style.display = "none";
+  }
+
   function defaultBlockData(type) {
     const langVal = els.lang?.value || "es";
     if (type === "exercise" || type === "exercise_reference") {
@@ -1681,6 +1856,49 @@
     return {};
   }
 
+  function setExerciseButtonsVisibility() {
+    const type = (els.blockType?.value || "").trim();
+    const isExercise = type === "exercise" || type === "exercise_reference";
+    if (els.exAdd) els.exAdd.style.display = isExercise ? "inline-flex" : "none";
+    if (els.exCreate) els.exCreate.style.display = isExercise ? "inline-flex" : "none";
+  }
+
+  if (els.blockType) {
+    els.blockType.addEventListener("change", setExerciseButtonsVisibility);
+  }
+  setExerciseButtonsVisibility();
+
+  if (els.blockSearch && els.blockType) {
+    els.blockSearch.addEventListener("input", () => {
+      const q = (els.blockSearch.value || "").toLowerCase();
+      const opts = Array.from(els.blockType.options || []);
+      let firstVisible = null;
+      opts.forEach(opt => {
+        const match = opt.textContent.toLowerCase().includes(q) || opt.value.toLowerCase().includes(q);
+        opt.hidden = !match;
+        if (match && !firstVisible) firstVisible = opt;
+      });
+      if (firstVisible) {
+        els.blockType.value = firstVisible.value;
+      }
+      setExerciseButtonsVisibility();
+    });
+  }
+
+  function addBlockAt(module, idx, type, idOverride) {
+    const proposedId = (els.blockId?.value || "").trim();
+    const blockId = idOverride || proposedId || `${type}-${(module.blocks || []).length + 1}`;
+    module.blocks = Array.isArray(module.blocks) ? module.blocks : [];
+    const data = defaultBlockData(type);
+    if ((type === "exercise" || type === "exercise_reference") && proposedId) {
+      data.exercise_id = proposedId;
+      const typeGuess = proposedId.split("/")[0] || "";
+      if (typeGuess) data.exercise_type = typeGuess;
+    }
+    module.blocks.splice(idx, 0, { id: blockId, type, data });
+    if (els.blockId) els.blockId.value = "";
+  }
+
   if (els.blockAdd) {
     els.blockAdd.addEventListener("click", () => {
       if (!activeModuleId) {
@@ -1690,13 +1908,31 @@
       const mod = modulesState.find(m => m.module_id === activeModuleId);
       if (!mod) return;
       const type = (els.blockType?.value || "rich_text").trim() || "rich_text";
-      const proposedId = (els.blockId?.value || "").trim();
-      const blockId = proposedId || `${type}-${(mod.blocks || []).length + 1}`;
-      mod.blocks = Array.isArray(mod.blocks) ? mod.blocks : [];
-      mod.blocks.push({ id: blockId, type, data: defaultBlockData(type) });
-      if (els.blockId) els.blockId.value = "";
+      addBlockAt(mod, mod.blocks.length, type);
       renderBlocks();
     });
+  }
+
+  if (els.exAdd) {
+    els.exAdd.addEventListener("click", async () => {
+      await loadExerciseIndex();
+      openExercisePicker();
+    });
+  }
+
+  async function addExerciseBlock(exId) {
+    if (!activeModuleId) {
+      alert("Select a module first");
+      return;
+    }
+    const mod = modulesState.find(m => m.module_id === activeModuleId);
+    if (!mod) return;
+    const type = "exercise";
+    addBlockAt(mod, mod.blocks.length, type, `${type}-${(mod.blocks || []).length + 1}`);
+    const newlyAdded = mod.blocks[mod.blocks.length - 1];
+    newlyAdded.data.exercise_id = exId;
+    newlyAdded.data.exercise_type = (exId || "").split("/")[0] || newlyAdded.data.exercise_type;
+    renderBlocks();
   }
 
   if (els.blockModalClose) {
@@ -1994,11 +2230,15 @@
           const term = input.value.trim().toLowerCase();
           results.innerHTML = '';
           if (!term) return;
-          const idxData = await loadExerciseIndex();
-          const matches = Object.entries(idxData).filter(([id, meta]) => {
-            return id.toLowerCase().includes(term) || (meta.title_en || meta.title_es || '').toLowerCase().includes(term) || (meta.type||'').toLowerCase().includes(term);
+          await loadExerciseIndex();
+          const matches = exerciseIndex.filter(meta => {
+            const id = (meta._id || `${meta.type || ''}/${meta.slug || ''}`).toLowerCase();
+            const title = `${meta.title_en || ''} ${meta.title_es || ''}`.toLowerCase();
+            const type = (meta.type || '').toLowerCase();
+            return id.includes(term) || title.includes(term) || type.includes(term);
           }).slice(0,10);
-          matches.forEach(([id, meta]) => {
+          matches.forEach(meta => {
+            const id = meta._id || `${meta.type || ''}/${meta.slug || ''}`;
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'ppx-btn ppx-btn-secondary';

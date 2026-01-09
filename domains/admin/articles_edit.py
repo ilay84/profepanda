@@ -7,12 +7,32 @@ import os
 import re
 import uuid
 import json
+from pathlib import Path
+
+
+def _load_grammar_chapters():
+    """
+    Load grammar chapter taxonomy from data/taxonomy/grammar_chapters.json.
+    Returns a list of dicts with id, title_es, title_en.
+    """
+    try:
+        base = Path(__file__).resolve().parents[2]
+        path = base / "data" / "taxonomy" / "grammar_chapters.json"
+        with path.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, list):
+            return data
+    except Exception:
+        return []
 
 @bp.get("/articles/<slug>/edit")
 def admin_articles_edit(slug: str):
     data = load_article(slug)
     if not data:
         abort(404)
+
+    grammar_chapters = _load_grammar_chapters()
+    communicative_sections = []  # placeholder; extend later
 
     title_display = data.get("title") or data.get("title_es") or data.get("title_en") or slug
     body_html = data.get("html") or data.get("html_es") or data.get("html_en") or ""
@@ -26,6 +46,8 @@ def admin_articles_edit(slug: str):
         body_html=body_html,
         status=(data.get("status") or "draft"),
         article=data,
+        grammar_chapters=grammar_chapters,
+        communicative_sections=communicative_sections,
     )
 
 @bp.post("/articles/<slug>/edit", endpoint="admin_articles_edit_post")
@@ -67,11 +89,73 @@ def admin_articles_edit_post(slug: str):
     # Persist taxonomy selections on update
     updated["taxonomy_paths"] = tx_paths
 
+    # Classification: type + chapter/section + order
+    art_type = (request.form.get("article_type") or updated.get("type") or "structure").strip().lower()
+    if art_type in {"structure", "communicative"}:
+        updated["type"] = art_type
+    cat_id = (request.form.get("category_id") or "").strip()
+    if cat_id:
+        updated["category_id"] = cat_id
+    elif "category_id" in updated:
+        updated.pop("category_id", None)
+    try:
+        order_val = request.form.get("order_index")
+        if order_val is not None and order_val != "":
+            updated["order_index"] = int(order_val)
+        elif "order_index" in updated:
+            updated.pop("order_index", None)
+    except Exception:
+        pass
+
+    # Classification: type + chapter/section + order
+    art_type = (request.form.get("article_type") or updated.get("type") or "structure").strip().lower()
+    if art_type in {"structure", "communicative"}:
+        updated["type"] = art_type
+    cat_id = (request.form.get("category_id") or "").strip()
+    if cat_id:
+        updated["category_id"] = cat_id
+    elif "category_id" in updated:
+        updated.pop("category_id", None)
+    try:
+        order_val = request.form.get("order_index")
+        if order_val is not None and order_val != "":
+            updated["order_index"] = int(order_val)
+        elif "order_index" in updated:
+            updated.pop("order_index", None)
+    except Exception:
+        pass
+
+    # Modules payload (JSON string from modules_json hidden input)
+    modules_raw = (request.form.get("modules_json") or "[]").strip()
+    try:
+        modules_val = json.loads(modules_raw)
+        if isinstance(modules_val, list):
+            updated["modules"] = modules_val
+    except Exception:
+        # If parsing fails, leave modules untouched so we don't wipe existing content
+        pass
+
     ok = save_article(slug, updated)
     if not ok:
         abort(500)
 
-    return redirect(url_for("articles.article_view", slug=slug, _=updated["updated_at"]))
+    # If AJAX/fetch, return JSON to avoid redirect glitches
+    if request.headers.get("X-Requested-With") == "fetch":
+        public_url = url_for("public.article_detail", slug=slug)
+        return jsonify({"ok": True, "status": updated.get("status", "draft"), "public_url": public_url})
+
+    return redirect(url_for("admin.admin_lsl_edit", slug=slug, _=updated["updated_at"]))
+
+
+# Aliases under the new URL prefix
+@bp.get("/language-structures-and-lessons/<slug>/edit", endpoint="admin_lsl_edit")
+def admin_articles_edit_alias(slug: str):
+    return admin_articles_edit(slug)
+
+
+@bp.post("/language-structures-and-lessons/<slug>/edit", endpoint="admin_lsl_edit_post")
+def admin_articles_edit_post_alias(slug: str):
+    return admin_articles_edit_post(slug)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Audio upload endpoint for Example Blocks

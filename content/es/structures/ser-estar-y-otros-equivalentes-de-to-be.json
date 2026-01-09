@@ -444,9 +444,9 @@
           "type": "callout"
         },
         {
+          "data": {},
           "id": "rich_text-5",
-          "type": "rich_text",
-          "data": {}
+          "type": "rich_text"
         }
       ],
       "module_id": "m1s3-vision-general",
@@ -1158,6 +1158,27 @@
           "id": "m4s3-adjetivos-contraste_practice",
           "style_variant": "info",
           "type": "callout"
+        },
+        {
+          "id": "exercise-5",
+          "type": "exercise",
+          "data": {
+            "exercise_id": "mcq/ser-o-estar-adjetivos-1",
+            "exercise_type": "mcq",
+            "version": null,
+            "display": {
+              "show_title": true,
+              "show_instructions": true,
+              "width": "full"
+            },
+            "overrides": {
+              "prompt": {
+                "es": "",
+                "en": ""
+              },
+              "feedbackLocale": "es"
+            }
+          }
         }
       ],
       "module_id": "m4s3-adjetivos-contraste",

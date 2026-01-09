@@ -1,69 +1,110 @@
 <!-- templates/admin/articles_index.html -->
 {% extends "base.html" %}
-{% block title %}{{ title }}{% endblock %}
 {% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
 
 {% block content %}
-  <div class="ppx-card ppx-card--pad">
-    <div class="ppx-row" style="justify-content:space-between;">
-      <h1 class="ppx-h1" style="margin:0;">{{ t('Artículos', 'Articles', app_lang) }}</h1>
-      <a class="ppx-btn ppx-btn--primary" href="{{ url_for('admin.admin_articles_new') }}">{{ t('Nuevo', 'New', app_lang) }}</a>
+  {% set cur = status_filter or '' %}
+  {% set sections = grammar_sections or [] %}
+  {% set misc = grammar_misc or {} %}
+  {% set comm = comm_items or [] %}
+  <div class="ppx-card ppx-card--pad" style="margin-bottom:1rem;">
+    <div class="ppx-row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;">
+      <div>
+        <h1 class="ppx-h1" style="margin:0;">{{ t('Estructuras del idioma y lecciones', 'Language structures & lessons', app_lang) }}</h1>
+        <div class="ppx-muted">{{ t('Organiza referencias gramaticales y lecciones comunicativas.', 'Organize grammar references and communicative lessons.', app_lang) }}</div>
+      </div>
+      <a class="ppx-btn ppx-btn--primary" href="{{ url_for('admin.admin_lsl_new') }}">{{ t('Nuevo recurso', 'New resource', app_lang) }}</a>
     </div>
-
-    <!-- Filter bar -->
-    {% set cur = request.args.get('status', '') %}
-    <div class="ppx-row" style="margin-top:.75rem;">
+    <div class="ppx-row" style="gap:.5rem;margin-top:.75rem;flex-wrap:wrap;">
       <a class="ppx-btn {% if not cur %}ppx-btn--primary{% else %}ppx-btn--subtle{% endif %}" href="{{ url_for('admin.admin_articles_index') }}">{{ t('Todos', 'All', app_lang) }}</a>
       <a class="ppx-btn {% if cur == 'draft' %}ppx-btn--primary{% else %}ppx-btn--subtle{% endif %}" href="{{ url_for('admin.admin_articles_index', status='draft') }}">{{ t('Borrador', 'Draft', app_lang) }}</a>
       <a class="ppx-btn {% if cur == 'published' %}ppx-btn--primary{% else %}ppx-btn--subtle{% endif %}" href="{{ url_for('admin.admin_articles_index', status='published') }}">{{ t('Publicado', 'Published', app_lang) }}</a>
       <a class="ppx-btn {% if cur == 'archived' %}ppx-btn--primary{% else %}ppx-btn--subtle{% endif %}" href="{{ url_for('admin.admin_articles_index', status='archived') }}">{{ t('Archivado', 'Archived', app_lang) }}</a>
     </div>
+  </div>
 
-    {% if rows %}
-      <table class="ppx-table" style="margin-top:1rem;">
-        <thead>
-          <tr>
-            <th style="width:45%;">{{ t('Título', 'Title', app_lang) }}</th>
-            <th style="width:20%;">Slug</th>
-            <th style="width:15%;">{{ t('Estado', 'Status', app_lang) }}</th>
-            <th style="width:20%;">{{ t('Acciones', 'Actions', app_lang) }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for r in rows %}
-            {% set st = (r.status or 'draft')|lower %}
-            <tr>
-              <td><a class="ppx-link" href="{{ url_for('admin.admin_articles_edit', slug=r.slug) }}">{{ r.title }}</a></td>
-              <td><code>{{ r.slug }}</code></td>
-              <td>
-                <select class="ppx-select" data-action="status-article" data-slug="{{ r.slug }}" style="min-width:140px;">
-                  <option value="draft" {% if st == 'draft' %}selected{% endif %}>{{ t('Borrador', 'Draft', app_lang) }}</option>
-                  <option value="published" {% if st == 'published' %}selected{% endif %}>{{ t('Publicado', 'Published', app_lang) }}</option>
-                  <option value="archived" {% if st == 'archived' %}selected{% endif %}>{{ t('Archivado', 'Archived', app_lang) }}</option>
-                </select>
-              </td>
-              <td>
-                <div class="ppx-row" style="gap:6px; justify-content:flex-start; flex-wrap:wrap;">
-                  <a class="ppx-btn" href="{{ url_for('admin.admin_articles_edit', slug=r.slug) }}" title="{{ t('Editar', 'Edit', app_lang) }}" aria-label="{{ t('Editar', 'Edit', app_lang) }}" style="width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px;">
-                    <img src="{{ static_ver('assets/icons/edit.svg') }}" alt="" width="20" height="20">
-                  </a>
-                  <a class="ppx-btn" href="{{ url_for('admin.admin_articles_preview', slug=r.slug) }}" title="{{ t('Previsualizar', 'Preview', app_lang) }}" aria-label="{{ t('Previsualizar', 'Preview', app_lang) }}" style="width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px;">
-                    <img src="{{ static_ver('assets/icons/preview.svg') }}" alt="" width="20" height="20">
-                  </a>
-                  <form method="post" action="{{ url_for('admin.admin_articles_delete', slug=r.slug) }}" style="display:inline;" onsubmit="return confirm('{{ t('¿Eliminar este artículo? Esto no se puede deshacer.', 'Delete this article? This cannot be undone.', app_lang) }}');">
-                    <button class="ppx-btn ppx-btn--ghost" type="submit" title="{{ t('Eliminar', 'Delete', app_lang) }}" aria-label="{{ t('Eliminar', 'Delete', app_lang) }}" style="width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px;">
-                      <img src="{{ static_ver('assets/icons/delete.svg') }}" alt="" width="20" height="20">
-                    </button>
-                  </form>
-                </div>
-              </td>
-            </tr>
+  {% macro status_chip(st) -%}
+    {% set stl = (st or 'draft')|lower %}
+    <span class="ppx-chip {% if stl == 'published' %}ppx-chip--success{% elif stl == 'archived' %}ppx-chip--ghost{% else %}ppx-chip--draft{% endif %}">{{ stl }}</span>
+  {%- endmacro %}
+
+  {% macro item_row(item) -%}
+    {% set st = item.status or 'draft' %}
+    <div class="ppx-row" style="align-items:center;gap:.75rem;flex-wrap:wrap;justify-content:space-between;border:1px solid #e5e7eb;padding:.6rem .75rem;border-radius:12px;background:#fff;">
+      <div style="min-width:200px;flex:1;">
+        <div class="ppx-row" style="gap:.5rem;align-items:center;flex-wrap:wrap;">
+          {% if item.order_index %}<span class="ppx-pill" style="background:#eef2ff;color:#3730a3;">{{ item.order_index }}</span>{% endif %}
+          <a class="ppx-link" href="{{ url_for('admin.admin_lsl_edit', slug=item.slug) }}" style="font-weight:700;">{{ item.title }}</a>
+          <code style="font-size:.85rem;color:#475569;">{{ item.slug }}</code>
+          {{ status_chip(st) }}
+        </div>
+      </div>
+      <div class="ppx-row" style="gap:.35rem;flex-wrap:wrap;">
+        <select class="ppx-select" data-action="status-article" data-slug="{{ item.slug }}" style="min-width:130px;">
+          <option value="draft" {% if st == 'draft' %}selected{% endif %}>{{ t('Borrador', 'Draft', app_lang) }}</option>
+          <option value="published" {% if st == 'published' %}selected{% endif %}>{{ t('Publicado', 'Published', app_lang) }}</option>
+          <option value="archived" {% if st == 'archived' %}selected{% endif %}>{{ t('Archivado', 'Archived', app_lang) }}</option>
+        </select>
+        <a class="ppx-btn" href="{{ url_for('admin.admin_lsl_edit', slug=item.slug) }}">{{ t('Editar', 'Edit', app_lang) }}</a>
+        <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_lsl_preview', slug=item.slug) }}" target="_blank" rel="noopener">{{ t('Previsualizar', 'Preview', app_lang) }}</a>
+      </div>
+    </div>
+  {%- endmacro %}
+
+  <div class="ppx-stack-lg">
+    <div class="ppx-card ppx-card--pad">
+      <h2 class="ppx-h2" style="margin-top:0;">{{ t('Referencia gramatical', 'Grammar reference', app_lang) }}</h2>
+      {% set any_items = false %}
+      <div class="ppx-stack-md">
+        {% for sec in sections %}
+          {% if sec["items"] %}
+            {% set any_items = true %}
+            {% set sec_title = app_lang.startswith('en') and (sec.title_en or sec.title_es) or sec.title_es or sec.title_en %}
+            <div class="ppx-stack-sm" style="border:1px solid #e5e7eb;border-radius:14px;padding:1rem;background:#f9fafb;">
+              <div class="ppx-row" style="justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap;">
+                <div class="ppx-h3" style="margin:0;">{{ sec_title }}</div>
+                <span class="ppx-pill">{{ sec["items"]|length }} {{ t('recursos','resources',app_lang) }}</span>
+              </div>
+              <div class="ppx-stack-sm">
+                {% for item in sec["items"] %}
+                  {{ item_row(item) }}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+        {% if misc.get("items") %}
+          {% set any_items = true %}
+          <div class="ppx-stack-sm" style="border:1px dashed #e5e7eb;border-radius:14px;padding:1rem;background:#fff;">
+            <div class="ppx-row" style="justify-content:space-between;align-items:center;">
+              <div class="ppx-h3" style="margin:0;">{{ t('Sin secci¢n', 'No section', app_lang) }}</div>
+              <span class="ppx-pill">{{ misc["items"]|length }} {{ t('recursos','resources',app_lang) }}</span>
+            </div>
+            <div class="ppx-stack-sm">
+              {% for item in misc["items"] %}
+                {{ item_row(item) }}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        {% if not any_items %}
+          <p class="ppx-muted" style="margin:0;">{{ t('No hay referencias gramaticales aτ.', 'No grammar references yet.', app_lang) }}</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ppx-card ppx-card--pad">
+      <h2 class="ppx-h2" style="margin-top:0;">{{ t('Lecciones comunicativas', 'Communicative lessons', app_lang) }}</h2>
+      {% if comm %}
+        <div class="ppx-stack-sm">
+          {% for item in comm %}
+            {{ item_row(item) }}
           {% endfor %}
-        </tbody>
-      </table>
-    {% else %}
-      <p class="ppx-muted" style="margin-top:1rem;">{{ t('No hay artículos aún.', 'No articles yet.', app_lang) }}</p>
-    {% endif %}
+        </div>
+      {% else %}
+        <p class="ppx-muted">{{ t('No hay lecciones comunicativas aτ.', 'No communicative lessons yet.', app_lang) }}</p>
+      {% endif %}
+    </div>
   </div>
 {% endblock %}
 
@@ -94,4 +135,3 @@
     })();
   </script>
 {% endblock %}
-

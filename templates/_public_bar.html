@@ -40,10 +40,8 @@
           <style>
             #ppx-public-bar ul[data-menu="primary"] li a span:first-child { display:inline-block; width:18px; height:18px; background-size:contain; background-repeat:no-repeat; background-position:center; text-indent:-9999px; overflow:hidden; }
             #ppx-public-bar ul[data-menu="primary"] li:nth-child(1) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/homepage.svg') }}'); }
-            #ppx-public-bar ul[data-menu="primary"] li:nth-child(2) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/articlespage.svg') }}'); }
-            #ppx-public-bar ul[data-menu="primary"] li:nth-child(3) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/exercisespage.svg') }}'); }
-            #ppx-public-bar ul[data-menu="primary"] li:nth-child(4) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/glossariespage.svg') }}'); }
-          </style>
+            #ppx-public-bar ul[data-menu="primary"] li:nth-child(2) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/glossariespage.svg') }}'); }
+</style>
           <ul data-menu="primary" style="list-style:none; margin:0; padding:.25rem;">
             <li>
               <a href="{{ url_for('public.index') }}" role="menuitem" style="
@@ -53,26 +51,6 @@
               " onmouseover="this.style.background='#f3f4ff';"
                  onmouseout="this.style.background='transparent';">
                 <span>🏠</span><span>{{ t('Inicio', 'Home', app_lang) }}</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{ url_for('public.articles_index') }}" role="menuitem" style="
-                display:flex; align-items:center; gap:.5rem;
-                text-decoration:none; color:var(--ppx-color-text,#0f172a);
-                padding:.45rem .6rem; border-radius:8px;
-              " onmouseover="this.style.background='#f3f4ff';"
-                 onmouseout="this.style.background='transparent';">
-                <span>📝</span><span>{{ t('Artículos y guías', 'Articles & Guides', app_lang) }}</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{ url_for('public.exercises_index') }}" role="menuitem" style="
-                display:flex; align-items:center; gap:.5rem;
-                text-decoration:none; color:var(--ppx-color-text,#0f172a);
-                padding:.45rem .6rem; border-radius:8px;
-              " onmouseover="this.style.background='#f3f4ff';"
-                 onmouseout="this.style.background='transparent';">
-                <span>🎯</span><span>{{ t('Ejercicios en línea', 'Online Exercises', app_lang) }}</span>
               </a>
             </li>
             <li>
@@ -134,4 +112,32 @@
       </details>
     </div>
   </div>
+<script>
+  (function () {
+    const bar = document.getElementById("ppx-public-bar");
+    if (!bar) return;
+
+    const dropdowns = Array.from(bar.querySelectorAll("details"));
+
+    function closeAll(except) {
+      dropdowns.forEach((d) => {
+        if (d !== except) d.removeAttribute("open");
+      });
+    }
+
+    // When one dropdown opens, close the others
+    dropdowns.forEach((d) => {
+      d.addEventListener("toggle", () => {
+        if (d.open) closeAll(d);
+      });
+    });
+
+    // Click anywhere outside the bar closes all dropdowns
+    document.addEventListener("click", (e) => {
+      if (!bar.contains(e.target)) {
+        closeAll(null);
+      }
+    });
+  })();
+</script>
 </nav>

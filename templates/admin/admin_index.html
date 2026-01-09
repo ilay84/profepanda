@@ -17,22 +17,22 @@
 
     <!-- Dashboard Grid -->
     <div class="ppx-dashboard-grid" style="--ppx-dash-card-w: 240px; --ppx-dash-card-h: 140px; --ppx-dash-gap: 2rem;">
-      <!-- Articles -->
-      <a href="/admin/articles/" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
+      <!-- Language Structures & Lessons -->
+      <a href="/admin/language-structures-and-lessons/" class="ppx-card ppx-dashboard-card ppx-focusable" style="text-decoration:none;">
         <div>
           <div style="margin-bottom:.35rem;">
             <img alt="" src="{{ url_for('static', filename='assets/icons/articles.svg') }}" style="width:28px; height:28px; display:block;" loading="lazy">
             <div class="ppx-h2" data-i18n-key="admin.cards.articles.title" style="margin-top:.35rem;">
-              {{ ui('admin.cards.articles.title', app_lang, False) or t('Artículos', 'Articles', app_lang) }}
+              {{ ui('admin.cards.articles.title', app_lang, False) or t('Estructuras del idioma y lecciones', 'Language structures & lessons', app_lang) }}
             </div>
           </div>
           <div class="ppx-muted" data-i18n-key="admin.cards.articles.body">
-            {{ ui('admin.cards.articles.body', app_lang, False) or t('Crear y editar contenido bilingüe.', 'Create and edit bilingual content.', app_lang) }}
+            {{ ui('admin.cards.articles.body', app_lang, False) or t('Crea y edita guías de estructuras y lecciones comunicativas.', 'Create/edit language structures guides and communicative lessons.', app_lang) }}
           </div>
         </div>
         <div class="ppx-row">
           <span class="ppx-pill" data-i18n-key="admin.cards.articles.view">
-            {{ ui('admin.cards.articles.view', app_lang, False) or t('Ver artículos', 'View articles', app_lang) }}
+            {{ ui('admin.cards.articles.view', app_lang, False) or t('Ver contenido', 'View content', app_lang) }}
           </span>
         </div>
       </a>

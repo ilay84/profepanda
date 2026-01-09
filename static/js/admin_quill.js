@@ -77,9 +77,11 @@
     var id = 'ppx-color-' + kindClass + '-' + uid();
     var initFore = BRAND_COLORS[1] || '#475dd7';
     var initBack = BRAND_COLORS[0] || '#80ac5f';
-    var icon = kindClass === 'ppx-fore'
-      ? '<span class="ppx-icon-fore" style="color:'+initFore+'">A</span>'
-      : '<span class="ppx-icon-back" style="background:'+initBack+'"></span>';
+    var iconPath = kindClass === 'ppx-fore'
+      ? '/static/assets/icons-quill/quill-text-color.svg.svg'
+      : '/static/assets/icons-quill/quill-background-color.svg';
+    var swatchColor = kindClass === 'ppx-fore' ? initFore : initBack;
+    var icon = '<span class="ppx-color-icon-wrap"><img src="'+iconPath+'" alt="'+kindLabel+'" width="18" height="18"><span class="ppx-color-swatch" style="background:'+swatchColor+';"></span></span>';
     var btn = '<button class="ppx-btn-mini ppx-color-btn '+kindClass+'" type="button" aria-expanded="false" aria-controls="'+id+'" title="'+kindLabel+'">'+icon+'<span class="ppx-color-label">'+kindLabel+'</span></button>';
     var chips = BRAND_COLORS.concat(COMMON_COLORS).map(function (hex) {
       return '<button class="ppx-chip" type="button" data-hex="'+hex+'" title="'+hex+'" style="background:'+hex+'"></button>';
@@ -131,10 +133,10 @@
 
       // Inline styles
       group([
-        '<button type="button" class="ppx-btn-mini ppx-bold" title="Bold (Ctrl+B)"><b>B</b></button>',
-        '<button type="button" class="ppx-btn-mini ppx-italic" title="Italic (Ctrl+I)"><i>I</i></button>',
-        '<button type="button" class="ppx-btn-mini ppx-underline" title="Underline (Ctrl+U)"><u>U</u></button>',
-        '<button type="button" class="ppx-btn-mini ppx-strike" title="Strike"><s>S</s></button>'
+        '<button type="button" class="ppx-btn-mini ppx-bold" title="Bold (Ctrl+B)"><img src="/static/assets/icons-quill/quill-bold.svg.svg" alt="Bold" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-italic" title="Italic (Ctrl+I)"><img src="/static/assets/icons-quill/quill-italic.svg" alt="Italic" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-underline" title="Underline (Ctrl+U)"><img src="/static/assets/icons-quill/quill-underline.svg" alt="Underline" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-strike" title="Strike"><img src="/static/assets/icons-quill/quill-strikethrough.svg" alt="Strike" width="18" height="18"></button>'
       ].join('')),
 
       // Colors (palette + hex) with visual cues
@@ -145,45 +147,45 @@
 
       // Alignment (line icons)
       group([
-        '<button type="button" class="ppx-btn-mini ppx-left" title="Align left">'+svgAlign('left')+'</button>',
-        '<button type="button" class="ppx-btn-mini ppx-center" title="Align center">'+svgAlign('center')+'</button>',
-        '<button type="button" class="ppx-btn-mini ppx-right" title="Align right">'+svgAlign('right')+'</button>'
+        '<button type="button" class="ppx-btn-mini ppx-left" title="Align left"><img src="/static/assets/icons-quill/quill-allign-left.svg" alt="Align left" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-center" title="Align center"><img src="/static/assets/icons-quill/quill-allign-center.svg" alt="Align center" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-right" title="Align right"><img src="/static/assets/icons-quill/quill-allign-right.svg" alt="Align right" width="18" height="18"></button>'
       ].join('')),
 
       // Lists (vertical icons)
       group([
-        '<button type="button" class="ppx-btn-mini ppx-ul" title="Bulleted list">'+svgBullets()+'</button>',
-        '<button type="button" class="ppx-btn-mini ppx-ol" title="Numbered list">'+svgNumbers()+'</button>'
+        '<button type="button" class="ppx-btn-mini ppx-ul" title="Bulleted list"><img src="/static/assets/icons-quill/quill-bulleted-list.svg" alt="Bulleted list" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-ol" title="Numbered list"><img src="/static/assets/icons-quill/quill-numbered-list.svg" alt="Numbered list" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-insert-table" title="Insert table"><img src="/static/assets/icons-quill/quill-table.svg" alt="Insert table" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-delete-table" title="Remove table"><img src="/static/assets/icons-quill/quill-delete-table.svg" alt="Remove table" width="18" height="18"></button>'
       ].join('')),
 
       // Links, quote & embed (replaces code)
       group([
-        '<button type="button" class="ppx-btn-mini ppx-link" title=\"Insert link (Ctrl+K)\">🔗</button>',
-        '<button type="button" class="ppx-btn-mini ppx-unlink" title="Remove link">❌🔗</button>',
-        '<button type="button" class="ppx-btn-mini ppx-quote" title="Blockquote">❝ ❞</button>',
-        '<button type="button" class="ppx-btn-mini ppx-embed" title="Insert embed (YouTube/Canva/H5P)">Embed</button>'
+        '<button type="button" class="ppx-btn-mini ppx-link" title="Insert link (Ctrl+K)"><img src="/static/assets/icons-quill/quill-link.svg" alt="Link" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-unlink" title="Remove link"><img src="/static/assets/icons-quill/quill-link-remove.svg" alt="Unlink" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-quote" title="Blockquote"><img src="/static/assets/icons-quill/quill-italic.svg" alt="Quote" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-embed" title="Insert embed (YouTube/Canva/H5P)"><img src="/static/assets/icons-quill/quill-embed.svg" alt="Embed" width="18" height="18"></button>'
       ].join('')),
 
       // Clean / undo / redo
       group([
-        '<button type="button" class="ppx-btn-mini ppx-clean" title="Remove formatting">⌫Fmt</button>',
-        '<button type="button" class="ppx-btn-mini ppx-undo" title="Undo">↶</button>',
-        '<button type="button" class="ppx-btn-mini ppx-redo" title="Redo">↷</button>'
+        '<button type="button" class="ppx-btn-mini ppx-clean" title="Remove formatting"><img src="/static/assets/icons-quill/quill-clear-formatting.svg" alt="Clear" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-undo" title="Undo"><img src="/static/assets/icons-quill/quill-undo.svg.svg" alt="Undo" width="18" height="18"></button>',
+        '<button type="button" class="ppx-btn-mini ppx-redo" title="Redo"><img src="/static/assets/icons-quill/quill-redo.svg.svg" alt="Redo" width="18" height="18"></button>'
       ].join('')),
 
       // Insert Example block
       group([
-        '<button class="ppx-btn ppx-btn--sm ppx-insert-example" type="button" title="Insert example block">Example</button>'
+        '<button class="ppx-btn ppx-btn--sm ppx-insert-example" type="button" title="Insert example block"><img src="/static/assets/icons-quill/quill-example.svg" alt="Example" width="22" height="22"></button>'
       ].join('')),
 
-      // Insert accordion (with chevron)
       group([
-        '<button class="ppx-btn ppx-btn--sm ppx-insert-acc" type="button" title="Insert accordion">Acc '+svgChevronDown()+'</button>'
+        '<button class="ppx-btn ppx-btn--sm ppx-insert-acc" type="button" title="Insert accordion"><img src="/static/assets/icons-quill/quill-accordion.svg" alt="Accordion" width="22" height="22"></button>'
       ].join('')),
 
-      // Insert exercise reference (picker)
       group([
-        '<button class="ppx-btn ppx-btn--sm ppx-insert-exref" type="button" title="'+L('+ ejercicio','+ exercise')+'">'+L('+ ejercicio','+ exercise')+'</button>'
+        '<button class="ppx-btn ppx-btn--sm ppx-insert-exref" type="button" title="'+L('+ ejercicio','+ exercise')+'"><img src="/static/assets/icons-quill/quill-exercise.svg" alt="'+L('+ ejercicio','+ exercise')+'" width="22" height="22"></button>'
       ].join(''))
     ].join('');
 
@@ -218,8 +220,8 @@
       '.ppx-color-wrap{position:relative;display:inline-flex;align-items:center}' +
       '.ppx-color-btn{gap:.4rem}' +
       '.ppx-color-label{font:600 11px/1 Montserrat,system-ui}' +
-      '.ppx-icon-fore{display:inline-block;font-weight:700;font-size:14px;line-height:1}' +
-      '.ppx-icon-back{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid #e5e7eb}' +
+      '.ppx-color-icon-wrap{display:inline-flex;align-items:center;gap:6px}' +
+      '.ppx-color-swatch{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid #e5e7eb}' +
       '.ppx-color-pop{position:absolute;top:110%;left:0;z-index:50;background:#fff;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.08);padding:.5rem;min-width:220px;display:none}' +
       '.ppx-color-pop[aria-hidden="false"]{display:block}' +
       '.ppx-chip-row{display:grid;grid-template-columns:repeat(14,14px);gap:6px;margin:.25rem 0 .5rem}' +
@@ -294,18 +296,22 @@
 
   function exampleHTML(){
     return '' +
-      '<div class="ppx-example" data-ex="example">' +
+      '<div class="ppx-example" data-ex="example" data-has-audio="false">' +
         '<div class="ppx-block-tools">' +
           '<button type="button" class="ppx-block-del" title="Eliminar">✕</button>' +
           '<button type="button" class="ppx-block-after" title="Agregar línea debajo">↩︎</button>' +
         '</div>' +
         '<div class="ppx-ex">' +
-          '<button type="button" class="ppx-ex-audio" title="Cargar o reproducir audio" contenteditable="false" data-url="">'+
-            '<img class="ppx-ex-icon" src="'+ICON_PLAY+'" alt="" width="18" height="18">'+
+          '<button type="button" class="ppx-ex-audio ppx-ex-audio-play" title="Reproducir audio" contenteditable="false" data-url="" style="display:none;">' +
+            '<img class="ppx-ex-icon" src="'+ICON_PLAY+'" alt="" width="18" height="18">' +
           '</button>' +
+          '<button type="button" class="ppx-ex-audio-add" title="Adjuntar audio" contenteditable="false">' +
+            '<img class="ppx-ex-icon" src="'+ICON_PLAY+'" alt="" width="18" height="18">' +
+          '</button>' +
+          '<button type="button" class="ppx-ex-translate" title="Traducir" contenteditable="false">🌐</button>' +
           '<div class="ppx-ex-lines">' +
             '<div class="ppx-ex-sentence" contenteditable="true"><b>Escribí tu ejemplo acá…</b></div>' +
-            '<div class="ppx-ex-translation" contenteditable="true"><i>Write the translation here…</i></div>' +
+            '<div class="ppx-ex-translation" contenteditable="true" style="display:none;"><i>Write the translation here…</i></div>' +
           '</div>' +
         '</div>' +
       '</div><p><br></p>';
@@ -334,7 +340,10 @@
             '<div class="ppx-exref-ico" aria-hidden="true"><img src="/static/assets/icons/pp_exercise.svg" alt="" width="72" height="72" loading="lazy" decoding="async" fetchpriority="low"></div>'+
             '<div class="ppx-exref-main">'+
               '<div class="ppx-exref-label">'+label+'</div>'+
-              '<div class="ppx-exref-title">'+title+'</div>'+
+              '<div class="ppx-exref-title-row">'+
+                '<div class="ppx-exref-title">'+title+'</div>'+
+                '<button type="button" class="ppx-exref-translate" data-title-en="'+(item && (item.title_en||''))+'" title="'+L('Ver traducción','View translation')+'" aria-label="'+L('Ver traducción','View translation')+'">🌐</button>'+
+              '</div>'+
               '<div class="ppx-exref-meta">'+
                 '<div class="ppx-exref-meta-row"><span class="ppx-exref-meta-k">'+L('Tipo:','Type:')+'</span> <span class="ppx-pill ppx-pill--type">'+typeLabel(t)+'</span></div>'+
                 (level ? '<div class="ppx-exref-meta-row"><span class="ppx-exref-meta-k">'+L('Nivel:','Level:')+'</span> <span class="ppx-pill ppx-pill--level">'+level+'</span></div>' : '')+
@@ -744,17 +753,33 @@
       var css = document.createElement('style');
       css.textContent =
       '.ppx-example,.ppx-acc,.ppx-exref{position:relative;width:100%;text-align:left !important;margin-left:0;margin-right:0}' +
+        '.ppx-example{background:transparent;border:0;padding:0;margin:0}' +
         '.ppx-editor-wrap{width:100% !important;max-width:none !important;margin:0 !important}' +
-        /* force left alignment + horizontal text flow inside editor accordions */
-        '.ppx-acc, .ppx-acc *{ text-align:left !important; writing-mode: horizontal-tb !important; direction:ltr !important }' +
-        /* ensure inner parts also render left-aligned to match public */
-        '.ppx-acc-head,.ppx-acc-body,.ppx-ex{ text-align:left !important }' +
-        '.ppx-acc-head-text{min-width:0; display:block; white-space:normal; overflow-wrap:anywhere; word-break:normal}' +
+        /* Accordion: match public visuals */
+        '.ppx-accordion, .ppx-acc{width:100%;max-width:100%;box-sizing:border-box;margin:0 0 1rem 0;}' +
+        '.ppx-acc{display:block;border:1px solid #e5e7eb;border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.04);overflow:hidden;padding:0;}' +
+        '.ppx-acc-head{list-style:none;cursor:text;display:grid;grid-template-columns:22px 1fr;align-items:center;gap:.75rem;padding:1rem 1.25rem;color:#0f172a;background:#fff;outline:none;user-select:contain;}' +
+        '.ppx-acc-head::before{display:none}' +
+        '.ppx-acc-toggle{grid-column:1;justify-self:center;align-self:center;width:18px;height:18px;border:0;background:currentColor;color:#6c606c;cursor:pointer;padding:0;opacity:.95;-webkit-mask:url("data:image/svg+xml,%3Csvg viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M5 7l5 6 5-6\' fill=\'none\' stroke=\'%23000\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M5 7l5 6 5-6\' fill=\'none\' stroke=\'%23000\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E") center/contain no-repeat}' +
+        '.ppx-acc-head-text{min-width:0;grid-column:2;display:block;white-space:normal;overflow-wrap:anywhere;word-break:break-word;font-weight:600;text-align:left !important;}' +
         '.ppx-acc-head-text strong, .ppx-acc-head-text em{ display:inline; white-space:normal }' +
+        '.ppx-acc-body{background:#fff;color:#0f172a;border-top:1px solid #e5e7eb;padding:0 1.25rem 1.25rem 1.25rem;}' +
+        '.ppx-acc-body .ql-editor{padding:0;text-align:left !important;width:100% !important;max-width:100% !important;margin:0 !important;}' +
+        '.ppx-acc-body .ql-editor *{ text-align:left !important; margin-left:0 !important; margin-right:0 !important; }' +
+        '.ppx-acc-body .ql-editor p{ margin:0 0 1rem 0 !important; }' +
+        '.ppx-acc-body .ql-editor hr{ margin-left:0 !important; margin-right:0 !important; }' +
         /* mirror public grid for example blocks so editor matches published view */
-        '.ppx-example .ppx-ex{display:grid;grid-template-columns:44px 1fr;grid-auto-rows:auto;column-gap:12px;align-items:start;justify-items:start;justify-content:start;width:100%;min-width:0;margin:0;padding:0;max-width:none;box-sizing:border-box}' +
-        '.ppx-example .ppx-ex-audio{grid-column:1;grid-row:1 / span 2;justify-self:start;align-self:center}' +
-        '.ppx-example .ppx-ex-lines{grid-column:2;grid-row:1 / span 2;display:flex;flex-direction:column;gap:.25rem;align-items:flex-start;text-align:left;min-width:0;justify-self:start}' +
+        '.ppx-example .ppx-ex{display:grid;grid-template-columns:auto 1fr;grid-auto-rows:auto;column-gap:10px;align-items:center;justify-items:start;justify-content:start;width:100%;max-width:100%;min-width:0;margin:0;padding:10px;border:1px solid #d6d9f5;border-radius:10px;box-sizing:border-box;background:#fff}' +
+        '.ppx-example .ppx-ex-lines{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:.15rem;align-items:flex-start;text-align:left;min-width:0;justify-self:start}' +
+        '.ppx-example .ppx-ex-translation{display:none;}' +
+        '.ppx-example[data-has-audio="false"] .ppx-ex-audio-play{display:none!important;}' +
+        '.ppx-example[data-has-audio="true"] .ppx-ex-audio-add{display:none!important;}' +
+        '.ppx-ex-audio-add,.ppx-ex-audio-play{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid #d6d9f5;border-radius:50%;background:#fff;cursor:pointer;padding:0}' +
+        '.ppx-ex-audio-add:hover,.ppx-ex-audio-play:hover{background:#eef2ff}' +
+        '.ppx-ex-translate{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid #d6d9f5;border-radius:50%;background:#fff;cursor:pointer;padding:0;margin-right:4px;font-size:12px;line-height:1}' +
+        '.ppx-ex-translate:hover{background:#eef2ff}' +
+        '.ppx-ex-translate{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid #d6d9f5;border-radius:50%;background:#fff;cursor:pointer;padding:0;margin-right:4px;font-size:12px;line-height:1}' +
+        '.ppx-ex-translate:hover{background:#eef2ff}' +
         '.ppx-block-tools{position:absolute;top:6px;right:6px;display:flex;gap:6px;opacity:0;transition:opacity .2s ease;z-index:10}' +
       '.ppx-example:hover .ppx-block-tools,.ppx-acc:hover .ppx-block-tools,.ppx-exref:hover .ppx-block-tools{opacity:1}' +
         '.ppx-block-tools button{font:700 11px/1 Montserrat,system-ui;padding:.25rem .4rem;border:1px solid #e5e7eb;border-radius:8px;background:#fff;cursor:pointer}' +
@@ -777,11 +802,14 @@
       '.ppx-exref-card{display:flex;align-items:center;justify-content:space-between;gap:.75rem;width:100%;padding:1rem 1.25rem;border:0;background:#fff;text-align:left;cursor:default}' +
       '.ppx-exref-left{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;min-width:0}' +
       '.ppx-exref-label{font:700 12px/1 Montserrat,system-ui;color:#475dd7}' +
+      '.ppx-exref-title-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}' +
       '.ppx-exref-title{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:48ch}' +
+      '.ppx-exref-translate{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid #d6d9f5;border-radius:50%;background:#fff;cursor:pointer;font-size:12px;line-height:1;padding:0}' +
+      '.ppx-exref-translate:hover{background:#eef2ff}' +
       '.ppx-exref-right{display:inline-flex;align-items:center;gap:.35rem}' +
       '.ppx-exref .ppx-pill{font:700 11px/1 Montserrat,system-ui;padding:.15rem .45rem;border-radius:999px;background:#eef2ff;color:#3730a3}' +
       '';
-    document.head.appendChild(css);
+      document.head.appendChild(css);
     })();
 
     function addBlockTools(el){
@@ -1292,7 +1320,7 @@
     }, true);
 
     toolbar.addEventListener('click', function (e) {
-      var t = e.target;
+      var t = e.target && e.target.closest ? e.target.closest('button') || e.target : e.target;
 
       // Color swatch click
       if (t.classList.contains('ppx-chip')) {
@@ -1324,6 +1352,8 @@
               if (document.queryCommandSupported && document.queryCommandSupported('foreColor')) { try { document.execCommand('foreColor', false, '#0f172a'); } catch(_){} }
               clearStyleInRange(range, 'color');
             }
+            var swatchClear = wrap.querySelector('.ppx-color-swatch');
+            if (swatchClear) swatchClear.style.background = kind === 'ppx-back' ? '#ffffff' : '#0f172a';
           } catch(_){}
           closeAllPops();
           e.preventDefault();
@@ -1331,13 +1361,14 @@
         }
         if (hex && wrap) {
           restoreSelection();
+          var swatch = wrap.querySelector('.ppx-color-swatch');
           if (wrap.getAttribute('data-kind') === 'ppx-fore') {
             cmd('foreColor', hex);
-            var iconF = wrap.querySelector('.ppx-icon-fore'); if (iconF) iconF.style.color = hex;
+            if (swatch) swatch.style.background = hex;
           } else {
             if (document.queryCommandSupported('hiliteColor')) cmd('hiliteColor', hex);
             else cmd('backColor', hex);
-            var iconB = wrap.querySelector('.ppx-icon-back'); if (iconB) iconB.style.background = hex;
+            if (swatch) swatch.style.background = hex;
           }
           closeAllPops();
         }
@@ -1477,7 +1508,48 @@
         });
         e.preventDefault();
         return;
-      }if (t.classList.contains('ppx-bold'))   { cmd('bold'); updateActiveStates(); e.preventDefault(); return; }
+      }
+
+      // Table insert
+      if (t.classList.contains('ppx-insert-table') || (t.closest && t.closest('.ppx-insert-table'))) {
+        var snippet = '<table><thead><tr><th>'+L('Encabezado 1','Header 1')+'</th><th>'+L('Encabezado 2','Header 2')+'</th></tr></thead><tbody><tr><td>'+L('Fila 1, Col 1','Row 1, Col 1')+'</td><td>'+L('Fila 1, Col 2','Row 1, Col 2')+'</td></tr></tbody></table>';
+        var tmpT = document.createElement('div'); tmpT.innerHTML = snippet;
+        var fragT = document.createDocumentFragment();
+        while (tmpT.firstChild) fragT.appendChild(tmpT.firstChild);
+        var selT = window.getSelection();
+        if (selT && selT.rangeCount) {
+          var rT = selT.getRangeAt(0);
+          rT.deleteContents();
+          rT.insertNode(fragT);
+        } else {
+          editor.appendChild(fragT);
+        }
+        // place caret after table
+        var tableLast = editor.querySelector('table:last-of-type');
+        if (tableLast) placeCaretEnd(tableLast);
+        e.preventDefault();
+        return;
+      }
+
+      if (t.classList.contains('ppx-delete-table') || (t.closest && t.closest('.ppx-delete-table'))) {
+        var selTable = null;
+        var sel = window.getSelection();
+        if (sel && sel.anchorNode) {
+          var node = sel.anchorNode;
+          while (node && node !== editor) {
+            if (node.nodeName && node.nodeName.toLowerCase() === 'table') { selTable = node; break; }
+            node = node.parentNode;
+          }
+        }
+        // Only delete if a table is actively selected/inside
+        if (selTable) {
+          selTable.parentNode.removeChild(selTable);
+        }
+        e.preventDefault();
+        return;
+      }
+
+      if (t.classList.contains('ppx-bold'))   { cmd('bold'); updateActiveStates(); e.preventDefault(); return; }
       if (t.classList.contains('ppx-italic')) { cmd('italic'); updateActiveStates(); e.preventDefault(); return; }
       if (t.classList.contains('ppx-underline')) { cmd('underline'); updateActiveStates(); e.preventDefault(); return; }
       if (t.classList.contains('ppx-strike')) { cmd('strikeThrough'); updateActiveStates(); e.preventDefault(); return; }
@@ -1600,13 +1672,14 @@
         if (!/^#?[0-9a-fA-F]{6}$/.test(val)) return;
         var hex = val[0] === '#' ? val : ('#' + val);
         restoreSelection();
+        var swatchHex = wrap.querySelector('.ppx-color-swatch');
         if (wrap.getAttribute('data-kind') === 'ppx-fore') {
           document.execCommand('foreColor', false, hex);
-          var iconF = wrap.querySelector('.ppx-icon-fore'); if (iconF) iconF.style.color = hex;
+          if (swatchHex) swatchHex.style.background = hex;
         } else {
           if (document.queryCommandSupported('hiliteColor')) document.execCommand('hiliteColor', false, hex);
           else document.execCommand('backColor', false, hex);
-          var iconB = wrap.querySelector('.ppx-icon-back'); if (iconB) iconB.style.background = hex;
+          if (swatchHex) swatchHex.style.background = hex;
         }
         input.value = '';
         pop.setAttribute('aria-hidden','true');
@@ -1703,12 +1776,45 @@
 
     // Audio button behavior (upload or play/pause)
     editor.addEventListener('click', function (e) {
-      var btn = e.target.closest && e.target.closest('.ppx-ex-audio');
+      var btn = e.target.closest && (e.target.closest('.ppx-ex-audio-play') || e.target.closest('.ppx-ex-audio-add'));
       if (!btn) return;
       e.preventDefault();
 
-      var url = btn.getAttribute('data-url') || '';
-      var player = btn._ppxPlayer;
+      var example = btn.closest && btn.closest('.ppx-example');
+      var playBtn = example ? example.querySelector('.ppx-ex-audio-play') : null;
+      var addBtn  = example ? example.querySelector('.ppx-ex-audio-add')  : null;
+
+      var playTarget = playBtn || btn;
+      var url = playTarget.getAttribute('data-url') || '';
+      var player = playTarget._ppxPlayer;
+
+      // ALT+click on play removes audio
+      if (e.altKey && url) {
+        playTarget.setAttribute('data-url','');
+        if (playBtn) playBtn.style.display = 'none';
+        if (addBtn) addBtn.style.display = '';
+        if (example) example.setAttribute('data-has-audio','false');
+        playTarget._ppxPlayer = null;
+        return;
+      }
+
+      // If no URL yet or the attach button was clicked: allow paste URL, else fall through to upload
+      if (!url || (addBtn && btn === addBtn)) {
+        var pasted = prompt('Pega una URL de audio o deja en blanco para subir un archivo:');
+        if (pasted && pasted.trim()) {
+          url = pasted.trim();
+          if (playBtn) {
+            playBtn.setAttribute('data-url', url);
+            playBtn.style.display = '';
+            playBtn._ppxPlayer = new Audio(url);
+          }
+          if (addBtn) addBtn.style.display = 'none';
+          if (example) example.setAttribute('data-has-audio', 'true');
+          return;
+        }
+        // otherwise, continue to upload flow below
+      }
+
       if (url && player) {
         if (player.paused) {
           player.play().catch(function(){});
@@ -1737,40 +1843,62 @@
 
         btn.disabled = true;
         var originalHTML = btn.innerHTML;
-        btn.innerHTML = '…';
+        btn.innerHTML = '.';
 
         uploadAudioForArticle(slug, f, 'ejemplo').then(function(res){
           var ok = (res.status >= 200 && res.status < 300) && res.json && res.json.ok;
           if (!ok) {
             alert('Error subiendo audio: ' + (res.json && res.json.error));
-            if (iconEl) { iconEl.src = originalSrc; iconEl.style.opacity = ''; }
             btn.disabled = false;
+            btn.innerHTML = originalHTML;
             return;
           }
           var audioURL = res.json.url;
-          btn.setAttribute('data-url', audioURL);
+          if (playBtn) {
+            playBtn.setAttribute('data-url', audioURL);
+            playBtn.style.display = '';
+          } else {
+            btn.setAttribute('data-url', audioURL);
+          }
+          if (addBtn) addBtn.style.display = 'none';
+          if (example) example.setAttribute('data-has-audio', 'true');
 
           var a = new Audio(audioURL);
           a.preload = 'none';
-          btn._ppxPlayer = a;
+          if (playBtn) playBtn._ppxPlayer = a; else btn._ppxPlayer = a;
 
           a.play().then(function(){
-            if (iconEl) { iconEl.src = ICON_PAUSE; iconEl.style.opacity = ''; }
             btn.classList.add('is-playing');
-            a.onended = function(){ btn.classList.remove('is-playing'); if (iconEl) iconEl.src = ICON_PLAY; };
-          }).catch(function(){
-            if (iconEl) { iconEl.src = ICON_PLAY; iconEl.style.opacity = ''; }
-          }).finally(function(){
+            a.onended = function(){ btn.classList.remove('is-playing'); var _i2 = btn.querySelector('img.ppx-ex-icon'); if (_i2) _i2.src = ICON_PLAY; };
+          }).catch(function(){ btn.innerHTML = originalHTML; }).finally(function(){
             btn.disabled = false;
           });
         }).catch(function(){
           alert('No se pudo subir el audio.');
-          if (iconEl) { iconEl.src = originalSrc; iconEl.style.opacity = ''; }
           btn.disabled = false;
+          btn.innerHTML = originalHTML;
         });
       });
       input.click();
     });
+
+    // Example translate chip
+    editor.addEventListener('click', function (e) {
+      var t = e.target.closest && e.target.closest('.ppx-ex-translate');
+      if (!t) return;
+      e.preventDefault();
+
+      var ex = t.closest('.ppx-example');
+      if (!ex) return;
+      var tgt = ex.querySelector('.ppx-ex-translation');
+      var tgtText = tgt ? tgt.innerHTML : '';
+
+      // Replace this prompt with your modal call if available
+      var newHTML = prompt('Traducción / Translation:', (tgtText || '').replace(/<[^>]+>/g,'').trim());
+      if (newHTML !== null && tgt) {
+        tgt.innerHTML = newHTML;
+      }
+    });    
 
     // Keep button highlights in sync with caret moves/typing
     document.addEventListener('selectionchange', updateActiveStates);
@@ -1957,12 +2085,3 @@
     }
   });
 })();
-
-
-
-
-
-
-
-
-

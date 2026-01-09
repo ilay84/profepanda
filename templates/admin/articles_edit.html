@@ -4,6 +4,13 @@
 {% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
 
 {% block head %}
+{% include "_ppx_head_assets.html" %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/ppx-modal.css') }}?v=20251212c">
+  <script defer src="{{ url_for('static', filename='js/ppx-modal.js') }}?v=20251212c"></script>
+  <!-- Lightweight HTML<->Markdown helpers -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.2.0/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/turndown@7.1.2/dist/turndown.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/turndown-plugin-gfm@1.0.2/dist/turndown-plugin-gfm.min.js"></script>
   <style>
     .ppx-form-stack { display:flex; flex-direction:column; gap:4px; align-items:stretch; }
     .ppx-form-stack > .ppx-card { width:100%; max-width:none; margin-left:0; }
@@ -22,6 +29,108 @@
     /* Keep content aligned to the left while creating a right-side gap */
     #ppx-article-form .ppx-card,
     #ppx-article-form .ppx-editor-wrap { margin-right: 0; margin-left: 0; }
+    .ppx-mod-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:28px;
+      height:22px;
+      padding:0 8px;
+      border-radius:999px;
+      background:#eef2ff;
+      color:#3730a3;
+      font-weight:700;
+      font-size:12px;
+      margin-right:6px;
+    }
+    .ppx-module-item.ppx-mod-parent-card{
+      border-color:#c7d2fe;
+      box-shadow:0 10px 26px rgba(59,130,246,0.12);
+      background:#f8f7ff;
+    }
+    .ppx-module-item.ppx-mod-child-card{
+      border-left:4px solid #e5e7eb;
+      padding-left:24px;
+      background:#fff;
+    }
+    .ppx-mod-drag{
+      width:28px;
+      height:28px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor:grab;
+      border-radius:8px;
+      position:absolute;
+      right:8px;
+      top:50%;
+      transform:translateY(-50%);
+      opacity:.9;
+    }
+    .ppx-mod-drag:hover{
+      background:#eef2ff;
+    }
+    .ppx-mod-dragging{
+      opacity:.4 !important;
+      border-style:dashed !important;
+    }
+    .ppx-mod-drop-line{
+      height:4px;
+      background:#3b82f6;
+      border-radius:999px;
+      margin:6px 0;
+      box-shadow:0 0 0 2px rgba(59,130,246,.2);
+    }
+    /* Translation modal brand styling */
+    #ppx-trans-modal .ppx-modal__head{
+      background: #efeaff;
+      border-bottom: 1px solid #dcd7ff;
+    }
+    #ppx-trans-modal .ppx-modal__foot{
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+    }
+    #ppx-trans-modal .ppx-modal__panel{
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    /* Table styling inside editors */
+    .ppx-editor-wrap .ql-editor table,
+    .ql-editor table,
+    .ppx-rich table{
+      width:100%;
+      border-collapse:collapse;
+      margin:8px 0;
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:8px;
+      overflow:hidden;
+    }
+    .ppx-editor-wrap .ql-editor th,
+    .ppx-editor-wrap .ql-editor td,
+    .ql-editor th, .ql-editor td,
+    .ppx-rich th, .ppx-rich td,
+    .ql-container .ql-editor th,
+    .ql-container .ql-editor td{
+      padding:10px 12px;
+      border:1px solid #e5e7eb;
+      font-weight:400;
+    }
+    .ppx-editor-wrap .ql-editor th,
+    .ql-editor th, .ppx-rich th,
+    .ql-container .ql-editor th{
+      background:#efeaff !important; /* brand light purple */
+      color:#2b2270 !important;
+      font-weight:600 !important;
+    }
+    /* fallback if ths are stripped; style first row cells */
+    .ppx-editor-wrap .ql-editor table tr:first-child td,
+    .ql-editor table tr:first-child td,
+    .ppx-rich table tr:first-child td,
+    .ql-container .ql-editor table tr:first-child td{
+      background:#efeaff !important;
+      color:#2b2270 !important;
+      font-weight:600 !important;
+    }
   </style>
 {% endblock %}
 
@@ -64,7 +173,7 @@
           ] %}
 
           {% set _i18n = existing_i18n or {} %}
-          {% set _mother = (article.mother_lang if article and article.mother_lang else '') %}
+          {% set _mother = (article.mother_lang if article and article.mother_lang else 'es') %}
 
           <select id="ppx-lang-version" class="ppx-input" style="min-width:260px;">
             <optgroup label="{{ t('Artículo madre', 'Mother article', app_lang) }}">
@@ -100,7 +209,6 @@
         <div class="ppx-row" style="gap:.5rem;align-items:center;">
           <label for="ppx-mother-lang" class="ppx-label" style="margin:0;">{{ t('Idioma del artículo madre', 'Mother article language', app_lang) }}</label>
           <select id="ppx-mother-lang" name="mother_lang" class="ppx-input" style="min-width:220px;">
-            <option value="">{{ t('— Seleccionar —', '— Select —', app_lang) }}</option>
             {% for code,name in _lang_list %}
               <option value="{{ code }}" {% if _mother == code %}selected{% endif %}>{{ name }}</option>
             {% endfor %}
@@ -131,7 +239,7 @@
           {% if initial_status == 'published' %}{{ t('Despublicar', 'Unpublish', app_lang) }}{% else %}{{ t('Publicar', 'Publish', app_lang) }}{% endif %}
         </button>
         <span id="ppx-save-chip" class="ppx-muted" style="font-size:.85rem; margin-left:.25rem;">{{ t('No guardado','Unsaved', app_lang) }}</span>
-        <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_articles_preview', slug=slug) }}" target="_blank" rel="noopener">{{ t('Vista previa','Preview', app_lang) }}</a>
+        <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('admin.admin_lsl_preview', slug=slug) }}" target="_blank" rel="noopener">{{ t('Vista previa','Preview', app_lang) }}</a>
         <button id="ppx-outline-toggle" type="button" class="ppx-btn ppx-btn--subtle">{{ t('Esquema','Outline', app_lang) }}</button>
       </div>
     </div>
@@ -141,32 +249,47 @@
     </h1>
 
     <!-- Editor form: post to JSON update; includes edit_lang -->
-    <form method="post" action="/admin/articles/{{ slug }}/update" class="ppx-stack-md" id="ppx-article-form" enctype="multipart/form-data" style="padding-bottom:72px;">
+    <form method="post" action="/admin/language-structures-and-lessons/{{ slug }}/edit" class="ppx-stack-md" id="ppx-article-form" enctype="multipart/form-data" style="padding-bottom:72px;">
       <input type="hidden" id="status" name="status" value="{{ initial_status|e }}">
       <input type="hidden" id="edit_lang" name="edit_lang" value="">
-      <input type="hidden" id="mother_lang_hidden" name="mother_lang" value="{{ (article.mother_lang if article and article.mother_lang else '') }}">
+      <input type="hidden" id="mother_lang_hidden" name="mother_lang" value="{{ (article.mother_lang if article and article.mother_lang else 'es') }}">
 
       <div class="ppx-field">
         <label class="ppx-label" for="title">{{ t('Título / Title', 'Title', app_lang) }}</label>
         <input class="ppx-input" id="title" name="title" value="{{ title_display }}" placeholder="Hola, mundo / Hello, World">
       </div>
 
-      {% set _has_modules = (article.modules|length if article is defined and article.modules is defined and article.modules else 0) %}
-      <div class="ppx-field">
-        <details class="ppx-card ppx-card--pad" {% if not _has_modules %}open{% endif %} style="border-color:#e5e7eb;">
-          <summary class="ppx-h3" style="margin:0;cursor:pointer;user-select:none;outline:none;">
-            {{ t('Artículo sencillo', 'Simple Article', app_lang) }}
-          </summary>
-          <div class="ppx-stack-sm" style="margin-top:.75rem;">
-            <label class="ppx-label" for="html">HTML</label>
-            <textarea class="ppx-textarea ppx-rich" id="html" name="html">{{ body_html|safe }}</textarea>
-            <div class="ppx-help">
-              {{ t('Usa el botón "Acc" para insertar un acordeón editable. El contenido se guardará como HTML.',
-                   'Use the "Acc" button to insert an editable accordion. The content will be saved as HTML.',
-                   app_lang) }}
-            </div>
+      <div class="ppx-card ppx-card--pad" style="max-width:none;">
+        <div class="ppx-stack-sm">
+          <div class="ppx-field" style="width:100%;">
+            <label class="ppx-label" for="article_type">{{ t('Tipo de recurso', 'Resource type', app_lang) }}</label>
+            {% set _art_type = (article.type if article and article.type else 'structure') %}
+            <select id="article_type" name="article_type" class="ppx-input">
+              <option value="structure" {% if _art_type == 'structure' %}selected{% endif %}>{{ t('Referencia gramatical', 'Grammar reference', app_lang) }}</option>
+              <option value="communicative" {% if _art_type == 'communicative' %}selected{% endif %}>{{ t('Lección comunicativa', 'Communicative lesson', app_lang) }}</option>
+            </select>
           </div>
-        </details>
+
+          <div class="ppx-field" style="width:100%;">
+            <label class="ppx-label" for="category_id">{{ t('Capítulo / sección', 'Chapter / section', app_lang) }}</label>
+            {% set _cat = article.category_id if article and article.category_id else '' %}
+            <select id="category_id" name="category_id" class="ppx-input">
+              <option value="">{{ t('Selecciona una sección', 'Select a section', app_lang) }}</option>
+            </select>
+            <div class="ppx-help">{{ t('Para gramática, usa el esquema oficial; para lecciones comunicativas, elige su categoría.', 'For grammar, use the official schema; for communicative lessons, pick its category.', app_lang) }}</div>
+          </div>
+
+          <div class="ppx-field" style="width:100%; max-width:320px;">
+            <label class="ppx-label" for="order_index">{{ t('Orden en la sección', 'Order in section', app_lang) }}</label>
+            <input class="ppx-input" type="number" min="1" step="1" id="order_index" name="order_index" value="{{ article.order_index if article and article.order_index is defined else '' }}" placeholder="{{ t('Opcional','Optional', app_lang) }}">
+            <div class="ppx-help">{{ t('Usa números bajos para aparecer primero dentro de la sección.', 'Use lower numbers to appear earlier within the section.', app_lang) }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legacy single-body HTML is kept only as a hidden field for backward compatibility. Modules drive the UI. -->
+      <div style="display:none;">
+        <textarea id="html" name="html">{{ body_html|safe }}</textarea>
       </div>
 
       <!-- Modules -->
@@ -220,6 +343,33 @@
       var $title = document.getElementById('title');
       var $html  = document.getElementById('html');
       var $summaryHidden = document.getElementById('summary_html'); // provided by _article_meta.html
+
+      // Classification (type + chapter/section)
+      var GRAMMAR_CHAPTERS = {{ grammar_chapters|tojson|safe }};
+      var COMM_SECTIONS = {{ communicative_sections|tojson|safe }};
+      var typeSelect = document.getElementById('article_type');
+      var catSelect = document.getElementById('category_id');
+      var initialCategory = {{ (article.category_id if article and article.category_id else '')|tojson|safe }};
+      function populateCategories(){
+        if (!catSelect) return;
+        var typeVal = (typeSelect && typeSelect.value) || 'structure';
+        var currentVal = catSelect.value || initialCategory || '';
+        var options = (typeVal === 'communicative') ? (COMM_SECTIONS || []) : (GRAMMAR_CHAPTERS || []);
+        catSelect.innerHTML = '';
+        var optBase = document.createElement('option');
+        optBase.value = '';
+        optBase.textContent = '{{ t('Selecciona una sección', 'Select a section', app_lang) }}';
+        catSelect.appendChild(optBase);
+        options.forEach(function(o){
+          var opt = document.createElement('option');
+          opt.value = o.id || '';
+          opt.textContent = (o.title_es || o.title_en || o.id || '');
+          if (currentVal && opt.value === currentVal) opt.selected = true;
+          catSelect.appendChild(opt);
+        });
+      }
+      populateCategories();
+      if (typeSelect) typeSelect.addEventListener('change', populateCategories);
 
       // Helpers to read/set current fields
       function getFields(){
@@ -389,6 +539,14 @@
       }
 
       function packModulesJSON(){
+        // Local slugify to avoid scope issues and keep accents handled
+        function slugifyLocal(str){
+          if (!str) return '';
+          var s = (str + '').toLowerCase();
+          try { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); } catch(_){}
+          s = s.replace(/[^a-z0-9]+/g,'-').replace(/-{2,}/g,'-').replace(/^-+|-+$/g,'');
+          return s || '';
+        }
         try {
           var items = [];
           var blocks = document.querySelectorAll('.ppx-module-block');
@@ -396,11 +554,74 @@
             var t = bl.querySelector('input[name="mod_title"]');
             var s = bl.querySelector('input[name="mod_slug"]');
             var h = bl.querySelector('textarea[name="mod_html"]');
-            items.push({ title: (t && t.value) || '', slug: (s && s.value) || '', html: (h && h.value) || '' });
+            var p = bl.querySelector('[name="mod_parent"]');
+            var ph = bl.querySelector('.mod-parent-hidden');
+            var transEl = bl.querySelector('.mod-translations-json');
+            var transObj = {};
+            if (transEl && transEl.value){
+              try { transObj = JSON.parse(transEl.value); } catch(_) { transObj = {}; }
+            }
+            var slugValRaw = (s && s.value) || '';
+            var slugVal = slugifyLocal(slugValRaw);
+            if (s && slugVal !== slugValRaw) s.value = slugVal;
+            var parentVal = '';
+            // Prefer the block-scoped dataset if we stored it
+            parentVal = bl.dataset.parentId || '';
+            if (p && !parentVal) {
+              parentVal = p.value || p.dataset.current || '';
+              if (!parentVal && p.selectedIndex >= 0) {
+                var optSel = p.options[p.selectedIndex];
+                if (optSel) parentVal = optSel.value || optSel.getAttribute('data-slug') || '';
+              }
+            }
+            if (!parentVal && ph) parentVal = ph.value || '';
+            parentVal = slugifyLocal(parentVal);
+            items.push({
+              title: (t && t.value) || '',
+              slug: slugVal || '',
+              html: (h && h.value) || '',
+              parent_id: parentVal,
+              translations: transObj
+            });
           });
           var hidden = document.getElementById('modules_json');
           if (hidden) hidden.value = JSON.stringify(items);
         } catch (e) { console.warn('[modules] pack failed', e); }
+      }
+
+      // Mirror module fields into real form inputs to ensure submission captures them
+      function syncModuleHiddenFields(){
+        var form = document.getElementById('ppx-article-form');
+        if (!form) return;
+        // remove previous clones
+        Array.from(form.querySelectorAll('.ppx-mod-hidden-clone')).forEach(function(n){ n.remove(); });
+        var blocks = document.querySelectorAll('.ppx-module-block');
+        var frag = document.createDocumentFragment();
+        blocks.forEach(function(bl){
+          var t = bl.querySelector('input[name=\"mod_title\"]');
+          var s = bl.querySelector('input[name=\"mod_slug\"]');
+          var h = bl.querySelector('textarea[name=\"mod_html\"]');
+          var p = bl.querySelector('[name=\"mod_parent\"]');
+          var parentVal = (p && p.value) || (bl.dataset.parentId || '');
+          ['mod_title','mod_slug','mod_html','mod_parent_val','mod_translations'].forEach(function(name){
+            var v = '';
+            if (name === 'mod_title') v = (t && t.value) || '';
+            if (name === 'mod_slug')  v = (s && s.value) || '';
+            if (name === 'mod_html')  v = (h && h.value) || '';
+            if (name === 'mod_parent_val') v = parentVal || '';
+            if (name === 'mod_translations') {
+              var tj = bl.querySelector('.mod-translations-json');
+              v = (tj && tj.value) || '';
+            }
+            var inp = document.createElement('input');
+            inp.type = 'hidden';
+            inp.name = name;
+            inp.value = v;
+            inp.className = 'ppx-mod-hidden-clone';
+            frag.appendChild(inp);
+          });
+        });
+        form.appendChild(frag);
       }
 
       btn.addEventListener('click', async function(){
@@ -432,11 +653,15 @@
           // First sync editors and pack modules
           syncEditorsToTextareas();
           packModulesJSON();
+          syncModuleHiddenFields();
           var fd = new FormData(form);
           fd.set('status', next);
           fd.set('action', act);
           fd.set('title', document.getElementById('title').value || '');
           fd.set('html', document.getElementById('html').value || '');
+          fd.set('article_type', (document.getElementById('article_type') || {}).value || 'structure');
+          fd.set('category_id', (document.getElementById('category_id') || {}).value || '');
+          fd.set('order_index', (document.getElementById('order_index') || {}).value || '');
           fd.set('edit_lang', hiddenLang.value || '');
 
           const resp = await fetch(form.getAttribute('action'), {
@@ -471,6 +696,7 @@
         // Sync editors and pack modules into hidden field before submit
         syncEditorsToTextareas();
         packModulesJSON();
+        syncModuleHiddenFields();
         try {
           var fd = new FormData(form);
           fd.set('status', (pill.dataset.status || 'draft').toLowerCase());
@@ -503,15 +729,159 @@
         var btnClear = document.getElementById('ppx-module-clear');
         if (!list || !btnAdd) return;
 
+        // Translation modal helpers (PPX modal)
+        var currentBlock = null;
+
+        function buildTransBody(block, lang, transObj){
+          var wrap = document.createElement('div');
+          wrap.className = 'ppx-grid';
+          wrap.style.gridTemplateColumns = 'repeat(auto-fit,minmax(320px,1fr))';
+          wrap.style.gap = '1rem';
+          wrap.style.marginTop = '.5rem';
+
+          var srcCard = document.createElement('div');
+          srcCard.className = 'ppx-card ppx-card--pad';
+          srcCard.style.background = '#f8fafc';
+          srcCard.innerHTML = `
+            <h4 class="ppx-h4" style="margin-top:0;">{{ t('Original (ES)','Original (ES)', app_lang) }}</h4>
+            <div class="ppx-field">
+              <label class="ppx-label">{{ t('T·tulo','Title', app_lang) }}</label>
+              <input class="ppx-input js-trans-src-title" readonly>
+            </div>
+            <div class="ppx-field">
+              <label class="ppx-label">{{ t('HTML','HTML', app_lang) }}</label>
+              <textarea class="ppx-textarea js-trans-src-html" rows="6" readonly></textarea>
+            </div>
+          `;
+
+          var dstCard = document.createElement('div');
+          dstCard.className = 'ppx-card ppx-card--pad';
+          dstCard.innerHTML = `
+            <h4 class="ppx-h4" style="margin-top:0;">{{ t('Traducci¢n destino','Target translation', app_lang) }}</h4>
+            <div class="ppx-field">
+              <label class="ppx-label">{{ t('T·tulo traducido','Translated title', app_lang) }}</label>
+              <input class="ppx-input js-trans-dst-title">
+            </div>
+            <div class="ppx-row" style="gap:.5rem;flex-wrap:wrap;align-items:center;">
+              <label class="ppx-label" style="margin:0;">{{ t('Cuerpo','Body', app_lang) }}</label>
+              <button type="button" class="ppx-btn ppx-btn--subtle js-trans-md-toggle">{{ t('Markdown','Markdown', app_lang) }}</button>
+            </div>
+            <div class="ppx-field js-trans-wysiwyg-wrap">
+              <textarea class="ppx-textarea ppx-rich js-trans-dst-html" rows="6"></textarea>
+            </div>
+            <div class="ppx-field js-trans-md-wrap" style="display:none;">
+              <textarea class="ppx-textarea js-trans-dst-md" rows="10" style="font-family:ui-monospace, SFMono-Regular, Menlo, monospace;"></textarea>
+            </div>
+          `;
+
+          wrap.appendChild(srcCard);
+          wrap.appendChild(dstCard);
+
+          // Fill values
+          var titleEl = block.querySelector('input[name="mod_title"]');
+          var htmlEl = block.querySelector('textarea[name="mod_html"]');
+          var slot = (transObj && transObj[lang]) || {};
+          wrap.querySelector('.js-trans-src-title').value = (titleEl && titleEl.value) || '';
+          wrap.querySelector('.js-trans-src-html').value = (htmlEl && htmlEl.value) || '';
+          wrap.querySelector('.js-trans-dst-title').value = slot.title || '';
+          wrap.querySelector('.js-trans-dst-html').value = slot.html || '';
+          wrap.querySelector('.js-trans-dst-md').value = slot.html || '';
+
+          // Markdown toggle inside translation modal
+          var mdBtn = wrap.querySelector('.js-trans-md-toggle');
+          var mdWrap = wrap.querySelector('.js-trans-md-wrap');
+          var wysWrap = wrap.querySelector('.js-trans-wysiwyg-wrap');
+          if (mdBtn && mdWrap && wysWrap){
+            mdBtn.addEventListener('click', function(){
+              var mode = mdBtn.dataset.mode || 'wys';
+              var taMd = wrap.querySelector('.js-trans-dst-md');
+              var taHtml = wrap.querySelector('.js-trans-dst-html');
+              if (mode === 'wys'){
+                var html = (taHtml && taHtml.value) || '';
+                try {
+                  var tdSvc = window.PPX_TURNDOWN || null;
+                  if (!tdSvc && window.TurndownService) {
+                    tdSvc = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced', bulletListMarker: '-', emDelimiter: '*' });
+                    if (window.turndownPluginGfm && window.turndownPluginGfm.gfm) tdSvc.use(window.turndownPluginGfm.gfm);
+                    window.PPX_TURNDOWN = tdSvc;
+                  }
+                  if (tdSvc) taMd.value = tdSvc.turndown(html); else taMd.value = html;
+                } catch(_){ taMd.value = html; }
+                wysWrap.style.display = 'none';
+                mdWrap.style.display = '';
+                mdBtn.textContent = '{{ t("WYSIWYG","WYSIWYG", app_lang) }}';
+                mdBtn.dataset.mode = 'md';
+              } else {
+                var mdVal = (wrap.querySelector('.js-trans-dst-md').value || '');
+                var htmlOut = mdVal;
+                try { if (window.marked) htmlOut = window.marked.parse(mdVal); } catch(_){}
+                if (taHtml) taHtml.value = htmlOut;
+                wysWrap.style.display = '';
+                mdWrap.style.display = 'none';
+                mdBtn.textContent = '{{ t("Markdown","Markdown", app_lang) }}';
+                mdBtn.dataset.mode = 'wys';
+              }
+            });
+          }
+          return wrap;
+        }
+
+        function openTransModal(block){
+          currentBlock = block;
+          var transEl = block.querySelector('.mod-translations-json');
+          var transObj = {};
+          if (transEl && transEl.value){
+            try { transObj = JSON.parse(transEl.value); } catch(_) { transObj = {}; }
+          }
+          var lang = 'en';
+          var bodyNode = buildTransBody(block, lang, transObj);
+          var langSelect = document.createElement('select');
+          langSelect.className = 'ppx-input';
+          langSelect.style.minWidth = '140px';
+          langSelect.innerHTML = '<option value=\"en\">English</option>';
+          langSelect.value = lang;
+          langSelect.addEventListener('change', function(){
+            var nextLang = langSelect.value || 'en';
+            var newBody = buildTransBody(block, nextLang, transObj);
+            bodyNode.replaceWith(newBody);
+            bodyNode = newBody;
+            try { if (window.PPX_INIT_EDITORS) window.PPX_INIT_EDITORS(bodyNode); } catch(_){}
+          });
+
+          var saveBtn = document.createElement('button');
+          saveBtn.type = 'button';
+          saveBtn.className = 'ppx-btn ppx-btn--primary';
+          saveBtn.textContent = '{{ t('Guardar traducci¢n','Save translation', app_lang) }}';
+          saveBtn.addEventListener('click', function(){
+            if (!currentBlock) { PPXModal.close(); return; }
+            var dstTitle = bodyNode.querySelector('.js-trans-dst-title');
+            var dstHtml = bodyNode.querySelector('.js-trans-dst-html');
+            if (!transObj || typeof transObj !== 'object') transObj = {};
+            transObj[langSelect.value || 'en'] = {
+              title: (dstTitle && dstTitle.value) || '',
+              html: (dstHtml && dstHtml.value) || ''
+            };
+            if (transEl) transEl.value = JSON.stringify(transObj);
+            PPXModal.close();
+            currentBlock = null;
+          });
+
+          PPXModal.open({
+            headerTitle: '{{ t("Traducciones del bloque","Block translations", app_lang) }}',
+            body: bodyNode,
+            meta: langSelect,
+            actions: { extraRight: saveBtn },
+            footerNav: true
+          });
+          try { if (window.PPX_INIT_EDITORS) window.PPX_INIT_EDITORS(bodyNode); } catch(_){}
+        }
+
         function makeId(){ return Math.random().toString(36).slice(2,7); }
 
         function slugify(str){
           if (!str) return '';
-          var s = (str+"").toLowerCase();
-          // basic accent removal
-          var from = 'ÁÀÄÂÃáàäâãÉÈËÊéèëêÍÌÏÎíìïîÓÒÖÔÕóòöôõÚÙÜÛúùüûÑñÇç';
-          var to   = 'aaaaaAAAAAeeeeEEEEiiiiIIIIoooooOOOOOuuuuUUUUnncc';
-          for (var i=0; i<from.length; i++) { s = s.replace(new RegExp(from[i],'g'), to[i]); }
+          var s = (str+"" ).toLowerCase();
+          try { s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); } catch(_){ }
           s = s.replace(/[^a-z0-9]+/g,'-').replace(/-{2,}/g,'-').replace(/^-+|-+$/g,'');
           return s || '';
         }
@@ -521,6 +891,187 @@
           var i = 2;
           while (taken.has(s + '-' + i)) i++;
           return s + '-' + i;
+        }
+
+        // Helper to refresh parent dropdowns across all modules
+        function refreshParentOptions(){
+          var blocks = Array.from(document.querySelectorAll('.ppx-module-block'));
+          var selects = Array.from(document.querySelectorAll('.ppx-module-block select.mod-parent-select'));
+          var available = blocks.map(function(bl){
+            var slugEl = bl.querySelector('input[name="mod_slug"]');
+            var titleEl = bl.querySelector('input[name="mod_title"]');
+            var parentSel = bl.querySelector('.mod-parent-select');
+            var parentHidden = bl.querySelector('.mod-parent-hidden');
+            var rawSlug = (slugEl && slugEl.value || '').trim();
+            var cleanSlug = slugify(rawSlug);
+            if (slugEl && rawSlug !== cleanSlug) slugEl.value = cleanSlug;
+            var rawParent = (bl.dataset.parentId || (parentHidden && parentHidden.value) || (parentSel && parentSel.value) || '').trim();
+            var cleanParent = slugify(rawParent);
+            if (parentSel && rawParent !== cleanParent) { parentSel.value = cleanParent; parentSel.dataset.current = cleanParent; }
+            if (parentHidden && parentHidden.value !== cleanParent) parentHidden.value = cleanParent;
+            return {
+              slug: cleanSlug,
+              title: (titleEl && titleEl.value || '').trim(),
+              parent: cleanParent
+            };
+          }).filter(function(m){ return m.slug; });
+          selects.forEach(function(sel){
+            // Prefer the last known persisted value (data-current), fall back to current select value
+            var currentVal = sel.dataset.current || sel.value || '';
+            // Preserve first option (No parent)
+            var first = sel.querySelector('option[value=""]');
+            sel.innerHTML = '';
+            if (first){
+              sel.appendChild(first);
+            } else {
+              var np = document.createElement('option');
+              np.value = '';
+              np.textContent = '— {{ t("Sin padre","No parent", app_lang) }} —';
+              sel.appendChild(np);
+            }
+            // Only allow top-level modules as parents
+            available.filter(function(m){ return !m.parent; }).forEach(function(m){
+              // Do not include self as parent
+              var owner = sel.closest('.ppx-module-block');
+              var mySlug = (owner && owner.querySelector('input[name="mod_slug"]') ? owner.querySelector('input[name="mod_slug"]').value.trim() : '');
+              if (m.slug && m.slug === mySlug) return;
+              var opt = document.createElement('option');
+              opt.value = m.slug;
+              opt.textContent = m.title || m.slug;
+              if (m.slug === currentVal) opt.selected = true;
+              sel.appendChild(opt);
+            });
+            // Ensure the select reflects and remembers the intended value after rebuild
+            sel.value = currentVal;
+            sel.dataset.current = currentVal;
+            // Keep the hidden mirror in sync
+            var ph = sel.closest('.ppx-module-block')?.querySelector('.mod-parent-hidden');
+            if (ph) ph.value = currentVal;
+            var ownerBlock = sel.closest('.ppx-module-block');
+            if (ownerBlock) ownerBlock.dataset.parentId = currentVal || '';
+          });
+          refreshNumbering();
+        }
+
+        function refreshNumbering(){
+          // Build a proper tree so numbering is contiguous by depth
+          var cards = Array.from(document.querySelectorAll('.ppx-module-item'));
+          var nodes = cards.map(function(card, idx){
+            var slugEl = card.querySelector('input[name="mod_slug"]');
+            var titleEl = card.querySelector('input[name="mod_title"]');
+            var parentSel = card.querySelector('.mod-parent-select');
+            var rawSlug = (slugEl && slugEl.value || '').trim();
+            var cleanSlug = slugify(rawSlug);
+            if (slugEl && rawSlug !== cleanSlug) slugEl.value = cleanSlug;
+            var rawParent = (parentSel && parentSel.value || '').trim();
+            var cleanParent = slugify(rawParent);
+            if (parentSel && rawParent !== cleanParent) { parentSel.value = cleanParent; parentSel.dataset.current = cleanParent; }
+            return {
+              card: card,
+              badge: card.querySelector('.ppx-mod-badge'),
+              slug: cleanSlug,
+              title: (titleEl && titleEl.value || '').trim(),
+              parent: cleanParent,
+              index: idx,
+              children: []
+            };
+          });
+          // Map slug -> node
+          var map = {};
+          nodes.forEach(function(n){ if (n.slug) map[n.slug] = n; });
+          // Assign children
+          nodes.forEach(function(n){
+            if (n.parent && map[n.parent]) {
+              map[n.parent].children.push(n);
+            }
+          });
+          // Top-level nodes in original order
+          var roots = nodes.filter(function(n){ return !n.parent || !map[n.parent]; });
+          // DFS to assign numbers
+          var topCounter = 0;
+          function walk(node, prefix){
+            var badge = node.badge;
+            if (!badge) return;
+            if (!prefix){
+              topCounter += 1;
+              badge.textContent = topCounter;
+              node.card.classList.add('ppx-mod-parent-card');
+              node.card.classList.remove('ppx-mod-child-card');
+              prefix = String(topCounter);
+            } else {
+              var childIndex = (map[node.parent]?.children.indexOf(node) || 0) + 1;
+              badge.textContent = prefix + '.' + childIndex;
+              node.card.classList.add('ppx-mod-child-card');
+              node.card.classList.remove('ppx-mod-parent-card');
+            }
+            node.children.forEach(function(ch){ walk(ch, badge.textContent); });
+          }
+          roots.forEach(function(r){ walk(r, ''); });
+        }
+
+        // Drag and drop reordering
+        var dragSrc = null;
+        function getDragAfterElement(container, y){
+          var els = Array.from(container.querySelectorAll('.ppx-module-item:not(.ppx-mod-dragging)'));
+          return els.reduce(function(closest, child){
+            var box = child.getBoundingClientRect();
+            var offset = y - box.top - box.height / 2;
+            if (offset < 0 && offset > closest.offset) {
+              return { offset: offset, element: child };
+            }
+            return closest;
+          }, { offset: -Infinity, element: null }).element;
+        }
+        var dropLine = document.createElement('div');
+        dropLine.className = 'ppx-mod-drop-line';
+
+        list.addEventListener('dragover', function(e){
+          if (!dragSrc) return;
+          e.preventDefault();
+          var after = getDragAfterElement(list, e.clientY);
+          if (dropLine.parentNode) dropLine.parentNode.removeChild(dropLine);
+          if (after == null) {
+            list.appendChild(dropLine);
+          } else {
+            list.insertBefore(dropLine, after);
+          }
+        });
+        list.addEventListener('drop', function(){
+          if (!dragSrc) return;
+          if (dropLine.parentNode){
+            list.insertBefore(dragSrc, dropLine);
+            dropLine.parentNode.removeChild(dropLine);
+          }
+          refreshNumbering();
+          refreshParentOptions();
+          packModulesJSON();
+          syncModuleHiddenFields();
+        });
+        function attachDrag(card){
+          var handle = card.querySelector('.ppx-mod-drag');
+          var dragTrigger = handle || card.querySelector('summary') || card;
+          dragTrigger.addEventListener('mousedown', function(){
+            card.setAttribute('draggable', 'true');
+          });
+          dragTrigger.addEventListener('mouseup', function(){
+            card.removeAttribute('draggable');
+          });
+          card.addEventListener('dragstart', function(e){
+            dragSrc = card;
+            card.classList.add('ppx-mod-dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain','');
+          });
+          card.addEventListener('dragend', function(){
+            card.classList.remove('ppx-mod-dragging');
+            card.removeAttribute('draggable');
+            if (dropLine.parentNode) dropLine.parentNode.removeChild(dropLine);
+            dragSrc = null;
+            refreshNumbering();
+            refreshParentOptions();
+            packModulesJSON();
+            syncModuleHiddenFields();
+          });
         }
 
         function createBlock(data){
@@ -534,12 +1085,30 @@
 
           var sum = document.createElement('summary');
           sum.className = 'ppx-row';
-          sum.style.cssText = 'align-items:center;justify-content:space-between;gap:.5rem;cursor:pointer;user-select:none;';
+          sum.style.cssText = 'align-items:center;justify-content:space-between;gap:.5rem;cursor:pointer;user-select:none;position:relative;';
+          var badge = document.createElement('span');
+          badge.className = 'ppx-mod-badge';
+          badge.textContent = '—';
           var titleSpan = document.createElement('span');
           titleSpan.className = 'ppx-module-summary-title';
           titleSpan.style.cssText = 'font-weight:600;';
           titleSpan.textContent = (data && data.title) ? data.title : '{{ t("(Módulo sin título)","(Untitled module)", app_lang) }}';
-          sum.appendChild(titleSpan);
+          var leftWrap = document.createElement('div');
+          leftWrap.style.display = 'flex';
+          leftWrap.style.alignItems = 'center';
+          leftWrap.style.gap = '.35rem';
+          leftWrap.appendChild(badge);
+          leftWrap.appendChild(titleSpan);
+          var rightWrap = document.createElement('div');
+          rightWrap.style.display = 'flex';
+          rightWrap.style.alignItems = 'center';
+          rightWrap.style.gap = '.35rem';
+          var dragHandle = document.createElement('span');
+          dragHandle.className = 'ppx-mod-drag';
+          dragHandle.innerHTML = `<img src="{{ static_ver('assets/icons/grid.svg') }}" alt="" width="18" height="18">`;
+          rightWrap.appendChild(dragHandle);
+          sum.appendChild(leftWrap);
+          sum.appendChild(rightWrap);
           det.appendChild(sum);
 
           // Inner editable block
@@ -551,21 +1120,41 @@
           el.style.padding = '.75rem';
           el.style.marginTop = '.5rem';
           el.innerHTML = `
-            <div class="ppx-row" style="gap:.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap;">
-              <div class="ppx-field" style="flex:1;min-width:220px;">
+            <div class="ppx-stack-sm">
+              <div class="ppx-field">
                 <label class="ppx-label" for="t_${id}">{{ t('Título del módulo','Module title', app_lang) }}</label>
                 <input class="ppx-input" id="t_${id}" name="mod_title" value="${(data && (data.title||''))||''}">
               </div>
               <input type="hidden" id="s_${id}" name="mod_slug" value="${(data && (data.slug||''))||''}">
+              <div class="ppx-field">
+                <label class="ppx-label" for="p_${id}">{{ t('Módulo padre (opcional)','Parent module (optional)', app_lang) }}</label>
+              <select class="ppx-input mod-parent-select" id="p_${id}" name="mod_parent" data-current="${(data && (data.parent_id||''))||''}">
+                <option value="">- {{ t('Sin padre','No parent', app_lang) }} -</option>
+              </select>
+              <input type="hidden" class="mod-parent-hidden" name="mod_parent_val" value="${(data && (data.parent_id||''))||''}">
+              </div>
+              <div class="ppx-row" style="gap:.5rem;flex-wrap:wrap;">
+                <button type="button" class="ppx-btn ppx-btn--subtle mod-trans-btn" style="margin-top:.35rem;">{{ t('Traducir','Translate', app_lang) }}</button>
+                <button type="button" class="ppx-btn ppx-btn--subtle mod-md-btn" style="margin-top:.35rem;">{{ t('Markdown','Markdown', app_lang) }}</button>
+              </div>
             </div>
-            <div class="ppx-field">
-              <label class="ppx-label" for="h_${id}">HTML</label>
+            <div class="ppx-field" style="margin-top:1rem;">
+              <label class="ppx-label" for="h_${id}">{{ t('Editor HTML','HTML Editor', app_lang) }}</label>
               <textarea class="ppx-textarea ppx-rich" id="h_${id}" name="mod_html" rows="6">${(data && (data.html||''))||''}</textarea>
+              <textarea class="mod-translations-json" name="mod_translations" style="display:none;"></textarea>
             </div>
             <div class="ppx-row" style="justify-content:flex-end;gap:.5rem;">
               <button type="button" class="ppx-btn ppx-btn--subtle ppx-mod-del">{{ t('Eliminar','Remove', app_lang) }}</button>
             </div>
           `;
+          var transAreaInit = el.querySelector('.mod-translations-json');
+          if (transAreaInit){
+            try {
+              transAreaInit.value = (data && data.translations) ? JSON.stringify(data.translations) : '';
+            } catch(_){
+              transAreaInit.value = '';
+            }
+          }
           det.appendChild(el);
 
           // Auto-generate slug from title and keep unique across current blocks
@@ -585,11 +1174,132 @@
             inputSlug.value = next;
             // Update summary title while typing
             titleSpan.textContent = (inputTitle.value && inputTitle.value.trim()) ? inputTitle.value.trim() : '{{ t("(Módulo sin título)","(Untitled module)", app_lang) }}';
+            refreshParentOptions();
+            refreshNumbering();
           }
           // Initialize slug if empty
           if (!inputSlug.value) { refreshSlug(); }
+          // Set parent select current value for initial render
+          var parentSelect = el.querySelector('.mod-parent-select');
+          var parentHidden = el.querySelector('.mod-parent-hidden');
+          if (parentSelect){
+            parentSelect.dataset.current = (data && data.parent_id) ? data.parent_id : '';
+            if (parentSelect.dataset.current) parentSelect.value = parentSelect.dataset.current;
+            if (parentHidden) parentHidden.value = parentSelect.dataset.current || '';
+            if (parentSelect.value) {
+              det.dataset.parentId = parentSelect.value;
+              el.dataset.parentId = parentSelect.value;
+            }
+            parentSelect.addEventListener('change', function(){
+              // Persist the chosen parent so refreshParentOptions keeps it selected
+              parentSelect.dataset.current = parentSelect.value || '';
+              if (parentHidden) parentHidden.value = parentSelect.dataset.current;
+              det.dataset.parentId = parentSelect.dataset.current || '';
+              el.dataset.parentId = parentSelect.dataset.current || '';
+              refreshParentOptions();
+              refreshNumbering();
+            });
+          }
           inputTitle.addEventListener('input', function(){ refreshSlug(); });
-          el.querySelector('.ppx-mod-del').addEventListener('click', function(){ try { list.removeChild(det); } catch(e){} });
+          inputSlug.addEventListener('input', function(){ refreshParentOptions(); });
+          el.querySelector('.ppx-mod-del').addEventListener('click', function(){
+            try { list.removeChild(det); refreshParentOptions(); refreshNumbering(); packModulesJSON(); syncModuleHiddenFields(); } catch(e){}
+          });
+          // Visual indent if this is a submodule
+          function applyIndent(){
+            var psel = el.querySelector('.mod-parent-select');
+            var hasParent = psel && psel.value && psel.value.trim();
+            det.style.paddingLeft = hasParent ? '24px' : '';
+            det.style.borderLeft = hasParent ? '4px solid #e5e7eb' : '';
+          }
+          if (parentSelect) parentSelect.addEventListener('change', applyIndent);
+          applyIndent();
+          attachDrag(det);
+          var transBtn = el.querySelector('.mod-trans-btn');
+          if (transBtn){
+            transBtn.addEventListener('click', function(){ openTransModal(det); });
+          }
+          var tableBtn = el.querySelector('.mod-table-btn');
+          if (tableBtn){
+            tableBtn.addEventListener('click', function(){
+              var ta = el.querySelector('textarea[name="mod_html"]');
+              var wrap = ta ? ta.previousElementSibling : null;
+              var ed = wrap && wrap.querySelector('.ql-editor');
+              var snippet = '<table><thead><tr><th>{{ t("Encabezado 1","Header 1", app_lang) }}</th><th>{{ t("Encabezado 2","Header 2", app_lang) }}</th></tr></thead><tbody><tr><td>{{ t("Fila 1, Col 1","Row 1, Col 1", app_lang) }}</td><td>{{ t("Fila 1, Col 2","Row 1, Col 2", app_lang) }}</td></tr></tbody></table>';
+              if (ed) { ed.innerHTML = (ed.innerHTML || '') + snippet; }
+              if (ta) { ta.value = (ta.value || '') + snippet; }
+              if (wrap) { wrap.style.display = ''; } // ensure WYSIWYG visible
+              packModulesJSON();
+            });
+          }
+          var mdBtn = el.querySelector('.mod-md-btn');
+          if (mdBtn){
+            mdBtn.addEventListener('click', function(){
+              var ta = el.querySelector('textarea[name="mod_html"]');
+              if (!ta) return;
+              var block = ta.closest('.ppx-module-block') || el;
+              var wrap = block.querySelector('.ppx-editor-wrap') || ta.previousElementSibling;
+              if (wrap && !wrap.classList.contains('ppx-editor-wrap')) wrap = null;
+              var ed = wrap && wrap.querySelector('.ql-editor, .ppx-fallback-editor');
+              var mode = ta.dataset.mode || 'wysiwyg';
+              if (mode === 'wysiwyg'){
+                // Sync all editors first to avoid stale content
+                try { if (typeof syncEditorsToTextareas === 'function') syncEditorsToTextareas(); } catch(_){}
+                // Convert current HTML to markdown when entering markdown mode
+                // Ensure textarea reflects latest editor before converting
+                var currentHtml = ed ? (ed.innerHTML || '') : (ta.value || '');
+                ta.value = currentHtml;
+                var html = currentHtml;
+                try {
+                  var tdSvc = window.PPX_TURNDOWN || null;
+                  if (!tdSvc && window.TurndownService) {
+                    tdSvc = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced', bulletListMarker: '-', emDelimiter: '*' });
+                    if (window.turndownPluginGfm && window.turndownPluginGfm.gfm) {
+                      tdSvc.use(window.turndownPluginGfm.gfm);
+                    }
+                    window.PPX_TURNDOWN = tdSvc;
+                  }
+                  if (tdSvc) {
+                    ta.value = tdSvc.turndown(html);
+                  } else {
+                    ta.value = html;
+                  }
+                } catch(_){ ta.value = html; }
+                if (wrap) { ta.dataset.prevDisplay = wrap.style.display || ''; wrap.style.display = 'none'; }
+                ta.style.display = 'block';
+                ta.style.fontFamily = 'ui-monospace, SFMono-Regular, Menlo, monospace';
+                ta.style.minHeight = '180px';
+                ta.dataset.mode = 'md';
+                mdBtn.textContent = '{{ t("WYSIWYG","WYSIWYG", app_lang) }}';
+              } else {
+                // Convert markdown back to HTML when returning to wysiwyg (live, no save needed)
+                var md = ta.value || '';
+                var htmlOut = md;
+                try {
+                  if (window.marked) { htmlOut = window.marked.parse(md); }
+                } catch(_){}
+                var editorEl = wrap && wrap.querySelector('.ql-editor');
+                var fallbackEl = wrap && wrap.querySelector('.ppx-fallback-editor');
+                if (editorEl || fallbackEl){
+                  if (editorEl) editorEl.innerHTML = htmlOut || '';
+                  if (fallbackEl) fallbackEl.innerHTML = htmlOut || '';
+                  ta.value = htmlOut;
+                  if (wrap){
+                    wrap.style.display = ta.dataset.prevDisplay || '';
+                    if (wrap.style.display === 'none') wrap.style.display = '';
+                  }
+                  // Immediately sync the new HTML into module state
+                  try { if (typeof syncEditorsToTextareas === 'function') syncEditorsToTextareas(); } catch(_){}
+                  refreshParentOptions();
+                  packModulesJSON();
+                  syncModuleHiddenFields();
+                }
+                ta.style.display = 'none';
+                ta.dataset.mode = 'wysiwyg';
+                mdBtn.textContent = '{{ t("Markdown","Markdown", app_lang) }}';
+              }
+            });
+          }
           return det;
         }
 
@@ -597,6 +1307,8 @@
         var EXIST = {{ existing_modules|tojson|safe }};
         if (Array.isArray(EXIST) && EXIST.length){
           EXIST.forEach(function(m){ list.appendChild(createBlock(m)); });
+          refreshParentOptions();
+          refreshNumbering();
         }
 
         btnAdd.addEventListener('click', function(){
@@ -606,8 +1318,9 @@
           try {
             if (window.PPX_INIT_EDITORS) { window.PPX_INIT_EDITORS(block); }
           } catch (e) { console.warn('PPX_INIT_EDITORS failed', e); }
+          refreshParentOptions();
         });
-        if (btnClear) btnClear.addEventListener('click', function(){ list.innerHTML = ''; });
+        if (btnClear) btnClear.addEventListener('click', function(){ list.innerHTML = ''; refreshParentOptions(); });
 
         // Initialize editors for any pre-seeded modules
         try { if (window.PPX_INIT_EDITORS) { window.PPX_INIT_EDITORS(list); } } catch(_){}
@@ -615,5 +1328,8 @@
     })();
   </script>
 {% endblock %}
+
+
+
 
 

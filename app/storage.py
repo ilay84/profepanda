@@ -64,7 +64,7 @@ def write_json(abs_path: os.PathLike | str, obj: Any, *, pretty: bool = True) ->
 # Content-specific helpers (Articles / Exercises / Glossary)
 # ─────────────────────────────────────────────────────────────
 
-VALID_DOMAINS = {"articles", "exercises", "glossary", "ui"}
+VALID_DOMAINS = {"articles", "exercises", "glossary", "ui", "courses"}
 
 def _domain_root(domain: str) -> Path:
     if domain not in VALID_DOMAINS:

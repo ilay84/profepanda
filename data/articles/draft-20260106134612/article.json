@@ -1,0 +1,41 @@
+{
+  "category_id": "mod1-sustantivos-adjetivos",
+  "created_at": "2026-01-06T13:46:12.914284Z",
+  "html": "<p><br></p>",
+  "modules": [
+    {
+      "html": "<h3>Introducción</h3>\n<p>En español, los sustantivos no solo nombran personas, objetos o ideas; también muestran cómo el idioma clasifica esas entidades dentro de su propio sistema. Una de las formas más visibles de esta clasificación es el <strong>género gramatical</strong>.</p>\n<p>Cada sustantivo pertenece a una categoría de género: masculino o femenino. Esta característica no se basa en la naturaleza del objeto, sino en cómo el español organiza las palabras para que funcionen en conjunto. Por ejemplo, <em>el sol</em> y <em>la luna</em> no son masculinos o femeninos por lo que representan, sino por el grupo gramatical al que pertenecen.</p>\n<p>Comprender el género gramatical nos permite ver cómo las palabras en español se conectan entre sí. Los artículos, los adjetivos y los pronombres cambian su forma para mantener una relación coherente con el sustantivo. Este sistema de <strong>acuerdo</strong> no es solo una regla formal, sino una herramienta que da cohesión y claridad al mensaje.</p>\n<p>A lo largo de este módulo, exploraremos cómo el género gramatical de las cosas ayuda a organizar el mundo lingüístico y cómo podemos reconocer sus patrones para comunicarnos con mayor precisión y naturalidad.</p>\n",
+      "parent_id": "",
+      "slug": "el-genero-gramatical-de-las-cosas",
+      "title": "El género gramatical de las cosas",
+      "translations": {
+        "en": {
+          "html": "<h3>Introduction</h3>\n<p>In Spanish, nouns don’t just name people, objects, or ideas; they also show how the language classifies those entities within its own system. One of the most visible forms of this classification is <strong>grammatical gender</strong>.</p>\n<p>Every noun belongs to a gender category: masculine or feminine. This feature isn’t based on the nature of the object but on how Spanish organizes words so that they work together. For example, <em>el sol</em> (the sun) and <em>la luna</em> (the moon) are not masculine or feminine because of what they represent, but because of the grammatical group they belong to.</p>\n<p>Understanding grammatical gender allows us to see how words in Spanish connect to each other. Articles, adjectives, and pronouns change form to maintain a coherent relationship with the noun. This system of <strong>agreement</strong> isn’t just a formal rule; it’s a tool that gives cohesion and clarity to meaning.</p>\n<p>Throughout this module, we’ll explore how the grammatical gender of things helps organize the linguistic world and how recognizing its patterns allows us to communicate with more precision and naturalness.</p>\n",
+          "title": "The Grammatical Gender of Things"
+        }
+      }
+    },
+    {
+      "html": "<h3>Cómo funciona el género en el español</h3>\n<p>En español, cada sustantivo pertenece a una categoría llamada <em>género</em>, que puede ser masculino o femenino. Esta clasificación no describe propiedades físicas o biológicas, sino la manera en que el idioma organiza las palabras para que se relacionen entre sí.</p>\n<p>Por ejemplo, <em><strong>el libro</strong></em> y <em><strong>la mesa</strong></em> no tienen género porque los objetos sean masculinos o femeninos, sino porque el sistema gramatical los agrupa en clases que determinan cómo otras palabras deben concordar con ellos. El artículo (<em><strong>el/la</strong></em>) y los adjetivos (<em><strong>nuevo/nueva</strong></em>) adoptan la forma que corresponde al género del sustantivo.</p>\n<p>Reconocer el género gramatical como una forma de organización lingüística —y no como una cuestión de significado literal— permite comprender por qué el español exige concordancia. Este mecanismo de acuerdo no solo mantiene la estructura correcta, sino que también ayuda a que el mensaje sea más claro y coherente.</p>\n<p>Más que memorizar listas, el objetivo es entender cómo el español crea conexiones entre las palabras para expresar relaciones de sentido dentro de una frase.</p>\n",
+      "parent_id": "el-genero-gramatical-de-las-cosas",
+      "slug": "que-significa-genero-gramatical",
+      "title": "¿Qué significa “género gramatical”?",
+      "translations": {
+        "en": {
+          "html": "<h3>Explanation</h3>\n<p>In Spanish, every noun belongs to a grammatical category called <em>gender</em>, which can be masculine or feminine. This classification doesn’t describe physical or biological traits; it describes how the language organizes words so they relate to one another.</p>\n<p>For example, <em>el libro</em> (the book) and <em>la mesa</em> (the table) aren’t masculine or feminine because of the objects themselves, but because the grammatical system groups them into classes that determine how other words must agree with them. The article (<em>el/la</em>) and adjectives (<em>nuevo/nueva</em>) take the form that matches the noun’s gender.</p>\n<p>Recognizing grammatical gender as a form of linguistic organization—not a matter of literal meaning—helps explain why Spanish requires agreement. This mechanism of concord not only keeps the structure correct but also makes the message clearer and more cohesive.</p>\n<p>When studying grammatical gender, the goal isn’t to memorize lists but to understand how Spanish builds connections between words to express meaning relationships within a sentence.</p>\n",
+          "title": "What Does “Grammatical Gender” Mean?"
+        }
+      }
+    }
+  ],
+  "order_index": 1,
+  "slug": "draft-20260106134612",
+  "status": "draft",
+  "tags": [],
+  "taxonomy_paths": [],
+  "title": "El sustantivo y el género gramatical de las cosas",
+  "title_en": "",
+  "title_es": "",
+  "type": "structure",
+  "updated_at": "2026-01-07T14:36:44.320386Z"
+}

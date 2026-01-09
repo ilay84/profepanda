@@ -4,20 +4,39 @@
 
 {% block content %}
   <div class="ppx-card ppx-card--pad">
+    <style>
+      :root{
+        --ppx-article-nav-w: 280px;
+        --ppx-article-content-w: min(1100px, 100%);
+        --ppx-article-gap: 24px;
+      }
+    </style>
     <div class="ppx-row" style="justify-content:space-between;align-items:center;gap:.75rem;">
       <div>
-        <h1 class="ppx-h1" style="margin:0;">{{ article.title or slug }}</h1>
-        <div class="ppx-muted" style="margin-top:.25rem;">
-          <span>{{ t('Slug', 'Slug', app_lang) }}:</span>
-          <code>{{ slug }}</code>
+        {% set current_trans_title = current.translations.en.title if current and current.translations and current.translations.en and current.translations.en.title else '' %}
+        <h1 class="ppx-h1 ppx-title-toggle" style="margin:0;"
+            data-en-title="{{ current_trans_title|e }}"
+            data-es-title="{{ (article.title or slug)|e }}">
+          {{ article.title or slug }}
+        </h1>
+        {% if category %}
+        <div class="ppx-row" style="gap:.35rem;flex-wrap:wrap;margin-top:.35rem;">
+          <span class="ppx-chip ppx-chip--soft ppx-chip-lang"
+                data-es-text="Gramática"
+                data-en-text="{{ 'Grammar reference' if article_type == 'structure' else 'Communicative lesson' }}">
+            {{ 'Gramática' if article_type == 'structure' else t('Lección comunicativa','Communicative lesson', app_lang) }}
+          </span>
+          <span class="ppx-chip ppx-chip-lang"
+                data-es-text="{{ category.title_es }}"
+                data-en-text="{{ category.title_en }}">
+            {{ t(category.title_es, category.title_en, app_lang) }}
+          </span>
         </div>
+        {% endif %}
       </div>
       <div class="ppx-row" style="gap:.5rem;flex-wrap:wrap;">
-        <a class="ppx-btn" href="{{ url_for('admin.admin_articles_edit', slug=slug) }}" title="{{ t('Editar', 'Edit', app_lang) }}" aria-label="{{ t('Editar', 'Edit', app_lang) }}">
+        <a class="ppx-btn" href="{{ url_for('admin.admin_lsl_edit', slug=slug) }}" title="{{ t('Editar', 'Edit', app_lang) }}" aria-label="{{ t('Editar', 'Edit', app_lang) }}">
           {{ t('Editar', 'Edit', app_lang) }}
-        </a>
-        <a class="ppx-btn ppx-btn--subtle" href="{{ url_for('articles.article_view', slug=slug, _=(article.updated_at or article.created_at or '1')) }}" target="_blank" rel="noopener" title="{{ t('Ver publicado', 'View published', app_lang) }}" aria-label="{{ t('Ver publicado', 'View published', app_lang) }}">
-          {{ t('Ver publicado', 'View published', app_lang) }}
         </a>
         <a class="ppx-btn ppx-btn--ghost" href="{{ url_for('admin.admin_articles_index') }}" title="{{ t('Volver a la lista', 'Back to list', app_lang) }}" aria-label="{{ t('Volver a la lista', 'Back to list', app_lang) }}">
           {{ t('Volver a la lista', 'Back to list', app_lang) }}
@@ -27,15 +46,188 @@
 
     <hr class="ppx-hr" style="margin:1rem 0;">
 
-    <article class="ppx-content">
-      {{ (article.html or '')|safe }}
-    </article>
+    {% if modules and modules|length %}
+  <style>
+    @import url("{{ url_for('static', filename='css/public_articles.css') }}");
+    /* widen nav to avoid horizontal scroll */
+    .ppx-article-layout { display:grid; grid-template-columns:minmax(320px,360px) 1fr; gap:1.25rem; align-items:start; }
+    .ppx-article-nav { min-width:320px; max-width:360px; max-height:calc(100vh - 140px); overflow-y:auto; overflow-x:hidden; padding-right:.15rem; }
+    .ppx-mod-link { white-space:normal; line-height:1.35; }
+    .ppx-mod-title { white-space:normal; overflow:visible; }
+    .ppx-mod-parent .ppx-mod-title { font-weight:700; }
+    .ppx-mod-child .ppx-mod-title { font-weight:600; }
+    .ppx-mod-parent .ppx-mod-num { color:#4b5563; font-weight:700; }
+    .ppx-mod-child .ppx-mod-num { color:#6b7280; }
+    .ppx-mod-parent-row { align-items:flex-start; }
+  </style>
+      <div class="ppx-article-layout">
+        <nav class="ppx-article-nav" aria-label="Modules">
+          <div class="ppx-mod-nav-head">
+            <strong class="ppx-mod-heading">{{ t('Módulos','Sections', app_lang) }}</strong>
+          </div>
+          <ul class="ppx-mod-tree">
+            {% for m in modules_tree %}
+            {% set is_open = (m.slug == active_parent_slug) or (m.slug == current.slug) %}
+            <li class="ppx-mod-parent {% if is_open %}is-open{% endif %}" data-slug="{{ m.slug }}">
+              <div class="ppx-mod-parent-row">
+                <a class="ppx-mod-link {% if m.slug == current.slug %}is-active{% endif %}"
+                   href="{{ url_for('admin.admin_lsl_preview', slug=slug, m=m.slug) }}"
+                   aria-current="{{ 'page' if m.slug == current.slug else 'false' }}"
+                   data-en-title="{{ m.translations.en.title if m.translations and m.translations.en and m.translations.en.title else '' }}"
+                   data-es-title="{{ m.title }}">
+                  <span class="ppx-mod-num">{{ loop.index }}</span>
+                  <span class="ppx-mod-title">{{ m.title }}</span>
+                </a>
+                {% if m.children and m.children|length %}
+                <button class="ppx-mod-toggle" type="button" aria-expanded="{{ 'true' if is_open else 'false' }}" aria-label="{{ t('Expandir','Expand', app_lang) }}"></button>
+                {% endif %}
+              </div>
+              {% if m.children and m.children|length %}
+              <ul class="ppx-sublist" {% if not is_open %}style="display:none"{% endif %}>
+                {% for child in m.children %}
+                <li class="ppx-mod-child">
+                  <a class="ppx-mod-link {% if child.slug == current.slug %}is-active{% endif %}"
+                     href="{{ url_for('admin.admin_lsl_preview', slug=slug, m=child.slug) }}"
+                     aria-current="{{ 'page' if child.slug == current.slug else 'false' }}"
+                     data-en-title="{{ child.translations.en.title if child.translations and child.translations.en and child.translations.en.title else '' }}"
+                     data-es-title="{{ child.title }}">
+                    <span class="ppx-mod-num">{{ (loop.parentloop.index) if loop.parentloop else '' }}.{{ loop.index }}</span>
+                    <span class="ppx-mod-title">{{ child.title }}</span>
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+
+        <div class="ppx-article-content">
+          <div class="ppx-row" style="justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:.5rem;">
+            <h2 class="ppx-h2 ppx-title-toggle" style="margin:0;"
+                data-en-title="{{ current.translations.en.title if current and current.translations and current.translations.en and current.translations.en.title else '' }}"
+                data-es-title="{{ current.title }}">
+              {{ current.title }}
+            </h2>
+            {% set body_trans = current.translations.en.html if current and current.translations and current.translations.en and current.translations.en.html else '' %}
+            {% if body_trans %}
+            <button type="button"
+                    class="ppx-btn ppx-btn--subtle ppx-body-toggle"
+                    title="Show in English"
+                    aria-pressed="false"
+                    style="display:inline-flex;align-items:center;gap:.35rem;"
+                    data-tip-en="Show in English"
+                    data-tip-es="Ver en español">
+              <img src="{{ url_for('static', filename='assets/icons/globe.svg') }}" alt="" width="16" height="16" aria-hidden="true">
+              <span class="ppx-body-toggle-label">Español</span>
+            </button>
+            {% endif %}
+          </div>
+
+          <div class="ppx-article-body ppx-body-es">{{ current.html|safe }}</div>
+          {% if body_trans %}
+          <div class="ppx-article-body ppx-body-en" style="display:none;">{{ body_trans|safe }}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <footer class="ppx-article-footer-nav" aria-label="Pagination">
+        <div class="ppx-article-footer-inner">
+          {% if prev_mod %}
+          <a class="ppx-nav-btn prev" href="{{ url_for('admin.admin_lsl_preview', slug=slug, m=prev_mod.slug) }}">
+            <img src="{{ url_for('static', filename='assets/icons/arrow_left.svg') }}" alt="" aria-hidden="true" />
+            <div class="ppx-nav-meta">
+              <div class="ppx-nav-label">{{ t('Anterior', 'Previous', app_lang) }}</div>
+              <div class="ppx-nav-title">{{ prev_mod.title }}</div>
+            </div>
+          </a>
+          {% else %}
+          <span class="ppx-nav-btn prev is-disabled" aria-disabled="true"></span>
+          {% endif %}
+
+          {% if next_mod %}
+          <a class="ppx-nav-btn next" href="{{ url_for('admin.admin_lsl_preview', slug=slug, m=next_mod.slug) }}">
+            <div class="ppx-nav-meta">
+              <div class="ppx-nav-label">{{ t('Siguiente', 'Next', app_lang) }}</div>
+              <div class="ppx-nav-title">{{ next_mod.title }}</div>
+            </div>
+            <img src="{{ url_for('static', filename='assets/icons/arrow_right.svg') }}" alt="" aria-hidden="true" />
+          </a>
+          {% else %}
+          <span class="ppx-nav-btn next is-disabled" aria-disabled="true"></span>
+          {% endif %}
+        </div>
+      </footer>
+    {% else %}
+      <article class="ppx-content">
+        {{ (article.html or '')|safe }}
+      </article>
+    {% endif %}
   </div>
 {% endblock %}
 
 {% block scripts %}
   <!-- Load the same accordion assets used on public pages -->
   <script src="{{ url_for('static', filename='js/public_acc.js') }}?v=adminprev1"></script>
+  <script>
+    document.addEventListener('click', function(e){
+      var btn = e.target.closest('.ppx-body-toggle');
+      if (!btn) return;
+      var es = document.querySelector('.ppx-body-es');
+      var en = document.querySelector('.ppx-body-en');
+      var titleNodes = Array.prototype.slice.call(document.querySelectorAll('.ppx-title-toggle'));
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll('.ppx-mod-link'));
+      var activeLink = document.querySelector('.ppx-mod-link.is-active');
+      var chips = Array.prototype.slice.call(document.querySelectorAll('.ppx-chip-lang'));
+      if (!es || !en) return;
+      var showingEn = en.style.display !== 'none';
+      if (showingEn){
+        en.style.display = 'none';
+        es.style.display = '';
+        btn.setAttribute('aria-pressed', 'false');
+        btn.querySelector('.ppx-body-toggle-label').textContent = 'Español';
+        btn.setAttribute('title', btn.dataset.tipEn || 'Show in English');
+        // switch titles back to ES
+        titleNodes.forEach(function(node){
+          if (!node.dataset.esTitle && activeLink && activeLink.dataset.esTitle){
+            node.dataset.esTitle = activeLink.dataset.esTitle;
+          }
+          if (node.dataset.esTitle) node.textContent = node.dataset.esTitle;
+        });
+        navLinks.forEach(function(a){
+          if (a.dataset.esTitle) a.querySelector('.ppx-mod-title').textContent = a.dataset.esTitle;
+        });
+        chips.forEach(function(ch){
+          var txt = ch.getAttribute('data-es-text') || ch.textContent;
+          ch.textContent = txt;
+        });
+      } else {
+        es.style.display = 'none';
+        en.style.display = '';
+        btn.setAttribute('aria-pressed', 'true');
+        btn.querySelector('.ppx-body-toggle-label').textContent = 'English';
+        btn.setAttribute('title', btn.dataset.tipEs || 'Ver en español');
+        // switch titles to EN if available
+        titleNodes.forEach(function(node){
+          if (!node.dataset.esTitle) node.dataset.esTitle = node.textContent;
+          var enTitle = node.dataset.enTitle || (activeLink && activeLink.dataset.enTitle) || '';
+          if (enTitle) node.textContent = enTitle;
+        });
+        navLinks.forEach(function(a){
+          var titleSpan = a.querySelector('.ppx-mod-title');
+          if (!titleSpan) return;
+          if (!a.dataset.esTitle) a.dataset.esTitle = titleSpan.textContent;
+          var enTitle = a.dataset.enTitle || '';
+          if (enTitle) titleSpan.textContent = enTitle;
+        });
+        chips.forEach(function(ch){
+          var enText = ch.getAttribute('data-en-text') || ch.textContent;
+          if (enText) ch.textContent = enText;
+        });
+      }
+    });
+  </script>
   <script>
     try { console.info('[admin preview] public_acc loaded for', location.pathname); } catch(_) {}
   </script>

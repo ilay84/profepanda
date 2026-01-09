@@ -144,21 +144,109 @@ def admin_articles_delete(slug: str):
 def admin_articles_preview(slug: str):
     """
     Admin-only preview rendered with the admin layout/bar.
-    Loads the article and displays it via templates/admin/articles_preview.html.
+    If modules exist, render with the same left-nav/main-pane layout as public.
     """
-    # Lazy import to keep single-edit discipline on imports
     from app.storage import load_article
-    from flask import make_response
+    from flask import make_response, request
+    import json as _json
+    from pathlib import Path
 
     article = load_article(slug)
     if not article:
         abort(404)
 
+    modules = article.get("modules") or []
+    normalized = []
+    modules_tree = []
+    current = None
+    prev_mod = None
+    next_mod = None
+    active_parent_slug = None
+    current_index = -1
+
+    if isinstance(modules, list) and modules:
+        # Normalize and honor ?m=<module_slug>
+        mslug = (request.args.get("m") or "").strip()
+        for idx, m in enumerate(modules):
+            title = (m.get("title") or "").strip() or f"Module {idx+1}"
+            slug_m = (m.get("slug") or "").strip() or f"m{idx+1}"
+            html = (m.get("html") or "").strip()
+            parent = (m.get("parent_id") or "").strip() or None
+            row = {
+                "title": title,
+                "slug": slug_m,
+                "html": html,
+                "parent_id": parent,
+                "translations": m.get("translations") or {},
+            }
+            normalized.append(row)
+        # pick current module
+        if mslug:
+            for i, m in enumerate(normalized):
+                if m["slug"] == mslug:
+                    current_index = i
+                    break
+        if current_index < 0:
+            current_index = 0
+        # build tree (one-level submodules)
+        slug_index = {m["slug"]: {**m, "children": []} for m in normalized}
+        for m in normalized:
+            node = slug_index[m["slug"]]
+            parent = node.get("parent_id")
+            if parent and parent in slug_index:
+                slug_index[parent].setdefault("children", []).append(node)
+        for m in normalized:
+            if not m.get("parent_id") or m.get("parent_id") not in slug_index:
+                root = slug_index[m["slug"]]
+                if root not in modules_tree:
+                    modules_tree.append(root)
+        current = normalized[current_index]
+        prev_mod = normalized[current_index - 1] if current_index > 0 else None
+        next_mod = normalized[current_index + 1] if current_index < (len(normalized) - 1) else None
+        active_parent_slug = current.get("parent_id") or current["slug"]
+
+    # Classification (grammar/communicative + category)
+    article_type = (article.get("type") or "structure").strip().lower()
+    category = None
+    category_id = (article.get("category_id") or "").strip()
+    if article_type == "structure" and category_id:
+        try:
+            tax_path = Path(__file__).resolve().parents[2] / "data" / "taxonomy" / "grammar_chapters.json"
+            chapters = _json.loads(tax_path.read_text(encoding="utf-8"))
+            if isinstance(chapters, list):
+                for item in chapters:
+                    if isinstance(item, dict) and item.get("id") == category_id:
+                        category = item
+                        break
+        except Exception:
+            category = None
+
     title = f"Admin · Preview · {(article.get('title') or slug)}"
-    resp = make_response(render_template("admin/articles_preview.html", title=title, slug=slug, article=article))
+    resp = make_response(
+        render_template(
+            "admin/articles_preview.html",
+            title=title,
+            slug=slug,
+            article=article,
+            modules=normalized,
+            modules_tree=modules_tree,
+            current=current,
+            current_index=current_index,
+            prev_mod=prev_mod,
+            next_mod=next_mod,
+            active_parent_slug=active_parent_slug,
+            article_type=article_type,
+            category=category,
+        )
+    )
     resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
     resp.headers["Pragma"] = "no-cache"
     return resp
+
+# Alias under the new URL prefix
+@bp.get("/language-structures-and-lessons/<slug>/preview", endpoint="admin_lsl_preview")
+def admin_articles_preview_alias(slug: str):
+    return admin_articles_preview(slug)
 
 @bp.post("/articles/<slug>/update")
 def admin_articles_update(slug: str):
@@ -185,6 +273,16 @@ def admin_articles_update(slug: str):
     mother_lang_in = (request.form.get("mother_lang") or "").strip().lower()
     if mother_lang_in:
         article["mother_lang"] = mother_lang_in
+
+    # Classification: grammar vs communicative + chapter/section
+    art_type = (request.form.get("article_type") or article.get("type") or "structure").strip().lower()
+    if art_type in {"structure", "communicative"}:
+        article["type"] = art_type
+    cat_id = (request.form.get("category_id") or "").strip()
+    if cat_id:
+        article["category_id"] = cat_id
+    elif "category_id" in article and not cat_id:
+        article.pop("category_id", None)
 
     status_in = (request.form.get("status") or "").strip().lower()
     action = (request.form.get("action") or "").strip().lower()
@@ -258,29 +356,59 @@ def admin_articles_update(slug: str):
         else:
             article.pop("modules", None)
 
-    def _clean_modules(rows):
+    def _slugify(val: str) -> str:
+        s = (val or "").strip().lower()
+        if not s:
+            return ""
+        try:
+            import unicodedata
+            s = unicodedata.normalize("NFD", s)
+            s = "".join(ch for ch in s if unicodedata.category(ch) != "Mn")
+        except Exception:
+            pass
+        s = s.replace(" ", "-")
+        s = "".join(ch if ch.isalnum() or ch == "-" else "-" for ch in s)
+        while "--" in s:
+            s = s.replace("--", "-")
+        return s.strip("-")
+
+    def _clean_modules(rows, parents=None):
         cleaned: list[dict] = []
+        parents = parents or []
         for i, m in enumerate(rows or []):
             try:
                 title_m = str((m.get("title") if isinstance(m, dict) else "") or "").strip()
-                slug_m = str((m.get("slug") if isinstance(m, dict) else "") or "").strip()
+                slug_m = _slugify(str((m.get("slug") if isinstance(m, dict) else "") or ""))
                 html_m = str((m.get("html") if isinstance(m, dict) else "") or "").strip()
+                parent_m = _slugify(str((m.get("parent_id") if isinstance(m, dict) else "") or ""))
             except Exception:
                 continue
-            if not title_m and not html_m:
+            if not title_m and not html_m and not slug_m:
                 continue
             if not slug_m:
                 slug_m = f"m{i+1}"
-            cleaned.append({"title": title_m or f"Module {i+1}", "slug": slug_m, "html": html_m})
+            if not parent_m and i < len(parents):
+                parent_m = _slugify(str(parents[i] or ""))
+            translations = m.get("translations") if isinstance(m, dict) else None
+            if translations and not isinstance(translations, dict):
+                translations = None
+            cleaned.append({
+                "title": title_m or f"Module {i+1}",
+                "slug": slug_m,
+                "html": html_m,
+                "parent_id": parent_m,
+                "translations": translations or {}
+            })
         return cleaned
 
+    parents_list = request.form.getlist("mod_parent_val") or request.form.getlist("mod_parent")
     modules_applied = False
     raw_modules = request.form.get("modules_json")
     if raw_modules is not None:
         try:
             arr = json.loads((raw_modules or "").strip()) if raw_modules else []
             if isinstance(arr, list):
-                _apply_modules(_clean_modules(arr))
+                _apply_modules(_clean_modules(arr, parents=parents_list))
                 modules_applied = True
         except Exception:
             modules_applied = False
@@ -292,14 +420,15 @@ def admin_articles_update(slug: str):
             h_list = request.form.getlist("mod_html")
             if t_list or s_list or h_list:
                 rows = []
-                maxlen = max(len(t_list), len(s_list), len(h_list))
+                maxlen = max(len(t_list), len(s_list), len(h_list), len(parents_list))
                 for i in range(maxlen):
                     rows.append({
                         "title": (t_list[i] if i < len(t_list) else ""),
                         "slug":  (s_list[i] if i < len(s_list) else ""),
                         "html":  (h_list[i] if i < len(h_list) else ""),
+                        "parent_id": (parents_list[i] if i < len(parents_list) else ""),
                     })
-                _apply_modules(_clean_modules(rows))
+                _apply_modules(_clean_modules(rows, parents=parents_list))
         except Exception:
             pass
 

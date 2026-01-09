@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://profepanda.app/schemas/article.schema.json",
+  "title": "Article",
+  "type": "object",
+  "required": ["title", "slug", "language", "modules"],
+  "properties": {
+    "schema_version": { "type": "string", "description": "Semantic version for article schema", "default": "1.0.0" },
+    "title": { "type": "string" },
+    "slug": { "type": "string" },
+    "language": { "type": "string", "enum": ["es", "en"], "description": "Primary authored language" },
+    "summary": { "type": "string" },
+    "modules": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/module" }
+    }
+  },
+  "$defs": {
+    "module": {
+      "type": "object",
+      "required": ["slug", "title", "blocks"],
+      "properties": {
+        "slug": { "type": "string" },
+        "title": { "type": "string" },
+        "parent_id": { "type": "string", "description": "Optional parent module slug (one-level nesting)" },
+        "est_read_min": { "type": "number" },
+        "blocks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/block" }
+        }
+      }
+    },
+    "translations": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Map of target language codes to translated text (e.g., en, fr, pt)"
+    },
+    "block": {
+      "type": "object",
+      "required": ["type", "data"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "enum": ["heading", "text", "example_sentence", "embed", "exercise_ref"] },
+        "data": { "type": "object" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "heading" } } },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": { "type": "string" },
+                  "translations": { "$ref": "#/$defs/translations" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "text" } } },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "object",
+                "required": ["html"],
+                "properties": {
+                  "html": { "type": "string", "description": "Primary (ES) HTML fragment" },
+                  "translations": { "$ref": "#/$defs/translations" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "example_sentence" } } },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "object",
+                "required": ["sentence"],
+                "properties": {
+                  "sentence": { "type": "string", "description": "Primary (ES) sentence" },
+                  "translations": { "$ref": "#/$defs/translations" },
+                  "audio_url": { "type": "string", "format": "uri", "description": "External audio URL (preferred if present)" },
+                  "audio_upload": { "type": "string", "description": "Relative path to uploaded audio file" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "embed" } } },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "object",
+                "required": ["src"],
+                "properties": {
+                  "src": { "type": "string", "format": "uri" },
+                  "title": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "exercise_ref" } } },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "object",
+                "required": ["exercise_type", "exercise_slug"],
+                "properties": {
+                  "exercise_type": { "type": "string" },
+                  "exercise_slug": { "type": "string" },
+                  "title": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,7 +1,9 @@
 # domains/public/__init__.py
+import json
+from pathlib import Path
 from flask import Blueprint, render_template, render_template_string, request, g, make_response, abort, redirect, url_for
 from flask_login import current_user
-from app.storage import list_slugs, load_article
+from app.storage import list_slugs, load_article, get_project_root
 from app.pos_catalog import get_catalog as get_pos_catalog, get_aliases as get_pos_aliases
 
 public_bp = Blueprint("public", __name__)
@@ -74,6 +76,28 @@ def _inject_lang_helpers():
         "ppx_pos_catalog": [{**entry, "value": (entry.get("value") or "").lower()} for entry in get_pos_catalog()],
         "ppx_pos_aliases": get_pos_aliases(),
     }
+
+def _safe_id(value: str) -> str | None:
+    v = (value or "").strip().lower()
+    return v if v and all(ch.isalnum() or ch in "-_" for ch in v) else None
+
+def _load_content_doc(lang: str, domain: str, slug: str) -> dict | None:
+    """
+    Load a content JSON document from /content/<lang>/<domain>/<slug>.json.
+    Returns None if missing/invalid.
+    """
+    lang_safe = _safe_id(lang)
+    domain_safe = _safe_id(domain)
+    slug_safe = _safe_id(slug)
+    if not all([lang_safe, domain_safe, slug_safe]):
+        return None
+    path = Path(get_project_root()) / "content" / lang_safe / domain_safe / f"{slug_safe}.json"
+    if not path.is_file():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
 
 # ─────────────────────────────────────────────────────────────
 # Routes
@@ -570,7 +594,8 @@ def article_module(slug: str, module_slug: str):
         title = (m.get("title") or "").strip() or f"Module {idx+1}"
         mslug = (m.get("slug") or "").strip() or f"m{idx+1}"
         html = (m.get("html") or "").strip()
-        row = {"title": title, "slug": mslug, "html": html}
+        parent = (m.get("parent_id") or "").strip() or None
+        row = {"title": title, "slug": mslug, "html": html, "parent_id": parent}
         normalized.append(row)
         if cur_index < 0 and mslug == module_slug:
             cur_index = idx
@@ -578,22 +603,59 @@ def article_module(slug: str, module_slug: str):
     if cur_index < 0:
         abort(404)
 
+    # Build a shallow tree (one submodule level) for navigation
+    slug_index = {m["slug"]: {**m, "children": []} for m in normalized}
+    for m in normalized:
+        node = slug_index[m["slug"]]
+        parent = node.get("parent_id")
+        if parent and parent in slug_index:
+            slug_index[parent].setdefault("children", []).append(node)
+    modules_tree = []
+    for m in normalized:
+        if not m.get("parent_id") or m.get("parent_id") not in slug_index:
+            root = slug_index[m["slug"]]
+            if root not in modules_tree:
+                modules_tree.append(root)
+
     prev_mod = normalized[cur_index - 1] if cur_index > 0 else None
     next_mod = normalized[cur_index + 1] if cur_index < (len(normalized) - 1) else None
 
     page_title = (data.get("title") or slug)
+    active_parent_slug = normalized[cur_index].get("parent_id") or normalized[cur_index]["slug"]
 
-    # Render dedicated template
+    # Classification (grammar/communicative + category)
+    article_type = (data.get("type") or "structure").strip().lower()
+    category_id = (data.get("category_id") or "").strip()
+    category = None
+    if article_type == "structure" and category_id:
+        try:
+            from pathlib import Path
+            tax_path = Path(__file__).resolve().parent.parent / "data" / "taxonomy" / "grammar_chapters.json"
+            chapters = []
+            with tax_path.open("r", encoding="utf-8") as f:
+                chapters = json.load(f)
+            if isinstance(chapters, list):
+                for item in chapters:
+                    if isinstance(item, dict) and item.get("id") == category_id:
+                        category = item
+                        break
+        except Exception:
+            category = None
+
     resp = make_response(
         render_template(
             "public_article_module.html",
             slug=slug,
             page_title=page_title,
             modules=normalized,
+            modules_tree=modules_tree,
             current_index=cur_index,
             current=normalized[cur_index],
             prev_mod=prev_mod,
             next_mod=next_mod,
+            active_parent_slug=active_parent_slug,
+            article_type=article_type,
+            category=category,
         )
     )
     resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
@@ -832,6 +894,27 @@ def glossary_api_countries():
     from flask import jsonify
     rows = _enabled_glossary_countries()
     return jsonify({'ok': True, 'countries': rows})
+
+@public_bp.route("/content-hub/<lang>/<domain>/<slug>/")
+@public_bp.route("/content-hub/<lang>/<domain>/<slug>")
+def content_hub_preview(lang: str, domain: str, slug: str):
+    """
+    Admin-only public preview of a content hub doc using the shared renderer.
+    Hidden for non-admins until the hub is ready to launch.
+    """
+    if not getattr(g, "is_admin", False):
+        abort(404)
+    doc = _load_content_doc(lang, domain, slug)
+    if not doc:
+        abort(404)
+    resp = make_response(render_template(
+        "public_content_hub_preview.html",
+        content_doc=doc,
+        admin_preview=True,
+    ))
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    resp.headers["Pragma"] = "no-cache"
+    return resp
 
 @public_bp.route('/dictionary/<slug>/')
 def dictionary_entry(slug: str):

@@ -1,0 +1,339 @@
+{% extends "base.html" %}
+{% block admin_nav %}{% include "_admin_bar.html" %}{% endblock %}
+{% block title %}Structured Article — {{ slug }}{% endblock %}
+{% block content %}
+<div class="ppx-card" style="margin:1rem auto; max-width:1200px; padding:1rem;">
+  <div class="ppx-row" style="justify-content:space-between; align-items:center; gap:.5rem; flex-wrap:wrap;">
+    <div>
+      <div class="ppx-h3" style="margin:0;">Structured Article</div>
+      <div class="ppx-muted">{{ slug }}</div>
+    </div>
+    <div class="ppx-row" style="gap:.4rem;">
+      <button id="art-load" class="ppx-btn ppx-btn-secondary">Reload</button>
+      <button id="art-save" class="ppx-btn ppx-btn-secondary">Save</button>
+      <button id="art-preview" class="ppx-btn ppx-btn-primary">Preview</button>
+    </div>
+  </div>
+  <div class="ppx-row" style="gap:1rem; align-items:flex-start; margin-top:1rem; flex-wrap:wrap;">
+    <div style="flex:1 1 240px;">
+      <label class="ppx-label" for="art-slug">Slug</label>
+      <input id="art-slug" class="ppx-input" placeholder="ej: ser-estar-guide" value="{{ '' if slug == 'new' else slug }}" style="width:100%; margin-bottom:.5rem;">
+      <div class="ppx-muted" style="font-size:12px;">El slug define la ruta /data/articles/&lt;slug&gt;/article_structured.json</div>
+    </div>
+    <textarea id="art-json" style="width:min(520px, 100%); min-height:420px; font-family:monospace; font-size:13px; line-height:1.4; border:1px solid #e5e7eb; border-radius:10px; padding:.75rem;"></textarea>
+    <div id="art-preview-pane" style="flex:1 1 520px; min-height:420px; border:1px dashed #d4d4d8; border-radius:12px; padding:1rem; background:#f8fafc; overflow:auto;"></div>
+  </div>
+  <div id="art-status" class="ppx-muted" style="margin-top:.5rem; font-size:13px;"></div>
+</div>
+
+<style>
+  .ppx-mod-tree{list-style:none;margin:0;padding:0;}
+  .ppx-mod-parent{border:1px solid #e5e7eb;border-radius:12px;padding:.65rem .75rem;margin-bottom:.5rem;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.05);}
+  .ppx-mod-parent .ppx-mod-title{font-weight:700;color:#0f172a;}
+  .ppx-sublist{list-style:none;margin:.35rem 0 0 1.75rem;padding:0;}
+  .ppx-sublist .ppx-mod-title{font-weight:600;}
+  .ppx-ex-card{border:1px solid #c7d2fe;background:#eef2ff;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;margin:10px 0;}
+  .ppx-ex-meta{font-size:12px;color:#475569;}
+  .ppx-trans-chip{margin:.25rem 0 0 .25rem;padding:.25rem .55rem;border:1px solid #cbd5e1;border-radius:999px;background:#f8fafc;color:#0f172a;font:600 12px/1 Montserrat,system-ui;cursor:pointer}
+  .ppx-trans-chip:hover{background:#eef2ff;border-color:#c7d2fe;color:#1f2937}
+  .ppx-trans-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.45);z-index:12000;padding:1rem;box-sizing:border-box}
+  .ppx-trans-dialog{background:#fff;border-radius:14px;max-width:960px;width:95vw;box-shadow:0 24px 60px rgba(0,0,0,.25);display:flex;flex-direction:column;gap:.75rem;padding:1rem;box-sizing:border-box}
+  .ppx-trans-header{display:flex;align-items:center;gap:.5rem;justify-content:space-between}
+  .ppx-trans-title{font:700 16px/1.2 Montserrat,system-ui;color:#0f172a}
+  .ppx-trans-lang{display:inline-flex;align-items:center;gap:.35rem}
+  .ppx-trans-select{border:1px solid #cbd5e1;border-radius:8px;padding:.25rem .5rem;font:600 12px/1 Montserrat,system-ui}
+  .ppx-trans-close{border:1px solid #e5e7eb;border-radius:10px;background:#fff;color:#475569;width:32px;height:32px;font-size:20px;line-height:1;cursor:pointer}
+  .ppx-trans-body{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+  .ppx-trans-col{background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:.75rem;box-sizing:border-box}
+  .ppx-trans-col-head{font:700 13px/1.2 Montserrat,system-ui;color:#334155;margin-bottom:.35rem}
+  .ppx-trans-content{font:500 14px/1.5 Montserrat,system-ui;color:#0f172a;white-space:pre-wrap}
+</style>
+
+<!-- Translation modal for preview -->
+<div id="ppx-trans-modal" class="ppx-trans-modal" aria-hidden="true" role="dialog">
+  <div class="ppx-trans-dialog">
+    <div class="ppx-trans-header">
+      <div class="ppx-trans-title">{{ t('Traducción', 'Translation', app_lang) }}</div>
+      <div class="ppx-trans-lang" id="ppx-trans-lang"></div>
+      <button type="button" class="ppx-trans-close" aria-label="{{ t('Cerrar','Close', app_lang) }}">&times;</button>
+    </div>
+    <div class="ppx-trans-body">
+      <div class="ppx-trans-col">
+        <div class="ppx-trans-col-head">{{ t('Original (ES)', 'Original (ES)', app_lang) }}</div>
+        <div id="ppx-trans-src" class="ppx-trans-content"></div>
+      </div>
+      <div class="ppx-trans-col">
+        <div class="ppx-trans-col-head">{{ t('Traducción', 'Translation', app_lang) }}</div>
+        <div id="ppx-trans-dst" class="ppx-trans-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const initialSlug = "{{ slug }}";
+  const slugInput = document.getElementById('art-slug');
+  const jsonEl = document.getElementById('art-json');
+  const previewEl = document.getElementById('art-preview-pane');
+  const statusEl = document.getElementById('art-status');
+  const btnLoad = document.getElementById('art-load');
+  const btnSave = document.getElementById('art-save');
+  const btnPreview = document.getElementById('art-preview');
+
+  async function loadDoc(){
+    const slug = (slugInput?.value || "").trim();
+    if (!slug){ status('Ingresa un slug antes de cargar.', true); return; }
+    status('Loading...');
+    try{
+      const res = await fetch(`/admin/api/article-structured/${slug}`);
+      const data = await res.json();
+      if(!data.ok) throw new Error(data.error||'load failed');
+      jsonEl.value = JSON.stringify(data.data, null, 2);
+      status('Loaded');
+    }catch(e){
+      status(`Error: ${e.message}`, true);
+    }
+  }
+  async function saveDoc(){
+    const slug = (slugInput?.value || "").trim();
+    if (!slug){ status('Ingresa un slug antes de guardar.', true); return; }
+    status('Saving...');
+    try{
+      const payload = JSON.parse(jsonEl.value || '{}');
+      payload.slug = slug;
+      const res = await fetch(`/admin/api/article-structured/${slug}`, {
+        method:'PUT',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if(!data.ok) throw new Error(data.error||'save failed');
+      status('Saved');
+    }catch(e){
+      status(`Error: ${e.message}`, true);
+    }
+  }
+  function status(msg, isErr){
+    if(statusEl){
+      statusEl.textContent = msg;
+      statusEl.style.color = isErr ? '#b91c1c' : '#475569';
+    }
+  }
+
+  function render(){
+    let doc;
+    try{
+      doc = JSON.parse(jsonEl.value || '{}');
+    }catch(e){
+      status(`Preview parse error: ${e.message}`, true);
+      return;
+    }
+    status('Preview rendered');
+    previewEl.innerHTML = '';
+    const nav = document.createElement('ul');
+    nav.className = 'ppx-mod-tree';
+    const content = document.createElement('div');
+    content.className = 'ppx-article-body';
+    const modules = Array.isArray(doc.modules) ? doc.modules : [];
+    const index = {};
+    modules.forEach(m=>{ index[m.slug]= {...m, children:[]} });
+    modules.forEach(m=>{
+      if(m.parent_id && index[m.parent_id]){
+        index[m.parent_id].children.push(index[m.slug]);
+      }
+    });
+    const roots = modules.filter(m=>!m.parent_id);
+    roots.forEach((m, idx)=>{
+      const li = document.createElement('li');
+      li.className = 'ppx-mod-parent';
+      const title = document.createElement('div');
+      title.className = 'ppx-mod-title';
+      title.textContent = `${idx+1}. ${m.title||m.slug}`;
+      li.appendChild(title);
+      if(index[m.slug]?.children?.length){
+        const sub = document.createElement('ul');
+        sub.className = 'ppx-sublist';
+        index[m.slug].children.forEach((c,cidx)=>{
+          const cli = document.createElement('li');
+          const ctitle = document.createElement('div');
+          ctitle.className = 'ppx-mod-title';
+          ctitle.textContent = `${idx+1}.${cidx+1} ${c.title||c.slug}`;
+          cli.appendChild(ctitle);
+          sub.appendChild(cli);
+        });
+        li.appendChild(sub);
+      }
+      nav.appendChild(li);
+    });
+    previewEl.appendChild(nav);
+    modules.forEach(m=>{
+      const h = document.createElement('h3');
+      h.textContent = m.title || m.slug;
+      content.appendChild(h);
+      (m.blocks||[]).forEach(blk=>{
+        renderBlock(content, blk);
+      });
+    });
+    previewEl.appendChild(content);
+    attachChips();
+  }
+
+  function setTranslations(el, translations){
+    if(!translations || typeof translations!=='object') return;
+    const map = {};
+    Object.entries(translations).forEach(([k,v])=>{
+      if(v) map[k]=v;
+    });
+    if(Object.keys(map).length){
+      el.setAttribute('data-translations', JSON.stringify(map));
+    }
+  }
+
+  function renderBlock(parent, blk){
+    const type = blk?.type;
+    const data = blk?.data || {};
+    if(type === 'heading'){
+      const h = document.createElement('h4');
+      h.textContent = data.text || '';
+      setTranslations(h, data.translations);
+      parent.appendChild(h);
+    } else if(type === 'text'){
+      const div = document.createElement('div');
+      div.innerHTML = data.html || '';
+      setTranslations(div, data.translations);
+      parent.appendChild(div);
+    } else if(type === 'example_sentence'){
+      const card = document.createElement('div');
+      card.className = 'ppx-ex-card';
+      const line = document.createElement('div');
+      line.className = 'ppx-ex-lines';
+      const sentence = document.createElement('div');
+      sentence.className = 'ppx-ex-sentence';
+      sentence.textContent = data.sentence || '';
+      setTranslations(sentence, data.translations);
+      line.appendChild(sentence);
+      if(data.audio_url || data.audio_upload){
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ppx-btn ppx-btn-secondary';
+        btn.textContent = '{{ t("Escuchar","Play audio", app_lang) }}';
+        const src = data.audio_url || data.audio_upload;
+        btn.addEventListener('click', ()=>{
+          const audio = new Audio(src);
+          audio.play().catch(()=>{});
+        });
+        card.appendChild(btn);
+      }
+      card.appendChild(line);
+      parent.appendChild(card);
+    }
+  }
+
+  // Translation chips + modal
+  (function(){
+    const modal = document.getElementById('ppx-trans-modal');
+    const closeBtn = modal?.querySelector('.ppx-trans-close');
+    const srcEl = modal?.querySelector('#ppx-trans-src');
+    const dstEl = modal?.querySelector('#ppx-trans-dst');
+    const langWrap = modal?.querySelector('#ppx-trans-lang');
+    let currentTranslations = {};
+    let currentLang = 'en';
+
+    function closeModal(){
+      if (!modal) return;
+      modal.setAttribute('aria-hidden','true');
+      modal.style.display = 'none';
+      document.body.classList.remove('ppx-trans-open');
+    }
+    function openModal(){
+      if (!modal) return;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('ppx-trans-open');
+    }
+    function renderLangSelector(){
+      if (!langWrap) return;
+      const langs = Object.keys(currentTranslations);
+      langWrap.innerHTML = '';
+      if (langs.length <= 1) { langWrap.style.display = 'none'; return; }
+      langWrap.style.display = 'inline-flex';
+      const sel = document.createElement('select');
+      sel.className = 'ppx-trans-select';
+      langs.forEach(l=>{
+        const opt = document.createElement('option');
+        opt.value = l;
+        opt.textContent = l.toUpperCase();
+        if (l === currentLang) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      sel.addEventListener('change', ()=>{
+        currentLang = sel.value;
+        renderContents();
+      });
+      langWrap.appendChild(sel);
+    }
+    function renderContents(){
+      if (!srcEl || !dstEl) return;
+      dstEl.textContent = currentTranslations[currentLang] || '';
+    }
+    function attachChips(){
+      const selector = '#art-preview-pane [data-translations]';
+      const blocks = Array.from(document.querySelectorAll(selector));
+      blocks.forEach(el=>{
+        if (el.dataset.transChipAttached) return;
+        let translations = {};
+        if (el.dataset.translations) {
+          try { translations = JSON.parse(el.dataset.translations) || {}; } catch(_){}
+        }
+        const available = Object.keys(translations);
+        if (!available.length) return;
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'ppx-trans-chip';
+        chip.textContent = '{{ t("Traducir","Translate", app_lang) }}';
+        chip.addEventListener('click', ()=>{
+          currentTranslations = translations;
+          currentLang = available.includes('en') ? 'en' : available[0];
+          if (srcEl) srcEl.textContent = el.innerText || el.textContent || '';
+          renderLangSelector();
+          renderContents();
+          openModal();
+        });
+        el.insertAdjacentElement('afterend', chip);
+        el.dataset.transChipAttached = 'true';
+      });
+    }
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (modal) modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
+    document.addEventListener('keyup', (e)=>{ if (e.key === 'Escape') closeModal(); });
+    // Expose to outer scope
+    window.attachChips = attachChips;
+  })();
+
+  if(btnLoad) btnLoad.addEventListener('click', loadDoc);
+  if(btnSave) btnSave.addEventListener('click', saveDoc);
+  if(btnPreview) btnPreview.addEventListener('click', render);
+  if(initialSlug && initialSlug !== 'new'){
+    slugInput.value = initialSlug;
+    loadDoc().then(render);
+  } else {
+    jsonEl.value = JSON.stringify({
+      schema_version:"1.0.0",
+      title:"Nuevo artículo",
+      slug:"",
+      language:"es",
+      summary:"",
+      modules:[
+        { slug:"mod1", title:"Módulo 1", blocks:[
+          { type:"heading", data:{ text:"Título", translations:{} } },
+          { type:"text", data:{ html:"<p>Contenido en español.</p>", translations:{} }
+          }
+        ]}
+      ]
+    }, null, 2);
+    render();
+  }
+})();
+</script>
+{% endblock %}

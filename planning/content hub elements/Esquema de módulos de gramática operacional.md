@@ -195,12 +195,15 @@ Cada módulo gramatical sigue esta arquitectura interna:
 
 ---
 
-## 4.4 Subjuntivo  
-**Para qué sirve:** no declarar, virtualizar
+## 4.4 Indicativo y Subjuntivo  
+**Para qué sirven:** declarar o no declarar información
 
 **Enfoque operativo**
-- Declaración vs no declaración
-- Deseo, duda, valoración
+- Indicativo como declaración (afirmación, suposición)
+- Subjuntivo como no declaración (virtualidad)
+- Compromiso del hablante vs suspensión
+- Deseo, duda, valoración, influencia
+- Identificación vs no identificación
 - Dependencia y alineación temporal
 
 ---
@@ -210,12 +213,29 @@ Cada módulo gramatical sigue esta arquitectura interna:
 
 ---
 
-## 4.6 Haber y estar  
-**Para qué sirven:** existencia vs localización
+## 4.6 SER y ESTAR  
+**Para qué sirven:** conceptualizar esencia vs situación
+
+**Enfoque operativo**
+- SER: definir, categorizar, conceptualizar
+- ESTAR: situar, contextualizar, encuadrar estados
+- Adjetivos con lectura esencial vs situacional
+- Estados resultantes (estar + participio)
+- Cambios de perspectiva con el mismo adjetivo
 
 ---
 
-## 4.7 Perífrasis verbales  
+## 4.7 HABER y ESTAR  
+**Para qué sirven:** existencia vs localización
+
+**Enfoque operativo**
+- HABER como encuadre existencial
+- ESTAR como encuadre locativo
+- Introducir entidades vs localizar entidades conocidas
+
+---
+
+## 4.8 Perífrasis verbales  
 **Para qué sirven:** añadir aspecto y modalidad
 
 **Enfoque operativo**
@@ -282,12 +302,10 @@ Cada módulo gramatical sigue esta arquitectura interna:
 
 ## Fin del esquema
 
----
-
 # Operational Grammar Module Schema (A1–B2)
 
 > This schema defines the structure of **grammar modules / chapters / units**
-> designed according to **Operational and Cognitive Grammar** principles,
+> designed according to the principles of **Operational and Cognitive Grammar**,
 > intended for digital learning, interpretive practice, and meaningful production.
 
 ---
@@ -339,14 +357,14 @@ Each grammar module follows this internal architecture:
 
 **Operational focus**
 - Singular and plural as viewpoint
-- Count vs non-count nouns
+- Countable vs uncountable nouns
 - Collective nouns and plural-only nouns
 - Meaning shifts when mass nouns are pluralized
 
 ---
 
 ## 1.4 Adjectives: attributing properties  
-**What it’s for:** modifying how the noun is interpreted
+**What it’s for:** modifying the interpretation of the noun
 
 **Operational focus**
 - Agreement as cohesion
@@ -406,13 +424,13 @@ Each grammar module follows this internal architecture:
 
 **Operational focus**
 - Affirmative and negative polarity
-- Double negation as coherence strategy
+- Double negation as a coherence strategy
 - Indefinites as discourse strategies
 
 ---
 
 ## 2.5 Numerals and quantifiers  
-**What they’re for:** measuring, ranking, and scaling
+**What they’re for:** measuring, ordering, and scaling
 
 **Operational focus**
 - Cardinal vs ordinal meaning
@@ -427,7 +445,7 @@ Each grammar module follows this internal architecture:
 **What they’re for:** encoding roles in events
 
 **Operational focus**
-- Subject as verbal anchor
+- Subject as a verbal anchor
 - Objects as affected participants
 - Experiencer constructions
 
@@ -456,7 +474,7 @@ Each grammar module follows this internal architecture:
 
 # MODULE 4 — VERBS: CONSTRUCTING EVENTS IN TIME
 
-## 4.1 The verb as event constructor  
+## 4.1 The verb as an event constructor  
 **What it’s for:** presenting actions, states, and processes
 
 ---
@@ -481,12 +499,15 @@ Each grammar module follows this internal architecture:
 
 ---
 
-## 4.4 Subjunctive  
-**What it’s for:** non-declaration, virtuality
+## 4.4 Indicative and Subjunctive  
+**What they’re for:** declaring or not declaring information
 
 **Operational focus**
-- Declaration vs non-declaration
-- Desire, doubt, evaluation
+- Indicative as declaration (assertion, assumption)
+- Subjunctive as non-declaration (virtuality)
+- Speaker commitment vs suspension
+- Desire, doubt, evaluation, influence
+- Identification vs non-identification
 - Dependency and temporal alignment
 
 ---
@@ -496,12 +517,29 @@ Each grammar module follows this internal architecture:
 
 ---
 
-## 4.6 *Haber* and *Estar*  
-**What they’re for:** existence vs location
+## 4.6 SER and ESTAR  
+**What they’re for:** construing essence vs situation
+
+**Operational focus**
+- SER: defining, categorizing, conceptualizing
+- ESTAR: situating, contextualizing, framing states
+- Adjectives with essential vs situational readings
+- Resulting states (estar + participle)
+- Perspective shifts with the same adjective
 
 ---
 
-## 4.7 Verbal periphrases  
+## 4.7 HABER and ESTAR  
+**What they’re for:** existence vs location
+
+**Operational focus**
+- HABER as existential framing
+- ESTAR as locative framing
+- Introducing entities vs locating known ones
+
+---
+
+## 4.8 Verbal periphrases  
 **What they’re for:** adding aspect and modality
 
 **Operational focus**
@@ -562,7 +600,7 @@ Each grammar module follows this internal architecture:
 - How a native speaker chooses forms
 - Why “rules” fail without meaning
 - How to self-correct through intent
-- Grammar as communicative strategy
+- Grammar as a communicative strategy
 
 ---
 

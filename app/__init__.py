@@ -131,6 +131,17 @@ def create_app(config_name: str | None = None) -> Flask:
         print(f"[boot][WARN] lessons domain not registered: {e}")
         traceback.print_exc()
 
+    # Courses domain (API only for now). Dev-gated so it can be turned on later.
+    if bool(app.config.get("FEATURE_COURSES_ENABLED", False)):
+        try:
+            from domains.courses import init_app as courses_init_app  # type: ignore
+            courses_init_app(app)
+            print("[boot] registered domains.courses blueprints (/api/courses)")
+        except Exception as e:
+            import traceback
+            print(f"[boot][WARN] courses domain not registered: {e}")
+            traceback.print_exc()
+
     # ─────────────────────────────────────────────────────────────
     # Health check
     # ─────────────────────────────────────────────────────────────
