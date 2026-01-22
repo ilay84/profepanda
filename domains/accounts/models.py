@@ -14,7 +14,7 @@ class AdminUser(db.Model, UserMixin):
     password_hash = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(255), nullable=False)
 
-    # Roles: author | editor | super
+    # Roles: student | admin | author | editor | super
     role = db.Column(db.String(16), nullable=False, default="author")
 
     # Status: active | disabled

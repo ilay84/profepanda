@@ -20,6 +20,8 @@
 
       <label><strong>{{ t('Rol', 'Role', app_lang) }}</strong></label>
       <select name="role" style="padding:.55rem;border:1px solid #e5e7eb;border-radius:10px;">
+        <option value="student" {{ 'selected' if user.role=='student' else '' }}>{{ t('Estudiante', 'Student', app_lang) }}</option>
+        <option value="admin" {{ 'selected' if user.role=='admin' else '' }}>Admin</option>
         <option value="author" {{ 'selected' if user.role=='author' else '' }}>Author</option>
         <option value="editor" {{ 'selected' if user.role=='editor' else '' }}>Editor</option>
         <option value="super"  {{ 'selected' if user.role=='super'  else '' }}>Super</option>

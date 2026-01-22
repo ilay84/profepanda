@@ -1,0 +1,5663 @@
+[
+  {
+    "correct_answer": "Hola",
+    "hint": "It starts with H.",
+    "id": "sb-01-ex-01",
+    "lesson_id": "sb-01",
+    "options": [
+      "Hola",
+      "Adios",
+      "Gracias",
+      "Por favor"
+    ],
+    "order": 4,
+    "question": "How do you say \"Hello\" in Spanish?",
+    "type": "multiple_choice"
+  },
+  {
+    "correct_answer": "llamo",
+    "hint": "Verb for \"to call oneself\".",
+    "id": "sb-01-ex-02",
+    "lesson_id": "sb-01",
+    "order": 6,
+    "question": "Me ___ Eli.",
+    "type": "fill_blank"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "Buenos días",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "hint": "Two words. The second has an accent.",
+    "id": "sb-01-ex-03",
+    "lesson_id": "sb-01",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 5,
+    "question": "Good morning",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "translation"
+  },
+  {
+    "hint": "Start with the obvious one: Hola.",
+    "id": "sb-01-ex-04",
+    "lesson_id": "sb-01",
+    "matching_pairs": [
+      {
+        "left": "Hola",
+        "right": "Hello"
+      },
+      {
+        "left": "Adios",
+        "right": "Goodbye"
+      },
+      {
+        "left": "Gracias",
+        "right": "Thank you"
+      },
+      {
+        "left": "Por favor",
+        "right": "Please"
+      }
+    ],
+    "order": 7,
+    "type": "matching"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "",
+    "dialog_lines": [],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [
+      {
+        "audio_url": "",
+        "sentence": "Yo **soy** un pelotudo.",
+        "translation": "I'm "
+      }
+    ],
+    "explanation_content": "",
+    "hint": "",
+    "id": "ex-1768077813",
+    "lesson_id": "sb-01",
+    "matching_pairs": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 2,
+    "question": "",
+    "sentence_text": "Yo **soy** un pelotudo.",
+    "sentence_translation": "I'm an idiot.",
+    "type": "example_sentence"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "Hola, Romi.",
+        "translation": "Hi, Romi."
+      },
+      {
+        "audio_url": "",
+        "speaker_index": 1,
+        "text": "Hola, Eli. ¿Cómo va?",
+        "translation": "Hi, Eli. How's it going?"
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Eli"
+      },
+      {
+        "avatar_url": "",
+        "name": "Romi"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "",
+    "hint": "",
+    "id": "ex-1768077987",
+    "lesson_id": "sb-01",
+    "matching_pairs": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 3,
+    "question": "Romi and Eli say hello to eachother.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "dialogue"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [
+      {
+        "sentence": "",
+        "translation": ""
+      }
+    ],
+    "explanation_content": "",
+    "hint": "",
+    "id": "ex-1768081890",
+    "lesson_id": "sb-01",
+    "matching_pairs": [
+      {
+        "left": "",
+        "right": ""
+      }
+    ],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 1,
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "word_order",
+    "word_order_decoys": [
+      "el",
+      "tareo"
+    ],
+    "word_order_words": [
+      "Se",
+      "me",
+      "olvidó",
+      "la",
+      "tarea."
+    ]
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "Pelotudo",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [
+      {
+        "sentence": "",
+        "translation": ""
+      }
+    ],
+    "explanation_content": "",
+    "hint": "",
+    "id": "ex-1768083261",
+    "lesson_id": "sb-01",
+    "matching_pairs": [
+      {
+        "left": "",
+        "right": ""
+      }
+    ],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "question": "Write what you hear.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "dictation",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Hola**",
+        "translation": "Hi / Hello"
+      }
+    ],
+    "explanation_content": "## Informal Greetings\n\nIn Spanish, you use **informal greetings** with people you know well.\n\nThis includes friends, family, and people your age.",
+    "id": "demo-u1-l1-ex-01",
+    "lesson_id": "demo-u1-l1",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "hint": "This is the most common greeting in Spanish.",
+    "id": "demo-u1-l1-ex-02",
+    "lesson_id": "demo-u1-l1",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "Hola",
+        "right": "Hello / Hi"
+      }
+    ],
+    "option_feedback": [],
+    "options": [],
+    "order": 2,
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "matching",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Hola**, Ana.",
+        "translation": "Hi, Ana."
+      }
+    ],
+    "explanation_content": "## Hola\n\n**Hola** is a neutral greeting.\n\nYou can use it at any time of day with people you know.",
+    "id": "demo-u1-l1-ex-03",
+    "lesson_id": "demo-u1-l1",
+    "order": 3,
+    "type": "explanation"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "Hola",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "hint": "You are greeting a friend.",
+    "id": "demo-u1-l1-ex-04",
+    "lesson_id": "demo-u1-l1",
+    "matching_pairs": [],
+    "option_feedback": [
+      "Correct! This is the natural informal greeting.",
+      "This greeting is used in the morning.",
+      "This greeting is used at night.",
+      "This is a formal greeting."
+    ],
+    "options": [
+      "Hola",
+      "Buenos días",
+      "Buenas noches",
+      "¿Cómo está usted?"
+    ],
+    "order": 4,
+    "question": "You see a friend at school. What do you say?",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "multiple_choice",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Hola, **¿cómo estás?**",
+        "translation": "Hi, how are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo estás?\n\n**¿Cómo estás?** is an informal way to ask how someone is.\n\nYou use it with people you know.",
+    "id": "demo-u1-l1-ex-05",
+    "lesson_id": "demo-u1-l1",
+    "order": 5,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "¿Cómo estás?",
+    "hint": "You are talking to a friend.",
+    "id": "demo-u1-l1-ex-06",
+    "lesson_id": "demo-u1-l1",
+    "option_feedback": [
+      "Correct! This is the informal way to ask how someone is.",
+      "This is the formal version.",
+      "This is a greeting used at night.",
+      "This is used when meeting someone for the first time."
+    ],
+    "options": [
+      "¿Cómo estás?",
+      "¿Cómo está usted?",
+      "Buenas noches",
+      "Mucho gusto"
+    ],
+    "order": 6,
+    "question": "You greet a friend and want to ask how they are. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Bien**.",
+        "translation": "Good."
+      },
+      {
+        "sentence": "**Muy bien**.",
+        "translation": "Very good."
+      }
+    ],
+    "explanation_content": "## Short Answers\n\nWhen someone asks **¿Cómo estás?**, short answers are very common.\n\nYou don’t need a long explanation.",
+    "id": "demo-u1-l1-ex-07",
+    "lesson_id": "demo-u1-l1",
+    "order": 7,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Bien.",
+    "hint": "Short answers are common.",
+    "id": "demo-u1-l1-ex-08",
+    "lesson_id": "demo-u1-l1",
+    "option_feedback": [
+      "Correct! Short answers like this are very natural.",
+      "This is a formal question, not an answer.",
+      "This is a greeting used at night.",
+      "This is used to introduce yourself."
+    ],
+    "options": [
+      "Bien.",
+      "¿Cómo está usted?",
+      "Buenas noches.",
+      "Me llamo Ana."
+    ],
+    "order": 8,
+    "question": "A friend asks: “¿Cómo estás?” What is a natural answer?",
+    "type": "multiple_choice"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "Hola, Luis.",
+        "translation": "Hi, Luis."
+      },
+      {
+        "audio_url": "",
+        "speaker_index": 1,
+        "text": "Hola, Ana. ¿Cómo estás?",
+        "translation": "Hi, Ana. How are you?"
+      },
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "Bien. ¿Y tú?",
+        "translation": "Good. And you?"
+      },
+      {
+        "audio_url": "",
+        "speaker_index": 1,
+        "text": "Muy bien.",
+        "translation": "Very good."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Ana"
+      },
+      {
+        "avatar_url": "",
+        "name": "Luis"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "",
+    "hint": "",
+    "id": "demo-u1-l1-ex-09",
+    "lesson_id": "demo-u1-l1",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 9,
+    "question": "Two friends greet each other.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "dialogue",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Buenos días**.",
+        "translation": "Good morning."
+      }
+    ],
+    "explanation_content": "## Formal Greetings\n\nIn Spanish, you use **formal greetings** with people you don’t know well.\n\nThey show respect and politeness.",
+    "id": "demo-u1-l2-ex-01",
+    "lesson_id": "demo-u1-l2",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Buenos días**, profesora.",
+        "translation": "Good morning, professor."
+      }
+    ],
+    "explanation_content": "## Buenos días\n\n**Buenos días** is a formal greeting used in the morning.\n\nYou usually say it from early morning until around noon.",
+    "id": "demo-u1-l2-ex-02",
+    "lesson_id": "demo-u1-l2",
+    "order": 2,
+    "type": "explanation"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Buenas tardes**, señor.",
+        "translation": "Good afternoon."
+      }
+    ],
+    "explanation_content": "## Buenas tardes\n\n**Buenas tardes** is a formal greeting used in the afternoon.\n\nYou usually say it from around noon until early evening.",
+    "id": "demo-u1-l2-ex-03",
+    "lesson_id": "demo-u1-l2",
+    "order": 3,
+    "type": "explanation"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Buenas noches**, doctora.",
+        "translation": "Good evening."
+      }
+    ],
+    "explanation_content": "## Buenas noches\n\n**Buenas noches** is a formal greeting used in the evening and at night.",
+    "id": "demo-u1-l2-ex-04",
+    "lesson_id": "demo-u1-l2",
+    "order": 4,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Buenos días",
+    "hint": "Think about the time of day and the situation.",
+    "id": "demo-u1-l2-ex-05",
+    "lesson_id": "demo-u1-l2",
+    "option_feedback": [
+      "Correct! This is the formal greeting used in the morning.",
+      "This greeting is used in the afternoon.",
+      "This greeting is used in the evening or at night.",
+      "This greeting is informal."
+    ],
+    "options": [
+      "Buenos días",
+      "Buenas tardes",
+      "Buenas noches",
+      "Hola"
+    ],
+    "order": 5,
+    "question": "It is 9:00 a.m. and you greet a coworker. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "correct_answer": "Buenas tardes",
+    "hint": "Think about the time of day and formality.",
+    "id": "demo-u1-l2-ex-06",
+    "lesson_id": "demo-u1-l2",
+    "option_feedback": [
+      "Correct! This is the formal greeting used in the afternoon.",
+      "This greeting is used in the morning.",
+      "This greeting is used in the evening or at night.",
+      "This greeting is informal."
+    ],
+    "options": [
+      "Buenas tardes",
+      "Buenos días",
+      "Buenas noches",
+      "Hola"
+    ],
+    "order": 6,
+    "question": "It is 3:00 p.m. You greet a stranger. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "hint": "Match each greeting with the time of day.",
+    "id": "demo-u1-l2-ex-07",
+    "lesson_id": "demo-u1-l2",
+    "matching_pairs": [
+      {
+        "left": "Buenos días",
+        "right": "Morning"
+      },
+      {
+        "left": "Buenas tardes",
+        "right": "Afternoon"
+      },
+      {
+        "left": "Buenas noches",
+        "right": "Evening / Night"
+      }
+    ],
+    "order": 7,
+    "type": "matching"
+  },
+  {
+    "correct_answer": "Buenas noches",
+    "hint": "Think about the time and the level of formality.",
+    "id": "demo-u1-l2-ex-08",
+    "lesson_id": "demo-u1-l2",
+    "option_feedback": [
+      "Correct! This is the formal greeting used in the evening or at night.",
+      "This greeting is used earlier in the day.",
+      "This greeting is used in the morning.",
+      "This greeting is informal."
+    ],
+    "options": [
+      "Buenas noches",
+      "Buenas tardes",
+      "Buenos días",
+      "Hola"
+    ],
+    "order": 8,
+    "question": "It is 8:00 p.m. You greet your doctor. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Buenos días. **¿Cómo está usted?**",
+        "translation": "Good morning. How are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo está usted?\n\n**¿Cómo está usted?** is the formal way to ask how someone is.\n\nYou use it after a formal greeting.",
+    "id": "demo-u1-l2-ex-09",
+    "lesson_id": "demo-u1-l2",
+    "order": 9,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "¿Cómo está usted?",
+    "hint": "You are speaking politely to a professional.",
+    "id": "demo-u1-l2-ex-10",
+    "lesson_id": "demo-u1-l2",
+    "option_feedback": [
+      "Correct! This is the formal way to ask how someone is.",
+      "This is informal.",
+      "This is informal and casual.",
+      "This is used to introduce yourself."
+    ],
+    "options": [
+      "¿Cómo está usted?",
+      "¿Cómo estás?",
+      "¿Qué tal?",
+      "Me llamo Carlos."
+    ],
+    "order": 10,
+    "question": "You greet a hotel receptionist politely. What do you say next?",
+    "type": "multiple_choice"
+  },
+  {
+    "hint": "These are all formal greetings or questions.",
+    "id": "demo-u1-l2-ex-11",
+    "lesson_id": "demo-u1-l2",
+    "matching_pairs": [
+      {
+        "left": "Buenos días",
+        "right": "Good morning"
+      },
+      {
+        "left": "Buenas tardes",
+        "right": "Good afternoon"
+      },
+      {
+        "left": "Buenas noches",
+        "right": "Good evening / Good night"
+      },
+      {
+        "left": "¿Cómo está usted?",
+        "right": "How are you? (formal)"
+      }
+    ],
+    "order": 11,
+    "type": "matching"
+  },
+  {
+    "correct_answer": "Buenos días",
+    "hint": "This is the formal greeting used in the morning.",
+    "id": "demo-u1-l2-ex-12",
+    "lesson_id": "demo-u1-l2",
+    "order": 12,
+    "question": "Good morning",
+    "type": "translation"
+  },
+  {
+    "correct_answer": "Buenas tardes",
+    "hint": "This is the formal greeting used after noon.",
+    "id": "demo-u1-l2-ex-13",
+    "lesson_id": "demo-u1-l2",
+    "order": 13,
+    "question": "Good afternoon",
+    "type": "translation"
+  },
+  {
+    "correct_answer": "Buenas noches",
+    "hint": "This greeting is used in the evening and at night.",
+    "id": "demo-u1-l2-ex-14",
+    "lesson_id": "demo-u1-l2",
+    "order": 14,
+    "question": "Good evening / Good night",
+    "type": "translation"
+  },
+  {
+    "audio_url": "Audio suggestion: clear, neutral Latin American voice saying “Buenos días” at natural speed.",
+    "correct_answer": "Buenos días",
+    "hint": "This is the formal greeting used in the morning.",
+    "id": "demo-u1-l2-ex-15",
+    "lesson_id": "demo-u1-l2",
+    "order": 15,
+    "question": "Write what you hear.",
+    "type": "dictation"
+  },
+  {
+    "dialog_lines": [
+      {
+        "speaker_index": 0,
+        "text": "Buenas noches.",
+        "translation": "Good evening."
+      },
+      {
+        "speaker_index": 1,
+        "text": "Buenas noches. ¿Cómo está usted?",
+        "translation": "Good evening. How are you?"
+      },
+      {
+        "speaker_index": 0,
+        "text": "Muy bien, gracias.",
+        "translation": "Very well, thank you."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Receptionist"
+      },
+      {
+        "avatar_url": "",
+        "name": "Guest"
+      }
+    ],
+    "id": "demo-u1-l2-ex-16",
+    "lesson_id": "demo-u1-l2",
+    "order": 16,
+    "question": "A formal greeting at a hotel.",
+    "type": "dialogue"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Me llamo** Ana.",
+        "translation": "My name is Ana."
+      }
+    ],
+    "explanation_content": "## Me llamo\n\n**Me llamo** is the most common way to say your name in Spanish.",
+    "id": "demo-u1-l3-ex-01",
+    "lesson_id": "demo-u1-l3",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "llamo",
+    "hint": "This verb is used to say your name.",
+    "id": "demo-u1-l3-ex-02",
+    "lesson_id": "demo-u1-l3",
+    "order": 2,
+    "question": "Me ___ Carlos.",
+    "type": "fill_blank"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Soy** Carlos.",
+        "translation": "I am Carlos."
+      }
+    ],
+    "explanation_content": "## Soy\n\nYou can also introduce yourself using **soy**.\n\nYou use **soy** to say who you are.",
+    "id": "demo-u1-l3-ex-03",
+    "lesson_id": "demo-u1-l3",
+    "order": 3,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Soy",
+    "hint": "Use this verb to say who you are.",
+    "id": "demo-u1-l3-ex-04",
+    "lesson_id": "demo-u1-l3",
+    "order": 4,
+    "question": "___ María.",
+    "type": "fill_blank"
+  },
+  {
+    "correct_answer": "Me llamo Laura.",
+    "hint": "Choose a phrase used to say your name.",
+    "id": "demo-u1-l3-ex-05",
+    "lesson_id": "demo-u1-l3",
+    "option_feedback": [
+      "Correct! This is a very common way to say your name.",
+      "This is also correct, but we’ll practice one option at a time.",
+      "This is a greeting, not an introduction.",
+      "This is a question, not an introduction."
+    ],
+    "options": [
+      "Me llamo Laura.",
+      "Soy Laura.",
+      "Buenos días Laura.",
+      "¿Cómo estás Laura?"
+    ],
+    "order": 5,
+    "question": "You want to introduce yourself. What can you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Mucho gusto**.",
+        "translation": "Nice to meet you."
+      }
+    ],
+    "explanation_content": "## Mucho gusto\n\n**Mucho gusto** is a polite way to respond when you meet someone for the first time.",
+    "id": "demo-u1-l3-ex-06",
+    "lesson_id": "demo-u1-l3",
+    "order": 6,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Mucho gusto.",
+    "hint": "You are meeting someone for the first time.",
+    "id": "demo-u1-l3-ex-07",
+    "lesson_id": "demo-u1-l3",
+    "option_feedback": [
+      "Correct! This is a polite response when meeting someone.",
+      "This asks how someone is, not a response to a name.",
+      "This is a greeting, not a response.",
+      "You don’t repeat the other person’s introduction."
+    ],
+    "options": [
+      "Mucho gusto.",
+      "¿Cómo estás?",
+      "Buenos días.",
+      "Me llamo Andrés."
+    ],
+    "order": 7,
+    "question": "Someone says: “Me llamo Andrés.” What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "dialog_lines": [
+      {
+        "speaker_index": 0,
+        "text": "Hola. Me llamo Lucía.",
+        "translation": "Hi. My name is Lucía."
+      },
+      {
+        "speaker_index": 1,
+        "text": "Hola, Lucía. Soy Pedro.",
+        "translation": "Hi, Lucía. I’m Pedro."
+      },
+      {
+        "speaker_index": 0,
+        "text": "Mucho gusto.",
+        "translation": "Nice to meet you."
+      },
+      {
+        "speaker_index": 1,
+        "text": "Mucho gusto.",
+        "translation": "Nice to meet you."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Lucía"
+      },
+      {
+        "avatar_url": "",
+        "name": "Pedro"
+      }
+    ],
+    "id": "demo-u1-l3-ex-08",
+    "lesson_id": "demo-u1-l3",
+    "order": 8,
+    "question": "Two people meet for the first time.",
+    "type": "dialogue"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Él es** Carlos.",
+        "translation": "This is Carlos."
+      },
+      {
+        "sentence": "**Ella es** María.",
+        "translation": "This is María."
+      }
+    ],
+    "explanation_content": "## Introducing Someone Else\n\nYou use **él es** or **ella es** to introduce another person.",
+    "id": "demo-u1-l4-ex-01",
+    "lesson_id": "demo-u1-l4",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Ella es María.",
+    "hint": "María is a woman, and you are talking about someone else.",
+    "id": "demo-u1-l4-ex-02",
+    "lesson_id": "demo-u1-l4",
+    "option_feedback": [
+      "Correct! Use **ella es** to introduce a woman.",
+      "This is used for a man.",
+      "This is how you introduce yourself.",
+      "This is also for introducing yourself."
+    ],
+    "options": [
+      "Ella es María.",
+      "Él es María.",
+      "Me llamo María.",
+      "Soy María."
+    ],
+    "order": 2,
+    "question": "You are talking about María. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "correct_answer": "Él",
+    "hint": "Use this word to introduce a man.",
+    "id": "demo-u1-l4-ex-03",
+    "lesson_id": "demo-u1-l4",
+    "order": 3,
+    "question": "___ es Juan.",
+    "type": "fill_blank"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Te presento a** Ana.",
+        "translation": "This is Ana. (Let me introduce you to Ana.)"
+      }
+    ],
+    "explanation_content": "## Te presento a…\n\n**Te presento a…** is used to introduce one person to another.",
+    "id": "demo-u1-l4-ex-04",
+    "lesson_id": "demo-u1-l4",
+    "order": 4,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Te presento a Ana.",
+    "hint": "You are helping two people meet.",
+    "id": "demo-u1-l4-ex-05",
+    "lesson_id": "demo-u1-l4",
+    "option_feedback": [
+      "Correct! This is used to introduce one person to another.",
+      "This is how you introduce yourself.",
+      "This introduces someone, but not directly to another person.",
+      "This is said after being introduced."
+    ],
+    "options": [
+      "Te presento a Ana.",
+      "Me llamo Ana.",
+      "Ella es Ana.",
+      "Mucho gusto."
+    ],
+    "order": 5,
+    "question": "You want to introduce Ana to a friend. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "hint": "Match each phrase with its meaning.",
+    "id": "demo-u1-l4-ex-06",
+    "lesson_id": "demo-u1-l4",
+    "matching_pairs": [
+      {
+        "left": "Él es Carlos.",
+        "right": "This is Carlos. (man)"
+      },
+      {
+        "left": "Ella es Ana.",
+        "right": "This is Ana. (woman)"
+      },
+      {
+        "left": "Te presento a Luis.",
+        "right": "Let me introduce you to Luis."
+      }
+    ],
+    "order": 6,
+    "type": "matching"
+  },
+  {
+    "dialog_lines": [
+      {
+        "speaker_index": 0,
+        "text": "Ana, **te presento a** Carlos.",
+        "translation": "Ana, let me introduce you to Carlos."
+      },
+      {
+        "speaker_index": 0,
+        "text": "**Él es** Carlos.",
+        "translation": "This is Carlos."
+      },
+      {
+        "speaker_index": 1,
+        "text": "Mucho gusto.",
+        "translation": "Nice to meet you."
+      },
+      {
+        "speaker_index": 2,
+        "text": "Mucho gusto.",
+        "translation": "Nice to meet you."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Laura"
+      },
+      {
+        "avatar_url": "",
+        "name": "Carlos"
+      },
+      {
+        "avatar_url": "",
+        "name": "Ana"
+      }
+    ],
+    "id": "demo-u1-l4-ex-07",
+    "lesson_id": "demo-u1-l4",
+    "order": 7,
+    "question": "Introducing two people.",
+    "type": "dialogue"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Hola, **¿cómo estás?**",
+        "translation": "Hi, how are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo estás?\n\n**¿Cómo estás?** is the informal way to ask how someone is.",
+    "id": "demo-u2-l5-ex-01",
+    "lesson_id": "demo-u2-l5",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "¿Cómo estás?",
+    "hint": "You are talking to a friend.",
+    "id": "demo-u2-l5-ex-02",
+    "lesson_id": "demo-u2-l5",
+    "option_feedback": [
+      "Correct! This is the informal way to ask how someone is.",
+      "This is the formal version.",
+      "This is a greeting, not a question.",
+      "This is used when meeting someone for the first time."
+    ],
+    "options": [
+      "¿Cómo estás?",
+      "¿Cómo está usted?",
+      "Buenos días",
+      "Mucho gusto"
+    ],
+    "order": 2,
+    "question": "You greet a friend and want to ask how they are. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [
+      {
+        "sentence": "**Bien.**",
+        "translation": "Good."
+      },
+      {
+        "sentence": "**Muy bien.**",
+        "translation": "Very good."
+      }
+    ],
+    "explanation_content": "## Short Answers\n\nWhen someone asks **¿Cómo estás?**, short answers are very common.",
+    "hint": "",
+    "id": "demo-u2-l5-ex-03",
+    "lesson_id": "demo-u2-l5",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 3,
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "explanation",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Hola, **¿cómo estás?**",
+        "translation": "Hi, how are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo estás?\n\n**¿Cómo estás?** is the informal way to ask how someone is.",
+    "id": "ex-1768179210-795aaec2",
+    "lesson_id": "demo-u2-l5",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "¿Cómo estás?",
+    "hint": "You are talking to a friend.",
+    "id": "ex-1768179217-c53956d6",
+    "lesson_id": "demo-u2-l5",
+    "option_feedback": [
+      "Correct! This is the informal way to ask how someone is.",
+      "This is the formal version.",
+      "This is a greeting, not a question.",
+      "This is used when meeting someone for the first time."
+    ],
+    "options": [
+      "¿Cómo estás?",
+      "¿Cómo está usted?",
+      "Buenos días",
+      "Mucho gusto"
+    ],
+    "order": 2,
+    "question": "You greet a friend and want to ask how they are. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Bien.**",
+        "translation": "Good."
+      },
+      {
+        "sentence": "**Muy bien.**",
+        "translation": "Very good."
+      }
+    ],
+    "explanation_content": "## Short Answers\n\nWhen someone asks **¿Cómo estás?**, short answers are very common.",
+    "id": "ex-1768179229-d28ef793",
+    "lesson_id": "demo-u2-l5",
+    "order": 3,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Bien.",
+    "hint": "Short answers are common.",
+    "id": "demo-u2-l5-ex-04",
+    "lesson_id": "demo-u2-l5",
+    "option_feedback": [
+      "Correct! Short answers like this are very natural.",
+      "This repeats the question instead of answering.",
+      "This is a greeting, not an answer.",
+      "This is used to introduce yourself."
+    ],
+    "options": [
+      "Bien.",
+      "¿Cómo estás?",
+      "Buenos días.",
+      "Me llamo Ana."
+    ],
+    "order": 4,
+    "question": "A friend asks: “¿Cómo estás?” What is a natural answer?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Todo bien.**",
+        "translation": "All good."
+      }
+    ],
+    "explanation_content": "## Todo bien\n\n**Todo bien** is a common, informal way to say you’re doing fine.",
+    "id": "demo-u2-l5-ex-05",
+    "lesson_id": "demo-u2-l5",
+    "order": 5,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Todo bien.",
+    "hint": "You are answering casually.",
+    "id": "demo-u2-l5-ex-06",
+    "lesson_id": "demo-u2-l5",
+    "option_feedback": [
+      "Correct! This is a common, informal answer.",
+      "This is a formal question, not an answer.",
+      "This is a greeting, not an answer.",
+      "This is used to introduce yourself."
+    ],
+    "options": [
+      "Todo bien.",
+      "¿Cómo está usted?",
+      "Buenas noches.",
+      "Me llamo Luis."
+    ],
+    "order": 6,
+    "question": "A friend asks: “¿Cómo estás?” What is a natural answer?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Buenas tardes. **¿Cómo está usted?**",
+        "translation": "Good afternoon. How are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo está usted?\n\n**¿Cómo está usted?** is the formal way to ask how someone is.",
+    "id": "demo-u2-l5-ex-07",
+    "lesson_id": "demo-u2-l5",
+    "order": 7,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "¿Cómo está usted?",
+    "hint": "You want to be polite and respectful.",
+    "id": "demo-u2-l5-ex-08",
+    "lesson_id": "demo-u2-l5",
+    "option_feedback": [
+      "Correct! This is the formal way to ask how someone is.",
+      "This is informal and used with friends.",
+      "This is an answer, not a question.",
+      "This is used when meeting someone."
+    ],
+    "options": [
+      "¿Cómo está usted?",
+      "¿Cómo estás?",
+      "Todo bien.",
+      "Mucho gusto."
+    ],
+    "order": 8,
+    "question": "You are speaking to your teacher. How do you ask how they are?",
+    "type": "multiple_choice"
+  },
+  {
+    "dialog_lines": [
+      {
+        "speaker_index": 0,
+        "text": "Hola, Mateo. ¿Cómo estás?",
+        "translation": "Hi, Mateo. How are you?"
+      },
+      {
+        "speaker_index": 1,
+        "text": "Bien. ¿Y tú?",
+        "translation": "Good. And you?"
+      },
+      {
+        "speaker_index": 0,
+        "text": "Todo bien.",
+        "translation": "All good."
+      },
+      {
+        "speaker_index": 1,
+        "text": "Buenas tardes, profesor. ¿Cómo está usted?",
+        "translation": "Good afternoon, professor. How are you?"
+      },
+      {
+        "speaker_index": 2,
+        "text": "Muy bien, gracias.",
+        "translation": "Very well, thank you."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Sofía"
+      },
+      {
+        "avatar_url": "",
+        "name": "Mateo"
+      },
+      {
+        "avatar_url": "",
+        "name": "Profesor"
+      }
+    ],
+    "id": "demo-u2-l5-ex-09",
+    "lesson_id": "demo-u2-l5",
+    "order": 9,
+    "question": "Two short conversations.",
+    "type": "dialogue"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [
+      {
+        "audio_url": "",
+        "sentence": "Hola, **¿cómo estás?**",
+        "translation": "Hi, how are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo estás?\n\n**¿Cómo estás?** is the informal way to ask how someone is.",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_sentence": "",
+    "hint": "",
+    "id": "ex-1768181662-92ed2070",
+    "lesson_id": "demo-u2-l5",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 1,
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "explanation",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Hola, **¿cómo estás?**",
+        "translation": "Hi, how are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo estás?\n\n**¿Cómo estás?** is the informal way to ask how someone is.",
+    "id": "ex-1768182200-f43079b6",
+    "lesson_id": "demo-u2-l5",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [
+      {
+        "audio_url": "",
+        "sentence": "Hola, **¿cómo estás?**",
+        "translation": "Hi, how are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo estás?\n\n**¿Cómo estás?** is the informal way to ask how someone is.",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_sentence": "",
+    "hint": "",
+    "id": "ex-1768182216-61f67a76",
+    "lesson_id": "demo-u2-l5",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 1,
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "explanation",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Hola, **¿cómo estás?**",
+        "translation": "Hi, how are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo estás?\n\n**¿Cómo estás?** is the informal way to ask how someone is.",
+    "id": "ex-1768183495-51cd0a04",
+    "lesson_id": "demo-u2-l5",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "¿Cómo estás?",
+    "hint": "You are talking to a friend.",
+    "id": "ex-1768183515-7ea1ce1b",
+    "lesson_id": "demo-u2-l5",
+    "option_feedback": [
+      "Correct! This is the informal way to ask how someone is.",
+      "This is the formal version.",
+      "This is a greeting, not a question.",
+      "This is used when meeting someone for the first time."
+    ],
+    "options": [
+      "¿Cómo estás?",
+      "¿Cómo está usted?",
+      "Buenos días",
+      "Mucho gusto"
+    ],
+    "order": 2,
+    "question": "You greet a friend and want to ask how they are. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Hola, **¿cómo estás?**",
+        "translation": "Hi, how are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo estás?\n\n**¿Cómo estás?** is the informal way to ask how someone is.",
+    "id": "ex-1768183867-ed4b288f",
+    "lesson_id": "demo-u2-l5",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Hola, **¿cómo estás?**",
+        "translation": "Hi, how are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo estás?\n\n**¿Cómo estás?** is the informal way to ask how someone is.",
+    "id": "ex-1768194007",
+    "lesson_id": "lesson-1768178265",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "¿Cómo estás?",
+    "hint": "You are talking to a friend.",
+    "id": "ex-1768194031",
+    "lesson_id": "lesson-1768178265",
+    "option_feedback": [
+      "Correct! This is the informal way to ask how someone is.",
+      "This is the formal version.",
+      "This is a greeting, not a question.",
+      "This is used when meeting someone for the first time."
+    ],
+    "options": [
+      "¿Cómo estás?",
+      "¿Cómo está usted?",
+      "Buenos días",
+      "Mucho gusto"
+    ],
+    "order": 2,
+    "question": "You greet a friend and want to ask how they are. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Bien.**",
+        "translation": "Good."
+      },
+      {
+        "sentence": "**Muy bien.**",
+        "translation": "Very good."
+      }
+    ],
+    "explanation_content": "## Short Answers\n\nWhen someone asks **¿Cómo estás?**, short answers are very common.",
+    "id": "ex-1768194061",
+    "lesson_id": "lesson-1768178265",
+    "order": 3,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Bien.",
+    "hint": "Short answers are common.",
+    "id": "ex-1768194080",
+    "lesson_id": "lesson-1768178265",
+    "option_feedback": [
+      "Correct! Short answers like this are very natural.",
+      "This repeats the question instead of answering.",
+      "This is a greeting, not an answer.",
+      "This is used to introduce yourself."
+    ],
+    "options": [
+      "Bien.",
+      "¿Cómo estás?",
+      "Buenos días.",
+      "Me llamo Ana."
+    ],
+    "order": 4,
+    "question": "A friend asks: “¿Cómo estás?” What is a natural answer?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Todo bien.**",
+        "translation": "All good."
+      }
+    ],
+    "explanation_content": "## Todo bien\n\n**Todo bien** is a common, informal way to say you’re doing fine.",
+    "id": "ex-1768194093",
+    "lesson_id": "lesson-1768178265",
+    "order": 5,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Todo bien.",
+    "hint": "You are answering casually.",
+    "id": "ex-1768194106",
+    "lesson_id": "lesson-1768178265",
+    "option_feedback": [
+      "Correct! This is a common, informal answer.",
+      "This is a formal question, not an answer.",
+      "This is a greeting, not an answer.",
+      "This is used to introduce yourself."
+    ],
+    "options": [
+      "Todo bien.",
+      "¿Cómo está usted?",
+      "Buenas noches.",
+      "Me llamo Luis."
+    ],
+    "order": 6,
+    "question": "A friend asks: “¿Cómo estás?” What is a natural answer?",
+    "type": "multiple_choice"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "Buenas tardes. **¿Cómo está usted?**",
+        "translation": "Good afternoon. How are you?"
+      }
+    ],
+    "explanation_content": "## ¿Cómo está usted?\n\n**¿Cómo está usted?** is the formal way to ask how someone is.",
+    "id": "ex-1768194122",
+    "lesson_id": "lesson-1768178265",
+    "order": 7,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "¿Cómo está usted?",
+    "hint": "You want to be polite and respectful.",
+    "id": "ex-1768194143",
+    "lesson_id": "lesson-1768178265",
+    "option_feedback": [
+      "Correct! This is the formal way to ask how someone is.",
+      "This is informal and used with friends.",
+      "This is an answer, not a question.",
+      "This is used when meeting someone."
+    ],
+    "options": [
+      "¿Cómo está usted?",
+      "¿Cómo estás?",
+      "Todo bien.",
+      "Mucho gusto."
+    ],
+    "order": 8,
+    "question": "You are speaking to your teacher. How do you ask how they are?",
+    "type": "multiple_choice"
+  },
+  {
+    "dialog_lines": [
+      {
+        "speaker_index": 0,
+        "text": "Hola, Mateo. ¿Cómo estás?",
+        "translation": "Hi, Mateo. How are you?"
+      },
+      {
+        "speaker_index": 1,
+        "text": "Bien. ¿Y tú?",
+        "translation": "Good. And you?"
+      },
+      {
+        "speaker_index": 0,
+        "text": "Todo bien.",
+        "translation": "All good."
+      },
+      {
+        "speaker_index": 1,
+        "text": "Buenas tardes, profesor. ¿Cómo está usted?",
+        "translation": "Good afternoon, professor. How are you?"
+      },
+      {
+        "speaker_index": 2,
+        "text": "Muy bien, gracias.",
+        "translation": "Very well, thank you."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Sofía"
+      },
+      {
+        "avatar_url": "",
+        "name": "Mateo"
+      },
+      {
+        "avatar_url": "",
+        "name": "Profesor"
+      }
+    ],
+    "id": "ex-1768194157",
+    "lesson_id": "lesson-1768178265",
+    "order": 9,
+    "question": "Two short conversations.",
+    "type": "dialogue"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Hola**, ¿cómo estás?",
+        "translation": "Hi, how are you?"
+      },
+      {
+        "sentence": "**Buenos días**, ¿cómo está usted?",
+        "translation": "Good morning, how are you? (formal)"
+      }
+    ],
+    "explanation_content": "## Saying Hello in Spanish\n\nSpanish greetings change depending on **formality**.\n\n- Use **Hola** in almost any situation.\n- Use **Buenos días / Buenas tardes / Buenas noches** to be polite or formal.\n\n**Formal vs Informal** depends on your relationship, not the time of day.",
+    "id": "sgi-01-ex-01",
+    "lesson_id": "lesson-1768255397",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "correct_answer": "Buenos días",
+    "hint": "Think about speaking to a stranger.",
+    "id": "sgi-01-ex-02",
+    "lesson_id": "lesson-1768255397",
+    "option_feedback": [
+      "This is neutral and informal.",
+      "Correct! This is polite and formal.",
+      "This is informal.",
+      "This is not Spanish."
+    ],
+    "options": [
+      "Hola",
+      "Buenos días",
+      "¿Qué tal?",
+      "Hey"
+    ],
+    "order": 2,
+    "question": "Which greeting is polite and formal?",
+    "type": "multiple_choice"
+  },
+  {
+    "hint": "Start with the easiest one.",
+    "id": "sgi-01-ex-03",
+    "lesson_id": "lesson-1768255397",
+    "matching_pairs": [
+      {
+        "left": "Hola",
+        "right": "Hi"
+      },
+      {
+        "left": "Buenos días",
+        "right": "Good morning"
+      },
+      {
+        "left": "Buenas noches",
+        "right": "Good evening / night"
+      }
+    ],
+    "order": 3,
+    "type": "matching"
+  },
+  {
+    "correct_answer": "Buenas noches",
+    "hint": "It works for evening and night.",
+    "id": "sgi-01-ex-04",
+    "lesson_id": "lesson-1768255397",
+    "order": 4,
+    "question": "Good evening",
+    "type": "translation"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Buenos días**, señor.",
+        "translation": "Good morning, sir."
+      },
+      {
+        "sentence": "**Hola**, ¿todo bien?",
+        "translation": "Hi, all good?"
+      }
+    ],
+    "explanation_content": "## Greetings in Spanish: Time + Relationship\n\nSpanish greetings answer two questions:\n\n1. **What time of day is it?**\n2. **How close or formal is the relationship?**\n\n**Hola** is neutral and works almost everywhere.\n\nOther greetings show *politeness* and *context*:\n- **Buenos días** → morning\n- **Buenas tardes** → afternoon\n- **Buenas noches** → evening / night\n\nFormality is about **relationship**, not age:\n- Use polite greetings with strangers, professionals, or formal situations.\n- Use casual greetings with friends, family, and peers.",
+    "id": "sgi2-01-ex-01",
+    "lesson_id": "lesson-1768255987",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "id": "sgi2-01-ex-02",
+    "lesson_id": "lesson-1768255987",
+    "order": 2,
+    "question": "Read the greeting.",
+    "sentence_text": "**Buenas tardes**, ¿cómo está?",
+    "sentence_translation": "Good afternoon, how are you? (formal)",
+    "type": "example_sentence"
+  },
+  {
+    "correct_answer": "Buenos días",
+    "hint": "Think time + formality.",
+    "id": "sgi2-01-ex-03",
+    "lesson_id": "lesson-1768255987",
+    "option_feedback": [
+      "Possible, but less polite here.",
+      "Correct — morning + formal situation.",
+      "This is used at night.",
+      "This is informal."
+    ],
+    "options": [
+      "Hola",
+      "Buenos días",
+      "Buenas noches",
+      "¿Qué tal?"
+    ],
+    "order": 3,
+    "question": "You meet your doctor at 9 a.m. What greeting fits best?",
+    "type": "multiple_choice"
+  },
+  {
+    "hint": "Focus on time of day.",
+    "id": "sgi2-01-ex-04",
+    "lesson_id": "lesson-1768255987",
+    "matching_pairs": [
+      {
+        "left": "Buenos días",
+        "right": "Polite morning greeting"
+      },
+      {
+        "left": "Buenas tardes",
+        "right": "Polite afternoon greeting"
+      },
+      {
+        "left": "Hola",
+        "right": "Neutral greeting"
+      }
+    ],
+    "order": 4,
+    "type": "matching"
+  },
+  {
+    "correct_answer": "Buenas",
+    "hint": "Evening + polite.",
+    "id": "sgi2-01-ex-05",
+    "lesson_id": "lesson-1768255987",
+    "order": 5,
+    "question": "___ noches, ¿cómo está usted?",
+    "type": "fill_blank"
+  },
+  {
+    "correct_answer": "Hola",
+    "hint": "Friends = informal.",
+    "id": "sgi2-01-ex-06",
+    "lesson_id": "lesson-1768255987",
+    "option_feedback": [
+      "Correct, but sounds more formal.",
+      "Correct — casual and natural.",
+      "Wrong time of day.",
+      "Wrong time of day."
+    ],
+    "options": [
+      "Buenas tardes",
+      "Hola",
+      "Buenos días",
+      "Buenas noches"
+    ],
+    "order": 6,
+    "question": "You see a close friend in the afternoon. What sounds natural?",
+    "type": "multiple_choice"
+  },
+  {
+    "correct_answer": "Buenos días",
+    "hint": "Two words.",
+    "id": "sgi2-01-ex-07",
+    "lesson_id": "lesson-1768255987",
+    "order": 7,
+    "question": "Good morning (polite)",
+    "type": "translation"
+  },
+  {
+    "hint": "Polite afternoon greeting.",
+    "id": "sgi2-01-ex-08",
+    "lesson_id": "lesson-1768255987",
+    "order": 8,
+    "question": "Put the greeting in order.",
+    "type": "word_order",
+    "word_order_words": [
+      "Buenas",
+      "tardes"
+    ]
+  },
+  {
+    "dialog_lines": [
+      {
+        "speaker_index": 0,
+        "text": "Buenos días, ¿en qué puedo ayudarle?",
+        "translation": "Good morning, how can I help you?"
+      },
+      {
+        "speaker_index": 1,
+        "text": "Hola, tengo una pregunta.",
+        "translation": "Hi, I have a question."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Empleado"
+      },
+      {
+        "avatar_url": "",
+        "name": "Cliente"
+      }
+    ],
+    "id": "sgi2-01-ex-09",
+    "lesson_id": "lesson-1768255987",
+    "order": 9,
+    "question": "A polite first interaction.",
+    "type": "dialogue"
+  },
+  {
+    "example_sentences": [
+      {
+        "sentence": "**Me llamo** Sofía.",
+        "translation": "My name is Sofía."
+      },
+      {
+        "sentence": "¿**Cómo se llama** usted?",
+        "translation": "What is your name? (formal)"
+      }
+    ],
+    "explanation_content": "## Introducing Yourself in Spanish\n\nSpanish usually introduces names with the verb **llamarse** (\"to be called\").\n\nThe form you choose shows **how close or formal** the situation is:\n\n- **Me llamo…** → I’m saying my name.\n- **¿Cómo te llamas?** → Asking a friend or peer.\n- **¿Cómo se llama?** → Asking politely or formally.\n\nYou are not describing a fact about the name — you are **positioning the relationship**.",
+    "id": "sgi2-02-ex-01",
+    "lesson_id": "lesson-1768257314",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "id": "sgi2-02-ex-02",
+    "lesson_id": "lesson-1768257314",
+    "order": 2,
+    "question": "Read the introduction.",
+    "sentence_text": "**Me llamo** Andrés.",
+    "sentence_translation": "My name is Andrés.",
+    "type": "example_sentence"
+  },
+  {
+    "correct_answer": "Me llamo Laura.",
+    "hint": "Who is speaking?",
+    "id": "sgi2-02-ex-03",
+    "lesson_id": "lesson-1768257314",
+    "option_feedback": [
+      "This asks for someone else's name.",
+      "Correct — you are giving your name.",
+      "This talks about another person.",
+      "This asks formally for a name."
+    ],
+    "options": [
+      "¿Cómo te llamas?",
+      "Me llamo Laura.",
+      "Se llama Pedro.",
+      "¿Cómo se llama?"
+    ],
+    "order": 3,
+    "question": "You are introducing yourself. What do you say?",
+    "type": "multiple_choice"
+  },
+  {
+    "correct_answer": "¿Cómo se llama?",
+    "hint": "Think polite distance.",
+    "id": "sgi2-02-ex-04",
+    "lesson_id": "lesson-1768257314",
+    "option_feedback": [
+      "Too informal.",
+      "Correct — polite and professional.",
+      "This is incorrect.",
+      "This is not Spanish."
+    ],
+    "options": [
+      "¿Cómo te llamas?",
+      "¿Cómo se llama?",
+      "¿Me llamo…?",
+      "Hola, nombre?"
+    ],
+    "order": 4,
+    "question": "You meet your manager for the first time. What do you ask?",
+    "type": "multiple_choice"
+  },
+  {
+    "correct_answer": "llamo",
+    "hint": "Verb meaning 'to be called'.",
+    "id": "sgi2-02-ex-05",
+    "lesson_id": "lesson-1768257314",
+    "order": 5,
+    "question": "Me ___ Daniela.",
+    "type": "fill_blank"
+  },
+  {
+    "hint": "Focus on who you’re talking to.",
+    "id": "sgi2-02-ex-06",
+    "lesson_id": "lesson-1768257314",
+    "matching_pairs": [
+      {
+        "left": "Me llamo Ana.",
+        "right": "Saying your name"
+      },
+      {
+        "left": "¿Cómo te llamas?",
+        "right": "Asking a friend"
+      },
+      {
+        "left": "¿Cómo se llama?",
+        "right": "Asking politely"
+      }
+    ],
+    "order": 6,
+    "type": "matching"
+  },
+  {
+    "correct_answer": "Me llamo Carlos.",
+    "hint": "Use the reflexive verb.",
+    "id": "sgi2-02-ex-07",
+    "lesson_id": "lesson-1768257314",
+    "order": 7,
+    "question": "My name is Carlos.",
+    "type": "translation"
+  },
+  {
+    "hint": "Standard self-introduction.",
+    "id": "sgi2-02-ex-08",
+    "lesson_id": "lesson-1768257314",
+    "order": 8,
+    "question": "Put the sentence in order.",
+    "type": "word_order",
+    "word_order_words": [
+      "Me",
+      "llamo",
+      "Lucía"
+    ]
+  },
+  {
+    "dialog_lines": [
+      {
+        "speaker_index": 0,
+        "text": "Hola, me llamo María.",
+        "translation": "Hi, my name is María."
+      },
+      {
+        "speaker_index": 1,
+        "text": "Mucho gusto. Me llamo Javier.",
+        "translation": "Nice to meet you. My name is Javier."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "María"
+      },
+      {
+        "avatar_url": "",
+        "name": "Javier"
+      }
+    ],
+    "id": "sgi2-02-ex-09",
+    "lesson_id": "lesson-1768257314",
+    "order": 9,
+    "question": "Two people meet for the first time.",
+    "type": "dialogue"
+  },
+  {
+    "audio_url": "",
+    "correct_answer": "",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "In Spanish, every noun has a gender—**masculine or feminine** (there is no neuter). \n\nThis matters because **all the words connected to the noun**—such as articles, adjectives, and **pointing words** like *this* or *that*—must **match the noun’s gender**. \n\nThe noun has a gender and other words simply agree with it.",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "hint": "",
+    "id": "ex-1768261936",
+    "lesson_id": "lesson-1768258778",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "",
+        "right": ""
+      }
+    ],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 1,
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "type": "explanation",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_options": [],
+    "dialog_lines": [],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "com`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768274864",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768258778",
+    "matching_pairs": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 4,
+    "pool_forms": [
+      "com`o`",
+      "com`es`"
+    ],
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "conjugation_map",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_options": [
+      "el piano",
+      "el vaso",
+      "el libro",
+      "el bolígrafo"
+    ],
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768276554",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768258778",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "",
+        "right": ""
+      }
+    ],
+    "option_feedback": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "options": [
+      "el piano",
+      "el vaso",
+      "el libro",
+      "el bolígrafo",
+      "la taza",
+      "la casa",
+      "la mochila"
+    ],
+    "order": 2,
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "question": "Generally, *masculine* nouns end in **-o** and *feminine* nouns end in **-a**.\n\nSelect **only** the nouns that are **masculine**.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "select_all",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "explanation_content": "## Saying Hello in Spanish\n\nWhen you meet someone in Spanish, you usually start with a **friendly greeting**.\n\nThe most common and natural greeting is **hola**.\n\nYou can use **hola** in almost any situation — formal or informal.",
+    "id": "demo-greet-01-ex-01",
+    "lesson_id": "lesson-1768291485",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "audio_url": "Audio suggestion: friendly neutral voice saying Hola at natural speed.",
+    "id": "demo-greet-01-ex-02",
+    "lesson_id": "lesson-1768291485",
+    "order": 2,
+    "question": "Listen and read.",
+    "sentence_text": "**Hola**",
+    "sentence_translation": "Hello",
+    "type": "example_sentence"
+  },
+  {
+    "correct_answer": "Hola",
+    "hint": "It starts with H.",
+    "id": "demo-greet-01-ex-03",
+    "lesson_id": "lesson-1768291485",
+    "option_feedback": [
+      "Correct! **Hola** is the most common way to say hello.",
+      "Not quite. **Gracias** means thank you.",
+      "Not quite. **Adiós** means goodbye."
+    ],
+    "options": [
+      "Hola",
+      "Gracias",
+      "Adiós"
+    ],
+    "order": 3,
+    "question": "How do you say \"Hello\" in Spanish?",
+    "type": "multiple_choice"
+  },
+  {
+    "audio_url": "Audio suggestion: clear neutral voice saying Buenos días.",
+    "id": "demo-greet-01-ex-04",
+    "lesson_id": "lesson-1768291485",
+    "order": 4,
+    "question": "Morning greeting.",
+    "sentence_text": "**Buenos días**",
+    "sentence_translation": "Good morning",
+    "type": "example_sentence"
+  },
+  {
+    "correct_answer": "Buenos días",
+    "hint": "Two words. The second one has an accent.",
+    "id": "demo-greet-01-ex-05",
+    "lesson_id": "lesson-1768291485",
+    "order": 5,
+    "question": "Good morning",
+    "type": "translation"
+  },
+  {
+    "correct_answer": "Hola, Ana.",
+    "hint": "Think about what you say when you meet someone.",
+    "id": "demo-greet-01-ex-06",
+    "lesson_id": "lesson-1768291485",
+    "option_feedback": [
+      "Correct! This is a natural greeting.",
+      "This means thank you, not hello.",
+      "This means goodbye, not hello."
+    ],
+    "options": [
+      "Hola, Ana.",
+      "Gracias, Ana.",
+      "Adiós, Ana."
+    ],
+    "order": 6,
+    "question": "Which sentence is a correct Spanish greeting?",
+    "type": "multiple_choice"
+  },
+  {
+    "correct_options": [
+      "Hola",
+      "Buenos días"
+    ],
+    "hint": "Greetings are used when you meet someone.",
+    "id": "demo-greet-01-ex-07",
+    "lesson_id": "lesson-1768291485",
+    "options": [
+      "Hola",
+      "Buenos días",
+      "Gracias",
+      "Adiós"
+    ],
+    "order": 7,
+    "question": "Select all the greetings.",
+    "type": "select_all"
+  },
+  {
+    "fill_blanks_answers": [
+      "Hola"
+    ],
+    "fill_blanks_decoys": [
+      "Gracias",
+      "Adiós"
+    ],
+    "fill_blanks_sentence": "{1}, Ana.",
+    "hint": "Use a greeting when you meet someone.",
+    "id": "demo-greet-01-ex-08",
+    "lesson_id": "lesson-1768291485",
+    "order": 8,
+    "question": "Complete the greeting.",
+    "type": "fill_blanks_select"
+  },
+  {
+    "hint": "Start with the greeting.",
+    "id": "demo-greet-01-ex-09",
+    "lesson_id": "lesson-1768291485",
+    "order": 9,
+    "question": "Put the words in order to greet someone.",
+    "type": "word_order",
+    "word_order_decoys": [
+      "Gracias",
+      "Adiós"
+    ],
+    "word_order_words": [
+      "Hola,",
+      "María."
+    ]
+  },
+  {
+    "correct_answer": "Hola",
+    "hint": "Use the most common greeting.",
+    "id": "demo-greet-01-ex-10",
+    "lesson_id": "lesson-1768291485",
+    "order": 10,
+    "question": "___, Juan.",
+    "type": "fill_blank"
+  },
+  {
+    "audio_url": "Audio suggestion: friendly neutral voice saying Hola, Juan.",
+    "completion_message_markdown": "",
+    "correct_answer": "Hola, Juan.",
+    "correct_options": [],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_sentence": "",
+    "groups": [],
+    "hint": "It starts with the greeting.",
+    "id": "ex-1768291756",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768291485",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 11,
+    "pool_forms": [],
+    "question": "Write what you hear.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "dictation",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "dialog_lines": [
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 0,
+        "text": "Hola, Luis.",
+        "translation": "Hi, Luis."
+      },
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 1,
+        "text": "Hola, Ana.",
+        "translation": "Hi, Ana."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Ana"
+      },
+      {
+        "avatar_url": "",
+        "name": "Luis"
+      }
+    ],
+    "id": "demo-greet-01-ex-12",
+    "lesson_id": "lesson-1768291485",
+    "order": 12,
+    "question": "Two people greet each other.",
+    "type": "dialogue"
+  },
+  {
+    "explanation_content": "## Introducing Yourself in Spanish\n\nWhen you say your name in Spanish, you don’t use a verb like *to be*.\n\nInstead, Spanish uses a **natural introduction phrase**: **me llamo**.\n\nYou use **me llamo** to tell someone your name in a friendly, everyday way.",
+    "id": "demo-intro-02-ex-01",
+    "lesson_id": "lesson-1768291845",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "audio_url": "Audio suggestion: calm, friendly neutral voice saying Me llamo Ana.",
+    "id": "demo-intro-02-ex-02",
+    "lesson_id": "lesson-1768291845",
+    "order": 2,
+    "question": "Listen and read.",
+    "sentence_text": "Me **llamo** Ana.",
+    "sentence_translation": "My name is Ana.",
+    "type": "example_sentence"
+  },
+  {
+    "correct_answer": "llamo",
+    "hint": "Use the verb for introducing your name.",
+    "id": "demo-intro-02-ex-03",
+    "lesson_id": "lesson-1768291845",
+    "order": 3,
+    "question": "Me ___ Carlos.",
+    "type": "fill_blank"
+  },
+  {
+    "audio_url": "Audio suggestion: natural conversational tone.",
+    "id": "demo-intro-02-ex-04",
+    "lesson_id": "lesson-1768291845",
+    "order": 4,
+    "question": "Asking someone their name.",
+    "sentence_text": "¿Cómo te **llamas**?",
+    "sentence_translation": "What’s your name?",
+    "type": "example_sentence"
+  },
+  {
+    "correct_answer": "¿Cómo te llamas?",
+    "hint": "It starts with ¿Cómo…",
+    "id": "demo-intro-02-ex-05",
+    "lesson_id": "lesson-1768291845",
+    "option_feedback": [
+      "Correct! This is how you ask someone their name.",
+      "This means \"My name is Ana.\"",
+      "Not quite. This is not a natural Spanish question."
+    ],
+    "options": [
+      "¿Cómo te llamas?",
+      "¿Me llamo Ana?",
+      "¿Hola te llamas?"
+    ],
+    "order": 5,
+    "question": "How do you ask someone their name in Spanish?",
+    "type": "multiple_choice"
+  },
+  {
+    "fill_blanks_answers": [
+      "llamas"
+    ],
+    "fill_blanks_decoys": [
+      "llamo",
+      "llaman"
+    ],
+    "fill_blanks_sentence": "¿Cómo te {1}?",
+    "hint": "Use the form for *you*.",
+    "id": "demo-intro-02-ex-06",
+    "lesson_id": "lesson-1768291845",
+    "order": 6,
+    "question": "Complete the question.",
+    "type": "fill_blanks_select"
+  },
+  {
+    "correct_answer": "Me llamo Laura.",
+    "hint": "Use **me llamo + name**.",
+    "id": "demo-intro-02-ex-07",
+    "lesson_id": "lesson-1768291845",
+    "order": 7,
+    "question": "My name is Laura.",
+    "type": "translation"
+  },
+  {
+    "dialog_lines": [
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 0,
+        "text": "Hola. ¿Cómo te llamas?",
+        "translation": "Hi. What’s your name?"
+      },
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 1,
+        "text": "Me llamo Mateo. ¿Y tú?",
+        "translation": "My name is Mateo. And you?"
+      },
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 0,
+        "text": "Me llamo Sofía.",
+        "translation": "My name is Sofía."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Sofía"
+      },
+      {
+        "avatar_url": "",
+        "name": "Mateo"
+      }
+    ],
+    "id": "demo-intro-02-ex-08",
+    "lesson_id": "lesson-1768291845",
+    "order": 8,
+    "question": "Two people meet for the first time.",
+    "type": "dialogue"
+  },
+  {
+    "correct_options": [
+      "Me llamo Ana.",
+      "Hola."
+    ],
+    "hint": "Think about what you say when meeting someone.",
+    "id": "demo-intro-02-ex-09",
+    "lesson_id": "lesson-1768291845",
+    "options": [
+      "Me llamo Ana.",
+      "¿Cómo te llamas?",
+      "Hola.",
+      "Gracias."
+    ],
+    "order": 9,
+    "question": "Select all the sentences you can use to introduce yourself.",
+    "type": "select_all"
+  },
+  {
+    "correct_answer": "llamo",
+    "hint": "Use the verb for introducing your name.",
+    "id": "demo-intro-02-ex-10",
+    "lesson_id": "lesson-1768291845",
+    "order": 10,
+    "question": "Hola, me ___ Sofía.",
+    "type": "fill_blank"
+  },
+  {
+    "dialog_lines": [
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 0,
+        "text": "Hola. Me llamo Lucía.",
+        "translation": "Hi. My name is Lucía."
+      },
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 1,
+        "text": "Hola, Lucía. Me llamo Diego.",
+        "translation": "Hi, Lucía. My name is Diego."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Lucía"
+      },
+      {
+        "avatar_url": "",
+        "name": "Diego"
+      }
+    ],
+    "id": "demo-intro-02-ex-11",
+    "lesson_id": "lesson-1768291845",
+    "order": 11,
+    "question": "Meeting someone new.",
+    "type": "dialogue"
+  },
+  {
+    "explanation_content": "## Saying \"Nice to Meet You\" in Spanish\n\nAfter you greet someone and say your name, Spanish speakers usually add a **polite expression**.\n\nThe most common one is **mucho gusto**.\n\nYou can use **mucho gusto** in both formal and informal situations to be friendly and polite.",
+    "id": "demo-polite-03-ex-01",
+    "lesson_id": "lesson-1768292076",
+    "order": 1,
+    "type": "explanation"
+  },
+  {
+    "audio_url": "Audio suggestion: warm, polite neutral voice saying Mucho gusto.",
+    "id": "demo-polite-03-ex-02",
+    "lesson_id": "lesson-1768292076",
+    "order": 2,
+    "question": "Listen and read.",
+    "sentence_text": "**Mucho gusto**.",
+    "sentence_translation": "Nice to meet you.",
+    "type": "example_sentence"
+  },
+  {
+    "correct_answer": "When you meet someone for the first time",
+    "hint": "Think about first meetings.",
+    "id": "demo-polite-03-ex-03",
+    "lesson_id": "lesson-1768292076",
+    "option_feedback": [
+      "Correct! **Mucho gusto** is used when meeting someone.",
+      "Not quite. This is not a goodbye phrase.",
+      "Not quite. This is used after introductions."
+    ],
+    "options": [
+      "When you meet someone for the first time",
+      "When you say goodbye",
+      "When you ask someone’s name"
+    ],
+    "order": 3,
+    "question": "When do you say **mucho gusto**?",
+    "type": "multiple_choice"
+  },
+  {
+    "audio_url": "Audio suggestion: warm, polite neutral voice saying Igualmente.",
+    "id": "demo-polite-03-ex-04",
+    "lesson_id": "lesson-1768292076",
+    "order": 4,
+    "question": "A polite response.",
+    "sentence_text": "**Igualmente**.",
+    "sentence_translation": "Likewise / Nice to meet you too.",
+    "type": "example_sentence"
+  },
+  {
+    "correct_answer": "Igualmente.",
+    "hint": "You are responding politely.",
+    "id": "demo-polite-03-ex-05",
+    "lesson_id": "lesson-1768292076",
+    "option_feedback": [
+      "Correct! **Igualmente** is a polite response.",
+      "This is a greeting, not a response.",
+      "This is for introducing yourself."
+    ],
+    "options": [
+      "Igualmente.",
+      "Hola.",
+      "Me llamo Ana."
+    ],
+    "order": 5,
+    "question": "Someone says \"Mucho gusto.\" What is a natural reply?",
+    "type": "multiple_choice"
+  },
+  {
+    "correct_answer": "Igualmente",
+    "hint": "Use a polite reply meaning \"nice to meet you too\".",
+    "id": "demo-polite-03-ex-06",
+    "lesson_id": "lesson-1768292076",
+    "order": 6,
+    "question": "— Mucho gusto.\n— ___.",
+    "type": "fill_blank"
+  },
+  {
+    "dialog_lines": [
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 0,
+        "text": "Hola, me llamo Clara.",
+        "translation": "Hi, my name is Clara."
+      },
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 1,
+        "text": "Mucho gusto, Clara. Me llamo Andrés.",
+        "translation": "Nice to meet you, Clara. My name is Andrés."
+      },
+      {
+        "audio_url": "Audio suggestion: friendly neutral voice.",
+        "speaker_index": 0,
+        "text": "Igualmente.",
+        "translation": "Nice to meet you too."
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Clara"
+      },
+      {
+        "avatar_url": "",
+        "name": "Andrés"
+      }
+    ],
+    "id": "demo-polite-03-ex-07",
+    "lesson_id": "lesson-1768292076",
+    "order": 7,
+    "question": "Two people meet for the first time.",
+    "type": "dialogue"
+  },
+  {
+    "correct_answer": "Mucho gusto.",
+    "hint": "Use the polite phrase you say after introductions.",
+    "id": "demo-polite-03-ex-08",
+    "lesson_id": "lesson-1768292076",
+    "order": 8,
+    "question": "Nice to meet you.",
+    "type": "translation"
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "grande",
+    "correct_options": [],
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768342871",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768292076",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "",
+        "right": ""
+      }
+    ],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "gran",
+      "grande"
+    ],
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "question": "What do you hear in the audio?",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "dictation_select",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1768418990/multiple-choice-post/b269841ed1594806a10b1ae71ff00396.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "Me llamo Ana.",
+    "correct_feedback": "",
+    "correct_options": [],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "groups": [],
+    "hint": "Use **me llamo** to say your name.",
+    "id": "ex-1768421387",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768418990",
+    "matching_pairs": [],
+    "option_feedback": [
+      "Correct! **Me llamo** is the natural way to say your name.",
+      "Not quite. We don’t use **es** with **me llamo**."
+    ],
+    "options": [
+      "Me llamo Ana.",
+      "Me llamo es Ana."
+    ],
+    "order": 1,
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "question": "In Spanish, we say our name with **me llamo**.\n\nChoose the sentence that means *“My name is Ana.”*",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "multiple_choice",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1768418990/example-sentence/879082f4c3764596b3c162a1dca40773.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_options": [],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "groups": [],
+    "hint": "",
+    "id": "ex-1768424034",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768418990",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 2,
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "question": "Listen and read.",
+    "sentence_text": "Yo **me llamo** Ana.",
+    "sentence_translation": "My name is Ana.",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "example_sentence",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1768418990/select-all-post/dee50c32feaf4455864aa2fb2111b926.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_options": [
+      "Me llamo Carlos.",
+      "Me llamo María."
+    ],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "groups": [],
+    "hint": "Look for **me llamo**.",
+    "id": "ex-1768424068",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768418990",
+    "matching_pairs": [],
+    "option_feedback": [
+      "",
+      "",
+      ""
+    ],
+    "options": [
+      "Me llamo Carlos.",
+      "Me llamo María.",
+      "Yo soy Carlos."
+    ],
+    "order": 3,
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "question": "Select all sentences that mean *“My name is…”*",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "select_all",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "correct_answer": "me llamo",
+    "hint": "Focus on the words before the name.",
+    "id": "ex-1768424088",
+    "lesson_id": "lesson-1768418990",
+    "option_feedback": [
+      "Exactly. **Me llamo** stays the same. Only the name changes.",
+      "Not quite. The name changes, but **me llamo** stays the same."
+    ],
+    "options": [
+      "me llamo",
+      "Luis"
+    ],
+    "order": 4,
+    "question": "Look at the sentence.\n\nYo **me llamo** Luis.\n\nWhich part stays the same when you change the name?",
+    "type": "multiple_choice"
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1768418990/fill-blanks-select-post/91865c3eba7b4e579ab4925097d21a4b.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_options": [],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "me",
+      "llamo"
+    ],
+    "fill_blanks_decoy_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_decoys": [
+      "soy",
+      "es"
+    ],
+    "fill_blanks_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_sentence": "Yo {1} {2} Ana.",
+    "groups": [],
+    "hint": "Use **me llamo** to say your name.",
+    "id": "ex-1768424107",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768418990",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 5,
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "question": "Complete the sentence.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "fill_blanks_select",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1768418990/word-order-post/97d1d6f75793446ab182fdfa8ab99398.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_options": [],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "groups": [],
+    "hint": "Start with **Yo**.",
+    "id": "ex-1768424125",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768418990",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 6,
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "question": "Put the words in the correct order.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "word_order",
+    "word_order_decoys": [
+      "soy",
+      "es"
+    ],
+    "word_order_words": [
+      "Yo",
+      "me",
+      "llamo",
+      "Sofía."
+    ]
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1768418990/fill_blank-post/ac618589c51d4a9e84dbcbdd877321aa.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "me llamo",
+    "correct_feedback": "Nice! **Me llamo** is how you say your name in Spanish.",
+    "correct_options": [],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "groups": [],
+    "hint": "Use **me llamo** to say your name.",
+    "id": "ex-1768424143",
+    "incorrect_feedback": "Almost. Use **me llamo** to say your name.",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768418990",
+    "matching_pairs": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 7,
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "question": "Yo {1} Diego.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "fill_blank",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "Me llamo Diego.",
+    "correct_feedback": "",
+    "correct_options": [],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "groups": [],
+    "hint": "**Me llamo** already means *my name is*.",
+    "id": "ex-1768424165",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768418990",
+    "matching_pairs": [],
+    "option_feedback": [
+      "Correct! **Me llamo** is complete by itself.",
+      "Not quite. In Spanish, we don’t use **es** when we say *me llamo*. This would be like saying *I'm called is Diego.* in English."
+    ],
+    "options": [
+      "Me llamo Diego.",
+      "Me llamo es Diego."
+    ],
+    "order": 8,
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "question": "Which sentence sounds natural in Spanish?",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "multiple_choice",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1768418990/select-all-post/74e38daa7f1b40dab9fa2668ca5f7c62.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_options": [
+      "Me llamo es Pablo."
+    ],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "groups": [],
+    "hint": "**Me llamo** is already complete.",
+    "id": "ex-1768424191",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768418990",
+    "matching_pairs": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Me llamo Pablo.",
+      "Me llamo es Pablo."
+    ],
+    "order": 9,
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "question": "Select the sentence that is **incorrect** in Spanish.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "select_all",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "Audio suggestion: clear, neutral Spanish accent saying 'Yo me llamo Andrés.'",
+    "id": "ex-1768424222",
+    "lesson_id": "lesson-1768418990",
+    "order": 10,
+    "question": "Listen and read.",
+    "sentence_text": "Yo **me llamo** Andrés.",
+    "sentence_translation": "My name is Andrés.",
+    "type": "example_sentence"
+  },
+  {
+    "correct_answer": "",
+    "hint": "Type your name.",
+    "id": "ex-1768424241",
+    "lesson_id": "lesson-1768418990",
+    "order": 11,
+    "question": "Say your name out loud using the sentence.",
+    "sentence_text": "Yo **me llamo** ___.",
+    "sentence_translation": "My name is ___.",
+    "type": "example_sentence"
+  },
+  {
+    "audio_url": "Audio suggestion: clear, neutral Spanish accent saying 'Hola, me llamo Marta.'",
+    "correct_answer": "Marta",
+    "hint": "Listen for the name after **me llamo**.",
+    "id": "ex-1768424259",
+    "lesson_id": "lesson-1768418990",
+    "options": [
+      "Marta",
+      "María",
+      "Laura"
+    ],
+    "order": 12,
+    "question": "Listen. What is the person’s name?",
+    "type": "dictation_select"
+  },
+  {
+    "correct_answer": "Me llamo + name",
+    "hint": "**Me llamo** is complete by itself.",
+    "id": "ex-1768424268",
+    "lesson_id": "lesson-1768418990",
+    "option_feedback": [
+      "Exactly. **Me llamo** is all you need.",
+      "Not quite. **Me llamo** already means *my name is*."
+    ],
+    "options": [
+      "Me llamo + name",
+      "Me llamo es + name"
+    ],
+    "order": 13,
+    "question": "To say your name in Spanish, which option is correct?",
+    "type": "multiple_choice"
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "Saying their name",
+    "correct_options": [],
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_sentence": "",
+    "groups": [],
+    "hint": "Listen for **me llamo**.",
+    "id": "ex-1768424274",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768418990",
+    "matching_pairs": [],
+    "option_feedback": [
+      "Yes! They are introducing themselves using **me llamo**.",
+      "Not quite. This sentence is not a question.",
+      "Not quite. This sentence is not a goodbye."
+    ],
+    "options": [
+      "Saying their name",
+      "Asking a question",
+      "Saying goodbye"
+    ],
+    "order": 14,
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "question": "Listen. What is the person doing?",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "multiple_choice",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_options": [],
+    "custom_css": "[data-pp-custom-block=\"greetings-time-slider\"] {\n  border: 1px solid #e2e8f0;\n  background: #ffffff;\n  border-radius: 16px;\n  padding: 16px;\n  max-width: 720px;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-header {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  margin-bottom: 14px;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-title {\n  color: #0f172a;\n  margin: 0;\n  font-size: 18px;\n  line-height: 1.25;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-subtitle {\n  margin: 0;\n  font-size: 14px;\n  line-height: 1.35;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-timewrap {\n  border: 1px solid #e2e8f0;\n  border-radius: 14px;\n  padding: 14px;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-time {\n  display: flex;\n  align-items: baseline;\n  gap: 10px;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-time-label {\n  color: #64748b;\n  font-size: 14px;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-time-value {\n  color: #0f172a;\n  font-weight: 700;\n  font-size: 22px;\n  letter-spacing: -0.01em;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-slider {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-slider-label {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-range {\n  width: 100%;\n  cursor: pointer;\n  accent-color: #475dd7;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-range:focus {\n  outline: 2px solid rgba(71, 93, 215, 0.35);\n  outline-offset: 3px;\n  border-radius: 10px;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-range-hints {\n  position: relative;\n  height: 16px;\n  color: #64748b;\n  font-size: 12px;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-hint {\n  position: absolute;\n  top: 0;\n  transform: translateX(-50%);\n  white-space: nowrap;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-hint.is-left {\n  transform: translateX(0);\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-hint.is-right {\n  transform: translateX(-100%);\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-hero {\n  border: 1px solid rgba(71, 93, 215, 0.25);\n  background: rgba(71, 93, 215, 0.06);\n  border-radius: 14px;\n  padding: 14px 12px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  text-align: center;\n  transition: background 0.28s ease, border-color 0.28s ease, transform 0.28s ease;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-hero.is-pulse {\n  transform: translateY(-1px);\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-emoji {\n  font-size: 22px;\n  line-height: 1;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-word {\n  color: #0f172a;\n  font-size: 22px;\n  letter-spacing: -0.01em;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-tip {\n  font-size: 13px;\n  line-height: 1.35;\n  margin-top: 2px;\n}\n\n[data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-tip.is-flash {\n  color: #475dd7;\n}\n\n/* Wider screens: keep it airy but compact */\n@media (min-width: 640px) {\n  [data-pp-custom-block=\"greetings-time-slider\"] {\n    padding: 18px;\n  }\n\n  [data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-timewrap {\n    padding: 16px;\n    gap: 14px;\n  }\n\n  [data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-emoji {\n    font-size: 24px;\n  }\n\n  [data-pp-custom-block=\"greetings-time-slider\"] .pp-greet-word {\n    font-size: 24px;\n  }\n}\n",
+    "custom_html": "<div class=\"pp-card\" data-pp-custom-block=\"greetings-time-slider\">\n  <div class=\"pp-greet-header\">\n    <p class=\"pp-greet-title\"><strong>Greetings for Different Times of Day</strong></p>\n    <p class=\"pp-muted pp-greet-subtitle\">Move the time and watch the greeting change.</p>\n  </div>\n\n  <div class=\"pp-greet-timewrap\" role=\"group\" aria-label=\"Time and greeting\">\n    <div class=\"pp-greet-time\" aria-live=\"polite\">\n      <span class=\"pp-greet-time-label\">Time:</span>\n      <span class=\"pp-greet-time-value\" data-time-value>7:30 a.m.</span>\n    </div>\n\n      <input\n        id=\"pp-greet-time-range\"\n        class=\"pp-greet-range\"\n        type=\"range\"\n        min=\"360\"\n        max=\"1439\"\n        step=\"5\"\n        value=\"450\"\n        aria-label=\"Select a time\"\n      />\n\n      <div class=\"pp-greet-range-hints\" aria-hidden=\"true\">\n        <span class=\"pp-greet-hint\" data-mins=\"360\">6:00 a.m.</span>\n        <span class=\"pp-greet-hint\" data-mins=\"720\">12:00 p.m.</span>\n        <span class=\"pp-greet-hint\" data-mins=\"1200\">8:00 p.m.</span>\n        <span class=\"pp-greet-hint\" data-mins=\"1439\">11:59 p.m.</span>\n      </div>\n\n    <div class=\"pp-greet-hero\" role=\"status\" aria-live=\"polite\" aria-label=\"Greeting\">\n      <span class=\"pp-greet-emoji\" data-greet-emoji aria-hidden=\"true\">☀️</span>\n      <span class=\"pp-greet-word\" data-greet-word><strong>Buenos días</strong></span>\n    </div>\n\n    <div class=\"pp-greet-tip pp-muted\" data-boundary-tip aria-live=\"polite\">\n      Tip: The greeting changes at 12:00 p.m. and 8:00 p.m.\n    </div>\n  </div>\n</div>\n",
+    "custom_js": "(() => {\n  const root = document.querySelector('[data-pp-custom-block=\"greetings-time-slider\"]');\n  if (!root) return;\n\n  const range = root.querySelector('#pp-greet-time-range');\n  const timeValueEl = root.querySelector('[data-time-value]');\n  const hero = root.querySelector('.pp-greet-hero');\n  const greetEmojiEl = root.querySelector('[data-greet-emoji]');\n  const greetWordEl = root.querySelector('[data-greet-word]');\n  const tipEl = root.querySelector('[data-boundary-tip]');\n  const hintEls = Array.from(root.querySelectorAll('.pp-greet-hint'));\n\n  if (!range || !timeValueEl || !hero || !greetEmojiEl || !greetWordEl || !tipEl) return;\n\n  // Minutes since midnight -> \"h:mm a.m./p.m.\"\n  const toAmPm = (mins) => {\n    let h24 = Math.floor(mins / 60);\n    let m = mins % 60;\n\n    const isPm = h24 >= 12;\n    let h12 = h24 % 12;\n    if (h12 === 0) h12 = 12;\n\n    const mm = String(m).padStart(2, \"0\");\n    const suffix = isPm ? \"p.m.\" : \"a.m.\";\n    return `${h12}:${mm} ${suffix}`;\n  };\n\n  // Boundaries:\n  // - Buenos días: < 12:00 p.m. (mins < 720)\n  // - Buenas tardes: 12:00 p.m. to < 8:00 p.m. (720 <= mins < 1200)\n  // - Buenas noches: >= 8:00 p.m. (mins >= 1200)\n  const getGreeting = (mins) => {\n    if (mins < 720) return { key: \"dias\", word: \"Buenos días\", emoji: \"☀️\" };\n    if (mins < 1200) return { key: \"tardes\", word: \"Buenas tardes\", emoji: \"🌤️\" };\n    return { key: \"noches\", word: \"Buenas noches\", emoji: \"🌙\" };\n  };\n\n  const setHero = (g) => {\n    greetEmojiEl.textContent = g.emoji;\n    greetWordEl.innerHTML = `<strong>${g.word}</strong>`;\n  };\n\n  const pulseHero = () => {\n    hero.classList.add(\"is-pulse\");\n    window.setTimeout(() => hero.classList.remove(\"is-pulse\"), 260);\n  };\n\n  const flashTip = (text) => {\n    tipEl.textContent = text;\n    tipEl.classList.add(\"is-flash\");\n    window.setTimeout(() => tipEl.classList.remove(\"is-flash\"), 650);\n  };\n\n  const crossesBoundary = (prevMins, nextMins, boundaryMins) => {\n    if (prevMins == null) return false;\n    return (\n      (prevMins < boundaryMins && nextMins >= boundaryMins) ||\n      (prevMins >= boundaryMins && nextMins < boundaryMins)\n    );\n  };\n\n  const positionHints = () => {\n    if (!hintEls.length) return;\n\n    const min = parseInt(range.min, 10);\n    const max = parseInt(range.max, 10);\n    const span = Math.max(1, max - min);\n\n    hintEls.forEach((el) => {\n      const v = parseInt(el.getAttribute(\"data-mins\"), 10);\n      const pct = ((v - min) / span) * 100;\n\n      el.style.left = `${pct}%`;\n\n      el.classList.remove(\"is-left\", \"is-right\");\n      if (v <= min) el.classList.add(\"is-left\");\n      if (v >= max) el.classList.add(\"is-right\");\n    });\n  };\n\n  let prevMins = null;\n  let prevGreetingKey = null;\n\n  const updateFromSlider = () => {\n    const mins = parseInt(range.value, 10);\n\n    timeValueEl.textContent = toAmPm(mins);\n\n    const g = getGreeting(mins);\n    setHero(g);\n\n    if (prevGreetingKey && prevGreetingKey !== g.key) {\n      pulseHero();\n    }\n\n    if (crossesBoundary(prevMins, mins, 720)) {\n      flashTip(\"At 12:00 p.m., the greeting switches: Buenos días → Buenas tardes.\");\n    } else if (crossesBoundary(prevMins, mins, 1200)) {\n      flashTip(\"At 8:00 p.m., the greeting switches: Buenas tardes → Buenas noches.\");\n    }\n\n    prevMins = mins;\n    prevGreetingKey = g.key;\n  };\n\n  range.addEventListener(\"input\", updateFromSlider);\n  range.addEventListener(\"change\", updateFromSlider);\n  window.addEventListener(\"resize\", positionHints);\n\n  // Initialize\n  positionHints();\n  updateFromSlider();\n})();\n",
+    "dialog_lines": [],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768687535",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768684867",
+    "matching_pairs": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 1,
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "type": "custom_block",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": 1,
+    "correct_options": [],
+    "correction_sentence": "Yo **soy** estudiante.",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768719649",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768684867",
+    "matching_pairs": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 2,
+    "picture_options": [
+      {
+        "image_url": "",
+        "label": "Option 1"
+      },
+      {
+        "image_url": "",
+        "label": "Option 2"
+      },
+      {
+        "image_url": "",
+        "label": "Option 3"
+      }
+    ],
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Elige la palabra incorrecta.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "token_feedback": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tokens": [
+      "Yo",
+      "eres",
+      "estudiante",
+      "."
+    ],
+    "type": "error_spotting",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": 0,
+    "correct_options": [],
+    "correction_sentence": "Yo **soy** estudiante.",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoy_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768719789",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "lesson_id": "lesson-1768684867",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "",
+        "right": ""
+      }
+    ],
+    "option_feedback": [
+      "Sí, este panda está re contento.",
+      "Este panda no parece tan claramente feliz como el otro."
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 3,
+    "picture_options": [
+      {
+        "image_url": "/media/lessons-images/course-1768418867/lesson-1768684867/picture-choice-1/79e65a5954594d0da631bbd01f95efb8.png",
+        "label": "Option 1"
+      },
+      {
+        "image_url": "/media/lessons-images/course-1768418867/lesson-1768684867/picture-choice-2/5eed737f67cd44ae8baaa021c6ce1fe7.png",
+        "label": "Option 2"
+      }
+    ],
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Selecciona el panda feliz.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "shuffle_pool": true,
+    "title": "",
+    "token_feedback": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tokens": [
+      "Yo",
+      "eres",
+      "estudiante",
+      "."
+    ],
+    "type": "picture_choice",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "**La profesora** uses **-a** for feminine.",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [
+      "la ",
+      "profesor",
+      "-a"
+    ],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Feminine nouns often use **-a** and the article **la**.",
+    "id": "ex-1768791290",
+    "incorrect_feedback": "Try **la + profesor + -a**.",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1768684867",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [
+      {
+        "label": "",
+        "text": "profesor",
+        "type": "root"
+      },
+      {
+        "label": "",
+        "text": "-a",
+        "type": "suffix"
+      },
+      {
+        "label": "",
+        "text": "-o",
+        "type": "suffix"
+      },
+      {
+        "label": "article",
+        "text": "la ",
+        "type": "other"
+      },
+      {
+        "label": "article",
+        "text": "el",
+        "type": "other"
+      },
+      {
+        "label": "",
+        "text": "re-",
+        "type": "prefix"
+      }
+    ],
+    "option_feedback": [],
+    "options": [],
+    "order": 4,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Build the **feminine noun** meaning *teacher*. Include the **article**.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "morphology_builder",
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": 0,
+    "correct_indices": [
+      1
+    ],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "Yo **soy** estudiante.",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoy_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768807263",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [
+      "First, wash your hands.",
+      "Then, cut the vegetables.",
+      "Finally, serve the salad."
+    ],
+    "lesson_id": "lesson-1768684867",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "",
+        "right": ""
+      }
+    ],
+    "morpheme_pool": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 5,
+    "picture_options": [
+      {
+        "image_url": "",
+        "label": "Option 1"
+      },
+      {
+        "image_url": "",
+        "label": "Option 2"
+      },
+      {
+        "image_url": "",
+        "label": "Option 3"
+      }
+    ],
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "title": "",
+    "token_feedback": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tokens": [
+      "Yo",
+      "eres",
+      "estudiante",
+      "."
+    ],
+    "type": "reorder",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "comieron",
+    "correct_feedback": "",
+    "correct_index": 0,
+    "correct_indices": [
+      1
+    ],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "Yo **soy** estudiante.",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "ending": "ieron",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoy_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768862115",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1768684867",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "",
+        "right": ""
+      }
+    ],
+    "morpheme_pool": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 6,
+    "picture_options": [
+      {
+        "image_url": "",
+        "label": "Option 1"
+      },
+      {
+        "image_url": "",
+        "label": "Option 2"
+      },
+      {
+        "image_url": "",
+        "label": "Option 3"
+      }
+    ],
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Conjugate **comer** in third-person, plural of the **preterite** tense.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "com",
+    "title": "",
+    "token_feedback": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tokens": [
+      "Yo",
+      "eres",
+      "estudiante",
+      "."
+    ],
+    "type": "conjugation_drill",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": 0,
+    "correct_indices": [
+      1
+    ],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "Yo **soy** estudiante.",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "<div style=\"position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;\">  <iframe loading=\"lazy\" style=\"position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;\"    src=\"https://www.canva.com/design/DAGQjJKTfIQ/njgsBaqoxpBVrEIGydBTjA/view?embed\" allowfullscreen=\"allowfullscreen\" allow=\"fullscreen\">  </iframe></div><a href=\"https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGQjJKTfIQ&#x2F;njgsBaqoxpBVrEIGydBTjA&#x2F;view?utm_content=DAGQjJKTfIQ&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link\" target=\"_blank\" rel=\"noopener\">SER &amp; ESTAR with adjectives</a>",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768864515",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1768684867",
+    "matching_pairs": [],
+    "morpheme_pool": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 7,
+    "picture_options": [
+      {
+        "image_url": "",
+        "label": "Option 1"
+      },
+      {
+        "image_url": "",
+        "label": "Option 2"
+      },
+      {
+        "image_url": "",
+        "label": "Option 3"
+      }
+    ],
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Study the presentation.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [
+      "Yo",
+      "eres",
+      "estudiante",
+      "."
+    ],
+    "type": "content_embed",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "hablo",
+    "correct_feedback": "",
+    "correct_index": 0,
+    "correct_indices": [
+      1
+    ],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "Yo **soy** estudiante.",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "o",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoy_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768877740",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1768684867",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "",
+        "right": ""
+      }
+    ],
+    "model_audio_url": "/media/lessons-audio/lesson-1768684867/pronunciation-model/cdbc2ad6e94146c694f114d8206086d8.mp3",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 8,
+    "picture_options": [
+      {
+        "image_url": "",
+        "label": "Option 1"
+      },
+      {
+        "image_url": "",
+        "label": "Option 2"
+      },
+      {
+        "image_url": "",
+        "label": "Option 3"
+      }
+    ],
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "**Listen** to the audio. Then **record** yourself and compare your pornunciation.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "habl",
+    "title": "",
+    "token_feedback": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tokens": [
+      "Yo",
+      "eres",
+      "estudiante",
+      "."
+    ],
+    "type": "pronunciation_imitation",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1768684867/dictation-focus-prompt/5ddf892c2bd34fd6948e29bf599865b6.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": 0,
+    "correct_indices": [
+      1
+    ],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "Yo **soy** estudiante.",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "focus_answers": [
+      "quería",
+      "divertirse",
+      "chota"
+    ],
+    "focus_options": [
+      "quería",
+      "quiero",
+      "divertirse",
+      "chota"
+    ],
+    "focus_sentence": "Pero qué estúpida. ¿Cómo podía pensar que {1} estar conmigo y que un chico joven podía {2} con una vieja {3} como yo?",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "",
+    "id": "ex-1768892575",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1768684867",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 9,
+    "picture_options": [
+      {
+        "image_url": "",
+        "label": "Option 1"
+      },
+      {
+        "image_url": "",
+        "label": "Option 2"
+      },
+      {
+        "image_url": "",
+        "label": "Option 3"
+      }
+    ],
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [
+      "Yo",
+      "eres",
+      "estudiante",
+      "."
+    ],
+    "type": "dictation_focus",
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Tip: Tap the audio icon to hear each word.",
+    "id": "ex-1769065109",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 1,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Notice the **small word** before each noun.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "vocab_cards",
+    "vocab_cards": [
+      {
+        "audio_url": "/media/lessons-audio/lesson-1769053667/vocab-card-1/4e936538c5ed4a72b0f53b97126b8adb.mp3",
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-1/f98f50619d584e7a9edf5a02e1c0689b.svg",
+        "label": "`el` libro"
+      },
+      {
+        "audio_url": "/media/lessons-audio/lesson-1769053667/vocab-card-2/334ee1f51aa7459e9d04f0e88b54b35d.mp3",
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-2/422ee3d6fe9248c9aaeff458c8a6be86.svg",
+        "label": "`la` casa"
+      },
+      {
+        "audio_url": "/media/lessons-audio/lesson-1769053667/vocab-card-3/7848e85b5d574dfaa914c1016aa79079.mp3",
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-3/8a4a1060307e4ca3bcc55b6c3010a6de.svg",
+        "label": "`el` sol"
+      },
+      {
+        "audio_url": "/media/lessons-audio/lesson-1769053667/vocab-card-4/461d391c761445d4896b57d18324fdca.mp3",
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-4/a66655e402ab44d0a60f8a3887d61251.svg",
+        "label": "`la` noche"
+      }
+    ],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [
+      "el",
+      "la"
+    ],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Start with the two shortest words.",
+    "id": "ex-1769065110",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "Yes — **el** appears before a noun.",
+      "Yes — **la** appears before a noun.",
+      "**Libro** is a noun (a thing).",
+      "**Casa** is a noun (a thing)."
+    ],
+    "options": [
+      "el",
+      "la",
+      "libro",
+      "casa"
+    ],
+    "order": 2,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Which **small words** appear before the nouns you just saw?",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "select_all",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "Because different nouns have different grammatical gender",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Look back at the explanation above.",
+    "id": "ex-1769065111",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "Exactly. Spanish nouns belong to different gender groups.",
+      "Not quite. This lesson is about gender, not plural."
+    ],
+    "options": [
+      "Because different nouns have different grammatical gender",
+      "Because one is singular and the other is plural"
+    ],
+    "order": 3,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "The small words you saw before the nouns are called **articles**.\n\nIn Spanish, `el` and `la` are **definite articles**.\n\nThey both mean *the* in English. Spanish has two forms because **nouns have grammatical gender**.\n\nWhy does Spanish have different forms like `el` and `la`?",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "multiple_choice",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "correct_options": [
+      "Every Spanish noun has a grammatical gender",
+      "Spanish nouns can be masculine or feminine"
+    ],
+    "hint": "Think about what all Spanish nouns have in common.",
+    "id": "ex-1769065113",
+    "lesson_id": "lesson-1769053667",
+    "option_feedback": [
+      "Correct. Gender is a basic property of every Spanish noun.",
+      "Correct. These are the two grammatical genders in Spanish.",
+      "Not quite. Spanish does **not** have neutral nouns."
+    ],
+    "options": [
+      "Every Spanish noun has a grammatical gender",
+      "Spanish nouns can be masculine or feminine",
+      "Spanish nouns can be neutral"
+    ],
+    "order": 4,
+    "question": "Which statements about Spanish nouns are **true**?",
+    "type": "select_all"
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [
+      0,
+      2
+    ],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Look at the article first.",
+    "id": "ex-1769065115",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "Yes — **el libro** follows the common masculine pattern.",
+      "**La casa** is feminine.",
+      "Yes — **el sol** is masculine.",
+      "**La noche** is feminine."
+    ],
+    "options": [],
+    "order": 6,
+    "picture_options": [
+      {
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-1/f98f50619d584e7a9edf5a02e1c0689b.svg",
+        "label": "`el` libro"
+      },
+      {
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-2/422ee3d6fe9248c9aaeff458c8a6be86.svg",
+        "label": "`la` casa"
+      },
+      {
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-3/8a4a1060307e4ca3bcc55b6c3010a6de.svg",
+        "label": "`el` sol"
+      },
+      {
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-4/a66655e402ab44d0a60f8a3887d61251.svg",
+        "label": "`la` noche"
+      }
+    ],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "**General pattern:** Masculine nouns often use the article **`el`** and often end in **`-o`**.\n\nNow select the two **masculine** nouns.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "picture_select_all",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [
+      1,
+      3
+    ],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Look at the article first.",
+    "id": "ex-1769065116",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "**El libro** is masculine.",
+      "Yes — **la casa** follows the common feminine pattern.",
+      "**El sol** is masculine.",
+      "Yes — **la noche** is feminine."
+    ],
+    "options": [],
+    "order": 7,
+    "picture_options": [
+      {
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-1/f98f50619d584e7a9edf5a02e1c0689b.svg",
+        "label": "`el` libro"
+      },
+      {
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-2/422ee3d6fe9248c9aaeff458c8a6be86.svg",
+        "label": "`la` casa"
+      },
+      {
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-3/8a4a1060307e4ca3bcc55b6c3010a6de.svg",
+        "label": "`el` sol"
+      },
+      {
+        "image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/vocab-card-4/a66655e402ab44d0a60f8a3887d61251.svg",
+        "label": "`la` noche"
+      }
+    ],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "**General pattern:** Feminine nouns often use the article **`la`** and often end in **`-a`**.\n\nNow select the two **feminine** nouns.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "picture_select_all",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "These are common patterns, but not every noun follows them",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Think about the words *often* and *general pattern*.",
+    "id": "ex-1769065117",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "Exactly. These patterns are helpful, but there are exceptions.",
+      "Not quite. Spanish has many common exceptions you’ll learn later."
+    ],
+    "options": [
+      "These are common patterns, but not every noun follows them",
+      "Every noun ending in -o is masculine and every noun ending in -a is feminine"
+    ],
+    "order": 8,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Based on what you just saw, which statement is true?",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "multiple_choice",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1769053667/multiple-choice-post/7851cf27755c43eea756e6a46df9e30f.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "el",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Masculine nouns often use `el` and end in `-o`.",
+    "id": "ex-1769065301",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "Yes. This noun follows the common masculine pattern.",
+      "Not quite. This noun usually uses `el`."
+    ],
+    "options": [
+      "el",
+      "la"
+    ],
+    "order": 9,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/multiple_choice-prompt/cc7129cb683e458d975ae54079d91ccd.svg",
+    "question": "Which article goes with this noun?\n\n**vas`o`**",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "multiple_choice",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1769053667/multiple-choice-post/efa4b9e07c334d80a68c254f9956a68c.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "la",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Feminine nouns often use `la` and end in `-a`.",
+    "id": "ex-1769065302",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "Not quite. Nouns that end in **`-a`** are generally feminine and go with **`la`**.",
+      "Yes. This noun follows the common feminine pattern."
+    ],
+    "options": [
+      "el",
+      "la"
+    ],
+    "order": 10,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "/media/lessons-images/course-1769053349/lesson-1769053667/multiple_choice-prompt/e2d52c88f0f743cdb1c45b2bf990a5af.svg",
+    "question": "Which article goes with this noun?\n\n**ventan`a`**",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "multiple_choice",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Look at the article and the noun ending (often `el` + `-o`, `la` + `-a`).",
+    "id": "ex-1769065303",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "vaso",
+        "right": "el"
+      },
+      {
+        "audio_url": "",
+        "left": "ventana",
+        "right": "la"
+      }
+    ],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 11,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Match each noun with its article *Think about the general pattern*.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "matching",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Think about the general pattern: often `el` + `-o`, `la` + `-a`.",
+    "id": "ex-1769065304",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "plato",
+        "right": "el"
+      },
+      {
+        "audio_url": "",
+        "left": "silla",
+        "right": "la"
+      }
+    ],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 12,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Match each noun with its article *Think about the general pattern*.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "matching",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1769053667/morphology-builder-post/b36e92b1718f46e4a9b156f3063d27e5.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "Yes — this builds the noun correctly.",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [
+      "el",
+      "vas",
+      "o"
+    ],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Masculine nouns often use `el` and end in `-o`.",
+    "id": "ex-1769065305",
+    "incorrect_feedback": "Check the article and the ending.",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [
+      {
+        "label": "article",
+        "text": "el",
+        "type": "other"
+      },
+      {
+        "label": "",
+        "text": "vas",
+        "type": "root"
+      },
+      {
+        "label": "",
+        "text": "o",
+        "type": "suffix"
+      },
+      {
+        "label": "",
+        "text": "a",
+        "type": "suffix"
+      }
+    ],
+    "option_feedback": [],
+    "options": [],
+    "order": 13,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Build the noun using the correct article and ending.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "vas",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "morphology_builder",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1769053667/morphology-builder-post/8b15ff8cd21b4f27a50e6b82a1ab7e00.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "Yes — this builds the noun correctly.",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [
+      "la",
+      "ventan",
+      "a"
+    ],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Feminine nouns often use `la` and end in `-a`.",
+    "id": "ex-1769065306",
+    "incorrect_feedback": "Check the article and the ending.",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [
+      {
+        "label": "article",
+        "text": "la",
+        "type": "other"
+      },
+      {
+        "label": "",
+        "text": "ventan",
+        "type": "root"
+      },
+      {
+        "label": "",
+        "text": "a",
+        "type": "suffix"
+      },
+      {
+        "label": "article",
+        "text": "el",
+        "type": "other"
+      }
+    ],
+    "option_feedback": [],
+    "options": [],
+    "order": 14,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Build the noun using the correct article and ending.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "ventan",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "morphology_builder",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1769053667/error-spotting-post/54a7558ca57f40bbb96af1ad88366504.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "Nice catch. `Vaso` is masculine, so it uses `el`.",
+    "correct_index": 0,
+    "correct_indices": [
+      0
+    ],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "**`la` mesa**",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [],
+    "fill_blanks_decoy_feedback": [],
+    "fill_blanks_decoys": [],
+    "fill_blanks_feedback": [],
+    "fill_blanks_sentence": "",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Check the article. Masculine nouns often use `el`.",
+    "id": "ex-1769065307",
+    "incorrect_feedback": "Look again at the article and the noun ending.",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 15,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "There is a mistake in this noun phrase. Click on the **incorrect** part.",
+    "sentence_text": "la vaso",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [
+      "",
+      ""
+    ],
+    "tokens": [
+      "el",
+      "mesa"
+    ],
+    "type": "error_spotting",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1769053667/fill-blanks-select-post/54457912d89d4ba4a4813450836f7adf.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "",
+    "correct_feedback": "",
+    "correct_index": -1,
+    "correct_indices": [],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [],
+    "dialog_speakers": [],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "la"
+    ],
+    "fill_blanks_decoy_feedback": [
+      "Not quite. Feminine nouns often use `la`."
+    ],
+    "fill_blanks_decoys": [
+      "el"
+    ],
+    "fill_blanks_feedback": [
+      "Correct. `Ventana` is feminine, so it uses `la`."
+    ],
+    "fill_blanks_sentence": "{1} ventana",
+    "focus_answers": [],
+    "focus_options": [],
+    "focus_sentence": "",
+    "groups": [],
+    "hint": "Think about the general pattern: often `la` + `-a`.",
+    "id": "ex-1769065308",
+    "incorrect_feedback": "",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [],
+    "options": [],
+    "order": 16,
+    "picture_options": [],
+    "pool_forms": [],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Complete the noun phrase.",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [],
+    "tokens": [],
+    "type": "fill_blanks_select",
+    "vocab_cards": [],
+    "word_order_decoys": [],
+    "word_order_words": []
+  },
+  {
+    "audio_url": "/media/lessons-audio/lesson-1769053667/fill_blank-post/4693d484c09940f0842f42a73bbffa3e.mp3",
+    "completion_message_markdown": "",
+    "correct_answer": "el",
+    "correct_feedback": "Correct. Nouns ending in **`-o`** are generally masculine.",
+    "correct_index": 0,
+    "correct_indices": [
+      1
+    ],
+    "correct_options": [],
+    "correct_sequence": [],
+    "correction_sentence": "Yo **soy** estudiante.",
+    "custom_css": "",
+    "custom_html": "",
+    "custom_js": "",
+    "dialog_lines": [
+      {
+        "audio_url": "",
+        "speaker_index": 0,
+        "text": "",
+        "translation": ""
+      }
+    ],
+    "dialog_speakers": [
+      {
+        "avatar_url": "",
+        "name": "Speaker 1"
+      },
+      {
+        "avatar_url": "",
+        "name": "Speaker 2"
+      }
+    ],
+    "embed_allow_fullscreen": true,
+    "embed_aspect_ratio": "16:9",
+    "embed_html": "",
+    "embed_title": "",
+    "embed_url": "",
+    "ending": "",
+    "example_sentences": [],
+    "explanation_content": "",
+    "fill_blanks_answers": [
+      "Hola",
+      "soy"
+    ],
+    "fill_blanks_decoy_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_decoys": [
+      "tu",
+      "es"
+    ],
+    "fill_blanks_feedback": [
+      "",
+      ""
+    ],
+    "fill_blanks_sentence": "Yo {1} {2}.",
+    "focus_answers": [
+      "soy",
+      "estudiante"
+    ],
+    "focus_options": [
+      "soy",
+      "estudiante",
+      "tu",
+      "es"
+    ],
+    "focus_sentence": "Yo {1} {2}.",
+    "groups": [
+      {
+        "group_id": "group-1",
+        "group_title": "Present tense",
+        "slots": [
+          {
+            "accepted_forms": [
+              "habl`o`"
+            ],
+            "slot_id": "slot-1-1",
+            "slot_note_markdown": "",
+            "subjects": [
+              "yo"
+            ]
+          }
+        ]
+      }
+    ],
+    "hint": "What article goes with masculine nouns, **`el`** or **`la`**?",
+    "id": "ex-1769140272",
+    "incorrect_feedback": "Incorrect. What is the definite article that goes with masculine nouns?",
+    "intro_markdown": "",
+    "items": [],
+    "lesson_id": "lesson-1769053667",
+    "matching_pairs": [
+      {
+        "audio_url": "",
+        "left": "",
+        "right": ""
+      }
+    ],
+    "model_audio_url": "",
+    "model_text": "",
+    "morpheme_pool": [],
+    "option_feedback": [
+      "",
+      ""
+    ],
+    "options": [
+      "Option 1",
+      "Option 2"
+    ],
+    "order": 17,
+    "picture_options": [
+      {
+        "image_url": "",
+        "label": "Option 1"
+      },
+      {
+        "image_url": "",
+        "label": "Option 2"
+      },
+      {
+        "image_url": "",
+        "label": "Option 3"
+      }
+    ],
+    "pool_forms": [
+      "habl`o`",
+      "habl`as`",
+      "habl`a`",
+      "habl`amos`"
+    ],
+    "post_correct_audio_url": "",
+    "prompt_image_url": "",
+    "question": "Complete the noun phrase:\n\n{1} vaso",
+    "sentence_text": "",
+    "sentence_translation": "",
+    "show_hyphenation": true,
+    "shuffle_pool": true,
+    "stem": "",
+    "title": "",
+    "token_feedback": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tokens": [
+      "Yo",
+      "eres",
+      "estudiante",
+      "."
+    ],
+    "type": "fill_blank",
+    "vocab_cards": [
+      {
+        "audio_url": "",
+        "image_url": "",
+        "label": "Card 1"
+      },
+      {
+        "audio_url": "",
+        "image_url": "",
+        "label": "Card 2"
+      }
+    ],
+    "word_order_decoys": [
+      "tu",
+      "es"
+    ],
+    "word_order_words": [
+      "Hola",
+      "soy"
+    ]
+  }
+]

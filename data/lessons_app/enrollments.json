@@ -1,0 +1,48 @@
+[
+  {
+    "canceled_at": "2026-01-10T17:31:12.587393",
+    "course_id": "spanish-basics",
+    "enrolled_at": "2026-01-10T17:26:15.594352",
+    "id": "entremates.spanish@gmail.com::spanish-basics",
+    "status": "canceled",
+    "user_email": "entremates.spanish@gmail.com"
+  },
+  {
+    "canceled_at": "2026-01-10T17:35:39.345355",
+    "course_id": "spanish-basics",
+    "enrolled_at": "2026-01-10T17:31:14.025188",
+    "id": "entremates.spanish@gmail.com::spanish-basics",
+    "status": "canceled",
+    "user_email": "entremates.spanish@gmail.com"
+  },
+  {
+    "canceled_at": "2026-01-10T23:30:14.976887",
+    "course_id": "spanish-basics",
+    "enrolled_at": "2026-01-10T17:35:42.396458",
+    "id": "entremates.spanish@gmail.com::spanish-basics",
+    "status": "canceled",
+    "user_email": "entremates.spanish@gmail.com"
+  },
+  {
+    "canceled_at": "2026-01-10T23:30:26.210726",
+    "course_id": "spanish-basics",
+    "enrolled_at": "2026-01-10T23:30:20.912823",
+    "id": "entremates.spanish@gmail.com::spanish-basics",
+    "status": "canceled",
+    "user_email": "entremates.spanish@gmail.com"
+  },
+  {
+    "course_id": "spanish-basics",
+    "enrolled_at": "2026-01-10T23:30:30.183072",
+    "id": "entremates.spanish@gmail.com::spanish-basics",
+    "status": "active",
+    "user_email": "entremates.spanish@gmail.com"
+  },
+  {
+    "course_id": "course-1768169153",
+    "enrolled_at": "2026-01-11T16:26:03.847307",
+    "id": "elisears@gmail.com::course-1768169153",
+    "status": "active",
+    "user_email": "elisears@gmail.com"
+  }
+]

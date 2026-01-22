@@ -13,8 +13,35 @@ bp = Blueprint("accounts_manage", __name__)
 @require_super()
 def users_index():
     """List all admin users (super-admin only)."""
-    users = AdminUser.query.order_by(AdminUser.created_at.desc()).all()
-    return render_template("admin/account/users_index.html", users=users)
+    from flask import request
+
+    search = (request.args.get("q") or "").strip()
+    role = (request.args.get("role") or "").strip()
+    status = (request.args.get("status") or "").strip()
+
+    query = AdminUser.query
+    if search:
+        like = f"%{search}%"
+        query = query.filter(
+            db.or_(
+                AdminUser.id.ilike(like),
+                AdminUser.email.ilike(like),
+                AdminUser.name.ilike(like),
+            )
+        )
+    if role and role != "all":
+        query = query.filter(AdminUser.role == role)
+    if status and status != "all":
+        query = query.filter(AdminUser.status == status)
+
+    users = query.order_by(AdminUser.created_at.desc()).all()
+    return render_template(
+        "admin/account/users_index.html",
+        users=users,
+        search=search,
+        role_filter=role,
+        status_filter=status,
+    )
 
 @bp.get("/users/new")
 @login_required

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ lesson_title }}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+  </head>
+
+  <body>
+    {% include "_public_bar.html" %}
+
+    <main class="courses-wrap lesson-detail">
+      <div class="lesson-detail__top">
+        <a class="lesson-detail__back" href="/courses">← Back to courses</a>
+        <a class="lesson-detail__back" href="/courses/{{ course_slug }}">← {{ course_title }}</a>
+      </div>
+
+      <header class="lesson-detail__header">
+        <h1 class="lesson-detail__title">{{ lesson_title }}</h1>
+
+        {% if lesson_description %}
+          <p class="lesson-detail__desc">{{ lesson_description }}</p>
+        {% endif %}
+
+        <div class="lesson-detail__meta">
+          <span class="lesson-detail__xp">
+            <span class="lesson-row__xp-icon" aria-hidden="true">⚡</span>
+            <span class="lesson-row__xp-num">{{ lesson_xp or 0 }}</span>
+            <span class="lesson-row__xp-label">XP</span>
+          </span>
+
+          {% if is_preview %}
+            <span class="courses-pill">preview: <code>?preview=1</code></span>
+            <span class="courses-pill">status: {{ lesson_status }}</span>
+          {% endif %}
+        </div>
+      </header>
+
+      {% if blocks and blocks|length > 0 %}
+        <section class="lesson-blocks" aria-label="Lesson content">
+          {% for b in blocks %}
+            <article class="lesson-block">
+              {% if is_preview %}
+                <div class="lesson-block__type">
+                  type: {{ b.type or "unknown" }}
+                  {% if b.status %} · status: {{ b.status }}{% endif %}
+                  {% if b.id %} · id: {{ b.id }}{% endif %}
+                </div>
+              {% endif %}
+
+              {% if (b.type or "") == "markdown" %}
+                <div class="lesson-block__md">{{ b.body or "" }}</div>
+
+              {% elif (b.type or "") == "example_pair" %}
+                {% if b.items %}
+                  {% for it in b.items %}
+                    <p class="lesson-block__pair"><strong>ES:</strong> {{ it.es or "" }}</p>
+                    <p class="lesson-block__pair"><strong>EN:</strong> {{ it.en or "" }}</p>
+                    {% if not loop.last %}<hr class="lesson-block__hr" />{% endif %}
+                  {% endfor %}
+                {% else %}
+                  <div class="lesson-block__md">(No items)</div>
+                {% endif %}
+
+              {% elif (b.type or "") == "mcq" %}
+                {% if b.prompt %}<div class="lesson-block__md"><strong>{{ b.prompt }}</strong></div>{% endif %}
+                {% if b.stem %}<div class="lesson-block__md">{{ b.stem }}</div>{% endif %}
+                {% if b.choices %}
+                  <ol class="lesson-block__choices">
+                    {% for c in b.choices %}
+                      <li>{{ c }}</li>
+                    {% endfor %}
+                  </ol>
+                {% endif %}
+                {% if is_preview and (b.answer_index is not none) %}
+                  <div class="lesson-block__meta">answer_index: {{ b.answer_index }}</div>
+                {% endif %}
+
+              {% else %}
+                <div class="lesson-block__md">Unsupported block type for now.</div>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </section>
+      {% else %}
+        <section class="courses-empty" aria-label="Empty state">
+          <p class="courses-empty__text">No content found for this lesson.</p>
+        </section>
+      {% endif %}
+    </main>
+  </body>
+</html>

@@ -1,115 +1,66 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Courses</title>
+{% extends "courses/_app_shell.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% block title %}My Courses{% endblock %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
-  </head>
+{% block content %}
+  <div class="courses-page">
+    <header class="courses-page__header">
+      <h1 class="courses-page__title">My Courses</h1>
+      <p class="courses-page__subtitle">
+        Pick a course to start learning or continue where you left off.
+      </p>
+    </header>
 
-  <body>
-    {% include "_public_bar.html" %}
+    {% if courses and courses|length > 0 %}
+      <section class="courses-grid" aria-label="Courses">
+        {% for c in courses %}
+          <a class="course-card" href="/courses/{{ c.slug }}">
+            <div class="course-card__media">
+              <div class="course-card__img-fallback" aria-hidden="true"></div>
 
-    <main class="courses-page courses-wrap">
-      <header class="courses-page__header">
-        <h1 class="courses-page__title">My Courses</h1>
-        <p class="courses-page__subtitle">
-          Pick a course to start learning or continue where you left off.
-        </p>
-      </header>
-
-      {% if courses and courses|length > 0 %}
-        <section class="courses-grid" aria-label="Courses">
-          {% for c in courses %}
-            <a
-              class="course-card"
-              href="/courses/{{ c.slug }}"
-            >
-              <div class="course-card__media">
-                <div class="course-card__img-fallback" aria-hidden="true"></div>
-
-                <div class="course-card__badge-wrap">
-                  {% if is_preview and (c.status or "") != "published" %}
-                    <span class="course-card__badge course-card__badge--level">{{ c.status }}</span>
-                  {% else %}
-                    <span class="course-card__badge course-card__badge--level">beginner</span>
-                  {% endif %}
-                </div>
-              </div>
-
-              <div class="course-card__body">
-                <div class="course-card__toprow">
-                  <h3 class="course-card__name">{{ c.title }}</h3>
-                  <span class="course-card__chevron" aria-hidden="true">›</span>
-                </div>
-
-                {% if c.description %}
-                  <p class="course-card__desc">{{ c.description }}</p>
+              <div class="course-card__badge-wrap">
+                {% if is_preview and (c.status or "") != "published" %}
+                  <span class="course-card__badge course-card__badge--level">{{ c.status }}</span>
                 {% else %}
-                  <p class="course-card__desc course-card__desc--fallback">
-                    Learn through short, focused lessons with practice built in.
-                  </p>
+                  <span class="course-card__badge course-card__badge--level">beginner</span>
                 {% endif %}
+              </div>
+            </div>
 
-                <div class="course-card__meta">
-                  <p class="course-card__lang">English → Spanish</p>
+            <div class="course-card__body">
+              <div class="course-card__toprow">
+                <h3 class="course-card__name">{{ c.title }}</h3>
+                <span class="course-card__chevron" aria-hidden="true">›</span>
+              </div>
 
-                  <div class="course-card__progress-row">
-                    <span>Lessons coming soon</span>
-                    <span class="course-card__pct">0%</span>
-                  </div>
+              {% if c.description %}
+                <p class="course-card__desc">{{ c.description }}</p>
+              {% else %}
+                <p class="course-card__desc course-card__desc--fallback">
+                  Learn through short, focused lessons with practice built in.
+                </p>
+              {% endif %}
 
-                  <div class="course-card__track" aria-hidden="true">
-                    <div class="course-card__bar course-card__bar--active" style="width: 0%"></div>
-                  </div>
+              <div class="course-card__meta">
+                <p class="course-card__lang">English → Spanish</p>
+
+                <div class="course-card__progress-row">
+                  <span>Lessons coming soon</span>
+                  <span class="course-card__pct">0%</span>
+                </div>
+
+                <div class="course-card__track" aria-hidden="true">
+                  <div class="course-card__bar course-card__bar--active" style="width: 0%"></div>
                 </div>
               </div>
-            </a>
-          {% endfor %}
-        </section>
-      {% else %}
-        <section class="courses-empty" aria-label="Empty state">
-          <p class="courses-empty__text">No courses yet.</p>
-        </section>
-      {% endif %}
-    </main>
-
-    <script>
-      (function () {
-        const bar = document.getElementById("ppx-public-bar");
-        if (!bar) return;
-
-        const details = Array.from(bar.querySelectorAll("details"));
-
-        function closeAll(except) {
-          for (const d of details) {
-            if (d !== except) d.removeAttribute("open");
-          }
-        }
-
-        // When one opens, close the others.
-        for (const d of details) {
-          d.addEventListener("toggle", () => {
-            if (d.open) closeAll(d);
-          });
-        }
-
-        // Click outside the bar closes all open dropdowns.
-        document.addEventListener("click", (e) => {
-          const target = e.target;
-          if (!(target instanceof Node)) return;
-
-          if (!bar.contains(target)) {
-            closeAll(null);
-          }
-        });
-      })();
-    </script>
-  </body>
-</html>
+            </div>
+          </a>
+        {% endfor %}
+      </section>
+    {% else %}
+      <section class="courses-empty" aria-label="Empty state">
+        <p class="courses-empty__text">No courses yet.</p>
+      </section>
+    {% endif %}
+  </div>
+{% endblock %}

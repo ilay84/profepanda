@@ -1,0 +1,247 @@
+body.ppx-lessons-app {
+  font-family: var(--ppx-font, "Montserrat", sans-serif);
+  background: #fff;
+}
+
+#ppx-public-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #edeaff;
+  border-bottom: 1px solid #d8d4f2;
+}
+
+.ppx-lessons-topbar-inner {
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ppx-lessons-brand img {
+  height: 45px;
+  width: auto;
+  display: block;
+}
+
+.ppx-lessons-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ppx-lessons-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.875rem;
+  color: #0f172a;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ppx-lessons-login:hover {
+  background: #f3f4ff;
+  border-color: #c7ccff;
+}
+
+.ppx-lessons-login img {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 640px) {
+  .ppx-lessons-login {
+    padding: 6px 10px;
+    gap: 0;
+    font-size: 0;
+  }
+
+  .ppx-lessons-login img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.ppx-lessons-menu,
+.ppx-lessons-lang {
+  position: relative;
+}
+
+.ppx-lessons-menu summary,
+.ppx-lessons-lang summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 0.875rem;
+  color: #0f172a;
+}
+
+.ppx-lessons-menu summary::-webkit-details-marker,
+.ppx-lessons-lang summary::-webkit-details-marker {
+  display: none;
+}
+
+.ppx-lessons-menu summary:hover,
+.ppx-lessons-lang summary:hover {
+  background: #f3f4ff;
+  border-color: #c7ccff;
+}
+
+.ppx-lessons-menu-panel,
+.ppx-lessons-lang-panel {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 6px;
+  min-width: 220px;
+  z-index: 60;
+}
+
+.ppx-lessons-menu-panel ul,
+.ppx-lessons-lang-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+}
+
+.ppx-lessons-menu-panel a,
+.ppx-lessons-lang-panel a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #0f172a;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.ppx-lessons-menu-panel a:hover,
+.ppx-lessons-lang-panel a:hover {
+  background: #f3f4ff;
+}
+
+#ppx-public-bar ul[data-menu="primary"] li a span:first-child {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+#ppx-public-bar ul[data-menu="primary"] li:nth-child(1) a span:first-child {
+  background-image: url("/static/assets/icons/homepage.svg");
+}
+
+#ppx-public-bar ul[data-menu="primary"] li:nth-child(2) a span:first-child {
+  background-image: url("/static/assets/icons/lesson.svg");
+}
+
+#ppx-public-bar ul[data-menu="primary"] li:nth-child(3) a span:first-child {
+  background-image: url("/static/assets/icons/glossariespage.svg");
+}
+
+.ppx-lessons-lang-panel a span:last-child {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background-image: url("/static/assets/icons/check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+#ppx-public-bar summary[aria-label*="Open menu"]::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  background: url("/static/assets/icons/menu.svg") no-repeat center / contain;
+}
+
+#ppx-public-bar summary[aria-label*="Open menu"] > span[aria-hidden="true"] {
+  display: none;
+}
+
+#ppx-public-bar summary[aria-label*="Change language"]::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  background: url("/static/assets/icons/globe.svg") no-repeat center / contain;
+}
+
+#ppx-public-bar summary[aria-label*="Change language"] > span[aria-hidden="true"] {
+  display: none;
+}
+
+#ppx-public-bar [role="menuitem"][aria-current="true"]::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  background: url("/static/assets/icons/check.svg") no-repeat center / contain;
+}
+
+#ppx-public-bar [role="menuitem"] > span[aria-hidden="true"] {
+  display: none;
+}
+
+.ppx-lessons-header {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ppx-lessons-title {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.ppx-lessons-header button,
+.ppx-lessons-header a > button {
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.ppx-lessons-header button:hover,
+.ppx-lessons-header a > button:hover {
+  background: #f3f4ff;
+  border-color: #c7ccff;
+}
+
+.ppx-lessons-header .bg-slate-50 {
+  background: #fff;
+  border: 1.5px solid #d1d5db;
+}
+
+.ppx-lessons-header .bg-slate-50 span {
+  color: #0f172a;
+}

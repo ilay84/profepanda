@@ -1,0 +1,37 @@
+[
+  {
+    "course_id": "course-1768169153",
+    "description": "Learn how to greet people and make introductions in Spanish. This unit helps you choose the right words depending on the situation—friendly or formal—and gives you the tools to start a conversation naturally.",
+    "id": "unit-1768169178",
+    "order": 1,
+    "title": "Greetings"
+  },
+  {
+    "course_id": "course-1768169153",
+    "description": "Learn how to keep a simple conversation going in Spanish after greetings and introductions. In this unit, you’ll ask how someone is, talk about where you’re from and what you do, and politely close a short conversation.",
+    "id": "unit-1768178184",
+    "order": 2,
+    "title": "Basic Conversations"
+  },
+  {
+    "course_id": "course-1768258246",
+    "description": "Learn how all nouns that refer to objects and concepts have a gender in Spanish. Learn how to determine and use a nouns gender.",
+    "id": "unit-1768258297",
+    "order": 1,
+    "title": "Nouns: All Objects have a Gender"
+  },
+  {
+    "course_id": "course-1768418867",
+    "description": "Communicative Goal: start interactions and share basic personal information.",
+    "id": "unit-1768418921",
+    "order": 1,
+    "title": "Talking about who you are"
+  },
+  {
+    "course_id": "course-1769053349",
+    "description": "Learn how grammatical gender works in Spanish nouns, how to recognize it, and how to use nouns correctly with articles.",
+    "id": "unit-1769053493",
+    "order": 1,
+    "title": "Nouns: Grammatical Gender"
+  }
+]

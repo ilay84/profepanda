@@ -1,0 +1,225 @@
+[
+  {
+    "course_id": "spanish-basics",
+    "description": "Say hello and introduce yourself.",
+    "id": "sb-01",
+    "is_published": true,
+    "order": 1,
+    "title": "Greetings",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "spanish-basics",
+    "description": "Please, thank you, and excuse me.",
+    "id": "sb-02",
+    "is_published": true,
+    "order": 2,
+    "title": "Polite Basics",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768169153",
+    "description": "Learn how to say hello and greet people informally in Spanish. You’ll practice common greetings used with friends, classmates, and people your age.",
+    "id": "lesson-1768169282",
+    "is_published": true,
+    "keywords": [
+      "informal greetings",
+      "hola",
+      "como estas",
+      "casual spanish",
+      "spanish for beginners",
+      "friendly spanish"
+    ],
+    "title": "Informal Greetings",
+    "unit_id": "unit-1768169178",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768169153",
+    "description": "Learn how to greet people politely in Spanish. This lesson focuses on formal greetings used with strangers, professionals, and in respectful situations.",
+    "id": "lesson-1768170001",
+    "is_published": true,
+    "keywords": [
+      "formal greetings",
+      "buenos dias",
+      "polite spanish",
+      "usted",
+      "spanish formality",
+      "beginner spanish"
+    ],
+    "title": "Formal Greetings",
+    "unit_id": "unit-1768169178",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768169153",
+    "description": "Learn how to say your name and introduce yourself naturally in Spanish. This lesson focuses on the most common phrases Spanish speakers use when meeting someone for the first time.",
+    "id": "lesson-1768177678",
+    "is_published": true,
+    "keywords": [
+      "introducing yourself",
+      "me llamo",
+      "my name in spanish",
+      "basic introductions",
+      "begineer spanish",
+      "first meeting"
+    ],
+    "title": "Introducing Yourself",
+    "unit_id": "unit-1768169178",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768169153",
+    "description": "Learn how to introduce another person in Spanish. This lesson focuses on simple, natural phrases used to say who someone else is in a first conversation.",
+    "id": "lesson-1768177948",
+    "is_published": true,
+    "keywords": [],
+    "title": "Introducing Other People",
+    "unit_id": "unit-1768169178",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768169153",
+    "description": "Learn how to ask and answer “How are you?” in Spanish. This lesson focuses on natural, everyday phrases used in short conversations after greetings.",
+    "id": "lesson-1768178265",
+    "is_published": true,
+    "keywords": [],
+    "title": "Asking How Someone Is",
+    "unit_id": "unit-1768178184",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "spanish-greetings-intros",
+    "description": "Learn how to say hello and goodbye in formal and informal situations.",
+    "id": "lesson-1768254752",
+    "is_published": true,
+    "keywords": [
+      "hola",
+      "buenos dias",
+      "formal greetings spanish",
+      "informal greetings spanish",
+      "usted tu"
+    ],
+    "title": "Greetings: Formal & Informal",
+    "unit_id": "",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768254617",
+    "description": "Learn how to say hello and goodbye in formal and informal situations.",
+    "id": "lesson-1768255397",
+    "is_published": true,
+    "keywords": [
+      "hola",
+      "buenos dias",
+      "formal greetings spanish",
+      "informal greetings spanish",
+      "usted tu"
+    ],
+    "title": "Greetings: Formal & Informal",
+    "unit_id": "",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768258246",
+    "description": "",
+    "id": "lesson-1768258778",
+    "is_published": true,
+    "keywords": [
+      "masculine and feminine",
+      "gender"
+    ],
+    "title": "A General Pattern of Gender",
+    "unit_id": "unit-1768258297",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768255941",
+    "description": "Learn how to greet people politely in Spanish.",
+    "id": "lesson-1768291485",
+    "is_published": true,
+    "keywords": [
+      "hola",
+      "buenos dias",
+      "greetings",
+      "first words",
+      "guided practice",
+      "self-check",
+      "confidence building"
+    ],
+    "order": 1,
+    "title": "Saying Hello",
+    "unit_id": "",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768255941",
+    "description": "Say your name and ask someone theirs in Spanish.",
+    "id": "lesson-1768291845",
+    "is_published": true,
+    "keywords": [
+      "introductions",
+      "me llamo",
+      "como te llamas",
+      "basic conversation",
+      "guided practice",
+      "confidence building",
+      "speaking drills"
+    ],
+    "order": 2,
+    "title": "Introducing Yourself",
+    "unit_id": "",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768255941",
+    "description": "Learn how to say nice to meet you and respond politely in Spanish.",
+    "id": "lesson-1768292076",
+    "is_published": true,
+    "keywords": [
+      "mucho gusto",
+      "nice to meet you",
+      "polite expressions",
+      "first conversations",
+      "guided practice",
+      "confidence building",
+      "speaking drills"
+    ],
+    "order": 3,
+    "title": "Nice to Meet You",
+    "unit_id": "",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768418867",
+    "description": "Learn the most natural way to say your name in Spanish.\n\nBy the end of this lesson, you can say:\n- **Me llamo** + your name\n\nYou’ll also avoid a very common beginner mistake:\n- ❌ *Me llamo es…*",
+    "id": "lesson-1768418990",
+    "is_published": true,
+    "keywords": [],
+    "order": 1,
+    "title": "Saying your name with *llamarse*",
+    "unit_id": "unit-1768418921",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1768418867",
+    "description": "",
+    "id": "lesson-1768684867",
+    "is_published": true,
+    "keywords": [],
+    "order": 2,
+    "title": "SANDBOX TEST",
+    "unit_id": "unit-1768418921",
+    "xp_reward": 10
+  },
+  {
+    "course_id": "course-1769053349",
+    "description": "Learn the core idea behind grammatical gender in Spanish: every noun is either masculine or feminine, and this gender is a fixed part of the word.",
+    "id": "lesson-1769053667",
+    "is_published": true,
+    "keywords": [],
+    "title": "Every Spanish Noun Has a Gender",
+    "unit_id": "unit-1769053493",
+    "xp_reward": 10
+  }
+]

@@ -1,6 +1,8 @@
 # app/__init__.py
 from __future__ import annotations
-from flask import Flask, request
+from pathlib import Path
+
+from flask import Flask, request, redirect
 from markupsafe import Markup
 from app.extensions.db import db
 from app.extensions.migrate import migrate
@@ -96,6 +98,25 @@ def create_app(config_name: str | None = None) -> Flask:
             ),
         }
 
+    @app.before_request
+    def _redirect_legacy_public_content():
+        path = request.path or ""
+        legacy_prefixes = (
+            "/articles",
+            "/exercises",
+            "/content-hub",
+            "/dictionary",
+            "/taxonomy/grammar",
+        )
+        if path.startswith(legacy_prefixes) and not path.startswith("/admin"):
+            return redirect("/courses", code=302)
+        admin_legacy_prefixes = (
+            "/admin/exercises",
+            "/admin/language-structures-and-lessons",
+        )
+        if path.startswith(admin_legacy_prefixes):
+            return redirect("/admin", code=302)
+
     # ─────────────────────────────────────────────────────────────
     # Blueprint registration (optional; won’t crash if missing)
     # ─────────────────────────────────────────────────────────────
@@ -114,22 +135,24 @@ def create_app(config_name: str | None = None) -> Flask:
     _maybe_register("domains.admin", "bp", "/admin")
     _maybe_register("domains.accounts.routes_admin", "bp", "/admin")
     _maybe_register("domains.accounts.routes_manage", "bp", "/admin")
+    _maybe_register("domains.accounts.routes_public", "bp", "/")
     _maybe_register("domains.articles", "bp", "/articles")
     _maybe_register("domains.exercises", "bp", "/exercises")
+    _maybe_register("domains.lessons_app", "bp", "/")
     # glossary blueprint removed
     _maybe_register("app.media", "bp", "/media")
     _maybe_register("domains.taxonomy", "taxonomy_bp", "/taxonomy")
 
-    # Lessons domain (public + API). Uses an init_app helper that registers
-    # its own blueprints (public at /lessons and API at /api/lessons).
-    try:
-        from domains.lessons import init_app as lessons_init_app  # type: ignore
-        lessons_init_app(app)
-        print("[boot] registered domains.lessons blueprints (/lessons, /api/lessons)")
-    except Exception as e:
-        import traceback
-        print(f"[boot][WARN] lessons domain not registered: {e}")
-        traceback.print_exc()
+    # Legacy lessons domain (public + API). Keep disabled unless explicitly enabled.
+    if bool(app.config.get("FEATURE_LEGACY_LESSONS_ENABLED", False)):
+        try:
+            from domains.lessons import init_app as lessons_init_app  # type: ignore
+            lessons_init_app(app)
+            print("[boot] registered domains.lessons blueprints (/lessons, /api/lessons)")
+        except Exception as e:
+            import traceback
+            print(f"[boot][WARN] lessons domain not registered: {e}")
+            traceback.print_exc()
 
     # Courses domain (API only for now). Dev-gated so it can be turned on later.
     if bool(app.config.get("FEATURE_COURSES_ENABLED", False)):
@@ -148,6 +171,49 @@ def create_app(config_name: str | None = None) -> Flask:
     @app.get("/healthz")
     def _healthz():
         return {"status": "ok", "app": "ProfePanda"}, 200
+
+    @app.get("/healthz/lessons-app")
+    def _healthz_lessons_app():
+        static_root = Path(app.static_folder or "")
+        index_path = static_root / "lessons_app" / "index.html"
+        return {
+            "status": "ok" if index_path.exists() else "missing",
+            "bundle_path": str(index_path),
+            "bundle_exists": index_path.exists(),
+        }, (200 if index_path.exists() else 404)
+
+    @app.get("/healthz/lessons-app-admin")
+    def _healthz_lessons_app_admin():
+        static_root = Path(app.static_folder or "")
+        index_path = static_root / "lessons_app" / "index.html"
+        if not index_path.exists():
+            return {
+                "status": "missing_bundle",
+                "bundle_path": str(index_path),
+                "bundle_exists": False,
+            }, 404
+        has_admin = False
+        try:
+            content = index_path.read_text(encoding="utf-8")
+            has_admin = "/courses-admin" in content
+        except Exception:
+            content = ""
+        if not has_admin:
+            assets_root = static_root / "lessons_app" / "assets"
+            for p in assets_root.glob("*.js"):
+                try:
+                    blob = p.read_text(encoding="utf-8", errors="ignore")
+                except Exception:
+                    continue
+                if "/courses-admin" in blob:
+                    has_admin = True
+                    break
+        return {
+            "status": "ok" if has_admin else "missing_rebase",
+            "bundle_path": str(index_path),
+            "bundle_exists": True,
+            "admin_route_rebased": has_admin,
+        }, (200 if has_admin else 409)
 
     # -------------------------------------------------------------
     # HTTP caching: aggressively cache static assets (icons, css, js)

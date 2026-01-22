@@ -41,6 +41,18 @@ class BaseConfig:
     DEBUG_TOOLBAR = os.getenv("DEBUG_TOOLBAR", "false").lower() == "true"
     ENABLE_CONTENT_LAB = os.getenv("ENABLE_CONTENT_LAB", "false").lower() == "true"
     FEATURE_COURSES_ENABLED = os.getenv("FEATURE_COURSES_ENABLED", "false").lower() == "true"
+    FEATURE_LEGACY_LESSONS_ENABLED = os.getenv("FEATURE_LEGACY_LESSONS_ENABLED", "false").lower() == "true"
+
+    # Auth / OAuth
+    PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "")
+    GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "")
+    GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET", "")
+    GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI", "")
+    MAGIC_LINK_TTL_SECONDS = int(os.getenv("MAGIC_LINK_TTL_SECONDS", "900"))
+
+    # Email (Resend)
+    RESEND_API_KEY = os.getenv("RESEND_API_KEY", "")
+    RESEND_FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL", "")
 
 
 # ─────────────────────────────────────────────────────────────

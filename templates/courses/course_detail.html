@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ course_title }}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+  </head>
+
+  <body>
+    {% include "_public_bar.html" %}
+
+    <main class="courses-wrap course-detail">
+      <div class="course-detail__top">
+        <a class="course-detail__back" href="/courses">← Back to courses</a>
+      </div>
+
+      <!-- Summary panel -->
+      <section class="course-summary" aria-label="Course summary">
+        <div class="course-summary__hero">
+          <div class="course-summary__meta">
+            <span class="course-summary__badge">
+              {{ "Mastered" if (total_lessons and total_lessons > 0 and completed_lessons >= total_lessons) else (course_level or "beginner") }}
+            </span>
+
+            <h1 class="course-summary__title">{{ course_title }}</h1>
+
+            {% if course_description %}
+              <p class="course-summary__desc">{{ course_description }}</p>
+            {% else %}
+              <p class="course-summary__desc">(No description yet.)</p>
+            {% endif %}
+
+            <!-- Progress pills -->
+            <div class="course-summary__pills" aria-label="Course progress stats">
+              <div class="course-summary__pill">
+                <span class="course-summary__pill-icon" aria-hidden="true">📚</span>
+                <span class="course-summary__pill-strong">{{ completed_lessons or 0 }}/{{ total_lessons or 0 }}</span>
+                <span class="course-summary__pill-muted">lessons</span>
+              </div>
+
+              <div class="course-summary__pill">
+                <span class="course-summary__pill-icon" aria-hidden="true">⚡</span>
+                <span class="course-summary__pill-strong">{{ earned_xp or 0 }}/{{ total_xp or 0 }}</span>
+                <span class="course-summary__pill-muted">XP</span>
+              </div>
+
+              <div class="course-summary__pill">
+                <span class="course-summary__pill-icon" aria-hidden="true">⏱️</span>
+                <span class="course-summary__pill-strong">{{ time_spent_minutes or 0 }}</span>
+                <span class="course-summary__pill-muted">min spent</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress bar panel -->
+          <div class="course-summary__progress">
+            <div class="course-summary__progress-top">
+              <span class="course-summary__progress-title">Your progress</span>
+              <span class="course-summary__progress-sub">
+                {{ completed_lessons or 0 }}/{{ total_lessons or 0 }} lessons
+              </span>
+            </div>
+
+            <div class="course-summary__track" aria-hidden="true">
+              <div
+                class="course-summary__bar {{ 'course-summary__bar--mastered' if (total_lessons and total_lessons > 0 and completed_lessons >= total_lessons) else 'course-summary__bar--active' }}"
+                style="width: {{ pct_complete or 0 }}%;"
+              ></div>
+            </div>
+
+            <div class="course-summary__progress-bottom">
+              <span>{{ earned_xp or 0 }} XP earned</span>
+              <span>{{ pct_complete or 0 }}% complete</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lessons -->
+      <section class="course-lessons" aria-label="Lessons">
+        <div class="course-lessons__header">
+          <h2 class="course-lessons__title">Lessons</h2>
+        </div>
+
+        {% if lessons and lessons|length > 0 %}
+          <div class="course-lessons__list">
+            {% for l in lessons %}
+              <div class="lesson-row">
+                <div class="lesson-row__left">
+                  <div class="lesson-row__iconbox lesson-row__iconbox--notstarted" aria-hidden="true">
+                    <span class="lesson-row__icon">•</span>
+                  </div>
+
+                  <div class="lesson-row__text">
+                    <div class="lesson-row__kicker">
+                      <span class="lesson-row__kicker-label">Lesson {{ loop.index }}</span>
+                      <span class="lesson-row__status-pill">Not started</span>
+                    </div>
+
+                    <div class="lesson-row__title">{{ l.title }}</div>
+
+                    {% if l.description %}
+                      <div class="lesson-row__desc">{{ l.description }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+
+                <div class="lesson-row__right">
+                  <span class="lesson-row__xp">
+                    <span class="lesson-row__xp-icon" aria-hidden="true">⚡</span>
+                    <span class="lesson-row__xp-num">{{ l.xp or 0 }}</span>
+                    <span class="lesson-row__xp-label">XP</span>
+                  </span>
+
+                  <a class="lesson-cta lesson-cta--notstarted" href="/courses/{{ course_slug }}/{{ l.slug }}">
+                    Start
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="courses-empty">
+            <p class="courses-empty__text">No lessons yet.</p>
+          </div>
+        {% endif %}
+      </section>
+    </main>
+  </body>
+</html>

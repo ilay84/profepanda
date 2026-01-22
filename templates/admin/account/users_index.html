@@ -21,6 +21,30 @@
       </a>
     </div>
 
+    <form method="get" action="{{ url_for('accounts_manage.users_index') }}" style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:1rem;">
+      <input name="q" value="{{ search or '' }}" placeholder="{{ t('Buscar por nombre o correo', 'Search name or email', app_lang) }}"
+             style="flex:1 1 240px;min-width:220px;padding:.5rem .65rem;border:1px solid #e5e7eb;border-radius:10px;font:500 14px/1.3 Montserrat,system-ui;">
+      <select name="role" style="padding:.5rem .6rem;border:1px solid #e5e7eb;border-radius:10px;">
+        {% set role_value = role_filter or 'all' %}
+        <option value="all" {{ 'selected' if role_value=='all' else '' }}>{{ t('Todos los roles', 'All roles', app_lang) }}</option>
+        <option value="student" {{ 'selected' if role_value=='student' else '' }}>{{ t('Estudiante', 'Student', app_lang) }}</option>
+        <option value="admin" {{ 'selected' if role_value=='admin' else '' }}>Admin</option>
+        <option value="author" {{ 'selected' if role_value=='author' else '' }}>Author</option>
+        <option value="editor" {{ 'selected' if role_value=='editor' else '' }}>Editor</option>
+        <option value="super" {{ 'selected' if role_value=='super' else '' }}>Super</option>
+      </select>
+      <select name="status" style="padding:.5rem .6rem;border:1px solid #e5e7eb;border-radius:10px;">
+        {% set status_value = status_filter or 'all' %}
+        <option value="all" {{ 'selected' if status_value=='all' else '' }}>{{ t('Todos los estados', 'All statuses', app_lang) }}</option>
+        <option value="active" {{ 'selected' if status_value=='active' else '' }}>{{ t('Activo', 'Active', app_lang) }}</option>
+        <option value="disabled" {{ 'selected' if status_value=='disabled' else '' }}>{{ t('Deshabilitado', 'Disabled', app_lang) }}</option>
+      </select>
+      <button type="submit" style="
+        padding:.55rem .75rem;border:0;border-radius:10px;background:#475dd7;color:#fff;
+        font:700 14px/1 Montserrat,system-ui;cursor:pointer;
+      ">{{ t('Filtrar', 'Filter', app_lang) }}</button>
+    </form>
+
     {% if users %}
     <div style="overflow:auto;">
       <table style="width:100%; border-collapse:collapse; font-family:var(--ppx-font,'Montserrat',sans-serif);">
@@ -31,16 +55,26 @@
             <th style="padding:.6rem .5rem;">{{ t('Rol', 'Role', app_lang) }}</th>
             <th style="padding:.6rem .5rem;">{{ t('Estado', 'Status', app_lang) }}</th>
             <th style="padding:.6rem .5rem; white-space:nowrap;">{{ t('Creado', 'Created', app_lang) }}</th>
+            <th style="padding:.6rem .5rem; text-align:right;">{{ t('Editar', 'Edit', app_lang) }}</th>
           </tr>
         </thead>
         <tbody>
           {% for u in users %}
           <tr style="border-bottom:1px solid #f1f5f9;">
             <td style="padding:.55rem .5rem;"><code>{{ u.email }}</code></td>
-            <td style="padding:.55rem .5rem;">{{ u.name }} <a href="{{ url_for('accounts_manage.users_edit', user_id=u.id) }}" style="margin-left:.5rem;font-weight:600;color:#475dd7;text-decoration:none;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">{{ t('Editar', 'Edit', app_lang) }}</a></td>
+            <td style="padding:.55rem .5rem;">{{ u.name }}</td>
             <td style="padding:.55rem .5rem;">{{ u.role }}</td>
             <td style="padding:.55rem .5rem;">{{ u.status }}</td>
             <td style="padding:.55rem .5rem; white-space:nowrap;">{{ (u.created_at or '') }}</td>
+            <td style="padding:.55rem .5rem; text-align:right;">
+              <a href="{{ url_for('accounts_manage.users_edit', user_id=u.id) }}" style="
+                display:inline-flex;align-items:center;justify-content:center;
+                width:32px;height:32px;border-radius:8px;border:1px solid #e5e7eb;
+                background:#fff;cursor:pointer;
+              " title="{{ t('Editar', 'Edit', app_lang) }}">
+                <img src="{{ url_for('static', filename='assets/icons/edit.svg') }}" alt="" width="16" height="16">
+              </a>
+            </td>
           </tr>
           {% endfor %}
         </tbody>

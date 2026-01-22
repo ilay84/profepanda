@@ -30,6 +30,16 @@
         onmouseout="this.style.background='#fff';">
         <img src="{{ url_for('static', filename='assets/icons/dashboard.svg') }}" alt="" width="16" height="16" aria-hidden="true" style="vertical-align:-3px; margin-right:6px;">{{ t('Panel', 'Dashboard', app_lang) }}
       </a>
+      <a href="/courses-admin/courses?lang={{ app_lang }}" style="
+        text-decoration:none; font-family:var(--ppx-font,'Montserrat',sans-serif);
+        font-size:var(--ppx-font-size-sm,.875rem);
+        color:var(--ppx-color-text,#0f172a);
+        padding:.45rem .8rem; border-radius:10px;
+        background:#fff; transition:all .15s ease-in-out;
+      " onmouseover="this.style.background='#f3f4ff';"
+        onmouseout="this.style.background='#fff';">
+        <img src="{{ url_for('static', filename='assets/icons/courses.svg') }}" alt="" width="16" height="16" aria-hidden="true" style="vertical-align:-3px; margin-right:6px;">{{ t('Cursos', 'Courses', app_lang) }}
+      </a>
 
       {% if current_user.is_authenticated and current_user.role == 'super' %}
       <a href="{{ url_for('accounts_manage.users_index') }}" style="

@@ -1,0 +1,42 @@
+[
+  {
+    "description": "Learn to communicate in Spanish from day one. This beginner course focuses on speaking about yourself, your daily life, and your world using clear, practical Spanish.",
+    "id": "course-1768418867",
+    "image_url": "",
+    "is_published": false,
+    "keywords": [
+      "spanish",
+      "beginner",
+      "communication",
+      "speaking",
+      "daily life",
+      "a1"
+    ],
+    "level": "beginner",
+    "source_language": "English",
+    "target_language": "Spanish",
+    "title": "Communicate in Spanish: Level 1 (Beginner)"
+  },
+  {
+    "description": "A clear, step-by-step guide to how Spanish grammar works, from the basics to advanced structures. Learn to understand, predict, and use Spanish grammar with confidence.",
+    "id": "course-1769053349",
+    "image_url": "",
+    "is_published": true,
+    "keywords": [
+      "spanish grammar",
+      "spanish nouns",
+      "spanish verbs",
+      "spanish tenses",
+      "agreement",
+      "articles",
+      "pronouns",
+      "subjunctive",
+      "operational grammar",
+      "learn spanish structure"
+    ],
+    "level": "all",
+    "source_language": "English",
+    "target_language": "Spanish",
+    "title": "Complete Spanish Grammar"
+  }
+]

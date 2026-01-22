@@ -3,6 +3,11 @@
   position: sticky; top: 0; z-index: 50;
   background: #edeaff; border-bottom: 1px solid #d8d4f2;
 ">
+  {% set _next = request.full_path %}
+  {% if _next.endswith('?') %}
+    {% set _next = _next[:-1] %}
+  {% endif %}
+
   <div style="
     max-width: min(98vw, 1760px); margin: 0 auto; padding: .5rem 1.25rem;
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
@@ -18,6 +23,35 @@
 
     <!-- Right: Nav menu + Language dropdown -->
     <div style="display:flex; align-items:center; gap:.5rem;">
+      {% if current_user.is_authenticated %}
+        <form action="/auth/logout" method="post" style="margin:0;">
+          <input type="hidden" name="next" value="{{ _next }}">
+          <button type="submit" title="{{ t('Cerrar sesion', 'Log out', app_lang) }}" style="
+            display:inline-flex; align-items:center; gap:.5rem;
+            padding:.45rem .9rem; border:1.5px solid var(--ppx-color-line,#d1d5db);
+            border-radius:999px; background:#fff; text-decoration:none;
+            font-size:var(--ppx-font-size-sm,.875rem);
+            color:var(--ppx-color-text,#0f172a);
+            cursor:pointer;
+          " onmouseover="this.style.background='#f3f4ff';this.style.borderColor='#c7ccff';"
+             onmouseout="this.style.background='#fff';this.style.borderColor='#d1d5db';">
+            <img src="{{ url_for('static', filename='assets/icons/logout.svg') }}" alt="" width="16" height="16" aria-hidden="true" />
+            {{ t('Salir', 'Log out', app_lang) }}
+          </button>
+        </form>
+      {% else %}
+        <a href="{{ url_for('public_auth.login_page', next=_next) }}" title="{{ t('Ingresar o crear cuenta gratis', 'Sign in or register for free', app_lang) }}" style="
+          display:inline-flex; align-items:center; gap:.5rem;
+          padding:.45rem .9rem; border:1.5px solid var(--ppx-color-line,#d1d5db);
+          border-radius:999px; background:#fff; text-decoration:none;
+          font-size:var(--ppx-font-size-sm,.875rem);
+          color:var(--ppx-color-text,#0f172a);
+        " onmouseover="this.style.background='#f3f4ff';this.style.borderColor='#c7ccff';"
+           onmouseout="this.style.background='#fff';this.style.borderColor='#d1d5db';">
+          <img src="{{ url_for('static', filename='assets/icons/login.svg') }}" alt="" width="16" height="16" aria-hidden="true" />
+          {{ t('Ingresar', 'Sign in', app_lang) }}
+        </a>
+      {% endif %}
       <!-- Primary dropdown menu -->
       <details style="position:relative; font-family:var(--ppx-font,'Montserrat',sans-serif);">
         <summary style="
@@ -41,6 +75,7 @@
             #ppx-public-bar ul[data-menu="primary"] li a span:first-child { display:inline-block; width:18px; height:18px; background-size:contain; background-repeat:no-repeat; background-position:center; text-indent:-9999px; overflow:hidden; }
             #ppx-public-bar ul[data-menu="primary"] li:nth-child(1) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/homepage.svg') }}'); }
             #ppx-public-bar ul[data-menu="primary"] li:nth-child(2) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/glossariespage.svg') }}'); }
+            #ppx-public-bar ul[data-menu="primary"] li:nth-child(3) a span:first-child { background-image: url('{{ url_for('static', filename='assets/icons/courses.svg') }}'); }
 </style>
           <ul data-menu="primary" style="list-style:none; margin:0; padding:.25rem;">
             <li>
@@ -61,6 +96,16 @@
               " onmouseover="this.style.background='#f3f4ff';"
                  onmouseout="this.style.background='transparent';">
                 <span>🗺️</span><span>{{ t('Glosarios regionales', 'Regional Glossaries', app_lang) }}</span>
+              </a>
+            </li>
+            <li>
+              <a href="/courses" role="menuitem" style="
+                display:flex; align-items:center; gap:.5rem;
+                text-decoration:none; color:var(--ppx-color-text,#0f172a);
+                padding:.45rem .6rem; border-radius:8px;
+              " onmouseover="this.style.background='#f3f4ff';"
+                 onmouseout="this.style.background='transparent';">
+                <span>??</span><span>{{ t('Cursos', 'Courses', app_lang) }}</span>
               </a>
             </li>
           </ul>

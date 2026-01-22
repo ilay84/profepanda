@@ -1,0 +1,51 @@
+[
+  {
+    "completed_lessons": [
+      "sb-01"
+    ],
+    "course_id": "spanish-basics",
+    "current_streak": 1,
+    "enrolled_date": "2026-01-10",
+    "id": "elisears@gmail.com::spanish-basics",
+    "last_activity_date": "2026-01-10",
+    "total_xp": 10,
+    "user_email": "elisears@gmail.com"
+  },
+  {
+    "completed_lessons": [
+      "lesson-1768258778"
+    ],
+    "course_id": "course-1768258246",
+    "current_streak": 2,
+    "enrolled_date": "2026-01-12",
+    "id": "elisears@gmail.com::course-1768258246",
+    "last_activity_date": "2026-01-13",
+    "total_xp": 30,
+    "user_email": "elisears@gmail.com"
+  },
+  {
+    "completed_lessons": [
+      "lesson-1768418990",
+      "lesson-1768684867"
+    ],
+    "course_id": "course-1768418867",
+    "current_streak": 1,
+    "enrolled_date": "2026-01-14",
+    "id": "elisears@gmail.com::course-1768418867",
+    "last_activity_date": "2026-01-19",
+    "total_xp": 30,
+    "user_email": "elisears@gmail.com"
+  },
+  {
+    "completed_lessons": [
+      "lesson-1769053667"
+    ],
+    "course_id": "course-1769053349",
+    "current_streak": 1,
+    "enrolled_date": "2026-01-22",
+    "id": "elisears@gmail.com::course-1769053349",
+    "last_activity_date": "2026-01-22",
+    "total_xp": 60,
+    "user_email": "elisears@gmail.com"
+  }
+]
