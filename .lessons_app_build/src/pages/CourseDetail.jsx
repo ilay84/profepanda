@@ -10,6 +10,9 @@ import LessonCard from "../components/student/LessonCard.jsx";
 import IconNotStarted from "../assets/icons/lessons/not-started.svg";
 import IconComplete from "../assets/icons/lessons/complete.svg";
 import IconInProgress from "../assets/icons/lessons/in-progress.svg";
+import IconLesson from "../assets/icons/lessons/lesson.svg";
+import IconClock from "../assets/icons/lessons/clock.svg";
+import IconXp from "../assets/icons/lessons/xp.svg";
 
 function renderInlineMarkdown(text) {
   if (!text) return "";
@@ -277,7 +280,7 @@ export default function CourseDetail() {
 
               <div className="flex flex-wrap gap-2 pt-1">
                 <div className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-sm text-white ring-1 ring-white/10">
-                  <span className="text-white/80">??</span>
+                  <img src={IconLesson} alt="" className="h-4 w-4 opacity-80" />
                   <span className="font-semibold">
                     {completedLessons}/{totalLessons}
                   </span>
@@ -285,7 +288,7 @@ export default function CourseDetail() {
                 </div>
 
                 <div className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-sm text-white ring-1 ring-white/10">
-                  <span className="text-white/80">?</span>
+                  <img src={IconXp} alt="" className="h-4 w-4 opacity-80" />
                   <span className="font-semibold">
                     {earnedXp}/{totalXp}
                   </span>
@@ -293,7 +296,7 @@ export default function CourseDetail() {
                 </div>
 
                 <div className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-sm text-white ring-1 ring-white/10">
-                  <span className="text-white/80">??</span>
+                  <img src={IconClock} alt="" className="h-4 w-4 opacity-80" />
                   <span className="font-semibold">{timeSpentMinutes}</span>
                   <span className="text-white/80">min spent</span>
                 </div>
@@ -460,7 +463,7 @@ export default function CourseDetail() {
                                     : "bg-indigo-50 text-indigo-700 ring-indigo-200"
                                 }`}
                               >
-                                <span className="mr-1">?</span>
+                                <img src={IconXp} alt="" className="mr-1 h-3.5 w-3.5" />
                                 <span className="tabular-nums">{Number(lesson.xp_reward) || 0}</span>
                                 <span className="ml-1">XP</span>
                               </span>
@@ -551,7 +554,7 @@ export default function CourseDetail() {
                           : "bg-indigo-50 text-indigo-700 ring-indigo-200"
                       }`}
                     >
-                      <span className="mr-1">?</span>
+                      <img src={IconXp} alt="" className="mr-1 h-3.5 w-3.5" />
                       <span className="tabular-nums">{Number(lesson.xp_reward) || 0}</span>
                       <span className="ml-1">XP</span>
                     </span>

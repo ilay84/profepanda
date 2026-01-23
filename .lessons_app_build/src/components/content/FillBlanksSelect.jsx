@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import nextIcon from "../../assets/icons/lessons/next.svg";
 import { playCorrectSoundThen, playIncorrectSound } from "../../utils/sound.js";
@@ -89,21 +89,13 @@ function renderInlineMarkdown(text) {
 }
 
 
-export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt, setAttempt }) {
-  const [localFilledBlanks, setLocalFilledBlanks] = useState({});
-  const [localActiveBlankIndex, setLocalActiveBlankIndex] = useState(0);
-  const [localUsedPills, setLocalUsedPills] = useState([]);
-  const [localSubmitted, setLocalSubmitted] = useState(false);
-  const [localIsCorrect, setLocalIsCorrect] = useState(false);
-  const [localPillOrder, setLocalPillOrder] = useState([]);
+export default function FillBlanksSelect({ exercise, onAnswer, showHint }) {
+  const [filledBlanks, setFilledBlanks] = useState({});
+  const [activeBlankIndex, setActiveBlankIndex] = useState(0);
+  const [usedPills, setUsedPills] = useState(new Set());
+  const [submitted, setSubmitted] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
   const [audioLocked, setAudioLocked] = useState(false);
-
-  const filledBlanks = attempt?.filledBlanks ?? localFilledBlanks;
-  const activeBlankIndex = attempt?.activeBlankIndex ?? localActiveBlankIndex;
-  const usedPills = attempt?.usedPills ?? localUsedPills;
-  const usedPillsSet = useMemo(() => new Set(usedPills), [usedPills]);
-  const submitted = attempt?.submitted ?? localSubmitted;
-  const isCorrect = attempt?.isCorrect ?? localIsCorrect;
 
   const answers = exercise?.fill_blanks_answers || [];
   const decoys = exercise?.fill_blanks_decoys || [];
@@ -111,21 +103,10 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
   const decoyFeedback = exercise?.fill_blanks_decoy_feedback || [];
   const sentence = exercise?.fill_blanks_sentence || "";
 
-  const basePills = useMemo(() => [...answers, ...decoys], [answers, decoys]);
-  const pillOrder = attempt?.pillOrder ?? localPillOrder;
-
-  useEffect(() => {
-    if (!basePills.length) return;
-    if (pillOrder.length === basePills.length) return;
-    const shuffled = [...basePills].sort(() => Math.random() - 0.5);
-    if (setAttempt) {
-      setAttempt((prev) => ({ ...(prev ?? {}), pillOrder: shuffled }));
-    } else {
-      setLocalPillOrder(shuffled);
-    }
-  }, [basePills, pillOrder.length, setAttempt]);
-
-  const allPills = pillOrder.length === basePills.length ? pillOrder : basePills;
+  const allPills = useMemo(() => {
+    const pills = [...answers, ...decoys];
+    return pills.sort(() => Math.random() - 0.5);
+  }, [answers, decoys]);
 
   const sentenceParts = useMemo(() => {
     const parts = [];
@@ -152,64 +133,42 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
   const filledCount = Object.keys(filledBlanks).length;
 
   const handlePillClick = (pill, pillIndex) => {
-    if (submitted || usedPillsSet.has(pillIndex)) return;
+    if (submitted || usedPills.has(pillIndex)) return;
 
     const nextFilled = {
       ...filledBlanks,
       [activeBlankIndex]: { pill, pillIndex },
     };
-    const nextUsed = new Set(usedPillsSet);
-    nextUsed.add(pillIndex);
+    setFilledBlanks(nextFilled);
+    setUsedPills((prev) => new Set([...prev, pillIndex]));
 
-    let nextActive = activeBlankIndex;
     for (let i = 0; i < totalBlanks; i += 1) {
       const nextIndex = (activeBlankIndex + 1 + i) % totalBlanks;
       if (!nextFilled[nextIndex] && nextIndex !== activeBlankIndex) {
-        nextActive = nextIndex;
+        setActiveBlankIndex(nextIndex);
         break;
       }
-    }
-
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        filledBlanks: nextFilled,
-        usedPills: [...nextUsed],
-        activeBlankIndex: nextActive,
-      }));
-    } else {
-      setLocalFilledBlanks(nextFilled);
-      setLocalUsedPills([...nextUsed]);
-      setLocalActiveBlankIndex(nextActive);
     }
   };
 
   const handleBlankClick = (blankIndex) => {
     if (submitted) return;
 
-    let nextFilled = filledBlanks;
-    let nextUsed = usedPillsSet;
-
     if (filledBlanks[blankIndex]) {
       const { pillIndex } = filledBlanks[blankIndex];
-      nextUsed = new Set(usedPillsSet);
-      nextUsed.delete(pillIndex);
-      nextFilled = { ...filledBlanks };
-      delete nextFilled[blankIndex];
+      setUsedPills((prev) => {
+        const next = new Set(prev);
+        next.delete(pillIndex);
+        return next;
+      });
+      setFilledBlanks((prev) => {
+        const next = { ...prev };
+        delete next[blankIndex];
+        return next;
+      });
     }
 
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        filledBlanks: nextFilled,
-        usedPills: [...nextUsed],
-        activeBlankIndex: blankIndex,
-      }));
-    } else {
-      setLocalFilledBlanks(nextFilled);
-      setLocalUsedPills([...nextUsed]);
-      setLocalActiveBlankIndex(blankIndex);
-    }
+    setActiveBlankIndex(blankIndex);
   };
 
   const handleCheck = () => {
@@ -220,12 +179,8 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
         break;
       }
     }
-    if (setAttempt) {
-      setAttempt((prev) => ({ ...(prev ?? {}), submitted: true, isCorrect: allCorrect }));
-    } else {
-      setLocalIsCorrect(allCorrect);
-      setLocalSubmitted(true);
-    }
+    setIsCorrect(allCorrect);
+    setSubmitted(true);
     if (allCorrect) {
       const audioUrl = exercise?.audio_url;
       if (audioUrl) {
@@ -334,7 +289,7 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
 
       <div className="flex flex-wrap justify-center gap-2">
         {allPills.map((pill, index) => {
-          const isUsed = usedPillsSet.has(index);
+          const isUsed = usedPills.has(index);
 
           return (
             <button

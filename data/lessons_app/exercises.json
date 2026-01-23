@@ -4515,8 +4515,8 @@
     "model_text": "",
     "morpheme_pool": [],
     "option_feedback": [
-      "Yes — **el** appears before a noun.",
-      "Yes — **la** appears before a noun.",
+      "Yes — **`el`** appears before a noun.",
+      "Yes — **`la`** appears before a noun.",
       "**Libro** is a noun (a thing).",
       "**Casa** is a noun (a thing)."
     ],

@@ -245,3 +245,7 @@ body.ppx-lessons-app {
 .ppx-lessons-header .bg-slate-50 span {
   color: #0f172a;
 }
+
+body.ppx-lessons-app .bg-gradient-to-br .text-slate-900 {
+  color: inherit;
+}

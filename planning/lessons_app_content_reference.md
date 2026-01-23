@@ -136,6 +136,7 @@ automatically based on the currently selected lesson.
 
 Markdown styling rule (applies to prompts, titles, and hints):
 - `Backticks` render in #475dd7 and should be used for Spanish words/phrases or endings.
+- In any feedback field, wrap Spanish target words/phrases in backticks so they render highlighted.
 - **Bold** renders in normal text color (black) for emphasis.
 - *Italics* are for English emphasis or contrast and render in normal text color.
 

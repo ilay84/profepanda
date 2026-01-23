@@ -50,6 +50,7 @@ Accent indigo (supporting UI):
 Notes:
 - Bold markdown should render in normal text color (black).
 - Backticks render in brand blue (`#475dd7`) for Spanish targets and endings.
+- In feedback fields, wrap Spanish keywords/targets in backticks so they render highlighted.
 - Success/incorrect feedback uses the success and error families above.
 
 ---
@@ -112,6 +113,10 @@ Can you think of another example with *estar*?
 - Keep instructions short, clear, and positive:
   - "Choose the best option."
   - "Which sentence sounds natural?"
+
+## Feedback (All Exercise Types)
+- In any feedback field (`option_feedback`, `correct_feedback`, `incorrect_feedback`, `token_feedback`, `fill_blanks_feedback`, `fill_blanks_decoy_feedback`), wrap Spanish target words/phrases in backticks for blue highlight.
+- Keep feedback short, specific, and confidence-building.
 
 ---
 

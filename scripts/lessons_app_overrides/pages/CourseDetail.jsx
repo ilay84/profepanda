@@ -10,13 +10,16 @@ import LessonCard from "../components/student/LessonCard.jsx";
 import IconNotStarted from "../assets/icons/lessons/not-started.svg";
 import IconComplete from "../assets/icons/lessons/complete.svg";
 import IconInProgress from "../assets/icons/lessons/in-progress.svg";
+import IconLesson from "../assets/icons/lessons/lesson.svg";
+import IconClock from "../assets/icons/lessons/clock.svg";
+import IconXp from "../assets/icons/lessons/xp.svg";
 
-function renderInlineMarkdown(text) {
+function renderInlineMarkdown(text, baseClassName = "text-slate-900") {
   if (!text) return "";
   const lines = String(text).split(/\r?\n/);
   const nodes = [];
 
-  const renderWithBackticks = (content, keyPrefix, baseClassName = "text-slate-900") => {
+  const renderWithBackticks = (content, keyPrefix, inlineClassName = baseClassName) => {
     const parts = content.split(/(`[^`]+`)/g).filter(Boolean);
     return parts.map((part, index) => {
       if (part.startsWith("`") && part.endsWith("`")) {
@@ -28,7 +31,7 @@ function renderInlineMarkdown(text) {
         );
       }
       return (
-        <span key={`${keyPrefix}-txt-${index}`} className={baseClassName}>
+        <span key={`${keyPrefix}-txt-${index}`} className={inlineClassName}>
           {part}
         </span>
       );
@@ -53,21 +56,21 @@ function renderInlineMarkdown(text) {
           if (part.startsWith("**") && part.endsWith("**")) {
             const content = part.slice(2, -2);
             return (
-              <span key={`md-${lineIndex}-${index}`} className="font-semibold text-slate-900">
-                {renderWithBackticks(content, `md-b-${lineIndex}-${index}`)}
+              <span key={`md-${lineIndex}-${index}`} className={`font-semibold ${baseClassName}`}>
+                {renderWithBackticks(content, `md-b-${lineIndex}-${index}`, baseClassName)}
               </span>
             );
           }
           if (part.startsWith("*") && part.endsWith("*")) {
             const content = part.slice(1, -1);
             return (
-              <em key={`md-${lineIndex}-${index}`} className="text-slate-900">
-                {renderWithBackticks(content, `md-i-${lineIndex}-${index}`)}
+              <em key={`md-${lineIndex}-${index}`} className={baseClassName}>
+                {renderWithBackticks(content, `md-i-${lineIndex}-${index}`, baseClassName)}
               </em>
             );
           }
           return (
-            <span key={`md-${lineIndex}-${index}`} className="text-slate-900">
+            <span key={`md-${lineIndex}-${index}`} className={baseClassName}>
               {part}
             </span>
           );
@@ -91,7 +94,7 @@ function renderInlineMarkdown(text) {
 }
 
 
-function renderDescriptionMarkdown(text, className) {
+function renderDescriptionMarkdown(text, className, inlineClassName = "text-slate-900") {
   if (!text) return null;
   const lines = String(text).split("\n");
   const nodes = [];
@@ -100,7 +103,7 @@ function renderDescriptionMarkdown(text, className) {
   const flushBullets = () => {
     if (!bullets.length) return;
     const items = bullets.map((line, index) => (
-      <li key={`li-${index}`}>{renderInlineMarkdown(line)}</li>
+      <li key={`li-${index}`}>{renderInlineMarkdown(line, inlineClassName)}</li>
     ));
     nodes.push(
       <ul key={`ul-${nodes.length}`} className="ml-4 list-disc space-y-1">
@@ -123,7 +126,7 @@ function renderDescriptionMarkdown(text, className) {
     flushBullets();
     nodes.push(
       <p key={`p-${nodes.length}`} className="m-0">
-        {renderInlineMarkdown(line)}
+        {renderInlineMarkdown(line, inlineClassName)}
       </p>
     );
   });
@@ -265,19 +268,20 @@ export default function CourseDetail() {
 
               <div className="space-y-1">
                 <h1 className="text-3xl font-bold text-white">
-                  {renderInlineMarkdown(String(course.title || ""))}
+                  {renderInlineMarkdown(String(course.title || ""), "text-white")}
                 </h1>
                 {course.description ? (
                   renderDescriptionMarkdown(
                     course.description,
-                    "max-w-2xl text-slate-200"
+                    "max-w-2xl text-slate-200",
+                    "text-slate-200"
                   )
                 ) : null}
               </div>
 
               <div className="flex flex-wrap gap-2 pt-1">
                 <div className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-sm text-white ring-1 ring-white/10">
-                  <span className="text-white/80">??</span>
+                  <img src={IconLesson} alt="" className="h-4 w-4 opacity-80" />
                   <span className="font-semibold">
                     {completedLessons}/{totalLessons}
                   </span>
@@ -285,7 +289,7 @@ export default function CourseDetail() {
                 </div>
 
                 <div className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-sm text-white ring-1 ring-white/10">
-                  <span className="text-white/80">?</span>
+                  <img src={IconXp} alt="" className="h-4 w-4 opacity-80" />
                   <span className="font-semibold">
                     {earnedXp}/{totalXp}
                   </span>
@@ -293,7 +297,7 @@ export default function CourseDetail() {
                 </div>
 
                 <div className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-sm text-white ring-1 ring-white/10">
-                  <span className="text-white/80">??</span>
+                  <img src={IconClock} alt="" className="h-4 w-4 opacity-80" />
                   <span className="font-semibold">{timeSpentMinutes}</span>
                   <span className="text-white/80">min spent</span>
                 </div>
@@ -460,7 +464,7 @@ export default function CourseDetail() {
                                     : "bg-indigo-50 text-indigo-700 ring-indigo-200"
                                 }`}
                               >
-                                <span className="mr-1">?</span>
+                                <img src={IconXp} alt="" className="mr-1 h-3.5 w-3.5" />
                                 <span className="tabular-nums">{Number(lesson.xp_reward) || 0}</span>
                                 <span className="ml-1">XP</span>
                               </span>
@@ -551,7 +555,7 @@ export default function CourseDetail() {
                           : "bg-indigo-50 text-indigo-700 ring-indigo-200"
                       }`}
                     >
-                      <span className="mr-1">?</span>
+                      <img src={IconXp} alt="" className="mr-1 h-3.5 w-3.5" />
                       <span className="tabular-nums">{Number(lesson.xp_reward) || 0}</span>
                       <span className="ml-1">XP</span>
                     </span>
