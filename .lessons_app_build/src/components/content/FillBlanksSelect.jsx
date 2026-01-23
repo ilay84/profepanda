@@ -89,11 +89,12 @@ function renderInlineMarkdown(text) {
 }
 
 
-export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt, setAttempt }) {
-  const [localFilledBlanks, setLocalFilledBlanks] = useState({});
-  const [localActiveBlankIndex, setLocalActiveBlankIndex] = useState(0);
-  const [localSubmitted, setLocalSubmitted] = useState(false);
-  const [localIsCorrect, setLocalIsCorrect] = useState(false);
+export default function FillBlanksSelect({ exercise, onAnswer, showHint }) {
+  const [filledBlanks, setFilledBlanks] = useState({});
+  const [activeBlankIndex, setActiveBlankIndex] = useState(0);
+  const [usedPills, setUsedPills] = useState(new Set());
+  const [submitted, setSubmitted] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
   const [audioLocked, setAudioLocked] = useState(false);
 
   const answers = exercise?.fill_blanks_answers || [];
@@ -102,11 +103,10 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
   const decoyFeedback = exercise?.fill_blanks_decoy_feedback || [];
   const sentence = exercise?.fill_blanks_sentence || "";
 
-  const [localPillOrder] = useState(() => {
+  const allPills = useMemo(() => {
     const pills = [...answers, ...decoys];
     return pills.sort(() => Math.random() - 0.5);
-  });
-  const pillOrder = attempt?.pillOrder ?? localPillOrder;
+  }, [answers, decoys]);
 
   const sentenceParts = useMemo(() => {
     const parts = [];
@@ -129,21 +129,6 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
     return parts;
   }, [sentence]);
 
-  const filledBlanks = attempt ? attempt.filledBlanks ?? {} : localFilledBlanks;
-  const activeBlankIndex =
-    attempt && Number.isInteger(attempt.activeBlankIndex)
-      ? attempt.activeBlankIndex
-      : localActiveBlankIndex;
-  const submitted = attempt ? attempt.submitted : localSubmitted;
-  const isCorrect = attempt?.submitted ? !!attempt.isCorrect : localIsCorrect;
-  const usedPills = useMemo(() => {
-    return new Set(
-      Object.values(filledBlanks)
-        .map((entry) => entry?.pillIndex)
-        .filter((value) => Number.isFinite(value))
-    );
-  }, [filledBlanks]);
-
   const totalBlanks = answers.length;
   const filledCount = Object.keys(filledBlanks).length;
 
@@ -154,30 +139,13 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
       ...filledBlanks,
       [activeBlankIndex]: { pill, pillIndex },
     };
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        filledBlanks: nextFilled,
-        activeBlankIndex,
-        pillOrder,
-      }));
-    } else {
-      setLocalFilledBlanks(nextFilled);
-    }
+    setFilledBlanks(nextFilled);
+    setUsedPills((prev) => new Set([...prev, pillIndex]));
 
     for (let i = 0; i < totalBlanks; i += 1) {
       const nextIndex = (activeBlankIndex + 1 + i) % totalBlanks;
       if (!nextFilled[nextIndex] && nextIndex !== activeBlankIndex) {
-        if (setAttempt) {
-          setAttempt((prev) => ({
-            ...(prev ?? {}),
-            activeBlankIndex: nextIndex,
-            filledBlanks: nextFilled,
-            pillOrder,
-          }));
-        } else {
-          setLocalActiveBlankIndex(nextIndex);
-        }
+        setActiveBlankIndex(nextIndex);
         break;
       }
     }
@@ -187,32 +155,20 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
     if (submitted) return;
 
     if (filledBlanks[blankIndex]) {
-      const nextFilled = { ...filledBlanks };
-      delete nextFilled[blankIndex];
-      if (setAttempt) {
-        setAttempt((prev) => ({
-          ...(prev ?? {}),
-          filledBlanks: nextFilled,
-          activeBlankIndex: blankIndex,
-          pillOrder,
-        }));
-      } else {
-        setLocalFilledBlanks(nextFilled);
-        setLocalActiveBlankIndex(blankIndex);
-      }
-      return;
+      const { pillIndex } = filledBlanks[blankIndex];
+      setUsedPills((prev) => {
+        const next = new Set(prev);
+        next.delete(pillIndex);
+        return next;
+      });
+      setFilledBlanks((prev) => {
+        const next = { ...prev };
+        delete next[blankIndex];
+        return next;
+      });
     }
 
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        activeBlankIndex: blankIndex,
-        filledBlanks,
-        pillOrder,
-      }));
-    } else {
-      setLocalActiveBlankIndex(blankIndex);
-    }
+    setActiveBlankIndex(blankIndex);
   };
 
   const handleCheck = () => {
@@ -223,19 +179,8 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
         break;
       }
     }
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        submitted: true,
-        isCorrect: allCorrect,
-        filledBlanks,
-        activeBlankIndex,
-        pillOrder,
-      }));
-    } else {
-      setLocalIsCorrect(allCorrect);
-      setLocalSubmitted(true);
-    }
+    setIsCorrect(allCorrect);
+    setSubmitted(true);
     if (allCorrect) {
       const audioUrl = exercise?.audio_url;
       if (audioUrl) {
@@ -343,7 +288,7 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
       </div>
 
       <div className="flex flex-wrap justify-center gap-2">
-        {pillOrder.map((pill, index) => {
+        {allPills.map((pill, index) => {
           const isUsed = usedPills.has(index);
 
           return (
@@ -371,40 +316,22 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
           <PandaSprite variant={isCorrect ? "correct" : "incorrect"} />
           <div
             className={cn(
-              "flex items-center justify-between gap-3 rounded-xl p-4 border flex-1",
+              "rounded-xl p-4 border flex-1",
               isCorrect
                 ? "bg-[#80ac5f]/10 border-[#80ac5f]/30"
                 : "bg-red-50 border-red-200"
             )}
           >
-            <div className="flex min-w-0 items-center gap-2 text-sm">
-              {isCorrect ? (
-                <span className="font-medium text-[#2f5d22]">Correct.</span>
-              ) : (
-                <div className="space-y-2">
-                  <span className="font-medium text-red-700">Not quite right</span>
-                  <p className="text-red-600 text-sm">
-                    Correct answers: {answers.join(", ")}
-                  </p>
-                </div>
-              )}
-            </div>
-            <button
-              type="button"
-              title="Continue"
-              aria-label="Continue"
-              onClick={handleContinue}
-              className={cn(
-                "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition",
-                audioLocked
-                  ? "cursor-default opacity-60"
-                  : "cursor-pointer hover:bg-black/5 hover:scale-105",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-              )}
-              disabled={audioLocked}
-            >
-              <img src={nextIcon} alt="" aria-hidden="true" className="h-10 w-10" />
-            </button>
+            {isCorrect ? (
+              <span className="font-medium text-[#2f5d22]">Correct.</span>
+            ) : (
+              <div className="space-y-2">
+                <span className="font-medium text-red-700">Not quite right</span>
+                <p className="text-red-600 text-sm">
+                  Correct answers: {answers.join(", ")}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       ) : null}
@@ -424,8 +351,8 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
         </div>
       ) : null}
 
-      {!submitted ? (
-        <div className="flex justify-center pt-4">
+      <div className="flex justify-center pt-4">
+        {!submitted ? (
           <button
             type="button"
             onClick={handleCheck}
@@ -434,8 +361,22 @@ export default function FillBlanksSelect({ exercise, onAnswer, showHint, attempt
           >
             Check Answer
           </button>
-        </div>
-      ) : null}
+        ) : (
+          <button
+            type="button"
+            onClick={handleContinue}
+            className={cn(
+              "inline-flex items-center rounded-xl px-8 py-2.5 text-white font-semibold shadow-sm transition cursor-pointer",
+              isCorrect ? "bg-[#80ac5f] hover:bg-[#6f9951]" : "bg-[#475dd7] hover:bg-[#3f53c4]",
+              audioLocked && "opacity-60 cursor-default"
+            )}
+            disabled={audioLocked}
+          >
+            Continue
+            <img src={nextIcon} alt="" aria-hidden="true" className="ml-2 h-5 w-5" />
+          </button>
+        )}
+      </div>
     </div>
   );
 }

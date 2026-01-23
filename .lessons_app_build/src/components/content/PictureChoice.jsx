@@ -239,7 +239,7 @@ export default function PictureChoice({ exercise, onAnswer, showHint, attempt, s
                   isCorrect ? "text-[#2f5d22]" : "text-red-700",
                 ].join(" ")}
               >
-                {renderInlineMarkdown(feedback)}
+                {feedback}
               </span>
             </div>
 

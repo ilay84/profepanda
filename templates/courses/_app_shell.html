@@ -1,86 +1,11 @@
-<!doctype html>
-<html lang="{{ app_lang or 'en' }}">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% block title %}ProfePanda{% endblock %}</title>
+{% extends "public_base.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% block title %}ProfePanda{% endblock %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+{% endblock %}
 
-    <!-- Favicon & App Icons -->
-    <link rel="icon" href="{{ url_for('static', filename='assets/icons/logo.svg') }}" type="image/svg+xml">
-    <meta name="theme-color" content="#80ac5f">
-  </head>
-
-  <body style="margin:0;">
-    <div class="pp-app">
-      {% set _next = request.full_path %}
-      {% if _next.endswith('?') %}
-        {% set _next = _next[:-1] %}
-      {% endif %}
-      <!-- Left rail -->
-      <aside class="pp-app__sidebar" aria-label="Sidebar">
-        <a class="pp-app__brand" href="/courses" aria-label="ProfePanda Home">
-          <img src="{{ url_for('static', filename='assets/logo/header-logo.svg') }}" alt="ProfePanda Logo">
-        </a>
-
-        <nav class="pp-app__nav" aria-label="Primary">
-          <a class="pp-app__navlink {% if active_nav=='home' %}is-active{% endif %}" href="/">
-            Home
-          </a>
-          <a class="pp-app__navlink {% if active_nav=='courses' %}is-active{% endif %}" href="/courses" style="display:inline-flex; align-items:center; gap:.5rem;">
-            <img src="{{ url_for('static', filename='assets/icons/courses.svg') }}" alt="" aria-hidden="true" style="width:18px; height:18px;">
-            <span>My Courses</span>
-          </a>
-        </nav>
-      </aside>
-
-      <!-- Main column -->
-      <div class="pp-app__main">
-        <!-- Top bar -->
-        <header class="pp-app__topbar" aria-label="Top bar">
-          <div class="pp-app__topbar-left">
-            {% if is_admin %}
-              <a class="pp-app__adminbtn" href="/courses-admin">Admin Panel</a>
-            {% endif %}
-          </div>
-
-          <div class="pp-app__topbar-right">
-            {% if current_user.is_authenticated %}
-              <form class="pp-app__authform" action="/auth/logout" method="post">
-                <input type="hidden" name="next" value="{{ _next }}">
-                <button
-                  class="pp-app__authbtn"
-                  type="submit"
-                  title="{{ t('Cerrar sesion', 'Log out', app_lang) }}"
-                >
-                  <img src="{{ url_for('static', filename='assets/icons/logout.svg') }}" alt="" aria-hidden="true">
-                  {{ t('Salir', 'Log out', app_lang) }}
-                </button>
-              </form>
-            {% else %}
-              <a
-                class="pp-app__authbtn"
-                href="{{ url_for('public_auth.login_page', next=_next) }}"
-                title="{{ t('Ingresar o crear cuenta gratis', 'Sign in or register for free', app_lang) }}"
-              >
-                <img src="{{ url_for('static', filename='assets/icons/login.svg') }}" alt="" aria-hidden="true">
-                {{ t('Ingresar', 'Sign in', app_lang) }}
-              </a>
-            {% endif %}
-          </div>
-        </header>
-
-        <!-- Page content -->
-        <main class="pp-app__content">
-          {% block content %}{% endblock %}
-        </main>
-      </div>
-    </div>
-  </body>
-</html>
+{% block public_content %}
+  {% block content %}{% endblock %}
+{% endblock %}

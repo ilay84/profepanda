@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import nextIcon from "../../assets/icons/lessons/next.svg";
 import { playCorrectSoundThen, playIncorrectSound } from "../../utils/sound.js";
 import PandaSprite from "./PandaSprite.jsx";
 import PromptImage from "./PromptImage.jsx";
@@ -245,53 +244,33 @@ export default function WordOrder({ exercise, onAnswer, showHint }) {
           <PandaSprite variant={isCorrect ? "correct" : "incorrect"} />
           <div
             className={[
-              "flex items-center justify-between gap-3 rounded-xl p-4 border flex-1",
+              "rounded-xl p-4 border flex-1",
               isCorrect
                 ? "bg-[#80ac5f]/10 border-[#80ac5f]/30"
                 : "bg-red-50 border-red-200",
             ].join(" ")}
           >
-            <div className="flex min-w-0 items-center gap-2 text-sm">
-              <div>
-                {isCorrect ? (
-                  <span className="font-medium text-[#2f5d22]">Perfect!</span>
-                ) : (
-                  <div className="space-y-2">
-                    <span className="font-medium text-red-700">Not quite right</span>
-                    <p className="text-red-600 text-sm">
-                      Correct order: <strong>{correctAnswer.join(" ")}</strong>
-                    </p>
-                  </div>
-                )}
-                {feedbackText ? (
-                  <p className="mt-2 text-sm text-slate-600">
-                    {renderInlineMarkdown(feedbackText)}
-                  </p>
-                ) : null}
+            {isCorrect ? (
+              <span className="font-medium text-[#2f5d22]">Perfect!</span>
+            ) : (
+              <div className="space-y-2">
+                <span className="font-medium text-red-700">Not quite right</span>
+                <p className="text-red-600 text-sm">
+                  Correct order: <strong>{correctAnswer.join(" ")}</strong>
+                </p>
               </div>
-            </div>
-            <button
-              type="button"
-              title="Continue"
-              aria-label="Continue"
-              onClick={handleContinue}
-              className={[
-                "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition",
-                audioLocked
-                  ? "cursor-default opacity-60"
-                  : "cursor-pointer hover:bg-black/5 hover:scale-105",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
-              ].join(" ")}
-              disabled={audioLocked}
-            >
-              <img src={nextIcon} alt="" aria-hidden="true" className="h-10 w-10" />
-            </button>
+            )}
+            {feedbackText ? (
+              <p className="mt-2 text-sm text-slate-600">
+                {renderInlineMarkdown(feedbackText)}
+              </p>
+            ) : null}
           </div>
         </div>
       )}
 
-      {!submitted ? (
-        <div className="flex justify-center pt-4">
+      <div className="flex justify-center pt-4">
+        {!submitted ? (
           <button
             type="button"
             onClick={handleCheck}
@@ -300,8 +279,23 @@ export default function WordOrder({ exercise, onAnswer, showHint }) {
           >
             Check Answer
           </button>
-        </div>
-      ) : null}
+        ) : (
+          <button
+            type="button"
+            onClick={handleContinue}
+            className={[
+              "rounded-xl px-8 py-2 text-white",
+              isCorrect
+                ? "bg-[#80ac5f] hover:bg-[#6d9951]"
+                : "bg-[#475dd7] hover:bg-[#3f53c4]",
+              audioLocked ? "opacity-60 cursor-default" : "cursor-pointer",
+            ].join(" ")}
+            disabled={audioLocked}
+          >
+            Continue
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -85,7 +85,7 @@ function renderInlineMarkdown(text) {
 }
 
 
-export default function Matching({ exercise, onAnswer, showHint, attempt, setAttempt }) {
+export default function Matching({ exercise, onAnswer, showHint }) {
   const pairs = exercise?.matching_pairs ?? [];
 
   const rightShuffled = useMemo(() => {
@@ -106,31 +106,17 @@ export default function Matching({ exercise, onAnswer, showHint, attempt, setAtt
     return map;
   }, [pairs]);
 
-  const [localSelectedLeft, setLocalSelectedLeft] = useState(null);
-  const [localMatches, setLocalMatches] = useState({});
-  const [localRightOrder, setLocalRightOrder] = useState(rightShuffled);
-  const [localCompleted, setLocalCompleted] = useState(false);
+  const [selectedLeft, setSelectedLeft] = useState(null);
+  const [matches, setMatches] = useState({});
+  const [rightOrder, setRightOrder] = useState(rightShuffled);
+  const [completed, setCompleted] = useState(false);
   const [audioLocked, setAudioLocked] = useState(false);
 
   const [wrongPulseRight, setWrongPulseRight] = useState(null);
 
-  const selectedLeft = attempt ? attempt.selectedLeft ?? null : localSelectedLeft;
-  const matches = attempt ? attempt.matches ?? {} : localMatches;
-  const rightOrder = attempt?.rightOrder ?? localRightOrder;
-  const completed = attempt ? attempt.completed : localCompleted;
-
   const handleLeft = (left) => {
     if (matches[left]) return;
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        selectedLeft: left,
-        matches,
-        rightOrder,
-      }));
-    } else {
-      setLocalSelectedLeft(left);
-    }
+    setSelectedLeft(left);
   };
 
   const handleRightClick = (right) => {
@@ -142,16 +128,7 @@ export default function Matching({ exercise, onAnswer, showHint, attempt, setAtt
     if (!correct) {
       playIncorrectSound();
       setWrongPulseRight(right);
-      if (setAttempt) {
-        setAttempt((prev) => ({
-          ...(prev ?? {}),
-          selectedLeft: null,
-          matches,
-          rightOrder,
-        }));
-      } else {
-        setLocalSelectedLeft(null);
-      }
+      setSelectedLeft(null);
       window.setTimeout(() => setWrongPulseRight(null), 250);
       return;
     }
@@ -170,10 +147,11 @@ export default function Matching({ exercise, onAnswer, showHint, attempt, setAtt
     });
 
     const nextMatches = { ...matches, [selectedLeft]: right };
+    setMatches(nextMatches);
 
     const targetRow = leftIndex[selectedLeft];
-    const nextRightOrder = (() => {
-      const next = [...rightOrder];
+    setRightOrder((prev) => {
+      const next = [...prev];
       const fromIndex = next.findIndex((r) => r === right);
       if (fromIndex === -1 || targetRow == null) return next;
 
@@ -182,26 +160,12 @@ export default function Matching({ exercise, onAnswer, showHint, attempt, setAtt
       next[fromIndex] = tmp;
 
       return next;
-    })();
+    });
 
-    const isNowCompleted = Object.keys(nextMatches).length === pairs.length;
+    setSelectedLeft(null);
 
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        selectedLeft: null,
-        matches: nextMatches,
-        rightOrder: nextRightOrder,
-        completed: isNowCompleted ? true : prev?.completed ?? false,
-        submitted: isNowCompleted ? true : prev?.submitted ?? false,
-      }));
-    } else {
-      setLocalMatches(nextMatches);
-      setLocalRightOrder(nextRightOrder);
-      setLocalSelectedLeft(null);
-      if (isNowCompleted) {
-        setLocalCompleted(true);
-      }
+    if (Object.keys(nextMatches).length === pairs.length) {
+      setCompleted(true);
     }
   };
 

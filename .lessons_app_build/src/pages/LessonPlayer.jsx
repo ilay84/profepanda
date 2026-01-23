@@ -293,12 +293,7 @@ export default function LessonPlayer() {
 
     let isCorrect = false;
     if (currentExercise.type === "multiple_choice") {
-      const selectedIndex = attemptForExercise?.selected;
-      const options = Array.isArray(currentExercise?.options) ? currentExercise.options : [];
-      const selectedText =
-        Number.isInteger(selectedIndex) && options[selectedIndex] != null
-          ? String(options[selectedIndex]).trim()
-          : String(attemptForExercise?.selected?.text ?? "").trim();
+      const selectedText = (attemptForExercise?.selected?.text ?? "").trim();
       const correctAnswer = (currentExercise?.correct_answer ?? "").trim();
       isCorrect = selectedText === correctAnswer;
     } else if (
@@ -334,9 +329,9 @@ export default function LessonPlayer() {
         ? attemptForExercise.selected
         : [];
       const correctOptions = Array.isArray(currentExercise?.correct_options)
-        ? currentExercise.correct_options.map((value) => String(value).trim())
+        ? currentExercise.correct_options.map((value) => String(value))
         : [];
-      const selectedSet = new Set(selected.map((value) => String(value).trim()));
+      const selectedSet = new Set(selected.map((value) => String(value)));
       const correctSet = new Set(correctOptions);
       isCorrect =
         selectedSet.size === correctSet.size &&
@@ -356,12 +351,6 @@ export default function LessonPlayer() {
         correctSet.size > 0 &&
         selectedSet.size === correctSet.size &&
         [...correctSet].every((value) => selectedSet.has(value));
-    } else if (currentExercise.type === "matching") {
-      isCorrect = !!attemptForExercise?.completed || !!attemptForExercise?.isCorrect;
-    } else if (currentExercise.type === "fill_blanks_select") {
-      isCorrect = !!attemptForExercise?.isCorrect;
-    } else if (currentExercise.type === "morphology_builder") {
-      isCorrect = !!attemptForExercise?.isCorrect;
     }
 
     setResults((prev) => {
@@ -739,9 +728,6 @@ export default function LessonPlayer() {
                 exercise.type === "translation" ||
                 exercise.type === "picture_choice" ||
                 exercise.type === "error_spotting" ||
-                exercise.type === "matching" ||
-                exercise.type === "fill_blanks_select" ||
-                exercise.type === "morphology_builder" ||
                 exercise.type === "select_all" ||
                 exercise.type === "picture_select_all"
                   ? attempt
@@ -753,9 +739,6 @@ export default function LessonPlayer() {
                 exercise.type === "translation" ||
                 exercise.type === "picture_choice" ||
                 exercise.type === "error_spotting" ||
-                exercise.type === "matching" ||
-                exercise.type === "fill_blanks_select" ||
-                exercise.type === "morphology_builder" ||
                 exercise.type === "select_all" ||
                 exercise.type === "picture_select_all"
                   ? setAttempt
@@ -819,10 +802,6 @@ export default function LessonPlayer() {
                     // Matching calls onAnswer(true) when completed, so normally results is already set.
                     // Keep safe default.
                     isCorrect = true;
-                  } else if (exercise.type === "fill_blanks_select") {
-                    isCorrect = !!attempt?.isCorrect;
-                  } else if (exercise.type === "morphology_builder") {
-                    isCorrect = !!attempt?.isCorrect;
                   }
 
                   handleAnswer(isCorrect);

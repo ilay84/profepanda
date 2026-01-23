@@ -221,7 +221,7 @@ export default function MultipleChoice({ exercise, onAnswer, showHint, attempt, 
                   isCorrect ? "text-[#2f5d22]" : "text-red-700",
                 ].join(" ")}
               >
-                {renderInlineMarkdown(feedback)}
+                {feedback}
               </span>
             </div>
 

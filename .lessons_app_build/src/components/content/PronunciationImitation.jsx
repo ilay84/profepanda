@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import speedIcon from "../../assets/icons/lessons/speed.svg";
-import nextIcon from "../../assets/icons/lessons/next.svg";
 import listenIcon from "../../assets/icons/lessons/listen.svg";
 import imitateIcon from "../../assets/icons/lessons/imitate.svg";
 import recordIcon from "../../assets/icons/lessons/record.svg";
@@ -521,16 +520,13 @@ export default function PronunciationImitation({ exercise, onAnswer, showHint })
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-        <span className="text-sm font-medium text-slate-700">Continue</span>
+      <div className="pt-2">
         <button
           type="button"
-          title="Continue"
-          aria-label="Continue"
           onClick={() => onAnswer(true)}
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition cursor-pointer hover:bg-black/5 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          className="rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm bg-[#475dd7] hover:brightness-95 cursor-pointer"
         >
-          <img src={nextIcon} alt="" aria-hidden="true" className="h-10 w-10" />
+          Continue
         </button>
       </div>
     </div>

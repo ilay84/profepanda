@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import nextIcon from "../../assets/icons/lessons/next.svg";
 import speedIcon from "../../assets/icons/lessons/speed.svg";
 import PromptImage from "./PromptImage.jsx";
 
@@ -409,11 +408,9 @@ export default function Dialogue({ exercise, onAnswer }) {
           <button
             type="button"
             onClick={handleContinue}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full transition cursor-pointer hover:bg-black/5 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            title="Continue"
-            aria-label="Continue"
+            className="rounded-xl px-6 py-2 text-sm font-semibold text-white bg-[#475dd7] hover:bg-[#3f53c4] cursor-pointer"
           >
-            <img src={nextIcon} alt="" aria-hidden="true" className="h-10 w-10" />
+            Continue
           </button>
         </div>
       ) : (

@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 
-import nextIcon from "../../assets/icons/lessons/next.svg";
 import { playCorrectSoundThen, playIncorrectSound } from "../../utils/sound.js";
 import PandaSprite from "./PandaSprite.jsx";
 import PromptImage from "./PromptImage.jsx";
@@ -101,6 +100,7 @@ function renderInlineMarkdown(text) {
 export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAttempt }) {
   const [localSelected, setLocalSelected] = useState([]);
   const [localSubmitted, setLocalSubmitted] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
   const [audioLocked, setAudioLocked] = useState(false);
   const selected = attempt ? attempt.selected ?? [] : localSelected;
   const submitted = attempt ? attempt.submitted : localSubmitted;
@@ -114,7 +114,7 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
       (Array.isArray(exercise?.correct_options)
         ? exercise.correct_options
         : []
-      ).map((item) => String(item).trim()),
+      ).map((item) => String(item)),
     [exercise?.correct_options]
   );
   const optionFeedback = exercise?.option_feedback ?? [];
@@ -125,18 +125,6 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
     });
     return map;
   }, [exercise?.options, optionFeedback]);
-
-  const isCorrect = useMemo(() => {
-    const selectedSet = new Set(
-      (Array.isArray(selected) ? selected : []).map((value) => String(value).trim())
-    );
-    const correctSet = new Set(correctOptions);
-    if (selectedSet.size !== correctSet.size) return false;
-    for (const item of correctSet) {
-      if (!selectedSet.has(item)) return false;
-    }
-    return true;
-  }, [selected, correctOptions]);
 
   const toggleOption = (value) => {
     if (submitted) return;
@@ -155,12 +143,18 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
   };
 
   const handleCheck = () => {
+    const selectedSet = new Set(selected);
+    const correctSet = new Set(correctOptions);
+    const allCorrect =
+      selectedSet.size === correctSet.size &&
+      [...correctSet].every((item) => selectedSet.has(item));
+    setIsCorrect(allCorrect);
     if (setAttempt) {
       setAttempt((prev) => ({ ...(prev ?? {}), submitted: true }));
     } else {
       setLocalSubmitted(true);
     }
-    if (isCorrect) {
+    if (allCorrect) {
       const audioUrl = exercise?.audio_url;
       if (audioUrl) {
         setAudioLocked(true);
@@ -173,6 +167,7 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
     } else {
       playIncorrectSound();
     }
+    onAnswer(allCorrect);
   };
 
   const handleContinue = () => {
@@ -272,51 +267,28 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
           <PandaSprite variant={isCorrect ? "correct" : "incorrect"} />
           <div
             className={cn(
-              "flex items-center justify-between gap-3 rounded-xl p-4 border flex-1",
+              "rounded-xl p-4 border flex-1",
               isCorrect
                 ? "bg-[#80ac5f]/10 border-[#80ac5f]/30"
                 : "bg-red-50 border-red-200"
             )}
           >
-            <div className="flex min-w-0 items-center gap-2 text-sm">
-              {isCorrect ? (
-                <span className="font-medium text-[#2f5d22]">Correct.</span>
-              ) : (
-                <div className="space-y-2">
-                  <span className="font-medium text-red-700">Not quite right</span>
-                  <p className="text-red-600 text-sm">
-                    Correct answers: {correctList}
-                  </p>
-                </div>
-              )}
-            </div>
-            <button
-              type="button"
-              title="Continue"
-              aria-label="Continue"
-              onClick={handleContinue}
-              className={cn(
-                "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition",
-                audioLocked
-                  ? "cursor-default opacity-60"
-                  : "cursor-pointer hover:bg-black/5 hover:scale-105",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-              )}
-              disabled={audioLocked}
-            >
-              <img
-                src={nextIcon}
-                alt=""
-                aria-hidden="true"
-                className="h-10 w-10"
-              />
-            </button>
+            {isCorrect ? (
+              <span className="font-medium text-[#2f5d22]">Correct.</span>
+            ) : (
+              <div className="space-y-2">
+                <span className="font-medium text-red-700">Not quite right</span>
+                <p className="text-red-600 text-sm">
+                  Correct answers: {correctList}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       ) : null}
 
-      {!submitted ? (
-        <div className="flex justify-center pt-4">
+      <div className="flex justify-center pt-4">
+        {!submitted ? (
           <button
             type="button"
             onClick={handleCheck}
@@ -325,8 +297,21 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
           >
             Check Answer
           </button>
-        </div>
-      ) : null}
+        ) : (
+          <button
+            type="button"
+            onClick={handleContinue}
+            className={cn(
+              "rounded-xl px-8 py-2.5 text-white font-semibold shadow-sm transition cursor-pointer",
+              isCorrect ? "bg-[#80ac5f] hover:bg-[#6f9951]" : "bg-[#475dd7] hover:bg-[#3f53c4]",
+              audioLocked && "opacity-60 cursor-default"
+            )}
+            disabled={audioLocked}
+          >
+            Continue
+          </button>
+        )}
+      </div>
     </div>
   );
 }

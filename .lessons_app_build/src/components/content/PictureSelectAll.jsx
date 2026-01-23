@@ -165,6 +165,7 @@ export default function PictureSelectAll({ exercise, onAnswer, showHint, attempt
     } else {
       playIncorrectSound();
     }
+    onAnswer(isCorrect);
   };
 
   const handleContinue = () => {
@@ -245,7 +246,7 @@ export default function PictureSelectAll({ exercise, onAnswer, showHint, attempt
       {!submitted ? (
         <button
           className="px-4 py-2 rounded-xl bg-[#475dd7] text-white font-semibold shadow-sm transition hover:bg-[#3f53c4] disabled:opacity-50 cursor-pointer disabled:cursor-default"
-          disabled={selected.length === 0}
+          disabled={localSelected.length === 0}
           onClick={handleCheck}
         >
           Check Answer
@@ -268,7 +269,7 @@ export default function PictureSelectAll({ exercise, onAnswer, showHint, attempt
                   isCorrect ? "text-[#2f5d22]" : "text-red-700",
                 ].join(" ")}
               >
-                {renderInlineMarkdown(feedback)}
+                {feedback}
               </span>
             </div>
 

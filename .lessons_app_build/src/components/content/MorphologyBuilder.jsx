@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 
-import nextIcon from "../../assets/icons/lessons/next.svg";
 import { playCorrectSoundThen, playIncorrectSound } from "../../utils/sound.js";
 import PandaSprite from "./PandaSprite.jsx";
 import PromptImage from "./PromptImage.jsx";
@@ -114,86 +113,47 @@ function morphemeLabel(item) {
   return item.type.replace(/_/g, " ");
 }
 
-export default function MorphologyBuilder({ exercise, onAnswer, showHint, attempt, setAttempt }) {
-  const [localSelectedIndices, setLocalSelectedIndices] = useState([]);
-  const [localSubmitted, setLocalSubmitted] = useState(false);
-  const [localIsCorrect, setLocalIsCorrect] = useState(false);
+export default function MorphologyBuilder({ exercise, onAnswer, showHint }) {
+  const [selected, setSelected] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
   const [audioLocked, setAudioLocked] = useState(false);
 
   const showHyphenation = exercise?.show_hyphenation !== false;
 
-  const normalizedPool = useMemo(() => {
+  const pool = useMemo(() => {
     const raw = Array.isArray(exercise?.morpheme_pool) ? exercise.morpheme_pool : [];
-    return raw.map(normalizeMorpheme).filter((item) => item.text.trim());
-  }, [exercise?.morpheme_pool]);
-
-  const localPoolFallback = useMemo(() => {
+    const normalized = raw.map(normalizeMorpheme).filter((item) => item.text.trim());
     if (exercise?.shuffle_pool === false) {
-      return normalizedPool;
+      return normalized;
     }
-    return [...normalizedPool].sort(() => Math.random() - 0.5);
-  }, [normalizedPool, exercise?.shuffle_pool]);
-
-  const [localPoolOrder] = useState(() => localPoolFallback);
-  const pool = attempt?.poolOrder ?? localPoolOrder;
+    return [...normalized].sort(() => Math.random() - 0.5);
+  }, [exercise?.morpheme_pool, exercise?.shuffle_pool]);
 
   const correctSequence = useMemo(() => {
     if (!Array.isArray(exercise?.correct_sequence)) return [];
     return exercise.correct_sequence.map((value) => String(value ?? "").trim());
   }, [exercise?.correct_sequence]);
 
-  const selectedIndices = attempt ? attempt.selectedIndices ?? [] : localSelectedIndices;
-  const submitted = attempt ? attempt.submitted : localSubmitted;
-  const isCorrect = attempt?.submitted ? !!attempt.isCorrect : localIsCorrect;
-  const selected = useMemo(
-    () =>
-      selectedIndices
-        .map((index) => (pool[index] ? { ...pool[index], index } : null))
-        .filter(Boolean),
-    [selectedIndices, pool]
+  const usedIndices = useMemo(
+    () => new Set(selected.map((item) => item.index)),
+    [selected]
   );
-  const usedIndices = useMemo(() => new Set(selectedIndices), [selectedIndices]);
 
   const handleSelect = (item, index) => {
     if (submitted) return;
     if (usedIndices.has(index)) return;
-    const nextSelected = [...selectedIndices, index];
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        selectedIndices: nextSelected,
-        poolOrder: pool,
-      }));
-    } else {
-      setLocalSelectedIndices(nextSelected);
-    }
+    setSelected((prev) => [...prev, { ...item, index }]);
   };
 
   const handleRemove = (position) => {
     if (submitted) return;
-    const nextSelected = selectedIndices.slice(0, position);
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        selectedIndices: nextSelected,
-        poolOrder: pool,
-      }));
-    } else {
-      setLocalSelectedIndices(nextSelected);
-    }
+    setSelected((prev) => prev.slice(0, position));
   };
 
   const handleReset = () => {
     if (submitted) return;
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        selectedIndices: [],
-        poolOrder: pool,
-      }));
-    } else {
-      setLocalSelectedIndices([]);
-    }
+    setSelected([]);
   };
 
   const handleCheck = () => {
@@ -201,18 +161,8 @@ export default function MorphologyBuilder({ exercise, onAnswer, showHint, attemp
     const correct =
       userSequence.length === correctSequence.length &&
       userSequence.every((value, idx) => value === correctSequence[idx]);
-    if (setAttempt) {
-      setAttempt((prev) => ({
-        ...(prev ?? {}),
-        submitted: true,
-        isCorrect: correct,
-        selectedIndices,
-        poolOrder: pool,
-      }));
-    } else {
-      setLocalIsCorrect(correct);
-      setLocalSubmitted(true);
-    }
+    setIsCorrect(correct);
+    setSubmitted(true);
     if (correct) {
       const audioUrl = exercise?.audio_url;
       if (audioUrl) {
@@ -388,58 +338,38 @@ export default function MorphologyBuilder({ exercise, onAnswer, showHint, attemp
           <PandaSprite variant={isCorrect ? "correct" : "incorrect"} />
           <div
             className={[
-              "flex items-center justify-between gap-3 rounded-xl p-4 border flex-1",
+              "rounded-xl p-4 border flex-1",
               isCorrect
                 ? "bg-[#80ac5f]/10 border-[#80ac5f]/30"
                 : "bg-red-50 border-red-200",
             ].join(" ")}
           >
-            <div className="flex min-w-0 items-center gap-2 text-sm">
-              <div>
-                {isCorrect ? (
-                  <span className="font-medium text-[#2f5d22]">Perfect!</span>
-                ) : (
-                  <div className="space-y-2">
-                    <span className="font-medium text-red-700">Not quite right</span>
-                    {correctSequence.length > 0 ? (
-                      <p className="text-red-600 text-sm">
-                        Correct build:{" "}
-                        <strong>
-                          {correctSequence.map((item) => displayMorpheme(item, showHyphenation)).join(" ")}
-                        </strong>
-                      </p>
-                    ) : null}
-                  </div>
-                )}
-                {feedbackText ? (
-                  <p className="mt-2 text-sm text-slate-600">
-                    {renderInlineMarkdown(feedbackText)}
+            {isCorrect ? (
+              <span className="font-medium text-[#2f5d22]">Perfect!</span>
+            ) : (
+              <div className="space-y-2">
+                <span className="font-medium text-red-700">Not quite right</span>
+                {correctSequence.length > 0 ? (
+                  <p className="text-red-600 text-sm">
+                    Correct build:{" "}
+                    <strong>
+                      {correctSequence.map((item) => displayMorpheme(item, showHyphenation)).join(" ")}
+                    </strong>
                   </p>
                 ) : null}
               </div>
-            </div>
-            <button
-              type="button"
-              title="Continue"
-              aria-label="Continue"
-              onClick={handleContinue}
-              className={[
-                "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition",
-                audioLocked
-                  ? "cursor-default opacity-60"
-                  : "cursor-pointer hover:bg-black/5 hover:scale-105",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
-              ].join(" ")}
-              disabled={audioLocked}
-            >
-              <img src={nextIcon} alt="" aria-hidden="true" className="h-10 w-10" />
-            </button>
+            )}
+            {feedbackText ? (
+              <p className="mt-2 text-sm text-slate-600">
+                {renderInlineMarkdown(feedbackText)}
+              </p>
+            ) : null}
           </div>
         </div>
       )}
 
-      {!submitted ? (
-        <div className="flex justify-center pt-4">
+      <div className="flex justify-center pt-4">
+        {!submitted ? (
           <button
             type="button"
             onClick={handleCheck}
@@ -448,8 +378,23 @@ export default function MorphologyBuilder({ exercise, onAnswer, showHint, attemp
           >
             Check Answer
           </button>
-        </div>
-      ) : null}
+        ) : (
+          <button
+            type="button"
+            onClick={handleContinue}
+            className={[
+              "rounded-xl px-8 py-2 text-white",
+              isCorrect
+                ? "bg-[#80ac5f] hover:bg-[#6d9951]"
+                : "bg-[#475dd7] hover:bg-[#3f53c4]",
+              audioLocked ? "opacity-60 cursor-default" : "cursor-pointer",
+            ].join(" ")}
+            disabled={audioLocked}
+          >
+            Continue
+          </button>
+        )}
+      </div>
     </div>
   );
 }

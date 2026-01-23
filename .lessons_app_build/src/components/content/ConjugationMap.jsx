@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 
-import nextIcon from "../../assets/icons/lessons/next.svg";
 import { playCorrectSoundThen, playIncorrectSound } from "../../utils/sound.js";
 import PandaSprite from "./PandaSprite.jsx";
 import PromptImage from "./PromptImage.jsx";
@@ -266,37 +265,25 @@ export default function ConjugationMap({ exercise, onAnswer, showHint }) {
       {isComplete ? (
         <div className="flex items-start gap-4">
           <PandaSprite variant="correct" />
-          <div
-            className={cn(
-              "rounded-2xl border border-[#80ac5f]/40 bg-[#80ac5f]/10 p-6 text-left flex-1",
-              "flex items-center justify-between gap-4"
+          <div className="rounded-2xl border border-[#80ac5f]/40 bg-[#80ac5f]/10 p-6 text-left space-y-4 flex-1">
+            {completionHtml ? (
+              <div
+                className="text-slate-700"
+                dangerouslySetInnerHTML={{ __html: completionHtml }}
+              />
+            ) : (
+              <p className="text-slate-700 font-medium">Perfect. Nicely done.</p>
             )}
-          >
-            <div className="min-w-0">
-              {completionHtml ? (
-                <div
-                  className="text-slate-700"
-                  dangerouslySetInnerHTML={{ __html: completionHtml }}
-                />
-              ) : (
-                <p className="text-slate-700 font-medium">Perfect. Nicely done.</p>
-              )}
-            </div>
             <button
               type="button"
-              title="Continue"
-              aria-label="Continue"
               onClick={() => onAnswer(true)}
               className={cn(
-                "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition",
-                audioLocked
-                  ? "cursor-default opacity-60"
-                  : "cursor-pointer hover:bg-black/5 hover:scale-105",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                "inline-flex items-center rounded-xl bg-[#475dd7] px-6 py-2.5 text-white font-semibold shadow-sm transition hover:bg-[#3f53c4]",
+                audioLocked ? "opacity-60 cursor-default" : "cursor-pointer"
               )}
               disabled={audioLocked}
             >
-              <img src={nextIcon} alt="" aria-hidden="true" className="h-10 w-10" />
+              Continue
             </button>
           </div>
         </div>

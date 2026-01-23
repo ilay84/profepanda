@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import nextIcon from "../../assets/icons/lessons/next.svg";
 import speedIcon from "../../assets/icons/lessons/speed.svg";
 import PromptImage from "./PromptImage.jsx";
 
@@ -246,16 +245,13 @@ export default function ExampleSentenceSlide({ exercise, onAnswer }) {
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-        <span className="text-sm font-medium text-slate-700">Continue</span>
+      <div className="flex justify-center pt-4">
         <button
           type="button"
-          title="Continue"
-          aria-label="Continue"
           onClick={handleContinue}
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition cursor-pointer hover:bg-black/5 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          className="rounded-xl px-8 py-2 bg-[#475dd7] text-white hover:bg-[#3f53c4] cursor-pointer"
         >
-          <img src={nextIcon} alt="" aria-hidden="true" className="h-10 w-10" />
+          Continue
         </button>
       </div>
     </div>

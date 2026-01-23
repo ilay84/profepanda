@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import nextIcon from "../../assets/icons/lessons/next.svg";
 import PromptImage from "./PromptImage.jsx";
 
 function escapeHtml(value) {
@@ -109,18 +108,12 @@ export default function Explanation({ exercise, onAnswer }) {
         dangerouslySetInnerHTML={{ __html: html }}
       />
 
-      <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-        <span className="text-sm font-medium text-slate-700">Continue</span>
-        <button
-          type="button"
-          title="Continue"
-          aria-label="Continue"
-          onClick={() => onAnswer(true)}
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition cursor-pointer hover:bg-black/5 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-        >
-          <img src={nextIcon} alt="" aria-hidden="true" className="h-10 w-10" />
-        </button>
-      </div>
+      <button
+        className="px-4 py-2 rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition cursor-pointer"
+        onClick={() => onAnswer(true)}
+      >
+        Continue
+      </button>
     </div>
   );
 }
