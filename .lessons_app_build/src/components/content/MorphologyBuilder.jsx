@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { playCorrectSoundThen, playIncorrectSound } from "../../utils/sound.js";
 import PandaSprite from "./PandaSprite.jsx";
@@ -113,22 +113,38 @@ function morphemeLabel(item) {
   return item.type.replace(/_/g, " ");
 }
 
-export default function MorphologyBuilder({ exercise, onAnswer, showHint }) {
-  const [selected, setSelected] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+export default function MorphologyBuilder({ exercise, onAnswer, showHint, attempt, setAttempt }) {
+  const [localSelected, setLocalSelected] = useState([]);
+  const [localSubmitted, setLocalSubmitted] = useState(false);
+  const [localIsCorrect, setLocalIsCorrect] = useState(false);
+  const [localPoolOrder, setLocalPoolOrder] = useState([]);
   const [audioLocked, setAudioLocked] = useState(false);
+
+  const selected = attempt?.selected ?? localSelected;
+  const submitted = attempt?.submitted ?? localSubmitted;
+  const isCorrect = attempt?.isCorrect ?? localIsCorrect;
+  const poolOrder = attempt?.poolOrder ?? localPoolOrder;
 
   const showHyphenation = exercise?.show_hyphenation !== false;
 
-  const pool = useMemo(() => {
+  const basePool = useMemo(() => {
     const raw = Array.isArray(exercise?.morpheme_pool) ? exercise.morpheme_pool : [];
-    const normalized = raw.map(normalizeMorpheme).filter((item) => item.text.trim());
-    if (exercise?.shuffle_pool === false) {
-      return normalized;
+    return raw.map(normalizeMorpheme).filter((item) => item.text.trim());
+  }, [exercise?.morpheme_pool]);
+
+  useEffect(() => {
+    if (!basePool.length) return;
+    if (poolOrder.length === basePool.length) return;
+    const ordered =
+      exercise?.shuffle_pool === false ? basePool : [...basePool].sort(() => Math.random() - 0.5);
+    if (setAttempt) {
+      setAttempt((prev) => ({ ...(prev ?? {}), poolOrder: ordered }));
+    } else {
+      setLocalPoolOrder(ordered);
     }
-    return [...normalized].sort(() => Math.random() - 0.5);
-  }, [exercise?.morpheme_pool, exercise?.shuffle_pool]);
+  }, [basePool, poolOrder.length, exercise?.shuffle_pool, setAttempt]);
+
+  const pool = poolOrder.length === basePool.length ? poolOrder : basePool;
 
   const correctSequence = useMemo(() => {
     if (!Array.isArray(exercise?.correct_sequence)) return [];
@@ -143,17 +159,29 @@ export default function MorphologyBuilder({ exercise, onAnswer, showHint }) {
   const handleSelect = (item, index) => {
     if (submitted) return;
     if (usedIndices.has(index)) return;
-    setSelected((prev) => [...prev, { ...item, index }]);
+    if (setAttempt) {
+      setAttempt((prev) => ({ ...(prev ?? {}), selected: [...(prev?.selected ?? []), { ...item, index }] }));
+    } else {
+      setLocalSelected((prev) => [...prev, { ...item, index }]);
+    }
   };
 
   const handleRemove = (position) => {
     if (submitted) return;
-    setSelected((prev) => prev.slice(0, position));
+    if (setAttempt) {
+      setAttempt((prev) => ({ ...(prev ?? {}), selected: (prev?.selected ?? []).slice(0, position) }));
+    } else {
+      setLocalSelected((prev) => prev.slice(0, position));
+    }
   };
 
   const handleReset = () => {
     if (submitted) return;
-    setSelected([]);
+    if (setAttempt) {
+      setAttempt((prev) => ({ ...(prev ?? {}), selected: [] }));
+    } else {
+      setLocalSelected([]);
+    }
   };
 
   const handleCheck = () => {
@@ -161,8 +189,12 @@ export default function MorphologyBuilder({ exercise, onAnswer, showHint }) {
     const correct =
       userSequence.length === correctSequence.length &&
       userSequence.every((value, idx) => value === correctSequence[idx]);
-    setIsCorrect(correct);
-    setSubmitted(true);
+    if (setAttempt) {
+      setAttempt((prev) => ({ ...(prev ?? {}), submitted: true, isCorrect: correct }));
+    } else {
+      setLocalIsCorrect(correct);
+      setLocalSubmitted(true);
+    }
     if (correct) {
       const audioUrl = exercise?.audio_url;
       if (audioUrl) {

@@ -20,21 +20,10 @@
   {
     "description": "A clear, step-by-step guide to how Spanish grammar works, from the basics to advanced structures. Learn to understand, predict, and use Spanish grammar with confidence.",
     "id": "course-1769053349",
-    "image_url": "",
+    "image_url": "/media/lessons-images/course-1769053349/course-image/80229180b8e2403eab08ec512e401a30.svg",
     "is_published": true,
-    "keywords": [
-      "spanish grammar",
-      "spanish nouns",
-      "spanish verbs",
-      "spanish tenses",
-      "agreement",
-      "articles",
-      "pronouns",
-      "subjunctive",
-      "operational grammar",
-      "learn spanish structure"
-    ],
-    "level": "all",
+    "keywords": [],
+    "level": "beginner",
     "source_language": "English",
     "target_language": "Spanish",
     "title": "Complete Spanish Grammar"

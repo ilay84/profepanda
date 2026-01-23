@@ -1,1 +1,170 @@
 @import "tailwindcss";
+
+/* Lessons app header + menus (courses shell) */
+#ppx-public-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #edeaff;
+  border-bottom: 1px solid #d8d4f2;
+}
+
+.ppx-lessons-topbar-inner {
+  max-width: min(98vw, 1760px);
+  margin: 0 auto;
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ppx-lessons-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.ppx-lessons-brand img {
+  height: 45px;
+  width: auto;
+  display: inline-block;
+}
+
+.ppx-lessons-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ppx-lessons-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 999px;
+  background: #fff;
+  text-decoration: none;
+  font-size: 0.875rem;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.ppx-lessons-login img {
+  width: 16px;
+  height: 16px;
+}
+
+.ppx-lessons-menu,
+.ppx-lessons-lang {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+}
+
+.ppx-lessons-menu summary,
+.ppx-lessons-lang summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.8rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 0.875rem;
+}
+
+.ppx-lessons-lang summary {
+  border-radius: 999px;
+}
+
+.ppx-lessons-menu summary::marker,
+.ppx-lessons-lang summary::marker {
+  content: "";
+}
+
+.ppx-lessons-menu summary::-webkit-details-marker,
+.ppx-lessons-lang summary::-webkit-details-marker {
+  display: none;
+}
+
+.ppx-lessons-menu summary > span:first-child,
+.ppx-lessons-lang summary > span:first-child {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ppx-lessons-menu summary > span:first-child {
+  background-image: url("/static/assets/icons/menu.svg");
+}
+
+.ppx-lessons-lang summary > span:first-child {
+  background-image: url("/static/assets/icons/globe.svg");
+}
+
+.ppx-lessons-menu-panel,
+.ppx-lessons-lang-panel {
+  position: absolute;
+  right: 0;
+  margin-top: 0.4rem;
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 0.35rem;
+  z-index: 60;
+}
+
+.ppx-lessons-lang-panel {
+  min-width: 180px;
+}
+
+.ppx-lessons-menu-panel ul,
+.ppx-lessons-lang-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem;
+}
+
+.ppx-lessons-menu-panel a,
+.ppx-lessons-lang-panel a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #0f172a;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+}
+
+.ppx-lessons-lang-panel a {
+  justify-content: space-between;
+}
+
+.ppx-lessons-menu-panel a:hover,
+.ppx-lessons-lang-panel a:hover {
+  background: #f3f4ff;
+}
+
+.ppx-lessons-lang-panel a[aria-current="true"] > span:last-child {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url("/static/assets/icons/check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+}
+
+.ppx-lessons-header {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}

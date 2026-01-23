@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 
+import nextIcon from "../../assets/icons/lessons/next.svg";
 import { playCorrectSoundThen, playIncorrectSound } from "../../utils/sound.js";
 import PandaSprite from "./PandaSprite.jsx";
 import PromptImage from "./PromptImage.jsx";
@@ -100,7 +101,7 @@ function renderInlineMarkdown(text) {
 export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAttempt }) {
   const [localSelected, setLocalSelected] = useState([]);
   const [localSubmitted, setLocalSubmitted] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [localIsCorrect, setLocalIsCorrect] = useState(false);
   const [audioLocked, setAudioLocked] = useState(false);
   const selected = attempt ? attempt.selected ?? [] : localSelected;
   const submitted = attempt ? attempt.submitted : localSubmitted;
@@ -117,6 +118,17 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
       ).map((item) => String(item)),
     [exercise?.correct_options]
   );
+  const isCorrect = useMemo(() => {
+    if (!selected.length || !correctOptions.length) return false;
+    const selectedSet = new Set(selected.map((value) => String(value).trim()));
+    const correctSet = new Set(correctOptions.map((value) => String(value).trim()));
+    return (
+      selectedSet.size === correctSet.size &&
+      [...correctSet].every((item) => selectedSet.has(item))
+    );
+  }, [selected, correctOptions]);
+  const resolvedIsCorrect =
+    typeof attempt?.isCorrect === "boolean" ? attempt.isCorrect : localIsCorrect || isCorrect;
   const optionFeedback = exercise?.option_feedback ?? [];
   const optionFeedbackMap = useMemo(() => {
     const map = {};
@@ -143,16 +155,12 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
   };
 
   const handleCheck = () => {
-    const selectedSet = new Set(selected);
-    const correctSet = new Set(correctOptions);
-    const allCorrect =
-      selectedSet.size === correctSet.size &&
-      [...correctSet].every((item) => selectedSet.has(item));
-    setIsCorrect(allCorrect);
+    const allCorrect = isCorrect;
     if (setAttempt) {
-      setAttempt((prev) => ({ ...(prev ?? {}), submitted: true }));
+      setAttempt((prev) => ({ ...(prev ?? {}), submitted: true, isCorrect: allCorrect }));
     } else {
       setLocalSubmitted(true);
+      setLocalIsCorrect(allCorrect);
     }
     if (allCorrect) {
       const audioUrl = exercise?.audio_url;
@@ -167,11 +175,10 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
     } else {
       playIncorrectSound();
     }
-    onAnswer(allCorrect);
   };
 
   const handleContinue = () => {
-    onAnswer(isCorrect);
+    onAnswer(resolvedIsCorrect);
   };
 
   const correctList = correctOptions.join(", ");
@@ -264,25 +271,44 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
 
       {submitted ? (
         <div className="flex items-start gap-3">
-          <PandaSprite variant={isCorrect ? "correct" : "incorrect"} />
+          <PandaSprite variant={resolvedIsCorrect ? "correct" : "incorrect"} />
           <div
             className={cn(
-              "rounded-xl p-4 border flex-1",
-              isCorrect
-                ? "bg-[#80ac5f]/10 border-[#80ac5f]/30"
-                : "bg-red-50 border-red-200"
+              "flex items-center justify-between gap-3 rounded-2xl border p-4 flex-1",
+              resolvedIsCorrect
+                ? "border-[#80ac5f]/30 bg-[#80ac5f]/10"
+                : "border-red-200 bg-red-50"
             )}
           >
-            {isCorrect ? (
-              <span className="font-medium text-[#2f5d22]">Correct.</span>
-            ) : (
-              <div className="space-y-2">
-                <span className="font-medium text-red-700">Not quite right</span>
-                <p className="text-red-600 text-sm">
-                  Correct answers: {correctList}
-                </p>
-              </div>
-            )}
+            <div className="flex min-w-0 items-center gap-2 text-sm">
+              {resolvedIsCorrect ? (
+                <span className="text-base sm:text-lg font-semibold text-[#2f5d22]">Correct.</span>
+              ) : (
+                <div className="space-y-1">
+                  <span className="text-base sm:text-lg font-semibold text-red-700">
+                    Not quite right
+                  </span>
+                  <p className="text-red-600 text-sm">Correct answers: {correctList}</p>
+                </div>
+              )}
+            </div>
+
+            <button
+              type="button"
+              title="Continue"
+              aria-label="Continue"
+              onClick={handleContinue}
+              className={[
+                "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition",
+                audioLocked
+                  ? "cursor-default opacity-60"
+                  : "cursor-pointer hover:bg-black/5 hover:scale-105",
+                "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
+              ].join(" ")}
+              disabled={audioLocked}
+            >
+              <img src={nextIcon} alt="" aria-hidden="true" className="h-10 w-10" />
+            </button>
           </div>
         </div>
       ) : null}
@@ -297,20 +323,7 @@ export default function SelectAll({ exercise, onAnswer, showHint, attempt, setAt
           >
             Check Answer
           </button>
-        ) : (
-          <button
-            type="button"
-            onClick={handleContinue}
-            className={cn(
-              "rounded-xl px-8 py-2.5 text-white font-semibold shadow-sm transition cursor-pointer",
-              isCorrect ? "bg-[#80ac5f] hover:bg-[#6f9951]" : "bg-[#475dd7] hover:bg-[#3f53c4]",
-              audioLocked && "opacity-60 cursor-default"
-            )}
-            disabled={audioLocked}
-          >
-            Continue
-          </button>
-        )}
+        ) : null}
       </div>
     </div>
   );

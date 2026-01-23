@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/static/lessons_app/",
     "preview": "vite preview"
   },
   "dependencies": {

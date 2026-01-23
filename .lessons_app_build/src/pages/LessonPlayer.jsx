@@ -293,9 +293,14 @@ export default function LessonPlayer() {
 
     let isCorrect = false;
     if (currentExercise.type === "multiple_choice") {
-      const selectedText = (attemptForExercise?.selected?.text ?? "").trim();
-      const correctAnswer = (currentExercise?.correct_answer ?? "").trim();
-      isCorrect = selectedText === correctAnswer;
+      const selectedIndex = attemptForExercise?.selected;
+      const options = Array.isArray(currentExercise?.options) ? currentExercise.options : [];
+      const selectedText =
+        selectedIndex === null || selectedIndex === undefined
+          ? ""
+          : String(options[selectedIndex] ?? "");
+      const correctAnswer = String(currentExercise?.correct_answer ?? "");
+      isCorrect = selectedText.trim() === correctAnswer.trim();
     } else if (
       currentExercise.type === "fill_blank" ||
       currentExercise.type === "translation"
@@ -331,11 +336,49 @@ export default function LessonPlayer() {
       const correctOptions = Array.isArray(currentExercise?.correct_options)
         ? currentExercise.correct_options.map((value) => String(value))
         : [];
-      const selectedSet = new Set(selected.map((value) => String(value)));
-      const correctSet = new Set(correctOptions);
+      const selectedSet = new Set(selected.map((value) => String(value).trim()));
+      const correctSet = new Set(correctOptions.map((value) => String(value).trim()));
       isCorrect =
         selectedSet.size === correctSet.size &&
         [...correctSet].every((value) => selectedSet.has(value));
+    } else if (currentExercise.type === "fill_blanks_select") {
+      if (typeof attemptForExercise?.isCorrect === "boolean") {
+        isCorrect = attemptForExercise.isCorrect;
+      } else {
+        const answers = Array.isArray(currentExercise?.fill_blanks_answers)
+          ? currentExercise.fill_blanks_answers
+          : [];
+        const filled = attemptForExercise?.filledBlanks ?? {};
+        isCorrect =
+          answers.length > 0 &&
+          answers.every((answer, idx) => filled?.[idx]?.pill === answer);
+      }
+    } else if (currentExercise.type === "morphology_builder") {
+      if (typeof attemptForExercise?.isCorrect === "boolean") {
+        isCorrect = attemptForExercise.isCorrect;
+      } else {
+        const correctSequence = Array.isArray(currentExercise?.correct_sequence)
+          ? currentExercise.correct_sequence.map((value) => String(value ?? "").trim())
+          : [];
+        const selected = Array.isArray(attemptForExercise?.selected)
+          ? attemptForExercise.selected
+          : [];
+        const userSequence = selected.map((item) => String(item?.text ?? "").trim());
+        isCorrect =
+          correctSequence.length > 0 &&
+          userSequence.length === correctSequence.length &&
+          userSequence.every((value, idx) => value === correctSequence[idx]);
+      }
+    } else if (currentExercise.type === "matching") {
+      if (typeof attemptForExercise?.isCorrect === "boolean") {
+        isCorrect = attemptForExercise.isCorrect;
+      } else {
+        const matches = attemptForExercise?.matches ?? {};
+        const pairCount = Array.isArray(currentExercise?.matching_pairs)
+          ? currentExercise.matching_pairs.length
+          : 0;
+        isCorrect = pairCount > 0 && Object.keys(matches).length === pairCount;
+      }
     } else if (currentExercise.type === "picture_select_all") {
       const selected = Array.isArray(attemptForExercise?.selected)
         ? attemptForExercise.selected
@@ -729,7 +772,10 @@ export default function LessonPlayer() {
                 exercise.type === "picture_choice" ||
                 exercise.type === "error_spotting" ||
                 exercise.type === "select_all" ||
-                exercise.type === "picture_select_all"
+                exercise.type === "picture_select_all" ||
+                exercise.type === "fill_blanks_select" ||
+                exercise.type === "matching" ||
+                exercise.type === "morphology_builder"
                   ? attempt
                   : undefined
               }
@@ -740,7 +786,10 @@ export default function LessonPlayer() {
                 exercise.type === "picture_choice" ||
                 exercise.type === "error_spotting" ||
                 exercise.type === "select_all" ||
-                exercise.type === "picture_select_all"
+                exercise.type === "picture_select_all" ||
+                exercise.type === "fill_blanks_select" ||
+                exercise.type === "matching" ||
+                exercise.type === "morphology_builder"
                   ? setAttempt
                   : undefined
               }
@@ -791,17 +840,94 @@ export default function LessonPlayer() {
                   let isCorrect = false;
 
                   if (exercise.type === "multiple_choice") {
-                    const selectedText = (attempt?.selected?.text ?? "").trim();
-                    const correctAnswer = (exercise?.correct_answer ?? "").trim();
-                    isCorrect = selectedText === correctAnswer;
+                    const options = Array.isArray(exercise?.options) ? exercise.options : [];
+                    const selectedIndex = attempt?.selected;
+                    const selectedText =
+                      selectedIndex === null || selectedIndex === undefined
+                        ? ""
+                        : String(options[selectedIndex] ?? "");
+                    const correctAnswer = String(exercise?.correct_answer ?? "");
+                    isCorrect = selectedText.trim() === correctAnswer.trim();
                   } else if (exercise.type === "fill_blank" || exercise.type === "translation") {
                     const user = String(attempt?.answer ?? "").trim().toLowerCase();
                     const correct = String(exercise?.correct_answer ?? "").trim().toLowerCase();
                     isCorrect = user === correct;
+                  } else if (exercise.type === "select_all") {
+                    const selected = Array.isArray(attempt?.selected) ? attempt.selected : [];
+                    const correctOptions = Array.isArray(exercise?.correct_options)
+                      ? exercise.correct_options.map((value) => String(value).trim())
+                      : [];
+                    const selectedSet = new Set(selected.map((value) => String(value).trim()));
+                    const correctSet = new Set(correctOptions);
+                    isCorrect =
+                      selectedSet.size === correctSet.size &&
+                      [...correctSet].every((value) => selectedSet.has(value));
+                  } else if (exercise.type === "picture_select_all") {
+                    const selected = Array.isArray(attempt?.selected) ? attempt.selected : [];
+                    const correctIndices = Array.isArray(exercise?.correct_indices)
+                      ? exercise.correct_indices.map((value) => Number(value)).filter(Number.isFinite)
+                      : Number.isFinite(exercise?.correct_index)
+                      ? [Number(exercise.correct_index)]
+                      : [];
+                    const selectedSet = new Set(selected);
+                    const correctSet = new Set(correctIndices);
+                    isCorrect =
+                      correctSet.size > 0 &&
+                      selectedSet.size === correctSet.size &&
+                      [...correctSet].every((value) => selectedSet.has(value));
+                  } else if (exercise.type === "error_spotting") {
+                    const selected = Array.isArray(attempt?.selected) ? attempt.selected : [];
+                    const incorrectIndices = Array.isArray(exercise?.correct_indices)
+                      ? exercise.correct_indices.map((value) => Number(value)).filter(Number.isFinite)
+                      : Number.isFinite(exercise?.correct_index)
+                      ? [Number(exercise.correct_index)]
+                      : [];
+                    const selectedSet = new Set(selected);
+                    const incorrectSet = new Set(incorrectIndices);
+                    isCorrect =
+                      selectedSet.size === incorrectSet.size &&
+                      [...incorrectSet].every((value) => selectedSet.has(value));
+                  } else if (
+                    exercise.type === "fill_blanks_select" ||
+                    exercise.type === "morphology_builder"
+                  ) {
+                    if (exercise.type === "fill_blanks_select") {
+                      if (typeof attempt?.isCorrect === "boolean") {
+                        isCorrect = attempt.isCorrect;
+                      } else {
+                        const answers = Array.isArray(exercise?.fill_blanks_answers)
+                          ? exercise.fill_blanks_answers
+                          : [];
+                        const filled = attempt?.filledBlanks ?? {};
+                        isCorrect =
+                          answers.length > 0 &&
+                          answers.every((answer, idx) => filled?.[idx]?.pill === answer);
+                      }
+                    } else {
+                      if (typeof attempt?.isCorrect === "boolean") {
+                        isCorrect = attempt.isCorrect;
+                      } else {
+                        const correctSequence = Array.isArray(exercise?.correct_sequence)
+                          ? exercise.correct_sequence.map((value) => String(value ?? "").trim())
+                          : [];
+                        const selected = Array.isArray(attempt?.selected) ? attempt.selected : [];
+                        const userSequence = selected.map((item) => String(item?.text ?? "").trim());
+                        isCorrect =
+                          correctSequence.length > 0 &&
+                          userSequence.length === correctSequence.length &&
+                          userSequence.every((value, idx) => value === correctSequence[idx]);
+                      }
+                    }
                   } else if (exercise.type === "matching") {
-                    // Matching calls onAnswer(true) when completed, so normally results is already set.
-                    // Keep safe default.
-                    isCorrect = true;
+                    if (typeof attempt?.isCorrect === "boolean") {
+                      isCorrect = attempt.isCorrect;
+                    } else {
+                      const matches = attempt?.matches ?? {};
+                      const pairCount = Array.isArray(exercise?.matching_pairs)
+                        ? exercise.matching_pairs.length
+                        : 0;
+                      isCorrect = pairCount > 0 && Object.keys(matches).length === pairCount;
+                    }
                   }
 
                   handleAnswer(isCorrect);

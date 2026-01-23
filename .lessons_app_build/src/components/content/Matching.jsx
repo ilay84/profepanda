@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import nextIcon from "../../assets/icons/lessons/next.svg";
 import { playCorrectSoundThen, playIncorrectSound } from "../../utils/sound.js";
@@ -85,7 +85,7 @@ function renderInlineMarkdown(text) {
 }
 
 
-export default function Matching({ exercise, onAnswer, showHint }) {
+export default function Matching({ exercise, onAnswer, showHint, attempt, setAttempt }) {
   const pairs = exercise?.matching_pairs ?? [];
 
   const rightShuffled = useMemo(() => {
@@ -106,21 +106,40 @@ export default function Matching({ exercise, onAnswer, showHint }) {
     return map;
   }, [pairs]);
 
-  const [selectedLeft, setSelectedLeft] = useState(null);
-  const [matches, setMatches] = useState({});
-  const [rightOrder, setRightOrder] = useState(rightShuffled);
-  const [completed, setCompleted] = useState(false);
+  const [localSelectedLeft, setLocalSelectedLeft] = useState(null);
+  const [localMatches, setLocalMatches] = useState({});
+  const [localRightOrder, setLocalRightOrder] = useState(rightShuffled);
+  const [localCompleted, setLocalCompleted] = useState(false);
   const [audioLocked, setAudioLocked] = useState(false);
 
   const [wrongPulseRight, setWrongPulseRight] = useState(null);
 
+  const selectedLeft = attempt?.selectedLeft ?? localSelectedLeft;
+  const matches = attempt?.matches ?? localMatches;
+  const rightOrder = attempt?.rightOrder ?? localRightOrder;
+  const completed = attempt?.submitted ?? attempt?.completed ?? localCompleted;
+
+  useEffect(() => {
+    if (!pairs.length) return;
+    if (rightOrder.length === pairs.length) return;
+    if (setAttempt) {
+      setAttempt((prev) => ({ ...(prev ?? {}), rightOrder: rightShuffled }));
+    } else {
+      setLocalRightOrder(rightShuffled);
+    }
+  }, [pairs.length, rightOrder.length, rightShuffled, setAttempt]);
+
   const handleLeft = (left) => {
-    if (matches[left]) return;
-    setSelectedLeft(left);
+    if (completed || matches[left]) return;
+    if (setAttempt) {
+      setAttempt((prev) => ({ ...(prev ?? {}), selectedLeft: left }));
+    } else {
+      setLocalSelectedLeft(left);
+    }
   };
 
   const handleRightClick = (right) => {
-    if (!selectedLeft) return;
+    if (completed || !selectedLeft) return;
 
     const expected = leftToRight[selectedLeft];
     const correct = expected === right;
@@ -128,7 +147,11 @@ export default function Matching({ exercise, onAnswer, showHint }) {
     if (!correct) {
       playIncorrectSound();
       setWrongPulseRight(right);
-      setSelectedLeft(null);
+      if (setAttempt) {
+        setAttempt((prev) => ({ ...(prev ?? {}), selectedLeft: null }));
+      } else {
+        setLocalSelectedLeft(null);
+      }
       window.setTimeout(() => setWrongPulseRight(null), 250);
       return;
     }
@@ -147,25 +170,35 @@ export default function Matching({ exercise, onAnswer, showHint }) {
     });
 
     const nextMatches = { ...matches, [selectedLeft]: right };
-    setMatches(nextMatches);
-
     const targetRow = leftIndex[selectedLeft];
-    setRightOrder((prev) => {
-      const next = [...prev];
+    const nextRightOrder = (() => {
+      const next = [...rightOrder];
       const fromIndex = next.findIndex((r) => r === right);
       if (fromIndex === -1 || targetRow == null) return next;
-
       const tmp = next[targetRow];
       next[targetRow] = next[fromIndex];
       next[fromIndex] = tmp;
-
       return next;
-    });
+    })();
 
-    setSelectedLeft(null);
-
-    if (Object.keys(nextMatches).length === pairs.length) {
-      setCompleted(true);
+    const nextCompleted = Object.keys(nextMatches).length === pairs.length;
+    if (setAttempt) {
+      setAttempt((prev) => ({
+        ...(prev ?? {}),
+        matches: nextMatches,
+        rightOrder: nextRightOrder,
+        selectedLeft: null,
+        completed: nextCompleted,
+        submitted: nextCompleted,
+        isCorrect: nextCompleted,
+      }));
+    } else {
+      setLocalMatches(nextMatches);
+      setLocalRightOrder(nextRightOrder);
+      setLocalSelectedLeft(null);
+      if (nextCompleted) {
+        setLocalCompleted(true);
+      }
     }
   };
 

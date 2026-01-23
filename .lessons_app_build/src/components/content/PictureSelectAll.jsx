@@ -124,10 +124,12 @@ export default function PictureSelectAll({ exercise, onAnswer, showHint, attempt
     return true;
   }, [selectedSet, correctSet]);
 
+  const resolvedIsCorrect = attempt?.isCorrect ?? isCorrect;
+
   const feedback = useMemo(() => {
     if (!submitted) return "";
-    return isCorrect ? "Correct." : "Incorrect.";
-  }, [submitted, isCorrect]);
+    return resolvedIsCorrect ? "Correct." : "Incorrect.";
+  }, [submitted, resolvedIsCorrect]);
 
   const toggleSelected = (index) => {
     if (submitted) return;
@@ -148,7 +150,7 @@ export default function PictureSelectAll({ exercise, onAnswer, showHint, attempt
   const handleCheck = () => {
     if (!selected.length) return;
     if (setAttempt) {
-      setAttempt((prev) => ({ ...(prev ?? {}), submitted: true }));
+      setAttempt((prev) => ({ ...(prev ?? {}), submitted: true, isCorrect }));
     } else {
       setLocalSubmitted(true);
     }
@@ -165,11 +167,10 @@ export default function PictureSelectAll({ exercise, onAnswer, showHint, attempt
     } else {
       playIncorrectSound();
     }
-    onAnswer(isCorrect);
   };
 
   const handleContinue = () => {
-    onAnswer(isCorrect);
+    onAnswer(resolvedIsCorrect);
   };
 
   return (
@@ -246,18 +247,18 @@ export default function PictureSelectAll({ exercise, onAnswer, showHint, attempt
       {!submitted ? (
         <button
           className="px-4 py-2 rounded-xl bg-[#475dd7] text-white font-semibold shadow-sm transition hover:bg-[#3f53c4] disabled:opacity-50 cursor-pointer disabled:cursor-default"
-          disabled={localSelected.length === 0}
+          disabled={selected.length === 0}
           onClick={handleCheck}
         >
           Check Answer
         </button>
       ) : (
         <div className="flex items-start gap-3">
-          <PandaSprite variant={isCorrect ? "correct" : "incorrect"} />
+          <PandaSprite variant={resolvedIsCorrect ? "correct" : "incorrect"} />
           <div
             className={[
               "flex items-center justify-between gap-3 rounded-2xl border p-4 flex-1",
-              isCorrect
+              resolvedIsCorrect
                 ? "border-[#80ac5f]/30 bg-[#80ac5f]/10"
                 : "border-red-200 bg-red-50",
             ].join(" ")}
@@ -266,7 +267,7 @@ export default function PictureSelectAll({ exercise, onAnswer, showHint, attempt
               <span
                 className={[
                   "text-base sm:text-lg font-semibold",
-                  isCorrect ? "text-[#2f5d22]" : "text-red-700",
+                  resolvedIsCorrect ? "text-[#2f5d22]" : "text-red-700",
                 ].join(" ")}
               >
                 {feedback}
