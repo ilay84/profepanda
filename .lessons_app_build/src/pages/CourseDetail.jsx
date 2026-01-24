@@ -13,13 +13,16 @@ import IconInProgress from "../assets/icons/lessons/in-progress.svg";
 import IconLesson from "../assets/icons/lessons/lesson.svg";
 import IconClock from "../assets/icons/lessons/clock.svg";
 import IconXp from "../assets/icons/lessons/xp.svg";
+import IconXpColored from "../assets/icons/lessons/xp-colored.svg";
+import IconCaretDown from "../assets/icons/lessons/down-caret.svg";
+import IconCaretUp from "../assets/icons/lessons/up-caret.svg";
 
-function renderInlineMarkdown(text) {
+function renderInlineMarkdown(text, baseClassName = "text-slate-900") {
   if (!text) return "";
   const lines = String(text).split(/\r?\n/);
   const nodes = [];
 
-  const renderWithBackticks = (content, keyPrefix, baseClassName = "text-slate-900") => {
+  const renderWithBackticks = (content, keyPrefix, inlineClassName = baseClassName) => {
     const parts = content.split(/(`[^`]+`)/g).filter(Boolean);
     return parts.map((part, index) => {
       if (part.startsWith("`") && part.endsWith("`")) {
@@ -31,7 +34,7 @@ function renderInlineMarkdown(text) {
         );
       }
       return (
-        <span key={`${keyPrefix}-txt-${index}`} className={baseClassName}>
+        <span key={`${keyPrefix}-txt-${index}`} className={inlineClassName}>
           {part}
         </span>
       );
@@ -56,21 +59,21 @@ function renderInlineMarkdown(text) {
           if (part.startsWith("**") && part.endsWith("**")) {
             const content = part.slice(2, -2);
             return (
-              <span key={`md-${lineIndex}-${index}`} className="font-semibold text-slate-900">
-                {renderWithBackticks(content, `md-b-${lineIndex}-${index}`)}
+              <span key={`md-${lineIndex}-${index}`} className={`font-semibold ${baseClassName}`}>
+                {renderWithBackticks(content, `md-b-${lineIndex}-${index}`, baseClassName)}
               </span>
             );
           }
           if (part.startsWith("*") && part.endsWith("*")) {
             const content = part.slice(1, -1);
             return (
-              <em key={`md-${lineIndex}-${index}`} className="text-slate-900">
-                {renderWithBackticks(content, `md-i-${lineIndex}-${index}`)}
+              <em key={`md-${lineIndex}-${index}`} className={baseClassName}>
+                {renderWithBackticks(content, `md-i-${lineIndex}-${index}`, baseClassName)}
               </em>
             );
           }
           return (
-            <span key={`md-${lineIndex}-${index}`} className="text-slate-900">
+            <span key={`md-${lineIndex}-${index}`} className={baseClassName}>
               {part}
             </span>
           );
@@ -94,7 +97,7 @@ function renderInlineMarkdown(text) {
 }
 
 
-function renderDescriptionMarkdown(text, className) {
+function renderDescriptionMarkdown(text, className, inlineClassName = "text-slate-900") {
   if (!text) return null;
   const lines = String(text).split("\n");
   const nodes = [];
@@ -103,7 +106,7 @@ function renderDescriptionMarkdown(text, className) {
   const flushBullets = () => {
     if (!bullets.length) return;
     const items = bullets.map((line, index) => (
-      <li key={`li-${index}`}>{renderInlineMarkdown(line)}</li>
+      <li key={`li-${index}`}>{renderInlineMarkdown(line, inlineClassName)}</li>
     ));
     nodes.push(
       <ul key={`ul-${nodes.length}`} className="ml-4 list-disc space-y-1">
@@ -126,7 +129,7 @@ function renderDescriptionMarkdown(text, className) {
     flushBullets();
     nodes.push(
       <p key={`p-${nodes.length}`} className="m-0">
-        {renderInlineMarkdown(line)}
+        {renderInlineMarkdown(line, inlineClassName)}
       </p>
     );
   });
@@ -268,12 +271,13 @@ export default function CourseDetail() {
 
               <div className="space-y-1">
                 <h1 className="text-3xl font-bold text-white">
-                  {renderInlineMarkdown(String(course.title || ""))}
+                  {renderInlineMarkdown(String(course.title || ""), "text-white")}
                 </h1>
                 {course.description ? (
                   renderDescriptionMarkdown(
                     course.description,
-                    "max-w-2xl text-slate-200"
+                    "max-w-2xl text-slate-200",
+                    "text-slate-200"
                   )
                 ) : null}
               </div>
@@ -340,50 +344,47 @@ export default function CourseDetail() {
           </div>
         ) : hasUnits ? (
           <div className="space-y-4">
-            {lessonGroups.map((group) => {
+            {lessonGroups.map((group, groupIndex) => {
               const isOpen = !!openUnits[group.id];
+              const unitLabel = group.isPseudo ? null : `Unit ${groupIndex + 1}`;
               return (
                 <div key={group.id} className="rounded-2xl border border-slate-200 bg-white shadow-sm">
                   <button
                     type="button"
                     onClick={() => toggleUnit(group.id)}
-                    className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left cursor-pointer"
+                    className="flex w-full items-center justify-between gap-3 rounded-2xl bg-indigo-50/40 px-4 py-3 text-left cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
-                        <svg
-                          className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : "rotate-0"}`}
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M5 12l5-5 5 5"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                      <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+                        <img
+                          src={isOpen ? IconCaretUp : IconCaretDown}
+                          alt=""
+                          className="h-5 w-5 shrink-0 sm:h-4 sm:w-4"
+                        />
                       </span>
                       <div>
-                        <div className="text-sm font-semibold text-slate-900">
+                        {unitLabel ? (
+                          <div className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                            {unitLabel}
+                          </div>
+                        ) : null}
+                        <div className="text-lg font-semibold text-slate-900">
                           {renderInlineMarkdown(String(group.title || ""))}
                         </div>
                         {group.description ? (
-                          <div className="text-xs text-slate-500">
+                          <div className="text-sm text-slate-500">
                             {renderDescriptionMarkdown(group.description, "")}
                           </div>
                         ) : null}
                       </div>
                     </div>
-                    <span className="text-xs text-slate-400">
+                    <span className="text-sm text-slate-400">
                       {group.lessons.length} lessons
                     </span>
                   </button>
 
                   {isOpen ? (
-                    <div className="space-y-3 px-4 pb-4">
+                    <div className="divide-y divide-slate-200 px-4 pb-2">
                       {group.lessons.map((lesson, index) => {
                         const mastered = !!masteredByLessonId[lesson.id];
                         const firstIncompleteIndex = group.lessons.findIndex(
@@ -397,15 +398,11 @@ export default function CourseDetail() {
                         return (
                           <div
                             key={lesson.id}
-                            className={`flex items-center justify-between gap-4 rounded-2xl p-4 shadow-sm ring-1 transition ${
-                              mastered
-                                ? "bg-white ring-[#c7ddb4]"
-                                : "bg-white ring-slate-200 hover:ring-slate-300"
-                            }`}
+                            className="flex items-center justify-between gap-4 py-4 transition hover:bg-slate-50/70"
                           >
                             <div className="flex items-start gap-3">
                               <div
-                                className={`mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl ring-1 ${
+                                className={`mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ring-1 sm:h-10 sm:w-10 ${
                                   mastered
                                     ? "bg-emerald-50 ring-emerald-200"
                                     : started
@@ -422,15 +419,15 @@ export default function CourseDetail() {
                                       : IconNotStarted
                                   }
                                   alt=""
-                                  className="h-5 w-5"
+                                  className="h-6 w-6 shrink-0 sm:h-5 sm:w-5"
                                 />
                               </div>
 
-                              <div className="space-y-1">
-                                <div className="flex flex-wrap items-center gap-2">
-                                  <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                                    Lesson {index + 1}
-                                  </span>
+                            <div className="space-y-1">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                                  Lesson {index + 1}
+                                </span>
 
                                   {mastered ? (
                                     <span className="inline-flex items-center rounded-full bg-[#80ac5f] px-2 py-0.5 text-xs font-semibold text-white shadow-sm">
@@ -443,12 +440,12 @@ export default function CourseDetail() {
                                   )}
                                 </div>
 
-                                <div className="text-base font-semibold text-slate-900">
+                                <div className="text-lg font-semibold text-slate-900">
                                   {renderInlineMarkdown(String(lesson.title || ""))}
                                 </div>
 
                                 {lesson.description ? (
-                                  <div className="text-sm text-slate-600">
+                                  <div className="text-base text-slate-600">
                                     {renderDescriptionMarkdown(lesson.description, "")}
                                   </div>
                                 ) : null}
@@ -457,15 +454,15 @@ export default function CourseDetail() {
 
                             <div className="flex flex-wrap items-center justify-end gap-2 sm:flex-nowrap sm:gap-3">
                               <span
-                                className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-xs font-semibold ring-1 whitespace-nowrap sm:px-2 sm:py-1 ${
+                                className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold leading-none ring-1 whitespace-nowrap ${
                                   mastered
                                     ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
                                     : "bg-indigo-50 text-indigo-700 ring-indigo-200"
                                 }`}
                               >
-                                <img src={IconXp} alt="" className="mr-1 h-3.5 w-3.5" />
+                                <img src={IconXpColored} alt="" className="h-3.5 w-3.5 shrink-0" />
                                 <span className="tabular-nums">{Number(lesson.xp_reward) || 0}</span>
-                                <span className="ml-1">XP</span>
+                                <span>XP</span>
                               </span>
 
                               <LessonCard lesson={lesson} mastered={mastered} />
@@ -492,15 +489,11 @@ export default function CourseDetail() {
               return (
                 <div
                   key={lesson.id}
-                  className={`flex items-center justify-between gap-4 rounded-2xl p-4 shadow-sm ring-1 transition ${
-                    mastered
-                      ? "bg-white ring-[#c7ddb4]"
-                      : "bg-white ring-slate-200 hover:ring-slate-300"
-                  }`}
+                  className="flex items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition hover:bg-slate-50/70"
                 >
                   <div className="flex items-start gap-3">
                     <div
-                      className={`mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl ring-1 ${
+                      className={`mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ring-1 sm:h-10 sm:w-10 ${
                         mastered
                           ? "bg-emerald-50 ring-emerald-200"
                           : started
@@ -513,13 +506,13 @@ export default function CourseDetail() {
                           mastered ? IconComplete : started ? IconInProgress : IconNotStarted
                         }
                         alt=""
-                        className="h-5 w-5"
+                        className="h-6 w-6 shrink-0 sm:h-5 sm:w-5"
                       />
                     </div>
 
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <span className="text-sm font-semibold uppercase tracking-wide text-slate-500">
                           Lesson {index + 1}
                         </span>
 
@@ -534,12 +527,12 @@ export default function CourseDetail() {
                         )}
                       </div>
 
-                      <div className="text-base font-semibold text-slate-900">
+                      <div className="text-lg font-semibold text-slate-900">
                         {renderInlineMarkdown(String(lesson.title || ""))}
                       </div>
 
                       {lesson.description ? (
-                        <div className="text-sm text-slate-600">
+                        <div className="text-base text-slate-600">
                           {renderDescriptionMarkdown(lesson.description, "")}
                         </div>
                       ) : null}
@@ -548,15 +541,15 @@ export default function CourseDetail() {
 
                   <div className="flex flex-wrap items-center justify-end gap-2 sm:flex-nowrap sm:gap-3">
                     <span
-                      className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-xs font-semibold ring-1 whitespace-nowrap sm:px-2 sm:py-1 ${
+                      className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold leading-none ring-1 whitespace-nowrap ${
                         mastered
                           ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
                           : "bg-indigo-50 text-indigo-700 ring-indigo-200"
                       }`}
                     >
-                      <img src={IconXp} alt="" className="mr-1 h-3.5 w-3.5" />
+                      <img src={IconXpColored} alt="" className="h-3.5 w-3.5 shrink-0" />
                       <span className="tabular-nums">{Number(lesson.xp_reward) || 0}</span>
-                      <span className="ml-1">XP</span>
+                      <span>XP</span>
                     </span>
 
                     <LessonCard lesson={lesson} mastered={mastered} />

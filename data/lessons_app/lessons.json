@@ -214,10 +214,15 @@
   },
   {
     "course_id": "course-1769053349",
-    "description": "Learn the core idea behind grammatical gender in Spanish: every noun is either masculine or feminine, and this gender is a fixed part of the word.",
+    "description": "How grammatical gender works for objects in Spanish",
     "id": "lesson-1769053667",
     "is_published": true,
-    "keywords": [],
+    "keywords": [
+      "masculine",
+      "feminine",
+      "nouns",
+      "gender"
+    ],
     "title": "Every Spanish Noun Has a Gender",
     "unit_id": "unit-1769053493",
     "xp_reward": 10

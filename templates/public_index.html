@@ -94,28 +94,47 @@
 
     <div class="ppx-home-section ppx-home-section--beta">
       <h3 class="ppx-h2 ppx-home-subheading" style="margin:0;">
-        {{ t('Proximamente', 'Coming soon', app_lang) }}
+        <span data-i18n-key="home.sections.development.title" data-i18n-lang="{{ app_lang }}">
+          {{ ui('home.sections.development.title', app_lang) or t('En desarrollo', 'In development', app_lang) }}
+        </span>
       </h3>
 
       <div class="ppx-resource-grid-inner">
-        <div class="ppx-article-card ppx-resource-card" role="note" aria-labelledby="coming-soon-h">
-          <div class="ppx-article-thumb ppx-article-thumb--fallback" role="img"
-               aria-label="{{ t('Cursos en preparacion', 'Courses in progress', app_lang) }}">
-            ProfePanda
-          </div>
+        <a class="ppx-article-card ppx-resource-card" href="/courses" aria-labelledby="courses-dev-h">
+          {% set courses_img = ui('home.cards.courses.image', app_lang) %}
+          {% if courses_img %}
+            {% set _svg = (courses_img|lower).endswith('.svg') %}
+            <img
+              src="{{ courses_img }}"
+              alt="{{ t('Cursos en preparacion', 'Courses in development', app_lang) }}"
+              class="ppx-article-thumb ppx-i18n-img{% if _svg %} ppx-thumb--svg{% endif %}"
+              data-i18n-key="home.cards.courses.image"
+              data-i18n-lang="{{ app_lang }}"
+              loading="lazy" decoding="async" fetchpriority="low"
+            >
+          {% else %}
+            <div class="ppx-article-thumb ppx-article-thumb--fallback ppx-i18n-img" role="img"
+                 aria-label="{{ t('Cursos en preparacion', 'Courses in development', app_lang) }}"
+                 data-i18n-key="home.cards.courses.image"
+                 data-i18n-lang="{{ app_lang }}">
+              ProfePanda
+            </div>
+          {% endif %}
 
           <div class="ppx-resource-body">
-            <h3 class="ppx-resource-title" id="coming-soon-h">
-              {{ t('Cursos de espanol', 'Spanish courses', app_lang) }}
+            <h3 class="ppx-resource-title" id="courses-dev-h">
+              <span data-i18n-key="home.cards.courses.title" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.courses.title', app_lang) or t('Cursos de espanol', 'Spanish courses', app_lang) }}
+              </span>
             </h3>
             <p class="ppx-resource-text">
-              <span class="ppx-resource-copy">
-                {{ t('Estamos preparando cursos guiados y rutas de estudio. Vuelven pronto.',
+              <span class="ppx-resource-copy" data-i18n-key="home.cards.courses.copy" data-i18n-lang="{{ app_lang }}">
+                {{ ui('home.cards.courses.copy', app_lang) or t('Estamos preparando cursos guiados y rutas de estudio. Vuelven pronto.',
                      'We are preparing guided courses and study paths. Check back soon.', app_lang) }}
               </span>
             </p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>

@@ -44,5 +44,12 @@
     "id": "elisears@gmail.com::course-1768169153",
     "status": "active",
     "user_email": "elisears@gmail.com"
+  },
+  {
+    "course_id": "course-1769053349",
+    "enrolled_at": "2026-01-24T13:33:02.262731",
+    "id": "elisears@gmail.com::course-1769053349",
+    "status": "active",
+    "user_email": "elisears@gmail.com"
   }
 ]

@@ -223,9 +223,6 @@ export default function CourseCard({
             <h3 className="line-clamp-2 text-base font-semibold leading-snug text-slate-900">
               {renderInlineMarkdown(String(title))}
             </h3>
-            <span className="mt-0.5 text-slate-400 transition group-hover:text-slate-500">
-              &gt;
-            </span>
           </div>
 
           {description ? (

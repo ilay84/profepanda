@@ -375,11 +375,19 @@
     btn.className = 'ppx-i18n-btn';
     btn.title = 'Editar texto';
     btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>';
+    function getEditableHTML(node) {
+      var clone = node.cloneNode(true);
+      clone.querySelectorAll('.ppx-i18n-btn,.ppx-i18n-imgbtn').forEach(function(el){
+        el.remove();
+      });
+      return clone.innerHTML || '';
+    }
+
     btn.addEventListener('click', function(e){
       e.stopPropagation(); e.preventDefault();
       var k = target.getAttribute('data-i18n-key');
       if (!k) return;
-      var cur = (target.innerHTML || '').trim();
+      var cur = getEditableHTML(target).trim();
       if (_state.pageLang === 'en') {
         _state.seed = { es: '', en: cur };
       } else {

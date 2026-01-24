@@ -61,7 +61,7 @@ def admin_i18n_update():
         orig_name = (data.get("filename") or "upload").strip()
 
         # Validate and decode data URL
-        m = re.match(r"^data:(image/(png|jpeg|jpg|webp|gif));base64,(.+)$", data_url, re.IGNORECASE)
+        m = re.match(r"^data:(image/(png|jpeg|jpg|webp|gif|svg\+xml));base64,(.+)$", data_url, re.IGNORECASE)
         if not m:
             return jsonify({"ok": False, "error": "invalid image data"}), 400
 
@@ -72,6 +72,7 @@ def admin_i18n_update():
             "image/jpg": "jpg",
             "image/webp": "webp",
             "image/gif": "gif",
+            "image/svg+xml": "svg",
         }.get(mime, "bin")
 
         try:
